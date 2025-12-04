@@ -1,0 +1,141 @@
+Analyzing app...                                                
+
+   info • The import of 'package:json_annotation/json_annotation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:freezed_annotation/freezed_annotation.dart' • lib/core/models/user.dart:2:8 • unnecessary_import
+  error • Target of URI doesn't exist: 'package:app/core/models/user.freezed.dart' • lib/core/models/user.dart:4:6 • uri_does_not_exist
+  error • Target of URI hasn't been generated: 'package:app/core/models/user.g.dart' • lib/core/models/user.dart:5:6 • uri_has_not_been_generated
+warning • The declaration 'User._' isn't referenced • lib/core/models/user.dart:9:14 • unused_element
+warning • The annotation 'JsonSerializable.new' can only be used on classes • lib/core/models/user.dart:11:4 • invalid_annotation_target
+  error • The name '_User' isn't a type and can't be used in a redirected constructor • lib/core/models/user.dart:21:8 • redirect_to_non_class
+  error • The method '_$UserFromJson' isn't defined for the type 'User' • lib/core/models/user.dart:23:55 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:69:23 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:83:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:88:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:93:19 • prefer_const_constructors
+  error • Target of URI doesn't exist: 'package:app/features/auth/bloc/auth_bloc.freezed.dart' • lib/features/auth/bloc/auth_bloc.dart:10:6 • uri_does_not_exist
+  error • The method 'when' isn't defined for the type 'AuthEvent' • lib/features/auth/bloc/auth_bloc.dart:23:19 • undefined_method
+  error • The getter 'fullName' isn't defined for the type 'User' • lib/features/auth/bloc/auth_bloc.dart:87:53 • undefined_getter
+  error • The getter 'role' isn't defined for the type 'User' • lib/features/auth/bloc/auth_bloc.dart:87:77 • undefined_getter
+  error • The getter 'role' isn't defined for the type 'User' • lib/features/auth/bloc/auth_bloc.dart:90:16 • undefined_getter
+  error • The getter 'role' isn't defined for the type 'User' • lib/features/auth/bloc/auth_bloc.dart:90:37 • undefined_getter
+  error • The getter 'role' isn't defined for the type 'User' • lib/features/auth/bloc/auth_bloc.dart:95:63 • undefined_getter
+  error • The name '_NeedsRoleSelection' isn't defined, so it can't be used in an 'is' expression • lib/features/auth/bloc/auth_bloc.dart:114:25 • type_test_with_undefined_name
+  error • The getter 'user' isn't defined for the type 'AuthState' • lib/features/auth/bloc/auth_bloc.dart:123:42 • undefined_getter
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/bloc/auth_bloc.dart:126:14 • prefer_const_constructors
+  error • The getter 'user' isn't defined for the type 'AuthState' • lib/features/auth/bloc/auth_bloc.dart:127:62 • undefined_getter
+  error • Classes can only mix in mixins and classes • lib/features/auth/bloc/auth_event.dart:4:22 • mixin_of_non_class
+  error • The name '_Login' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_event.dart:5:55 • redirect_to_non_class
+  error • The name '_VerifyOtp' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_event.dart:6:71 • redirect_to_non_class
+  error • The name '_SelectRole' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_event.dart:7:53 • redirect_to_non_class
+  error • The name '_Logout' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_event.dart:8:38 • redirect_to_non_class
+  error • The name '_CheckAuth' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_event.dart:9:41 • redirect_to_non_class
+  error • Classes can only mix in mixins and classes • lib/features/auth/bloc/auth_state.dart:4:22 • mixin_of_non_class
+  error • The name '_Initial' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_state.dart:5:39 • redirect_to_non_class
+  error • The name '_Loading' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_state.dart:6:39 • redirect_to_non_class
+  error • The name '_OtpSent' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_state.dart:7:68 • redirect_to_non_class
+  error • The name '_NeedsRoleSelection' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_state.dart:8:70 • redirect_to_non_class
+  error • The name '_Authenticated' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_state.dart:9:65 • redirect_to_non_class
+  error • The name '_Unauthenticated' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_state.dart:10:47 • redirect_to_non_class
+  error • The name '_Error' isn't a type and can't be used in a redirected constructor • lib/features/auth/bloc/auth_state.dart:11:62 • redirect_to_non_class
+warning • The value of the field '_fadeAnimation' isn't used • lib/features/auth/login_screen.dart:20:26 • unused_field
+warning • The value of the field '_slideAnimation' isn't used • lib/features/auth/login_screen.dart:21:26 • unused_field
+  error • The method 'when' isn't defined for the type 'AuthState' • lib/features/auth/login_screen.dart:28:15 • undefined_method
+  error • The method 'when' isn't defined for the type 'AuthState' • lib/features/auth/otp_screen.dart:52:15 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/otp_screen.dart:112:23 • prefer_const_constructors
+  error • The method 'when' isn't defined for the type 'AuthState' • lib/features/auth/premium_login_screen.dart:78:15 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:215:44 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:269:42 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/premium_login_screen.dart:286:22 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:291:40 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:343:44 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/premium_login_screen.dart:394:13 • prefer_const_constructors
+  error • The method 'when' isn't defined for the type 'AuthState' • lib/features/auth/role_selection_screen.dart:18:15 • undefined_method
+  error • The method 'maybeMap' isn't defined for the type 'AuthState' • lib/features/auth/role_selection_screen.dart:43:33 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/role_selection_screen.dart:57:19 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/role_selection_screen.dart:152:26 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/role_selection_screen.dart:153:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/role_selection_screen.dart:162:32 • deprecated_member_use
+  error • Target of URI doesn't exist: 'package:app/features/booking/bloc/booking_bloc.freezed.dart' • lib/features/booking/bloc/booking_bloc.dart:7:6 • uri_does_not_exist
+  error • The method 'when' isn't defined for the type 'BookingEvent' • lib/features/booking/bloc/booking_bloc.dart:16:19 • undefined_method
+  error • Classes can only mix in mixins and classes • lib/features/booking/bloc/booking_event.dart:4:25 • mixin_of_non_class
+  error • The name '_CreateBooking' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_event.dart:11:8 • redirect_to_non_class
+  error • The name '_FetchBookings' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_event.dart:15:8 • redirect_to_non_class
+  error • The name '_UpdateStatus' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_event.dart:22:8 • redirect_to_non_class
+  error • Classes can only mix in mixins and classes • lib/features/booking/bloc/booking_state.dart:4:25 • mixin_of_non_class
+  error • The name '_Initial' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_state.dart:5:42 • redirect_to_non_class
+  error • The name '_Loading' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_state.dart:6:42 • redirect_to_non_class
+  error • The name '_Success' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_state.dart:7:67 • redirect_to_non_class
+  error • The name '_Loaded' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_state.dart:8:87 • redirect_to_non_class
+  error • The name '_Error' isn't a type and can't be used in a redirected constructor • lib/features/booking/bloc/booking_state.dart:9:65 • redirect_to_non_class
+  error • The method 'maybeWhen' isn't defined for the type 'BookingState' • lib/features/booking/booking_screen.dart:46:17 • undefined_method
+  error • The method 'maybeMap' isn't defined for the type 'BookingState' • lib/features/booking/booking_screen.dart:62:35 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:86:27 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:103:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:140:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:175:19 • prefer_const_constructors
+  error • The method 'maybeWhen' isn't defined for the type 'AuthState' • lib/features/home/admin_dashboard_screen.dart:30:24 • undefined_method
+  error • The method 'maybeWhen' isn't defined for the type 'AuthState' • lib/features/home/artist_home_screen.dart:52:28 • undefined_method
+  error • The method 'maybeMap' isn't defined for the type 'BookingState' • lib/features/home/artist_home_screen.dart:70:36 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:88:19 • prefer_const_constructors
+  error • The method 'when' isn't defined for the type 'BookingState' • lib/features/home/artist_home_screen.dart:98:38 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:164:40 • deprecated_member_use
+  error • The method 'maybeWhen' isn't defined for the type 'AuthState' • lib/features/home/customer_home_screen.dart:47:28 • undefined_method
+  error • The method 'when' isn't defined for the type 'SearchState' • lib/features/home/customer_home_screen.dart:97:44 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/customer_home_screen.dart:195:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/artist_stats_widget.dart:50:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/onboarding/onboarding_screen.dart:125:33 • deprecated_member_use
+  error • Target of URI doesn't exist: 'package:app/features/profile/bloc/profile_bloc.freezed.dart' • lib/features/profile/bloc/profile_bloc.dart:8:6 • uri_does_not_exist
+  error • The method 'when' isn't defined for the type 'ProfileEvent' • lib/features/profile/bloc/profile_bloc.dart:17:19 • undefined_method
+  error • Classes can only mix in mixins and classes • lib/features/profile/bloc/profile_event.dart:4:25 • mixin_of_non_class
+  error • The name '_FetchProfile' isn't a type and can't be used in a redirected constructor • lib/features/profile/bloc/profile_event.dart:5:71 • redirect_to_non_class
+  error • The name '_UpdateProfile' isn't a type and can't be used in a redirected constructor • lib/features/profile/bloc/profile_event.dart:9:8 • redirect_to_non_class
+  error • Classes can only mix in mixins and classes • lib/features/profile/bloc/profile_state.dart:4:25 • mixin_of_non_class
+  error • The name '_Initial' isn't a type and can't be used in a redirected constructor • lib/features/profile/bloc/profile_state.dart:5:42 • redirect_to_non_class
+  error • The name '_Loading' isn't a type and can't be used in a redirected constructor • lib/features/profile/bloc/profile_state.dart:6:42 • redirect_to_non_class
+  error • The name '_Loaded' isn't a type and can't be used in a redirected constructor • lib/features/profile/bloc/profile_state.dart:7:61 • redirect_to_non_class
+  error • The name '_Error' isn't a type and can't be used in a redirected constructor • lib/features/profile/bloc/profile_state.dart:8:65 • redirect_to_non_class
+  error • The method 'maybeWhen' isn't defined for the type 'ProfileState' • lib/features/profile/profile_screen.dart:70:36 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/profile/profile_screen.dart:88:13 • prefer_const_constructors
+  error • The method 'when' isn't defined for the type 'BookingState' • lib/features/profile/profile_screen.dart:92:30 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/profile_screen.dart:143:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/profile_screen.dart:151:32 • deprecated_member_use
+  error • Target of URI doesn't exist: 'package:app/features/search/bloc/search_bloc.freezed.dart' • lib/features/search/bloc/search_bloc.dart:8:6 • uri_does_not_exist
+  error • The method 'when' isn't defined for the type 'SearchEvent' • lib/features/search/bloc/search_bloc.dart:18:21 • undefined_method
+  error • Classes can only mix in mixins and classes • lib/features/search/bloc/search_event.dart:4:24 • mixin_of_non_class
+  error • The name '_Search' isn't a type and can't be used in a redirected constructor • lib/features/search/bloc/search_event.dart:8:8 • redirect_to_non_class
+  error • The name '_Clear' isn't a type and can't be used in a redirected constructor • lib/features/search/bloc/search_event.dart:10:39 • redirect_to_non_class
+  error • Classes can only mix in mixins and classes • lib/features/search/bloc/search_state.dart:4:24 • mixin_of_non_class
+  error • The name '_Initial' isn't a type and can't be used in a redirected constructor • lib/features/search/bloc/search_state.dart:5:41 • redirect_to_non_class
+  error • The name '_Loading' isn't a type and can't be used in a redirected constructor • lib/features/search/bloc/search_state.dart:6:41 • redirect_to_non_class
+  error • The name '_Loaded' isn't a type and can't be used in a redirected constructor • lib/features/search/bloc/search_state.dart:7:85 • redirect_to_non_class
+  error • The name '_Empty' isn't a type and can't be used in a redirected constructor • lib/features/search/bloc/search_state.dart:8:39 • redirect_to_non_class
+  error • The name '_Error' isn't a type and can't be used in a redirected constructor • lib/features/search/bloc/search_state.dart:9:64 • redirect_to_non_class
+   info • 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre • lib/shared/theme/app_theme.dart:14:9 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:33:33 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/shared/widgets/debug_panel.dart:34:27 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:40:36 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:46:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:73:32 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:167:32 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:213:25 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:216:27 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • test/user_test.dart:6:18 • prefer_const_constructors
+  error • The getter 'id' isn't defined for the type 'User' • test/user_test.dart:13:17 • undefined_getter
+  error • The getter 'fullName' isn't defined for the type 'User' • test/user_test.dart:14:17 • undefined_getter
+  error • The getter 'email' isn't defined for the type 'User' • test/user_test.dart:15:17 • undefined_getter
+  error • The getter 'role' isn't defined for the type 'User' • test/user_test.dart:16:17 • undefined_getter
+  error • The getter 'isVerified' isn't defined for the type 'User' • test/user_test.dart:17:17 • undefined_getter
+   info • Use 'const' with the constructor to improve performance • test/user_test.dart:21:18 • prefer_const_constructors
+  error • The method 'toJson' isn't defined for the type 'User' • test/user_test.dart:30:23 • undefined_method
+  error • The getter 'id' isn't defined for the type 'User' • test/user_test.dart:33:25 • undefined_getter
+  error • The getter 'id' isn't defined for the type 'User' • test/user_test.dart:33:34 • undefined_getter
+  error • The getter 'fullName' isn't defined for the type 'User' • test/user_test.dart:34:25 • undefined_getter
+  error • The getter 'fullName' isn't defined for the type 'User' • test/user_test.dart:34:40 • undefined_getter
+  error • The getter 'email' isn't defined for the type 'User' • test/user_test.dart:35:25 • undefined_getter
+  error • The getter 'email' isn't defined for the type 'User' • test/user_test.dart:35:37 • undefined_getter
+  error • The getter 'phone' isn't defined for the type 'User' • test/user_test.dart:36:25 • undefined_getter
+  error • The getter 'phone' isn't defined for the type 'User' • test/user_test.dart:36:37 • undefined_getter
+  error • The getter 'role' isn't defined for the type 'User' • test/user_test.dart:37:25 • undefined_getter
+  error • The getter 'role' isn't defined for the type 'User' • test/user_test.dart:37:36 • undefined_getter
+  error • The getter 'isVerified' isn't defined for the type 'User' • test/user_test.dart:38:25 • undefined_getter
+  error • The getter 'isVerified' isn't defined for the type 'User' • test/user_test.dart:38:42 • undefined_getter
+

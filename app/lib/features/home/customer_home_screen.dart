@@ -1,0 +1,228 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../../shared/theme/app_colors.dart';
+import '../../shared/theme/app_typography.dart';
+import '../../shared/theme/app_spacing.dart';
+import '../auth/bloc/auth_bloc.dart';
+import '../search/bloc/search_bloc.dart';
+import '../search/data/search_repository.dart';
+
+class CustomerHomeScreen extends StatelessWidget {
+  const CustomerHomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SearchBloc(
+        repository: SearchRepository(),
+      ),
+      child: const _CustomerHomeView(),
+    );
+  }
+}
+
+class _CustomerHomeView extends StatelessWidget {
+  const _CustomerHomeView();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      appBar: AppBar(
+        title: const Text('Makeupwala'),
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {
+              context.push('/notifications');
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              context.push('/profile');
+            },
+          ),
+        ],
+      ),
+      body: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, authState) {
+          return authState.maybeWhen(
+            authenticated: (user) => Padding(
+              padding: const EdgeInsets.all(AppSpacing.screenPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: AppSpacing.xl),
+                  
+                  // Welcome section
+                  Text(
+                    'Welcome, ${user.fullName}!',
+                    style: AppTypography.displaySmall,
+                  ),
+                  
+                  const SizedBox(height: AppSpacing.sm),
+                  
+                  Text(
+                    'Find your perfect makeup artist',
+                    style: AppTypography.bodyLarge.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  
+                  const SizedBox(height: AppSpacing.xxl),
+                  
+                  // Search bar
+                  TextField(
+                    onChanged: (value) {
+                      context.read<SearchBloc>().add(
+                        SearchEvent.search(query: value),
+                      );
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Search for artists...',
+                      prefixIcon: const Icon(Icons.search),
+                      filled: true,
+                      fillColor: AppColors.grey100,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  
+                  const SizedBox(height: AppSpacing.xl),
+                  
+                  // Search Results or Quick Actions
+                  Expanded(
+                    child: BlocBuilder<SearchBloc, SearchState>(
+                      builder: (context, searchState) {
+                        return searchState.when(
+                          initial: () => _buildQuickActions(context),
+                          loading: () => const Center(child: CircularProgressIndicator()),
+                          empty: () => const Center(child: Text('No artists found')),
+                          error: (message) => Center(child: Text('Error: $message')),
+                          loaded: (results) => ListView.builder(
+                            itemCount: results.length,
+                            itemBuilder: (context, index) {
+                              final artist = results[index];
+                              return Card(
+                                margin: const EdgeInsets.only(bottom: AppSpacing.md),
+                                child: ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage: artist['profile_image'] != null
+                                        ? NetworkImage(artist['profile_image'])
+                                        : null,
+                                    child: artist['profile_image'] == null
+                                        ? const Icon(Icons.person)
+                                        : null,
+                                  ),
+                                  title: Text(artist['full_name'] ?? 'Unknown Artist'),
+                                  subtitle: Text(artist['category'] ?? 'Makeup Artist'),
+                                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                                  onTap: () {
+                                    context.push('/artist/${artist['id']}', extra: artist);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            orElse: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildQuickActions(BuildContext context) {
+    return ListView(
+      children: [
+        _buildActionCard(
+          context,
+          'Browse Artists',
+          'Discover top makeup artists',
+          Icons.person_search,
+          AppColors.primary,
+        ),
+        const SizedBox(height: AppSpacing.md),
+        _buildActionCard(
+          context,
+          'My Bookings',
+          'View your appointments',
+          Icons.calendar_today,
+          AppColors.info,
+        ),
+        const SizedBox(height: AppSpacing.md),
+        _buildActionCard(
+          context,
+          'Favorites',
+          'Your saved artists',
+          Icons.favorite,
+          AppColors.warning,
+        ),
+        const SizedBox(height: AppSpacing.md),
+        _buildActionCard(
+          context,
+          'Subscription',
+          'Manage your plan',
+          Icons.card_membership,
+          AppColors.success,
+        ),
+        _buildQuickActionCard(
+          context,
+          'Subscriptions',
+          Icons.card_membership,
+          AppColors.secondary,
+          () => context.push('/subscription'),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildActionCard(
+    BuildContext context,
+    String title,
+    String subtitle,
+    IconData icon,
+    Color color,
+  ) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+      ),
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundColor: color.withOpacity(0.1),
+          child: Icon(icon, color: color),
+        ),
+        title: Text(
+          title,
+          style: AppTypography.titleMedium,
+        ),
+        subtitle: Text(
+          subtitle,
+          style: AppTypography.bodySmall.copyWith(
+            color: AppColors.textSecondary,
+          ),
+        ),
+        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+        onTap: () {
+          // TODO: Navigate to respective screens
+        },
+      ),
+    );
+  }
+}
