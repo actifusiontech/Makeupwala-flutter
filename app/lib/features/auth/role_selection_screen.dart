@@ -6,10 +6,19 @@ import '../../shared/theme/app_typography.dart';
 import '../../shared/theme/app_spacing.dart';
 import 'bloc/auth_bloc.dart';
 
-enum UserRole { customer, artist }
-
-class RoleSelectionScreen extends StatelessWidget {
+class RoleSelectionScreen extends StatefulWidget {
   const RoleSelectionScreen({super.key});
+
+  @override
+  State<RoleSelectionScreen> createState() => _RoleSelectionScreenState();
+}
+
+class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
+  bool _isLoading = false;
+
+  void _handleRoleSelection(String role) {
+    context.read<AuthBloc>().add(AuthEvent.selectRole(role));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +26,16 @@ class RoleSelectionScreen extends StatelessWidget {
       listener: (context, state) {
         state.when(
           initial: () {},
-          loading: () {},
-          otpSent: (phoneNumber) {},
-          needsRoleSelection: (user) {},
+          loading: () => setState(() => _isLoading = true),
+          otpSent: (_) {},
+          needsRoleSelection: (_) => setState(() => _isLoading = false),
           authenticated: (user) {
-            // Navigate based on role after selection
-            if (user.role == 'artist') {
-              context.go('/artist/home');
-            } else if (user.role == 'customer') {
-              context.go('/customer/home');
-            }
+            setState(() => _isLoading = false);
+            context.go('/home');
           },
-          unauthenticated: () => context.go('/login'),
+          unauthenticated: () {},
           error: (message) {
+            setState(() => _isLoading = false);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(message),
@@ -40,70 +46,49 @@ class RoleSelectionScreen extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isLoading = state.maybeMap(
-          loading: (_) => true,
-          orElse: () => false,
-        );
-
         return Scaffold(
           backgroundColor: AppColors.white,
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(AppSpacing.screenPadding),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: AppSpacing.xxl),
-
-                  Text('Join as', style: AppTypography.displaySmall),
-
-                  const SizedBox(height: AppSpacing.sm),
-
                   Text(
-                    'Choose how you want to use Makeupwala',
+                    'Choose your role',
+                    style: AppTypography.displaySmall,
+                  ),
+                  const SizedBox(height: AppSpacing.sm),
+                  Text(
+                    'How do you want to use MakeUpWallah?',
                     style: AppTypography.bodyLarge.copyWith(
                       color: AppColors.textSecondary,
                     ),
-                    textAlign: TextAlign.center,
                   ),
-
                   const SizedBox(height: AppSpacing.xxl),
-
-                  // Role cards
-                  Expanded(
-                    child: ListView(
-                      children: [
-                        _RoleCard(
-                          role: UserRole.customer,
-                          title: 'Customer',
-                          description: 'Find and book talented makeup artists',
-                          icon: Icons.search_rounded,
-                          color: AppColors.primary,
-                          isEnabled: !isLoading,
-                          onTap: () => _handleRoleSelection(
-                              context, UserRole.customer),
-                        ),
-                        const SizedBox(height: AppSpacing.lg),
-                        _RoleCard(
-                          role: UserRole.artist,
-                          title: 'Artist',
-                          description:
-                              'Showcase your skills and grow your business',
-                          icon: Icons.brush_rounded,
-                          color: AppColors.info,
-                          isEnabled: !isLoading,
-                          onTap: () =>
-                              _handleRoleSelection(context, UserRole.artist),
-                        ),
-                      ],
-                    ),
+                  
+                  // Customer Card
+                  _RoleCard(
+                    title: 'I want to book services',
+                    subtitle: 'Find makeup artists, book appointments',
+                    icon: Icons.face_retouching_natural,
+                    color: AppColors.primary,
+                    isLoading: _isLoading,
+                    onTap: () => _handleRoleSelection('customer'),
                   ),
-
-                  // Loading indicator
-                  if (isLoading)
-                    const Padding(
-                      padding: EdgeInsets.all(AppSpacing.md),
-                      child: CircularProgressIndicator(),
-                    ),
+                  
+                  const SizedBox(height: AppSpacing.md),
+                  
+                  // Artist Card
+                  _RoleCard(
+                    title: 'I am a Makeup Artist',
+                    subtitle: 'List services, manage bookings',
+                    icon: Icons.brush,
+                    color: AppColors.textPrimary,
+                    isLoading: _isLoading,
+                    onTap: () => _handleRoleSelection('artist'),
+                  ),
                 ],
               ),
             ),
@@ -112,80 +97,75 @@ class RoleSelectionScreen extends StatelessWidget {
       },
     );
   }
-
-  void _handleRoleSelection(BuildContext context, UserRole role) {
-    // Send role selection to backend via Auth Bloc
-    final roleString = role == UserRole.customer ? 'customer' : 'artist';
-    context.read<AuthBloc>().add(AuthEvent.selectRole(roleString));
-  }
 }
 
 class _RoleCard extends StatelessWidget {
-  final UserRole role;
   final String title;
-  final String description;
+  final String subtitle;
   final IconData icon;
   final Color color;
-  final bool isEnabled;
+  final bool isLoading;
   final VoidCallback onTap;
 
   const _RoleCard({
-    required this.role,
     required this.title,
-    required this.description,
+    required this.subtitle,
     required this.icon,
     required this.color,
-    required this.isEnabled,
+    required this.isLoading,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Opacity(
-      opacity: isEnabled ? 1.0 : 0.5,
-      child: InkWell(
-        onTap: isEnabled ? onTap : null,
-        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
-        child: Container(
-          padding: const EdgeInsets.all(AppSpacing.lg),
-          decoration: BoxDecoration(
-            color: color.withOpacity(0.05),
-            border: Border.all(color: color.withOpacity(0.2), width: 2),
-            borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(icon, size: 32, color: color),
+    return InkWell(
+      onTap: isLoading ? null : onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppColors.grey200),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                shape: BoxShape.circle,
               ),
-              const SizedBox(width: AppSpacing.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: AppTypography.titleLarge.copyWith(color: color),
+              child: Icon(icon, color: color, size: 32),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: AppTypography.titleLarge,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    subtitle,
+                    style: AppTypography.bodyMedium.copyWith(
+                      color: AppColors.textSecondary,
                     ),
-                    const SizedBox(height: AppSpacing.xs),
-                    Text(
-                      description,
-                      style: AppTypography.bodyMedium.copyWith(
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Icon(Icons.arrow_forward_ios_rounded, color: color, size: 20),
-            ],
-          ),
+            ),
+            const Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.grey400),
+          ],
         ),
       ),
     );

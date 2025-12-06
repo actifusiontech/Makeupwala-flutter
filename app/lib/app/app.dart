@@ -24,8 +24,8 @@ import '../features/complaints/raise_complaint_screen.dart';
 import '../features/complaints/admin_complaint_list_screen.dart';
 import '../features/booking/booking_history_screen.dart';
 
-class MakeupwalaApp extends StatelessWidget {
-  const MakeupwalaApp({super.key});
+class MakeUpWallahApp extends StatelessWidget {
+  const MakeUpWallahApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +152,7 @@ class MakeupwalaApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => AuthBloc()..add(const AuthEvent.checkAuth()),
       child: MaterialApp.router(
-        title: 'Makeupwala',
+        title: 'MakeUpWallah',
         theme: AppTheme.lightTheme,
         routerConfig: router,
         debugShowCheckedModeBanner: false,

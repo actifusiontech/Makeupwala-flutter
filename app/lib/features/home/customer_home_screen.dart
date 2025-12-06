@@ -30,7 +30,7 @@ class _CustomerHomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text('Makeupwala'),
+        title: const Text('MakeUpWallah'),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
         actions: [
@@ -220,8 +220,44 @@ class _CustomerHomeView extends StatelessWidget {
         ),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
         onTap: () {
-          // TODO: Navigate to respective screens
+          if (title == 'Browse Artists') {
+            // Focus search or navigate to full list
+             context.read<SearchBloc>().add(const SearchEvent.search(query: '', category: null));
+          } else if (title == 'My Bookings') {
+            context.push('/bookings');
+          } else if (title == 'Favorites') {
+            // context.push('/favorites'); // TODO: Implement Favorites
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Favorites coming soon!')));
+          } else if (title == 'Subscription') {
+            context.push('/subscription');
+          }
         },
+      ),
+    );
+  }
+  Widget _buildQuickActionCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+  ) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+      ),
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundColor: color.withOpacity(0.1),
+          child: Icon(icon, color: color),
+        ),
+        title: Text(
+          title,
+          style: AppTypography.titleMedium,
+        ),
+        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+        onTap: onTap,
       ),
     );
   }

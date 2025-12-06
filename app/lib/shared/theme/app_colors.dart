@@ -5,6 +5,7 @@ class AppColors {
   static const primary = Color(0xFFff6b6b);
   static const primaryDark = Color(0xFFe85454);
   static const primaryLight = Color(0xFFff8888);
+  static const secondary = Color(0xFF9C27B0); // Purple as secondary
   
   // Neutral palette
   static const white = Color(0xFFFFFFFF);
