@@ -125,10 +125,10 @@ return updateStatus(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String artistId,  String serviceId,  DateTime date,  String time,  String? notes)?  createBooking,TResult Function( bool isArtist)?  fetchBookings,TResult Function( String bookingId,  String status,  bool isArtist,  String? note)?  updateStatus,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String artistId,  String serviceId,  DateTime date,  String time,  String? notes,  int redeemPoints,  String paymentMethod,  String? couponCode)?  createBooking,TResult Function( bool isArtist)?  fetchBookings,TResult Function( String bookingId,  String status,  bool isArtist,  String? note)?  updateStatus,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateBooking() when createBooking != null:
-return createBooking(_that.artistId,_that.serviceId,_that.date,_that.time,_that.notes);case _FetchBookings() when fetchBookings != null:
+return createBooking(_that.artistId,_that.serviceId,_that.date,_that.time,_that.notes,_that.redeemPoints,_that.paymentMethod,_that.couponCode);case _FetchBookings() when fetchBookings != null:
 return fetchBookings(_that.isArtist);case _UpdateStatus() when updateStatus != null:
 return updateStatus(_that.bookingId,_that.status,_that.isArtist,_that.note);case _:
   return orElse();
@@ -148,10 +148,10 @@ return updateStatus(_that.bookingId,_that.status,_that.isArtist,_that.note);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String artistId,  String serviceId,  DateTime date,  String time,  String? notes)  createBooking,required TResult Function( bool isArtist)  fetchBookings,required TResult Function( String bookingId,  String status,  bool isArtist,  String? note)  updateStatus,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String artistId,  String serviceId,  DateTime date,  String time,  String? notes,  int redeemPoints,  String paymentMethod,  String? couponCode)  createBooking,required TResult Function( bool isArtist)  fetchBookings,required TResult Function( String bookingId,  String status,  bool isArtist,  String? note)  updateStatus,}) {final _that = this;
 switch (_that) {
 case _CreateBooking():
-return createBooking(_that.artistId,_that.serviceId,_that.date,_that.time,_that.notes);case _FetchBookings():
+return createBooking(_that.artistId,_that.serviceId,_that.date,_that.time,_that.notes,_that.redeemPoints,_that.paymentMethod,_that.couponCode);case _FetchBookings():
 return fetchBookings(_that.isArtist);case _UpdateStatus():
 return updateStatus(_that.bookingId,_that.status,_that.isArtist,_that.note);case _:
   throw StateError('Unexpected subclass');
@@ -170,10 +170,10 @@ return updateStatus(_that.bookingId,_that.status,_that.isArtist,_that.note);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String artistId,  String serviceId,  DateTime date,  String time,  String? notes)?  createBooking,TResult? Function( bool isArtist)?  fetchBookings,TResult? Function( String bookingId,  String status,  bool isArtist,  String? note)?  updateStatus,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String artistId,  String serviceId,  DateTime date,  String time,  String? notes,  int redeemPoints,  String paymentMethod,  String? couponCode)?  createBooking,TResult? Function( bool isArtist)?  fetchBookings,TResult? Function( String bookingId,  String status,  bool isArtist,  String? note)?  updateStatus,}) {final _that = this;
 switch (_that) {
 case _CreateBooking() when createBooking != null:
-return createBooking(_that.artistId,_that.serviceId,_that.date,_that.time,_that.notes);case _FetchBookings() when fetchBookings != null:
+return createBooking(_that.artistId,_that.serviceId,_that.date,_that.time,_that.notes,_that.redeemPoints,_that.paymentMethod,_that.couponCode);case _FetchBookings() when fetchBookings != null:
 return fetchBookings(_that.isArtist);case _UpdateStatus() when updateStatus != null:
 return updateStatus(_that.bookingId,_that.status,_that.isArtist,_that.note);case _:
   return null;
@@ -187,7 +187,7 @@ return updateStatus(_that.bookingId,_that.status,_that.isArtist,_that.note);case
 
 
 class _CreateBooking implements BookingEvent {
-  const _CreateBooking({required this.artistId, required this.serviceId, required this.date, required this.time, this.notes});
+  const _CreateBooking({required this.artistId, required this.serviceId, required this.date, required this.time, this.notes, this.redeemPoints = 0, this.paymentMethod = 'online', this.couponCode});
   
 
  final  String artistId;
@@ -195,6 +195,9 @@ class _CreateBooking implements BookingEvent {
  final  DateTime date;
  final  String time;
  final  String? notes;
+@JsonKey() final  int redeemPoints;
+@JsonKey() final  String paymentMethod;
+ final  String? couponCode;
 
 /// Create a copy of BookingEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -206,16 +209,16 @@ _$CreateBookingCopyWith<_CreateBooking> get copyWith => __$CreateBookingCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateBooking&&(identical(other.artistId, artistId) || other.artistId == artistId)&&(identical(other.serviceId, serviceId) || other.serviceId == serviceId)&&(identical(other.date, date) || other.date == date)&&(identical(other.time, time) || other.time == time)&&(identical(other.notes, notes) || other.notes == notes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateBooking&&(identical(other.artistId, artistId) || other.artistId == artistId)&&(identical(other.serviceId, serviceId) || other.serviceId == serviceId)&&(identical(other.date, date) || other.date == date)&&(identical(other.time, time) || other.time == time)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.redeemPoints, redeemPoints) || other.redeemPoints == redeemPoints)&&(identical(other.paymentMethod, paymentMethod) || other.paymentMethod == paymentMethod)&&(identical(other.couponCode, couponCode) || other.couponCode == couponCode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,artistId,serviceId,date,time,notes);
+int get hashCode => Object.hash(runtimeType,artistId,serviceId,date,time,notes,redeemPoints,paymentMethod,couponCode);
 
 @override
 String toString() {
-  return 'BookingEvent.createBooking(artistId: $artistId, serviceId: $serviceId, date: $date, time: $time, notes: $notes)';
+  return 'BookingEvent.createBooking(artistId: $artistId, serviceId: $serviceId, date: $date, time: $time, notes: $notes, redeemPoints: $redeemPoints, paymentMethod: $paymentMethod, couponCode: $couponCode)';
 }
 
 
@@ -226,7 +229,7 @@ abstract mixin class _$CreateBookingCopyWith<$Res> implements $BookingEventCopyW
   factory _$CreateBookingCopyWith(_CreateBooking value, $Res Function(_CreateBooking) _then) = __$CreateBookingCopyWithImpl;
 @useResult
 $Res call({
- String artistId, String serviceId, DateTime date, String time, String? notes
+ String artistId, String serviceId, DateTime date, String time, String? notes, int redeemPoints, String paymentMethod, String? couponCode
 });
 
 
@@ -243,13 +246,16 @@ class __$CreateBookingCopyWithImpl<$Res>
 
 /// Create a copy of BookingEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? artistId = null,Object? serviceId = null,Object? date = null,Object? time = null,Object? notes = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? artistId = null,Object? serviceId = null,Object? date = null,Object? time = null,Object? notes = freezed,Object? redeemPoints = null,Object? paymentMethod = null,Object? couponCode = freezed,}) {
   return _then(_CreateBooking(
 artistId: null == artistId ? _self.artistId : artistId // ignore: cast_nullable_to_non_nullable
 as String,serviceId: null == serviceId ? _self.serviceId : serviceId // ignore: cast_nullable_to_non_nullable
 as String,date: null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
 as DateTime,time: null == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
 as String,notes: freezed == notes ? _self.notes : notes // ignore: cast_nullable_to_non_nullable
+as String?,redeemPoints: null == redeemPoints ? _self.redeemPoints : redeemPoints // ignore: cast_nullable_to_non_nullable
+as int,paymentMethod: null == paymentMethod ? _self.paymentMethod : paymentMethod // ignore: cast_nullable_to_non_nullable
+as String,couponCode: freezed == couponCode ? _self.couponCode : couponCode // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

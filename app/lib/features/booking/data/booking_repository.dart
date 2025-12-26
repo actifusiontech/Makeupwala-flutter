@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 
 import '../../../core/network/api_client.dart';
+import '../../../core/models/rewards.dart';
 
 class BookingRepository {
   final ApiClient _apiClient;
@@ -11,20 +12,34 @@ class BookingRepository {
     required String artistId,
     required String serviceId,
     required DateTime date,
-    required String time,
     String? notes,
+    int redeemPoints = 0,
+    String paymentMethod = 'online',
+    String? couponCode,
   }) async {
     try {
       developer.log('📅 Creating booking for artist: $artistId', name: 'BookingRepository');
       
+      // Calculate end time as 1 hour after start time for simplicity in MVP
+      final start = DateFormat('HH:mm').parse(time);
+      final end = start.add(const Duration(hours: 1));
+      final endTime = DateFormat('HH:mm').format(end);
+
       final response = await _apiClient.dio.post(
         '/customers/me/bookings',
         data: {
           'artist_id': artistId,
-          'service_id': serviceId,
-          'booking_date': date.toIso8601String().split('T')[0], // YYYY-MM-DD
-          'booking_time': time, // HH:MM
-          'notes': notes,
+          'booking_date': date.toIso8601String().split('T')[0],
+          'start_time': time,
+          'end_time': endTime,
+          'visit_type': 'salon', // Default for now
+          'payment_method': paymentMethod,
+          'services': [
+            {'artist_service_id': serviceId, 'quantity': 1}
+          ],
+          'customer_notes': notes,
+          'redeem_points': redeemPoints,
+          'coupon_code': couponCode,
         },
       );
 
@@ -70,6 +85,33 @@ class BookingRepository {
     } catch (e) {
       developer.log('❌ Update status failed: $e', name: 'BookingRepository');
       rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>> validateCoupon(String code) async {
+    try {
+      final response = await _apiClient.dio.get('/coupons/validate?code=$code');
+      return response.data;
+    } catch (e) {
+      // Allow 400 errors to propagate their message
+      rethrow;
+    }
+  }
+
+  Future<LoyaltyBalance> getLoyaltyBalance() async {
+    try {
+      final response = await _apiClient.dio.get('/rewards/balance');
+      return LoyaltyBalance.fromJson(response.data);
+    } catch (e) {
+      developer.log('❌ Get loyalty balance failed: $e', name: 'BookingRepository');
+      // Fallback
+      return const LoyaltyBalance(
+        id: '',
+        userId: '',
+        balance: 0,
+        tier: 1,
+        totalBookings: 0,
+      );
     }
   }
 }

@@ -22,6 +22,7 @@ class ArtistProfile with _$ArtistProfile {
     String? city,
     @Default(false) bool isVerified,
     ArtistKYC? kyc,
+    @Default([]) List<ArtistBundle> bundles,
   }) = _ArtistProfile;
 
   factory ArtistProfile.fromJson(Map<String, dynamic> json) => _$ArtistProfileFromJson(json);
@@ -56,4 +57,33 @@ class ArtistKYC with _$ArtistKYC {
   }) = _ArtistKYC;
 
   factory ArtistKYC.fromJson(Map<String, dynamic> json) => _$ArtistKYCFromJson(json);
+}
+
+@freezed
+class ArtistBundle with _$ArtistBundle {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory ArtistBundle({
+    required String id,
+    required String name,
+    String? description,
+    required double basePrice,
+    required double discountPrice,
+    @Default('INR') String currency,
+    @Default(true) bool isActive,
+    @Default([]) List<ArtistBundleItem> items,
+  }) = _ArtistBundle;
+
+  factory ArtistBundle.fromJson(Map<String, dynamic> json) => _$ArtistBundleFromJson(json);
+}
+
+@freezed
+class ArtistBundleItem with _$ArtistBundleItem {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory ArtistBundleItem({
+    required String serviceId,
+    required String serviceName,
+    required int quantity,
+  }) = _ArtistBundleItem;
+
+  factory ArtistBundleItem.fromJson(Map<String, dynamic> json) => _$ArtistBundleItemFromJson(json);
 }

@@ -55,13 +55,14 @@ extension ProfileEventPatterns on ProfileEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FetchProfile value)?  fetchProfile,TResult Function( _UpdateProfile value)?  updateProfile,TResult Function( _UploadMedia value)?  uploadMedia,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FetchProfile value)?  fetchProfile,TResult Function( _UpdateProfile value)?  updateProfile,TResult Function( _UploadMedia value)?  uploadMedia,TResult Function( _FetchReferrals value)?  fetchReferrals,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _FetchProfile() when fetchProfile != null:
 return fetchProfile(_that);case _UpdateProfile() when updateProfile != null:
 return updateProfile(_that);case _UploadMedia() when uploadMedia != null:
-return uploadMedia(_that);case _:
+return uploadMedia(_that);case _FetchReferrals() when fetchReferrals != null:
+return fetchReferrals(_that);case _:
   return orElse();
 
 }
@@ -79,13 +80,14 @@ return uploadMedia(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FetchProfile value)  fetchProfile,required TResult Function( _UpdateProfile value)  updateProfile,required TResult Function( _UploadMedia value)  uploadMedia,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FetchProfile value)  fetchProfile,required TResult Function( _UpdateProfile value)  updateProfile,required TResult Function( _UploadMedia value)  uploadMedia,required TResult Function( _FetchReferrals value)  fetchReferrals,}){
 final _that = this;
 switch (_that) {
 case _FetchProfile():
 return fetchProfile(_that);case _UpdateProfile():
 return updateProfile(_that);case _UploadMedia():
-return uploadMedia(_that);case _:
+return uploadMedia(_that);case _FetchReferrals():
+return fetchReferrals(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -102,13 +104,14 @@ return uploadMedia(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FetchProfile value)?  fetchProfile,TResult? Function( _UpdateProfile value)?  updateProfile,TResult? Function( _UploadMedia value)?  uploadMedia,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FetchProfile value)?  fetchProfile,TResult? Function( _UpdateProfile value)?  updateProfile,TResult? Function( _UploadMedia value)?  uploadMedia,TResult? Function( _FetchReferrals value)?  fetchReferrals,}){
 final _that = this;
 switch (_that) {
 case _FetchProfile() when fetchProfile != null:
 return fetchProfile(_that);case _UpdateProfile() when updateProfile != null:
 return updateProfile(_that);case _UploadMedia() when uploadMedia != null:
-return uploadMedia(_that);case _:
+return uploadMedia(_that);case _FetchReferrals() when fetchReferrals != null:
+return fetchReferrals(_that);case _:
   return null;
 
 }
@@ -125,12 +128,13 @@ return uploadMedia(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( bool isArtist)?  fetchProfile,TResult Function( bool isArtist,  Map<String, dynamic> data)?  updateProfile,TResult Function( String filePath)?  uploadMedia,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( bool isArtist)?  fetchProfile,TResult Function( bool isArtist,  Map<String, dynamic> data)?  updateProfile,TResult Function( String filePath)?  uploadMedia,TResult Function()?  fetchReferrals,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FetchProfile() when fetchProfile != null:
 return fetchProfile(_that.isArtist);case _UpdateProfile() when updateProfile != null:
 return updateProfile(_that.isArtist,_that.data);case _UploadMedia() when uploadMedia != null:
-return uploadMedia(_that.filePath);case _:
+return uploadMedia(_that.filePath);case _FetchReferrals() when fetchReferrals != null:
+return fetchReferrals();case _:
   return orElse();
 
 }
@@ -148,12 +152,13 @@ return uploadMedia(_that.filePath);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( bool isArtist)  fetchProfile,required TResult Function( bool isArtist,  Map<String, dynamic> data)  updateProfile,required TResult Function( String filePath)  uploadMedia,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( bool isArtist)  fetchProfile,required TResult Function( bool isArtist,  Map<String, dynamic> data)  updateProfile,required TResult Function( String filePath)  uploadMedia,required TResult Function()  fetchReferrals,}) {final _that = this;
 switch (_that) {
 case _FetchProfile():
 return fetchProfile(_that.isArtist);case _UpdateProfile():
 return updateProfile(_that.isArtist,_that.data);case _UploadMedia():
-return uploadMedia(_that.filePath);case _:
+return uploadMedia(_that.filePath);case _FetchReferrals():
+return fetchReferrals();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -170,12 +175,13 @@ return uploadMedia(_that.filePath);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( bool isArtist)?  fetchProfile,TResult? Function( bool isArtist,  Map<String, dynamic> data)?  updateProfile,TResult? Function( String filePath)?  uploadMedia,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( bool isArtist)?  fetchProfile,TResult? Function( bool isArtist,  Map<String, dynamic> data)?  updateProfile,TResult? Function( String filePath)?  uploadMedia,TResult? Function()?  fetchReferrals,}) {final _that = this;
 switch (_that) {
 case _FetchProfile() when fetchProfile != null:
 return fetchProfile(_that.isArtist);case _UpdateProfile() when updateProfile != null:
 return updateProfile(_that.isArtist,_that.data);case _UploadMedia() when uploadMedia != null:
-return uploadMedia(_that.filePath);case _:
+return uploadMedia(_that.filePath);case _FetchReferrals() when fetchReferrals != null:
+return fetchReferrals();case _:
   return null;
 
 }
@@ -390,6 +396,38 @@ as String,
 }
 
 /// @nodoc
+
+
+class _FetchReferrals implements ProfileEvent {
+  const _FetchReferrals();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FetchReferrals);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ProfileEvent.fetchReferrals()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
 mixin _$ProfileState {
 
 
@@ -433,13 +471,14 @@ extension ProfileStatePatterns on ProfileState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Loaded value)?  loaded,TResult Function( _Error value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Loaded value)?  loaded,TResult Function( _ReferralsLoaded value)?  referralsLoaded,TResult Function( _Error value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _Loading() when loading != null:
 return loading(_that);case _Loaded() when loaded != null:
-return loaded(_that);case _Error() when error != null:
+return loaded(_that);case _ReferralsLoaded() when referralsLoaded != null:
+return referralsLoaded(_that);case _Error() when error != null:
 return error(_that);case _:
   return orElse();
 
@@ -458,13 +497,14 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Loaded value)  loaded,required TResult Function( _Error value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Loaded value)  loaded,required TResult Function( _ReferralsLoaded value)  referralsLoaded,required TResult Function( _Error value)  error,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case _Loading():
 return loading(_that);case _Loaded():
-return loaded(_that);case _Error():
+return loaded(_that);case _ReferralsLoaded():
+return referralsLoaded(_that);case _Error():
 return error(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -482,13 +522,14 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Loaded value)?  loaded,TResult? Function( _Error value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Loaded value)?  loaded,TResult? Function( _ReferralsLoaded value)?  referralsLoaded,TResult? Function( _Error value)?  error,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _Loading() when loading != null:
 return loading(_that);case _Loaded() when loaded != null:
-return loaded(_that);case _Error() when error != null:
+return loaded(_that);case _ReferralsLoaded() when referralsLoaded != null:
+return referralsLoaded(_that);case _Error() when error != null:
 return error(_that);case _:
   return null;
 
@@ -506,12 +547,13 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( User user)?  loaded,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( User user,  LoyaltyBalance? loyaltyBalance)?  loaded,TResult Function( List<ReferralRecord> referrals)?  referralsLoaded,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Loaded() when loaded != null:
-return loaded(_that.user);case _Error() when error != null:
+return loaded(_that.user,_that.loyaltyBalance);case _ReferralsLoaded() when referralsLoaded != null:
+return referralsLoaded(_that.referrals);case _Error() when error != null:
 return error(_that.message);case _:
   return orElse();
 
@@ -530,12 +572,13 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( User user)  loaded,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( User user,  LoyaltyBalance? loyaltyBalance)  loaded,required TResult Function( List<ReferralRecord> referrals)  referralsLoaded,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
 return loading();case _Loaded():
-return loaded(_that.user);case _Error():
+return loaded(_that.user,_that.loyaltyBalance);case _ReferralsLoaded():
+return referralsLoaded(_that.referrals);case _Error():
 return error(_that.message);case _:
   throw StateError('Unexpected subclass');
 
@@ -553,12 +596,13 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( User user)?  loaded,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( User user,  LoyaltyBalance? loyaltyBalance)?  loaded,TResult? Function( List<ReferralRecord> referrals)?  referralsLoaded,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Loaded() when loaded != null:
-return loaded(_that.user);case _Error() when error != null:
+return loaded(_that.user,_that.loyaltyBalance);case _ReferralsLoaded() when referralsLoaded != null:
+return referralsLoaded(_that.referrals);case _Error() when error != null:
 return error(_that.message);case _:
   return null;
 
@@ -635,10 +679,11 @@ String toString() {
 
 
 class _Loaded implements ProfileState {
-  const _Loaded({required this.user});
+  const _Loaded({required this.user, this.loyaltyBalance});
   
 
  final  User user;
+ final  LoyaltyBalance? loyaltyBalance;
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
@@ -650,16 +695,16 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.user, user) || other.user == user));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.user, user) || other.user == user)&&(identical(other.loyaltyBalance, loyaltyBalance) || other.loyaltyBalance == loyaltyBalance));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,user);
+int get hashCode => Object.hash(runtimeType,user,loyaltyBalance);
 
 @override
 String toString() {
-  return 'ProfileState.loaded(user: $user)';
+  return 'ProfileState.loaded(user: $user, loyaltyBalance: $loyaltyBalance)';
 }
 
 
@@ -670,11 +715,11 @@ abstract mixin class _$LoadedCopyWith<$Res> implements $ProfileStateCopyWith<$Re
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- User user
+ User user, LoyaltyBalance? loyaltyBalance
 });
 
 
-$UserCopyWith<$Res> get user;
+$UserCopyWith<$Res> get user;$LoyaltyBalanceCopyWith<$Res>? get loyaltyBalance;
 
 }
 /// @nodoc
@@ -687,10 +732,11 @@ class __$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? user = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? user = null,Object? loyaltyBalance = freezed,}) {
   return _then(_Loaded(
 user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as User,
+as User,loyaltyBalance: freezed == loyaltyBalance ? _self.loyaltyBalance : loyaltyBalance // ignore: cast_nullable_to_non_nullable
+as LoyaltyBalance?,
   ));
 }
 
@@ -703,7 +749,91 @@ $UserCopyWith<$Res> get user {
   return $UserCopyWith<$Res>(_self.user, (value) {
     return _then(_self.copyWith(user: value));
   });
+}/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LoyaltyBalanceCopyWith<$Res>? get loyaltyBalance {
+    if (_self.loyaltyBalance == null) {
+    return null;
+  }
+
+  return $LoyaltyBalanceCopyWith<$Res>(_self.loyaltyBalance!, (value) {
+    return _then(_self.copyWith(loyaltyBalance: value));
+  });
 }
+}
+
+/// @nodoc
+
+
+class _ReferralsLoaded implements ProfileState {
+  const _ReferralsLoaded({required final  List<ReferralRecord> referrals}): _referrals = referrals;
+  
+
+ final  List<ReferralRecord> _referrals;
+ List<ReferralRecord> get referrals {
+  if (_referrals is EqualUnmodifiableListView) return _referrals;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_referrals);
+}
+
+
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ReferralsLoadedCopyWith<_ReferralsLoaded> get copyWith => __$ReferralsLoadedCopyWithImpl<_ReferralsLoaded>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReferralsLoaded&&const DeepCollectionEquality().equals(other._referrals, _referrals));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_referrals));
+
+@override
+String toString() {
+  return 'ProfileState.referralsLoaded(referrals: $referrals)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ReferralsLoadedCopyWith<$Res> implements $ProfileStateCopyWith<$Res> {
+  factory _$ReferralsLoadedCopyWith(_ReferralsLoaded value, $Res Function(_ReferralsLoaded) _then) = __$ReferralsLoadedCopyWithImpl;
+@useResult
+$Res call({
+ List<ReferralRecord> referrals
+});
+
+
+
+
+}
+/// @nodoc
+class __$ReferralsLoadedCopyWithImpl<$Res>
+    implements _$ReferralsLoadedCopyWith<$Res> {
+  __$ReferralsLoadedCopyWithImpl(this._self, this._then);
+
+  final _ReferralsLoaded _self;
+  final $Res Function(_ReferralsLoaded) _then;
+
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? referrals = null,}) {
+  return _then(_ReferralsLoaded(
+referrals: null == referrals ? _self._referrals : referrals // ignore: cast_nullable_to_non_nullable
+as List<ReferralRecord>,
+  ));
+}
+
+
 }
 
 /// @nodoc

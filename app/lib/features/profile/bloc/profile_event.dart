@@ -8,4 +8,5 @@ abstract class ProfileEvent with _$ProfileEvent {
     required Map<String, dynamic> data,
   }) = _UpdateProfile;
   const factory ProfileEvent.uploadMedia({required String filePath}) = _UploadMedia;
+  const factory ProfileEvent.fetchReferrals() = _FetchReferrals;
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../shared/theme/app_typography.dart';
 import '../../shared/theme/app_spacing.dart';
@@ -8,6 +10,7 @@ import '../booking/bloc/booking_bloc.dart';
 import '../booking/data/booking_repository.dart';
 import 'bloc/profile_bloc.dart';
 import 'data/profile_repository.dart';
+import '../../features/profile/widgets/tier_progress_card.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -72,6 +75,13 @@ class _ProfileView extends StatelessWidget {
                           children: [
                             Text(user.fullName, style: AppTypography.headlineMedium),
                             Text(user.phone ?? '', style: AppTypography.bodyLarge.copyWith(color: AppColors.textSecondary)),
+                            const SizedBox(height: AppSpacing.sm),
+                            TextButton.icon(
+                              onPressed: () => context.push('/referral-history'),
+                              icon: const Icon(Icons.history, size: 18),
+                              label: const Text('View Referral History'),
+                              style: TextButton.styleFrom(foregroundColor: AppColors.primary),
+                            ),
                           ],
                         ),
                         loading: () => const CircularProgressIndicator(),
@@ -81,6 +91,21 @@ class _ProfileView extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loaded: (user) => Column(
+                    children: [
+                      _buildLoyaltyCard(state.loyaltyBalance),
+                      const SizedBox(height: AppSpacing.lg),
+                      _buildReferralCard(user.referralCode ?? ''),
+                    ],
+                  ),
+                  orElse: () => const SizedBox(),
+                );
+              },
             ),
             const SizedBox(height: AppSpacing.xxl),
 
@@ -113,6 +138,106 @@ class _ProfileView extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildLoyaltyCard(LoyaltyBalance? balance) {
+    if (balance == null) return const SizedBox.shrink();
+    
+    return TierProgressCard(
+      currentTier: balance.tier,
+      totalBookings: balance.totalBookings,
+      balance: balance.balance,
+    );
+  }
+
+  Widget _buildReferralCard(String code) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: AppColors.primary.withOpacity(0.05),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.primary.withOpacity(0.1)),
+      ),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+            child: Image.asset(
+              'assets/images/referral_banner.png',
+              height: 120,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.lg),
+            child: Column(
+              children: [
+                Text(
+                  'Refer & Earn ₹500',
+                  style: AppTypography.titleLarge.copyWith(color: AppColors.primary),
+                ),
+                const SizedBox(height: AppSpacing.xs),
+                const Text(
+                  'Invite your friends to Makeupwala. They get priority booking, and you earn 500 bonus points after their first service!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                ),
+                const SizedBox(height: AppSpacing.md),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        code,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                      const SizedBox(width: AppSpacing.md),
+                      IconButton(
+                        icon: const Icon(Icons.copy, size: 20),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: code));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Referral code copied to clipboard!')),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.md),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Share.share(
+                      'Hey! Use my referral code $code to get priority booking and special discounts on Makeupwala! Download now: https://makeupwala.app',
+                      subject: 'Makeupwala Referral',
+                    );
+                  },
+                  icon: const Icon(Icons.share),
+                  label: const Text('SHARE WITH FRIENDS'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 45),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

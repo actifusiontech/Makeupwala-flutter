@@ -2,6 +2,7 @@ import 'dart:developer' as developer;
 import 'package:dio/dio.dart';
 import '../../../core/network/api_client.dart';
 import '../../../core/models/user.dart';
+import '../../../core/models/rewards.dart';
 
 class ProfileRepository {
   final ApiClient _apiClient;
@@ -49,6 +50,38 @@ class ProfileRepository {
       return response.data['url'];
     } catch (e) {
       developer.log('❌ Upload media failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
+
+  // ---------------- REWARDS & REFERRALS ----------------
+
+  Future<LoyaltyBalance> getLoyaltyBalance() async {
+    try {
+      final response = await _apiClient.dio.get('/rewards/balance');
+      return LoyaltyBalance.fromJson(response.data);
+    } catch (e) {
+      developer.log('❌ Get loyalty balance failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
+
+  Future<List<LoyaltyTransaction>> getLoyaltyTransactions() async {
+    try {
+      final response = await _apiClient.dio.get('/rewards/transactions');
+      return (response.data as List).map((e) => LoyaltyTransaction.fromJson(e)).toList();
+    } catch (e) {
+      developer.log('❌ Get loyalty transactions failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
+
+  Future<List<ReferralRecord>> getReferrals() async {
+    try {
+      final response = await _apiClient.dio.get('/rewards/referrals');
+      return (response.data as List).map((e) => ReferralRecord.fromJson(e)).toList();
+    } catch (e) {
+      developer.log('❌ Get referrals failed: $e', name: 'ProfileRepository');
       rethrow;
     }
   }

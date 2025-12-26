@@ -32,6 +32,11 @@ _ArtistProfile _$ArtistProfileFromJson(Map<String, dynamic> json) =>
       kyc: json['kyc'] == null
           ? null
           : ArtistKYC.fromJson(json['kyc'] as Map<String, dynamic>),
+      bundles:
+          (json['bundles'] as List<dynamic>?)
+              ?.map((e) => ArtistBundle.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$ArtistProfileToJson(_ArtistProfile instance) =>
@@ -50,6 +55,7 @@ Map<String, dynamic> _$ArtistProfileToJson(_ArtistProfile instance) =>
       'city': instance.city,
       'is_verified': instance.isVerified,
       'kyc': instance.kyc,
+      'bundles': instance.bundles,
     };
 
 _ArtistService _$ArtistServiceFromJson(Map<String, dynamic> json) =>
@@ -95,4 +101,46 @@ Map<String, dynamic> _$ArtistKYCToJson(_ArtistKYC instance) =>
       'admin_comments': instance.adminComments,
       'submitted_at': instance.submittedAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+    };
+
+_ArtistBundle _$ArtistBundleFromJson(Map<String, dynamic> json) =>
+    _ArtistBundle(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      description: json['description'] as String?,
+      basePrice: (json['base_price'] as num).toDouble(),
+      discountPrice: (json['discount_price'] as num).toDouble(),
+      currency: json['currency'] as String? ?? 'INR',
+      isActive: json['is_active'] as bool? ?? true,
+      items:
+          (json['items'] as List<dynamic>?)
+              ?.map((e) => ArtistBundleItem.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$ArtistBundleToJson(_ArtistBundle instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+      'base_price': instance.basePrice,
+      'discount_price': instance.discountPrice,
+      'currency': instance.currency,
+      'is_active': instance.isActive,
+      'items': instance.items,
+    };
+
+_ArtistBundleItem _$ArtistBundleItemFromJson(Map<String, dynamic> json) =>
+    _ArtistBundleItem(
+      serviceId: json['service_id'] as String,
+      serviceName: json['service_name'] as String,
+      quantity: (json['quantity'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$ArtistBundleItemToJson(_ArtistBundleItem instance) =>
+    <String, dynamic>{
+      'service_id': instance.serviceId,
+      'service_name': instance.serviceName,
+      'quantity': instance.quantity,
     };

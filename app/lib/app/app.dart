@@ -14,6 +14,7 @@ import '../features/home/customer_home_screen.dart';
 import '../features/artist/artist_profile_screen.dart';
 import '../features/booking/booking_screen.dart';
 import '../features/profile/profile_screen.dart';
+import '../features/profile/referral_history_screen.dart';
 import '../features/subscription/subscription_screen.dart';
 import '../features/notifications/notification_screen.dart';
 import '../features/reviews/write_review_screen.dart';
@@ -145,6 +146,11 @@ class MakeUpWallahApp extends StatelessWidget {
           path: '/bookings',
           name: 'bookings',
           builder: (context, state) => const BookingHistoryScreen(),
+        ),
+        GoRoute(
+          path: '/referral-history',
+          name: 'referral-history',
+          builder: (context, state) => const ReferralHistoryScreen(),
         ),
       ],
     );

@@ -8,6 +8,9 @@ class BookingEvent with _$BookingEvent {
     required DateTime date,
     required String time,
     String? notes,
+    @Default(0) int redeemPoints,
+    @Default('online') String paymentMethod,
+    String? couponCode,
   }) = _CreateBooking;
 
   const factory BookingEvent.fetchBookings({

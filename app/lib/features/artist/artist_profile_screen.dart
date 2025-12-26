@@ -93,6 +93,10 @@ class ArtistProfileScreen extends StatelessWidget {
                     style: AppTypography.bodyMedium,
                   ),
                   const SizedBox(height: AppSpacing.xl),
+
+                  // Bridal Bundles
+                  _buildBundlesSection(),
+                  const SizedBox(height: AppSpacing.xl),
                   Text(
                     'Services',
                     style: AppTypography.titleLarge,
@@ -184,6 +188,111 @@ class ArtistProfileScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildBundlesSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Bridal Bouquets (Bundles)', style: AppTypography.titleLarge),
+            TextButton(
+              onPressed: () {},
+              child: const Text('View All'),
+            ),
+          ],
+        ),
+        const SizedBox(height: AppSpacing.sm),
+        SizedBox(
+          height: 140,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              _buildBundleCard(
+                'Complete Wedding Glow',
+                '3 Events (Eng, Haldi, Wedding)',
+                '₹25,000',
+              ),
+              const SizedBox(width: AppSpacing.md),
+              _buildBundleCard(
+                'Bridal Party Special',
+                'Bride + 4 Bridesmaids',
+                '₹18,000',
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBundleCard(String title, String subtitle, String price) {
+    return Container(
+      width: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/bridal_bundle_banner.png'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacing.md),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              subtitle,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 12,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.xs),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  price,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Text(
+                    'BOOK PACKAGE',
+                    style: TextStyle(
+                      color: AppColors.primary,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

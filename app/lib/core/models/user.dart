@@ -17,6 +17,8 @@ abstract class User with _$User {
     required String role, // 'customer' or 'artist'
     String? profileImageUrl,
     @Default(false) bool isVerified,
+    String? referralCode,
+    @Default(0) int loyaltyPoints,
     DateTime? createdAt,
   }) = _User;
 

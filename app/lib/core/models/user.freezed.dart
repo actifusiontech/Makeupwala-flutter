@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$User {
 
  String get id; String get fullName; String? get email; String? get phone; String get role;// 'customer' or 'artist'
- String? get profileImageUrl; bool get isVerified; DateTime? get createdAt;
+ String? get profileImageUrl; bool get isVerified; String? get referralCode; int get loyaltyPoints; DateTime? get createdAt;
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $UserCopyWith<User> get copyWith => _$UserCopyWithImpl<User>(this as User, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.id, id) || other.id == id)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.role, role) || other.role == role)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is User&&(identical(other.id, id) || other.id == id)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.role, role) || other.role == role)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.referralCode, referralCode) || other.referralCode == referralCode)&&(identical(other.loyaltyPoints, loyaltyPoints) || other.loyaltyPoints == loyaltyPoints)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,fullName,email,phone,role,profileImageUrl,isVerified,createdAt);
+int get hashCode => Object.hash(runtimeType,id,fullName,email,phone,role,profileImageUrl,isVerified,referralCode,loyaltyPoints,createdAt);
 
 @override
 String toString() {
-  return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, profileImageUrl: $profileImageUrl, isVerified: $isVerified, createdAt: $createdAt)';
+  return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, profileImageUrl: $profileImageUrl, isVerified: $isVerified, referralCode: $referralCode, loyaltyPoints: $loyaltyPoints, createdAt: $createdAt)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $UserCopyWith<$Res>  {
   factory $UserCopyWith(User value, $Res Function(User) _then) = _$UserCopyWithImpl;
 @useResult
 $Res call({
- String id, String fullName, String? email, String? phone, String role, String? profileImageUrl, bool isVerified, DateTime? createdAt
+ String id, String fullName, String? email, String? phone, String role, String? profileImageUrl, bool isVerified, String? referralCode, int loyaltyPoints, DateTime? createdAt
 });
 
 
@@ -66,7 +66,7 @@ class _$UserCopyWithImpl<$Res>
 
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? fullName = null,Object? email = freezed,Object? phone = freezed,Object? role = null,Object? profileImageUrl = freezed,Object? isVerified = null,Object? createdAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? fullName = null,Object? email = freezed,Object? phone = freezed,Object? role = null,Object? profileImageUrl = freezed,Object? isVerified = null,Object? referralCode = freezed,Object? loyaltyPoints = null,Object? createdAt = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,9 @@ as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullabl
 as String?,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as String,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
 as String?,isVerified: null == isVerified ? _self.isVerified : isVerified // ignore: cast_nullable_to_non_nullable
-as bool,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as bool,referralCode: freezed == referralCode ? _self.referralCode : referralCode // ignore: cast_nullable_to_non_nullable
+as String?,loyaltyPoints: null == loyaltyPoints ? _self.loyaltyPoints : loyaltyPoints // ignore: cast_nullable_to_non_nullable
+as int,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
 }
@@ -161,10 +163,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String fullName,  String? email,  String? phone,  String role,  String? profileImageUrl,  bool isVerified,  DateTime? createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String fullName,  String? email,  String? phone,  String role,  String? profileImageUrl,  bool isVerified,  String? referralCode,  int loyaltyPoints,  DateTime? createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _User() when $default != null:
-return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that.profileImageUrl,_that.isVerified,_that.createdAt);case _:
+return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that.profileImageUrl,_that.isVerified,_that.referralCode,_that.loyaltyPoints,_that.createdAt);case _:
   return orElse();
 
 }
@@ -182,10 +184,10 @@ return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String fullName,  String? email,  String? phone,  String role,  String? profileImageUrl,  bool isVerified,  DateTime? createdAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String fullName,  String? email,  String? phone,  String role,  String? profileImageUrl,  bool isVerified,  String? referralCode,  int loyaltyPoints,  DateTime? createdAt)  $default,) {final _that = this;
 switch (_that) {
 case _User():
-return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that.profileImageUrl,_that.isVerified,_that.createdAt);case _:
+return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that.profileImageUrl,_that.isVerified,_that.referralCode,_that.loyaltyPoints,_that.createdAt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +204,10 @@ return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String fullName,  String? email,  String? phone,  String role,  String? profileImageUrl,  bool isVerified,  DateTime? createdAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String fullName,  String? email,  String? phone,  String role,  String? profileImageUrl,  bool isVerified,  String? referralCode,  int loyaltyPoints,  DateTime? createdAt)?  $default,) {final _that = this;
 switch (_that) {
 case _User() when $default != null:
-return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that.profileImageUrl,_that.isVerified,_that.createdAt);case _:
+return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that.profileImageUrl,_that.isVerified,_that.referralCode,_that.loyaltyPoints,_that.createdAt);case _:
   return null;
 
 }
@@ -217,7 +219,7 @@ return $default(_that.id,_that.fullName,_that.email,_that.phone,_that.role,_that
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _User extends User {
-  const _User({required this.id, required this.fullName, this.email, this.phone, required this.role, this.profileImageUrl, this.isVerified = false, this.createdAt}): super._();
+  const _User({required this.id, required this.fullName, this.email, this.phone, required this.role, this.profileImageUrl, this.isVerified = false, this.referralCode, this.loyaltyPoints = 0, this.createdAt}): super._();
   factory _User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
 @override final  String id;
@@ -228,6 +230,8 @@ class _User extends User {
 // 'customer' or 'artist'
 @override final  String? profileImageUrl;
 @override@JsonKey() final  bool isVerified;
+@override final  String? referralCode;
+@override@JsonKey() final  int loyaltyPoints;
 @override final  DateTime? createdAt;
 
 /// Create a copy of User
@@ -243,16 +247,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _User&&(identical(other.id, id) || other.id == id)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.role, role) || other.role == role)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _User&&(identical(other.id, id) || other.id == id)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.role, role) || other.role == role)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.referralCode, referralCode) || other.referralCode == referralCode)&&(identical(other.loyaltyPoints, loyaltyPoints) || other.loyaltyPoints == loyaltyPoints)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,fullName,email,phone,role,profileImageUrl,isVerified,createdAt);
+int get hashCode => Object.hash(runtimeType,id,fullName,email,phone,role,profileImageUrl,isVerified,referralCode,loyaltyPoints,createdAt);
 
 @override
 String toString() {
-  return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, profileImageUrl: $profileImageUrl, isVerified: $isVerified, createdAt: $createdAt)';
+  return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, profileImageUrl: $profileImageUrl, isVerified: $isVerified, referralCode: $referralCode, loyaltyPoints: $loyaltyPoints, createdAt: $createdAt)';
 }
 
 
@@ -263,7 +267,7 @@ abstract mixin class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) _then) = __$UserCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String fullName, String? email, String? phone, String role, String? profileImageUrl, bool isVerified, DateTime? createdAt
+ String id, String fullName, String? email, String? phone, String role, String? profileImageUrl, bool isVerified, String? referralCode, int loyaltyPoints, DateTime? createdAt
 });
 
 
@@ -280,7 +284,7 @@ class __$UserCopyWithImpl<$Res>
 
 /// Create a copy of User
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? fullName = null,Object? email = freezed,Object? phone = freezed,Object? role = null,Object? profileImageUrl = freezed,Object? isVerified = null,Object? createdAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? fullName = null,Object? email = freezed,Object? phone = freezed,Object? role = null,Object? profileImageUrl = freezed,Object? isVerified = null,Object? referralCode = freezed,Object? loyaltyPoints = null,Object? createdAt = freezed,}) {
   return _then(_User(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
@@ -289,7 +293,9 @@ as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullabl
 as String?,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as String,profileImageUrl: freezed == profileImageUrl ? _self.profileImageUrl : profileImageUrl // ignore: cast_nullable_to_non_nullable
 as String?,isVerified: null == isVerified ? _self.isVerified : isVerified // ignore: cast_nullable_to_non_nullable
-as bool,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as bool,referralCode: freezed == referralCode ? _self.referralCode : referralCode // ignore: cast_nullable_to_non_nullable
+as String?,loyaltyPoints: null == loyaltyPoints ? _self.loyaltyPoints : loyaltyPoints // ignore: cast_nullable_to_non_nullable
+as int,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
 }

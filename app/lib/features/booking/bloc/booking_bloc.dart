@@ -14,8 +14,8 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         super(const BookingState.initial()) {
     on<BookingEvent>((event, emit) async {
       await event.when(
-        createBooking: (artistId, serviceId, date, time, notes) =>
-            _onCreateBooking(artistId, serviceId, date, time, notes, emit),
+        createBooking: (artistId, serviceId, date, time, notes, redeemPoints, paymentMethod, couponCode) =>
+            _onCreateBooking(artistId, serviceId, date, time, notes, redeemPoints, paymentMethod, couponCode, emit),
         fetchBookings: (isArtist) => _onFetchBookings(isArtist, emit),
         updateStatus: (bookingId, status, isArtist, note) =>
             _onUpdateStatus(bookingId, status, isArtist, note, emit),
@@ -29,6 +29,9 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     DateTime date,
     String time,
     String? notes,
+    int redeemPoints,
+    String paymentMethod,
+    String? couponCode,
     Emitter<BookingState> emit,
   ) async {
     emit(const BookingState.loading());
@@ -39,6 +42,9 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         date: date,
         time: time,
         notes: notes,
+        redeemPoints: redeemPoints,
+        paymentMethod: paymentMethod,
+        couponCode: couponCode,
       );
       emit(const BookingState.success(message: 'Booking created successfully!'));
     } catch (e) {
