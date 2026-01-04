@@ -8,4 +8,5 @@ abstract class SubscriptionState with _$SubscriptionState {
   const factory SubscriptionState.subscriptionLoaded({required Map<String, dynamic>? subscription}) = _SubscriptionLoaded;
   const factory SubscriptionState.success({required String message}) = _Success;
   const factory SubscriptionState.error({required String message}) = _Error;
+  const factory SubscriptionState.historyLoaded({required List<dynamic> history}) = _HistoryLoaded;
 }

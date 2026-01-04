@@ -112,6 +112,46 @@ class _ArtistHomeView extends StatelessWidget {
                       );
                     },
                   ),
+                  const SizedBox(height: AppSpacing.xxl),
+                  
+                  // Quick Actions
+                  Text('Quick Actions', style: AppTypography.titleLarge),
+                  const SizedBox(height: AppSpacing.md),
+                  InkWell(
+                    onPressed: () => context.push('/inventory'),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        color: AppColors.secondary.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: AppColors.secondary.withOpacity(0.2)),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: AppColors.secondary,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.inventory_2, color: Colors.white),
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Inventory Management', style: AppTypography.titleMedium.copyWith(color: AppColors.secondary)),
+                                Text('Track your premium kits & usage', style: AppTypography.bodySmall),
+                              ],
+                            ),
+                          ),
+                          const Icon(Icons.chevron_right, color: AppColors.secondary),
+                        ],
+                      ),
+                    ),
+                  ),
                   
                   const SizedBox(height: AppSpacing.xxl),
                   

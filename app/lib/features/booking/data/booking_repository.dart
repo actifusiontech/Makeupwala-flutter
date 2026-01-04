@@ -114,4 +114,25 @@ class BookingRepository {
       );
     }
   }
+
+  Future<Map<String, dynamic>> initiatePayment({
+    required String bookingId,
+    required double amount,
+    required String type,
+  }) async {
+    try {
+      final response = await _apiClient.dio.post(
+        '/payments/initiate',
+        data: {
+          'booking_id': bookingId,
+          'amount': amount,
+          'type': type, // 'DEPOSIT', 'FULL_PAYMENT'
+        },
+      );
+      return response.data;
+    } catch (e) {
+      developer.log('❌ Initiate payment failed: $e', name: 'BookingRepository');
+      rethrow;
+    }
+  }
 }

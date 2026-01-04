@@ -52,3 +52,17 @@ class ReferralRecord with _$ReferralRecord {
 
   factory ReferralRecord.fromJson(Map<String, dynamic> json) => _$ReferralRecordFromJson(json);
 }
+
+@freezed
+class LeaderboardEntry with _$LeaderboardEntry {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory LeaderboardEntry({
+    required int rank,
+    required String userId,
+    required String userName,
+    required int referralCount,
+    required int pointsEarned,
+  }) = _LeaderboardEntry;
+
+  factory LeaderboardEntry.fromJson(Map<String, dynamic> json) => _$LeaderboardEntryFromJson(json);
+}

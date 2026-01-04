@@ -24,6 +24,8 @@ import '../features/complaints/complaint_list_screen.dart';
 import '../features/complaints/raise_complaint_screen.dart';
 import '../features/complaints/admin_complaint_list_screen.dart';
 import '../features/booking/booking_history_screen.dart';
+import '../features/inventory/inventory_screen.dart';
+import '../features/studios/presentation/screens/studios_list_screen.dart';
 
 class MakeUpWallahApp extends StatelessWidget {
   const MakeUpWallahApp({super.key});
@@ -148,9 +150,34 @@ class MakeUpWallahApp extends StatelessWidget {
           builder: (context, state) => const BookingHistoryScreen(),
         ),
         GoRoute(
-          path: '/referral-history',
-          name: 'referral-history',
-          builder: (context, state) => const ReferralHistoryScreen(),
+          path: '/inventory',
+          name: 'inventory',
+          builder: (context, state) => const InventoryScreen(),
+        ),
+        GoRoute(
+          path: '/studios',
+          name: 'studios',
+          builder: (context, state) => const StudiosListScreen(),
+        ),
+import '../features/travel/presentation/screens/retreats_list_screen.dart';
+
+// ... (imports)
+
+// Inside routes:
+        GoRoute(
+          path: '/travel/retreats',
+          name: 'retreats',
+          builder: (context, state) => const RetreatsListScreen(),
+        ),
+import '../features/discovery/presentation/screens/social_feed_screen.dart';
+
+// ... (imports)
+
+// Inside routes:
+        GoRoute(
+          path: '/discovery',
+          name: 'discovery',
+          builder: (context, state) => const SocialFeedScreen(),
         ),
       ],
     );

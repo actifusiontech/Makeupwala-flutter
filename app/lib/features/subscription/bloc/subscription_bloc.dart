@@ -26,6 +26,10 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
         subscribe: (planCode) => _onSubscribe(planCode, emit),
         paymentSuccess: (paymentId, orderId, signature) => _onPaymentSuccess(paymentId, orderId, signature, emit),
         paymentFailure: (message) => _onPaymentFailure(message, emit),
+        upgradeSubscription: (planCode) => _onUpgradeSubscription(planCode, emit),
+        pauseSubscription: (reason) => _onPauseSubscription(reason, emit),
+        resumeSubscription: () => _onResumeSubscription(emit),
+        fetchHistory: () => _onFetchHistory(emit),
       );
     });
   }
@@ -125,6 +129,65 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       // Ideally stay loading or show a "Processing" state.
     } catch (e) {
       emit(SubscriptionState.error(message: 'Initiation failed: ${e.toString()}'));
+    }
+  }
+
+  Future<void> _onUpgradeSubscription(String planCode, Emitter<SubscriptionState> emit) async {
+    emit(const SubscriptionState.loading());
+    try {
+      final order = await _repository.upgradeSubscription(planCode);
+      final orderId = order['id'];
+      final amount = order['amount'];
+      final key = order['razorpay_key'] ?? 'rzp_test_RC1eeHCEBsa8fc';
+
+      var options = {
+        'key': key,
+        'amount': amount,
+        'name': 'MakeupWala',
+        'description': 'Upgrade Plan',
+        'order_id': orderId,
+        'prefill': {
+          'contact': '9876543210',
+          'email': 'test@example.com'
+        }
+      };
+      
+      _razorpay.open(options);
+    } catch (e) {
+      emit(SubscriptionState.error(message: 'Upgrade failed: ${e.toString()}'));
+    }
+  }
+
+  Future<void> _onPauseSubscription(String reason, Emitter<SubscriptionState> emit) async {
+    emit(const SubscriptionState.loading());
+    try {
+      await _repository.pauseSubscription(reason);
+      emit(const SubscriptionState.success(message: 'Subscription paused successfully'));
+      add(const SubscriptionEvent.fetchMySubscription());
+    } catch (e) {
+      emit(SubscriptionState.error(message: 'Pause failed: ${e.toString()}'));
+    }
+  }
+
+  Future<void> _onResumeSubscription(Emitter<SubscriptionState> emit) async {
+    emit(const SubscriptionState.loading());
+    try {
+      await _repository.resumeSubscription();
+      emit(const SubscriptionState.success(message: 'Subscription resumed successfully'));
+      add(const SubscriptionEvent.fetchMySubscription());
+    } catch (e) {
+      emit(SubscriptionState.error(message: 'Resume failed: ${e.toString()}'));
+    }
+  }
+
+  Future<void> _onFetchHistory(Emitter<SubscriptionState> emit) async {
+    try {
+      final history = await _repository.fetchHistory();
+      emit(SubscriptionState.historyLoaded(history: history));
+    } catch (e) {
+      // Don't emit error state for history load failure to avoid blocking UI
+      // Just log it
+      print('Failed to fetch history: $e');
     }
   }
 }

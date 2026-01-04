@@ -11,6 +11,8 @@ import '../booking/data/booking_repository.dart';
 import 'bloc/profile_bloc.dart';
 import 'data/profile_repository.dart';
 import '../../features/profile/widgets/tier_progress_card.dart';
+import '../../features/rewards/leaderboard_screen.dart';
+import '../../features/discovery/lookbook_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -99,6 +101,9 @@ class _ProfileView extends StatelessWidget {
                   loaded: (user) => Column(
                     children: [
                       _buildLoyaltyCard(state.loyaltyBalance),
+                      _buildLoyaltyCard(state.loyaltyBalance),
+                      const SizedBox(height: AppSpacing.sm),
+                      _buildLeaderboardButton(context),
                       const SizedBox(height: AppSpacing.lg),
                       _buildReferralCard(user.referralCode ?? ''),
                     ],
@@ -138,6 +143,48 @@ class _ProfileView extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  Widget _buildLeaderboardButton(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+      child: Column(
+        children: [
+          OutlinedButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LeaderboardScreen()),
+              );
+            },
+            icon: const Icon(Icons.leaderboard, color: AppColors.primary),
+            label: const Text('View Top Referrers'),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: AppColors.primary,
+              side: const BorderSide(color: AppColors.primary),
+              padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+              minimumSize: const Size(double.infinity, 50),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          OutlinedButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LookBookScreen()),
+              );
+            },
+            icon: const Icon(Icons.auto_awesome, color: AppColors.secondary),
+            label: const Text('Explore Look Book'),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: AppColors.secondary,
+              side: const BorderSide(color: AppColors.secondary),
+              padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+              minimumSize: const Size(double.infinity, 50),
+            ),
+          ),
+        ],
       ),
     );
   }

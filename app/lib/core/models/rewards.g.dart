@@ -77,3 +77,21 @@ Map<String, dynamic> _$ReferralRecordToJson(_ReferralRecord instance) =>
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
+
+_LeaderboardEntry _$LeaderboardEntryFromJson(Map<String, dynamic> json) =>
+    _LeaderboardEntry(
+      rank: (json['rank'] as num).toInt(),
+      userId: json['user_id'] as String,
+      userName: json['user_name'] as String,
+      referralCount: (json['referral_count'] as num).toInt(),
+      pointsEarned: (json['points_earned'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$LeaderboardEntryToJson(_LeaderboardEntry instance) =>
+    <String, dynamic>{
+      'rank': instance.rank,
+      'user_id': instance.userId,
+      'user_name': instance.userName,
+      'referral_count': instance.referralCount,
+      'points_earned': instance.pointsEarned,
+    };

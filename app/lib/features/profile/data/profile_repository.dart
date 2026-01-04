@@ -85,4 +85,14 @@ class ProfileRepository {
       rethrow;
     }
   }
+
+  Future<List<LeaderboardEntry>> getLeaderboard() async {
+    try {
+      final response = await _apiClient.dio.get('/rewards/leaderboard');
+      return (response.data as List).map((e) => LeaderboardEntry.fromJson(e)).toList();
+    } catch (e) {
+      developer.log('❌ Get leaderboard failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
 }

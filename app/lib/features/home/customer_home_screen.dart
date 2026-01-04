@@ -7,6 +7,7 @@ import '../../shared/theme/app_spacing.dart';
 import '../auth/bloc/auth_bloc.dart';
 import '../search/bloc/search_bloc.dart';
 import '../search/data/search_repository.dart';
+import '../safety/presentation/widgets/sos_button.dart';
 
 class CustomerHomeScreen extends StatelessWidget {
   const CustomerHomeScreen({super.key});
@@ -48,6 +49,7 @@ class _CustomerHomeView extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: const SOSButton(),
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, authState) {
           return authState.maybeWhen(
@@ -186,6 +188,27 @@ class _CustomerHomeView extends StatelessWidget {
           Icons.card_membership,
           AppColors.secondary,
           () => context.push('/subscription'),
+        ),
+        _buildQuickActionCard(
+          context,
+          'Book a Studio',
+          Icons.store,
+          AppColors.primary,
+          () => context.push('/studios'),
+        ),
+        _buildQuickActionCard(
+          context,
+          'Global Retreats',
+          Icons.flight_takeoff,
+          Colors.teal,
+          () => context.push('/travel/retreats'),
+        ),
+        _buildQuickActionCard(
+          context,
+          'Shop the Look',
+          Icons.shopping_bag,
+          Colors.pink,
+          () => context.push('/discovery'),
         ),
       ],
     );

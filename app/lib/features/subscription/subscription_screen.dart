@@ -4,7 +4,9 @@ import '../../shared/theme/app_colors.dart';
 import '../../shared/theme/app_typography.dart';
 import '../../shared/theme/app_spacing.dart';
 import 'bloc/subscription_bloc.dart';
-import 'data/subscription_repository.dart';
+import 'widgets/premium_plan_card.dart';
+import 'widgets/quota_progress_widget.dart';
+import 'subscription_history_screen.dart';
 
 class SubscriptionScreen extends StatelessWidget {
   const SubscriptionScreen({super.key});
@@ -55,8 +57,28 @@ class _SubscriptionView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Current Subscription Section
+                // Current Subscription Section
                 _buildCurrentSubscription(context, state),
                 const SizedBox(height: AppSpacing.xl),
+
+                // History Link
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => BlocProvider.value(
+                          value: context.read<SubscriptionBloc>(),
+                          child: const SubscriptionHistoryScreen(),
+                        )),
+                      );
+                    },
+                    icon: const Icon(Icons.history),
+                    label: const Text('View History'),
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.md),
 
                 // Available Plans Section
                 Text(
@@ -91,14 +113,55 @@ class _SubscriptionView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Current Plan', style: AppTypography.titleMedium),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Current Plan', style: AppTypography.titleMedium),
+                    Chip(
+                      label: Text(
+                        subscription['status']?.toUpperCase() ?? 'ACTIVE',
+                        style: const TextStyle(color: Colors.white, fontSize: 10),
+                      ),
+                      backgroundColor: subscription['status'] == 'active' 
+                          ? AppColors.success 
+                          : AppColors.warning,
+                      padding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
                   subscription['plan_name'] ?? 'Unknown Plan',
                   style: AppTypography.headlineMedium.copyWith(color: AppColors.primary),
                 ),
-                Text('Status: ${subscription['status']?.toUpperCase() ?? 'ACTIVE'}'),
+                const SizedBox(height: AppSpacing.sm),
                 Text('Expires: ${subscription['end_date'] ?? 'Never'}'),
+                const SizedBox(height: AppSpacing.md),
+                
+                // Quota Widget
+                QuotaProgressWidget(
+                   used: (subscription['max_contacts'] ?? 100) - (subscription['remaining_contacts'] ?? 0), 
+                   total: subscription['max_contacts'] ?? 100, // Assuming we had max_contacts in response, otherwise imply
+                ),
+
+                const SizedBox(height: AppSpacing.md),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (subscription['status'] == 'active')
+                      OutlinedButton(
+                        onPressed: () => _showPauseDialog(context),
+                        child: const Text('Pause Subscription'),
+                      )
+                    else if (subscription['status'] == 'paused')
+                      ElevatedButton(
+                        onPressed: () {
+                          context.read<SubscriptionBloc>().add(const SubscriptionEvent.resumeSubscription());
+                        },
+                        child: const Text('Resume Subscription'),
+                      ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -136,40 +199,48 @@ class _SubscriptionView extends StatelessWidget {
     final code = plan['code'] ?? '';
     final description = plan['description'] ?? '';
 
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return PremiumPlanCard(
+      planName: name,
+      price: double.tryParse(price.toString()) ?? 0.0,
+      description: description,
+      planCode: code,
+      isCurrentPlan: false, // We should check against current sub
+      onSubscribe: () {
+        context.read<SubscriptionBloc>().add(SubscriptionEvent.subscribe(planCode: code));
+      },
+    );
+  }
+
+  void _showPauseDialog(BuildContext context) {
+    final controller = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Pause Subscription'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(name, style: AppTypography.headlineSmall),
-                Text('₹$price', style: AppTypography.headlineSmall.copyWith(color: AppColors.primary)),
-              ],
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            Text(description, style: AppTypography.bodyMedium),
-            const SizedBox(height: AppSpacing.md),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  context.read<SubscriptionBloc>().add(SubscriptionEvent.subscribe(planCode: code));
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                ),
-                child: const Text('Subscribe Now'),
+            const Text('Are you sure?Pausing will stop billing but you will lose access to premium features immediately.'),
+            const SizedBox(height: 16),
+            TextField(
+              controller: controller,
+              decoration: const InputDecoration(
+                labelText: 'Reason for pausing',
+                border: OutlineInputBorder(),
               ),
             ),
           ],
         ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          ElevatedButton(
+            onPressed: () {
+              context.read<SubscriptionBloc>().add(SubscriptionEvent.pauseSubscription(reason: controller.text));
+              Navigator.pop(context);
+            },
+            child: const Text('Pause'),
+          ),
+        ],
       ),
     );
   }

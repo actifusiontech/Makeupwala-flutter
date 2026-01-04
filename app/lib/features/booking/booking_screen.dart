@@ -444,6 +444,27 @@ class _BookingScreenState extends State<BookingScreen> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: AppSpacing.sm),
+                    // High Value Booking Highlight
+                    if (_calculateFinalPrice() >= 5000)
+                      Container(
+                        padding: const EdgeInsets.all(AppSpacing.sm),
+                        decoration: BoxDecoration(
+                          color: AppColors.warning.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColors.warning),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.lock, size: 16, color: AppColors.warning),
+                            const SizedBox(width: 8),
+                            Expanded(child: Text(
+                              'High Value Booking: 20% Deposit (₹${(_calculateFinalPrice() * 0.2).toStringAsFixed(0)}) required to confirm.',
+                              style: AppTypography.bodySmall.copyWith(color: AppColors.textPrimary),
+                            )),
+                          ],
+                        ),
+                      ),
                     const SizedBox(height: AppSpacing.xl),
                   ],
 
@@ -454,6 +475,14 @@ class _BookingScreenState extends State<BookingScreen> {
                       onPressed: isLoading || _selectedDate == null || _selectedTime == null
                           ? null
                           : () {
+                              final total = _calculateFinalPrice();
+                              // Check if deposit needed
+                              // For now, we handle this in the BLoC or here. 
+                              // Ideally BLoC, but for MVP we can just pass a flag or handle after creation.
+                              // Let's modify the bloc event to accept 'depositAmount'? 
+                              // Or simply let the bloc create booking, then we listen to success and trigger payment?
+                              // Listening to success is better.
+                              
                               final timeString = '${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}';
                               context.read<BookingBloc>().add(
                                     BookingEvent.createBooking(
@@ -474,9 +503,11 @@ class _BookingScreenState extends State<BookingScreen> {
                       ),
                       child: isLoading
                           ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text(
-                              'Confirm Booking',
-                              style: TextStyle(color: Colors.white, fontSize: 16),
+                          : Text(
+                              _calculateFinalPrice() >= 5000 && _paymentMethod == 'online'
+                                  ? 'Pay Deposit & Confirm'
+                                  : 'Confirm Booking',
+                              style: const TextStyle(color: Colors.white, fontSize: 16),
                             ),
                     ),
                   ),
