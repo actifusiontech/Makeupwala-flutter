@@ -47,5 +47,19 @@ class ComplaintRepository {
       developer.log('❌ Fetch all complaints failed: $e', name: 'ComplaintRepository');
       rethrow;
     }
+  Future<void> resolveComplaint(String complaintId, String adminComment) async {
+    try {
+      developer.log('📝 Resolving complaint: $complaintId', name: 'ComplaintRepository');
+      await _apiClient.dio.put(
+        '/admin/complaints/$complaintId',
+        data: {
+          'status': 'RESOLVED',
+          'admin_comment': adminComment, // Using lower_case to match Go request binding
+        },
+      );
+    } catch (e) {
+      developer.log('❌ Resolve complaint failed: $e', name: 'ComplaintRepository');
+      rethrow;
+    }
   }
 }

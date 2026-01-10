@@ -45,5 +45,20 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	
+	<!-- Deep Link URL Scheme -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.makeupwala.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>makeupwala</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

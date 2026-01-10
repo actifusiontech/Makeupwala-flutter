@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart'; // Optional if standard grid preferred
 import '../../data/models/studio_model.dart';
 import '../../data/repositories/studio_repository.dart';
+import 'studio_booking_screen.dart';
+import 'studio_team_screen.dart';
 
 class StudiosListScreen extends StatefulWidget {
   const StudiosListScreen({Key? key}) : super(key: key);
@@ -61,8 +63,8 @@ class _StudiosListScreenState extends State<StudiosListScreen> {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () {
-          // Navigate to details
-          // Navigator.push(context, MaterialPageRoute(builder: (_) => StudioDetailScreen(studio: studio)));
+          // Navigate to Booking Screen
+           Navigator.push(context, MaterialPageRoute(builder: (_) => StudioBookingScreen(studio: studio)));
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,12 +106,24 @@ class _StudiosListScreenState extends State<StudiosListScreen> {
                         '₹${studio.hourlyRate}/hour',
                         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.amber),
                       ),
-                      if (studio.rating > 0)
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(4)),
-                          child: Text('${studio.rating} ★', style: const TextStyle(color: Colors.white, fontSize: 12)),
-                        ),
+                      Row(
+                        children: [
+                          if (studio.rating > 0)
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(4)),
+                              child: Text('${studio.rating} ★', style: const TextStyle(color: Colors.white, fontSize: 12)),
+                            ),
+                          const SizedBox(width: 8),
+                          // Manage Button (For Studio Owner Persona Audit)
+                          IconButton(
+                            icon: const Icon(Icons.settings, color: Colors.grey),
+                            onPressed: () {
+                               Navigator.push(context, MaterialPageRoute(builder: (_) => StudioTeamScreen(studio: studio)));
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ],

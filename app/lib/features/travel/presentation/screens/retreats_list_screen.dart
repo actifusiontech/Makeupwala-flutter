@@ -120,10 +120,7 @@ class _RetreatsListScreenState extends State<RetreatsListScreen> {
                       style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.teal),
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        // Handle booking
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Booking flow coming soon')));
-                      },
+                      onPressed: () => _showBookingDialog(retreat),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal,
                         foregroundColor: Colors.white,
@@ -137,6 +134,77 @@ class _RetreatsListScreenState extends State<RetreatsListScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _showBookingDialog(RetreatModel retreat) {
+    final nameController = TextEditingController();
+    bool isBooking = false;
+
+    showDialog(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text('Book ${retreat.title}'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Enter participant details to confirm booking.'),
+              const SizedBox(height: 16),
+              TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Participant Name',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: isBooking ? null : () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: isBooking
+                  ? null
+                  : () async {
+                      if (nameController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Please enter a name')),
+                        );
+                        return;
+                      }
+
+                      setState(() => isBooking = true);
+                      try {
+                        await _repository.bookRetreat(
+                          packageId: retreat.id,
+                          participantName: nameController.text,
+                        );
+                        if (context.mounted) {
+                          Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Booking Confirmed!')),
+                          );
+                        }
+                      } catch (e) {
+                        if (context.mounted) {
+                           ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Booking failed: $e')),
+                          );
+                          setState(() => isBooking = false);
+                        }
+                      }
+                    },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal, foregroundColor: Colors.white),
+              child: isBooking
+                  ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                  : const Text('Confirm Booking'),
+            ),
+          ],
+        ),
       ),
     );
   }

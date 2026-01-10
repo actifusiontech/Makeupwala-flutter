@@ -49,3 +49,35 @@ class StudioModel {
     };
   }
 }
+
+class StudioTeamMember {
+  final String id;
+  final String userId;
+  final String studioId;
+  final String role; // 'MANAGER' or 'STAFF'
+  final String name;
+  final String email;
+  final bool isActive;
+
+  StudioTeamMember({
+    required this.id,
+    required this.userId,
+    required this.studioId,
+    required this.role,
+    required this.name,
+    required this.email,
+    this.isActive = true,
+  });
+
+  factory StudioTeamMember.fromJson(Map<String, dynamic> json) {
+    return StudioTeamMember(
+      id: json['id'] ?? '',
+      userId: json['user_id'] ?? '',
+      studioId: json['studio_id'] ?? '',
+      role: json['role'] ?? 'STAFF',
+      name: json['name'] ?? 'Unknown',
+      email: json['email'] ?? '',
+      isActive: json['is_active'] ?? true,
+    );
+  }
+}

@@ -96,6 +96,27 @@ class EducationRepository {
       return (response.data as List).map((e) => AttendanceLog.fromJson(e)).toList();
     } catch (e) {
       rethrow;
+      rethrow;
+    }
+  }
+
+  // Institute Management
+  Future<Institute> getMyInstitute() async {
+    try {
+      final response = await _dio.get('/education/institutes/me');
+      return Institute.fromJson(response.data);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // Leaderboard
+  Future<List<TopStudent>> getLeaderboard() async {
+    try {
+      final response = await _dio.get('/education/leaderboard');
+      return (response.data as List).map((e) => TopStudent.fromJson(e)).toList();
+    } catch (e) {
+      rethrow;
     }
   }
 }

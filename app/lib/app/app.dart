@@ -26,6 +26,10 @@ import '../features/complaints/admin_complaint_list_screen.dart';
 import '../features/booking/booking_history_screen.dart';
 import '../features/inventory/inventory_screen.dart';
 import '../features/studios/presentation/screens/studios_list_screen.dart';
+import '../features/auth/kyc_deeplink_handler.dart';
+import '../features/travel/presentation/screens/retreats_list_screen.dart';
+import '../features/discovery/presentation/screens/social_feed_screen.dart';
+import '../features/education/presentation/screens/leaderboard_screen.dart';
 
 class MakeUpWallahApp extends StatelessWidget {
   const MakeUpWallahApp({super.key});
@@ -159,25 +163,37 @@ class MakeUpWallahApp extends StatelessWidget {
           name: 'studios',
           builder: (context, state) => const StudiosListScreen(),
         ),
-import '../features/travel/presentation/screens/retreats_list_screen.dart';
-
-// ... (imports)
-
-// Inside routes:
+        GoRoute(
+          path: '/kyc',
+          name: 'kyc-deeplink',
+          builder: (context, state) {
+            final phone = state.uri.queryParameters['phone'];
+            final leadId = state.uri.queryParameters['leadId'];
+            return KYCDeepLinkHandler(
+              phone: phone,
+              leadId: leadId,
+            );
+          },
+        ),
+        GoRoute(
+          path: '/availability',
+          name: 'availability',
+          builder: (context, state) => const AvailabilityScreen(),
+        ),
         GoRoute(
           path: '/travel/retreats',
           name: 'retreats',
           builder: (context, state) => const RetreatsListScreen(),
         ),
-import '../features/discovery/presentation/screens/social_feed_screen.dart';
-
-// ... (imports)
-
-// Inside routes:
         GoRoute(
           path: '/discovery',
           name: 'discovery',
           builder: (context, state) => const SocialFeedScreen(),
+        ),
+        GoRoute(
+          path: '/education/leaderboard',
+          name: 'leaderboard',
+          builder: (context, state) => const LeaderboardScreen(),
         ),
       ],
     );

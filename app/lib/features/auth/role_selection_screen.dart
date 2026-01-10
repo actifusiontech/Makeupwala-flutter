@@ -89,6 +89,18 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     isLoading: _isLoading,
                     onTap: () => _handleRoleSelection('artist'),
                   ),
+
+                  const SizedBox(height: AppSpacing.md),
+
+                  // Brand/Wholesaler Card
+                  _RoleCard(
+                    title: 'I am a Brand/Wholesaler',
+                    subtitle: 'List products, manage inventory',
+                    icon: Icons.store,
+                    color: Colors.purple,
+                    isLoading: _isLoading,
+                    onTap: () => _handleRoleSelection('brand'),
+                  ),
                 ],
               ),
             ),

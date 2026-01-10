@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ArtistProfile {
 
- String get id; String get userId; String get fullName; String? get bio; String? get category; String? get experience; String? get profileImageUrl; List<String> get portfolioUrls; List<ArtistService> get services; double get rating; int get reviewCount; String? get city; bool get isVerified; ArtistKYC? get kyc; List<ArtistBundle> get bundles;
+ String get id; String get userId; String get fullName; String? get bio; String? get category; String? get experience; String? get profileImageUrl; List<String> get portfolioUrls; List<ArtistService> get services; double get rating; int get reviewCount; String? get city; bool get isVerified; bool get isJobSeeker; ArtistKYC? get kyc; List<ArtistBundle> get bundles; List<ArtistBadge> get badges;
 /// Create a copy of ArtistProfile
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ArtistProfileCopyWith<ArtistProfile> get copyWith => _$ArtistProfileCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArtistProfile&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.bio, bio) || other.bio == bio)&&(identical(other.category, category) || other.category == category)&&(identical(other.experience, experience) || other.experience == experience)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&const DeepCollectionEquality().equals(other.portfolioUrls, portfolioUrls)&&const DeepCollectionEquality().equals(other.services, services)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount)&&(identical(other.city, city) || other.city == city)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.kyc, kyc) || other.kyc == kyc)&&const DeepCollectionEquality().equals(other.bundles, bundles));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArtistProfile&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.bio, bio) || other.bio == bio)&&(identical(other.category, category) || other.category == category)&&(identical(other.experience, experience) || other.experience == experience)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&const DeepCollectionEquality().equals(other.portfolioUrls, portfolioUrls)&&const DeepCollectionEquality().equals(other.services, services)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount)&&(identical(other.city, city) || other.city == city)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.isJobSeeker, isJobSeeker) || other.isJobSeeker == isJobSeeker)&&(identical(other.kyc, kyc) || other.kyc == kyc)&&const DeepCollectionEquality().equals(other.bundles, bundles)&&const DeepCollectionEquality().equals(other.badges, badges));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,userId,fullName,bio,category,experience,profileImageUrl,const DeepCollectionEquality().hash(portfolioUrls),const DeepCollectionEquality().hash(services),rating,reviewCount,city,isVerified,kyc,const DeepCollectionEquality().hash(bundles));
+int get hashCode => Object.hash(runtimeType,id,userId,fullName,bio,category,experience,profileImageUrl,const DeepCollectionEquality().hash(portfolioUrls),const DeepCollectionEquality().hash(services),rating,reviewCount,city,isVerified,isJobSeeker,kyc,const DeepCollectionEquality().hash(bundles),const DeepCollectionEquality().hash(badges));
 
 @override
 String toString() {
-  return 'ArtistProfile(id: $id, userId: $userId, fullName: $fullName, bio: $bio, category: $category, experience: $experience, profileImageUrl: $profileImageUrl, portfolioUrls: $portfolioUrls, services: $services, rating: $rating, reviewCount: $reviewCount, city: $city, isVerified: $isVerified, kyc: $kyc, bundles: $bundles)';
+  return 'ArtistProfile(id: $id, userId: $userId, fullName: $fullName, bio: $bio, category: $category, experience: $experience, profileImageUrl: $profileImageUrl, portfolioUrls: $portfolioUrls, services: $services, rating: $rating, reviewCount: $reviewCount, city: $city, isVerified: $isVerified, isJobSeeker: $isJobSeeker, kyc: $kyc, bundles: $bundles, badges: $badges)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ArtistProfileCopyWith<$Res>  {
   factory $ArtistProfileCopyWith(ArtistProfile value, $Res Function(ArtistProfile) _then) = _$ArtistProfileCopyWithImpl;
 @useResult
 $Res call({
- String id, String userId, String fullName, String? bio, String? category, String? experience, String? profileImageUrl, List<String> portfolioUrls, List<ArtistService> services, double rating, int reviewCount, String? city, bool isVerified, ArtistKYC? kyc, List<ArtistBundle> bundles
+ String id, String userId, String fullName, String? bio, String? category, String? experience, String? profileImageUrl, List<String> portfolioUrls, List<ArtistService> services, double rating, int reviewCount, String? city, bool isVerified, bool isJobSeeker, ArtistKYC? kyc, List<ArtistBundle> bundles, List<ArtistBadge> badges
 });
 
 
@@ -65,7 +65,7 @@ class _$ArtistProfileCopyWithImpl<$Res>
 
 /// Create a copy of ArtistProfile
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userId = null,Object? fullName = null,Object? bio = freezed,Object? category = freezed,Object? experience = freezed,Object? profileImageUrl = freezed,Object? portfolioUrls = null,Object? services = null,Object? rating = null,Object? reviewCount = null,Object? city = freezed,Object? isVerified = null,Object? kyc = freezed,Object? bundles = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userId = null,Object? fullName = null,Object? bio = freezed,Object? category = freezed,Object? experience = freezed,Object? profileImageUrl = freezed,Object? portfolioUrls = null,Object? services = null,Object? rating = null,Object? reviewCount = null,Object? city = freezed,Object? isVerified = null,Object? isJobSeeker = null,Object? kyc = freezed,Object? bundles = null,Object? badges = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
@@ -80,9 +80,11 @@ as List<ArtistService>,rating: null == rating ? _self.rating : rating // ignore:
 as double,reviewCount: null == reviewCount ? _self.reviewCount : reviewCount // ignore: cast_nullable_to_non_nullable
 as int,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
 as String?,isVerified: null == isVerified ? _self.isVerified : isVerified // ignore: cast_nullable_to_non_nullable
+as bool,isJobSeeker: null == isJobSeeker ? _self.isJobSeeker : isJobSeeker // ignore: cast_nullable_to_non_nullable
 as bool,kyc: freezed == kyc ? _self.kyc : kyc // ignore: cast_nullable_to_non_nullable
 as ArtistKYC?,bundles: null == bundles ? _self.bundles : bundles // ignore: cast_nullable_to_non_nullable
-as List<ArtistBundle>,
+as List<ArtistBundle>,badges: null == badges ? _self.badges : badges // ignore: cast_nullable_to_non_nullable
+as List<ArtistBadge>,
   ));
 }
 /// Create a copy of ArtistProfile
@@ -179,10 +181,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String userId,  String fullName,  String? bio,  String? category,  String? experience,  String? profileImageUrl,  List<String> portfolioUrls,  List<ArtistService> services,  double rating,  int reviewCount,  String? city,  bool isVerified,  ArtistKYC? kyc,  List<ArtistBundle> bundles)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String userId,  String fullName,  String? bio,  String? category,  String? experience,  String? profileImageUrl,  List<String> portfolioUrls,  List<ArtistService> services,  double rating,  int reviewCount,  String? city,  bool isVerified,  bool isJobSeeker,  ArtistKYC? kyc,  List<ArtistBundle> bundles,  List<ArtistBadge> badges)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ArtistProfile() when $default != null:
-return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_that.experience,_that.profileImageUrl,_that.portfolioUrls,_that.services,_that.rating,_that.reviewCount,_that.city,_that.isVerified,_that.kyc,_that.bundles);case _:
+return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_that.experience,_that.profileImageUrl,_that.portfolioUrls,_that.services,_that.rating,_that.reviewCount,_that.city,_that.isVerified,_that.isJobSeeker,_that.kyc,_that.bundles,_that.badges);case _:
   return orElse();
 
 }
@@ -200,10 +202,10 @@ return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String userId,  String fullName,  String? bio,  String? category,  String? experience,  String? profileImageUrl,  List<String> portfolioUrls,  List<ArtistService> services,  double rating,  int reviewCount,  String? city,  bool isVerified,  ArtistKYC? kyc,  List<ArtistBundle> bundles)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String userId,  String fullName,  String? bio,  String? category,  String? experience,  String? profileImageUrl,  List<String> portfolioUrls,  List<ArtistService> services,  double rating,  int reviewCount,  String? city,  bool isVerified,  bool isJobSeeker,  ArtistKYC? kyc,  List<ArtistBundle> bundles,  List<ArtistBadge> badges)  $default,) {final _that = this;
 switch (_that) {
 case _ArtistProfile():
-return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_that.experience,_that.profileImageUrl,_that.portfolioUrls,_that.services,_that.rating,_that.reviewCount,_that.city,_that.isVerified,_that.kyc,_that.bundles);case _:
+return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_that.experience,_that.profileImageUrl,_that.portfolioUrls,_that.services,_that.rating,_that.reviewCount,_that.city,_that.isVerified,_that.isJobSeeker,_that.kyc,_that.bundles,_that.badges);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -220,10 +222,10 @@ return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String userId,  String fullName,  String? bio,  String? category,  String? experience,  String? profileImageUrl,  List<String> portfolioUrls,  List<ArtistService> services,  double rating,  int reviewCount,  String? city,  bool isVerified,  ArtistKYC? kyc,  List<ArtistBundle> bundles)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String userId,  String fullName,  String? bio,  String? category,  String? experience,  String? profileImageUrl,  List<String> portfolioUrls,  List<ArtistService> services,  double rating,  int reviewCount,  String? city,  bool isVerified,  bool isJobSeeker,  ArtistKYC? kyc,  List<ArtistBundle> bundles,  List<ArtistBadge> badges)?  $default,) {final _that = this;
 switch (_that) {
 case _ArtistProfile() when $default != null:
-return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_that.experience,_that.profileImageUrl,_that.portfolioUrls,_that.services,_that.rating,_that.reviewCount,_that.city,_that.isVerified,_that.kyc,_that.bundles);case _:
+return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_that.experience,_that.profileImageUrl,_that.portfolioUrls,_that.services,_that.rating,_that.reviewCount,_that.city,_that.isVerified,_that.isJobSeeker,_that.kyc,_that.bundles,_that.badges);case _:
   return null;
 
 }
@@ -235,7 +237,7 @@ return $default(_that.id,_that.userId,_that.fullName,_that.bio,_that.category,_t
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _ArtistProfile implements ArtistProfile {
-  const _ArtistProfile({required this.id, required this.userId, required this.fullName, this.bio, this.category, this.experience, this.profileImageUrl, final  List<String> portfolioUrls = const [], final  List<ArtistService> services = const [], this.rating = 0.0, this.reviewCount = 0, this.city, this.isVerified = false, this.kyc, final  List<ArtistBundle> bundles = const []}): _portfolioUrls = portfolioUrls,_services = services,_bundles = bundles;
+  const _ArtistProfile({required this.id, required this.userId, required this.fullName, this.bio, this.category, this.experience, this.profileImageUrl, final  List<String> portfolioUrls = const [], final  List<ArtistService> services = const [], this.rating = 0.0, this.reviewCount = 0, this.city, this.isVerified = false, this.isJobSeeker = false, this.kyc, final  List<ArtistBundle> bundles = const [], final  List<ArtistBadge> badges = const []}): _portfolioUrls = portfolioUrls,_services = services,_bundles = bundles,_badges = badges;
   factory _ArtistProfile.fromJson(Map<String, dynamic> json) => _$ArtistProfileFromJson(json);
 
 @override final  String id;
@@ -263,12 +265,20 @@ class _ArtistProfile implements ArtistProfile {
 @override@JsonKey() final  int reviewCount;
 @override final  String? city;
 @override@JsonKey() final  bool isVerified;
+@override@JsonKey() final  bool isJobSeeker;
 @override final  ArtistKYC? kyc;
  final  List<ArtistBundle> _bundles;
 @override@JsonKey() List<ArtistBundle> get bundles {
   if (_bundles is EqualUnmodifiableListView) return _bundles;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_bundles);
+}
+
+ final  List<ArtistBadge> _badges;
+@override@JsonKey() List<ArtistBadge> get badges {
+  if (_badges is EqualUnmodifiableListView) return _badges;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_badges);
 }
 
 
@@ -285,16 +295,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArtistProfile&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.bio, bio) || other.bio == bio)&&(identical(other.category, category) || other.category == category)&&(identical(other.experience, experience) || other.experience == experience)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&const DeepCollectionEquality().equals(other._portfolioUrls, _portfolioUrls)&&const DeepCollectionEquality().equals(other._services, _services)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount)&&(identical(other.city, city) || other.city == city)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.kyc, kyc) || other.kyc == kyc)&&const DeepCollectionEquality().equals(other._bundles, _bundles));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArtistProfile&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.bio, bio) || other.bio == bio)&&(identical(other.category, category) || other.category == category)&&(identical(other.experience, experience) || other.experience == experience)&&(identical(other.profileImageUrl, profileImageUrl) || other.profileImageUrl == profileImageUrl)&&const DeepCollectionEquality().equals(other._portfolioUrls, _portfolioUrls)&&const DeepCollectionEquality().equals(other._services, _services)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount)&&(identical(other.city, city) || other.city == city)&&(identical(other.isVerified, isVerified) || other.isVerified == isVerified)&&(identical(other.isJobSeeker, isJobSeeker) || other.isJobSeeker == isJobSeeker)&&(identical(other.kyc, kyc) || other.kyc == kyc)&&const DeepCollectionEquality().equals(other._bundles, _bundles)&&const DeepCollectionEquality().equals(other._badges, _badges));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,userId,fullName,bio,category,experience,profileImageUrl,const DeepCollectionEquality().hash(_portfolioUrls),const DeepCollectionEquality().hash(_services),rating,reviewCount,city,isVerified,kyc,const DeepCollectionEquality().hash(_bundles));
+int get hashCode => Object.hash(runtimeType,id,userId,fullName,bio,category,experience,profileImageUrl,const DeepCollectionEquality().hash(_portfolioUrls),const DeepCollectionEquality().hash(_services),rating,reviewCount,city,isVerified,isJobSeeker,kyc,const DeepCollectionEquality().hash(_bundles),const DeepCollectionEquality().hash(_badges));
 
 @override
 String toString() {
-  return 'ArtistProfile(id: $id, userId: $userId, fullName: $fullName, bio: $bio, category: $category, experience: $experience, profileImageUrl: $profileImageUrl, portfolioUrls: $portfolioUrls, services: $services, rating: $rating, reviewCount: $reviewCount, city: $city, isVerified: $isVerified, kyc: $kyc, bundles: $bundles)';
+  return 'ArtistProfile(id: $id, userId: $userId, fullName: $fullName, bio: $bio, category: $category, experience: $experience, profileImageUrl: $profileImageUrl, portfolioUrls: $portfolioUrls, services: $services, rating: $rating, reviewCount: $reviewCount, city: $city, isVerified: $isVerified, isJobSeeker: $isJobSeeker, kyc: $kyc, bundles: $bundles, badges: $badges)';
 }
 
 
@@ -305,7 +315,7 @@ abstract mixin class _$ArtistProfileCopyWith<$Res> implements $ArtistProfileCopy
   factory _$ArtistProfileCopyWith(_ArtistProfile value, $Res Function(_ArtistProfile) _then) = __$ArtistProfileCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String userId, String fullName, String? bio, String? category, String? experience, String? profileImageUrl, List<String> portfolioUrls, List<ArtistService> services, double rating, int reviewCount, String? city, bool isVerified, ArtistKYC? kyc, List<ArtistBundle> bundles
+ String id, String userId, String fullName, String? bio, String? category, String? experience, String? profileImageUrl, List<String> portfolioUrls, List<ArtistService> services, double rating, int reviewCount, String? city, bool isVerified, bool isJobSeeker, ArtistKYC? kyc, List<ArtistBundle> bundles, List<ArtistBadge> badges
 });
 
 
@@ -322,7 +332,7 @@ class __$ArtistProfileCopyWithImpl<$Res>
 
 /// Create a copy of ArtistProfile
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userId = null,Object? fullName = null,Object? bio = freezed,Object? category = freezed,Object? experience = freezed,Object? profileImageUrl = freezed,Object? portfolioUrls = null,Object? services = null,Object? rating = null,Object? reviewCount = null,Object? city = freezed,Object? isVerified = null,Object? kyc = freezed,Object? bundles = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userId = null,Object? fullName = null,Object? bio = freezed,Object? category = freezed,Object? experience = freezed,Object? profileImageUrl = freezed,Object? portfolioUrls = null,Object? services = null,Object? rating = null,Object? reviewCount = null,Object? city = freezed,Object? isVerified = null,Object? isJobSeeker = null,Object? kyc = freezed,Object? bundles = null,Object? badges = null,}) {
   return _then(_ArtistProfile(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
@@ -337,9 +347,11 @@ as List<ArtistService>,rating: null == rating ? _self.rating : rating // ignore:
 as double,reviewCount: null == reviewCount ? _self.reviewCount : reviewCount // ignore: cast_nullable_to_non_nullable
 as int,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
 as String?,isVerified: null == isVerified ? _self.isVerified : isVerified // ignore: cast_nullable_to_non_nullable
+as bool,isJobSeeker: null == isJobSeeker ? _self.isJobSeeker : isJobSeeker // ignore: cast_nullable_to_non_nullable
 as bool,kyc: freezed == kyc ? _self.kyc : kyc // ignore: cast_nullable_to_non_nullable
 as ArtistKYC?,bundles: null == bundles ? _self._bundles : bundles // ignore: cast_nullable_to_non_nullable
-as List<ArtistBundle>,
+as List<ArtistBundle>,badges: null == badges ? _self._badges : badges // ignore: cast_nullable_to_non_nullable
+as List<ArtistBadge>,
   ));
 }
 
@@ -1472,6 +1484,278 @@ serviceId: null == serviceId ? _self.serviceId : serviceId // ignore: cast_nulla
 as String,serviceName: null == serviceName ? _self.serviceName : serviceName // ignore: cast_nullable_to_non_nullable
 as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$ArtistBadge {
+
+ String get name; String get type; String? get iconUrl; String? get issuedAt;
+/// Create a copy of ArtistBadge
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ArtistBadgeCopyWith<ArtistBadge> get copyWith => _$ArtistBadgeCopyWithImpl<ArtistBadge>(this as ArtistBadge, _$identity);
+
+  /// Serializes this ArtistBadge to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ArtistBadge&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.issuedAt, issuedAt) || other.issuedAt == issuedAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,type,iconUrl,issuedAt);
+
+@override
+String toString() {
+  return 'ArtistBadge(name: $name, type: $type, iconUrl: $iconUrl, issuedAt: $issuedAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ArtistBadgeCopyWith<$Res>  {
+  factory $ArtistBadgeCopyWith(ArtistBadge value, $Res Function(ArtistBadge) _then) = _$ArtistBadgeCopyWithImpl;
+@useResult
+$Res call({
+ String name, String type, String? iconUrl, String? issuedAt
+});
+
+
+
+
+}
+/// @nodoc
+class _$ArtistBadgeCopyWithImpl<$Res>
+    implements $ArtistBadgeCopyWith<$Res> {
+  _$ArtistBadgeCopyWithImpl(this._self, this._then);
+
+  final ArtistBadge _self;
+  final $Res Function(ArtistBadge) _then;
+
+/// Create a copy of ArtistBadge
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? type = null,Object? iconUrl = freezed,Object? issuedAt = freezed,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,iconUrl: freezed == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
+as String?,issuedAt: freezed == issuedAt ? _self.issuedAt : issuedAt // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ArtistBadge].
+extension ArtistBadgePatterns on ArtistBadge {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ArtistBadge value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ArtistBadge() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ArtistBadge value)  $default,){
+final _that = this;
+switch (_that) {
+case _ArtistBadge():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ArtistBadge value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ArtistBadge() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String type,  String? iconUrl,  String? issuedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ArtistBadge() when $default != null:
+return $default(_that.name,_that.type,_that.iconUrl,_that.issuedAt);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String type,  String? iconUrl,  String? issuedAt)  $default,) {final _that = this;
+switch (_that) {
+case _ArtistBadge():
+return $default(_that.name,_that.type,_that.iconUrl,_that.issuedAt);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String type,  String? iconUrl,  String? issuedAt)?  $default,) {final _that = this;
+switch (_that) {
+case _ArtistBadge() when $default != null:
+return $default(_that.name,_that.type,_that.iconUrl,_that.issuedAt);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _ArtistBadge implements ArtistBadge {
+  const _ArtistBadge({required this.name, required this.type, this.iconUrl, this.issuedAt});
+  factory _ArtistBadge.fromJson(Map<String, dynamic> json) => _$ArtistBadgeFromJson(json);
+
+@override final  String name;
+@override final  String type;
+@override final  String? iconUrl;
+@override final  String? issuedAt;
+
+/// Create a copy of ArtistBadge
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ArtistBadgeCopyWith<_ArtistBadge> get copyWith => __$ArtistBadgeCopyWithImpl<_ArtistBadge>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ArtistBadgeToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ArtistBadge&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl)&&(identical(other.issuedAt, issuedAt) || other.issuedAt == issuedAt));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,type,iconUrl,issuedAt);
+
+@override
+String toString() {
+  return 'ArtistBadge(name: $name, type: $type, iconUrl: $iconUrl, issuedAt: $issuedAt)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ArtistBadgeCopyWith<$Res> implements $ArtistBadgeCopyWith<$Res> {
+  factory _$ArtistBadgeCopyWith(_ArtistBadge value, $Res Function(_ArtistBadge) _then) = __$ArtistBadgeCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, String type, String? iconUrl, String? issuedAt
+});
+
+
+
+
+}
+/// @nodoc
+class __$ArtistBadgeCopyWithImpl<$Res>
+    implements _$ArtistBadgeCopyWith<$Res> {
+  __$ArtistBadgeCopyWithImpl(this._self, this._then);
+
+  final _ArtistBadge _self;
+  final $Res Function(_ArtistBadge) _then;
+
+/// Create a copy of ArtistBadge
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? type = null,Object? iconUrl = freezed,Object? issuedAt = freezed,}) {
+  return _then(_ArtistBadge(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,iconUrl: freezed == iconUrl ? _self.iconUrl : iconUrl // ignore: cast_nullable_to_non_nullable
+as String?,issuedAt: freezed == issuedAt ? _self.issuedAt : issuedAt // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

@@ -55,7 +55,7 @@ extension SubscriptionEventPatterns on SubscriptionEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FetchPlans value)?  fetchPlans,TResult Function( _FetchMySubscription value)?  fetchMySubscription,TResult Function( _Subscribe value)?  subscribe,TResult Function( _PaymentSuccess value)?  paymentSuccess,TResult Function( _PaymentFailure value)?  paymentFailure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FetchPlans value)?  fetchPlans,TResult Function( _FetchMySubscription value)?  fetchMySubscription,TResult Function( _Subscribe value)?  subscribe,TResult Function( _PaymentSuccess value)?  paymentSuccess,TResult Function( _PaymentFailure value)?  paymentFailure,TResult Function( _PaymentFailure value)?  paymentFailure,TResult Function( _UpgradeSubscription value)?  upgradeSubscription,TResult Function( _PauseSubscription value)?  pauseSubscription,TResult Function( _ResumeSubscription value)?  resumeSubscription,TResult Function( _FetchHistory value)?  fetchHistory,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _FetchPlans() when fetchPlans != null:
@@ -63,7 +63,12 @@ return fetchPlans(_that);case _FetchMySubscription() when fetchMySubscription !=
 return fetchMySubscription(_that);case _Subscribe() when subscribe != null:
 return subscribe(_that);case _PaymentSuccess() when paymentSuccess != null:
 return paymentSuccess(_that);case _PaymentFailure() when paymentFailure != null:
-return paymentFailure(_that);case _:
+return paymentFailure(_that);case _PaymentFailure() when paymentFailure != null:
+return paymentFailure(_that);case _UpgradeSubscription() when upgradeSubscription != null:
+return upgradeSubscription(_that);case _PauseSubscription() when pauseSubscription != null:
+return pauseSubscription(_that);case _ResumeSubscription() when resumeSubscription != null:
+return resumeSubscription(_that);case _FetchHistory() when fetchHistory != null:
+return fetchHistory(_that);case _:
   return orElse();
 
 }
@@ -81,7 +86,7 @@ return paymentFailure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FetchPlans value)  fetchPlans,required TResult Function( _FetchMySubscription value)  fetchMySubscription,required TResult Function( _Subscribe value)  subscribe,required TResult Function( _PaymentSuccess value)  paymentSuccess,required TResult Function( _PaymentFailure value)  paymentFailure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FetchPlans value)  fetchPlans,required TResult Function( _FetchMySubscription value)  fetchMySubscription,required TResult Function( _Subscribe value)  subscribe,required TResult Function( _PaymentSuccess value)  paymentSuccess,required TResult Function( _PaymentFailure value)  paymentFailure,required TResult Function( _PaymentFailure value)  paymentFailure,required TResult Function( _UpgradeSubscription value)  upgradeSubscription,required TResult Function( _PauseSubscription value)  pauseSubscription,required TResult Function( _ResumeSubscription value)  resumeSubscription,required TResult Function( _FetchHistory value)  fetchHistory,}){
 final _that = this;
 switch (_that) {
 case _FetchPlans():
@@ -89,7 +94,12 @@ return fetchPlans(_that);case _FetchMySubscription():
 return fetchMySubscription(_that);case _Subscribe():
 return subscribe(_that);case _PaymentSuccess():
 return paymentSuccess(_that);case _PaymentFailure():
-return paymentFailure(_that);case _:
+return paymentFailure(_that);case _PaymentFailure():
+return paymentFailure(_that);case _UpgradeSubscription():
+return upgradeSubscription(_that);case _PauseSubscription():
+return pauseSubscription(_that);case _ResumeSubscription():
+return resumeSubscription(_that);case _FetchHistory():
+return fetchHistory(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -106,7 +116,7 @@ return paymentFailure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FetchPlans value)?  fetchPlans,TResult? Function( _FetchMySubscription value)?  fetchMySubscription,TResult? Function( _Subscribe value)?  subscribe,TResult? Function( _PaymentSuccess value)?  paymentSuccess,TResult? Function( _PaymentFailure value)?  paymentFailure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FetchPlans value)?  fetchPlans,TResult? Function( _FetchMySubscription value)?  fetchMySubscription,TResult? Function( _Subscribe value)?  subscribe,TResult? Function( _PaymentSuccess value)?  paymentSuccess,TResult? Function( _PaymentFailure value)?  paymentFailure,TResult? Function( _PaymentFailure value)?  paymentFailure,TResult? Function( _UpgradeSubscription value)?  upgradeSubscription,TResult? Function( _PauseSubscription value)?  pauseSubscription,TResult? Function( _ResumeSubscription value)?  resumeSubscription,TResult? Function( _FetchHistory value)?  fetchHistory,}){
 final _that = this;
 switch (_that) {
 case _FetchPlans() when fetchPlans != null:
@@ -114,7 +124,12 @@ return fetchPlans(_that);case _FetchMySubscription() when fetchMySubscription !=
 return fetchMySubscription(_that);case _Subscribe() when subscribe != null:
 return subscribe(_that);case _PaymentSuccess() when paymentSuccess != null:
 return paymentSuccess(_that);case _PaymentFailure() when paymentFailure != null:
-return paymentFailure(_that);case _:
+return paymentFailure(_that);case _PaymentFailure() when paymentFailure != null:
+return paymentFailure(_that);case _UpgradeSubscription() when upgradeSubscription != null:
+return upgradeSubscription(_that);case _PauseSubscription() when pauseSubscription != null:
+return pauseSubscription(_that);case _ResumeSubscription() when resumeSubscription != null:
+return resumeSubscription(_that);case _FetchHistory() when fetchHistory != null:
+return fetchHistory(_that);case _:
   return null;
 
 }
@@ -131,14 +146,19 @@ return paymentFailure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchPlans,TResult Function()?  fetchMySubscription,TResult Function( String planCode)?  subscribe,TResult Function( String paymentId,  String orderId,  String signature)?  paymentSuccess,TResult Function( String message)?  paymentFailure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchPlans,TResult Function()?  fetchMySubscription,TResult Function( String planCode)?  subscribe,TResult Function( String paymentId,  String orderId,  String signature)?  paymentSuccess,TResult Function( String message)?  paymentFailure,TResult Function( String message)?  paymentFailure,TResult Function( String planCode)?  upgradeSubscription,TResult Function( String reason)?  pauseSubscription,TResult Function()?  resumeSubscription,TResult Function()?  fetchHistory,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FetchPlans() when fetchPlans != null:
 return fetchPlans();case _FetchMySubscription() when fetchMySubscription != null:
 return fetchMySubscription();case _Subscribe() when subscribe != null:
 return subscribe(_that.planCode);case _PaymentSuccess() when paymentSuccess != null:
 return paymentSuccess(_that.paymentId,_that.orderId,_that.signature);case _PaymentFailure() when paymentFailure != null:
-return paymentFailure(_that.message);case _:
+return paymentFailure(_that.message);case _PaymentFailure() when paymentFailure != null:
+return paymentFailure(_that.message);case _UpgradeSubscription() when upgradeSubscription != null:
+return upgradeSubscription(_that.planCode);case _PauseSubscription() when pauseSubscription != null:
+return pauseSubscription(_that.reason);case _ResumeSubscription() when resumeSubscription != null:
+return resumeSubscription();case _FetchHistory() when fetchHistory != null:
+return fetchHistory();case _:
   return orElse();
 
 }
@@ -156,14 +176,19 @@ return paymentFailure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchPlans,required TResult Function()  fetchMySubscription,required TResult Function( String planCode)  subscribe,required TResult Function( String paymentId,  String orderId,  String signature)  paymentSuccess,required TResult Function( String message)  paymentFailure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchPlans,required TResult Function()  fetchMySubscription,required TResult Function( String planCode)  subscribe,required TResult Function( String paymentId,  String orderId,  String signature)  paymentSuccess,required TResult Function( String message)  paymentFailure,required TResult Function( String message)  paymentFailure,required TResult Function( String planCode)  upgradeSubscription,required TResult Function( String reason)  pauseSubscription,required TResult Function()  resumeSubscription,required TResult Function()  fetchHistory,}) {final _that = this;
 switch (_that) {
 case _FetchPlans():
 return fetchPlans();case _FetchMySubscription():
 return fetchMySubscription();case _Subscribe():
 return subscribe(_that.planCode);case _PaymentSuccess():
 return paymentSuccess(_that.paymentId,_that.orderId,_that.signature);case _PaymentFailure():
-return paymentFailure(_that.message);case _:
+return paymentFailure(_that.message);case _PaymentFailure():
+return paymentFailure(_that.message);case _UpgradeSubscription():
+return upgradeSubscription(_that.planCode);case _PauseSubscription():
+return pauseSubscription(_that.reason);case _ResumeSubscription():
+return resumeSubscription();case _FetchHistory():
+return fetchHistory();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -180,14 +205,19 @@ return paymentFailure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchPlans,TResult? Function()?  fetchMySubscription,TResult? Function( String planCode)?  subscribe,TResult? Function( String paymentId,  String orderId,  String signature)?  paymentSuccess,TResult? Function( String message)?  paymentFailure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchPlans,TResult? Function()?  fetchMySubscription,TResult? Function( String planCode)?  subscribe,TResult? Function( String paymentId,  String orderId,  String signature)?  paymentSuccess,TResult? Function( String message)?  paymentFailure,TResult? Function( String message)?  paymentFailure,TResult? Function( String planCode)?  upgradeSubscription,TResult? Function( String reason)?  pauseSubscription,TResult? Function()?  resumeSubscription,TResult? Function()?  fetchHistory,}) {final _that = this;
 switch (_that) {
 case _FetchPlans() when fetchPlans != null:
 return fetchPlans();case _FetchMySubscription() when fetchMySubscription != null:
 return fetchMySubscription();case _Subscribe() when subscribe != null:
 return subscribe(_that.planCode);case _PaymentSuccess() when paymentSuccess != null:
 return paymentSuccess(_that.paymentId,_that.orderId,_that.signature);case _PaymentFailure() when paymentFailure != null:
-return paymentFailure(_that.message);case _:
+return paymentFailure(_that.message);case _PaymentFailure() when paymentFailure != null:
+return paymentFailure(_that.message);case _UpgradeSubscription() when upgradeSubscription != null:
+return upgradeSubscription(_that.planCode);case _PauseSubscription() when pauseSubscription != null:
+return pauseSubscription(_that.reason);case _ResumeSubscription() when resumeSubscription != null:
+return resumeSubscription();case _FetchHistory() when fetchHistory != null:
+return fetchHistory();case _:
   return null;
 
 }
@@ -462,6 +492,268 @@ as String,
 }
 
 /// @nodoc
+
+
+class _PaymentFailure implements SubscriptionEvent {
+  const _PaymentFailure({required this.message});
+  
+
+ final  String message;
+
+/// Create a copy of SubscriptionEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PaymentFailureCopyWith<_PaymentFailure> get copyWith => __$PaymentFailureCopyWithImpl<_PaymentFailure>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PaymentFailure&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'SubscriptionEvent.paymentFailure(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PaymentFailureCopyWith<$Res> implements $SubscriptionEventCopyWith<$Res> {
+  factory _$PaymentFailureCopyWith(_PaymentFailure value, $Res Function(_PaymentFailure) _then) = __$PaymentFailureCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class __$PaymentFailureCopyWithImpl<$Res>
+    implements _$PaymentFailureCopyWith<$Res> {
+  __$PaymentFailureCopyWithImpl(this._self, this._then);
+
+  final _PaymentFailure _self;
+  final $Res Function(_PaymentFailure) _then;
+
+/// Create a copy of SubscriptionEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(_PaymentFailure(
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _UpgradeSubscription implements SubscriptionEvent {
+  const _UpgradeSubscription({required this.planCode});
+  
+
+ final  String planCode;
+
+/// Create a copy of SubscriptionEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UpgradeSubscriptionCopyWith<_UpgradeSubscription> get copyWith => __$UpgradeSubscriptionCopyWithImpl<_UpgradeSubscription>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpgradeSubscription&&(identical(other.planCode, planCode) || other.planCode == planCode));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,planCode);
+
+@override
+String toString() {
+  return 'SubscriptionEvent.upgradeSubscription(planCode: $planCode)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$UpgradeSubscriptionCopyWith<$Res> implements $SubscriptionEventCopyWith<$Res> {
+  factory _$UpgradeSubscriptionCopyWith(_UpgradeSubscription value, $Res Function(_UpgradeSubscription) _then) = __$UpgradeSubscriptionCopyWithImpl;
+@useResult
+$Res call({
+ String planCode
+});
+
+
+
+
+}
+/// @nodoc
+class __$UpgradeSubscriptionCopyWithImpl<$Res>
+    implements _$UpgradeSubscriptionCopyWith<$Res> {
+  __$UpgradeSubscriptionCopyWithImpl(this._self, this._then);
+
+  final _UpgradeSubscription _self;
+  final $Res Function(_UpgradeSubscription) _then;
+
+/// Create a copy of SubscriptionEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? planCode = null,}) {
+  return _then(_UpgradeSubscription(
+planCode: null == planCode ? _self.planCode : planCode // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _PauseSubscription implements SubscriptionEvent {
+  const _PauseSubscription({required this.reason});
+  
+
+ final  String reason;
+
+/// Create a copy of SubscriptionEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PauseSubscriptionCopyWith<_PauseSubscription> get copyWith => __$PauseSubscriptionCopyWithImpl<_PauseSubscription>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PauseSubscription&&(identical(other.reason, reason) || other.reason == reason));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,reason);
+
+@override
+String toString() {
+  return 'SubscriptionEvent.pauseSubscription(reason: $reason)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PauseSubscriptionCopyWith<$Res> implements $SubscriptionEventCopyWith<$Res> {
+  factory _$PauseSubscriptionCopyWith(_PauseSubscription value, $Res Function(_PauseSubscription) _then) = __$PauseSubscriptionCopyWithImpl;
+@useResult
+$Res call({
+ String reason
+});
+
+
+
+
+}
+/// @nodoc
+class __$PauseSubscriptionCopyWithImpl<$Res>
+    implements _$PauseSubscriptionCopyWith<$Res> {
+  __$PauseSubscriptionCopyWithImpl(this._self, this._then);
+
+  final _PauseSubscription _self;
+  final $Res Function(_PauseSubscription) _then;
+
+/// Create a copy of SubscriptionEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? reason = null,}) {
+  return _then(_PauseSubscription(
+reason: null == reason ? _self.reason : reason // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _ResumeSubscription implements SubscriptionEvent {
+  const _ResumeSubscription();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ResumeSubscription);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SubscriptionEvent.resumeSubscription()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _FetchHistory implements SubscriptionEvent {
+  const _FetchHistory();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FetchHistory);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SubscriptionEvent.fetchHistory()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
 mixin _$SubscriptionState {
 
 
@@ -505,7 +797,7 @@ extension SubscriptionStatePatterns on SubscriptionState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _PlansLoaded value)?  plansLoaded,TResult Function( _SubscriptionLoaded value)?  subscriptionLoaded,TResult Function( _Success value)?  success,TResult Function( _Error value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _PlansLoaded value)?  plansLoaded,TResult Function( _SubscriptionLoaded value)?  subscriptionLoaded,TResult Function( _Success value)?  success,TResult Function( _Error value)?  error,TResult Function( _HistoryLoaded value)?  historyLoaded,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -514,7 +806,8 @@ return loading(_that);case _PlansLoaded() when plansLoaded != null:
 return plansLoaded(_that);case _SubscriptionLoaded() when subscriptionLoaded != null:
 return subscriptionLoaded(_that);case _Success() when success != null:
 return success(_that);case _Error() when error != null:
-return error(_that);case _:
+return error(_that);case _HistoryLoaded() when historyLoaded != null:
+return historyLoaded(_that);case _:
   return orElse();
 
 }
@@ -532,7 +825,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _PlansLoaded value)  plansLoaded,required TResult Function( _SubscriptionLoaded value)  subscriptionLoaded,required TResult Function( _Success value)  success,required TResult Function( _Error value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _PlansLoaded value)  plansLoaded,required TResult Function( _SubscriptionLoaded value)  subscriptionLoaded,required TResult Function( _Success value)  success,required TResult Function( _Error value)  error,required TResult Function( _HistoryLoaded value)  historyLoaded,}){
 final _that = this;
 switch (_that) {
 case _Initial():
@@ -541,7 +834,8 @@ return loading(_that);case _PlansLoaded():
 return plansLoaded(_that);case _SubscriptionLoaded():
 return subscriptionLoaded(_that);case _Success():
 return success(_that);case _Error():
-return error(_that);case _:
+return error(_that);case _HistoryLoaded():
+return historyLoaded(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -558,7 +852,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _PlansLoaded value)?  plansLoaded,TResult? Function( _SubscriptionLoaded value)?  subscriptionLoaded,TResult? Function( _Success value)?  success,TResult? Function( _Error value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _PlansLoaded value)?  plansLoaded,TResult? Function( _SubscriptionLoaded value)?  subscriptionLoaded,TResult? Function( _Success value)?  success,TResult? Function( _Error value)?  error,TResult? Function( _HistoryLoaded value)?  historyLoaded,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -567,7 +861,8 @@ return loading(_that);case _PlansLoaded() when plansLoaded != null:
 return plansLoaded(_that);case _SubscriptionLoaded() when subscriptionLoaded != null:
 return subscriptionLoaded(_that);case _Success() when success != null:
 return success(_that);case _Error() when error != null:
-return error(_that);case _:
+return error(_that);case _HistoryLoaded() when historyLoaded != null:
+return historyLoaded(_that);case _:
   return null;
 
 }
@@ -584,7 +879,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<dynamic> plans)?  plansLoaded,TResult Function( Map<String, dynamic>? subscription)?  subscriptionLoaded,TResult Function( String message)?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<dynamic> plans)?  plansLoaded,TResult Function( Map<String, dynamic>? subscription)?  subscriptionLoaded,TResult Function( String message)?  success,TResult Function( String message)?  error,TResult Function( List<dynamic> history)?  historyLoaded,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -592,7 +887,8 @@ return loading();case _PlansLoaded() when plansLoaded != null:
 return plansLoaded(_that.plans);case _SubscriptionLoaded() when subscriptionLoaded != null:
 return subscriptionLoaded(_that.subscription);case _Success() when success != null:
 return success(_that.message);case _Error() when error != null:
-return error(_that.message);case _:
+return error(_that.message);case _HistoryLoaded() when historyLoaded != null:
+return historyLoaded(_that.history);case _:
   return orElse();
 
 }
@@ -610,7 +906,7 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<dynamic> plans)  plansLoaded,required TResult Function( Map<String, dynamic>? subscription)  subscriptionLoaded,required TResult Function( String message)  success,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<dynamic> plans)  plansLoaded,required TResult Function( Map<String, dynamic>? subscription)  subscriptionLoaded,required TResult Function( String message)  success,required TResult Function( String message)  error,required TResult Function( List<dynamic> history)  historyLoaded,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
@@ -618,7 +914,8 @@ return loading();case _PlansLoaded():
 return plansLoaded(_that.plans);case _SubscriptionLoaded():
 return subscriptionLoaded(_that.subscription);case _Success():
 return success(_that.message);case _Error():
-return error(_that.message);case _:
+return error(_that.message);case _HistoryLoaded():
+return historyLoaded(_that.history);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -635,7 +932,7 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<dynamic> plans)?  plansLoaded,TResult? Function( Map<String, dynamic>? subscription)?  subscriptionLoaded,TResult? Function( String message)?  success,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<dynamic> plans)?  plansLoaded,TResult? Function( Map<String, dynamic>? subscription)?  subscriptionLoaded,TResult? Function( String message)?  success,TResult? Function( String message)?  error,TResult? Function( List<dynamic> history)?  historyLoaded,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -643,7 +940,8 @@ return loading();case _PlansLoaded() when plansLoaded != null:
 return plansLoaded(_that.plans);case _SubscriptionLoaded() when subscriptionLoaded != null:
 return subscriptionLoaded(_that.subscription);case _Success() when success != null:
 return success(_that.message);case _Error() when error != null:
-return error(_that.message);case _:
+return error(_that.message);case _HistoryLoaded() when historyLoaded != null:
+return historyLoaded(_that.history);case _:
   return null;
 
 }
@@ -987,6 +1285,78 @@ class __$ErrorCopyWithImpl<$Res>
   return _then(_Error(
 message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _HistoryLoaded implements SubscriptionState {
+  const _HistoryLoaded({required final  List<dynamic> history}): _history = history;
+  
+
+ final  List<dynamic> _history;
+ List<dynamic> get history {
+  if (_history is EqualUnmodifiableListView) return _history;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_history);
+}
+
+
+/// Create a copy of SubscriptionState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$HistoryLoadedCopyWith<_HistoryLoaded> get copyWith => __$HistoryLoadedCopyWithImpl<_HistoryLoaded>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HistoryLoaded&&const DeepCollectionEquality().equals(other._history, _history));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_history));
+
+@override
+String toString() {
+  return 'SubscriptionState.historyLoaded(history: $history)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$HistoryLoadedCopyWith<$Res> implements $SubscriptionStateCopyWith<$Res> {
+  factory _$HistoryLoadedCopyWith(_HistoryLoaded value, $Res Function(_HistoryLoaded) _then) = __$HistoryLoadedCopyWithImpl;
+@useResult
+$Res call({
+ List<dynamic> history
+});
+
+
+
+
+}
+/// @nodoc
+class __$HistoryLoadedCopyWithImpl<$Res>
+    implements _$HistoryLoadedCopyWith<$Res> {
+  __$HistoryLoadedCopyWithImpl(this._self, this._then);
+
+  final _HistoryLoaded _self;
+  final $Res Function(_HistoryLoaded) _then;
+
+/// Create a copy of SubscriptionState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? history = null,}) {
+  return _then(_HistoryLoaded(
+history: null == history ? _self._history : history // ignore: cast_nullable_to_non_nullable
+as List<dynamic>,
   ));
 }
 

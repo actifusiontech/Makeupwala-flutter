@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 import '../../data/education_repository.dart';
 
 class MyBatchesScreen extends StatefulWidget {
@@ -27,22 +28,41 @@ class _MyBatchesScreenState extends State<MyBatchesScreen> {
         isLoading = true;
         error = null;
       });
-
-      // TODO: Get instituteId from user profile/context
-      // For now using a placeholder - this should come from auth state
-      final instituteId = 'YOUR_INSTITUTE_ID'; // Replace with actual institute ID
       
       final repository = Provider.of<EducationRepository>(context, listen: false);
+
+      // 1. Get My Institute ID
+      // This assumes the logged-in user is an Institute Owner/Admin
+      // If user is a student, we should ideally fetch Enrollments instead.
+      // For this screen (MyBatches - likely teacher view), we fetch institute.
+      String? instituteId;
+      try {
+        final institute = await repository.getMyInstitute();
+        instituteId = institute.id;
+      } catch (e) {
+        // Fallback or specific error handling if user has no institute
+        // For now, we propagate error to show in UI
+        throw Exception("Could not fetch Institute profile. Are you an institute? ($e)");
+      }
+
       final batchList = await repository.getBatches(instituteId);
 
       setState(() {
-        batches = batchList.map((batch) => {
-          'id': batch.id,
-          'name': batch.name,
-          'course': batch.courseId ?? 'General',
-          'schedule': '10:00 AM - 1:00 PM', // TODO: Add schedule to Batch model
-          'students': batch.students?.length ?? 0,
-          'nextClass': 'Today', // TODO: Calculate from schedule
+        batches = batchList.map((batch) {
+          // Calculate status/schedule
+          final isActive = batch.status == 'ACTIVE';
+          final scheduleText = (batch.startDate != null && batch.endDate != null)
+              ? '${_formatDate(batch.startDate!)} - ${_formatDate(batch.endDate!)}'
+              : 'Flexible Schedule';
+
+          return {
+            'id': batch.id,
+            'name': batch.name,
+            'course': batch.courseId ?? 'General',
+            'schedule': scheduleText, 
+            'students': batch.students?.length ?? 0,
+            'nextClass': isActive ? 'Active' : 'Ended', 
+          };
         }).toList();
         isLoading = false;
       });
@@ -52,6 +72,10 @@ class _MyBatchesScreenState extends State<MyBatchesScreen> {
         isLoading = false;
       });
     }
+  }
+
+  String _formatDate(DateTime date) {
+    return '${date.day}/${date.month}/${date.year}';
   }
 
   @override
@@ -69,6 +93,12 @@ class _MyBatchesScreenState extends State<MyBatchesScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.leaderboard, color: Colors.amber),
+            onPressed: () => context.push('/education/leaderboard'),
+          ),
+        ],
       ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())

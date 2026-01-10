@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../shared/theme/app_typography.dart';
 import '../../shared/theme/app_spacing.dart';
 import 'bloc/chat_bloc.dart';
 import 'data/chat_repository.dart';
+import '../../auth/bloc/auth_bloc.dart';
 
 class ChatScreen extends StatefulWidget {
   final String roomId;
@@ -37,6 +37,13 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Get Current User ID from AuthBloc
+    final authState = context.read<AuthBloc>().state;
+    String? currentUserId;
+    authState.whenOrNull(
+      authenticated: (user) => currentUserId = user.id,
+    );
+
     return BlocProvider.value(
       value: _chatBloc,
       child: Scaffold(
@@ -62,7 +69,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         itemCount: messages.length,
                         itemBuilder: (context, index) {
                           final message = messages[index];
-                          final isMe = message['sender_id'] != null; // TODO: Check actual user ID
+                          // 2. Fix isMe Logic
+                          final isMe = currentUserId != null && message['sender_id'] == currentUserId;
+                          
                           return Align(
                             alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
                             child: Container(

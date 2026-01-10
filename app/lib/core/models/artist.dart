@@ -21,8 +21,10 @@ class ArtistProfile with _$ArtistProfile {
     @Default(0) int reviewCount,
     String? city,
     @Default(false) bool isVerified,
+    @Default(false) bool isJobSeeker,
     ArtistKYC? kyc,
     @Default([]) List<ArtistBundle> bundles,
+    @Default([]) List<ArtistBadge> badges,
   }) = _ArtistProfile;
 
   factory ArtistProfile.fromJson(Map<String, dynamic> json) => _$ArtistProfileFromJson(json);
@@ -86,4 +88,17 @@ class ArtistBundleItem with _$ArtistBundleItem {
   }) = _ArtistBundleItem;
 
   factory ArtistBundleItem.fromJson(Map<String, dynamic> json) => _$ArtistBundleItemFromJson(json);
+}
+
+@freezed
+class ArtistBadge with _$ArtistBadge {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory ArtistBadge({
+    required String name,
+    required String type,
+    String? iconUrl,
+    String? issuedAt,
+  }) = _ArtistBadge;
+
+  factory ArtistBadge.fromJson(Map<String, dynamic> json) => _$ArtistBadgeFromJson(json);
 }

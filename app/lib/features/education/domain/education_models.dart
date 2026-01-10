@@ -137,5 +137,20 @@ class AttendanceLog with _$AttendanceLog {
   }) = _AttendanceLog;
 
   factory AttendanceLog.fromJson(Map<String, dynamic> json) => _$AttendanceLogFromJson(json);
+  factory AttendanceLog.fromJson(Map<String, dynamic> json) => _$AttendanceLogFromJson(json);
+}
+
+@freezed
+class TopStudent with _$TopStudent {
+  // Using explicit annotation to match backend snake_case if global config doesn't cover it
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory TopStudent({
+    required String studentId,
+    required String studentName,
+    @Default(0) int completedCourses,
+    @Default(0.0) double averageScore,
+  }) = _TopStudent;
+
+  factory TopStudent.fromJson(Map<String, dynamic> json) => _$TopStudentFromJson(json);
 }
 

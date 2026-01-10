@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart';
 import '../../shared/theme/app_colors.dart';
 import '../../shared/theme/app_typography.dart';
 import '../../shared/theme/app_spacing.dart';
@@ -9,13 +10,21 @@ import '../auth/bloc/auth_bloc.dart';
 import '../booking/bloc/booking_bloc.dart';
 import '../profile/bloc/profile_bloc.dart';
 import '../booking/data/booking_repository.dart';
+import '../artist/bloc/earnings_bloc.dart';
+import '../artist/data/earnings_repository.dart';
 import 'widgets/artist_stats_widget.dart';
+import 'widgets/subscription_widget.dart';
 
 class ArtistHomeScreen extends StatelessWidget {
   const ArtistHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Get Dio instance from context or create one
+    final dio = Dio(BaseOptions(
+      baseUrl: 'https://api.makeupwallah.com/api/v1/makeupwala',
+    ));
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -24,6 +33,10 @@ class ArtistHomeScreen extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ProfileBloc()..add(const ProfileEvent.fetchProfile(isArtist: true)),
+        ),
+        BlocProvider(
+          create: (context) => EarningsBloc(repository: EarningsRepository(dio))
+            ..add(const EarningsEvent.fetchEarningsStats()),
         ),
       ],
       child: const _ArtistHomeView(),
@@ -52,14 +65,6 @@ class _ArtistHomeView extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.person_outline),
             onPressed: () {
-              // Navigate to own profile (using artist ID from auth state if available, or just a generic profile route)
-              // Since we don't have the ID easily here without BlocBuilder, let's just use the profile route which is for customers but maybe we can reuse or redirect.
-              // Actually, ArtistProfileScreen requires an ID. We need to get it from AuthBloc.
-              // For now, let's just print or show a snackbar if we can't get ID, or better, wrap the AppBar in BlocBuilder.
-              // But wait, the body is already wrapped.
-              // Let's just add it to the body or use a cleaner way.
-              // Simpler: Just navigate to '/profile' which is the user profile, but artists also have a "public" profile.
-              // Let's assume '/profile' handles the "My Profile" view for logged in user (artist or customer).
               context.push('/profile'); 
             },
           ),
@@ -67,6 +72,7 @@ class _ArtistHomeView extends StatelessWidget {
             icon: const Icon(Icons.refresh),
             onPressed: () {
               context.read<BookingBloc>().add(const BookingEvent.fetchBookings(isArtist: true));
+              context.read<EarningsBloc>().add(const EarningsEvent.fetchEarningsStats());
             },
           ),
           IconButton(
@@ -94,21 +100,41 @@ class _ArtistHomeView extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.lg),
 
-                  // Stats Section
-                  BlocBuilder<BookingBloc, BookingState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        loaded: (state) {
-                          final bookings = state.bookings;
-                          final totalBookings = bookings.length;
-                          // Mock earnings calculation: 5000 per booking
-                          final totalEarnings = totalBookings * 5000.0; 
-                          return ArtistStatsWidget(
-                            totalBookings: totalBookings,
-                            totalEarnings: totalEarnings,
-                          );
-                        },
-                        orElse: () => const ArtistStatsWidget(totalBookings: 0, totalEarnings: 0),
+                  // Stats Section - NOW WITH REAL DATA
+                  BlocBuilder<EarningsBloc, EarningsState>(
+                    builder: (context, earningsState) {
+                      return earningsState.maybeWhen(
+                        statsLoaded: (stats) => ArtistStatsWidget(
+                          totalBookings: stats.totalBookings,
+                          totalEarnings: stats.totalEarnings,
+                        ),
+                        loading: () => const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        error: (message) => ArtistStatsWidget(
+                          totalBookings: 0,
+                          totalEarnings: 0,
+                        ),
+                        orElse: () => const ArtistStatsWidget(
+                          totalBookings: 0,
+                          totalEarnings: 0,
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: AppSpacing.xxl),
+
+                  // Subscription Status
+                  SubscriptionWidget(
+                    planName: 'Free', // TODO: Fetch from subscription API
+                    bookingsUsed: 3,
+                    bookingsLimit: 5,
+                    contactsUsed: 8,
+                    contactsLimit: 10,
+                    onUpgrade: () {
+                      // TODO: Navigate to subscription page
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Subscription upgrade coming soon!')),
                       );
                     },
                   ),
@@ -153,6 +179,44 @@ class _ArtistHomeView extends StatelessWidget {
                     ),
                   ),
                   
+                  const SizedBox(height: AppSpacing.md),
+                  
+                  InkWell(
+                    onPressed: () => context.push('/availability'),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: AppColors.primary.withOpacity(0.2)),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.calendar_today, color: Colors.white),
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Manage Availability', style: AppTypography.titleMedium.copyWith(color: AppColors.primary)),
+                                Text('Set your available dates & times', style: AppTypography.bodySmall),
+                              ],
+                            ),
+                          ),
+                          const Icon(Icons.chevron_right, color: AppColors.primary),
+                        ],
+                      ),
+                    ),
+                  ),
+                  
                   const SizedBox(height: AppSpacing.xxl),
                   
                   // Portfolio Section
@@ -179,18 +243,73 @@ class _ArtistHomeView extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: AppSpacing.md),
-                  SizedBox(
-                    height: 100,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        _buildPortfolioItem('https://via.placeholder.com/150'),
-                        const SizedBox(width: AppSpacing.md),
-                        _buildPortfolioItem('https://via.placeholder.com/150'),
-                        const SizedBox(width: AppSpacing.md),
-                        _buildPortfolioItem('https://via.placeholder.com/150'),
-                      ],
-                    ),
+                  
+                  // Portfolio Images - NOW WITH REAL DATA
+                  BlocBuilder<ProfileBloc, ProfileState>(
+                    builder: (context, profileState) {
+                      return profileState.maybeWhen(
+                        loaded: (profile) {
+                          final media = profile.media ?? [];
+                          
+                          if (media.isEmpty) {
+                            return Container(
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: AppColors.grey100,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: AppColors.grey300),
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.photo_library_outlined, 
+                                      color: AppColors.grey400, size: 32),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'No portfolio images yet',
+                                      style: AppTypography.bodySmall.copyWith(
+                                        color: AppColors.grey500,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      'Tap the camera icon to add images',
+                                      style: AppTypography.bodySmall.copyWith(
+                                        color: AppColors.grey400,
+                                        fontSize: 11,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }
+                          
+                          return SizedBox(
+                            height: 100,
+                            child: ListView.separated(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: media.length,
+                              separatorBuilder: (context, index) => 
+                                const SizedBox(width: AppSpacing.md),
+                              itemBuilder: (context, index) {
+                                return _buildPortfolioItem(media[index].url);
+                              },
+                            ),
+                          );
+                        },
+                        loading: () => const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        orElse: () => Container(
+                          height: 100,
+                          child: const Center(
+                            child: Text('Unable to load portfolio'),
+                          ),
+                        ),
+                      );
+                    },
                   ),
 
                   const SizedBox(height: AppSpacing.xxl),

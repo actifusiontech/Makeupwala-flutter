@@ -33,13 +33,19 @@ class ChatListScreen extends StatelessWidget {
                   itemCount: rooms.length,
                   itemBuilder: (context, index) {
                     final room = rooms[index];
-                    return ListTile(
-                      leading: const CircleAvatar(
-                        backgroundColor: AppColors.primary,
-                        child: Icon(Icons.person, color: Colors.white),
-                      ),
-                      title: Text('Artist ID: ${room['artist_id']}'), // TODO: Fetch artist name
-                      subtitle: Text('Last updated: ${room['updated_at']}'),
+                      final otherName = room['other_user_name'] ?? 'User';
+                      final otherImage = room['other_user_avatar'];
+
+                      return ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: AppColors.primary,
+                          backgroundImage: otherImage != null && otherImage.isNotEmpty ? NetworkImage(otherImage) : null,
+                          child: (otherImage == null || otherImage.isEmpty) 
+                              ? Text(otherName.isNotEmpty ? otherName[0].toUpperCase() : '?') 
+                              : null,
+                        ),
+                        title: Text(otherName),
+                        subtitle: Text('Last updated: ${room['updated_at']}'),
                       onTap: () {
                         context.push('/chat/${room['id']}');
                       },

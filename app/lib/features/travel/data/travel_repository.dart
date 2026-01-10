@@ -69,6 +69,36 @@ class TravelRepository {
     }
   }
 
+  /// Get list of active retreats
+  Future<List<RetreatModel>> getRetreats() async {
+    try {
+      final response = await _dio.get('/travel/retreats/packages');
+      return (response.data as List)
+          .map((json) => RetreatModel.fromJson(json))
+          .toList();
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
+  /// Book a retreat
+  Future<void> bookRetreat({
+    required String packageId,
+    required String participantName,
+  }) async {
+    try {
+      await _dio.post(
+        '/travel/retreats/bookings',
+        data: {
+          'retreat_package_id': packageId,
+          'participant_name': participantName,
+        },
+      );
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
   Exception _handleError(dynamic error) {
     if (error is DioException) {
       if (error.response?.statusCode == 404) {

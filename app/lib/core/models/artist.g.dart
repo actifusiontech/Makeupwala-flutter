@@ -29,12 +29,18 @@ _ArtistProfile _$ArtistProfileFromJson(Map<String, dynamic> json) =>
       reviewCount: (json['review_count'] as num?)?.toInt() ?? 0,
       city: json['city'] as String?,
       isVerified: json['is_verified'] as bool? ?? false,
+      isJobSeeker: json['is_job_seeker'] as bool? ?? false,
       kyc: json['kyc'] == null
           ? null
           : ArtistKYC.fromJson(json['kyc'] as Map<String, dynamic>),
       bundles:
           (json['bundles'] as List<dynamic>?)
               ?.map((e) => ArtistBundle.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      badges:
+          (json['badges'] as List<dynamic>?)
+              ?.map((e) => ArtistBadge.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
@@ -54,8 +60,10 @@ Map<String, dynamic> _$ArtistProfileToJson(_ArtistProfile instance) =>
       'review_count': instance.reviewCount,
       'city': instance.city,
       'is_verified': instance.isVerified,
+      'is_job_seeker': instance.isJobSeeker,
       'kyc': instance.kyc,
       'bundles': instance.bundles,
+      'badges': instance.badges,
     };
 
 _ArtistService _$ArtistServiceFromJson(Map<String, dynamic> json) =>
@@ -143,4 +151,19 @@ Map<String, dynamic> _$ArtistBundleItemToJson(_ArtistBundleItem instance) =>
       'service_id': instance.serviceId,
       'service_name': instance.serviceName,
       'quantity': instance.quantity,
+    };
+
+_ArtistBadge _$ArtistBadgeFromJson(Map<String, dynamic> json) => _ArtistBadge(
+  name: json['name'] as String,
+  type: json['type'] as String,
+  iconUrl: json['icon_url'] as String?,
+  issuedAt: json['issued_at'] as String?,
+);
+
+Map<String, dynamic> _$ArtistBadgeToJson(_ArtistBadge instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'type': instance.type,
+      'icon_url': instance.iconUrl,
+      'issued_at': instance.issuedAt,
     };
