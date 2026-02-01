@@ -269,8 +269,7 @@ class __$$BookingImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$BookingImpl implements _Booking {
   const _$BookingImpl({
     required this.id,

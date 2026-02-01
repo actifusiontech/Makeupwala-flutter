@@ -181,8 +181,7 @@ class __$$LoyaltyBalanceImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$LoyaltyBalanceImpl implements _LoyaltyBalance {
   const _$LoyaltyBalanceImpl({
     required this.id,
@@ -488,8 +487,7 @@ class __$$LoyaltyTransactionImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$LoyaltyTransactionImpl implements _LoyaltyTransaction {
   const _$LoyaltyTransactionImpl({
     required this.id,
@@ -814,8 +812,7 @@ class __$$ReferralRecordImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$ReferralRecordImpl implements _ReferralRecord {
   const _$ReferralRecordImpl({
     required this.id,
@@ -1100,8 +1097,7 @@ class __$$LeaderboardEntryImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$LeaderboardEntryImpl implements _LeaderboardEntry {
   const _$LeaderboardEntryImpl({
     required this.rank,

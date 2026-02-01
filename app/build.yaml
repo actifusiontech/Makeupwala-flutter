@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          # Use snake_case for all JSON keys by default
+          field_rename: snake
+          # Implicitly generate fromJson/toJson where possible
+          explicit_to_json: false

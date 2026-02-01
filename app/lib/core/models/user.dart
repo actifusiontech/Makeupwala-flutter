@@ -8,7 +8,6 @@ part 'user.g.dart';
 abstract class User with _$User {
   const User._();
   
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory User({
     required String id,
     required String fullName,

@@ -6,7 +6,6 @@ part 'artist.g.dart';
 
 @freezed
 class ArtistProfile with _$ArtistProfile {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ArtistProfile({
     required String id,
     required String userId,
@@ -32,7 +31,6 @@ class ArtistProfile with _$ArtistProfile {
 
 @freezed
 class ArtistService with _$ArtistService {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ArtistService({
     required String id,
     required String name,
@@ -46,7 +44,6 @@ class ArtistService with _$ArtistService {
 
 @freezed
 class ArtistKYC with _$ArtistKYC {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ArtistKYC({
     required String id,
     required String status, // 'pending', 'approved', 'rejected'
@@ -63,7 +60,6 @@ class ArtistKYC with _$ArtistKYC {
 
 @freezed
 class ArtistBundle with _$ArtistBundle {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ArtistBundle({
     required String id,
     required String name,
@@ -80,7 +76,6 @@ class ArtistBundle with _$ArtistBundle {
 
 @freezed
 class ArtistBundleItem with _$ArtistBundleItem {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ArtistBundleItem({
     required String serviceId,
     required String serviceName,
@@ -92,7 +87,6 @@ class ArtistBundleItem with _$ArtistBundleItem {
 
 @freezed
 class ArtistBadge with _$ArtistBadge {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ArtistBadge({
     required String name,
     required String type,

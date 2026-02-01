@@ -31,7 +31,16 @@ class _CustomerHomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text('MakeUpWallah'),
+        title: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset('assets/images/splash_logo.png', height: 32),
+            ),
+            const SizedBox(width: AppSpacing.sm),
+            const Text('MakeupWallah'),
+          ],
+        ),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
         actions: [

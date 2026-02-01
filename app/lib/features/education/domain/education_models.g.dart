@@ -11,10 +11,10 @@ _$InstituteImpl _$$InstituteImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String?,
-      logoUrl: json['logoUrl'] as String?,
+      logoUrl: json['logo_url'] as String?,
       website: json['website'] as String?,
       address: json['address'] as String?,
-      isVerified: json['isVerified'] as bool? ?? false,
+      isVerified: json['is_verified'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$InstituteImplToJson(_$InstituteImpl instance) =>
@@ -22,21 +22,21 @@ Map<String, dynamic> _$$InstituteImplToJson(_$InstituteImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'logoUrl': instance.logoUrl,
+      'logo_url': instance.logoUrl,
       'website': instance.website,
       'address': instance.address,
-      'isVerified': instance.isVerified,
+      'is_verified': instance.isVerified,
     };
 
 _$CourseImpl _$$CourseImplFromJson(Map<String, dynamic> json) => _$CourseImpl(
   id: json['id'] as String,
-  instituteId: json['instituteId'] as String,
+  instituteId: json['institute_id'] as String,
   title: json['title'] as String,
   description: json['description'] as String?,
-  thumbnailUrl: json['thumbnailUrl'] as String?,
+  thumbnailUrl: json['thumbnail_url'] as String?,
   category: json['category'] as String?,
-  feeAmount: (json['feeAmount'] as num?)?.toDouble() ?? 0.0,
-  durationWeeks: (json['durationWeeks'] as num?)?.toInt() ?? 0,
+  feeAmount: (json['fee_amount'] as num?)?.toDouble() ?? 0.0,
+  durationWeeks: (json['duration_weeks'] as num?)?.toInt() ?? 0,
   level: json['level'] as String? ?? 'beginner',
   lessons: (json['lessons'] as List<dynamic>?)
       ?.map((e) => Lesson.fromJson(e as Map<String, dynamic>))
@@ -46,53 +46,53 @@ _$CourseImpl _$$CourseImplFromJson(Map<String, dynamic> json) => _$CourseImpl(
 Map<String, dynamic> _$$CourseImplToJson(_$CourseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'instituteId': instance.instituteId,
+      'institute_id': instance.instituteId,
       'title': instance.title,
       'description': instance.description,
-      'thumbnailUrl': instance.thumbnailUrl,
+      'thumbnail_url': instance.thumbnailUrl,
       'category': instance.category,
-      'feeAmount': instance.feeAmount,
-      'durationWeeks': instance.durationWeeks,
+      'fee_amount': instance.feeAmount,
+      'duration_weeks': instance.durationWeeks,
       'level': instance.level,
       'lessons': instance.lessons,
     };
 
 _$LessonImpl _$$LessonImplFromJson(Map<String, dynamic> json) => _$LessonImpl(
   id: json['id'] as String,
-  courseId: json['courseId'] as String,
+  courseId: json['course_id'] as String,
   title: json['title'] as String,
   description: json['description'] as String?,
-  videoUrl: json['videoUrl'] as String,
-  contentText: json['contentText'] as String?,
-  sequenceOrder: (json['sequenceOrder'] as num).toInt(),
-  isPreview: json['isPreview'] as bool? ?? false,
-  isCompleted: json['isCompleted'] as bool? ?? false,
+  videoUrl: json['video_url'] as String,
+  contentText: json['content_text'] as String?,
+  sequenceOrder: (json['sequence_order'] as num).toInt(),
+  isPreview: json['is_preview'] as bool? ?? false,
+  isCompleted: json['is_completed'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$$LessonImplToJson(_$LessonImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'courseId': instance.courseId,
+      'course_id': instance.courseId,
       'title': instance.title,
       'description': instance.description,
-      'videoUrl': instance.videoUrl,
-      'contentText': instance.contentText,
-      'sequenceOrder': instance.sequenceOrder,
-      'isPreview': instance.isPreview,
-      'isCompleted': instance.isCompleted,
+      'video_url': instance.videoUrl,
+      'content_text': instance.contentText,
+      'sequence_order': instance.sequenceOrder,
+      'is_preview': instance.isPreview,
+      'is_completed': instance.isCompleted,
     };
 
 _$EnrollmentImpl _$$EnrollmentImplFromJson(Map<String, dynamic> json) =>
     _$EnrollmentImpl(
       id: json['id'] as String,
-      courseId: json['courseId'] as String,
-      studentId: json['studentId'] as String,
+      courseId: json['course_id'] as String,
+      studentId: json['student_id'] as String,
       status: json['status'] as String? ?? 'enrolled',
-      progressPercentage: (json['progressPercentage'] as num?)?.toInt() ?? 0,
-      enrolledAt: DateTime.parse(json['enrolledAt'] as String),
-      completedAt: json['completedAt'] == null
+      progressPercentage: (json['progress_percentage'] as num?)?.toInt() ?? 0,
+      enrolledAt: DateTime.parse(json['enrolled_at'] as String),
+      completedAt: json['completed_at'] == null
           ? null
-          : DateTime.parse(json['completedAt'] as String),
+          : DateTime.parse(json['completed_at'] as String),
       course: json['course'] == null
           ? null
           : Course.fromJson(json['course'] as Map<String, dynamic>),
@@ -101,12 +101,12 @@ _$EnrollmentImpl _$$EnrollmentImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$EnrollmentImplToJson(_$EnrollmentImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'courseId': instance.courseId,
-      'studentId': instance.studentId,
+      'course_id': instance.courseId,
+      'student_id': instance.studentId,
       'status': instance.status,
-      'progressPercentage': instance.progressPercentage,
-      'enrolledAt': instance.enrolledAt.toIso8601String(),
-      'completedAt': instance.completedAt?.toIso8601String(),
+      'progress_percentage': instance.progressPercentage,
+      'enrolled_at': instance.enrolledAt.toIso8601String(),
+      'completed_at': instance.completedAt?.toIso8601String(),
       'course': instance.course,
     };
 
@@ -114,41 +114,41 @@ _$PlacementListingImpl _$$PlacementListingImplFromJson(
   Map<String, dynamic> json,
 ) => _$PlacementListingImpl(
   id: json['id'] as String,
-  instituteId: json['instituteId'] as String,
+  instituteId: json['institute_id'] as String,
   title: json['title'] as String,
-  companyName: json['companyName'] as String,
+  companyName: json['company_name'] as String,
   location: json['location'] as String?,
   description: json['description'] as String?,
-  stipendAmount: (json['stipendAmount'] as num?)?.toDouble(),
-  listingType: json['listingType'] as String? ?? 'job',
-  isActive: json['isActive'] as bool? ?? true,
+  stipendAmount: (json['stipend_amount'] as num?)?.toDouble(),
+  listingType: json['listing_type'] as String? ?? 'job',
+  isActive: json['is_active'] as bool? ?? true,
 );
 
 Map<String, dynamic> _$$PlacementListingImplToJson(
   _$PlacementListingImpl instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'instituteId': instance.instituteId,
+  'institute_id': instance.instituteId,
   'title': instance.title,
-  'companyName': instance.companyName,
+  'company_name': instance.companyName,
   'location': instance.location,
   'description': instance.description,
-  'stipendAmount': instance.stipendAmount,
-  'listingType': instance.listingType,
-  'isActive': instance.isActive,
+  'stipend_amount': instance.stipendAmount,
+  'listing_type': instance.listingType,
+  'is_active': instance.isActive,
 };
 
 _$BatchImpl _$$BatchImplFromJson(Map<String, dynamic> json) => _$BatchImpl(
   id: json['id'] as String,
-  instituteId: json['instituteId'] as String,
-  courseId: json['courseId'] as String?,
+  instituteId: json['institute_id'] as String,
+  courseId: json['course_id'] as String?,
   name: json['name'] as String,
-  startDate: json['startDate'] == null
+  startDate: json['start_date'] == null
       ? null
-      : DateTime.parse(json['startDate'] as String),
-  endDate: json['endDate'] == null
+      : DateTime.parse(json['start_date'] as String),
+  endDate: json['end_date'] == null
       ? null
-      : DateTime.parse(json['endDate'] as String),
+      : DateTime.parse(json['end_date'] as String),
   status: json['status'] as String? ?? 'ACTIVE',
   students: (json['students'] as List<dynamic>?)
       ?.map((e) => BatchStudent.fromJson(e as Map<String, dynamic>))
@@ -161,11 +161,11 @@ _$BatchImpl _$$BatchImplFromJson(Map<String, dynamic> json) => _$BatchImpl(
 Map<String, dynamic> _$$BatchImplToJson(_$BatchImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'instituteId': instance.instituteId,
-      'courseId': instance.courseId,
+      'institute_id': instance.instituteId,
+      'course_id': instance.courseId,
       'name': instance.name,
-      'startDate': instance.startDate?.toIso8601String(),
-      'endDate': instance.endDate?.toIso8601String(),
+      'start_date': instance.startDate?.toIso8601String(),
+      'end_date': instance.endDate?.toIso8601String(),
       'status': instance.status,
       'students': instance.students,
       'faculty': instance.faculty,
@@ -173,50 +173,50 @@ Map<String, dynamic> _$$BatchImplToJson(_$BatchImpl instance) =>
 
 _$BatchStudentImpl _$$BatchStudentImplFromJson(Map<String, dynamic> json) =>
     _$BatchStudentImpl(
-      batchId: json['batchId'] as String,
-      studentId: json['studentId'] as String,
-      enrolledAt: DateTime.parse(json['enrolledAt'] as String),
+      batchId: json['batch_id'] as String,
+      studentId: json['student_id'] as String,
+      enrolledAt: DateTime.parse(json['enrolled_at'] as String),
     );
 
 Map<String, dynamic> _$$BatchStudentImplToJson(_$BatchStudentImpl instance) =>
     <String, dynamic>{
-      'batchId': instance.batchId,
-      'studentId': instance.studentId,
-      'enrolledAt': instance.enrolledAt.toIso8601String(),
+      'batch_id': instance.batchId,
+      'student_id': instance.studentId,
+      'enrolled_at': instance.enrolledAt.toIso8601String(),
     };
 
 _$BatchFacultyImpl _$$BatchFacultyImplFromJson(Map<String, dynamic> json) =>
     _$BatchFacultyImpl(
-      batchId: json['batchId'] as String,
-      facultyId: json['facultyId'] as String,
-      assignedAt: DateTime.parse(json['assignedAt'] as String),
+      batchId: json['batch_id'] as String,
+      facultyId: json['faculty_id'] as String,
+      assignedAt: DateTime.parse(json['assigned_at'] as String),
     );
 
 Map<String, dynamic> _$$BatchFacultyImplToJson(_$BatchFacultyImpl instance) =>
     <String, dynamic>{
-      'batchId': instance.batchId,
-      'facultyId': instance.facultyId,
-      'assignedAt': instance.assignedAt.toIso8601String(),
+      'batch_id': instance.batchId,
+      'faculty_id': instance.facultyId,
+      'assigned_at': instance.assignedAt.toIso8601String(),
     };
 
 _$AttendanceLogImpl _$$AttendanceLogImplFromJson(Map<String, dynamic> json) =>
     _$AttendanceLogImpl(
       id: json['id'] as String,
-      batchId: json['batchId'] as String,
-      studentId: json['studentId'] as String,
+      batchId: json['batch_id'] as String,
+      studentId: json['student_id'] as String,
       date: json['date'] as String,
       status: json['status'] as String,
-      markedBy: json['markedBy'] as String?,
+      markedBy: json['marked_by'] as String?,
     );
 
 Map<String, dynamic> _$$AttendanceLogImplToJson(_$AttendanceLogImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'batchId': instance.batchId,
-      'studentId': instance.studentId,
+      'batch_id': instance.batchId,
+      'student_id': instance.studentId,
       'date': instance.date,
       'status': instance.status,
-      'markedBy': instance.markedBy,
+      'marked_by': instance.markedBy,
     };
 
 _$TopStudentImpl _$$TopStudentImplFromJson(Map<String, dynamic> json) =>

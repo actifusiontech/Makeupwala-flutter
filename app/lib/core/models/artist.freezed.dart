@@ -343,8 +343,7 @@ class __$$ArtistProfileImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$ArtistProfileImpl implements _ArtistProfile {
   const _$ArtistProfileImpl({
     required this.id,
@@ -734,8 +733,7 @@ class __$$ArtistServiceImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$ArtistServiceImpl implements _ArtistService {
   const _$ArtistServiceImpl({
     required this.id,
@@ -1019,8 +1017,7 @@ class __$$ArtistKYCImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$ArtistKYCImpl implements _ArtistKYC {
   const _$ArtistKYCImpl({
     required this.id,
@@ -1340,8 +1337,7 @@ class __$$ArtistBundleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$ArtistBundleImpl implements _ArtistBundle {
   const _$ArtistBundleImpl({
     required this.id,
@@ -1594,8 +1590,7 @@ class __$$ArtistBundleItemImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$ArtistBundleItemImpl implements _ArtistBundleItem {
   const _$ArtistBundleItemImpl({
     required this.serviceId,
@@ -1808,8 +1803,7 @@ class __$$ArtistBadgeImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$ArtistBadgeImpl implements _ArtistBadge {
   const _$ArtistBadgeImpl({
     required this.name,

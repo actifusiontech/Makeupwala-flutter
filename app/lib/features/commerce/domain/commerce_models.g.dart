@@ -9,182 +9,182 @@ part of 'commerce_models.dart';
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: json['id'] as String,
-      brandId: json['brandId'] as String,
+      brandId: json['brand_id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
       category: json['category'] as String,
       sku: json['sku'] as String,
-      wholesalePrice: (json['wholesalePrice'] as num).toDouble(),
-      retailPrice: (json['retailPrice'] as num).toDouble(),
-      taxPercentage: (json['taxPercentage'] as num?)?.toDouble() ?? 18.0,
-      stockQuantity: (json['stockQuantity'] as num?)?.toInt() ?? 0,
-      isSustainable: json['isSustainable'] as bool? ?? false,
+      wholesalePrice: (json['wholesale_price'] as num).toDouble(),
+      retailPrice: (json['retail_price'] as num).toDouble(),
+      taxPercentage: (json['tax_percentage'] as num?)?.toDouble() ?? 18.0,
+      stockQuantity: (json['stock_quantity'] as num?)?.toInt() ?? 0,
+      isSustainable: json['is_sustainable'] as bool? ?? false,
       imageUrls:
-          (json['imageUrls'] as List<dynamic>?)
+          (json['image_urls'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
       status: json['status'] as String? ?? 'active',
-      createdAt: json['createdAt'] == null
+      createdAt: json['created_at'] == null
           ? null
-          : DateTime.parse(json['createdAt'] as String),
+          : DateTime.parse(json['created_at'] as String),
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'brandId': instance.brandId,
+      'brand_id': instance.brandId,
       'name': instance.name,
       'description': instance.description,
       'category': instance.category,
       'sku': instance.sku,
-      'wholesalePrice': instance.wholesalePrice,
-      'retailPrice': instance.retailPrice,
-      'taxPercentage': instance.taxPercentage,
-      'stockQuantity': instance.stockQuantity,
-      'isSustainable': instance.isSustainable,
-      'imageUrls': instance.imageUrls,
+      'wholesale_price': instance.wholesalePrice,
+      'retail_price': instance.retailPrice,
+      'tax_percentage': instance.taxPercentage,
+      'stock_quantity': instance.stockQuantity,
+      'is_sustainable': instance.isSustainable,
+      'image_urls': instance.imageUrls,
       'status': instance.status,
-      'createdAt': instance.createdAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
     };
 
 _$ArtistStoreItemImpl _$$ArtistStoreItemImplFromJson(
   Map<String, dynamic> json,
 ) => _$ArtistStoreItemImpl(
   id: json['id'] as String,
-  artistId: json['artistId'] as String,
-  productId: json['productId'] as String,
+  artistId: json['artist_id'] as String,
+  productId: json['product_id'] as String,
   product: json['product'] == null
       ? null
       : Product.fromJson(json['product'] as Map<String, dynamic>),
   commissionPercentage:
-      (json['commissionPercentage'] as num?)?.toDouble() ?? 10.0,
-  isFeatured: json['isFeatured'] as bool? ?? false,
+      (json['commission_percentage'] as num?)?.toDouble() ?? 10.0,
+  isFeatured: json['is_featured'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$$ArtistStoreItemImplToJson(
   _$ArtistStoreItemImpl instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'artistId': instance.artistId,
-  'productId': instance.productId,
+  'artist_id': instance.artistId,
+  'product_id': instance.productId,
   'product': instance.product,
-  'commissionPercentage': instance.commissionPercentage,
-  'isFeatured': instance.isFeatured,
+  'commission_percentage': instance.commissionPercentage,
+  'is_featured': instance.isFeatured,
 };
 
 _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
   id: json['id'] as String,
-  buyerId: json['buyerId'] as String,
-  buyerType: json['buyerType'] as String,
-  orderType: json['orderType'] as String,
-  referringArtistId: json['referringArtistId'] as String?,
-  totalAmount: (json['totalAmount'] as num).toDouble(),
-  taxAmount: (json['taxAmount'] as num).toDouble(),
-  shippingAddress: json['shippingAddress'] as String,
+  buyerId: json['buyer_id'] as String,
+  buyerType: json['buyer_type'] as String,
+  orderType: json['order_type'] as String,
+  referringArtistId: json['referring_artist_id'] as String?,
+  totalAmount: (json['total_amount'] as num).toDouble(),
+  taxAmount: (json['tax_amount'] as num).toDouble(),
+  shippingAddress: json['shipping_address'] as String,
   gstin: json['gstin'] as String?,
-  paymentStatus: json['paymentStatus'] as String? ?? 'pending',
-  orderStatus: json['orderStatus'] as String? ?? 'placed',
+  paymentStatus: json['payment_status'] as String? ?? 'pending',
+  orderStatus: json['order_status'] as String? ?? 'placed',
   items:
       (json['items'] as List<dynamic>?)
           ?.map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const [],
-  createdAt: json['createdAt'] == null
+  createdAt: json['created_at'] == null
       ? null
-      : DateTime.parse(json['createdAt'] as String),
+      : DateTime.parse(json['created_at'] as String),
 );
 
 Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'buyerId': instance.buyerId,
-      'buyerType': instance.buyerType,
-      'orderType': instance.orderType,
-      'referringArtistId': instance.referringArtistId,
-      'totalAmount': instance.totalAmount,
-      'taxAmount': instance.taxAmount,
-      'shippingAddress': instance.shippingAddress,
+      'buyer_id': instance.buyerId,
+      'buyer_type': instance.buyerType,
+      'order_type': instance.orderType,
+      'referring_artist_id': instance.referringArtistId,
+      'total_amount': instance.totalAmount,
+      'tax_amount': instance.taxAmount,
+      'shipping_address': instance.shippingAddress,
       'gstin': instance.gstin,
-      'paymentStatus': instance.paymentStatus,
-      'orderStatus': instance.orderStatus,
+      'payment_status': instance.paymentStatus,
+      'order_status': instance.orderStatus,
       'items': instance.items,
-      'createdAt': instance.createdAt?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
     };
 
 _$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
     _$OrderItemImpl(
       id: json['id'] as String,
-      productId: json['productId'] as String,
+      productId: json['product_id'] as String,
       product: json['product'] == null
           ? null
           : Product.fromJson(json['product'] as Map<String, dynamic>),
       quantity: (json['quantity'] as num).toInt(),
-      unitPrice: (json['unitPrice'] as num).toDouble(),
-      totalPrice: (json['totalPrice'] as num).toDouble(),
+      unitPrice: (json['unit_price'] as num).toDouble(),
+      totalPrice: (json['total_price'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'productId': instance.productId,
+      'product_id': instance.productId,
       'product': instance.product,
       'quantity': instance.quantity,
-      'unitPrice': instance.unitPrice,
-      'totalPrice': instance.totalPrice,
+      'unit_price': instance.unitPrice,
+      'total_price': instance.totalPrice,
     };
 
 _$CampaignImpl _$$CampaignImplFromJson(Map<String, dynamic> json) =>
     _$CampaignImpl(
       id: json['id'] as String,
-      brandId: json['brandId'] as String,
+      brandId: json['brand_id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
       requirements: json['requirements'] as String?,
-      rewardBadgeName: json['rewardBadgeName'] as String?,
-      startDate: json['startDate'] == null
+      rewardBadgeName: json['reward_badge_name'] as String?,
+      startDate: json['start_date'] == null
           ? null
-          : DateTime.parse(json['startDate'] as String),
-      endDate: json['endDate'] == null
+          : DateTime.parse(json['start_date'] as String),
+      endDate: json['end_date'] == null
           ? null
-          : DateTime.parse(json['endDate'] as String),
-      isActive: json['isActive'] as bool? ?? true,
-      createdAt: json['createdAt'] == null
+          : DateTime.parse(json['end_date'] as String),
+      isActive: json['is_active'] as bool? ?? true,
+      createdAt: json['created_at'] == null
           ? null
-          : DateTime.parse(json['createdAt'] as String),
+          : DateTime.parse(json['created_at'] as String),
     );
 
 Map<String, dynamic> _$$CampaignImplToJson(_$CampaignImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'brandId': instance.brandId,
+      'brand_id': instance.brandId,
       'title': instance.title,
       'description': instance.description,
       'requirements': instance.requirements,
-      'rewardBadgeName': instance.rewardBadgeName,
-      'startDate': instance.startDate?.toIso8601String(),
-      'endDate': instance.endDate?.toIso8601String(),
-      'isActive': instance.isActive,
-      'createdAt': instance.createdAt?.toIso8601String(),
+      'reward_badge_name': instance.rewardBadgeName,
+      'start_date': instance.startDate?.toIso8601String(),
+      'end_date': instance.endDate?.toIso8601String(),
+      'is_active': instance.isActive,
+      'created_at': instance.createdAt?.toIso8601String(),
     };
 
 _$BadgeImpl _$$BadgeImplFromJson(Map<String, dynamic> json) => _$BadgeImpl(
   id: json['id'] as String,
-  artistId: json['artistId'] as String,
-  badgeName: json['badgeName'] as String,
-  badgeType: json['badgeType'] as String,
-  issuedBy: json['issuedBy'] as String?,
-  issuedAt: json['issuedAt'] == null
+  artistId: json['artist_id'] as String,
+  badgeName: json['badge_name'] as String,
+  badgeType: json['badge_type'] as String,
+  issuedBy: json['issued_by'] as String?,
+  issuedAt: json['issued_at'] == null
       ? null
-      : DateTime.parse(json['issuedAt'] as String),
+      : DateTime.parse(json['issued_at'] as String),
 );
 
 Map<String, dynamic> _$$BadgeImplToJson(_$BadgeImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'artistId': instance.artistId,
-      'badgeName': instance.badgeName,
-      'badgeType': instance.badgeType,
-      'issuedBy': instance.issuedBy,
-      'issuedAt': instance.issuedAt?.toIso8601String(),
+      'artist_id': instance.artistId,
+      'badge_name': instance.badgeName,
+      'badge_type': instance.badgeType,
+      'issued_by': instance.issuedBy,
+      'issued_at': instance.issuedAt?.toIso8601String(),
     };

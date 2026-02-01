@@ -6,7 +6,6 @@ part 'rewards.g.dart';
 
 @freezed
 class LoyaltyBalance with _$LoyaltyBalance {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory LoyaltyBalance({
     required String id,
     required String userId,
@@ -21,7 +20,6 @@ class LoyaltyBalance with _$LoyaltyBalance {
 
 @freezed
 class LoyaltyTransaction with _$LoyaltyTransaction {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory LoyaltyTransaction({
     required String id,
     required String userId,
@@ -38,7 +36,6 @@ class LoyaltyTransaction with _$LoyaltyTransaction {
 
 @freezed
 class ReferralRecord with _$ReferralRecord {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ReferralRecord({
     required String id,
     required String referrerId,
@@ -55,7 +52,6 @@ class ReferralRecord with _$ReferralRecord {
 
 @freezed
 class LeaderboardEntry with _$LeaderboardEntry {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory LeaderboardEntry({
     required int rank,
     required String userId,

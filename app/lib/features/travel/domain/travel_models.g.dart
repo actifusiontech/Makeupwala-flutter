@@ -9,79 +9,79 @@ part of 'travel_models.dart';
 _$TravelProfileImpl _$$TravelProfileImplFromJson(Map<String, dynamic> json) =>
     _$TravelProfileImpl(
       id: json['id'] as String,
-      artistId: json['artistId'] as String,
-      isWillingToTravel: json['isWillingToTravel'] as bool,
-      maxTravelDistanceKm: (json['maxTravelDistanceKm'] as num?)?.toInt(),
-      passportNumber: json['passportNumber'] as String?,
-      passportExpiry: json['passportExpiry'] == null
+      artistId: json['artist_id'] as String,
+      isWillingToTravel: json['is_willing_to_travel'] as bool,
+      maxTravelDistanceKm: (json['max_travel_distance_km'] as num?)?.toInt(),
+      passportNumber: json['passport_number'] as String?,
+      passportExpiry: json['passport_expiry'] == null
           ? null
-          : DateTime.parse(json['passportExpiry'] as String),
-      passportCountry: json['passportCountry'] as String?,
-      visaCountries: (json['visaCountries'] as List<dynamic>?)
+          : DateTime.parse(json['passport_expiry'] as String),
+      passportCountry: json['passport_country'] as String?,
+      visaCountries: (json['visa_countries'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      travelRateMultiplier: json['travelRateMultiplier'] as String,
-      accommodationPreference: json['accommodationPreference'] as String,
-      dietaryRestrictions: json['dietaryRestrictions'] as String?,
-      emergencyContactName: json['emergencyContactName'] as String?,
-      emergencyContactPhone: json['emergencyContactPhone'] as String?,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      travelRateMultiplier: json['travel_rate_multiplier'] as String,
+      accommodationPreference: json['accommodation_preference'] as String,
+      dietaryRestrictions: json['dietary_restrictions'] as String?,
+      emergencyContactName: json['emergency_contact_name'] as String?,
+      emergencyContactPhone: json['emergency_contact_phone'] as String?,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      updatedAt: DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$$TravelProfileImplToJson(_$TravelProfileImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'artistId': instance.artistId,
-      'isWillingToTravel': instance.isWillingToTravel,
-      'maxTravelDistanceKm': instance.maxTravelDistanceKm,
-      'passportNumber': instance.passportNumber,
-      'passportExpiry': instance.passportExpiry?.toIso8601String(),
-      'passportCountry': instance.passportCountry,
-      'visaCountries': instance.visaCountries,
-      'travelRateMultiplier': instance.travelRateMultiplier,
-      'accommodationPreference': instance.accommodationPreference,
-      'dietaryRestrictions': instance.dietaryRestrictions,
-      'emergencyContactName': instance.emergencyContactName,
-      'emergencyContactPhone': instance.emergencyContactPhone,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'artist_id': instance.artistId,
+      'is_willing_to_travel': instance.isWillingToTravel,
+      'max_travel_distance_km': instance.maxTravelDistanceKm,
+      'passport_number': instance.passportNumber,
+      'passport_expiry': instance.passportExpiry?.toIso8601String(),
+      'passport_country': instance.passportCountry,
+      'visa_countries': instance.visaCountries,
+      'travel_rate_multiplier': instance.travelRateMultiplier,
+      'accommodation_preference': instance.accommodationPreference,
+      'dietary_restrictions': instance.dietaryRestrictions,
+      'emergency_contact_name': instance.emergencyContactName,
+      'emergency_contact_phone': instance.emergencyContactPhone,
+      'created_at': instance.createdAt.toIso8601String(),
+      'updated_at': instance.updatedAt.toIso8601String(),
     };
 
 _$CreateTravelProfileRequestImpl _$$CreateTravelProfileRequestImplFromJson(
   Map<String, dynamic> json,
 ) => _$CreateTravelProfileRequestImpl(
-  isWillingToTravel: json['isWillingToTravel'] as bool,
-  maxTravelDistanceKm: (json['maxTravelDistanceKm'] as num?)?.toInt(),
-  passportNumber: json['passportNumber'] as String?,
-  passportExpiry: json['passportExpiry'] == null
+  isWillingToTravel: json['is_willing_to_travel'] as bool,
+  maxTravelDistanceKm: (json['max_travel_distance_km'] as num?)?.toInt(),
+  passportNumber: json['passport_number'] as String?,
+  passportExpiry: json['passport_expiry'] == null
       ? null
-      : DateTime.parse(json['passportExpiry'] as String),
-  passportCountry: json['passportCountry'] as String?,
-  visaCountries: (json['visaCountries'] as List<dynamic>?)
+      : DateTime.parse(json['passport_expiry'] as String),
+  passportCountry: json['passport_country'] as String?,
+  visaCountries: (json['visa_countries'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
-  travelRateMultiplier: json['travelRateMultiplier'] as String?,
-  accommodationPreference: json['accommodationPreference'] as String?,
-  dietaryRestrictions: json['dietaryRestrictions'] as String?,
-  emergencyContactName: json['emergencyContactName'] as String?,
-  emergencyContactPhone: json['emergencyContactPhone'] as String?,
+  travelRateMultiplier: json['travel_rate_multiplier'] as String?,
+  accommodationPreference: json['accommodation_preference'] as String?,
+  dietaryRestrictions: json['dietary_restrictions'] as String?,
+  emergencyContactName: json['emergency_contact_name'] as String?,
+  emergencyContactPhone: json['emergency_contact_phone'] as String?,
 );
 
 Map<String, dynamic> _$$CreateTravelProfileRequestImplToJson(
   _$CreateTravelProfileRequestImpl instance,
 ) => <String, dynamic>{
-  'isWillingToTravel': instance.isWillingToTravel,
-  'maxTravelDistanceKm': instance.maxTravelDistanceKm,
-  'passportNumber': instance.passportNumber,
-  'passportExpiry': instance.passportExpiry?.toIso8601String(),
-  'passportCountry': instance.passportCountry,
-  'visaCountries': instance.visaCountries,
-  'travelRateMultiplier': instance.travelRateMultiplier,
-  'accommodationPreference': instance.accommodationPreference,
-  'dietaryRestrictions': instance.dietaryRestrictions,
-  'emergencyContactName': instance.emergencyContactName,
-  'emergencyContactPhone': instance.emergencyContactPhone,
+  'is_willing_to_travel': instance.isWillingToTravel,
+  'max_travel_distance_km': instance.maxTravelDistanceKm,
+  'passport_number': instance.passportNumber,
+  'passport_expiry': instance.passportExpiry?.toIso8601String(),
+  'passport_country': instance.passportCountry,
+  'visa_countries': instance.visaCountries,
+  'travel_rate_multiplier': instance.travelRateMultiplier,
+  'accommodation_preference': instance.accommodationPreference,
+  'dietary_restrictions': instance.dietaryRestrictions,
+  'emergency_contact_name': instance.emergencyContactName,
+  'emergency_contact_phone': instance.emergencyContactPhone,
 };
 
 _$RetreatModelImpl _$$RetreatModelImplFromJson(Map<String, dynamic> json) =>
@@ -91,15 +91,15 @@ _$RetreatModelImpl _$$RetreatModelImplFromJson(Map<String, dynamic> json) =>
       location: json['location'] as String,
       description: json['description'] as String,
       price: (json['price'] as num).toDouble(),
-      imageUrl: json['imageUrl'] as String,
-      startDate: DateTime.parse(json['startDate'] as String),
-      endDate: DateTime.parse(json['endDate'] as String),
+      imageUrl: json['image_url'] as String,
+      startDate: DateTime.parse(json['start_date'] as String),
+      endDate: DateTime.parse(json['end_date'] as String),
       inclusions:
           (json['inclusions'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      isActive: json['isActive'] as bool? ?? true,
+      isActive: json['is_active'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$RetreatModelImplToJson(_$RetreatModelImpl instance) =>
@@ -109,9 +109,9 @@ Map<String, dynamic> _$$RetreatModelImplToJson(_$RetreatModelImpl instance) =>
       'location': instance.location,
       'description': instance.description,
       'price': instance.price,
-      'imageUrl': instance.imageUrl,
-      'startDate': instance.startDate.toIso8601String(),
-      'endDate': instance.endDate.toIso8601String(),
+      'image_url': instance.imageUrl,
+      'start_date': instance.startDate.toIso8601String(),
+      'end_date': instance.endDate.toIso8601String(),
       'inclusions': instance.inclusions,
-      'isActive': instance.isActive,
+      'is_active': instance.isActive,
     };

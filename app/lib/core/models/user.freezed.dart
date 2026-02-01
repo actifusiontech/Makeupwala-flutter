@@ -241,8 +241,7 @@ class __$$UserImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class _$UserImpl extends _User {
   const _$UserImpl({
     required this.id,

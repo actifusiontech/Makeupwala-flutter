@@ -5,7 +5,6 @@ part 'booking.g.dart';
 
 @freezed
 class Booking with _$Booking {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Booking({
     required String id,
     required String customerId,

@@ -51,6 +51,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   freezed: ^2.4.7
   json_serializable: ^6.8.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.10
 
 flutter:
   uses-material-design: true
@@ -59,3 +61,16 @@ flutter:
     - assets/env/.env.staging
     - assets/env/.env.production
     - assets/images/
+
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21 # flutter_launcher_icons
+
+flutter_native_splash:
+  color: "#080404" # Dark background
+  image: "assets/images/splash_logo_rounded.png"
+  android_12:
+    color: "#080404"
+    image: "assets/images/splash_logo_rounded.png"
