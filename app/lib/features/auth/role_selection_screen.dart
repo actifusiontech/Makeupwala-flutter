@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/auth_bloc.dart';
 
 class RoleSelectionScreen extends StatefulWidget {
@@ -31,7 +31,29 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
           needsRoleSelection: (_) => setState(() => _isLoading = false),
           authenticated: (user) {
             setState(() => _isLoading = false);
-            context.go('/home');
+            switch (user.role) {
+              case 'artist':
+                context.go('/artist/onboarding');
+                break;
+              case 'brand':
+                context.go('/brand/home');
+                break;
+              case 'studio':
+                // For now, we assume role selection implies need to onboard.
+                // In a real app, we'd check if they already have a studio.
+                context.go('/studio/onboarding');
+                break;
+              case 'academy':
+                context.go('/academy/onboarding');
+                break;
+              case 'planner':
+                context.go('/planner/onboarding');
+                break;
+              case 'customer':
+              default:
+                context.go('/customer/home');
+                break;
+            }
           },
           unauthenticated: () {},
           error: (message) {
@@ -100,6 +122,42 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     color: Colors.purple,
                     isLoading: _isLoading,
                     onTap: () => _handleRoleSelection('brand'),
+                  ),
+                  
+                  const SizedBox(height: AppSpacing.md),
+
+                  // Studio/Parlour Card
+                  _RoleCard(
+                    title: 'I am a Beauty Parlour',
+                    subtitle: 'Manage seats, bookings & team',
+                    icon: Icons.chair,
+                    color: Colors.pink,
+                    isLoading: _isLoading,
+                    onTap: () => _handleRoleSelection('studio'),
+                  ),
+
+                  const SizedBox(height: AppSpacing.md),
+
+                  // Academy Card
+                  _RoleCard(
+                    title: 'I run a Makeup Academy',
+                    subtitle: 'Manage courses, students & placements',
+                    icon: Icons.school,
+                    color: Colors.teal,
+                    isLoading: _isLoading,
+                    onTap: () => _handleRoleSelection('academy'),
+                  ),
+
+                  const SizedBox(height: AppSpacing.md),
+
+                  // Wedding Planner Card
+                  _RoleCard(
+                    title: 'I am a Wedding Planner',
+                    subtitle: 'Organize destination weddings & squads',
+                    icon: Icons.flight_takeoff,
+                    color: Colors.deepOrange,
+                    isLoading: _isLoading,
+                    onTap: () => _handleRoleSelection('planner'),
                   ),
                 ],
               ),

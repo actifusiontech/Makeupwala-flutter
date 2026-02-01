@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../shared/widgets/custom_button.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:app/shared/widgets/custom_button.dart';
 
 class InvoiceScreen extends StatelessWidget {
   final String bookingId;

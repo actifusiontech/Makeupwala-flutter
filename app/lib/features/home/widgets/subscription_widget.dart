@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 
 class SubscriptionWidget extends StatelessWidget {
   final String planName;
@@ -30,8 +30,8 @@ class SubscriptionWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isFree 
-              ? [Colors.grey.shade400, Colors.grey.shade600]
-              : [Colors.purple.shade400, Colors.purple.shade600],
+              ? [Colors.grey, Colors.grey]
+              : [Colors.purple, Colors.purple],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -77,7 +77,7 @@ class SubscriptionWidget extends StatelessWidget {
                   onPressed: onUpgrade,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
-                    foregroundColor: Colors.purple.shade600,
+                    foregroundColor: Colors.purple,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 10,
@@ -160,7 +160,7 @@ class SubscriptionWidget extends StatelessWidget {
             Text(
               '$used / $limit',
               style: TextStyle(
-                color: isNearLimit ? Colors.yellow.shade300 : Colors.white,
+                color: isNearLimit ? Colors.yellow : Colors.white,
                 fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
@@ -174,7 +174,7 @@ class SubscriptionWidget extends StatelessWidget {
             value: percentage / 100,
             backgroundColor: Colors.white.withOpacity(0.3),
             valueColor: AlwaysStoppedAnimation(
-              isNearLimit ? Colors.yellow.shade300 : Colors.white,
+              isNearLimit ? Colors.yellow : Colors.white,
             ),
             minHeight: 8,
           ),

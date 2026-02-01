@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import 'data/discovery_repository.dart';
 
 class LookBookScreen extends StatefulWidget {

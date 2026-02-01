@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../data/models/retreat_model.dart';
-import '../../data/repositories/travel_repository.dart';
+import 'package:app/features/travel/domain/travel_models.dart';
+import 'package:app/features/travel/data/travel_repository.dart';
+import 'package:app/core/network/api_client.dart';
 
 class RetreatsListScreen extends StatefulWidget {
   const RetreatsListScreen({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class RetreatsListScreen extends StatefulWidget {
 
 class _RetreatsListScreenState extends State<RetreatsListScreen> {
   late Future<List<RetreatModel>> _retreatsFuture;
-  final TravelRepository _repository = TravelRepository();
+  final TravelRepository _repository = TravelRepository(ApiClient().dio);
 
   @override
   void initState() {

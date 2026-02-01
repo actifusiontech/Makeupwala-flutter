@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "291125958858",
+    "project_id": "makeupwala-prod",
+    "storage_bucket": "makeupwala-prod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291125958858:android:c631ae7373a429374e3c33",
+        "android_client_info": {
+          "package_name": "com.svvglobal.makeupwallah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291125958858-7dm98vv8aeaf5ui7g7mh29jp9f2vn30n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDav4Sd4BDfnWAj8Z56Vr5V8OGS8cEYNco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291125958858-7dm98vv8aeaf5ui7g7mh29jp9f2vn30n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

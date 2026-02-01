@@ -6,8 +6,8 @@ part of 'artist.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ArtistProfile _$ArtistProfileFromJson(Map<String, dynamic> json) =>
-    _ArtistProfile(
+_$ArtistProfileImpl _$$ArtistProfileImplFromJson(Map<String, dynamic> json) =>
+    _$ArtistProfileImpl(
       id: json['id'] as String,
       userId: json['user_id'] as String,
       fullName: json['full_name'] as String,
@@ -45,7 +45,7 @@ _ArtistProfile _$ArtistProfileFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$ArtistProfileToJson(_ArtistProfile instance) =>
+Map<String, dynamic> _$$ArtistProfileImplToJson(_$ArtistProfileImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'user_id': instance.userId,
@@ -66,8 +66,8 @@ Map<String, dynamic> _$ArtistProfileToJson(_ArtistProfile instance) =>
       'badges': instance.badges,
     };
 
-_ArtistService _$ArtistServiceFromJson(Map<String, dynamic> json) =>
-    _ArtistService(
+_$ArtistServiceImpl _$$ArtistServiceImplFromJson(Map<String, dynamic> json) =>
+    _$ArtistServiceImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       price: (json['price'] as num).toDouble(),
@@ -75,7 +75,7 @@ _ArtistService _$ArtistServiceFromJson(Map<String, dynamic> json) =>
       duration: json['duration'] as String?,
     );
 
-Map<String, dynamic> _$ArtistServiceToJson(_ArtistService instance) =>
+Map<String, dynamic> _$$ArtistServiceImplToJson(_$ArtistServiceImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -84,22 +84,23 @@ Map<String, dynamic> _$ArtistServiceToJson(_ArtistService instance) =>
       'duration': instance.duration,
     };
 
-_ArtistKYC _$ArtistKYCFromJson(Map<String, dynamic> json) => _ArtistKYC(
-  id: json['id'] as String,
-  status: json['status'] as String,
-  idProofUrl: json['id_proof_url'] as String?,
-  addressProofUrl: json['address_proof_url'] as String?,
-  certificateUrl: json['certificate_url'] as String?,
-  adminComments: json['admin_comments'] as String?,
-  submittedAt: json['submitted_at'] == null
-      ? null
-      : DateTime.parse(json['submitted_at'] as String),
-  updatedAt: json['updated_at'] == null
-      ? null
-      : DateTime.parse(json['updated_at'] as String),
-);
+_$ArtistKYCImpl _$$ArtistKYCImplFromJson(Map<String, dynamic> json) =>
+    _$ArtistKYCImpl(
+      id: json['id'] as String,
+      status: json['status'] as String,
+      idProofUrl: json['id_proof_url'] as String?,
+      addressProofUrl: json['address_proof_url'] as String?,
+      certificateUrl: json['certificate_url'] as String?,
+      adminComments: json['admin_comments'] as String?,
+      submittedAt: json['submitted_at'] == null
+          ? null
+          : DateTime.parse(json['submitted_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+    );
 
-Map<String, dynamic> _$ArtistKYCToJson(_ArtistKYC instance) =>
+Map<String, dynamic> _$$ArtistKYCImplToJson(_$ArtistKYCImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'status': instance.status,
@@ -111,8 +112,8 @@ Map<String, dynamic> _$ArtistKYCToJson(_ArtistKYC instance) =>
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
 
-_ArtistBundle _$ArtistBundleFromJson(Map<String, dynamic> json) =>
-    _ArtistBundle(
+_$ArtistBundleImpl _$$ArtistBundleImplFromJson(Map<String, dynamic> json) =>
+    _$ArtistBundleImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String?,
@@ -127,7 +128,7 @@ _ArtistBundle _$ArtistBundleFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$ArtistBundleToJson(_ArtistBundle instance) =>
+Map<String, dynamic> _$$ArtistBundleImplToJson(_$ArtistBundleImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -139,28 +140,31 @@ Map<String, dynamic> _$ArtistBundleToJson(_ArtistBundle instance) =>
       'items': instance.items,
     };
 
-_ArtistBundleItem _$ArtistBundleItemFromJson(Map<String, dynamic> json) =>
-    _ArtistBundleItem(
-      serviceId: json['service_id'] as String,
-      serviceName: json['service_name'] as String,
-      quantity: (json['quantity'] as num).toInt(),
-    );
-
-Map<String, dynamic> _$ArtistBundleItemToJson(_ArtistBundleItem instance) =>
-    <String, dynamic>{
-      'service_id': instance.serviceId,
-      'service_name': instance.serviceName,
-      'quantity': instance.quantity,
-    };
-
-_ArtistBadge _$ArtistBadgeFromJson(Map<String, dynamic> json) => _ArtistBadge(
-  name: json['name'] as String,
-  type: json['type'] as String,
-  iconUrl: json['icon_url'] as String?,
-  issuedAt: json['issued_at'] as String?,
+_$ArtistBundleItemImpl _$$ArtistBundleItemImplFromJson(
+  Map<String, dynamic> json,
+) => _$ArtistBundleItemImpl(
+  serviceId: json['service_id'] as String,
+  serviceName: json['service_name'] as String,
+  quantity: (json['quantity'] as num).toInt(),
 );
 
-Map<String, dynamic> _$ArtistBadgeToJson(_ArtistBadge instance) =>
+Map<String, dynamic> _$$ArtistBundleItemImplToJson(
+  _$ArtistBundleItemImpl instance,
+) => <String, dynamic>{
+  'service_id': instance.serviceId,
+  'service_name': instance.serviceName,
+  'quantity': instance.quantity,
+};
+
+_$ArtistBadgeImpl _$$ArtistBadgeImplFromJson(Map<String, dynamic> json) =>
+    _$ArtistBadgeImpl(
+      name: json['name'] as String,
+      type: json['type'] as String,
+      iconUrl: json['icon_url'] as String?,
+      issuedAt: json['issued_at'] as String?,
+    );
+
+Map<String, dynamic> _$$ArtistBadgeImplToJson(_$ArtistBadgeImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'type': instance.type,

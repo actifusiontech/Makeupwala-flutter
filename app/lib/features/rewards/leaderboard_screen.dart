@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/models/rewards.dart';
 import '../profile/data/profile_repository.dart';
 import '../profile/bloc/profile_bloc.dart';
-import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_typography.dart';
-import '../../core/constants/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 
 class LeaderboardScreen extends StatefulWidget {
   const LeaderboardScreen({super.key});

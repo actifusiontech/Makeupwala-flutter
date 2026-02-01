@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import '../auth/bloc/auth_bloc.dart';
 import '../search/bloc/search_bloc.dart';
 import '../search/data/search_repository.dart';
@@ -209,6 +209,13 @@ class _CustomerHomeView extends StatelessWidget {
           Icons.shopping_bag,
           Colors.pink,
           () => context.push('/discovery'),
+        ),
+        _buildQuickActionCard(
+          context,
+          'Learn Beauty Skills',
+          Icons.school,
+          Colors.orange,
+          () => context.push('/education/courses'),
         ),
       ],
     );

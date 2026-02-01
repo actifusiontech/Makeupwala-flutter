@@ -6,8 +6,8 @@ part of 'travel_models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_TravelProfile _$TravelProfileFromJson(Map<String, dynamic> json) =>
-    _TravelProfile(
+_$TravelProfileImpl _$$TravelProfileImplFromJson(Map<String, dynamic> json) =>
+    _$TravelProfileImpl(
       id: json['id'] as String,
       artistId: json['artistId'] as String,
       isWillingToTravel: json['isWillingToTravel'] as bool,
@@ -29,7 +29,7 @@ _TravelProfile _$TravelProfileFromJson(Map<String, dynamic> json) =>
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$TravelProfileToJson(_TravelProfile instance) =>
+Map<String, dynamic> _$$TravelProfileImplToJson(_$TravelProfileImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'artistId': instance.artistId,
@@ -48,9 +48,9 @@ Map<String, dynamic> _$TravelProfileToJson(_TravelProfile instance) =>
       'updatedAt': instance.updatedAt.toIso8601String(),
     };
 
-_CreateTravelProfileRequest _$CreateTravelProfileRequestFromJson(
+_$CreateTravelProfileRequestImpl _$$CreateTravelProfileRequestImplFromJson(
   Map<String, dynamic> json,
-) => _CreateTravelProfileRequest(
+) => _$CreateTravelProfileRequestImpl(
   isWillingToTravel: json['isWillingToTravel'] as bool,
   maxTravelDistanceKm: (json['maxTravelDistanceKm'] as num?)?.toInt(),
   passportNumber: json['passportNumber'] as String?,
@@ -68,8 +68,8 @@ _CreateTravelProfileRequest _$CreateTravelProfileRequestFromJson(
   emergencyContactPhone: json['emergencyContactPhone'] as String?,
 );
 
-Map<String, dynamic> _$CreateTravelProfileRequestToJson(
-  _CreateTravelProfileRequest instance,
+Map<String, dynamic> _$$CreateTravelProfileRequestImplToJson(
+  _$CreateTravelProfileRequestImpl instance,
 ) => <String, dynamic>{
   'isWillingToTravel': instance.isWillingToTravel,
   'maxTravelDistanceKm': instance.maxTravelDistanceKm,
@@ -83,3 +83,35 @@ Map<String, dynamic> _$CreateTravelProfileRequestToJson(
   'emergencyContactName': instance.emergencyContactName,
   'emergencyContactPhone': instance.emergencyContactPhone,
 };
+
+_$RetreatModelImpl _$$RetreatModelImplFromJson(Map<String, dynamic> json) =>
+    _$RetreatModelImpl(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      location: json['location'] as String,
+      description: json['description'] as String,
+      price: (json['price'] as num).toDouble(),
+      imageUrl: json['imageUrl'] as String,
+      startDate: DateTime.parse(json['startDate'] as String),
+      endDate: DateTime.parse(json['endDate'] as String),
+      inclusions:
+          (json['inclusions'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      isActive: json['isActive'] as bool? ?? true,
+    );
+
+Map<String, dynamic> _$$RetreatModelImplToJson(_$RetreatModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'location': instance.location,
+      'description': instance.description,
+      'price': instance.price,
+      'imageUrl': instance.imageUrl,
+      'startDate': instance.startDate.toIso8601String(),
+      'endDate': instance.endDate.toIso8601String(),
+      'inclusions': instance.inclusions,
+      'isActive': instance.isActive,
+    };

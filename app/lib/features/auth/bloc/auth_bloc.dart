@@ -4,6 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:developer' as developer;
 import '../../../core/models/user.dart';
 import '../../../core/network/api_client.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -12,12 +13,15 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final ApiClient _apiClient;
   final FlutterSecureStorage _secureStorage;
+  final GoogleSignIn _googleSignIn;
 
   AuthBloc({
     ApiClient? apiClient,
     FlutterSecureStorage? secureStorage,
+    GoogleSignIn? googleSignIn,
   })  : _apiClient = apiClient ?? ApiClient(),
         _secureStorage = secureStorage ?? const FlutterSecureStorage(),
+        _googleSignIn = googleSignIn ?? GoogleSignIn(scopes: ['email', 'profile']),
         super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
       await event.when(
@@ -26,8 +30,67 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         selectRole: (role) => _onSelectRole(role, emit),
         logout: () => _onLogout(emit),
         checkAuth: () => _onCheckAuth(emit),
+        socialLogin: (provider) => _onSocialLogin(provider, emit),
       );
     });
+  }
+
+  Future<void> _onSocialLogin(String provider, Emitter<AuthState> emit) async {
+    developer.log('🔐 Social Login requested: $provider', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    
+    try {
+      if (provider == 'google') {
+        final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+        
+        if (googleUser == null) {
+          emit(const AuthState.initial()); // User cancelled
+          return;
+        }
+
+        final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+        final String? idToken = googleAuth.idToken;
+        final String? accessToken = googleAuth.accessToken;
+
+        if (idToken == null) {
+           throw Exception('Failed to retrieve Google ID Token');
+        }
+
+        developer.log('📞 Calling /auth/google-login', name: 'AuthBloc');
+        final response = await _apiClient.dio.post('/auth/google-login', data: {
+          'id_token': idToken,
+          'access_token': accessToken,
+          'email': googleUser.email,
+          'displayName': googleUser.displayName,
+          'photoUrl': googleUser.photoUrl,
+        });
+
+        final data = response.data;
+        final token = data['access_token'] as String;
+        final refreshToken = data['refresh_token'] as String;
+        final userData = data['user'] as Map<String, dynamic>;
+
+        await _secureStorage.write(key: 'auth_token', value: token);
+        await _secureStorage.write(key: 'refresh_token', value: refreshToken);
+
+        final user = User.fromJson(userData);
+        
+        // Check if user has a role assigned
+        if (user.role.isEmpty || user.role == '') {
+          developer.log('⚠️ Social User needs role selection', name: 'AuthBloc');
+          emit(AuthState.needsRoleSelection(user: user));
+        } else {
+          emit(AuthState.authenticated(user: user));
+        }
+      }
+    } catch (e) {
+      developer.log('❌ Social Login error: $e', name: 'AuthBloc');
+      String msg = 'Login Failed';
+      if (e.toString().contains('sign_in_failed')) {
+        msg = 'Sign in failed. Check google-services.json configuration.';
+      }
+      emit(AuthState.error(message: msg));
+    }
   }
 
   Future<void> _onLogin(String phone, Emitter<AuthState> emit) async {

@@ -6,7 +6,7 @@ part of 'user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_User _$UserFromJson(Map<String, dynamic> json) => _User(
+_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
   id: json['id'] as String,
   fullName: json['full_name'] as String,
   email: json['email'] as String?,
@@ -19,17 +19,20 @@ _User _$UserFromJson(Map<String, dynamic> json) => _User(
   createdAt: json['created_at'] == null
       ? null
       : DateTime.parse(json['created_at'] as String),
+  media: (json['media'] as List<dynamic>?)?.map((e) => e as String).toList(),
 );
 
-Map<String, dynamic> _$UserToJson(_User instance) => <String, dynamic>{
-  'id': instance.id,
-  'full_name': instance.fullName,
-  'email': instance.email,
-  'phone': instance.phone,
-  'role': instance.role,
-  'profile_image_url': instance.profileImageUrl,
-  'is_verified': instance.isVerified,
-  'referral_code': instance.referralCode,
-  'loyalty_points': instance.loyaltyPoints,
-  'created_at': instance.createdAt?.toIso8601String(),
-};
+Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'full_name': instance.fullName,
+      'email': instance.email,
+      'phone': instance.phone,
+      'role': instance.role,
+      'profile_image_url': instance.profileImageUrl,
+      'is_verified': instance.isVerified,
+      'referral_code': instance.referralCode,
+      'loyalty_points': instance.loyaltyPoints,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'media': instance.media,
+    };

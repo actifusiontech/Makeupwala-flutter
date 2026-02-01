@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../data/wellness_repository.dart';
-import '../../data/models/wellness_models.dart';
-import 'package:makeupwala/core/network/api_client.dart';
+import 'package:app/features/wellness/data/wellness_repository.dart';
+import 'package:app/features/wellness/data/models/wellness_models.dart';
+import 'package:app/core/network/api_client.dart';
 
 class WellnessHubScreen extends StatefulWidget {
   const WellnessHubScreen({Key? key}) : super(key: key);

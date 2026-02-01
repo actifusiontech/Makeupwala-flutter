@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../domain/education_models.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class CareerHubScreen extends StatefulWidget {
   const CareerHubScreen({super.key});
@@ -54,7 +55,7 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
       appBar: AppBar(
         title: const Text(
           'Career Hub',
-          style: TextStyle(fontWeight: FontWeight.black, fontSize: 24),
+          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 24),
         ),
         actions: [
           IconButton(
@@ -87,7 +88,7 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.slate.shade100,
+            color: AppColors.grey50,
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -100,16 +101,16 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, py: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: isInternship ? Colors.blue.shade50 : Colors.emerald.shade50,
+                  color: isInternship ? Colors.blue.shade50 : AppColors.emerald.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
                   job.listingType.toUpperCase(),
                   style: TextStyle(
-                    color: isInternship ? Colors.blue.shade600 : Colors.emerald.shade600,
-                    fontWeight: FontWeight.black,
+                    color: isInternship ? Colors.blue : AppColors.emerald,
+                    fontWeight: FontWeight.w900,
                     fontSize: 9,
                     letterSpacing: 1,
                   ),
@@ -118,7 +119,7 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
               Text(
                 '₹${job.stipendAmount?.toStringAsFixed(0)}/mo',
                 style: const TextStyle(
-                  fontWeight: FontWeight.black,
+                  fontWeight: FontWeight.w900,
                   fontSize: 14,
                   color: Color(0xFF0F172A),
                 ),
@@ -130,7 +131,7 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
             job.title,
             style: const TextStyle(
               fontSize: 18,
-              fontWeight: FontWeight.black,
+              fontWeight: FontWeight.w900,
               color: Color(0xFF0F172A),
               letterSpacing: -0.5,
             ),
@@ -138,26 +139,26 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
           const SizedBox(height: 4),
           Row(
             children: [
-              Icon(Icons.business, size: 14, color: Colors.slate.shade400),
+              Icon(Icons.business, size: 14, color: AppColors.slate),
               const SizedBox(width: 4),
               Text(
                 job.companyName,
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
-                  color: Colors.slate.shade600,
+                  color: AppColors.slate,
                 ),
               ),
               const SizedBox(width: 8),
-              Container(width: 4, height: 4, decoration: const BoxDecoration(color: Colors.slate, shape: BoxShape.circle)),
+              Container(width: 4, height: 4, decoration: const BoxDecoration(color: AppColors.slate, shape: BoxShape.circle)),
               const SizedBox(width: 8),
-              Icon(Icons.location_on_outlined, size: 14, color: Colors.slate.shade400),
+              Icon(Icons.location_on_outlined, size: 14, color: AppColors.slate),
               const SizedBox(width: 4),
               Text(
                 job.location ?? 'Remote',
                 style: TextStyle(
                   fontSize: 12,
-                  color: Colors.slate.shade500,
+                  color: AppColors.grey500,
                 ),
               ),
             ],
@@ -188,7 +189,7 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
               const SizedBox(width: 12),
               Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.slate.shade200),
+                  border: Border.all(color: AppColors.slate100),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: IconButton(

@@ -26,11 +26,17 @@ class AppColors {
   static const warning = Color(0xFFFFA726);
   static const error = Color(0xFFEF5350);
   static const info = Color(0xFF42A5F5);
+  static const emerald = Color(0xFF10B981);
+  static const slate = Color(0xFF64748B);
+  static const slate100 = Color(0xFFF1F5F9);
   
   // Surface colors
   static const surface = white;
   static const background = grey50;
+  static const backgroundLight = grey50;
   static const cardBackground = white;
+  static const border = grey300;
+  static const surfaceSlate = slate100;
   
   // Text colors
   static const textPrimary = grey900;

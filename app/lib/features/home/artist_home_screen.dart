@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import '../auth/bloc/auth_bloc.dart';
 import '../booking/bloc/booking_bloc.dart';
 import '../profile/bloc/profile_bloc.dart';
@@ -144,7 +144,7 @@ class _ArtistHomeView extends StatelessWidget {
                   Text('Quick Actions', style: AppTypography.titleLarge),
                   const SizedBox(height: AppSpacing.md),
                   InkWell(
-                    onPressed: () => context.push('/inventory'),
+                    onTap: () => context.push('/inventory'),
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(AppSpacing.md),
@@ -182,7 +182,7 @@ class _ArtistHomeView extends StatelessWidget {
                   const SizedBox(height: AppSpacing.md),
                   
                   InkWell(
-                    onPressed: () => context.push('/availability'),
+                    onTap: () => context.push('/availability'),
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(AppSpacing.md),
@@ -248,7 +248,7 @@ class _ArtistHomeView extends StatelessWidget {
                   BlocBuilder<ProfileBloc, ProfileState>(
                     builder: (context, profileState) {
                       return profileState.maybeWhen(
-                        loaded: (profile) {
+                        loaded: (profile, balance) {
                           final media = profile.media ?? [];
                           
                           if (media.isEmpty) {
@@ -294,7 +294,7 @@ class _ArtistHomeView extends StatelessWidget {
                               separatorBuilder: (context, index) => 
                                 const SizedBox(width: AppSpacing.md),
                               itemBuilder: (context, index) {
-                                return _buildPortfolioItem(media[index].url);
+                                return _buildPortfolioItem(media[index]);
                               },
                             ),
                           );

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/models/artist.dart';
-import '../data/artist_repository.dart';
+import 'package:app/features/artist/data/artist_repository.dart';
 import '../reviews/bloc/review_bloc.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 
 class ArtistProfileScreen extends StatefulWidget {
   final String artistId;

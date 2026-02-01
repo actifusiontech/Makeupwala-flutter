@@ -113,4 +113,6 @@ class AppTypography {
     letterSpacing: 0.5,
     color: AppColors.textSecondary,
   );
+
+  static const caption = bodySmall;
 }

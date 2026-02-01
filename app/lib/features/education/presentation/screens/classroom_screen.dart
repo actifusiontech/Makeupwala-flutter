@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../domain/education_models.dart';
 import '../widgets/course_card.dart';
+import 'lesson_player_screen.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class ClassroomScreen extends StatefulWidget {
   const ClassroomScreen({super.key});
@@ -32,12 +34,12 @@ class _ClassroomScreenState extends State<ClassroomScreen> with SingleTickerProv
       appBar: AppBar(
         title: const Text(
           'My Classroom',
-          style: TextStyle(fontWeight: FontWeight.black, fontSize: 24),
+          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 24),
         ),
         bottom: TabBar(
           controller: _tabController,
           labelColor: const Color(0xFFFF6B6B),
-          unselectedLabelColor: Colors.slate.shade400,
+          unselectedLabelColor: AppColors.slate,
           indicatorColor: const Color(0xFFFF6B6B),
           indicatorWeight: 3,
           labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
@@ -60,7 +62,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with SingleTickerProv
   Widget _buildEnrolledTab() {
     // Mock data for Phase 9 Classroom
     final enrollments = [
-      const Enrollment(
+      Enrollment(
         id: '1',
         courseId: 'c1',
         studentId: 's1',
@@ -74,7 +76,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with SingleTickerProv
           thumbnailUrl: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800',
         ),
       ),
-      const Enrollment(
+      Enrollment(
         id: '2',
         courseId: 'c2',
         studentId: 's1',

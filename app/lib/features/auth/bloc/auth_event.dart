@@ -7,4 +7,5 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.selectRole(String role) = _SelectRole;
   const factory AuthEvent.logout() = _Logout;
   const factory AuthEvent.checkAuth() = _CheckAuth;
+  const factory AuthEvent.socialLogin(String provider) = _SocialLogin;
 }

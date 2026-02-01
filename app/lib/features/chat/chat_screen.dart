@@ -1,10 +1,12 @@
+import 'package:app/features/auth/bloc/auth_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/chat_bloc.dart';
 import 'data/chat_repository.dart';
-import '../../auth/bloc/auth_bloc.dart';
+import 'package:app/features/auth/bloc/auth_bloc.dart';
 
 class ChatScreen extends StatefulWidget {
   final String roomId;

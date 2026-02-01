@@ -1,4 +1,4 @@
-import '../../../core/network/api_client.dart';
+import 'package:app/core/network/api_client.dart';
 import 'package:geolocator/geolocator.dart';
 
 class SafetyRepository {

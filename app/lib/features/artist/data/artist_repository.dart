@@ -1,4 +1,5 @@
 import 'dart:developer' as developer;
+import 'package:dio/dio.dart';
 import '../../../core/network/api_client.dart';
 import '../../../core/models/artist.dart';
 
@@ -20,9 +21,35 @@ class ArtistRepository {
 
   Future<void> updateProfile(Map<String, dynamic> updateData) async {
     try {
-      await _apiClient.dio.put('/artists/me', data: updateData);
+      // Backend uses POST for upsert
+      await _apiClient.dio.post('/artists/me', data: updateData);
     } catch (e) {
       developer.log('❌ Failed to update profile: $e', name: 'ArtistRepository');
+      rethrow;
+    }
+  }
+
+  Future<void> addService(Map<String, dynamic> serviceData) async {
+    try {
+      await _apiClient.dio.post('/artists/me/services', data: serviceData);
+    } catch (e) {
+      developer.log('❌ Failed to add service: $e', name: 'ArtistRepository');
+      rethrow;
+    }
+  }
+
+  Future<String> uploadMedia(String filePath) async {
+    try {
+      final formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(filePath),
+        'type': 'image', // Default to image for portfolio
+        'caption': 'Portfolio Image'
+      });
+      
+      final response = await _apiClient.dio.post('/artists/me/media', data: formData);
+      return response.data['url'] as String;
+    } catch (e) {
+      developer.log('❌ Failed to upload media: $e', name: 'ArtistRepository');
       rethrow;
     }
   }
@@ -51,15 +78,6 @@ class ArtistRepository {
       return ArtistKYC.fromJson(data);
     } catch (e) {
       developer.log('❌ Failed to fetch KYC status: $e', name: 'ArtistRepository');
-      rethrow;
-    }
-  }
-
-  Future<void> updateServices(List<Map<String, dynamic>> services) async {
-    try {
-      await _apiClient.dio.put('/artists/me/services', data: {'services': services});
-    } catch (e) {
-      developer.log('❌ Failed to update services: $e', name: 'ArtistRepository');
       rethrow;
     }
   }

@@ -47,6 +47,8 @@ class ComplaintRepository {
       developer.log('❌ Fetch all complaints failed: $e', name: 'ComplaintRepository');
       rethrow;
     }
+  }
+
   Future<void> resolveComplaint(String complaintId, String adminComment) async {
     try {
       developer.log('📝 Resolving complaint: $complaintId', name: 'ComplaintRepository');

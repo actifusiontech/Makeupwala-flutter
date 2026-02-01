@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import '../../../shared/theme/app_colors.dart';
-import '../../../shared/theme/app_typography.dart';
-import '../../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 
 class TierProgressCard extends StatelessWidget {
   final int currentTier;

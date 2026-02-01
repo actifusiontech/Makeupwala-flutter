@@ -1,4 +1,4 @@
-import '../../../core/network/api_client.dart';
+import 'package:app/core/network/api_client.dart';
 import '../models/post_model.dart';
 
 class DiscoveryRepository {

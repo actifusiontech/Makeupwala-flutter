@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/repositories/safety_repository.dart';
+import 'package:dio/dio.dart';
+import 'package:app/features/safety/data/safety_repository.dart';
 
 class SOSButton extends StatefulWidget {
   const SOSButton({Key? key}) : super(key: key);
@@ -9,13 +10,14 @@ class SOSButton extends StatefulWidget {
 }
 
 class _SOSButtonState extends State<SOSButton> {
-  final SafetyRepository _repository = SafetyRepository();
+  final SafetyRepository _repository = SafetyRepository(Dio());
   bool _isLoading = false;
 
   Future<void> _handleSOS() async {
     setState(() => _isLoading = true);
     try {
-      await _repository.sendSOS();
+      // Need dummy location or fetch it
+      await _repository.triggerSOS(lat: 0, lng: 0); 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

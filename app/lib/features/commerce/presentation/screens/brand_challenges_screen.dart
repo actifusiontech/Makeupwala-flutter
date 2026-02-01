@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../domain/commerce_models.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class BrandChallengesScreen extends StatefulWidget {
   const BrandChallengesScreen({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class _BrandChallengesScreenState extends State<BrandChallengesScreen> {
     bool isEco = false,
   }) {
     return Container(
-      margin: const EdgeInsets.bottom(16),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -73,8 +74,8 @@ class _BrandChallengesScreenState extends State<BrandChallengesScreen> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: isEco 
-                      ? [Colors.emerald.shade400, Colors.emerald.shade700] 
-                      : [const Color(0xFFFF6B6B), Colors.purple.shade400],
+                      ? [AppColors.emerald, AppColors.emerald] 
+                      : [const Color(0xFFFF6B6B), Colors.purple],
                   ),
                   borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
                 ),
@@ -114,7 +115,7 @@ class _BrandChallengesScreenState extends State<BrandChallengesScreen> {
                     if (isEco)
                       const Padding(
                         padding: EdgeInsets.only(right: 6),
-                        child: Icon(Icons.eco, color: Colors.emerald, size: 16),
+                        child: Icon(Icons.eco, color: AppColors.emerald, size: 16),
                       ),
                     Text(
                       title,
@@ -125,7 +126,7 @@ class _BrandChallengesScreenState extends State<BrandChallengesScreen> {
                 const SizedBox(height: 4),
                 Text(
                   'By $brand',
-                  style: TextStyle(color: Colors.slate.shade400, fontSize: 12),
+                  style: TextStyle(color: AppColors.slate, fontSize: 12),
                 ),
                 const SizedBox(height: 12),
                 Row(
@@ -153,7 +154,7 @@ class _BrandChallengesScreenState extends State<BrandChallengesScreen> {
                       child: ElevatedButton(
                         onPressed: status == 'Submitted' ? null : () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: isEco ? Colors.emerald : const Color(0xFF1E293B),
+                          backgroundColor: isEco ? AppColors.emerald : const Color(0xFF1E293B),
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           elevation: 0,
@@ -177,9 +178,9 @@ class _BrandChallengesScreenState extends State<BrandChallengesScreen> {
   Widget _buildFeature(IconData icon, String label) {
     return Row(
       children: [
-        Icon(icon, size: 14, color: Colors.slate.shade400),
+        Icon(icon, size: 14, color: AppColors.slate),
         const SizedBox(width: 4),
-        Text(label, style: TextStyle(color: Colors.slate.shade600, fontSize: 12)),
+        Text(label, style: TextStyle(color: AppColors.slate, fontSize: 12)),
       ],
     );
   }

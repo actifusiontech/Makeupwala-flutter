@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import '../../../core/services/payment_service.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 

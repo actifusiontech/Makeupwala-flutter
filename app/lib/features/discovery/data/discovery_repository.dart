@@ -1,6 +1,6 @@
 import 'dart:developer' as developer;
 import '../../../core/network/api_client.dart';
-import '../../artist/data/artist_model.dart';
+import 'package:app/core/models/artist.dart';
 
 class DiscoveryRepository {
   final ApiClient _apiClient;

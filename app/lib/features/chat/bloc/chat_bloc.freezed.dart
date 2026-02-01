@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,912 +9,1648 @@ part of 'chat_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
 /// @nodoc
 mixin _$ChatEvent {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatEvent);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ChatEvent()';
-}
-
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchRooms,
+    required TResult Function(String roomId) fetchMessages,
+    required TResult Function(String roomId, String text) sendMessage,
+    required TResult Function(String roomId) startPolling,
+    required TResult Function() stopPolling,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchRooms,
+    TResult? Function(String roomId)? fetchMessages,
+    TResult? Function(String roomId, String text)? sendMessage,
+    TResult? Function(String roomId)? startPolling,
+    TResult? Function()? stopPolling,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchRooms,
+    TResult Function(String roomId)? fetchMessages,
+    TResult Function(String roomId, String text)? sendMessage,
+    TResult Function(String roomId)? startPolling,
+    TResult Function()? stopPolling,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_StartPolling value) startPolling,
+    required TResult Function(_StopPolling value) stopPolling,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_StartPolling value)? startPolling,
+    TResult? Function(_StopPolling value)? stopPolling,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_StartPolling value)? startPolling,
+    TResult Function(_StopPolling value)? stopPolling,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $ChatEventCopyWith<$Res>  {
-$ChatEventCopyWith(ChatEvent _, $Res Function(ChatEvent) __);
+abstract class $ChatEventCopyWith<$Res> {
+  factory $ChatEventCopyWith(ChatEvent value, $Res Function(ChatEvent) then) =
+      _$ChatEventCopyWithImpl<$Res, ChatEvent>;
 }
 
+/// @nodoc
+class _$ChatEventCopyWithImpl<$Res, $Val extends ChatEvent>
+    implements $ChatEventCopyWith<$Res> {
+  _$ChatEventCopyWithImpl(this._value, this._then);
 
-/// Adds pattern-matching-related methods to [ChatEvent].
-extension ChatEventPatterns on ChatEvent {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _FetchRooms value)?  fetchRooms,TResult Function( _FetchMessages value)?  fetchMessages,TResult Function( _SendMessage value)?  sendMessage,TResult Function( _StartPolling value)?  startPolling,TResult Function( _StopPolling value)?  stopPolling,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _FetchRooms() when fetchRooms != null:
-return fetchRooms(_that);case _FetchMessages() when fetchMessages != null:
-return fetchMessages(_that);case _SendMessage() when sendMessage != null:
-return sendMessage(_that);case _StartPolling() when startPolling != null:
-return startPolling(_that);case _StopPolling() when stopPolling != null:
-return stopPolling(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _FetchRooms value)  fetchRooms,required TResult Function( _FetchMessages value)  fetchMessages,required TResult Function( _SendMessage value)  sendMessage,required TResult Function( _StartPolling value)  startPolling,required TResult Function( _StopPolling value)  stopPolling,}){
-final _that = this;
-switch (_that) {
-case _FetchRooms():
-return fetchRooms(_that);case _FetchMessages():
-return fetchMessages(_that);case _SendMessage():
-return sendMessage(_that);case _StartPolling():
-return startPolling(_that);case _StopPolling():
-return stopPolling(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _FetchRooms value)?  fetchRooms,TResult? Function( _FetchMessages value)?  fetchMessages,TResult? Function( _SendMessage value)?  sendMessage,TResult? Function( _StartPolling value)?  startPolling,TResult? Function( _StopPolling value)?  stopPolling,}){
-final _that = this;
-switch (_that) {
-case _FetchRooms() when fetchRooms != null:
-return fetchRooms(_that);case _FetchMessages() when fetchMessages != null:
-return fetchMessages(_that);case _SendMessage() when sendMessage != null:
-return sendMessage(_that);case _StartPolling() when startPolling != null:
-return startPolling(_that);case _StopPolling() when stopPolling != null:
-return stopPolling(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  fetchRooms,TResult Function( String roomId)?  fetchMessages,TResult Function( String roomId,  String text)?  sendMessage,TResult Function( String roomId)?  startPolling,TResult Function()?  stopPolling,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _FetchRooms() when fetchRooms != null:
-return fetchRooms();case _FetchMessages() when fetchMessages != null:
-return fetchMessages(_that.roomId);case _SendMessage() when sendMessage != null:
-return sendMessage(_that.roomId,_that.text);case _StartPolling() when startPolling != null:
-return startPolling(_that.roomId);case _StopPolling() when stopPolling != null:
-return stopPolling();case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  fetchRooms,required TResult Function( String roomId)  fetchMessages,required TResult Function( String roomId,  String text)  sendMessage,required TResult Function( String roomId)  startPolling,required TResult Function()  stopPolling,}) {final _that = this;
-switch (_that) {
-case _FetchRooms():
-return fetchRooms();case _FetchMessages():
-return fetchMessages(_that.roomId);case _SendMessage():
-return sendMessage(_that.roomId,_that.text);case _StartPolling():
-return startPolling(_that.roomId);case _StopPolling():
-return stopPolling();case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  fetchRooms,TResult? Function( String roomId)?  fetchMessages,TResult? Function( String roomId,  String text)?  sendMessage,TResult? Function( String roomId)?  startPolling,TResult? Function()?  stopPolling,}) {final _that = this;
-switch (_that) {
-case _FetchRooms() when fetchRooms != null:
-return fetchRooms();case _FetchMessages() when fetchMessages != null:
-return fetchMessages(_that.roomId);case _SendMessage() when sendMessage != null:
-return sendMessage(_that.roomId,_that.text);case _StartPolling() when startPolling != null:
-return startPolling(_that.roomId);case _StopPolling() when stopPolling != null:
-return stopPolling();case _:
-  return null;
-
-}
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
+/// @nodoc
+abstract class _$$FetchRoomsImplCopyWith<$Res> {
+  factory _$$FetchRoomsImplCopyWith(
+    _$FetchRoomsImpl value,
+    $Res Function(_$FetchRoomsImpl) then,
+  ) = __$$FetchRoomsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchRoomsImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$FetchRoomsImpl>
+    implements _$$FetchRoomsImplCopyWith<$Res> {
+  __$$FetchRoomsImplCopyWithImpl(
+    _$FetchRoomsImpl _value,
+    $Res Function(_$FetchRoomsImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
+class _$FetchRoomsImpl implements _FetchRooms {
+  const _$FetchRoomsImpl();
 
-class _FetchRooms implements ChatEvent {
-  const _FetchRooms();
-  
+  @override
+  String toString() {
+    return 'ChatEvent.fetchRooms()';
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchRoomsImpl);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchRooms,
+    required TResult Function(String roomId) fetchMessages,
+    required TResult Function(String roomId, String text) sendMessage,
+    required TResult Function(String roomId) startPolling,
+    required TResult Function() stopPolling,
+  }) {
+    return fetchRooms();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchRooms,
+    TResult? Function(String roomId)? fetchMessages,
+    TResult? Function(String roomId, String text)? sendMessage,
+    TResult? Function(String roomId)? startPolling,
+    TResult? Function()? stopPolling,
+  }) {
+    return fetchRooms?.call();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchRooms,
+    TResult Function(String roomId)? fetchMessages,
+    TResult Function(String roomId, String text)? sendMessage,
+    TResult Function(String roomId)? startPolling,
+    TResult Function()? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (fetchRooms != null) {
+      return fetchRooms();
+    }
+    return orElse();
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FetchRooms);
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_StartPolling value) startPolling,
+    required TResult Function(_StopPolling value) stopPolling,
+  }) {
+    return fetchRooms(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_StartPolling value)? startPolling,
+    TResult? Function(_StopPolling value)? stopPolling,
+  }) {
+    return fetchRooms?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_StartPolling value)? startPolling,
+    TResult Function(_StopPolling value)? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (fetchRooms != null) {
+      return fetchRooms(this);
+    }
+    return orElse();
+  }
 }
 
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ChatEvent.fetchRooms()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _FetchMessages implements ChatEvent {
-  const _FetchMessages({required this.roomId});
-  
-
- final  String roomId;
-
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$FetchMessagesCopyWith<_FetchMessages> get copyWith => __$FetchMessagesCopyWithImpl<_FetchMessages>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FetchMessages&&(identical(other.roomId, roomId) || other.roomId == roomId));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,roomId);
-
-@override
-String toString() {
-  return 'ChatEvent.fetchMessages(roomId: $roomId)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$FetchMessagesCopyWith<$Res> implements $ChatEventCopyWith<$Res> {
-  factory _$FetchMessagesCopyWith(_FetchMessages value, $Res Function(_FetchMessages) _then) = __$FetchMessagesCopyWithImpl;
-@useResult
-$Res call({
- String roomId
-});
-
-
-
-
-}
-/// @nodoc
-class __$FetchMessagesCopyWithImpl<$Res>
-    implements _$FetchMessagesCopyWith<$Res> {
-  __$FetchMessagesCopyWithImpl(this._self, this._then);
-
-  final _FetchMessages _self;
-  final $Res Function(_FetchMessages) _then;
-
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? roomId = null,}) {
-  return _then(_FetchMessages(
-roomId: null == roomId ? _self.roomId : roomId // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class _SendMessage implements ChatEvent {
-  const _SendMessage({required this.roomId, required this.text});
-  
-
- final  String roomId;
- final  String text;
-
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$SendMessageCopyWith<_SendMessage> get copyWith => __$SendMessageCopyWithImpl<_SendMessage>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMessage&&(identical(other.roomId, roomId) || other.roomId == roomId)&&(identical(other.text, text) || other.text == text));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,roomId,text);
-
-@override
-String toString() {
-  return 'ChatEvent.sendMessage(roomId: $roomId, text: $text)';
-}
-
-
+abstract class _FetchRooms implements ChatEvent {
+  const factory _FetchRooms() = _$FetchRoomsImpl;
 }
 
 /// @nodoc
-abstract mixin class _$SendMessageCopyWith<$Res> implements $ChatEventCopyWith<$Res> {
-  factory _$SendMessageCopyWith(_SendMessage value, $Res Function(_SendMessage) _then) = __$SendMessageCopyWithImpl;
-@useResult
-$Res call({
- String roomId, String text
-});
-
-
-
-
+abstract class _$$FetchMessagesImplCopyWith<$Res> {
+  factory _$$FetchMessagesImplCopyWith(
+    _$FetchMessagesImpl value,
+    $Res Function(_$FetchMessagesImpl) then,
+  ) = __$$FetchMessagesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String roomId});
 }
+
 /// @nodoc
-class __$SendMessageCopyWithImpl<$Res>
-    implements _$SendMessageCopyWith<$Res> {
-  __$SendMessageCopyWithImpl(this._self, this._then);
+class __$$FetchMessagesImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$FetchMessagesImpl>
+    implements _$$FetchMessagesImplCopyWith<$Res> {
+  __$$FetchMessagesImplCopyWithImpl(
+    _$FetchMessagesImpl _value,
+    $Res Function(_$FetchMessagesImpl) _then,
+  ) : super(_value, _then);
 
-  final _SendMessage _self;
-  final $Res Function(_SendMessage) _then;
-
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? roomId = null,Object? text = null,}) {
-  return _then(_SendMessage(
-roomId: null == roomId ? _self.roomId : roomId // ignore: cast_nullable_to_non_nullable
-as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? roomId = null}) {
+    return _then(
+      _$FetchMessagesImpl(
+        roomId: null == roomId
+            ? _value.roomId
+            : roomId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
+class _$FetchMessagesImpl implements _FetchMessages {
+  const _$FetchMessagesImpl({required this.roomId});
 
-class _StartPolling implements ChatEvent {
-  const _StartPolling({required this.roomId});
-  
+  @override
+  final String roomId;
 
- final  String roomId;
+  @override
+  String toString() {
+    return 'ChatEvent.fetchMessages(roomId: $roomId)';
+  }
 
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$StartPollingCopyWith<_StartPolling> get copyWith => __$StartPollingCopyWithImpl<_StartPolling>(this, _$identity);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchMessagesImpl &&
+            (identical(other.roomId, roomId) || other.roomId == roomId));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, roomId);
 
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchMessagesImplCopyWith<_$FetchMessagesImpl> get copyWith =>
+      __$$FetchMessagesImplCopyWithImpl<_$FetchMessagesImpl>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartPolling&&(identical(other.roomId, roomId) || other.roomId == roomId));
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchRooms,
+    required TResult Function(String roomId) fetchMessages,
+    required TResult Function(String roomId, String text) sendMessage,
+    required TResult Function(String roomId) startPolling,
+    required TResult Function() stopPolling,
+  }) {
+    return fetchMessages(roomId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchRooms,
+    TResult? Function(String roomId)? fetchMessages,
+    TResult? Function(String roomId, String text)? sendMessage,
+    TResult? Function(String roomId)? startPolling,
+    TResult? Function()? stopPolling,
+  }) {
+    return fetchMessages?.call(roomId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchRooms,
+    TResult Function(String roomId)? fetchMessages,
+    TResult Function(String roomId, String text)? sendMessage,
+    TResult Function(String roomId)? startPolling,
+    TResult Function()? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (fetchMessages != null) {
+      return fetchMessages(roomId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_StartPolling value) startPolling,
+    required TResult Function(_StopPolling value) stopPolling,
+  }) {
+    return fetchMessages(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_StartPolling value)? startPolling,
+    TResult? Function(_StopPolling value)? stopPolling,
+  }) {
+    return fetchMessages?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_StartPolling value)? startPolling,
+    TResult Function(_StopPolling value)? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (fetchMessages != null) {
+      return fetchMessages(this);
+    }
+    return orElse();
+  }
 }
 
+abstract class _FetchMessages implements ChatEvent {
+  const factory _FetchMessages({required final String roomId}) =
+      _$FetchMessagesImpl;
 
-@override
-int get hashCode => Object.hash(runtimeType,roomId);
+  String get roomId;
 
-@override
-String toString() {
-  return 'ChatEvent.startPolling(roomId: $roomId)';
-}
-
-
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchMessagesImplCopyWith<_$FetchMessagesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class _$StartPollingCopyWith<$Res> implements $ChatEventCopyWith<$Res> {
-  factory _$StartPollingCopyWith(_StartPolling value, $Res Function(_StartPolling) _then) = __$StartPollingCopyWithImpl;
-@useResult
-$Res call({
- String roomId
-});
-
-
-
-
-}
-/// @nodoc
-class __$StartPollingCopyWithImpl<$Res>
-    implements _$StartPollingCopyWith<$Res> {
-  __$StartPollingCopyWithImpl(this._self, this._then);
-
-  final _StartPolling _self;
-  final $Res Function(_StartPolling) _then;
-
-/// Create a copy of ChatEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? roomId = null,}) {
-  return _then(_StartPolling(
-roomId: null == roomId ? _self.roomId : roomId // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+abstract class _$$SendMessageImplCopyWith<$Res> {
+  factory _$$SendMessageImplCopyWith(
+    _$SendMessageImpl value,
+    $Res Function(_$SendMessageImpl) then,
+  ) = __$$SendMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String roomId, String text});
 }
 
 /// @nodoc
+class __$$SendMessageImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$SendMessageImpl>
+    implements _$$SendMessageImplCopyWith<$Res> {
+  __$$SendMessageImplCopyWithImpl(
+    _$SendMessageImpl _value,
+    $Res Function(_$SendMessageImpl) _then,
+  ) : super(_value, _then);
 
-
-class _StopPolling implements ChatEvent {
-  const _StopPolling();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StopPolling);
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? roomId = null, Object? text = null}) {
+    return _then(
+      _$SendMessageImpl(
+        roomId: null == roomId
+            ? _value.roomId
+            : roomId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        text: null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
 }
 
+/// @nodoc
 
-@override
-int get hashCode => runtimeType.hashCode;
+class _$SendMessageImpl implements _SendMessage {
+  const _$SendMessageImpl({required this.roomId, required this.text});
 
-@override
-String toString() {
-  return 'ChatEvent.stopPolling()';
+  @override
+  final String roomId;
+  @override
+  final String text;
+
+  @override
+  String toString() {
+    return 'ChatEvent.sendMessage(roomId: $roomId, text: $text)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendMessageImpl &&
+            (identical(other.roomId, roomId) || other.roomId == roomId) &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, roomId, text);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
+      __$$SendMessageImplCopyWithImpl<_$SendMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchRooms,
+    required TResult Function(String roomId) fetchMessages,
+    required TResult Function(String roomId, String text) sendMessage,
+    required TResult Function(String roomId) startPolling,
+    required TResult Function() stopPolling,
+  }) {
+    return sendMessage(roomId, text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchRooms,
+    TResult? Function(String roomId)? fetchMessages,
+    TResult? Function(String roomId, String text)? sendMessage,
+    TResult? Function(String roomId)? startPolling,
+    TResult? Function()? stopPolling,
+  }) {
+    return sendMessage?.call(roomId, text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchRooms,
+    TResult Function(String roomId)? fetchMessages,
+    TResult Function(String roomId, String text)? sendMessage,
+    TResult Function(String roomId)? startPolling,
+    TResult Function()? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(roomId, text);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_StartPolling value) startPolling,
+    required TResult Function(_StopPolling value) stopPolling,
+  }) {
+    return sendMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_StartPolling value)? startPolling,
+    TResult? Function(_StopPolling value)? stopPolling,
+  }) {
+    return sendMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_StartPolling value)? startPolling,
+    TResult Function(_StopPolling value)? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(this);
+    }
+    return orElse();
+  }
 }
 
+abstract class _SendMessage implements ChatEvent {
+  const factory _SendMessage({
+    required final String roomId,
+    required final String text,
+  }) = _$SendMessageImpl;
 
+  String get roomId;
+  String get text;
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+abstract class _$$StartPollingImplCopyWith<$Res> {
+  factory _$$StartPollingImplCopyWith(
+    _$StartPollingImpl value,
+    $Res Function(_$StartPollingImpl) then,
+  ) = __$$StartPollingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String roomId});
+}
 
+/// @nodoc
+class __$$StartPollingImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$StartPollingImpl>
+    implements _$$StartPollingImplCopyWith<$Res> {
+  __$$StartPollingImplCopyWithImpl(
+    _$StartPollingImpl _value,
+    $Res Function(_$StartPollingImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? roomId = null}) {
+    return _then(
+      _$StartPollingImpl(
+        roomId: null == roomId
+            ? _value.roomId
+            : roomId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$StartPollingImpl implements _StartPolling {
+  const _$StartPollingImpl({required this.roomId});
+
+  @override
+  final String roomId;
+
+  @override
+  String toString() {
+    return 'ChatEvent.startPolling(roomId: $roomId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartPollingImpl &&
+            (identical(other.roomId, roomId) || other.roomId == roomId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, roomId);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartPollingImplCopyWith<_$StartPollingImpl> get copyWith =>
+      __$$StartPollingImplCopyWithImpl<_$StartPollingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchRooms,
+    required TResult Function(String roomId) fetchMessages,
+    required TResult Function(String roomId, String text) sendMessage,
+    required TResult Function(String roomId) startPolling,
+    required TResult Function() stopPolling,
+  }) {
+    return startPolling(roomId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchRooms,
+    TResult? Function(String roomId)? fetchMessages,
+    TResult? Function(String roomId, String text)? sendMessage,
+    TResult? Function(String roomId)? startPolling,
+    TResult? Function()? stopPolling,
+  }) {
+    return startPolling?.call(roomId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchRooms,
+    TResult Function(String roomId)? fetchMessages,
+    TResult Function(String roomId, String text)? sendMessage,
+    TResult Function(String roomId)? startPolling,
+    TResult Function()? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (startPolling != null) {
+      return startPolling(roomId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_StartPolling value) startPolling,
+    required TResult Function(_StopPolling value) stopPolling,
+  }) {
+    return startPolling(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_StartPolling value)? startPolling,
+    TResult? Function(_StopPolling value)? stopPolling,
+  }) {
+    return startPolling?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_StartPolling value)? startPolling,
+    TResult Function(_StopPolling value)? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (startPolling != null) {
+      return startPolling(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StartPolling implements ChatEvent {
+  const factory _StartPolling({required final String roomId}) =
+      _$StartPollingImpl;
+
+  String get roomId;
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StartPollingImplCopyWith<_$StartPollingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StopPollingImplCopyWith<$Res> {
+  factory _$$StopPollingImplCopyWith(
+    _$StopPollingImpl value,
+    $Res Function(_$StopPollingImpl) then,
+  ) = __$$StopPollingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StopPollingImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$StopPollingImpl>
+    implements _$$StopPollingImplCopyWith<$Res> {
+  __$$StopPollingImplCopyWithImpl(
+    _$StopPollingImpl _value,
+    $Res Function(_$StopPollingImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$StopPollingImpl implements _StopPolling {
+  const _$StopPollingImpl();
+
+  @override
+  String toString() {
+    return 'ChatEvent.stopPolling()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StopPollingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchRooms,
+    required TResult Function(String roomId) fetchMessages,
+    required TResult Function(String roomId, String text) sendMessage,
+    required TResult Function(String roomId) startPolling,
+    required TResult Function() stopPolling,
+  }) {
+    return stopPolling();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchRooms,
+    TResult? Function(String roomId)? fetchMessages,
+    TResult? Function(String roomId, String text)? sendMessage,
+    TResult? Function(String roomId)? startPolling,
+    TResult? Function()? stopPolling,
+  }) {
+    return stopPolling?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchRooms,
+    TResult Function(String roomId)? fetchMessages,
+    TResult Function(String roomId, String text)? sendMessage,
+    TResult Function(String roomId)? startPolling,
+    TResult Function()? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (stopPolling != null) {
+      return stopPolling();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_StartPolling value) startPolling,
+    required TResult Function(_StopPolling value) stopPolling,
+  }) {
+    return stopPolling(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_StartPolling value)? startPolling,
+    TResult? Function(_StopPolling value)? stopPolling,
+  }) {
+    return stopPolling?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_StartPolling value)? startPolling,
+    TResult Function(_StopPolling value)? stopPolling,
+    required TResult orElse(),
+  }) {
+    if (stopPolling != null) {
+      return stopPolling(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StopPolling implements ChatEvent {
+  const factory _StopPolling() = _$StopPollingImpl;
+}
 
 /// @nodoc
 mixin _$ChatState {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatState);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ChatState()';
-}
-
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<dynamic> rooms) roomsLoaded,
+    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(String message) error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> rooms)? roomsLoaded,
+    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(String message)? error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> rooms)? roomsLoaded,
+    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_MessagesLoaded value) messagesLoaded,
+    required TResult Function(_Error value) error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_MessagesLoaded value)? messagesLoaded,
+    TResult? Function(_Error value)? error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_MessagesLoaded value)? messagesLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $ChatStateCopyWith<$Res>  {
-$ChatStateCopyWith(ChatState _, $Res Function(ChatState) __);
+abstract class $ChatStateCopyWith<$Res> {
+  factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
+      _$ChatStateCopyWithImpl<$Res, ChatState>;
 }
 
+/// @nodoc
+class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
+    implements $ChatStateCopyWith<$Res> {
+  _$ChatStateCopyWithImpl(this._value, this._then);
 
-/// Adds pattern-matching-related methods to [ChatState].
-extension ChatStatePatterns on ChatState {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _RoomsLoaded value)?  roomsLoaded,TResult Function( _MessagesLoaded value)?  messagesLoaded,TResult Function( _Error value)?  error,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
-return loading(_that);case _RoomsLoaded() when roomsLoaded != null:
-return roomsLoaded(_that);case _MessagesLoaded() when messagesLoaded != null:
-return messagesLoaded(_that);case _Error() when error != null:
-return error(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _RoomsLoaded value)  roomsLoaded,required TResult Function( _MessagesLoaded value)  messagesLoaded,required TResult Function( _Error value)  error,}){
-final _that = this;
-switch (_that) {
-case _Initial():
-return initial(_that);case _Loading():
-return loading(_that);case _RoomsLoaded():
-return roomsLoaded(_that);case _MessagesLoaded():
-return messagesLoaded(_that);case _Error():
-return error(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _RoomsLoaded value)?  roomsLoaded,TResult? Function( _MessagesLoaded value)?  messagesLoaded,TResult? Function( _Error value)?  error,}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
-return loading(_that);case _RoomsLoaded() when roomsLoaded != null:
-return roomsLoaded(_that);case _MessagesLoaded() when messagesLoaded != null:
-return messagesLoaded(_that);case _Error() when error != null:
-return error(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<dynamic> rooms)?  roomsLoaded,TResult Function( List<dynamic> messages)?  messagesLoaded,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
-return loading();case _RoomsLoaded() when roomsLoaded != null:
-return roomsLoaded(_that.rooms);case _MessagesLoaded() when messagesLoaded != null:
-return messagesLoaded(_that.messages);case _Error() when error != null:
-return error(_that.message);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<dynamic> rooms)  roomsLoaded,required TResult Function( List<dynamic> messages)  messagesLoaded,required TResult Function( String message)  error,}) {final _that = this;
-switch (_that) {
-case _Initial():
-return initial();case _Loading():
-return loading();case _RoomsLoaded():
-return roomsLoaded(_that.rooms);case _MessagesLoaded():
-return messagesLoaded(_that.messages);case _Error():
-return error(_that.message);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<dynamic> rooms)?  roomsLoaded,TResult? Function( List<dynamic> messages)?  messagesLoaded,TResult? Function( String message)?  error,}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
-return loading();case _RoomsLoaded() when roomsLoaded != null:
-return roomsLoaded(_that.rooms);case _MessagesLoaded() when messagesLoaded != null:
-return messagesLoaded(_that.messages);case _Error() when error != null:
-return error(_that.message);case _:
-  return null;
-
-}
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ChatStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
-class _Initial implements ChatState {
-  const _Initial();
-  
+  @override
+  String toString() {
+    return 'ChatState.initial()';
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<dynamic> rooms) roomsLoaded,
+    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return initial();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> rooms)? roomsLoaded,
+    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return initial?.call();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> rooms)? roomsLoaded,
+    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_MessagesLoaded value) messagesLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_MessagesLoaded value)? messagesLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_MessagesLoaded value)? messagesLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
 }
 
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ChatState.initial()';
+abstract class _Initial implements ChatState {
+  const factory _Initial() = _$InitialImpl;
 }
-
-
-}
-
-
-
 
 /// @nodoc
-
-
-class _Loading implements ChatState {
-  const _Loading();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ChatState.loading()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _RoomsLoaded implements ChatState {
-  const _RoomsLoaded({required final  List<dynamic> rooms}): _rooms = rooms;
-  
-
- final  List<dynamic> _rooms;
- List<dynamic> get rooms {
-  if (_rooms is EqualUnmodifiableListView) return _rooms;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_rooms);
-}
-
-
-/// Create a copy of ChatState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$RoomsLoadedCopyWith<_RoomsLoaded> get copyWith => __$RoomsLoadedCopyWithImpl<_RoomsLoaded>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RoomsLoaded&&const DeepCollectionEquality().equals(other._rooms, _rooms));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_rooms));
-
-@override
-String toString() {
-  return 'ChatState.roomsLoaded(rooms: $rooms)';
-}
-
-
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-abstract mixin class _$RoomsLoadedCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
-  factory _$RoomsLoadedCopyWith(_RoomsLoaded value, $Res Function(_RoomsLoaded) _then) = __$RoomsLoadedCopyWithImpl;
-@useResult
-$Res call({
- List<dynamic> rooms
-});
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$ChatStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
 
-
-
-
-}
-/// @nodoc
-class __$RoomsLoadedCopyWithImpl<$Res>
-    implements _$RoomsLoadedCopyWith<$Res> {
-  __$RoomsLoadedCopyWithImpl(this._self, this._then);
-
-  final _RoomsLoaded _self;
-  final $Res Function(_RoomsLoaded) _then;
-
-/// Create a copy of ChatState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? rooms = null,}) {
-  return _then(_RoomsLoaded(
-rooms: null == rooms ? _self._rooms : rooms // ignore: cast_nullable_to_non_nullable
-as List<dynamic>,
-  ));
-}
-
-
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
-class _MessagesLoaded implements ChatState {
-  const _MessagesLoaded({required final  List<dynamic> messages}): _messages = messages;
-  
+  @override
+  String toString() {
+    return 'ChatState.loading()';
+  }
 
- final  List<dynamic> _messages;
- List<dynamic> get messages {
-  if (_messages is EqualUnmodifiableListView) return _messages;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_messages);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<dynamic> rooms) roomsLoaded,
+    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> rooms)? roomsLoaded,
+    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> rooms)? roomsLoaded,
+    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_MessagesLoaded value) messagesLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_MessagesLoaded value)? messagesLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_MessagesLoaded value)? messagesLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
 }
 
-
-/// Create a copy of ChatState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$MessagesLoadedCopyWith<_MessagesLoaded> get copyWith => __$MessagesLoadedCopyWithImpl<_MessagesLoaded>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MessagesLoaded&&const DeepCollectionEquality().equals(other._messages, _messages));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_messages));
-
-@override
-String toString() {
-  return 'ChatState.messagesLoaded(messages: $messages)';
-}
-
-
+abstract class _Loading implements ChatState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract mixin class _$MessagesLoadedCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
-  factory _$MessagesLoadedCopyWith(_MessagesLoaded value, $Res Function(_MessagesLoaded) _then) = __$MessagesLoadedCopyWithImpl;
-@useResult
-$Res call({
- List<dynamic> messages
-});
-
-
-
-
-}
-/// @nodoc
-class __$MessagesLoadedCopyWithImpl<$Res>
-    implements _$MessagesLoadedCopyWith<$Res> {
-  __$MessagesLoadedCopyWithImpl(this._self, this._then);
-
-  final _MessagesLoaded _self;
-  final $Res Function(_MessagesLoaded) _then;
-
-/// Create a copy of ChatState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? messages = null,}) {
-  return _then(_MessagesLoaded(
-messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
-as List<dynamic>,
-  ));
-}
-
-
+abstract class _$$RoomsLoadedImplCopyWith<$Res> {
+  factory _$$RoomsLoadedImplCopyWith(
+    _$RoomsLoadedImpl value,
+    $Res Function(_$RoomsLoadedImpl) then,
+  ) = __$$RoomsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> rooms});
 }
 
 /// @nodoc
+class __$$RoomsLoadedImplCopyWithImpl<$Res>
+    extends _$ChatStateCopyWithImpl<$Res, _$RoomsLoadedImpl>
+    implements _$$RoomsLoadedImplCopyWith<$Res> {
+  __$$RoomsLoadedImplCopyWithImpl(
+    _$RoomsLoadedImpl _value,
+    $Res Function(_$RoomsLoadedImpl) _then,
+  ) : super(_value, _then);
 
-
-class _Error implements ChatState {
-  const _Error({required this.message});
-  
-
- final  String message;
-
-/// Create a copy of ChatState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.message, message) || other.message == message));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,message);
-
-@override
-String toString() {
-  return 'ChatState.error(message: $message)';
-}
-
-
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? rooms = null}) {
+    return _then(
+      _$RoomsLoadedImpl(
+        rooms: null == rooms
+            ? _value._rooms
+            : rooms // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+      ),
+    );
+  }
 }
 
 /// @nodoc
-abstract mixin class _$ErrorCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
-@useResult
-$Res call({
- String message
-});
 
+class _$RoomsLoadedImpl implements _RoomsLoaded {
+  const _$RoomsLoadedImpl({required final List<dynamic> rooms})
+    : _rooms = rooms;
 
+  final List<dynamic> _rooms;
+  @override
+  List<dynamic> get rooms {
+    if (_rooms is EqualUnmodifiableListView) return _rooms;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rooms);
+  }
 
+  @override
+  String toString() {
+    return 'ChatState.roomsLoaded(rooms: $rooms)';
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RoomsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._rooms, _rooms));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_rooms));
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RoomsLoadedImplCopyWith<_$RoomsLoadedImpl> get copyWith =>
+      __$$RoomsLoadedImplCopyWithImpl<_$RoomsLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<dynamic> rooms) roomsLoaded,
+    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return roomsLoaded(rooms);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> rooms)? roomsLoaded,
+    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return roomsLoaded?.call(rooms);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> rooms)? roomsLoaded,
+    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (roomsLoaded != null) {
+      return roomsLoaded(rooms);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_MessagesLoaded value) messagesLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return roomsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_MessagesLoaded value)? messagesLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return roomsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_MessagesLoaded value)? messagesLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (roomsLoaded != null) {
+      return roomsLoaded(this);
+    }
+    return orElse();
+  }
 }
+
+abstract class _RoomsLoaded implements ChatState {
+  const factory _RoomsLoaded({required final List<dynamic> rooms}) =
+      _$RoomsLoadedImpl;
+
+  List<dynamic> get rooms;
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RoomsLoadedImplCopyWith<_$RoomsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(this._self, this._then);
-
-  final _Error _self;
-  final $Res Function(_Error) _then;
-
-/// Create a copy of ChatState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(_Error(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+abstract class _$$MessagesLoadedImplCopyWith<$Res> {
+  factory _$$MessagesLoadedImplCopyWith(
+    _$MessagesLoadedImpl value,
+    $Res Function(_$MessagesLoadedImpl) then,
+  ) = __$$MessagesLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> messages});
 }
 
+/// @nodoc
+class __$$MessagesLoadedImplCopyWithImpl<$Res>
+    extends _$ChatStateCopyWithImpl<$Res, _$MessagesLoadedImpl>
+    implements _$$MessagesLoadedImplCopyWith<$Res> {
+  __$$MessagesLoadedImplCopyWithImpl(
+    _$MessagesLoadedImpl _value,
+    $Res Function(_$MessagesLoadedImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? messages = null}) {
+    return _then(
+      _$MessagesLoadedImpl(
+        messages: null == messages
+            ? _value._messages
+            : messages // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+      ),
+    );
+  }
 }
 
-// dart format on
+/// @nodoc
+
+class _$MessagesLoadedImpl implements _MessagesLoaded {
+  const _$MessagesLoadedImpl({required final List<dynamic> messages})
+    : _messages = messages;
+
+  final List<dynamic> _messages;
+  @override
+  List<dynamic> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  String toString() {
+    return 'ChatState.messagesLoaded(messages: $messages)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MessagesLoadedImpl &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MessagesLoadedImplCopyWith<_$MessagesLoadedImpl> get copyWith =>
+      __$$MessagesLoadedImplCopyWithImpl<_$MessagesLoadedImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<dynamic> rooms) roomsLoaded,
+    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return messagesLoaded(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> rooms)? roomsLoaded,
+    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return messagesLoaded?.call(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> rooms)? roomsLoaded,
+    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (messagesLoaded != null) {
+      return messagesLoaded(messages);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_MessagesLoaded value) messagesLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return messagesLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_MessagesLoaded value)? messagesLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return messagesLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_MessagesLoaded value)? messagesLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (messagesLoaded != null) {
+      return messagesLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MessagesLoaded implements ChatState {
+  const factory _MessagesLoaded({required final List<dynamic> messages}) =
+      _$MessagesLoadedImpl;
+
+  List<dynamic> get messages;
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MessagesLoadedImplCopyWith<_$MessagesLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+    _$ErrorImpl value,
+    $Res Function(_$ErrorImpl) then,
+  ) = __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$ChatStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+    _$ErrorImpl _value,
+    $Res Function(_$ErrorImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ErrorImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ChatState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<dynamic> rooms) roomsLoaded,
+    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<dynamic> rooms)? roomsLoaded,
+    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> rooms)? roomsLoaded,
+    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_MessagesLoaded value) messagesLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_MessagesLoaded value)? messagesLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_MessagesLoaded value)? messagesLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements ChatState {
+  const factory _Error({required final String message}) = _$ErrorImpl;
+
+  String get message;
+
+  /// Create a copy of ChatState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

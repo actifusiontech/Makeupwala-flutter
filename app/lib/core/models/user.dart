@@ -20,6 +20,7 @@ abstract class User with _$User {
     String? referralCode,
     @Default(0) int loyaltyPoints,
     DateTime? createdAt,
+    List<String>? media,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

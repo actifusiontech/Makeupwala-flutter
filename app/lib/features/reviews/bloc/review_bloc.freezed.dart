@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,798 +9,1373 @@ part of 'review_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
 /// @nodoc
 mixin _$ReviewEvent {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReviewEvent);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ReviewEvent()';
-}
-
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String bookingId, int rating, String comment)
+    submitReview,
+    required TResult Function(String artistId) fetchArtistReviews,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String bookingId, int rating, String comment)?
+    submitReview,
+    TResult? Function(String artistId)? fetchArtistReviews,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String bookingId, int rating, String comment)?
+    submitReview,
+    TResult Function(String artistId)? fetchArtistReviews,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SubmitReview value) submitReview,
+    required TResult Function(_FetchArtistReviews value) fetchArtistReviews,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SubmitReview value)? submitReview,
+    TResult? Function(_FetchArtistReviews value)? fetchArtistReviews,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SubmitReview value)? submitReview,
+    TResult Function(_FetchArtistReviews value)? fetchArtistReviews,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $ReviewEventCopyWith<$Res>  {
-$ReviewEventCopyWith(ReviewEvent _, $Res Function(ReviewEvent) __);
+abstract class $ReviewEventCopyWith<$Res> {
+  factory $ReviewEventCopyWith(
+    ReviewEvent value,
+    $Res Function(ReviewEvent) then,
+  ) = _$ReviewEventCopyWithImpl<$Res, ReviewEvent>;
 }
 
+/// @nodoc
+class _$ReviewEventCopyWithImpl<$Res, $Val extends ReviewEvent>
+    implements $ReviewEventCopyWith<$Res> {
+  _$ReviewEventCopyWithImpl(this._value, this._then);
 
-/// Adds pattern-matching-related methods to [ReviewEvent].
-extension ReviewEventPatterns on ReviewEvent {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _SubmitReview value)?  submitReview,TResult Function( _FetchArtistReviews value)?  fetchArtistReviews,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _SubmitReview() when submitReview != null:
-return submitReview(_that);case _FetchArtistReviews() when fetchArtistReviews != null:
-return fetchArtistReviews(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _SubmitReview value)  submitReview,required TResult Function( _FetchArtistReviews value)  fetchArtistReviews,}){
-final _that = this;
-switch (_that) {
-case _SubmitReview():
-return submitReview(_that);case _FetchArtistReviews():
-return fetchArtistReviews(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _SubmitReview value)?  submitReview,TResult? Function( _FetchArtistReviews value)?  fetchArtistReviews,}){
-final _that = this;
-switch (_that) {
-case _SubmitReview() when submitReview != null:
-return submitReview(_that);case _FetchArtistReviews() when fetchArtistReviews != null:
-return fetchArtistReviews(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String bookingId,  int rating,  String comment)?  submitReview,TResult Function( String artistId)?  fetchArtistReviews,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _SubmitReview() when submitReview != null:
-return submitReview(_that.bookingId,_that.rating,_that.comment);case _FetchArtistReviews() when fetchArtistReviews != null:
-return fetchArtistReviews(_that.artistId);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String bookingId,  int rating,  String comment)  submitReview,required TResult Function( String artistId)  fetchArtistReviews,}) {final _that = this;
-switch (_that) {
-case _SubmitReview():
-return submitReview(_that.bookingId,_that.rating,_that.comment);case _FetchArtistReviews():
-return fetchArtistReviews(_that.artistId);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String bookingId,  int rating,  String comment)?  submitReview,TResult? Function( String artistId)?  fetchArtistReviews,}) {final _that = this;
-switch (_that) {
-case _SubmitReview() when submitReview != null:
-return submitReview(_that.bookingId,_that.rating,_that.comment);case _FetchArtistReviews() when fetchArtistReviews != null:
-return fetchArtistReviews(_that.artistId);case _:
-  return null;
-
-}
+  /// Create a copy of ReviewEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
+/// @nodoc
+abstract class _$$SubmitReviewImplCopyWith<$Res> {
+  factory _$$SubmitReviewImplCopyWith(
+    _$SubmitReviewImpl value,
+    $Res Function(_$SubmitReviewImpl) then,
+  ) = __$$SubmitReviewImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String bookingId, int rating, String comment});
+}
+
+/// @nodoc
+class __$$SubmitReviewImplCopyWithImpl<$Res>
+    extends _$ReviewEventCopyWithImpl<$Res, _$SubmitReviewImpl>
+    implements _$$SubmitReviewImplCopyWith<$Res> {
+  __$$SubmitReviewImplCopyWithImpl(
+    _$SubmitReviewImpl _value,
+    $Res Function(_$SubmitReviewImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ReviewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bookingId = null,
+    Object? rating = null,
+    Object? comment = null,
+  }) {
+    return _then(
+      _$SubmitReviewImpl(
+        bookingId: null == bookingId
+            ? _value.bookingId
+            : bookingId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        rating: null == rating
+            ? _value.rating
+            : rating // ignore: cast_nullable_to_non_nullable
+                  as int,
+        comment: null == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
+class _$SubmitReviewImpl implements _SubmitReview {
+  const _$SubmitReviewImpl({
+    required this.bookingId,
+    required this.rating,
+    required this.comment,
+  });
 
-class _SubmitReview implements ReviewEvent {
-  const _SubmitReview({required this.bookingId, required this.rating, required this.comment});
-  
+  @override
+  final String bookingId;
+  @override
+  final int rating;
+  @override
+  final String comment;
 
- final  String bookingId;
- final  int rating;
- final  String comment;
+  @override
+  String toString() {
+    return 'ReviewEvent.submitReview(bookingId: $bookingId, rating: $rating, comment: $comment)';
+  }
 
-/// Create a copy of ReviewEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$SubmitReviewCopyWith<_SubmitReview> get copyWith => __$SubmitReviewCopyWithImpl<_SubmitReview>(this, _$identity);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubmitReviewImpl &&
+            (identical(other.bookingId, bookingId) ||
+                other.bookingId == bookingId) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.comment, comment) || other.comment == comment));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, bookingId, rating, comment);
 
+  /// Create a copy of ReviewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubmitReviewImplCopyWith<_$SubmitReviewImpl> get copyWith =>
+      __$$SubmitReviewImplCopyWithImpl<_$SubmitReviewImpl>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SubmitReview&&(identical(other.bookingId, bookingId) || other.bookingId == bookingId)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.comment, comment) || other.comment == comment));
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String bookingId, int rating, String comment)
+    submitReview,
+    required TResult Function(String artistId) fetchArtistReviews,
+  }) {
+    return submitReview(bookingId, rating, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String bookingId, int rating, String comment)?
+    submitReview,
+    TResult? Function(String artistId)? fetchArtistReviews,
+  }) {
+    return submitReview?.call(bookingId, rating, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String bookingId, int rating, String comment)?
+    submitReview,
+    TResult Function(String artistId)? fetchArtistReviews,
+    required TResult orElse(),
+  }) {
+    if (submitReview != null) {
+      return submitReview(bookingId, rating, comment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SubmitReview value) submitReview,
+    required TResult Function(_FetchArtistReviews value) fetchArtistReviews,
+  }) {
+    return submitReview(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SubmitReview value)? submitReview,
+    TResult? Function(_FetchArtistReviews value)? fetchArtistReviews,
+  }) {
+    return submitReview?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SubmitReview value)? submitReview,
+    TResult Function(_FetchArtistReviews value)? fetchArtistReviews,
+    required TResult orElse(),
+  }) {
+    if (submitReview != null) {
+      return submitReview(this);
+    }
+    return orElse();
+  }
 }
 
+abstract class _SubmitReview implements ReviewEvent {
+  const factory _SubmitReview({
+    required final String bookingId,
+    required final int rating,
+    required final String comment,
+  }) = _$SubmitReviewImpl;
 
-@override
-int get hashCode => Object.hash(runtimeType,bookingId,rating,comment);
+  String get bookingId;
+  int get rating;
+  String get comment;
 
-@override
-String toString() {
-  return 'ReviewEvent.submitReview(bookingId: $bookingId, rating: $rating, comment: $comment)';
-}
-
-
+  /// Create a copy of ReviewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SubmitReviewImplCopyWith<_$SubmitReviewImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class _$SubmitReviewCopyWith<$Res> implements $ReviewEventCopyWith<$Res> {
-  factory _$SubmitReviewCopyWith(_SubmitReview value, $Res Function(_SubmitReview) _then) = __$SubmitReviewCopyWithImpl;
-@useResult
-$Res call({
- String bookingId, int rating, String comment
-});
-
-
-
-
-}
-/// @nodoc
-class __$SubmitReviewCopyWithImpl<$Res>
-    implements _$SubmitReviewCopyWith<$Res> {
-  __$SubmitReviewCopyWithImpl(this._self, this._then);
-
-  final _SubmitReview _self;
-  final $Res Function(_SubmitReview) _then;
-
-/// Create a copy of ReviewEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? bookingId = null,Object? rating = null,Object? comment = null,}) {
-  return _then(_SubmitReview(
-bookingId: null == bookingId ? _self.bookingId : bookingId // ignore: cast_nullable_to_non_nullable
-as String,rating: null == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
-as int,comment: null == comment ? _self.comment : comment // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+abstract class _$$FetchArtistReviewsImplCopyWith<$Res> {
+  factory _$$FetchArtistReviewsImplCopyWith(
+    _$FetchArtistReviewsImpl value,
+    $Res Function(_$FetchArtistReviewsImpl) then,
+  ) = __$$FetchArtistReviewsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String artistId});
 }
 
 /// @nodoc
+class __$$FetchArtistReviewsImplCopyWithImpl<$Res>
+    extends _$ReviewEventCopyWithImpl<$Res, _$FetchArtistReviewsImpl>
+    implements _$$FetchArtistReviewsImplCopyWith<$Res> {
+  __$$FetchArtistReviewsImplCopyWithImpl(
+    _$FetchArtistReviewsImpl _value,
+    $Res Function(_$FetchArtistReviewsImpl) _then,
+  ) : super(_value, _then);
 
-
-class _FetchArtistReviews implements ReviewEvent {
-  const _FetchArtistReviews({required this.artistId});
-  
-
- final  String artistId;
-
-/// Create a copy of ReviewEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$FetchArtistReviewsCopyWith<_FetchArtistReviews> get copyWith => __$FetchArtistReviewsCopyWithImpl<_FetchArtistReviews>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FetchArtistReviews&&(identical(other.artistId, artistId) || other.artistId == artistId));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,artistId);
-
-@override
-String toString() {
-  return 'ReviewEvent.fetchArtistReviews(artistId: $artistId)';
-}
-
-
+  /// Create a copy of ReviewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? artistId = null}) {
+    return _then(
+      _$FetchArtistReviewsImpl(
+        artistId: null == artistId
+            ? _value.artistId
+            : artistId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
 }
 
 /// @nodoc
-abstract mixin class _$FetchArtistReviewsCopyWith<$Res> implements $ReviewEventCopyWith<$Res> {
-  factory _$FetchArtistReviewsCopyWith(_FetchArtistReviews value, $Res Function(_FetchArtistReviews) _then) = __$FetchArtistReviewsCopyWithImpl;
-@useResult
-$Res call({
- String artistId
-});
 
+class _$FetchArtistReviewsImpl implements _FetchArtistReviews {
+  const _$FetchArtistReviewsImpl({required this.artistId});
 
+  @override
+  final String artistId;
 
+  @override
+  String toString() {
+    return 'ReviewEvent.fetchArtistReviews(artistId: $artistId)';
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchArtistReviewsImpl &&
+            (identical(other.artistId, artistId) ||
+                other.artistId == artistId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, artistId);
+
+  /// Create a copy of ReviewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchArtistReviewsImplCopyWith<_$FetchArtistReviewsImpl> get copyWith =>
+      __$$FetchArtistReviewsImplCopyWithImpl<_$FetchArtistReviewsImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String bookingId, int rating, String comment)
+    submitReview,
+    required TResult Function(String artistId) fetchArtistReviews,
+  }) {
+    return fetchArtistReviews(artistId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String bookingId, int rating, String comment)?
+    submitReview,
+    TResult? Function(String artistId)? fetchArtistReviews,
+  }) {
+    return fetchArtistReviews?.call(artistId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String bookingId, int rating, String comment)?
+    submitReview,
+    TResult Function(String artistId)? fetchArtistReviews,
+    required TResult orElse(),
+  }) {
+    if (fetchArtistReviews != null) {
+      return fetchArtistReviews(artistId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SubmitReview value) submitReview,
+    required TResult Function(_FetchArtistReviews value) fetchArtistReviews,
+  }) {
+    return fetchArtistReviews(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SubmitReview value)? submitReview,
+    TResult? Function(_FetchArtistReviews value)? fetchArtistReviews,
+  }) {
+    return fetchArtistReviews?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SubmitReview value)? submitReview,
+    TResult Function(_FetchArtistReviews value)? fetchArtistReviews,
+    required TResult orElse(),
+  }) {
+    if (fetchArtistReviews != null) {
+      return fetchArtistReviews(this);
+    }
+    return orElse();
+  }
 }
-/// @nodoc
-class __$FetchArtistReviewsCopyWithImpl<$Res>
-    implements _$FetchArtistReviewsCopyWith<$Res> {
-  __$FetchArtistReviewsCopyWithImpl(this._self, this._then);
 
-  final _FetchArtistReviews _self;
-  final $Res Function(_FetchArtistReviews) _then;
+abstract class _FetchArtistReviews implements ReviewEvent {
+  const factory _FetchArtistReviews({required final String artistId}) =
+      _$FetchArtistReviewsImpl;
 
-/// Create a copy of ReviewEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? artistId = null,}) {
-  return _then(_FetchArtistReviews(
-artistId: null == artistId ? _self.artistId : artistId // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
+  String get artistId;
 
-
+  /// Create a copy of ReviewEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchArtistReviewsImplCopyWith<_$FetchArtistReviewsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ReviewState {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReviewState);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ReviewState()';
-}
-
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(List<dynamic> reviews) loaded,
+    required TResult Function(String message) success,
+    required TResult Function(String message) error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(List<dynamic> reviews)? loaded,
+    TResult? Function(String message)? success,
+    TResult? Function(String message)? error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(List<dynamic> reviews)? loaded,
+    TResult Function(String message)? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class $ReviewStateCopyWith<$Res>  {
-$ReviewStateCopyWith(ReviewState _, $Res Function(ReviewState) __);
+abstract class $ReviewStateCopyWith<$Res> {
+  factory $ReviewStateCopyWith(
+    ReviewState value,
+    $Res Function(ReviewState) then,
+  ) = _$ReviewStateCopyWithImpl<$Res, ReviewState>;
 }
 
+/// @nodoc
+class _$ReviewStateCopyWithImpl<$Res, $Val extends ReviewState>
+    implements $ReviewStateCopyWith<$Res> {
+  _$ReviewStateCopyWithImpl(this._value, this._then);
 
-/// Adds pattern-matching-related methods to [ReviewState].
-extension ReviewStatePatterns on ReviewState {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Submitting value)?  submitting,TResult Function( _Loaded value)?  loaded,TResult Function( _Success value)?  success,TResult Function( _Error value)?  error,required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
-return loading(_that);case _Submitting() when submitting != null:
-return submitting(_that);case _Loaded() when loaded != null:
-return loaded(_that);case _Success() when success != null:
-return success(_that);case _Error() when error != null:
-return error(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Submitting value)  submitting,required TResult Function( _Loaded value)  loaded,required TResult Function( _Success value)  success,required TResult Function( _Error value)  error,}){
-final _that = this;
-switch (_that) {
-case _Initial():
-return initial(_that);case _Loading():
-return loading(_that);case _Submitting():
-return submitting(_that);case _Loaded():
-return loaded(_that);case _Success():
-return success(_that);case _Error():
-return error(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Submitting value)?  submitting,TResult? Function( _Loaded value)?  loaded,TResult? Function( _Success value)?  success,TResult? Function( _Error value)?  error,}){
-final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _Loading() when loading != null:
-return loading(_that);case _Submitting() when submitting != null:
-return submitting(_that);case _Loaded() when loaded != null:
-return loaded(_that);case _Success() when success != null:
-return success(_that);case _Error() when error != null:
-return error(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function()?  submitting,TResult Function( List<dynamic> reviews)?  loaded,TResult Function( String message)?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
-return loading();case _Submitting() when submitting != null:
-return submitting();case _Loaded() when loaded != null:
-return loaded(_that.reviews);case _Success() when success != null:
-return success(_that.message);case _Error() when error != null:
-return error(_that.message);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function()  submitting,required TResult Function( List<dynamic> reviews)  loaded,required TResult Function( String message)  success,required TResult Function( String message)  error,}) {final _that = this;
-switch (_that) {
-case _Initial():
-return initial();case _Loading():
-return loading();case _Submitting():
-return submitting();case _Loaded():
-return loaded(_that.reviews);case _Success():
-return success(_that.message);case _Error():
-return error(_that.message);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function()?  submitting,TResult? Function( List<dynamic> reviews)?  loaded,TResult? Function( String message)?  success,TResult? Function( String message)?  error,}) {final _that = this;
-switch (_that) {
-case _Initial() when initial != null:
-return initial();case _Loading() when loading != null:
-return loading();case _Submitting() when submitting != null:
-return submitting();case _Loaded() when loaded != null:
-return loaded(_that.reviews);case _Success() when success != null:
-return success(_that.message);case _Error() when error != null:
-return error(_that.message);case _:
-  return null;
-
-}
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
-class _Initial implements ReviewState {
-  const _Initial();
-  
+  @override
+  String toString() {
+    return 'ReviewState.initial()';
+  }
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(List<dynamic> reviews) loaded,
+    required TResult Function(String message) success,
+    required TResult Function(String message) error,
+  }) {
+    return initial();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(List<dynamic> reviews)? loaded,
+    TResult? Function(String message)? success,
+    TResult? Function(String message)? error,
+  }) {
+    return initial?.call();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(List<dynamic> reviews)? loaded,
+    TResult Function(String message)? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
 }
 
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ReviewState.initial()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _Loading implements ReviewState {
-  const _Loading();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ReviewState.loading()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _Submitting implements ReviewState {
-  const _Submitting();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Submitting);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ReviewState.submitting()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _Loaded implements ReviewState {
-  const _Loaded({required final  List<dynamic> reviews}): _reviews = reviews;
-  
-
- final  List<dynamic> _reviews;
- List<dynamic> get reviews {
-  if (_reviews is EqualUnmodifiableListView) return _reviews;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_reviews);
-}
-
-
-/// Create a copy of ReviewState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._reviews, _reviews));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_reviews));
-
-@override
-String toString() {
-  return 'ReviewState.loaded(reviews: $reviews)';
-}
-
-
+abstract class _Initial implements ReviewState {
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract mixin class _$LoadedCopyWith<$Res> implements $ReviewStateCopyWith<$Res> {
-  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
-@useResult
-$Res call({
- List<dynamic> reviews
-});
-
-
-
-
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
+
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res>
-    implements _$LoadedCopyWith<$Res> {
-  __$LoadedCopyWithImpl(this._self, this._then);
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
 
-  final _Loaded _self;
-  final $Res Function(_Loaded) _then;
-
-/// Create a copy of ReviewState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? reviews = null,}) {
-  return _then(_Loaded(
-reviews: null == reviews ? _self._reviews : reviews // ignore: cast_nullable_to_non_nullable
-as List<dynamic>,
-  ));
-}
-
-
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
-class _Success implements ReviewState {
-  const _Success({required this.message});
-  
+  @override
+  String toString() {
+    return 'ReviewState.loading()';
+  }
 
- final  String message;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
 
-/// Create a copy of ReviewState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(this, _$identity);
+  @override
+  int get hashCode => runtimeType.hashCode;
 
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(List<dynamic> reviews) loaded,
+    required TResult Function(String message) success,
+    required TResult Function(String message) error,
+  }) {
+    return loading();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(List<dynamic> reviews)? loaded,
+    TResult? Function(String message)? success,
+    TResult? Function(String message)? error,
+  }) {
+    return loading?.call();
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&(identical(other.message, message) || other.message == message));
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(List<dynamic> reviews)? loaded,
+    TResult Function(String message)? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
 }
 
-
-@override
-int get hashCode => Object.hash(runtimeType,message);
-
-@override
-String toString() {
-  return 'ReviewState.success(message: $message)';
-}
-
-
+abstract class _Loading implements ReviewState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract mixin class _$SuccessCopyWith<$Res> implements $ReviewStateCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
-@useResult
-$Res call({
- String message
-});
-
-
-
-
+abstract class _$$SubmittingImplCopyWith<$Res> {
+  factory _$$SubmittingImplCopyWith(
+    _$SubmittingImpl value,
+    $Res Function(_$SubmittingImpl) then,
+  ) = __$$SubmittingImplCopyWithImpl<$Res>;
 }
+
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(this._self, this._then);
+class __$$SubmittingImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$SubmittingImpl>
+    implements _$$SubmittingImplCopyWith<$Res> {
+  __$$SubmittingImplCopyWithImpl(
+    _$SubmittingImpl _value,
+    $Res Function(_$SubmittingImpl) _then,
+  ) : super(_value, _then);
 
-  final _Success _self;
-  final $Res Function(_Success) _then;
-
-/// Create a copy of ReviewState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(_Success(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
+class _$SubmittingImpl implements _Submitting {
+  const _$SubmittingImpl();
 
-class _Error implements ReviewState {
-  const _Error({required this.message});
-  
+  @override
+  String toString() {
+    return 'ReviewState.submitting()';
+  }
 
- final  String message;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SubmittingImpl);
+  }
 
-/// Create a copy of ReviewState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  @override
+  int get hashCode => runtimeType.hashCode;
 
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(List<dynamic> reviews) loaded,
+    required TResult Function(String message) success,
+    required TResult Function(String message) error,
+  }) {
+    return submitting();
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(List<dynamic> reviews)? loaded,
+    TResult? Function(String message)? success,
+    TResult? Function(String message)? error,
+  }) {
+    return submitting?.call();
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.message, message) || other.message == message));
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(List<dynamic> reviews)? loaded,
+    TResult Function(String message)? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (submitting != null) {
+      return submitting();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return submitting(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return submitting?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (submitting != null) {
+      return submitting(this);
+    }
+    return orElse();
+  }
 }
 
-
-@override
-int get hashCode => Object.hash(runtimeType,message);
-
-@override
-String toString() {
-  return 'ReviewState.error(message: $message)';
-}
-
-
+abstract class _Submitting implements ReviewState {
+  const factory _Submitting() = _$SubmittingImpl;
 }
 
 /// @nodoc
-abstract mixin class _$ErrorCopyWith<$Res> implements $ReviewStateCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
-@useResult
-$Res call({
- String message
-});
-
-
-
-
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+    _$LoadedImpl value,
+    $Res Function(_$LoadedImpl) then,
+  ) = __$$LoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> reviews});
 }
+
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(this._self, this._then);
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+    _$LoadedImpl _value,
+    $Res Function(_$LoadedImpl) _then,
+  ) : super(_value, _then);
 
-  final _Error _self;
-  final $Res Function(_Error) _then;
-
-/// Create a copy of ReviewState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(_Error(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? reviews = null}) {
+    return _then(
+      _$LoadedImpl(
+        reviews: null == reviews
+            ? _value._reviews
+            : reviews // ignore: cast_nullable_to_non_nullable
+                  as List<dynamic>,
+      ),
+    );
+  }
 }
 
+/// @nodoc
 
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl({required final List<dynamic> reviews})
+    : _reviews = reviews;
+
+  final List<dynamic> _reviews;
+  @override
+  List<dynamic> get reviews {
+    if (_reviews is EqualUnmodifiableListView) return _reviews;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reviews);
+  }
+
+  @override
+  String toString() {
+    return 'ReviewState.loaded(reviews: $reviews)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedImpl &&
+            const DeepCollectionEquality().equals(other._reviews, _reviews));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_reviews));
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(List<dynamic> reviews) loaded,
+    required TResult Function(String message) success,
+    required TResult Function(String message) error,
+  }) {
+    return loaded(reviews);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(List<dynamic> reviews)? loaded,
+    TResult? Function(String message)? success,
+    TResult? Function(String message)? error,
+  }) {
+    return loaded?.call(reviews);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(List<dynamic> reviews)? loaded,
+    TResult Function(String message)? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(reviews);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
 }
 
-// dart format on
+abstract class _Loaded implements ReviewState {
+  const factory _Loaded({required final List<dynamic> reviews}) = _$LoadedImpl;
+
+  List<dynamic> get reviews;
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+    _$SuccessImpl value,
+    $Res Function(_$SuccessImpl) then,
+  ) = __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+    _$SuccessImpl _value,
+    $Res Function(_$SuccessImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$SuccessImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ReviewState.success(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(List<dynamic> reviews) loaded,
+    required TResult Function(String message) success,
+    required TResult Function(String message) error,
+  }) {
+    return success(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(List<dynamic> reviews)? loaded,
+    TResult? Function(String message)? success,
+    TResult? Function(String message)? error,
+  }) {
+    return success?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(List<dynamic> reviews)? loaded,
+    TResult Function(String message)? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Success implements ReviewState {
+  const factory _Success({required final String message}) = _$SuccessImpl;
+
+  String get message;
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+    _$ErrorImpl value,
+    $Res Function(_$ErrorImpl) then,
+  ) = __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+    _$ErrorImpl _value,
+    $Res Function(_$ErrorImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ErrorImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ReviewState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(List<dynamic> reviews) loaded,
+    required TResult Function(String message) success,
+    required TResult Function(String message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(List<dynamic> reviews)? loaded,
+    TResult? Function(String message)? success,
+    TResult? Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(List<dynamic> reviews)? loaded,
+    TResult Function(String message)? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements ReviewState {
+  const factory _Error({required final String message}) = _$ErrorImpl;
+
+  String get message;
+
+  /// Create a copy of ReviewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

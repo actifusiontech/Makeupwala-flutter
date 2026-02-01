@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../domain/commerce_models.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -57,7 +58,7 @@ class ProductCard extends StatelessWidget {
                       color: Colors.white,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.eco, color: Colors.emerald, size: 16),
+                    child: const Icon(Icons.eco, color: AppColors.emerald, size: 16),
                   ),
                 ),
             ],
@@ -85,7 +86,7 @@ class ProductCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey.shade300,
+                    color: AppColors.slate,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -164,8 +165,8 @@ class ProductCard extends StatelessWidget {
 
   Widget _placeholderImage() {
     return Container(
-      color: Colors.grey.shade100,
-      child: Icon(Icons.inventory_2_outlined, color: Colors.grey.shade300, size: 40),
+      color: Colors.grey,
+      child: Icon(Icons.inventory_2_outlined, color: Colors.grey, size: 40),
     );
   }
 }

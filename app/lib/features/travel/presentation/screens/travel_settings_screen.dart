@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../domain/travel_models.dart';
-import '../data/travel_repository.dart';
+import 'package:app/features/travel/domain/travel_models.dart';
+import 'package:app/features/travel/data/travel_repository.dart';
 
 class TravelSettingsScreen extends StatefulWidget {
   final TravelRepository repository;

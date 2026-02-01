@@ -8,7 +8,7 @@ import 'package:geolocator/geolocator.dart';
 
 // Entry point for the background service
 @pragma('vm:entry-point')
-void onStart(ServiceInstance service) async {
+Future<bool> onStart(ServiceInstance service) async {
   DartPluginRegistrant.ensureInitialized();
   
   // Create a separate Dio instance for the background isolate
@@ -56,6 +56,7 @@ void onStart(ServiceInstance service) async {
       print('❌ Location Error: $e');
     }
   });
+  return true;
 }
 
 Future<void> initializeBackgroundService() async {

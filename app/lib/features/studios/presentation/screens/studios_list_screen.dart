@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart'; // Optional if standard grid preferred
 import '../../data/models/studio_model.dart';
 import '../../data/repositories/studio_repository.dart';
 import 'studio_booking_screen.dart';

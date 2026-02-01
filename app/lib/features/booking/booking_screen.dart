@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/booking_bloc.dart';
 import '../../core/models/rewards.dart';
 import 'data/booking_repository.dart';
@@ -358,7 +358,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   const SizedBox(height: AppSpacing.xl),
 
                   // Loyalty Points Redemption
-                  if (_loyaltyBalance > 0)
+                  if ((_loyaltyBalanceModel?.balance ?? 0) > 0)
                     Card(
                       color: AppColors.primary.withOpacity(0.05),
                       shape: RoundedRectangleBorder(

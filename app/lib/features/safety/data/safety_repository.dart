@@ -1,6 +1,6 @@
 
 import 'package:dio/dio.dart';
-import '../../domain/safety_service.dart';
+import 'package:app/features/safety/domain/safety_service.dart';
 
 class SafetyRepository implements SafetyService {
   final Dio _dio;

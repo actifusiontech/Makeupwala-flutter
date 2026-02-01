@@ -75,7 +75,7 @@ class _CorporateOnboardingScreenState extends State<CorporateOnboardingScreen> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: _isLoading ? null : _submit,
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue.shade900, foregroundColor: Colors.white),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue, foregroundColor: Colors.white),
                   child: _isLoading 
                     ? const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(color: Colors.white))
                     : const Text('Register Partner Profile'),

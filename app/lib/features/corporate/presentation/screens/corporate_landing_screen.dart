@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../shared/theme/app_colors.dart'; // Adjust path
+import 'package:app/shared/theme/app_colors.dart'; // Adjust path
 import 'corporate_onboarding_screen.dart';
 import 'corporate_booking_screen.dart';
 
@@ -69,7 +69,7 @@ class CorporateLandingScreen extends StatelessWidget {
                     title: 'Partner with Us',
                     subtitle: 'Register your company for exclusive B2B rates and priority booking.',
                     icon: Icons.business,
-                    color: Colors.blue.shade900,
+                    color: Colors.blue,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -125,7 +125,7 @@ class _ActionCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.grey.shade50,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.grey.shade200),
+          border: Border.all(color: Colors.grey),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
@@ -156,7 +156,7 @@ class _ActionCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
-                    style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+                    style: TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ],
               ),

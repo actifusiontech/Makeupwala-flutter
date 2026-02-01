@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../shared/theme/app_colors.dart';
-import '../../../../shared/theme/app_typography.dart';
-import '../bloc/subscription_bloc.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'bloc/subscription_bloc.dart';
 
 class SubscriptionHistoryScreen extends StatelessWidget {
   const SubscriptionHistoryScreen({super.key});

@@ -5,13 +5,25 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../shared/theme/app_theme.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/auth/premium_login_screen.dart';
+import '../features/auth/user_registration_screen.dart';
 import '../features/auth/otp_screen.dart';
 import '../features/auth/role_selection_screen.dart';
 import '../features/auth/bloc/auth_bloc.dart';
 import '../features/home/admin_dashboard_screen.dart';
 import '../features/home/artist_home_screen.dart';
 import '../features/home/customer_home_screen.dart';
+import '../features/home/brand_home_screen.dart';
+import '../features/studios/presentation/screens/studio_home_screen.dart';
+import '../features/studios/presentation/screens/studio_onboarding_screen.dart';
+import '../features/education/presentation/screens/academy_home_screen.dart';
+import '../features/education/presentation/screens/academy_onboarding_screen.dart';
+import '../features/planner/presentation/screens/planner_home_screen.dart';
+import '../features/planner/presentation/screens/planner_onboarding_screen.dart';
+import '../features/planner/presentation/screens/create_destination_booking_screen.dart';
 import '../features/artist/artist_profile_screen.dart';
+import '../features/artist/availability_screen.dart';
+import '../features/artist/artist_onboarding_screen.dart';
+
 import '../features/booking/booking_screen.dart';
 import '../features/profile/profile_screen.dart';
 import '../features/profile/referral_history_screen.dart';
@@ -30,6 +42,7 @@ import '../features/auth/kyc_deeplink_handler.dart';
 import '../features/travel/presentation/screens/retreats_list_screen.dart';
 import '../features/discovery/presentation/screens/social_feed_screen.dart';
 import '../features/education/presentation/screens/leaderboard_screen.dart';
+import '../features/education/presentation/screens/courses_list_screen.dart';
 
 class MakeUpWallahApp extends StatelessWidget {
   const MakeUpWallahApp({super.key});
@@ -61,6 +74,11 @@ class MakeUpWallahApp extends StatelessWidget {
           },
         ),
         GoRoute(
+          path: '/register',
+          name: 'register',
+          builder: (context, state) => const UserRegistrationScreen(),
+        ),
+        GoRoute(
           path: '/role-selection',
           name: 'role-selection',
           builder: (context, state) => const RoleSelectionScreen(),
@@ -76,9 +94,59 @@ class MakeUpWallahApp extends StatelessWidget {
           builder: (context, state) => const ArtistHomeScreen(),
         ),
         GoRoute(
+          path: '/artist/onboarding',
+          name: 'artist-onboarding',
+          builder: (context, state) => const ArtistOnboardingScreen(),
+        ),
+        GoRoute(
           path: '/customer/home',
           name: 'customer-home',
           builder: (context, state) => const CustomerHomeScreen(),
+        ),
+        GoRoute(
+          path: '/brand/home',
+          name: 'brand-home',
+          builder: (context, state) => const BrandHomeScreen(),
+        ),
+        GoRoute(
+          path: '/studio/onboarding',
+          name: 'studio-onboarding',
+          builder: (context, state) => const StudioOnboardingScreen(),
+        ),
+        GoRoute(
+          path: '/studio/home',
+          name: 'studio-home',
+          builder: (context, state) => const StudioHomeScreen(),
+        ),
+        GoRoute(
+          path: '/academy/onboarding',
+          name: 'academy-onboarding',
+          builder: (context, state) => const AcademyOnboardingScreen(),
+        ),
+        GoRoute(
+          path: '/academy/home',
+          name: 'academy-home',
+          builder: (context, state) => const AcademyHomeScreen(),
+        ),
+        GoRoute(
+          path: '/education/courses',
+          name: 'courses-list',
+          builder: (context, state) => const CoursesListScreen(),
+        ),
+        GoRoute(
+          path: '/planner/onboarding',
+          name: 'planner-onboarding',
+          builder: (context, state) => const PlannerOnboardingScreen(),
+        ),
+        GoRoute(
+          path: '/planner/home',
+          name: 'planner-home',
+          builder: (context, state) => const PlannerHomeScreen(),
+        ),
+        GoRoute(
+          path: '/planner/create-logistics',
+          name: 'create-logistics',
+          builder: (context, state) => const CreateDestinationBookingScreen(),
         ),
         GoRoute(
           path: '/artist/:id',

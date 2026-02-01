@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../domain/education_models.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class CourseCard extends StatelessWidget {
   final Course course;
@@ -23,7 +24,7 @@ class CourseCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.slate.shade200.withOpacity(0.5),
+              color: AppColors.slate100.withOpacity(0.5),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -48,7 +49,7 @@ class CourseCard extends StatelessWidget {
                       top: 12,
                       right: 12,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, py: 6),
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                           color: const Color(0xFF10B981),
                           borderRadius: BorderRadius.circular(12),
@@ -64,7 +65,7 @@ class CourseCard extends StatelessWidget {
                               'COMPLETED',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.black,
+                                fontWeight: FontWeight.w900,
                                 fontSize: 10,
                                 letterSpacing: 0.5,
                               ),
@@ -77,7 +78,7 @@ class CourseCard extends StatelessWidget {
                     bottom: 12,
                     left: 12,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, py: 6),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.7),
                         borderRadius: BorderRadius.circular(12),
@@ -107,7 +108,7 @@ class CourseCard extends StatelessWidget {
                     course.title,
                     style: const TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.black,
+                      fontWeight: FontWeight.w900,
                       color: Color(0xFF0F172A),
                       letterSpacing: -0.5,
                     ),
@@ -121,9 +122,9 @@ class CourseCard extends StatelessWidget {
                         Text(
                           'Course Progress',
                           style: TextStyle(
-                            color: Colors.slate.shade500,
+                            color: AppColors.grey500,
                             fontSize: 12,
-                            fontWeight: FontWeight.medium,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                         Text(
@@ -131,7 +132,7 @@ class CourseCard extends StatelessWidget {
                           style: const TextStyle(
                             color: Color(0xFFFF6B6B),
                             fontSize: 12,
-                            fontWeight: FontWeight.black,
+                            fontWeight: FontWeight.w900,
                           ),
                         ),
                       ],
@@ -140,7 +141,7 @@ class CourseCard extends StatelessWidget {
                     Container(
                       height: 6,
                       decoration: BoxDecoration(
-                        color: Colors.slate.shade100,
+                        color: AppColors.slate100,
                         borderRadius: BorderRadius.circular(3),
                       ),
                       child: FractionallySizedBox(
@@ -187,7 +188,7 @@ class CourseCard extends StatelessWidget {
                             Text(
                               'Enrollment Fee',
                               style: TextStyle(
-                                color: Colors.slate.shade500,
+                                color: AppColors.grey500,
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -196,7 +197,7 @@ class CourseCard extends StatelessWidget {
                               '₹${course.feeAmount.toStringAsFixed(0)}',
                               style: const TextStyle(
                                 fontSize: 20,
-                                fontWeight: FontWeight.black,
+                                fontWeight: FontWeight.w900,
                                 color: Color(0xFF0F172A),
                               ),
                             ),
@@ -216,7 +217,7 @@ class CourseCard extends StatelessWidget {
                           ),
                           child: const Text(
                             'ENROLL NOW',
-                            style: TextStyle(fontWeight: FontWeight.black, fontSize: 12),
+                            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 12),
                           ),
                         ),
                       ],

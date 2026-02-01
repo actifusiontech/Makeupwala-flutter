@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../shared/widgets/debug_panel.dart';
 import 'bloc/auth_bloc.dart';
 
@@ -26,6 +29,10 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
   late Animation<double> _scaleAnimation;
   bool _isLoading = false;
   bool _hasError = false;
+
+  // Luxury Gold & Rose Palette
+  static const Color _kDarkGold = Color(0xFFC5A028);
+  static const Color _kTextDark = Color(0xFF2C2C2C);
 
   @override
   void initState() {
@@ -88,42 +95,10 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
           unauthenticated: () => setState(() => _isLoading = false),
           error: (message) {
             HapticFeedback.heavyImpact();
-            setState(() {
-              _isLoading = false;
-              _hasError = true;
-            });
-            
-            // Show elegant error snackbar
+            setState(() { _isLoading = false; _hasError = true; });
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Row(
-                  children: [
-                    const Icon(Icons.error_outline, color: Colors.white, size: 20),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        message,
-                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ],
-                ),
-                backgroundColor: AppColors.error,
-                behavior: SnackBarBehavior.floating,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                margin: const EdgeInsets.all(16),
-                duration: const Duration(seconds: 4),
-                action: SnackBarAction(
-                  label: 'Dismiss',
-                  textColor: Colors.white,
-                  onPressed: () {},
-                ),
-              ),
+              SnackBar(content: Text(message), backgroundColor: AppColors.error),
             );
-            
-            // Reset error state after animation
             Future.delayed(const Duration(milliseconds: 300), () {
               if (mounted) setState(() => _hasError = false);
             });
@@ -132,58 +107,101 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.white,
           body: Stack(
             children: [
-              SafeArea(
-                child: FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: SlideTransition(
-                    position: _slideAnimation,
-                    child: ScaleTransition(
-                      scale: _scaleAnimation,
-                      child: Padding(
-                        padding: const EdgeInsets.all(AppSpacing.screenPadding),
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              const SizedBox(height: AppSpacing.xxxl),
-                              
-                              // Premium logo/brand section
-                              _buildBrandSection(),
-                              
-                              const SizedBox(height: AppSpacing.xxl),
-                              
-                              // Premium title with gradient
-                              _buildTitleSection(),
-                              
-                              const SizedBox(height: AppSpacing.xxl),
-                              
-                              // Premium phone input
-                              _buildPhoneInput(),
-                              
-                              const Spacer(),
-                              
-                              // Premium continue button
-                              _buildContinueButton(),
-                              
-                              const SizedBox(height: AppSpacing.lg),
-                              
-                              // Trust signals
-                              _buildTrustSection(),
-                              
-                              const SizedBox(height: AppSpacing.md),
-                            ],
-                          ),
-                        ),
-                      ),
+              // 1. Bright Full Screen Background
+              Positioned.fill(
+                child: Image.asset(
+                  'assets/images/login_bg_bright.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+
+              // 2. Light Gradient Overlay (White Fade at bottom)
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.white.withOpacity(0.0),
+                        Colors.white.withOpacity(0.3),
+                        Colors.white.withOpacity(0.9),
+                        Colors.white,
+                      ],
+                      stops: const [0.0, 0.5, 0.8, 1.0],
                     ),
                   ),
                 ),
               ),
+
+              // 3. Content
+              SafeArea(
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    
+                    _buildBrandSection(),
+                    
+                    const Spacer(flex: 3),
+
+                    // White Frosted Glass Sheet
+                    Container(
+                      padding: const EdgeInsets.all(AppSpacing.screenPadding),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.8),
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 30,
+                            offset: const Offset(0, -10),
+                          ),
+                        ],
+                        border: Border(
+                          top: BorderSide(color: Colors.white.withOpacity(0.6)),
+                        ),
+                      ),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            _buildTitleSection(),
+                            const SizedBox(height: AppSpacing.xl),
+                            
+                            _buildPhoneInput(),
+                            const SizedBox(height: AppSpacing.lg),
+                            
+                            _buildContinueButton(),
+                            const SizedBox(height: AppSpacing.xl),
+                            
+                            Row(
+                              children: [
+                                const Expanded(child: Divider(color: Colors.black12)),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                                  child: Text('OR', style: GoogleFonts.lato(color: Colors.black45, fontSize: 12)),
+                                ),
+                                const Expanded(child: Divider(color: Colors.black12)),
+                              ],
+                            ),
+                            const SizedBox(height: AppSpacing.xl),
+
+                            _buildSocialLogin(),
+                            const SizedBox(height: AppSpacing.xl),
+
+                            _buildRegistrationLink(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               
-              // Debug Panel Overlay
               const DebugPanel(),
             ],
           ),
@@ -193,226 +211,198 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
   }
 
   Widget _buildBrandSection() {
-    return TweenAnimationBuilder<double>(
-      duration: const Duration(milliseconds: 1000),
-      tween: Tween(begin: 0.0, end: 1.0),
-      curve: Curves.easeOutBack,
-      builder: (context, value, child) {
-        return Transform.scale(
-          scale: value,
-          child: Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [AppColors.primary, AppColors.primaryDark],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.primary.withOpacity(0.3),
-                  blurRadius: 20,
-                  offset: const Offset(0, 8),
-                ),
-              ],
-            ),
-            child: const Icon(
-              Icons.face_retouching_natural,
-              color: AppColors.white,
-              size: 32,
-            ),
+    return Column(
+      children: [
+        Icon(Icons.auto_awesome, color: _kDarkGold, size: 36),
+        const SizedBox(height: 12),
+        Text(
+          'MakeupWallah',
+          style: GoogleFonts.cinzel(
+            color: _kTextDark,
+            fontSize: 20,
+            letterSpacing: 5,
+            fontWeight: FontWeight.w700,
           ),
-        );
-      },
-    );
+        ),
+      ],
+    ).animate().fadeIn(duration: 800.ms);
   }
 
   Widget _buildTitleSection() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ShaderMask(
-          shaderCallback: (bounds) => const LinearGradient(
-            colors: [AppColors.textPrimary, AppColors.primary],
-          ).createShader(bounds),
-          child: Text(
-            'Welcome Back',
-            style: AppTypography.displaySmall.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              height: 1.2,
-            ),
+        Text(
+          'Hello Beautiful,',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.playfairDisplay(
+            color: _kTextDark,
+            fontSize: 36,
+            height: 1.1,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w600,
           ),
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: 12),
         Text(
-          'Book premium beauty services at your doorstep',
-          style: AppTypography.bodyLarge.copyWith(
-            color: AppColors.textSecondary,
-            height: 1.5,
+          'Let\'s find your perfect look',
+          style: GoogleFonts.lato(
+            color: Colors.black54,
+            fontSize: 16,
+            letterSpacing: 0.5,
           ),
         ),
       ],
-    );
+    ).animate().fadeIn().slideY(begin: 0.2, end: 0);
   }
 
   Widget _buildPhoneInput() {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: _hasError
-            ? [
-                BoxShadow(
-                  color: AppColors.error.withOpacity(0.2),
-                  blurRadius: 12,
-                  spreadRadius: 2,
-                ),
-              ]
-            : [],
-      ),
-      child: TextFormField(
-        controller: _phoneController,
-        keyboardType: TextInputType.phone,
-        style: AppTypography.titleMedium,
-        onChanged: (_) {
-          if (_hasError) setState(() => _hasError = false);
-        },
-        decoration: InputDecoration(
-          labelText: 'Phone Number',
-          hintText: '+91 98765 43210',
-          hintStyle: TextStyle(color: AppColors.grey400),
-          prefixIcon: Container(
-            margin: const EdgeInsets.all(12),
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: AppColors.primary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Icons.phone_rounded,
-              color: AppColors.primary,
-              size: 20,
-            ),
-          ),
-          filled: true,
-          fillColor: AppColors.grey50,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(color: AppColors.primary, width: 2),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(color: AppColors.error, width: 2),
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'PHONE NUMBER',
+          style: GoogleFonts.lato(
+            color: Colors.black38,
+            fontSize: 11,
+            letterSpacing: 1.5,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter your phone number';
-          }
-          if (value.length < 10) {
-            return 'Please enter a valid phone number';
-          }
-          return null;
-        },
-      ),
-    );
+        const SizedBox(height: 8),
+        TextFormField(
+          controller: _phoneController,
+          keyboardType: TextInputType.phone,
+          style: GoogleFonts.playfairDisplay(color: _kTextDark, fontSize: 24),
+          cursorColor: _kDarkGold,
+          onChanged: (_) {
+            if (_hasError) setState(() => _hasError = false);
+          },
+          decoration: InputDecoration(
+            hintText: '98765 43210',
+            hintStyle: TextStyle(color: Colors.black12),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(right: 12, top: 2),
+              child: Text(
+                '+91',
+                style: GoogleFonts.playfairDisplay(
+                  color: Colors.black45,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+            enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.black12)),
+            focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: _kDarkGold, width: 2)),
+            errorBorder: const UnderlineInputBorder(borderSide: BorderSide(color: AppColors.error)),
+            contentPadding: const EdgeInsets.symmetric(vertical: 8),
+            isDense: true,
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) return '';
+            if (value.length < 10) return '';
+            return null;
+          },
+        ),
+      ],
+    ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2, end: 0);
   }
 
   Widget _buildContinueButton() {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
+    return SizedBox(
       width: double.infinity,
       height: 56,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: _isLoading
-            ? []
-            : [
-                BoxShadow(
-                  color: AppColors.primary.withOpacity(0.4),
-                  blurRadius: 20,
-                  offset: const Offset(0, 10),
-                ),
-              ],
-      ),
       child: ElevatedButton(
         onPressed: _isLoading ? null : _handleContinue,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.white,
+          backgroundColor: _kTextDark, // Chic Black Button
+          foregroundColor: Colors.white,
           elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          shadowColor: Colors.transparent,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)), // Sharp
         ),
         child: _isLoading
             ? const SizedBox(
                 height: 24,
                 width: 24,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.5,
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
-                ),
+                child: CircularProgressIndicator(strokeWidth: 2, valueColor: AlwaysStoppedAnimation(Colors.white)),
               )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Continue',
-                    style: AppTypography.labelLarge.copyWith(
-                      color: AppColors.white,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  const Icon(Icons.arrow_forward_rounded, size: 20),
-                ],
+            : Text(
+                'CONTINUE',
+                style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.bold, letterSpacing: 2),
               ),
       ),
-    );
+    ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.3, end: 0);
   }
 
-  Widget _buildTrustSection() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+  Widget _buildSocialLogin() {
+    return Center(
+      child: _buildSocialButton(
+        icon: FontAwesomeIcons.google,
+        label: 'Continue with Google',
+        onTap: () {
+          HapticFeedback.lightImpact();
+          context.read<AuthBloc>().add(const AuthEvent.socialLogin('google'));
+        },
+      ),
+    ).animate().fadeIn(delay: 500.ms);
+  }
+
+  Widget _buildSocialButton({required IconData icon, required String label, required VoidCallback onTap}) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(30),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.black12),
+          borderRadius: BorderRadius.circular(30),
+          color: Colors.white,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.verified_user, size: 16, color: AppColors.success),
-            const SizedBox(width: 8),
+            FaIcon(icon, color: Colors.black87, size: 18),
+            const SizedBox(width: 12),
             Text(
-              'Secure & Encrypted',
-              style: AppTypography.bodySmall.copyWith(
-                color: AppColors.success,
-                fontWeight: FontWeight.w500,
+              label,
+              style: GoogleFonts.lato(
+                color: Colors.black87, 
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
               ),
             ),
           ],
         ),
-        const SizedBox(height: AppSpacing.sm),
-        Text(
-          'By continuing, you agree to our Terms of Service\nand Privacy Policy',
-          style: AppTypography.bodySmall.copyWith(
-            color: AppColors.textDisabled,
-            height: 1.5,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ],
+      ),
     );
+  }
+
+  Widget _buildRegistrationLink() {
+    return Center(
+      child: TextButton(
+        onPressed: () {
+          HapticFeedback.lightImpact();
+          context.push('/register');
+        },
+        child: RichText(
+          text: TextSpan(
+            text: 'Don\'t have an account? ',
+            style: GoogleFonts.lato(color: Colors.black54, fontSize: 14),
+            children: [
+              TextSpan(
+                text: 'Register',
+                style: GoogleFonts.lato(
+                  color: _kDarkGold,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
+                  decorationColor: _kDarkGold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ).animate().fadeIn(delay: 700.ms);
   }
 
   void _handleContinue() {

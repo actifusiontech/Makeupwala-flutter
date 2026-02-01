@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/squad_repository.dart';
-import 'package:makeupwala/core/network/api_client.dart';
+import 'package:app/core/network/api_client.dart';
 
 class SquadBuilderScreen extends StatefulWidget {
   const SquadBuilderScreen({Key? key}) : super(key: key);

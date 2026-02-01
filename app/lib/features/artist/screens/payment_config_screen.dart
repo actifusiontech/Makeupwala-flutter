@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_spacing.dart';
-import '../../../core/services/api_service.dart';
-import '../../../shared/widgets/custom_button.dart';
-import '../../../shared/widgets/custom_text_field.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:app/core/network/api_client.dart';
+import 'package:app/shared/widgets/custom_button.dart';
+import 'package:app/shared/widgets/custom_text_field.dart';
 
 class PaymentConfigScreen extends StatefulWidget {
   const PaymentConfigScreen({Key? key}) : super(key: key);
@@ -15,6 +15,10 @@ class PaymentConfigScreen extends StatefulWidget {
 
 class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _bankAccountController = TextEditingController();
+  final _ifscController = TextEditingController();
+  final _accountNameController = TextEditingController();
+  final _upiIdController = TextEditingController();
   final _panController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
@@ -46,9 +50,9 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
     setState(() => _isLoading = true);
 
     try {
-      final apiService = ApiService();
+      final dio = ApiClient().dio;
       // Fetch both payment config and user profile for defaults
-      final Future<dynamic> configFuture = apiService.get('/artists/me/payment-config').catchError((_) => {'data': {}});
+      final Future<dynamic> configFuture = dio.get('/artists/me/payment-config').catchError((_) => {'data': {}});
       // assuming we can get basic user info or just let them fill it
       
       final responses = await Future.wait([
@@ -82,8 +86,8 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
     setState(() => _isSaving = true);
 
     try {
-      final apiService = ApiService();
-      await apiService.put(
+      final dio = ApiClient().dio;
+      await dio.put(
         '/artists/me/payment-config',
         data: {
           'bank_account_number': _bankAccountController.text.trim(),
@@ -135,8 +139,8 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
     setState(() => _isOnboarding = true);
 
     try {
-      final apiService = ApiService();
-      await apiService.post(
+      final dio = ApiClient().dio;
+      await dio.post(
         '/artists/me/payment-config/razorpay',
         data: {
           'email': _emailController.text.trim(),
@@ -390,14 +394,14 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
       decoration: BoxDecoration(
         color: Colors.blue.shade50,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.blue.shade200),
+        border: Border.all(color: Colors.blue),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Icon(Icons.info_outline, color: Colors.blue.shade700),
+              Icon(Icons.info_outline, color: Colors.blue),
               const SizedBox(width: 8),
               const Text(
                 'Important Information',

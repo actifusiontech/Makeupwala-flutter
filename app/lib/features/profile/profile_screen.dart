@@ -1,10 +1,13 @@
+import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/core/models/rewards.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import '../auth/bloc/auth_bloc.dart';
 import '../booking/bloc/booking_bloc.dart';
 import '../booking/data/booking_repository.dart';
@@ -73,13 +76,13 @@ class _ProfileView extends StatelessWidget {
                   BlocBuilder<ProfileBloc, ProfileState>(
                     builder: (context, state) {
                       return state.maybeWhen(
-                        loaded: (user) => Column(
+                        loaded: (user, balance) => Column(
                           children: [
                             Text(user.fullName, style: AppTypography.headlineMedium),
                             Text(user.phone ?? '', style: AppTypography.bodyLarge.copyWith(color: AppColors.textSecondary)),
                             const SizedBox(height: AppSpacing.sm),
                             TextButton.icon(
-                              onPressed: () => context.push('/referral-history'),
+                              onPressed: () => context.push('/rewards'), // Assuming go_router context extension works
                               icon: const Icon(Icons.history, size: 18),
                               label: const Text('View Referral History'),
                               style: TextButton.styleFrom(foregroundColor: AppColors.primary),
@@ -98,14 +101,13 @@ class _ProfileView extends StatelessWidget {
             BlocBuilder<ProfileBloc, ProfileState>(
               builder: (context, state) {
                 return state.maybeWhen(
-                  loaded: (user) => Column(
+                  loaded: (user, loyaltyBalance) => Column(
                     children: [
-                      _buildLoyaltyCard(state.loyaltyBalance),
-                      _buildLoyaltyCard(state.loyaltyBalance),
+                      _buildLoyaltyCard(loyaltyBalance),
                       const SizedBox(height: AppSpacing.sm),
                       _buildLeaderboardButton(context),
                       const SizedBox(height: AppSpacing.lg),
-                      _buildReferralCard(user.referralCode ?? ''),
+                      _buildReferralCard(context, user.referralCode ?? 'MAKEUPWALA'),
                     ],
                   ),
                   orElse: () => const SizedBox(),
@@ -145,6 +147,8 @@ class _ProfileView extends StatelessWidget {
         ),
       ),
     );
+  }
+
   Widget _buildLeaderboardButton(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -199,7 +203,7 @@ class _ProfileView extends StatelessWidget {
     );
   }
 
-  Widget _buildReferralCard(String code) {
+  Widget _buildReferralCard(BuildContext context, String code) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(

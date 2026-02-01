@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/complaint_bloc.dart';
 import 'data/complaint_repository.dart';
 
@@ -169,11 +169,6 @@ class AdminComplaintListScreen extends StatelessWidget {
                 ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2)) 
                 : const Text('Confirm Resolution'),
             ),
-          ],
-        ),
-      ),
-    );
-  }
           ],
         ),
       ),

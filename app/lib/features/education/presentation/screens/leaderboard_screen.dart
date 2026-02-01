@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../shared/theme/app_colors.dart';
-import '../../../shared/theme/app_typography.dart';
-import '../../../shared/theme/app_spacing.dart';
-import '../data/education_repository.dart';
-import '../domain/education_models.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:app/features/education/data/education_repository.dart';
+import 'package:app/features/education/domain/education_models.dart';
 
 class LeaderboardScreen extends StatefulWidget {
   const LeaderboardScreen({super.key});
@@ -92,7 +92,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        if (second != null) _buildPodiumStep(second, 2, 120, Colors.grey.shade400),
+        if (second != null) _buildPodiumStep(second, 2, 120, Colors.grey),
         const SizedBox(width: 8),
         if (first != null) _buildPodiumStep(first, 1, 150, const Color(0xFFFFD700), isFirst: true),
         const SizedBox(width: 8),

@@ -65,3 +65,21 @@ enum AccommodationPreference {
     );
   }
 }
+@freezed
+class RetreatModel with _$RetreatModel {
+  const factory RetreatModel({
+    required String id,
+    required String title,
+    required String location,
+    required String description,
+    required double price,
+    required String imageUrl,
+    required DateTime startDate,
+    required DateTime endDate,
+    @Default([]) List<String> inclusions,
+    @Default(true) bool isActive,
+  }) = _RetreatModel;
+
+  factory RetreatModel.fromJson(Map<String, dynamic> json) =>
+      _$RetreatModelFromJson(json);
+}

@@ -65,7 +65,7 @@ class _StudioTeamScreenState extends State<StudioTeamScreen> {
               final member = members[index];
               return ListTile(
                 leading: CircleAvatar(
-                  backgroundColor: Colors.purple.shade100,
+                  backgroundColor: Colors.purple,
                   child: Text(member.name.isNotEmpty ? member.name[0].toUpperCase() : '?'),
                 ),
                 title: Text(member.email), // Showing email as main identifier for now

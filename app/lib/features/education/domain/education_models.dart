@@ -137,7 +137,6 @@ class AttendanceLog with _$AttendanceLog {
   }) = _AttendanceLog;
 
   factory AttendanceLog.fromJson(Map<String, dynamic> json) => _$AttendanceLogFromJson(json);
-  factory AttendanceLog.fromJson(Map<String, dynamic> json) => _$AttendanceLogFromJson(json);
 }
 
 @freezed

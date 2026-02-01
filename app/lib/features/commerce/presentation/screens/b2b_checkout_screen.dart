@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../domain/commerce_models.dart';
 import '../../data/commerce_repository.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class B2BCheckoutScreen extends StatefulWidget {
   final List<Product> cartItems;
@@ -53,7 +54,7 @@ class _B2BCheckoutScreenState extends State<B2BCheckoutScreen> {
           builder: (ctx) => AlertDialog(
             title: const Row(
               children: [
-                Icon(Icons.check_circle, color: Colors.emerald),
+                Icon(Icons.check_circle, color: AppColors.emerald),
                 SizedBox(width: 8),
                 Text('Order Placed!'),
               ],
@@ -112,7 +113,7 @@ class _B2BCheckoutScreenState extends State<B2BCheckoutScreen> {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.slate.shade100,
+                      color: AppColors.slate100,
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -225,7 +226,7 @@ class _B2BCheckoutScreenState extends State<B2BCheckoutScreen> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.slate.shade100,
+              color: AppColors.slate100,
               blurRadius: 10,
               offset: const Offset(0, -4),
             ),

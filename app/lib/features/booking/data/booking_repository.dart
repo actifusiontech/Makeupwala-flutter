@@ -1,4 +1,5 @@
 import 'dart:developer' as developer;
+import 'package:intl/intl.dart';
 
 import '../../../core/network/api_client.dart';
 import '../../../core/models/rewards.dart';
@@ -12,6 +13,7 @@ class BookingRepository {
     required String artistId,
     required String serviceId,
     required DateTime date,
+    required String time,
     String? notes,
     int redeemPoints = 0,
     String paymentMethod = 'online',

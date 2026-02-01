@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../domain/education_models.dart';
 import '../../data/education_repository.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class LessonPlayerScreen extends StatefulWidget {
   final Course course;
@@ -76,7 +77,7 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, py: 4),
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
                                 color: const Color(0xFFFF6B6B).withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(8),
@@ -85,7 +86,7 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                                 'LESSON ${_currentLesson.sequenceOrder}',
                                 style: const TextStyle(
                                   color: Color(0xFFFF6B6B),
-                                  fontWeight: FontWeight.black,
+                                  fontWeight: FontWeight.w900,
                                   fontSize: 10,
                                   letterSpacing: 1,
                                 ),
@@ -102,7 +103,7 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                           _currentLesson.title,
                           style: const TextStyle(
                             fontSize: 22,
-                            fontWeight: FontWeight.black,
+                            fontWeight: FontWeight.w900,
                             color: Color(0xFF0F172A),
                             letterSpacing: -0.5,
                           ),
@@ -112,7 +113,7 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                           _currentLesson.description ?? 'No description provided.',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.slate.shade600,
+                            color: AppColors.slate,
                             height: 1.5,
                           ),
                         ),
@@ -135,15 +136,15 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                             width: 32,
                             height: 32,
                             decoration: BoxDecoration(
-                              color: isSelected ? const Color(0xFFFF6B6B) : Colors.slate.shade50,
+                              color: isSelected ? const Color(0xFFFF6B6B) : AppColors.grey50,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Center(
                               child: Text(
                                 '${index + 1}',
                                 style: TextStyle(
-                                  color: isSelected ? Colors.white : Colors.slate.shade400,
-                                  fontWeight: FontWeight.black,
+                                  color: isSelected ? Colors.white : AppColors.slate,
+                                  fontWeight: FontWeight.w900,
                                   fontSize: 12,
                                 ),
                               ),
@@ -153,13 +154,13 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                             'Lesson ${index + 1}: Professional Workflow',
                             style: TextStyle(
                               fontSize: 14,
-                              fontWeight: isSelected ? FontWeight.bold : FontWeight.medium,
-                              color: isSelected ? const Color(0xFF0F172A) : Colors.slate.shade600,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                              color: isSelected ? const Color(0xFF0F172A) : AppColors.slate,
                             ),
                           ),
                           trailing: Icon(
                             index == 0 ? Icons.check_circle : Icons.play_circle_outline,
-                            color: index == 0 ? const Color(0xFF10B981) : Colors.slate.shade300,
+                            color: index == 0 ? const Color(0xFF10B981) : AppColors.slate,
                             size: 18,
                           ),
                         );
@@ -186,7 +187,7 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Lesson Completed!'),
-                                  backgroundColor: Colors.emerald,
+                                  backgroundColor: AppColors.emerald,
                                 ),
                               );
                               Navigator.pop(context); // Go back to classroom
@@ -210,12 +211,11 @@ class _LessonPlayerScreenState extends State<LessonPlayerScreen> {
                         ),
                         child: const Text(
                           'COMPLETE & CONTINUE',
-                          style: TextStyle(fontWeight: FontWeight.black, fontSize: 13, letterSpacing: 1),
+                          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13, letterSpacing: 1),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
               ),
             ),
           ),

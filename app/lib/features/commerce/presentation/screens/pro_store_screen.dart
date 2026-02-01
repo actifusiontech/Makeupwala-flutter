@@ -1,6 +1,10 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:app/features/commerce/data/commerce_repository.dart';
+import 'b2b_checkout_screen.dart';
 import '../../domain/commerce_models.dart';
 import '../widgets/product_card.dart';
+import 'package:app/shared/theme/app_colors.dart';
 
 class ProStoreScreen extends StatefulWidget {
   const ProStoreScreen({Key? key}) : super(key: key);
@@ -50,7 +54,7 @@ class _ProStoreScreenState extends State<ProStoreScreen> {
                     hintText: 'Search wholesale products...',
                     prefixIcon: const Icon(Icons.search),
                     filled: true,
-                    fillColor: Colors.slate.shade50,
+                    fillColor: AppColors.grey50,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none,
@@ -68,7 +72,7 @@ class _ProStoreScreenState extends State<ProStoreScreen> {
                         label: const Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(Icons.eco, size: 14, color: Colors.emerald),
+                            Icon(Icons.eco, size: 14, color: AppColors.emerald),
                             SizedBox(width: 4),
                             Text('Eco-Certified', style: TextStyle(fontSize: 12)),
                           ],
@@ -76,11 +80,11 @@ class _ProStoreScreenState extends State<ProStoreScreen> {
                         selected: showSustainableOnly,
                         onSelected: (val) => setState(() => showSustainableOnly = val),
                         backgroundColor: Colors.white,
-                        selectedColor: Colors.emerald.withOpacity(0.1),
-                        checkmarkColor: Colors.emerald,
+                        selectedColor: AppColors.emerald.withOpacity(0.1),
+                        checkmarkColor: AppColors.emerald,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.slate.shade200),
+                          side: BorderSide(color: AppColors.slate100),
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -98,7 +102,7 @@ class _ProStoreScreenState extends State<ProStoreScreen> {
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(color: Colors.slate.shade200),
+                                side: BorderSide(color: AppColors.slate100),
                               ),
                             ),
                           )),

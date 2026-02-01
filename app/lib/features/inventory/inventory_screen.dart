@@ -1,8 +1,9 @@
+import 'package:app/features/discovery/data/discovery_repository.dart';
 import 'package:flutter/material.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
-import 'data/discovery_repository.dart'; // Wait, I need inventory_repository.dart
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:app/features/discovery/data/discovery_repository.dart'; // Wait, I need inventory_repository.dart
 import 'data/inventory_repository.dart';
 
 class InventoryScreen extends StatefulWidget {
