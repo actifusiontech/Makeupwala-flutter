@@ -25,6 +25,15 @@ mixin _$AuthEvent {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -34,6 +43,15 @@ mixin _$AuthEvent {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -43,6 +61,15 @@ mixin _$AuthEvent {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +80,9 @@ mixin _$AuthEvent {
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -62,6 +92,8 @@ mixin _$AuthEvent {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -71,6 +103,8 @@ mixin _$AuthEvent {
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -172,6 +206,15 @@ class _$LoginImpl implements _Login {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return login(phoneNumber);
   }
@@ -185,6 +228,15 @@ class _$LoginImpl implements _Login {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return login?.call(phoneNumber);
   }
@@ -198,6 +250,15 @@ class _$LoginImpl implements _Login {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -215,6 +276,9 @@ class _$LoginImpl implements _Login {
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
   }) {
     return login(this);
   }
@@ -228,6 +292,8 @@ class _$LoginImpl implements _Login {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
   }) {
     return login?.call(this);
   }
@@ -241,6 +307,8 @@ class _$LoginImpl implements _Login {
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -346,6 +414,15 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return verifyOtp(phoneNumber, otp);
   }
@@ -359,6 +436,15 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return verifyOtp?.call(phoneNumber, otp);
   }
@@ -372,6 +458,15 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -389,6 +484,9 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
   }) {
     return verifyOtp(this);
   }
@@ -402,6 +500,8 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
   }) {
     return verifyOtp?.call(this);
   }
@@ -415,6 +515,8 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -514,6 +616,15 @@ class _$SelectRoleImpl implements _SelectRole {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return selectRole(role);
   }
@@ -527,6 +638,15 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return selectRole?.call(role);
   }
@@ -540,6 +660,15 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (selectRole != null) {
@@ -557,6 +686,9 @@ class _$SelectRoleImpl implements _SelectRole {
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
   }) {
     return selectRole(this);
   }
@@ -570,6 +702,8 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
   }) {
     return selectRole?.call(this);
   }
@@ -583,6 +717,8 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (selectRole != null) {
@@ -653,6 +789,15 @@ class _$LogoutImpl implements _Logout {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return logout();
   }
@@ -666,6 +811,15 @@ class _$LogoutImpl implements _Logout {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return logout?.call();
   }
@@ -679,6 +833,15 @@ class _$LogoutImpl implements _Logout {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -696,6 +859,9 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
   }) {
     return logout(this);
   }
@@ -709,6 +875,8 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
   }) {
     return logout?.call(this);
   }
@@ -722,6 +890,8 @@ class _$LogoutImpl implements _Logout {
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -784,6 +954,15 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return checkAuth();
   }
@@ -797,6 +976,15 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return checkAuth?.call();
   }
@@ -810,6 +998,15 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (checkAuth != null) {
@@ -827,6 +1024,9 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
   }) {
     return checkAuth(this);
   }
@@ -840,6 +1040,8 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
   }) {
     return checkAuth?.call(this);
   }
@@ -853,6 +1055,8 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (checkAuth != null) {
@@ -943,6 +1147,15 @@ class _$SocialLoginImpl implements _SocialLogin {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return socialLogin(provider);
   }
@@ -956,6 +1169,15 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return socialLogin?.call(provider);
   }
@@ -969,6 +1191,15 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (socialLogin != null) {
@@ -986,6 +1217,9 @@ class _$SocialLoginImpl implements _SocialLogin {
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
   }) {
     return socialLogin(this);
   }
@@ -999,6 +1233,8 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
   }) {
     return socialLogin?.call(this);
   }
@@ -1012,6 +1248,8 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
     if (socialLogin != null) {
@@ -1031,6 +1269,480 @@ abstract class _SocialLogin implements AuthEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SocialLoginImplCopyWith<_$SocialLoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegisterImplCopyWith<$Res> {
+  factory _$$RegisterImplCopyWith(
+    _$RegisterImpl value,
+    $Res Function(_$RegisterImpl) then,
+  ) = __$$RegisterImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    String fullName,
+    String email,
+    String phone,
+    String password,
+    String role,
+  });
+}
+
+/// @nodoc
+class __$$RegisterImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RegisterImpl>
+    implements _$$RegisterImplCopyWith<$Res> {
+  __$$RegisterImplCopyWithImpl(
+    _$RegisterImpl _value,
+    $Res Function(_$RegisterImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fullName = null,
+    Object? email = null,
+    Object? phone = null,
+    Object? password = null,
+    Object? role = null,
+  }) {
+    return _then(
+      _$RegisterImpl(
+        fullName: null == fullName
+            ? _value.fullName
+            : fullName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        email: null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        phone: null == phone
+            ? _value.phone
+            : phone // ignore: cast_nullable_to_non_nullable
+                  as String,
+        password: null == password
+            ? _value.password
+            : password // ignore: cast_nullable_to_non_nullable
+                  as String,
+        role: null == role
+            ? _value.role
+            : role // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$RegisterImpl implements _Register {
+  const _$RegisterImpl({
+    required this.fullName,
+    required this.email,
+    required this.phone,
+    required this.password,
+    required this.role,
+  });
+
+  @override
+  final String fullName;
+  @override
+  final String email;
+  @override
+  final String phone;
+  @override
+  final String password;
+  @override
+  final String role;
+
+  @override
+  String toString() {
+    return 'AuthEvent.register(fullName: $fullName, email: $email, phone: $phone, password: $password, role: $role)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterImpl &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.role, role) || other.role == role));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, fullName, email, phone, password, role);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
+      __$$RegisterImplCopyWithImpl<_$RegisterImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) login,
+    required TResult Function(String phoneNumber, String otp) verifyOtp,
+    required TResult Function(String role) selectRole,
+    required TResult Function() logout,
+    required TResult Function() checkAuth,
+    required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
+  }) {
+    return register(fullName, email, phone, password, role);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? login,
+    TResult? Function(String phoneNumber, String otp)? verifyOtp,
+    TResult? Function(String role)? selectRole,
+    TResult? Function()? logout,
+    TResult? Function()? checkAuth,
+    TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
+  }) {
+    return register?.call(fullName, email, phone, password, role);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? login,
+    TResult Function(String phoneNumber, String otp)? verifyOtp,
+    TResult Function(String role)? selectRole,
+    TResult Function()? logout,
+    TResult Function()? checkAuth,
+    TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
+    required TResult orElse(),
+  }) {
+    if (register != null) {
+      return register(fullName, email, phone, password, role);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
+  }) {
+    return register(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+  }) {
+    return register?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    required TResult orElse(),
+  }) {
+    if (register != null) {
+      return register(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Register implements AuthEvent {
+  const factory _Register({
+    required final String fullName,
+    required final String email,
+    required final String phone,
+    required final String password,
+    required final String role,
+  }) = _$RegisterImpl;
+
+  String get fullName;
+  String get email;
+  String get phone;
+  String get password;
+  String get role;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VerifyRegistrationOtpImplCopyWith<$Res> {
+  factory _$$VerifyRegistrationOtpImplCopyWith(
+    _$VerifyRegistrationOtpImpl value,
+    $Res Function(_$VerifyRegistrationOtpImpl) then,
+  ) = __$$VerifyRegistrationOtpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone, String otp});
+}
+
+/// @nodoc
+class __$$VerifyRegistrationOtpImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$VerifyRegistrationOtpImpl>
+    implements _$$VerifyRegistrationOtpImplCopyWith<$Res> {
+  __$$VerifyRegistrationOtpImplCopyWithImpl(
+    _$VerifyRegistrationOtpImpl _value,
+    $Res Function(_$VerifyRegistrationOtpImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? phone = null, Object? otp = null}) {
+    return _then(
+      _$VerifyRegistrationOtpImpl(
+        phone: null == phone
+            ? _value.phone
+            : phone // ignore: cast_nullable_to_non_nullable
+                  as String,
+        otp: null == otp
+            ? _value.otp
+            : otp // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
+  const _$VerifyRegistrationOtpImpl({required this.phone, required this.otp});
+
+  @override
+  final String phone;
+  @override
+  final String otp;
+
+  @override
+  String toString() {
+    return 'AuthEvent.verifyRegistrationOtp(phone: $phone, otp: $otp)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyRegistrationOtpImpl &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.otp, otp) || other.otp == otp));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone, otp);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerifyRegistrationOtpImplCopyWith<_$VerifyRegistrationOtpImpl>
+  get copyWith =>
+      __$$VerifyRegistrationOtpImplCopyWithImpl<_$VerifyRegistrationOtpImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) login,
+    required TResult Function(String phoneNumber, String otp) verifyOtp,
+    required TResult Function(String role) selectRole,
+    required TResult Function() logout,
+    required TResult Function() checkAuth,
+    required TResult Function(String provider) socialLogin,
+    required TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )
+    register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
+  }) {
+    return verifyRegistrationOtp(phone, otp);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? login,
+    TResult? Function(String phoneNumber, String otp)? verifyOtp,
+    TResult? Function(String role)? selectRole,
+    TResult? Function()? logout,
+    TResult? Function()? checkAuth,
+    TResult? Function(String provider)? socialLogin,
+    TResult? Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
+  }) {
+    return verifyRegistrationOtp?.call(phone, otp);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? login,
+    TResult Function(String phoneNumber, String otp)? verifyOtp,
+    TResult Function(String role)? selectRole,
+    TResult Function()? logout,
+    TResult Function()? checkAuth,
+    TResult Function(String provider)? socialLogin,
+    TResult Function(
+      String fullName,
+      String email,
+      String phone,
+      String password,
+      String role,
+    )?
+    register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
+    required TResult orElse(),
+  }) {
+    if (verifyRegistrationOtp != null) {
+      return verifyRegistrationOtp(phone, otp);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+    verifyRegistrationOtp,
+  }) {
+    return verifyRegistrationOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+  }) {
+    return verifyRegistrationOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    required TResult orElse(),
+  }) {
+    if (verifyRegistrationOtp != null) {
+      return verifyRegistrationOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VerifyRegistrationOtp implements AuthEvent {
+  const factory _VerifyRegistrationOtp({
+    required final String phone,
+    required final String otp,
+  }) = _$VerifyRegistrationOtpImpl;
+
+  String get phone;
+  String get otp;
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VerifyRegistrationOtpImplCopyWith<_$VerifyRegistrationOtpImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

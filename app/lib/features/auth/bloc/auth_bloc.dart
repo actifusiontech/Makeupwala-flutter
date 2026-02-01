@@ -31,8 +31,64 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         logout: () => _onLogout(emit),
         checkAuth: () => _onCheckAuth(emit),
         socialLogin: (provider) => _onSocialLogin(provider, emit),
+        register: (name, email, phone, password, role) => _onRegister(name, email, phone, password, role, emit),
+        verifyRegistrationOtp: (phone, otp) => _onVerifyRegistrationOtp(phone, otp, emit),
       );
     });
+  }
+
+  Future<void> _onRegister(String fullName, String email, String phone, String password, String role, Emitter<AuthState> emit) async {
+    developer.log('📝 Register requested: $email, $phone', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      await _apiClient.dio.post('/auth/register', data: {
+        'full_name': fullName,
+        'email': email,
+        'phone': phone,
+        'password': password,
+        'role': role,
+      });
+      emit(AuthState.otpSent(phoneNumber: phone));
+    } catch (e) {
+      developer.log('❌ Register error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Registration failed: ${e.toString()}'));
+    }
+  }
+
+  Future<void> _onVerifyRegistrationOtp(String phone, String otp, Emitter<AuthState> emit) async {
+    developer.log('📝 Verifying Registration OTP: $phone', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      final response = await _apiClient.dio.post('/auth/verify-registration', data: {
+        'phone': phone,
+        'otp': otp,
+      });
+      
+      final data = response.data;
+      // Depending on backend, might return token immediately or require login
+      // Looking at `dto.go` OTPVerifyResponse has UserID and Verified bool, but not token?
+      // Wait, VerifyOTPResponse has UserID.
+      // If it doesn't return token, we might need to Auto-Login?
+      
+      // Checking Handler.VerifyRegistrationOTP calls svc.VerifyRegistrationOTP
+      // svc.VerifyRegistrationOTP returns *OTPVerifyResponse*
+      // DTO: {Verified: bool, UserID: uuid, Phone: string, Message: string}
+      // It does NOT return Token!
+      
+      // So we must Auto-Login or ask user to login.
+      // Better UX: Auto-Login. But we need password for standard login.
+      // We don't have password here (unless specific flow).
+      // Or we can ask user to Login.
+      
+      emit(const AuthState.unauthenticated()); // Or a success state message?
+      // Actually, let's emit a specific state or just unauthenticated with message?
+      // For now, let's emit unauthenticated but maybe show success message via listener.
+      // Ideally we should auto-login.
+      
+    } catch (e) {
+      developer.log('❌ Verify Registration OTP error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Invalid OTP'));
+    }
   }
 
   Future<void> _onSocialLogin(String provider, Emitter<AuthState> emit) async {

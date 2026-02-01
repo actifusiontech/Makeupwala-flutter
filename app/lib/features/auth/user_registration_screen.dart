@@ -5,6 +5,8 @@ import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/auth_bloc.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
   const UserRegistrationScreen({super.key});
@@ -18,6 +20,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
+  final _passwordController = TextEditingController(); // Added
   bool _isLoading = false;
 
   // Luxury Gold & Rose Palette
@@ -116,6 +119,8 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                         _buildInput('EMAIL ADDRESS', _emailController, TextInputType.emailAddress),
                         const SizedBox(height: AppSpacing.md),
                         _buildInput('PHONE NUMBER', _phoneController, TextInputType.phone),
+                        const SizedBox(height: AppSpacing.md),
+                        _buildInput('PASSWORD', _passwordController, TextInputType.visiblePassword, obscureText: true),
                         
                         const SizedBox(height: AppSpacing.xl),
                         
@@ -145,7 +150,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
     );
   }
 
-  Widget _buildInput(String label, TextEditingController controller, TextInputType type) {
+  Widget _buildInput(String label, TextEditingController controller, TextInputType type, {bool obscureText = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -161,6 +166,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
         TextFormField(
           controller: controller,
           keyboardType: type,
+          obscureText: obscureText,
           style: GoogleFonts.playfairDisplay(color: _kTextDark, fontSize: 18),
           cursorColor: _kDarkGold,
           decoration: const InputDecoration(
@@ -175,19 +181,16 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
     );
   }
 
-  void _handleRegister() async {
+  void _handleRegister() {
     if (_formKey.currentState!.validate()) {
-      setState(() => _isLoading = true);
       HapticFeedback.mediumImpact();
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
-      if (mounted) {
-        setState(() => _isLoading = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-           const SnackBar(content: Text('Account created! Please login.')),
-        );
-        context.pop();
-      }
+      context.read<AuthBloc>().add(AuthEvent.register(
+        fullName: _nameController.text,
+        email: _emailController.text,
+        phone: _phoneController.text,
+        password: _passwordController.text,
+        role: 'customer', // Default to customer
+      ));
     }
   }
 }
