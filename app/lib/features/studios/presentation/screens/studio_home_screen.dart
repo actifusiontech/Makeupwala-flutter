@@ -9,8 +9,8 @@ import '../../data/studio_repository.dart';
 import '../../../../core/network/api_client.dart';
 import 'studio_management_bookings_screen.dart';
 import 'studio_seats_screen.dart';
-import '../data/models/studio_model.dart';
-import '../data/studio_repository.dart';
+import 'studio_profile_screen.dart';
+import '../../data/models/studio_model.dart';
 
 class StudioHomeScreen extends StatefulWidget {
   const StudioHomeScreen({super.key});
@@ -143,8 +143,6 @@ class _StudioDashboard extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
 
-            final studio = (snapshot.hasData && snapshot.data!.isNotEmpty) ? snapshot.data!.first : <String, dynamic>{};
-
             if (studio.isEmpty) {
                return const Center(child: Padding(
                  padding: EdgeInsets.all(16.0),
@@ -171,16 +169,16 @@ class _StudioDashboard extends StatelessWidget {
                    
                    // Real Stats
                   Row(
-                    children: [ // Use _stats map here
-                      Expanded(child: _StatCard(title: 'Active Seats', value: _stats['active_seats']?.toString() ?? 'Checking...', color: Colors.blue)),
+                    children: [ 
+                      Expanded(child: _StatCard(title: 'Active Seats', value: stats['active_seats']?.toString() ?? 'Checking...', color: Colors.blue)),
                       const SizedBox(width: 8),
-                      Expanded(child: _StatCard(title: 'Today\'s Bookings', value: _stats['bookings_today']?.toString() ?? '0', color: Colors.green)),
+                      Expanded(child: _StatCard(title: 'Today\'s Bookings', value: stats['bookings_today']?.toString() ?? '0', color: Colors.green)),
                     ],
                   ),
                    const SizedBox(height: 8),
                    Row(
                     children: [
-                      Expanded(child: _StatCard(title: 'Revenue Today', value: '₹${_stats['revenue_today'] ?? 0}', color: Colors.purple)),
+                      Expanded(child: _StatCard(title: 'Revenue Today', value: '₹${stats['revenue_today'] ?? 0}', color: Colors.purple)),
                     ],
                    ),
               ],

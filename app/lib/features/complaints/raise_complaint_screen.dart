@@ -31,7 +31,7 @@ class _RaiseComplaintScreenState extends State<RaiseComplaintScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ComplaintBloc(repository: ComplaintRepository(ApiClient())),
+      create: (context) => ComplaintBloc(repository: ComplaintRepository(apiClient: ApiClient())),
       child: BlocConsumer<ComplaintBloc, ComplaintState>(
         listener: (context, state) {
           state.maybeWhen(

@@ -133,7 +133,8 @@ class _ProfileView extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             BlocBuilder<BookingBloc, BookingState>(
               builder: (context, state) {
-                return state.when(
+                return state.maybeWhen(
+                  orElse: () => const SizedBox(),
                   initial: () => const SizedBox(),
                   loading: () => const Center(child: CircularProgressIndicator()),
                   success: (_) => const SizedBox(),

@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
-import '../bloc/commerce_bloc.dart';
-import '../bloc/commerce_event.dart';
-import '../bloc/commerce_state.dart';
-import '../domain/commerce_models.dart';
+import '../../bloc/commerce_bloc.dart';
+import '../../bloc/commerce_event.dart';
+import '../../bloc/commerce_state.dart';
+import '../../domain/commerce_models.dart';
 import 'add_product_screen.dart';
 import 'package:app/features/auth/bloc/auth_bloc.dart';
 
@@ -46,7 +46,7 @@ class _BrandInventoryScreenState extends State<BrandInventoryScreen> {
         builder: (context, state) {
           return state.maybeWhen(
             loading: () => const Center(child: CircularProgressIndicator()),
-            loaded: (products, _, __) {
+            loaded: (products, shopItems, orders, sales, commissions) {
               if (products.isEmpty) {
                 return Center(
                   child: Column(
@@ -113,11 +113,11 @@ class _BrandProductCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.grey100,
                 borderRadius: BorderRadius.circular(8),
-                image: product.imageUrl != null 
-                  ? DecorationImage(image: NetworkImage(product.imageUrl!), fit: BoxFit.cover)
+                image: product.imageUrls.isNotEmpty 
+                  ? DecorationImage(image: NetworkImage(product.imageUrls.first), fit: BoxFit.cover)
                   : null,
               ),
-              child: product.imageUrl == null ? const Icon(Icons.image, color: AppColors.grey300) : null,
+              child: product.imageUrls.isEmpty ? const Icon(Icons.image, color: AppColors.grey300) : null,
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(

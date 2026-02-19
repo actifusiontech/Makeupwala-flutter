@@ -4,11 +4,12 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_typography.dart';
 import '../../../../shared/theme/app_spacing.dart';
-import '../bloc/wallet_bloc.dart';
-import '../bloc/wallet_event.dart';
-import '../bloc/wallet_state.dart';
+import '../../bloc/wallet_bloc.dart';
+import '../../bloc/wallet_event.dart';
+import '../../bloc/wallet_state.dart';
 import 'bank_linking_screen.dart';
 import '../../../../core/services/payment_service.dart';
+import '../../../auth/bloc/auth_bloc.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});

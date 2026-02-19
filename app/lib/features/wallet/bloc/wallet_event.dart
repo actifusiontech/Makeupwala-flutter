@@ -23,7 +23,6 @@ class WalletEvent with _$WalletEvent {
     required String bankAccountNumber,
     required String bankIfsc,
     required String bankAccountName,
-    required String bankAccountName,
   }) = _LinkBank;
 
   const factory WalletEvent.initiateTopUp({

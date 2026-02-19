@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_spacing.dart';
 import '../../../../shared/theme/app_typography.dart';
-import '../bloc/brand_bloc.dart';
-import '../bloc/brand_event.dart';
-import '../bloc/brand_state.dart';
-import '../domain/brand_models.dart';
+import '../../bloc/brand_bloc.dart';
+import '../../bloc/brand_event.dart';
+import '../../bloc/brand_state.dart';
+import '../../domain/brand_models.dart';
 import '../widgets/sales_chart_widget.dart';
 import '../widgets/top_products_chart_widget.dart';
 import 'add_product_screen.dart';
@@ -127,7 +127,6 @@ class BrandDashboardScreen extends StatelessWidget {
           subtitle: 'Applications',
           icon: Icons.rate_review,
           color: Colors.purple,
-          onTap: () => Navigator.pushNamed(context, '/brand-campaigns'),
         ),
       ],
     );
@@ -234,7 +233,7 @@ class _MetricCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(value, style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
-              Text(title, style: AppTypography.bodySmall.copyWith(color: AppColors.textTertiary)),
+              Text(title, style: AppTypography.bodySmall.copyWith(color: AppColors.textSecondary)),
             ],
           ),
         ],

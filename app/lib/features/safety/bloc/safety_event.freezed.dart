@@ -1024,6 +1024,8 @@ abstract class _$$AlertReceivedImplCopyWith<$Res> {
       __$$AlertReceivedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SOSAlert alert});
+
+  $SOSAlertCopyWith<$Res> get alert;
 }
 
 /// @nodoc
@@ -1037,14 +1039,22 @@ class __$$AlertReceivedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alert = freezed,
+    Object? alert = null,
   }) {
     return _then(_$AlertReceivedImpl(
-      freezed == alert
+      null == alert
           ? _value.alert
           : alert // ignore: cast_nullable_to_non_nullable
               as SOSAlert,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SOSAlertCopyWith<$Res> get alert {
+    return $SOSAlertCopyWith<$Res>(_value.alert, (value) {
+      return _then(_value.copyWith(alert: value));
+    });
   }
 }
 
@@ -1066,12 +1076,11 @@ class _$AlertReceivedImpl implements _AlertReceived {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AlertReceivedImpl &&
-            const DeepCollectionEquality().equals(other.alert, alert));
+            (identical(other.alert, alert) || other.alert == alert));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(alert));
+  int get hashCode => Object.hash(runtimeType, alert);
 
   @JsonKey(ignore: true)
   @override

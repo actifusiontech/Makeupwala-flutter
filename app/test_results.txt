@@ -1,0 +1,183 @@
+00:00 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:01 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:02 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:03 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:04 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:05 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:06 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:07 +0: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart                                                                                                00:07 +0 -1: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/auth/auth_bloc_test.dart [E]                                                                      
+  Failed to load "/Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/auth/auth_bloc_test.dart":
+  Compilation failed for testPath=/Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/auth/auth_bloc_test.dart: test/features/auth/auth_bloc_test.dart:4:8: Error: Error when reading 'test/lib/features/auth/bloc/auth_bloc.dart': No such file or directory
+  import '../../lib/features/auth/bloc/auth_bloc.dart';
+         ^
+  test/features/auth/auth_bloc_test.dart:5:8: Error: Error when reading 'test/lib/features/auth/bloc/auth_event.dart': No such file or directory
+  import '../../lib/features/auth/bloc/auth_event.dart';
+         ^
+  test/features/auth/auth_bloc_test.dart:6:8: Error: Error when reading 'test/lib/features/auth/bloc/auth_state.dart': No such file or directory
+  import '../../lib/features/auth/bloc/auth_state.dart';
+         ^
+  test/features/auth/auth_bloc_test.dart:7:8: Error: Error when reading 'test/features/mocks/mock_repositories.dart': No such file or directory
+  import '../mocks/mock_repositories.dart';
+         ^
+  test/features/auth/auth_bloc_test.dart:11:10: Error: 'MockAuthRepository' isn't a type.
+      late MockAuthRepository mockAuthRepository;
+           ^^^^^^^^^^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:12:10: Error: 'AuthBloc' isn't a type.
+      late AuthBloc authBloc;
+           ^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:15:28: Error: Method not found: 'MockAuthRepository'.
+        mockAuthRepository = MockAuthRepository();
+                             ^^^^^^^^^^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:16:18: Error: Method not found: 'AuthBloc'.
+        authBloc = AuthBloc(repository: mockAuthRepository);
+                   ^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:24:43: Error: Couldn't find constructor 'AuthState.initial'.
+        expect(authBloc.state, equals(const AuthState.initial()));
+                                            ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:31:16: Error: 'AuthBloc' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                 ^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:31:26: Error: 'AuthState' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                           ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:38:39: Error: Couldn't find constructor 'AuthEvent.loginRequested'.
+          act: (bloc) => bloc.add(const AuthEvent.loginRequested(
+                                        ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:43:17: Error: Couldn't find constructor 'AuthState.loading'.
+            const AuthState.loading(),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:44:17: Error: Couldn't find constructor 'AuthState.authenticated'.
+            const AuthState.authenticated(),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:51:16: Error: 'AuthBloc' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                 ^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:51:26: Error: 'AuthState' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                           ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:58:39: Error: Couldn't find constructor 'AuthEvent.loginRequested'.
+          act: (bloc) => bloc.add(const AuthEvent.loginRequested(
+                                        ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:63:17: Error: Couldn't find constructor 'AuthState.loading'.
+            const AuthState.loading(),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:64:17: Error: Couldn't find constructor 'AuthState.unauthenticated'.
+            const AuthState.unauthenticated(message: 'Login failed'),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:73:16: Error: 'AuthBloc' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                 ^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:73:26: Error: 'AuthState' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                           ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:80:39: Error: Couldn't find constructor 'AuthEvent.otpVerificationRequested'.
+          act: (bloc) => bloc.add(const AuthEvent.otpVerificationRequested(
+                                        ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:85:17: Error: Couldn't find constructor 'AuthState.verifyingOtp'.
+            const AuthState.verifyingOtp(),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:86:17: Error: Couldn't find constructor 'AuthState.authenticated'.
+            const AuthState.authenticated(),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:93:16: Error: 'AuthBloc' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                 ^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:93:26: Error: 'AuthState' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                           ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:100:39: Error: Couldn't find constructor 'AuthEvent.otpVerificationRequested'.
+          act: (bloc) => bloc.add(const AuthEvent.otpVerificationRequested(
+                                        ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:105:17: Error: Couldn't find constructor 'AuthState.verifyingOtp'.
+            const AuthState.verifyingOtp(),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:106:17: Error: Couldn't find constructor 'AuthState.unauthenticated'.
+            const AuthState.unauthenticated(message: 'OTP verification failed'),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:112:16: Error: 'AuthBloc' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                 ^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:112:26: Error: 'AuthState' isn't a type.
+        blocTest<AuthBloc, AuthState>(
+                           ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:119:39: Error: Couldn't find constructor 'AuthEvent.logoutRequested'.
+          act: (bloc) => bloc.add(const AuthEvent.logoutRequested()),
+                                        ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:121:17: Error: Couldn't find constructor 'AuthState.unauthenticated'.
+            const AuthState.unauthenticated(message: 'Logged out successfully'),
+                  ^^^^^^^^^
+  test/features/auth/auth_bloc_test.dart:38:29: Error: The method 'add' isn't defined for the type 'Object?'.
+   - 'Object' is from 'dart:core'.
+  Try correcting the name to the name of an existing method, or defining a method named 'add'.
+          act: (bloc) => bloc.add(const AuthEvent.loginRequested(
+                              ^^^
+  test/features/auth/auth_bloc_test.dart:58:29: Error: The method 'add' isn't defined for the type 'Object?'.
+   - 'Object' is from 'dart:core'.
+  Try correcting the name to the name of an existing method, or defining a method named 'add'.
+          act: (bloc) => bloc.add(const AuthEvent.loginRequested(
+                              ^^^
+  test/features/auth/auth_bloc_test.dart:80:29: Error: The method 'add' isn't defined for the type 'Object?'.
+   - 'Object' is from 'dart:core'.
+  Try correcting the name to the name of an existing method, or defining a method named 'add'.
+          act: (bloc) => bloc.add(const AuthEvent.otpVerificationRequested(
+                              ^^^
+  test/features/auth/auth_bloc_test.dart:100:29: Error: The method 'add' isn't defined for the type 'Object?'.
+   - 'Object' is from 'dart:core'.
+  Try correcting the name to the name of an existing method, or defining a method named 'add'.
+          act: (bloc) => bloc.add(const AuthEvent.otpVerificationRequested(
+                              ^^^
+  test/features/auth/auth_bloc_test.dart:119:29: Error: The method 'add' isn't defined for the type 'Object?'.
+   - 'Object' is from 'dart:core'.
+  Try correcting the name to the name of an existing method, or defining a method named 'add'.
+          act: (bloc) => bloc.add(const AuthEvent.logoutRequested()),
+                              ^^^
+  .
+
+To run this test again: /usr/local/Caskroom/flutter/3.13.9/flutter/bin/cache/dart-sdk/bin/dart test /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/auth/auth_bloc_test.dart -p vm --plain-name 'loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/auth/auth_bloc_test.dart'
+00:07 +0 -2: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart [E]                                                                                         
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 911:11    DefaultResidentCompiler._compile.<fn>
+  dart:async/zone.dart 1538:47                     _rootRunUnary
+  dart:async/zone.dart 1429:19                     _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone.dart 1525:13                     _rootRun
+  dart:async/zone.dart 1422:19                     _CustomZone.run
+  dart:async/zone.dart 1321:7                      _CustomZone.runGuarded
+  dart:async/zone.dart 1362:23                     _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 194:5      _RawReceivePort._handleMessage
+  
+
+To run this test again: /usr/local/Caskroom/flutter/3.13.9/flutter/bin/cache/dart-sdk/bin/dart test /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart -p vm --plain-name 'loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart'
+00:08 +0 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart: User model can be created                                                                          00:08 +1 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart: User model can be created                                                                          00:08 +1 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart: User toJson/fromJson works                                                                         00:08 +2 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart: User toJson/fromJson works                                                                         00:09 +2 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart: User toJson/fromJson works                                                                         00:10 +2 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/user_test.dart: User toJson/fromJson works                                                                         00:10 +2 -2: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart                                                                    00:10 +2 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: BookingBloc initial state is BookingState.initial                         00:10 +3 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: BookingBloc initial state is BookingState.initial                         00:10 +3 -2: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: ... CreateBooking emits [loading, success] when booking creation succeeds 00:10 +3 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: BookingBloc CreateBooking emits [loading, success] when booking creation succeeds [E]
+  Expected: [
+              _$LoadingImpl:BookingState.loading(),
+              _$SuccessImpl:BookingState.success(message: Booking created successfully!)
+            ]
+    Actual: [
+              _$LoadingImpl:BookingState.loading(),
+              _$ErrorImpl:BookingState.error(message: type 'Null' is not a subtype of type 'num' in type cast)
+            ]
+     Which: at location [1] is _$ErrorImpl:<BookingState.error(message: type 'Null' is not a subtype of type 'num' in type cast)> instead of _$SuccessImpl:<BookingState.success(message: Booking created successfully!)>
+  
+  ==== diff ========================================
+  
+  [90m[BookingState.loading(), BookingState.[0m[31m[-succ-][0m[90me[0m[31m[-ss-][0m[32m{+rror+}[0m[90m(message: [0m[31m[-Book-][0m[32m{+type 'Null' +}[0m[90mi[0m[32m{+s +}[0m[90mn[0m[31m[-g-][0m[32m{+ot+}[0m[90m [0m[31m[-cre-][0m[90ma[0m[31m[-ted-][0m[90m su[0m[31m[-cc-][0m[32m{+btyp+}[0m[90me[0m[31m[-ss-][0m[32m{+ o+}[0m[90mf[0m[32m{+ type 'n+}[0m[90mu[0m[31m[-ll-][0m[32m{+m' in t+}[0m[90my[0m[31m[-!-][0m[32m{+pe cast+}[0m[90m)][0m
+  
+  ==== end diff ====================================
+  
+  package:bloc_test/src/bloc_test.dart 226:11  testBloc.<fn>
+  ===== asynchronous gap ===========================
+  dart:async                                   _Completer.completeError
+  package:bloc_test/src/bloc_test.dart 257:43  _runZonedGuarded.<fn>
+  ===== asynchronous gap ===========================
+  dart:async                                   _CustomZone.registerBinaryCallback
+  package:bloc_test/src/bloc_test.dart 254:5   _runZonedGuarded.<fn>
+  dart:async                                   runZonedGuarded
+  package:bloc_test/src/bloc_test.dart 253:3   _runZonedGuarded
+  package:bloc_test/src/bloc_test.dart 200:11  testBloc
+  package:bloc_test/src/bloc_test.dart 156:13  blocTest.<fn>
+  
+
+To run this test again: /usr/local/Caskroom/flutter/3.13.9/flutter/bin/cache/dart-sdk/bin/dart test /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart -p vm --plain-name 'BookingBloc CreateBooking emits [loading, success] when booking creation succeeds'
+00:10 +3 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: ... CreateBooking emits [loading, error] when booking creation fails      00:10 +4 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: ... CreateBooking emits [loading, error] when booking creation fails      00:10 +4 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: ... FetchBookings emits [loading, loaded] when fetching bookings succeeds 00:10 +5 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: ... FetchBookings emits [loading, loaded] when fetching bookings succeeds 00:10 +5 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: ... FetchBookings emits [loading, error] when fetching bookings fails     00:10 +6 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/booking/booking_bloc_test.dart: ... FetchBookings emits [loading, error] when fetching bookings fails     00:10 +6 -3: loading /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart                                                                      00:10 +6 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: WalletBloc initial state is WalletState.initial                             00:10 +7 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: WalletBloc initial state is WalletState.initial                             00:10 +7 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: WalletBloc FetchWalletDetails emits [loading, loaded] when fetch succeeds   00:10 +8 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: WalletBloc FetchWalletDetails emits [loading, loaded] when fetch succeeds   00:10 +8 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: WalletBloc FetchWalletDetails emits [loading, error] when fetch fails       00:10 +9 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: WalletBloc FetchWalletDetails emits [loading, error] when fetch fails       00:10 +9 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: ... RequestWithdrawal emits [loading, withdrawalSuccess] when successful    00:10 +10 -3: /Users/viveksiddhartha/Platform/Makeupwala/Makeupwala-flutter/app/test/features/wallet/wallet_bloc_test.dart: ... RequestWithdrawal emits [loading, withdrawalSuccess] when successful   00:10 +10 -3: Some tests failed.                                                                                                                                                                       

@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../shared/theme/app_colors.dart';
-import '../../../../shared/theme/app_typography.dart';
-import '../../../../shared/theme/app_spacing.dart';
-import '../bloc/inventory_bloc.dart';
-import '../data/inventory_repository.dart';
-import '../data/inventory_item.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:app/features/inventory/bloc/inventory_bloc.dart';
+import 'package:app/features/inventory/data/inventory_repository.dart';
+import 'package:app/features/inventory/data/inventory_item.dart';
 import 'package:uuid/uuid.dart';
 
 class InventoryScreen extends StatelessWidget {
@@ -99,7 +100,7 @@ class _InventoryView extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: AppColors.error.withOpacity(0.1),
+                      color: AppColors.error.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text('LOW STOCK', style: AppTypography.bodySmall.copyWith(color: AppColors.error, fontWeight: FontWeight.bold)),
@@ -180,6 +181,7 @@ class _InventoryView extends StatelessWidget {
                  totalUnits: double.tryParse(totalCtrl.text) ?? 50,
                  remainingUnits: double.tryParse(totalCtrl.text) ?? 50,
                  unitMeasure: 'ml', // Helper to pick measure in real app
+                 lowStockAlert: 10.0,
                );
                context.read<InventoryBloc>().add(InventoryEvent.addItem(item));
                Navigator.pop(dialogContext);

@@ -11,6 +11,7 @@ import '../../core/network/api_client.dart';
 import 'presentation/widgets/star_rating_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:app/features/auth/bloc/auth_bloc.dart';
 
 class WriteReviewScreen extends StatefulWidget {
   final String bookingId;
@@ -67,7 +68,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
          artistId: artistId,
          userId: user.id, 
          userName: user.fullName,
-         userAvatar: user.profileImage,
+         userAvatar: user.profileImageUrl,
          rating: _rating,
          comment: _commentController.text,
          timestamp: DateTime.now(),

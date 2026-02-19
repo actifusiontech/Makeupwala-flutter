@@ -9,7 +9,7 @@ import 'bloc/booking_bloc.dart';
 import '../../core/models/rewards.dart';
 import 'data/booking_repository.dart';
 import '../../core/services/payment_service.dart';
-import '../../wallet/data/wallet_repository.dart';
+import '../wallet/data/wallet_repository.dart';
 import '../../core/network/api_client.dart';
 
 class BookingScreen extends StatefulWidget {

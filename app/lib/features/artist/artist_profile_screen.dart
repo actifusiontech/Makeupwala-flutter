@@ -4,17 +4,16 @@ import 'package:go_router/go_router.dart';
 import '../../../core/models/artist.dart';
 import 'package:app/features/artist/data/artist_repository.dart';
 import '../reviews/bloc/review_bloc.dart';
-import '../../favorites/presentation/bloc/favorites_bloc.dart';
+import '../favorites/presentation/bloc/favorites_bloc.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import '../reviews/data/review_repository.dart';
 import '../reviews/domain/review_model.dart';
 import '../../../core/network/api_client.dart';
-import '../reviews/bloc/review_event.dart';
-import '../reviews/bloc/review_state.dart';
-import '../../favorites/presentation/bloc/favorites_event.dart';
-import '../../favorites/presentation/bloc/favorites_state.dart';
+import '../favorites/presentation/bloc/favorites_event.dart';
+import '../favorites/presentation/bloc/favorites_state.dart';
+import '../favorites/domain/favorite_model.dart';
 import '../auth/bloc/auth_bloc.dart';
 
 class ArtistProfileScreen extends StatefulWidget {

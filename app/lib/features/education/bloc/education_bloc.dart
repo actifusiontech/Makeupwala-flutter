@@ -59,7 +59,7 @@ class EducationBloc extends Bloc<EducationEvent, EducationState> {
           emit(const EducationState.loading());
           try {
             await repository.verifyStudent(enrollmentId, approved);
-            emit(const EducationState.actionSuccess(approved ? 'Student verified!' : 'Enrollment rejected.'));
+            emit(EducationState.actionSuccess(approved ? 'Student verified!' : 'Enrollment rejected.'));
             // We might need to refetch students, but we need instituteId.
             // For now, UI can handle refetching if it has the ID.
           } catch (e) {

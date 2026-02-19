@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/studio_repository.dart';
-import '../data/models/studio_model.dart';
+import '../../data/studio_repository.dart';
+import '../../data/models/studio_model.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import '../../bloc/seat_manager/studio_seat_manager_bloc.dart';

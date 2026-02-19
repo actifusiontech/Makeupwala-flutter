@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../data/models/studio_model.dart';
+import '../../data/models/studio_model.dart';
 
 part 'studio_seat_manager_state.freezed.dart';
 

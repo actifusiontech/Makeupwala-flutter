@@ -36,4 +36,15 @@ class DiscoveryRepository {
       rethrow;
     }
   }
+
+  Future<List<String>> getLookbookTags() async {
+    try {
+      final response = await _apiClient.dio.get('/discovery/tags');
+      final List<dynamic> data = response.data['data'] ?? [];
+      return data.cast<String>();
+    } catch (e) {
+      developer.log('❌ Get lookbook tags failed: $e', name: 'DiscoveryRepository');
+      return [];
+    }
+  }
 }

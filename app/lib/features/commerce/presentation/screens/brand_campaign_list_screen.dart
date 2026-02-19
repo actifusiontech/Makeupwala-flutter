@@ -4,10 +4,10 @@ import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_spacing.dart';
 import '../../../../shared/theme/app_typography.dart';
-import '../bloc/brand_bloc.dart';
-import '../bloc/brand_event.dart';
-import '../bloc/brand_state.dart';
-import '../domain/commerce_models.dart';
+import '../../bloc/brand_bloc.dart';
+import '../../bloc/brand_event.dart';
+import '../../bloc/brand_state.dart';
+import '../../domain/commerce_models.dart';
 
 class BrandCampaignListScreen extends StatefulWidget {
   const BrandCampaignListScreen({super.key});
@@ -41,7 +41,7 @@ class _BrandCampaignListScreenState extends State<BrandCampaignListScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.campaign_outlined, size: 64, color: AppColors.textTertiary),
+                      const Icon(Icons.campaign_outlined, size: 64, color: AppColors.textSecondary),
                       const SizedBox(height: AppSpacing.md),
                       const Text('No campaigns created yet'),
                       const SizedBox(height: AppSpacing.lg),

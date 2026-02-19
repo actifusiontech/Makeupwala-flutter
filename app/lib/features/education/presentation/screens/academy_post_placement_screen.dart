@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/education_bloc.dart';
-import '../bloc/education_event.dart';
-import '../bloc/education_state.dart';
+import '../../bloc/education_bloc.dart';
+import '../../bloc/education_event.dart';
+import '../../bloc/education_state.dart';
 
 class AcademyPostPlacementScreen extends StatefulWidget {
   const AcademyPostPlacementScreen({super.key});
@@ -31,13 +31,13 @@ class _AcademyPostPlacementScreenState extends State<AcademyPostPlacementScreen>
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      context.read<EducationBloc>().add(EducationEvent.postPlacement(
-        role: _roleController.text,
-        company: _companyController.text,
-        location: _locationController.text,
-        salaryRange: _salaryController.text,
-        description: _descriptionController.text,
-      ));
+      context.read<EducationBloc>().add(EducationEvent.postPlacement({
+        'role': _roleController.text,
+        'company': _companyController.text,
+        'location': _locationController.text,
+        'salary_range': _salaryController.text,
+        'description': _descriptionController.text,
+      }));
     }
   }
 
@@ -52,7 +52,7 @@ class _AcademyPostPlacementScreenState extends State<AcademyPostPlacementScreen>
       body: BlocListener<EducationBloc, EducationState>(
         listener: (context, state) {
           state.maybeWhen(
-            success: (msg) {
+            actionSuccess: (msg) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
               Navigator.pop(context);
             },

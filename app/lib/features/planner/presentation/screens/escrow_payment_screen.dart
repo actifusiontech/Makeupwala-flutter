@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/planner_repository.dart';
+import '../../data/planner_repository.dart';
 
 class EscrowPaymentScreen extends StatefulWidget {
   final String bookingId;

@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_spacing.dart';
 import '../../../../shared/theme/app_typography.dart';
-import '../bloc/commerce_bloc.dart';
-import '../bloc/commerce_event.dart';
-import '../bloc/commerce_state.dart';
+import '../../bloc/commerce_bloc.dart';
+import '../../bloc/commerce_event.dart';
+import '../../bloc/commerce_state.dart';
 import '../../domain/commerce_models.dart' as commerce;
 
 class OrdersListScreen extends StatefulWidget {
@@ -71,10 +71,10 @@ class _OrdersListScreenState extends State<OrdersListScreen> with SingleTickerPr
       builder: (context, state) {
         return state.maybeWhen(
           loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (_, __, orders) {
+          loaded: (products, shopItems, orders, sales, commissions) {
             final filteredOrders = isSales 
-              ? state.sales
-              : state.orders;
+              ? sales
+              : orders;
 
             if (filteredOrders.isEmpty) {
               return Center(
@@ -82,7 +82,7 @@ class _OrdersListScreenState extends State<OrdersListScreen> with SingleTickerPr
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(isSales ? Icons.monetization_on_outlined : Icons.shopping_bag_outlined, 
-                         size: 64, color: AppColors.textTertiary),
+                         size: 64, color: AppColors.textSecondary),
                     const SizedBox(height: AppSpacing.md),
                     Text(
                       isSales ? 'No sales recorded yet' : 'You haven\'t placed any orders',

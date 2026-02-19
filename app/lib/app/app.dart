@@ -51,24 +51,30 @@ import '../features/commerce/presentation/screens/brand_dashboard_screen.dart';
 import '../features/commerce/presentation/screens/brand_campaign_list_screen.dart';
 import '../features/commerce/presentation/screens/orders_list_screen.dart';
 import '../features/commerce/bloc/commerce_bloc.dart';
+import '../features/commerce/bloc/commerce_event.dart';
 import '../features/commerce/data/commerce_repository.dart';
 import '../features/commerce/data/brand_repository.dart';
 import '../features/commerce/bloc/brand_bloc.dart';
 import '../features/commerce/bloc/brand_event.dart';
 import '../features/commerce/presentation/screens/campaign_explorer_screen.dart';
+import '../features/commerce/presentation/screens/pro_store_screen.dart';
 import '../features/wallet/presentation/screens/wallet_screen.dart';
 import '../features/wallet/presentation/screens/bank_linking_screen.dart';
 import '../features/wallet/bloc/wallet_bloc.dart';
+import '../features/wallet/bloc/wallet_event.dart';
 import '../features/wallet/data/wallet_repository.dart';
 import '../features/safety/bloc/safety_bloc.dart';
+import '../features/safety/bloc/safety_event.dart';
 import '../features/safety/data/safety_repository.dart';
 import '../features/safety/presentation/widgets/community_guardian_overlay.dart';
 import '../shared/widgets/debug_role_switcher.dart';
 import '../features/education/bloc/education_bloc.dart';
+import '../features/education/bloc/education_event.dart';
 import '../features/education/data/education_repository.dart';
 import '../core/network/api_client.dart';
 import '../features/favorites/data/favorites_repository.dart';
 import '../features/favorites/presentation/bloc/favorites_bloc.dart';
+import '../features/favorites/presentation/bloc/favorites_event.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 
 class MakeUpWallahApp extends StatelessWidget {
@@ -79,6 +85,7 @@ class MakeUpWallahApp extends StatelessWidget {
     // Load environment for runtime; fallback handled in Env
     // Try to load dev env; ignore errors in release builds
     dotenv.load(fileName: 'assets/env/.env.development').catchError((_) {});
+    final apiClient = ApiClient();
     final router = GoRouter(
       initialLocation: '/',
       routes: [
@@ -343,7 +350,7 @@ class MakeUpWallahApp extends StatelessWidget {
           name: 'wallet',
           builder: (context, state) => BlocProvider(
             create: (context) => WalletBloc(
-              repository: WalletRepository(ApiClient()),
+              repository: WalletRepository(apiClient),
             )..add(const WalletEvent.fetchWalletDetails()),
             child: const WalletScreen(),
           ),
@@ -353,7 +360,7 @@ class MakeUpWallahApp extends StatelessWidget {
           name: 'bank-linking',
           builder: (context, state) => BlocProvider(
             create: (context) => WalletBloc(
-              repository: WalletRepository(ApiClient()),
+              repository: WalletRepository(apiClient),
             )..add(const WalletEvent.fetchWalletDetails()),
             child: const BankLinkingScreen(),
           ),
@@ -393,12 +400,12 @@ class MakeUpWallahApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CommerceBloc(
-            repository: CommerceRepository(ApiClient()),
+            repository: CommerceRepository(apiClient.dio),
           )..add(const CommerceEvent.fetchProducts()),
         ),
         BlocProvider(
           create: (context) => BrandBloc(
-            repository: BrandRepository(ApiClient().dio),
+            repository: BrandRepository(apiClient.dio),
           )..add(const BrandEvent.fetchMetrics()),
         ),
         BlocProvider(
@@ -406,12 +413,12 @@ class MakeUpWallahApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => EducationBloc(
-            repository: EducationRepository(ApiClient()),
+            repository: EducationRepository(apiClient),
           )..add(const EducationEvent.fetchDashboard()),
         ),
         BlocProvider(
           create: (context) => SafetyBloc(
-            repository: SafetyRepository(ApiClient().dio),
+            repository: SafetyRepository(apiClient.dio),
           )..add(const SafetyEvent.fetchEmergencyContacts()),
         ),
       ],

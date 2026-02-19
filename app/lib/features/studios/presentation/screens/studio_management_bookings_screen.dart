@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../data/studio_repository.dart';
+import '../../data/studio_repository.dart';
 import '../../bloc/booking_manager/studio_booking_manager_bloc.dart';
 import '../../bloc/booking_manager/studio_booking_manager_event.dart';
 import '../../bloc/booking_manager/studio_booking_manager_state.dart';

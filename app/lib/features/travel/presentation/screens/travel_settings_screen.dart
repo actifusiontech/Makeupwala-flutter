@@ -1,7 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:app/features/travel/data/travel_repository.dart';
+import 'package:app/features/travel/domain/travel_models.dart';
 import 'package:app/features/travel/presentation/bloc/travel_bloc.dart';
 import 'package:app/features/travel/presentation/bloc/travel_event.dart';
 import 'package:app/features/travel/presentation/bloc/travel_state.dart';
-import 'package:image_picker/image_picker.dart';
 
 class TravelSettingsScreen extends StatelessWidget {
   final TravelRepository repository;

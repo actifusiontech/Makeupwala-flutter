@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
-import '../bloc/safety_bloc.dart';
-import '../bloc/safety_event.dart';
-import '../bloc/safety_state.dart';
+import '../../bloc/safety_bloc.dart';
+import '../../bloc/safety_event.dart';
+import '../../bloc/safety_state.dart';
 
 class CommunityGuardianOverlay extends StatelessWidget {
   const CommunityGuardianOverlay({super.key});

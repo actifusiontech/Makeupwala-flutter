@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/education_bloc.dart';
-import '../bloc/education_event.dart';
-import '../bloc/education_state.dart';
+import '../../bloc/education_bloc.dart';
+import '../../bloc/education_event.dart';
+import '../../bloc/education_state.dart';
 
 class AcademyInstituteProfileScreen extends StatelessWidget {
   const AcademyInstituteProfileScreen({super.key});
@@ -30,12 +30,12 @@ class AcademyInstituteProfileScreen extends StatelessWidget {
                   child: Text(institute.name, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 ),
                 Center(
-                  child: Text(institute.location, style: TextStyle(color: Colors.grey[600])),
+                  child: Text(institute.address ?? 'Unknown', style: TextStyle(color: Colors.grey[600])),
                 ),
                 const SizedBox(height: 32),
                 const Text('About Academy', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                 const SizedBox(height: 8),
-                Text(institute.description, style: const TextStyle(height: 1.5)),
+                Text(institute.description ?? '', style: const TextStyle(height: 1.5)),
                 const SizedBox(height: 32),
                 const Text('Performance stats', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                 const SizedBox(height: 16),

@@ -6,6 +6,7 @@ import 'package:app/features/booking/data/booking_repository.dart';
 
 class MockBookingRepository extends Mock implements BookingRepository {}
 
+
 void main() {
   group('BookingBloc', () {
     late BookingRepository bookingRepository;

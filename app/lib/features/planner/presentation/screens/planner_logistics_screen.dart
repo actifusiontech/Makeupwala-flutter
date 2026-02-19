@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/planner_repository.dart';
-import '../bloc/planner_bloc.dart';
-import '../bloc/planner_event.dart';
-import '../bloc/planner_state.dart';
+import '../../data/planner_repository.dart';
+import '../../bloc/planner_bloc.dart';
+import '../../bloc/planner_event.dart';
+import '../../bloc/planner_state.dart';
 
 class PlannerLogisticsScreen extends StatefulWidget {
   final String bookingId;

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:battery_plus/battery_plus.dart';
-import '../bloc/safety_bloc.dart';
-import '../bloc/safety_event.dart';
-import '../bloc/safety_state.dart';
+import 'package:app/features/safety/bloc/safety_bloc.dart';
+import 'package:app/features/safety/bloc/safety_event.dart';
+import 'package:app/features/safety/bloc/safety_state.dart';
 
 class SOSWidget extends StatefulWidget {
-  const SOSWidget({Key? key}) : super(key: key);
+  const SOSWidget({super.key});
 
   @override
   State<SOSWidget> createState() => _SOSWidgetState();
@@ -87,6 +87,7 @@ class _SOSWidgetState extends State<SOSWidget> with SingleTickerProviderStateMix
         onLongPressUp: () {
           setState(() => _isLongPressing = false);
           _controller.reset();
+          _controller.stop();
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
@@ -97,7 +98,7 @@ class _SOSWidgetState extends State<SOSWidget> with SingleTickerProviderStateMix
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: Colors.red.withOpacity(0.4),
+                color: Colors.red.withValues(alpha: 0.4),
                 blurRadius: 10,
                 spreadRadius: 2,
               )
@@ -107,11 +108,15 @@ class _SOSWidgetState extends State<SOSWidget> with SingleTickerProviderStateMix
             alignment: Alignment.center,
             children: [
               if (_isLongPressing)
-                CircularProgressIndicator(
-                  value: _controller.value,
-                  valueColor: const AlwaysStoppedAnimation(Colors.white),
-                  strokeWidth: 4,
-                ),
+                 SizedBox(
+                   width: 50,
+                   height: 50,
+                   child: CircularProgressIndicator(
+                    value: _controller.value,
+                    valueColor: const AlwaysStoppedAnimation(Colors.white),
+                    strokeWidth: 4,
+                                   ),
+                 ),
               const Icon(Icons.sos, color: Colors.white, size: 30),
             ],
           ),

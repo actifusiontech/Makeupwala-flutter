@@ -14,7 +14,6 @@ class WalletState with _$WalletState {
   }) = _Loaded;
   const factory WalletState.error(String message) = _Error;
   const factory WalletState.withdrawalSuccess() = _WithdrawalSuccess;
-  const factory WalletState.withdrawalSuccess() = _WithdrawalSuccess;
   const factory WalletState.bankLinkSuccess() = _BankLinkSuccess;
   const factory WalletState.paymentRequired({
     required String orderId,

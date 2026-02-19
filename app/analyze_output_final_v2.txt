@@ -1,0 +1,1179 @@
+Analyzing lib...                                                
+
+  error • The returned type 'InventoryScreen' isn't returnable from a 'Widget' function, as required by the closure's context • lib/app/app.dart:305:40 • return_of_invalid_type_from_closure
+  error • Undefined name 'WalletEvent' • lib/app/app.dart:350:26 • undefined_identifier
+  error • Undefined name 'WalletEvent' • lib/app/app.dart:360:26 • undefined_identifier
+  error • The name 'ProStoreScreen' isn't a class • lib/app/app.dart:367:46 • creation_with_non_type
+  error • The argument type 'ApiClient' can't be assigned to the parameter type 'Dio'.  • lib/app/app.dart:399:44 • argument_type_not_assignable
+  error • Undefined name 'CommerceEvent' • lib/app/app.dart:400:24 • undefined_identifier
+   info • Dangling library doc comment • lib/core/error/exceptions.dart:2:1 • dangling_library_doc_comments
+   info • The import of 'package:json_annotation/json_annotation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:freezed_annotation/freezed_annotation.dart' • lib/core/models/artist.dart:2:8 • unnecessary_import
+   info • The import of 'package:json_annotation/json_annotation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:freezed_annotation/freezed_annotation.dart' • lib/core/models/rewards.dart:2:8 • unnecessary_import
+   info • The import of 'package:json_annotation/json_annotation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:freezed_annotation/freezed_annotation.dart' • lib/core/models/user.dart:2:8 • unnecessary_import
+   info • 'printTime' is deprecated and shouldn't be used. Use `dateTimeFormat` with `DateTimeFormat.onlyTimeAndSinceStart` or `DateTimeFormat.none` instead • lib/core/services/logging_service.dart:26:9 • deprecated_member_use
+warning • The value of the field '_cacheManager' isn't used • lib/core/services/sync_service.dart:13:22 • unused_field
+   info • Don't use 'BuildContext's across async gaps • lib/features/artist/artist_kyc_screen.dart:42:28 • use_build_context_synchronously
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_kyc_screen.dart:163:17 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_kyc_screen.dart:166:26 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_kyc_screen.dart:184:23 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/artist/artist_kyc_screen.dart:186:35 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_kyc_screen.dart:187:27 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_kyc_screen.dart:189:27 • prefer_const_constructors
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/artist/artist_onboarding_screen.dart:5:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/artist/artist_onboarding_screen.dart:80:59 • deprecated_member_use
+   info • Statements in an if should be enclosed in a block • lib/features/artist/artist_onboarding_screen.dart:182:33 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/features/artist/artist_onboarding_screen.dart:183:24 • curly_braces_in_flow_control_structures
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/artist/artist_onboarding_screen.dart:187:54 • deprecated_member_use
+  error • The method 'FavoriteModel' isn't defined for the type '_ArtistProfileScreenState' • lib/features/artist/artist_profile_screen.dart:112:40 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/artist/artist_profile_screen.dart:149:52 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:176:17 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:189:20 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:241:17 • prefer_const_constructors
+   info • Unnecessary use of 'toList' in a spread • lib/features/artist/artist_profile_screen.dart:248:70 • unnecessary_to_list_in_spreads
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:330:17 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/artist_profile_screen.dart:371:13 • prefer_const_constructors
+warning • Unused import: 'package:flutter_bloc/flutter_bloc.dart' • lib/features/artist/availability_screen.dart:2:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/artist/availability_screen.dart:12:9 • use_super_parameters
+   info • The private field _availabilityMap could be 'final' • lib/features/artist/availability_screen.dart:22:37 • prefer_final_fields
+   info • Don't use 'BuildContext's across async gaps • lib/features/artist/availability_screen.dart:59:28 • use_build_context_synchronously
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/artist/availability_screen.dart:102:48 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/manage_services_screen.dart:73:25 • prefer_const_constructors
+warning • Unused import: 'package:flutter_bloc/flutter_bloc.dart' • lib/features/artist/screens/invoice_screen.dart:2:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/artist/screens/invoice_screen.dart:12:9 • use_super_parameters
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/screens/invoice_screen.dart:109:15 • prefer_const_constructors
+   info • Unnecessary use of 'toList' in a spread • lib/features/artist/screens/invoice_screen.dart:204:14 • unnecessary_to_list_in_spreads
+   info • Parameter 'key' could be a super parameter • lib/features/artist/screens/invoice_screen.dart:336:9 • use_super_parameters
+warning • Unused import: 'package:flutter_bloc/flutter_bloc.dart' • lib/features/artist/screens/payment_config_screen.dart:2:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/artist/screens/payment_config_screen.dart:3:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/artist/screens/payment_config_screen.dart:10:9 • use_super_parameters
+warning • A value of type 'Map<String, Map<dynamic, dynamic>>' can't be returned by the 'onError' handler because it must be assignable to 'FutureOr<Response<dynamic>>' • lib/features/artist/screens/payment_config_screen.dart:55:100 • invalid_return_type_for_catch_error
+warning • The value of the local variable 'status' isn't used • lib/features/artist/screens/payment_config_screen.dart:333:11 • unused_local_variable
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/screens/payment_config_screen.dart:402:11 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/artist/screens/payment_config_screen.dart:403:23 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/artist/screens/payment_config_screen.dart:404:15 • prefer_const_constructors
+warning • Unused import: 'package:intl/intl.dart' • lib/features/artist/utils/invoice_generator.dart:5:8 • unused_import
+   info • 'Table.fromTextArray' is deprecated and shouldn't be used. Use TableHelper.fromTextArray() instead • lib/features/artist/utils/invoice_generator.dart:58:15 • deprecated_member_use
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/artist/widgets/payment_options_modal.dart:2:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_spacing.dart' • lib/features/artist/widgets/payment_options_modal.dart:3:8 • unused_import
+warning • Unused import: 'package:razorpay_flutter/razorpay_flutter.dart' • lib/features/artist/widgets/payment_options_modal.dart:5:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/artist/widgets/payment_options_modal.dart:12:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/artist/widgets/payment_options_modal.dart:153:34 • deprecated_member_use
+warning • The value of the local variable 'data' isn't used • lib/features/auth/bloc/auth_bloc.dart:67:13 • unused_local_variable
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/bloc/auth_bloc.dart:90:12 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/bloc/auth_bloc.dart:245:14 • prefer_const_constructors
+   info • Parameter 'key' could be a super parameter • lib/features/auth/kyc_deeplink_handler.dart:8:9 • use_super_parameters
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/kyc_deeplink_handler.dart:51:13 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/kyc_deeplink_handler.dart:52:27 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/kyc_deeplink_handler.dart:52:57 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/kyc_deeplink_handler.dart:54:13 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/kyc_deeplink_handler.dart:63:15 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/otp_screen.dart:117:23 • prefer_const_constructors
+warning • Unused import: 'package:app/shared/theme/app_typography.dart' • lib/features/auth/premium_login_screen.dart:6:8 • unused_import
+warning • The value of the field '_fadeAnimation' isn't used • lib/features/auth/premium_login_screen.dart:27:26 • unused_field
+warning • The value of the field '_slideAnimation' isn't used • lib/features/auth/premium_login_screen.dart:28:26 • unused_field
+warning • The value of the field '_scaleAnimation' isn't used • lib/features/auth/premium_login_screen.dart:29:26 • unused_field
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:157:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:175:62 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:178:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:208:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:212:60 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/premium_login_screen.dart:217:49 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/premium_login_screen.dart:222:33 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/premium_login_screen.dart:223:32 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/premium_login_screen.dart:325:24 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/auth/role_selection_screen.dart:80:19 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/role_selection_screen.dart:202:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/role_selection_screen.dart:213:30 • deprecated_member_use
+warning • Unused import: 'package:flutter_animate/flutter_animate.dart' • lib/features/auth/user_registration_screen.dart:6:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/user_registration_screen.dart:99:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/user_registration_screen.dart:100:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/user_registration_screen.dart:101:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/user_registration_screen.dart:127:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/user_registration_screen.dart:131:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/auth/user_registration_screen.dart:137:63 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/booking/artist_bookings_screen.dart:80:40 • deprecated_member_use
+  error • Target of URI doesn't exist: '../../wallet/data/wallet_repository.dart' • lib/features/booking/booking_screen.dart:12:8 • uri_does_not_exist
+  error • The method 'WalletRepository' isn't defined for the type '_BookingScreenState' • lib/features/booking/booking_screen.dart:71:20 • undefined_method
+warning • The declaration '_hasSufficientWalletBalance' isn't referenced • lib/features/booking/booking_screen.dart:157:8 • unused_element
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:307:27 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:324:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:368:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:415:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:466:19 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/booking/booking_screen.dart:501:48 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/booking/booking_screen.dart:503:67 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:525:19 • prefer_const_constructors
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/features/booking/booking_screen.dart:581:31 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:594:25 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/booking_screen.dart:619:25 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/booking/presentation/booking_confirmation_screen.dart:52:42 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/presentation/booking_confirmation_screen.dart:95:21 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/booking/presentation/booking_confirmation_screen.dart:121:52 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/presentation/booking_confirmation_screen.dart:125:32 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/booking/presentation/booking_confirmation_screen.dart:126:37 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/presentation/booking_confirmation_screen.dart:129:29 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/booking/presentation/booking_confirmation_screen.dart:130:38 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../../shared/theme/app_colors.dart' • lib/features/booking/presentation/booking_history_screen.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../../shared/theme/app_typography.dart' • lib/features/booking/presentation/booking_history_screen.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../../shared/theme/app_spacing.dart' • lib/features/booking/presentation/booking_history_screen.dart:7:8 • uri_does_not_exist
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:39:26 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:42:28 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:43:28 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:46:29 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:47:25 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:48:35 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:78:70 • invalid_constant
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:78:70 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:79:44 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:79:44 • undefined_identifier
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:80:42 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:81:44 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:81:44 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:108:22 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:110:36 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:110:36 • undefined_identifier
+   info • Unnecessary braces in a string interpolation • lib/features/booking/presentation/booking_history_screen.dart:112:19 • unnecessary_brace_in_string_interps
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:113:22 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:113:64 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:125:39 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:125:39 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:157:23 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:161:23 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:165:23 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:169:23 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:173:23 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:178:45 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:178:45 • undefined_identifier
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:181:45 • undefined_identifier
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:187:45 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:189:41 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:189:41 • undefined_identifier
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:199:30 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:206:35 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:206:35 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:207:33 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:207:33 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/booking/presentation/booking_history_screen.dart:210:42 • deprecated_member_use
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:211:59 • undefined_identifier
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:221:34 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:231:38 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:231:38 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:234:61 • invalid_constant
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:234:61 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:235:41 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:235:41 • undefined_identifier
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:238:28 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:238:69 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:242:38 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:242:38 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:245:69 • invalid_constant
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:245:69 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:246:41 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:246:41 • undefined_identifier
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:251:28 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:251:69 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:253:41 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:253:41 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:254:66 • invalid_constant
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:254:66 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:255:41 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:255:41 • undefined_identifier
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:258:28 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:258:69 • undefined_identifier
+  error • Invalid constant value • lib/features/booking/presentation/booking_history_screen.dart:262:37 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/booking/presentation/booking_history_screen.dart:262:37 • undefined_identifier
+  error • Undefined name 'AppTypography' • lib/features/booking/presentation/booking_history_screen.dart:268:28 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:269:30 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:279:42 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:289:42 • undefined_identifier
+  error • Undefined name 'AppColors' • lib/features/booking/presentation/booking_history_screen.dart:318:58 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/chat/bloc/chat_bloc.dart:55:33 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/chat/bloc/chat_bloc.dart:84:33 • prefer_const_constructors
+warning • Unused import: 'package:app/shared/theme/app_spacing.dart' • lib/features/chat/chat_list_screen.dart:6:8 • unused_import
+warning • Unused import: 'domain/chat_message.dart' • lib/features/chat/chat_list_screen.dart:9:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_typography.dart' • lib/features/chat/chat_screen.dart:5:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_spacing.dart' • lib/features/chat/chat_screen.dart:6:8 • unused_import
+warning • Duplicate import • lib/features/chat/chat_screen.dart:9:8 • duplicate_import
+warning • Unused import: 'domain/chat_message.dart' • lib/features/chat/chat_screen.dart:10:8 • unused_import
+  error • The named parameter 'fetchSales' is required, but there's no corresponding argument • lib/features/commerce/bloc/commerce_bloc.dart:11:19 • missing_required_argument
+  error • The name '_FetchSales' isn't a type, so it can't be used as a type argument • lib/features/commerce/bloc/commerce_bloc.dart:107:8 • non_type_as_type_argument
+  error • The name '_Loaded' isn't defined, so it can't be used in an 'is' expression • lib/features/commerce/bloc/commerce_bloc.dart:110:28 • type_test_with_undefined_name
+  error • The method 'copyWith' isn't defined for the type 'CommerceState' • lib/features/commerce/bloc/commerce_bloc.dart:111:28 • undefined_method
+  error • The getter 'orders' isn't defined for the type 'CommerceState' • lib/features/commerce/bloc/commerce_bloc.dart:111:58 • undefined_getter
+warning • Dead code • lib/features/commerce/bloc/commerce_bloc.dart:116:15 • dead_code
+  error • The name '_Loaded' isn't defined, so it can't be used in an 'is' expression • lib/features/commerce/bloc/commerce_bloc.dart:123:30 • type_test_with_undefined_name
+  error • The method 'copyWith' isn't defined for the type 'CommerceState' • lib/features/commerce/bloc/commerce_bloc.dart:124:30 • undefined_method
+warning • Dead code • lib/features/commerce/bloc/commerce_bloc.dart:125:17 • dead_code
+   info • The imported package 'http_parser' isn't a dependency of the importing package • lib/features/commerce/data/brand_repository.dart:3:8 • depend_on_referenced_packages
+warning • Unused import: '../../../../shared/theme/app_colors.dart' • lib/features/commerce/presentation/screens/add_product_screen.dart:11:8 • unused_import
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/commerce/presentation/screens/add_product_screen.dart:93:23 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/features/commerce/presentation/screens/b2b_checkout_screen.dart:10:9 • use_super_parameters
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/commerce/presentation/screens/b2b_checkout_screen.dart:114:30 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/b2b_checkout_screen.dart:115:21 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/b2b_checkout_screen.dart:225:21 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/commerce/presentation/screens/b2b_checkout_screen.dart:227:22 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/b2b_checkout_screen.dart:228:13 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../bloc/brand_bloc.dart' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:7:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/brand_event.dart' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:8:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/brand_state.dart' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:9:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../domain/commerce_models.dart' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:10:8 • uri_does_not_exist
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:23:18 • non_type_as_type_argument
+  error • Undefined name 'BrandEvent' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:23:41 • undefined_identifier
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:34:25 • non_type_as_type_argument
+  error • The name 'BrandState' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:34:36 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:36:24 • unchecked_use_of_nullable_value
+  error • Invalid constant value • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:44:76 • invalid_constant
+  error • The getter 'textTertiary' isn't defined for the type 'AppColors' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:44:86 • undefined_getter
+   info • The 'child' argument should be last in widget constructor invocations • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:77:9 • sort_child_properties_last
+  error • Undefined class 'Campaign' • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:85:9 • undefined_class
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/brand_campaign_list_screen.dart:163:22 • deprecated_member_use
+warning • Unused import: '../../domain/commerce_models.dart' • lib/features/commerce/presentation/screens/brand_challenges_screen.dart:2:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/commerce/presentation/screens/brand_challenges_screen.dart:6:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/brand_challenges_screen.dart:59:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/brand_challenges_screen.dart:86:41 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/brand_challenges_screen.dart:129:26 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/brand_challenges_screen.dart:183:28 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../bloc/brand_bloc.dart' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/brand_event.dart' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:7:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/brand_state.dart' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:8:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../domain/brand_models.dart' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:9:8 • uri_does_not_exist
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:27:25 • non_type_as_type_argument
+  error • The name 'BrandState' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:27:36 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:29:24 • unchecked_use_of_nullable_value
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:37:32 • non_type_as_type_argument
+  error • Undefined name 'BrandEvent' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:37:55 • undefined_identifier
+  error • Undefined class 'BrandDashboardMetrics' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:83:23 • undefined_class
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:87:9 • prefer_const_constructors
+  error • Undefined class 'BrandDashboardMetrics' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:94:28 • undefined_class
+  error • Undefined name 'context' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:130:44 • undefined_identifier
+warning • The declaration '_buildTopProducts' isn't referenced • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:143:10 • unused_element
+  error • The name 'DashboardProduct' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:143:33 • non_type_as_type_argument
+  error • The name 'DashboardSubmission' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:163:39 • non_type_as_type_argument
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:175:50 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:216:33 • deprecated_member_use
+  error • The getter 'textTertiary' isn't defined for the type 'AppColors' • lib/features/commerce/presentation/screens/brand_dashboard_screen.dart:237:84 • undefined_getter
+  error • Target of URI doesn't exist: '../../../domain/commerce_models.dart' • lib/features/commerce/presentation/screens/brand_inventory_screen.dart:9:8 • uri_does_not_exist
+  error • The argument type 'Widget Function(List<Product>, List<ArtistStoreItem>, List<Order>)' can't be assigned to the parameter type 'Widget Function(List<Product>, List<ArtistStoreItem>, List<Order>, List<Order>, List<Commission>)?'.  • lib/features/commerce/presentation/screens/brand_inventory_screen.dart:49:21 • argument_type_not_assignable
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/brand_inventory_screen.dart:55:23 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/brand_inventory_screen.dart:57:23 • prefer_const_constructors
+  error • Undefined class 'Product' • lib/features/commerce/presentation/screens/brand_inventory_screen.dart:98:9 • undefined_class
+  error • Target of URI doesn't exist: '../data/brand_repository.dart' • lib/features/commerce/presentation/screens/brand_profile_screen.dart:2:8 • uri_does_not_exist
+  error • The method 'BrandRepository' isn't defined for the type '_BrandProfileScreenState' • lib/features/commerce/presentation/screens/brand_profile_screen.dart:13:23 • undefined_method
+  error • Target of URI doesn't exist: '../bloc/brand_bloc.dart' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:7:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/brand_event.dart' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:8:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/brand_state.dart' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:9:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../domain/commerce_models.dart' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:10:8 • uri_does_not_exist
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:23:18 • non_type_as_type_argument
+  error • Undefined name 'BrandEvent' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:23:41 • undefined_identifier
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:35:26 • non_type_as_type_argument
+  error • The name 'BrandState' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:35:37 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:37:17 • unchecked_use_of_nullable_value
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:46:28 • non_type_as_type_argument
+  error • The name 'BrandState' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:46:39 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:48:26 • unchecked_use_of_nullable_value
+  error • Undefined class 'Campaign' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:74:9 • undefined_class
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:90:63 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:107:82 • deprecated_member_use
+  error • The name 'BrandBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:185:28 • non_type_as_type_argument
+  error • Undefined name 'BrandEvent' • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:185:45 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/campaign_explorer_screen.dart:208:22 • deprecated_member_use
+  error • Target of URI doesn't exist: '../bloc/commerce_bloc.dart' • lib/features/commerce/presentation/screens/my_shop_screen.dart:3:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/commerce_event.dart' • lib/features/commerce/presentation/screens/my_shop_screen.dart:4:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/commerce_state.dart' • lib/features/commerce/presentation/screens/my_shop_screen.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../domain/commerce_models.dart' • lib/features/commerce/presentation/screens/my_shop_screen.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../../auth/bloc/auth_bloc.dart' • lib/features/commerce/presentation/screens/my_shop_screen.dart:8:8 • uri_does_not_exist
+   info • Parameter 'key' could be a super parameter • lib/features/commerce/presentation/screens/my_shop_screen.dart:11:9 • use_super_parameters
+  error • The name 'AuthBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:21:36 • non_type_as_type_argument
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:24:22 • non_type_as_type_argument
+  error • Undefined name 'CommerceEvent' • lib/features/commerce/presentation/screens/my_shop_screen.dart:24:42 • undefined_identifier
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:25:22 • non_type_as_type_argument
+  error • Undefined name 'CommerceEvent' • lib/features/commerce/presentation/screens/my_shop_screen.dart:25:48 • undefined_identifier
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:54:25 • non_type_as_type_argument
+  error • The name 'CommerceState' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:54:39 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/commerce/presentation/screens/my_shop_screen.dart:56:24 • unchecked_use_of_nullable_value
+  error • The name 'AuthBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:63:50 • non_type_as_type_argument
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:66:36 • non_type_as_type_argument
+  error • Undefined name 'CommerceEvent' • lib/features/commerce/presentation/screens/my_shop_screen.dart:66:56 • undefined_identifier
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/my_shop_screen.dart:67:36 • non_type_as_type_argument
+  error • Undefined name 'CommerceEvent' • lib/features/commerce/presentation/screens/my_shop_screen.dart:67:62 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/my_shop_screen.dart:89:62 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/order_fulfillment_screen.dart:95:13 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/order_fulfillment_screen.dart:135:13 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/order_fulfillment_screen.dart:173:13 • prefer_const_constructors
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/commerce/presentation/screens/order_fulfillment_screen.dart:176:15 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/order_fulfillment_screen.dart:206:13 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../../../domain/commerce_models.dart' • lib/features/commerce/presentation/screens/orders_list_screen.dart:10:8 • uri_does_not_exist
+  error • The argument type 'Widget Function(List<Product>, List<ArtistStoreItem>, List<Order>)' can't be assigned to the parameter type 'Widget Function(List<Product>, List<ArtistStoreItem>, List<Order>, List<Order>, List<Commission>)?'.  • lib/features/commerce/presentation/screens/orders_list_screen.dart:74:19 • argument_type_not_assignable
+  error • The getter 'sales' isn't defined for the type 'CommerceState' • lib/features/commerce/presentation/screens/orders_list_screen.dart:76:23 • undefined_getter
+  error • The getter 'orders' isn't defined for the type 'CommerceState' • lib/features/commerce/presentation/screens/orders_list_screen.dart:77:23 • undefined_getter
+  error • The getter 'textTertiary' isn't defined for the type 'AppColors' • lib/features/commerce/presentation/screens/orders_list_screen.dart:85:53 • undefined_getter
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/orders_list_screen.dart:147:44 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/orders_list_screen.dart:187:22 • deprecated_member_use
+   info • The imported package 'provider' isn't a dependency of the importing package • lib/features/commerce/presentation/screens/pro_store_screen.dart:1:8 • depend_on_referenced_packages
+   info • Parameter 'key' could be a super parameter • lib/features/commerce/presentation/screens/pro_store_screen.dart:10:9 • use_super_parameters
+  error • The method 'BlocListener' isn't defined for the type '_ProStoreScreenState' • lib/features/commerce/presentation/screens/pro_store_screen.dart:52:13 • undefined_method
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/pro_store_screen.dart:52:26 • non_type_as_type_argument
+  error • The name 'CommerceState' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/pro_store_screen.dart:52:40 • non_type_as_type_argument
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/screens/pro_store_screen.dart:106:60 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/pro_store_screen.dart:110:35 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/screens/pro_store_screen.dart:133:41 • prefer_const_constructors
+  error • The method 'BlocBuilder' isn't defined for the type '_ProStoreScreenState' • lib/features/commerce/presentation/screens/pro_store_screen.dart:146:22 • undefined_method
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/pro_store_screen.dart:146:34 • non_type_as_type_argument
+  error • The name 'CommerceState' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/pro_store_screen.dart:146:48 • non_type_as_type_argument
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/pro_store_screen.dart:179:44 • non_type_as_type_argument
+  error • Undefined name 'CommerceEvent' • lib/features/commerce/presentation/screens/pro_store_screen.dart:179:64 • undefined_identifier
+  error • The name 'CommerceBloc' isn't a type, so it can't be used as a type argument • lib/features/commerce/presentation/screens/pro_store_screen.dart:198:18 • non_type_as_type_argument
+  error • Undefined name 'CommerceEvent' • lib/features/commerce/presentation/screens/pro_store_screen.dart:198:38 • undefined_identifier
+   info • Parameter 'key' could be a super parameter • lib/features/commerce/presentation/widgets/product_card.dart:11:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/product_card.dart:27:33 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/widgets/product_card.dart:86:26 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/product_card.dart:126:60 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/widgets/product_card.dart:169:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/widgets/sales_chart_widget.dart:38:17 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/sales_chart_widget.dart:56:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/sales_chart_widget.dart:100:64 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/sales_chart_widget.dart:118:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/sales_chart_widget.dart:128:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/sales_chart_widget.dart:129:47 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/commerce/presentation/widgets/top_products_chart_widget.dart:30:13 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/top_products_chart_widget.dart:95:64 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/top_products_chart_widget.dart:106:49 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/commerce/presentation/widgets/top_products_chart_widget.dart:123:49 • deprecated_member_use
+warning • Unused import: 'dart:developer' • lib/features/complaints/bloc/complaint_bloc.dart:5:8 • unused_import
+warning • Unused import: 'domain/complaint_model.dart' • lib/features/complaints/complaint_list_screen.dart:8:8 • unused_import
+  error • Too many positional arguments: 0 expected, but 1 found • lib/features/complaints/complaint_list_screen.dart:18:74 • extra_positional_arguments_could_be_named
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/complaints/domain/complaint_model.dart:10:6 • invalid_annotation_target
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/complaints/domain/complaint_model.dart:14:6 • invalid_annotation_target
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/complaints/domain/complaint_model.dart:15:6 • invalid_annotation_target
+  error • Too many positional arguments: 0 expected, but 1 found • lib/features/complaints/raise_complaint_screen.dart:34:74 • extra_positional_arguments_could_be_named
+   info • Use 'const' with the constructor to improve performance • lib/features/complaints/raise_complaint_screen.dart:68:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/complaints/raise_complaint_screen.dart:80:19 • prefer_const_constructors
+   info • The imported package 'http' isn't a dependency of the importing package • lib/features/corporate/data/corporate_repository.dart:2:8 • depend_on_referenced_packages
+warning • Unused import: '../../../core/network/api_client.dart' • lib/features/corporate/data/corporate_repository.dart:3:8 • unused_import
+warning • Unused import: '../../../../shared/theme/app_colors.dart' • lib/features/corporate/presentation/screens/campaign_list_screen.dart:4:8 • unused_import
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/corporate/presentation/screens/corporate_booking_screen.dart:47:17 • deprecated_member_use
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/corporate/presentation/screens/corporate_landing_screen.dart:2:8 • unused_import
+warning • Duplicate import • lib/features/corporate/presentation/screens/corporate_landing_screen.dart:4:8 • duplicate_import
+warning • Unused import: 'corporate_booking_screen.dart' • lib/features/corporate/presentation/screens/corporate_landing_screen.dart:5:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/corporate/presentation/screens/corporate_landing_screen.dart:38:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/corporate/presentation/screens/corporate_landing_screen.dart:155:35 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/corporate/presentation/screens/corporate_landing_screen.dart:166:30 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/corporate/presentation/screens/corporate_landing_screen.dart:183:28 • prefer_const_constructors
+warning • Unused import: '../../../../shared/theme/app_colors.dart' • lib/features/corporate/presentation/screens/create_campaign_screen.dart:4:8 • unused_import
+warning • Unused import: 'package:app/core/models/artist.dart' • lib/features/discovery/data/discovery_repository.dart:3:8 • unused_import
+  error • The method 'getLookbookTags' isn't defined for the type 'DiscoveryRepository' • lib/features/discovery/lookbook_screen.dart:35:40 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/discovery/lookbook_screen.dart:123:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/discovery/lookbook_screen.dart:212:51 • deprecated_member_use
+  error • The name '_FetchFeed' isn't a type, so it can't be used as a type argument • lib/features/discovery/presentation/bloc/discovery_bloc.dart:10:8 • non_type_as_type_argument
+  error • The name '_FetchRecommendations' isn't a type, so it can't be used as a type argument • lib/features/discovery/presentation/bloc/discovery_bloc.dart:22:8 • non_type_as_type_argument
+  error • The name '_SearchLooks' isn't a type, so it can't be used as a type argument • lib/features/discovery/presentation/bloc/discovery_bloc.dart:32:8 • non_type_as_type_argument
+  error • The property 'tags' can't be unconditionally accessed because the receiver can be 'null' • lib/features/discovery/presentation/bloc/discovery_bloc.dart:35:64 • unchecked_use_of_nullable_value
+warning • Unused import: '../../data/models/post_model.dart' • lib/features/discovery/presentation/bloc/discovery_event.dart:2:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/discovery/presentation/screens/social_feed_screen.dart:6:9 • use_super_parameters
+   info • Unnecessary use of 'toList' in a spread • lib/features/discovery/presentation/screens/social_feed_screen.dart:133:16 • unnecessary_to_list_in_spreads
+warning • Unused import: '../../../shared/theme/app_colors.dart' • lib/features/discovery/widgets/moodboard_tab.dart:4:8 • unused_import
+   info • Use 'const' with the constructor to improve performance • lib/features/discovery/widgets/moodboard_tab.dart:38:22 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/discovery/widgets/moodboard_tab.dart:39:24 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/discovery/widgets/moodboard_tab.dart:41:29 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/discovery/widgets/moodboard_tab.dart:44:21 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/discovery/widgets/moodboard_tab.dart:109:47 • deprecated_member_use
+  error • Invalid constant value • lib/features/education/bloc/education_bloc.dart:62:53 • invalid_constant
+warning • Unused import: 'package:dio/dio.dart' • lib/features/education/data/education_repository.dart:1:8 • unused_import
+warning • The annotation 'JsonSerializable.new' can only be used on classes • lib/features/education/domain/education_models.dart:145:4 • invalid_annotation_target
+  error • Target of URI doesn't exist: '../bloc/education_bloc.dart' • lib/features/education/presentation/screens/academy_home_screen.dart:12:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_event.dart' • lib/features/education/presentation/screens/academy_home_screen.dart:13:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_state.dart' • lib/features/education/presentation/screens/academy_home_screen.dart:14:8 • uri_does_not_exist
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:33:24 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:33:39 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/academy_home_screen.dart:35:35 • unchecked_use_of_nullable_value
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:87:24 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:87:39 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/academy_home_screen.dart:89:22 • unchecked_use_of_nullable_value
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:98:30 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/academy_home_screen.dart:98:57 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/academy_home_screen.dart:110:23 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/academy_home_screen.dart:110:39 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/academy_home_screen.dart:123:19 • prefer_const_constructors
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:225:24 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:225:39 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/academy_home_screen.dart:227:22 • unchecked_use_of_nullable_value
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_home_screen.dart:252:26 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/academy_home_screen.dart:252:53 • undefined_identifier
+  error • Target of URI doesn't exist: '../bloc/education_bloc.dart' • lib/features/education/presentation/screens/academy_institute_profile_screen.dart:3:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_event.dart' • lib/features/education/presentation/screens/academy_institute_profile_screen.dart:4:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_state.dart' • lib/features/education/presentation/screens/academy_institute_profile_screen.dart:5:8 • uri_does_not_exist
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_institute_profile_screen.dart:12:24 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_institute_profile_screen.dart:12:39 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/academy_institute_profile_screen.dart:14:22 • unchecked_use_of_nullable_value
+warning • Unused import: '../../../../shared/theme/app_colors.dart' • lib/features/education/presentation/screens/academy_onboarding_screen.dart:7:8 • unused_import
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/academy_onboarding_screen.dart:81:15 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../bloc/education_bloc.dart' • lib/features/education/presentation/screens/academy_post_placement_screen.dart:3:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_event.dart' • lib/features/education/presentation/screens/academy_post_placement_screen.dart:4:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_state.dart' • lib/features/education/presentation/screens/academy_post_placement_screen.dart:5:8 • uri_does_not_exist
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_post_placement_screen.dart:34:20 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/academy_post_placement_screen.dart:34:41 • undefined_identifier
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_post_placement_screen.dart:52:26 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/academy_post_placement_screen.dart:52:41 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/academy_post_placement_screen.dart:54:17 • unchecked_use_of_nullable_value
+  error • Target of URI doesn't exist: '../bloc/education_bloc.dart' • lib/features/education/presentation/screens/add_lesson_screen.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_event.dart' • lib/features/education/presentation/screens/add_lesson_screen.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_state.dart' • lib/features/education/presentation/screens/add_lesson_screen.dart:7:8 • uri_does_not_exist
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/add_lesson_screen.dart:27:25 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/add_lesson_screen.dart:27:40 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/add_lesson_screen.dart:29:15 • unchecked_use_of_nullable_value
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/add_lesson_screen.dart:79:38 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/add_lesson_screen.dart:79:59 • undefined_identifier
+   info • The imported package 'provider' isn't a dependency of the importing package • lib/features/education/presentation/screens/attendance_screen.dart:3:8 • depend_on_referenced_packages
+   info • Parameter 'key' could be a super parameter • lib/features/education/presentation/screens/attendance_screen.dart:11:9 • use_super_parameters
+   info • Statements in an if should be enclosed in a block • lib/features/education/presentation/screens/attendance_screen.dart:30:33 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/features/education/presentation/screens/attendance_screen.dart:31:37 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/features/education/presentation/screens/attendance_screen.dart:32:12 • curly_braces_in_flow_control_structures
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/features/education/presentation/screens/attendance_screen.dart:140:44 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/features/education/presentation/screens/attendance_screen.dart:143:37 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/features/education/presentation/screens/attendance_screen.dart:147:44 • use_build_context_synchronously
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/education/presentation/screens/career_hub_screen.dart:89:20 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/career_hub_screen.dart:90:11 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/screens/career_hub_screen.dart:106:81 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/career_hub_screen.dart:142:15 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/career_hub_screen.dart:146:24 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/career_hub_screen.dart:155:15 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/career_hub_screen.dart:159:24 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/classroom_screen.dart:71:17 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/classroom_screen.dart:85:17 • prefer_const_constructors
+warning • Unused import: 'package:flutter_bloc/flutter_bloc.dart' • lib/features/education/presentation/screens/courses_list_screen.dart:2:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/education/presentation/screens/courses_list_screen.dart:6:8 • unused_import
+  error • Target of URI doesn't exist: '../bloc/education_bloc.dart' • lib/features/education/presentation/screens/create_course_screen.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_event.dart' • lib/features/education/presentation/screens/create_course_screen.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_state.dart' • lib/features/education/presentation/screens/create_course_screen.dart:7:8 • uri_does_not_exist
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/create_course_screen.dart:25:25 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/create_course_screen.dart:25:40 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/create_course_screen.dart:27:15 • unchecked_use_of_nullable_value
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/education/presentation/screens/create_course_screen.dart:59:19 • deprecated_member_use
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/create_course_screen.dart:78:38 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/create_course_screen.dart:78:59 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/screens/leaderboard_screen.dart:109:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/screens/leaderboard_screen.dart:126:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/screens/leaderboard_screen.dart:140:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/screens/lesson_player_screen.dart:142:68 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/screens/lesson_player_screen.dart:175:38 • prefer_const_constructors
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/features/education/presentation/screens/lesson_player_screen.dart:292:30 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/features/education/presentation/screens/lesson_player_screen.dart:304:25 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check • lib/features/education/presentation/screens/lesson_player_screen.dart:309:30 • use_build_context_synchronously
+   info • The imported package 'provider' isn't a dependency of the importing package • lib/features/education/presentation/screens/my_batches_screen.dart:2:8 • depend_on_referenced_packages
+   info • Parameter 'key' could be a super parameter • lib/features/education/presentation/screens/my_batches_screen.dart:8:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/screens/my_batches_screen.dart:135:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/screens/my_batches_screen.dart:162:48 • deprecated_member_use
+  error • Target of URI doesn't exist: '../bloc/education_bloc.dart' • lib/features/education/presentation/screens/student_management_screen.dart:4:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_event.dart' • lib/features/education/presentation/screens/student_management_screen.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_state.dart' • lib/features/education/presentation/screens/student_management_screen.dart:6:8 • uri_does_not_exist
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/student_management_screen.dart:21:20 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/student_management_screen.dart:21:41 • undefined_identifier
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/student_management_screen.dart:29:25 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/student_management_screen.dart:29:40 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/student_management_screen.dart:31:24 • unchecked_use_of_nullable_value
+  error • Target of URI doesn't exist: '../bloc/education_bloc.dart' • lib/features/education/presentation/screens/verify_student_screen.dart:4:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_event.dart' • lib/features/education/presentation/screens/verify_student_screen.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/education_state.dart' • lib/features/education/presentation/screens/verify_student_screen.dart:6:8 • uri_does_not_exist
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:20:18 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/verify_student_screen.dart:20:39 • undefined_identifier
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:25:25 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:25:40 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/verify_student_screen.dart:27:15 • unchecked_use_of_nullable_value
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:30:26 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/verify_student_screen.dart:30:47 • undefined_identifier
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:37:27 • non_type_as_type_argument
+  error • The name 'EducationState' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:37:42 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/education/presentation/screens/verify_student_screen.dart:39:26 • unchecked_use_of_nullable_value
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:60:46 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/verify_student_screen.dart:60:67 • undefined_identifier
+  error • The name 'EducationBloc' isn't a type, so it can't be used as a type argument • lib/features/education/presentation/screens/verify_student_screen.dart:66:46 • non_type_as_type_argument
+  error • Undefined name 'EducationEvent' • lib/features/education/presentation/screens/verify_student_screen.dart:66:67 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/widgets/course_card.dart:27:41 • deprecated_member_use
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/education/presentation/widgets/course_card.dart:56:38 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/widgets/course_card.dart:57:29 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/widgets/course_card.dart:83:45 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/widgets/course_card.dart:122:25 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/widgets/course_card.dart:124:34 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/widgets/course_card.dart:188:29 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/education/presentation/widgets/course_card.dart:190:38 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/education/presentation/widgets/course_card.dart:216:66 • deprecated_member_use
+warning • The value of the field '_dio' isn't used • lib/features/favorites/data/favorites_repository.dart:7:14 • unused_field
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/favorites/domain/favorite_model.dart:12:20 • invalid_annotation_target
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/favorites/domain/favorite_model.dart:14:20 • invalid_annotation_target
+   info • Invalid use of a private type in a public API • lib/features/favorites/domain/favorite_model.g.dart:14:3 • library_private_types_in_public_api
+   info • Invalid use of a private type in a public API • lib/features/favorites/domain/favorite_model.g.dart:30:35 • library_private_types_in_public_api
+  error • Target of URI doesn't exist: '../data/favorites_repository.dart' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:3:8 • uri_does_not_exist
+  error • Undefined class 'FavoritesRepository' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:12:9 • undefined_class
+  error • The name '_LoadFavorites' isn't a type, so it can't be used as a type argument • lib/features/favorites/presentation/bloc/favorites_bloc.dart:15:8 • non_type_as_type_argument
+  error • The name '_AddFavorite' isn't a type, so it can't be used as a type argument • lib/features/favorites/presentation/bloc/favorites_bloc.dart:16:8 • non_type_as_type_argument
+  error • The name '_RemoveFavorite' isn't a type, so it can't be used as a type argument • lib/features/favorites/presentation/bloc/favorites_bloc.dart:17:8 • non_type_as_type_argument
+  error • Undefined class '_LoadFavorites' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:20:33 • undefined_class
+  error • Undefined class '_AddFavorite' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:30:31 • undefined_class
+  error • The name '_Loaded' isn't defined, so it can't be used in an 'is' expression • lib/features/favorites/presentation/bloc/favorites_bloc.dart:32:25 • type_test_with_undefined_name
+  error • The getter 'favorites' isn't defined for the type 'FavoritesState' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:34:44 • undefined_getter
+  error • The getter 'favorites' isn't defined for the type 'FavoritesState' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:41:49 • undefined_getter
+   info • Use 'const' with the constructor to improve performance • lib/features/favorites/presentation/bloc/favorites_bloc.dart:42:14 • prefer_const_constructors
+  error • Undefined class '_RemoveFavorite' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:47:34 • undefined_class
+  error • The name '_Loaded' isn't defined, so it can't be used in an 'is' expression • lib/features/favorites/presentation/bloc/favorites_bloc.dart:49:25 • type_test_with_undefined_name
+  error • The getter 'favorites' isn't defined for the type 'FavoritesState' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:51:40 • undefined_getter
+  error • The getter 'favorites' isn't defined for the type 'FavoritesState' • lib/features/favorites/presentation/bloc/favorites_bloc.dart:58:49 • undefined_getter
+   info • Use 'const' with the constructor to improve performance • lib/features/favorites/presentation/bloc/favorites_bloc.dart:59:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/favorites/presentation/screens/favorites_screen.dart:36:23 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/favorites/presentation/screens/favorites_screen.dart:38:23 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../bookings/bloc/booking_bloc.dart' • lib/features/home/artist_home_screen.dart:13:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bookings/data/booking_repository.dart' • lib/features/home/artist_home_screen.dart:14:8 • uri_does_not_exist
+  error • The imported library '../profile/bloc/profile_event.dart' can't have a part-of directive • lib/features/home/artist_home_screen.dart:16:8 • import_of_non_library
+  error • The imported library '../profile/bloc/profile_state.dart' can't have a part-of directive • lib/features/home/artist_home_screen.dart:17:8 • import_of_non_library
+  error • Target of URI doesn't exist: '../earnings/bloc/earnings_bloc.dart' • lib/features/home/artist_home_screen.dart:18:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../earnings/data/earnings_repository.dart' • lib/features/home/artist_home_screen.dart:19:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../earnings/presentation/widgets/artist_stats_widget.dart' • lib/features/home/artist_home_screen.dart:20:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../subscription/presentation/widgets/subscription_widget.dart' • lib/features/home/artist_home_screen.dart:21:8 • uri_does_not_exist
+  error • The imported library '../auth/bloc/auth_state.dart' can't have a part-of directive • lib/features/home/artist_home_screen.dart:23:8 • import_of_non_library
+  error • The method 'BookingBloc' isn't defined for the type 'ArtistHomeScreen' • lib/features/home/artist_home_screen.dart:38:32 • undefined_method
+  error • The method 'BookingRepository' isn't defined for the type 'ArtistHomeScreen' • lib/features/home/artist_home_screen.dart:38:56 • undefined_method
+  error • Undefined name 'BookingEvent' • lib/features/home/artist_home_screen.dart:39:25 • undefined_identifier
+  error • The method 'EarningsBloc' isn't defined for the type 'ArtistHomeScreen' • lib/features/home/artist_home_screen.dart:45:32 • undefined_method
+  error • The method 'EarningsRepository' isn't defined for the type 'ArtistHomeScreen' • lib/features/home/artist_home_screen.dart:45:57 • undefined_method
+  error • Undefined name 'EarningsEvent' • lib/features/home/artist_home_screen.dart:46:25 • undefined_identifier
+  error • The name 'BookingBloc' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:81:28 • non_type_as_type_argument
+  error • Undefined name 'BookingEvent' • lib/features/home/artist_home_screen.dart:81:53 • undefined_identifier
+  error • The name 'EarningsBloc' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:82:28 • non_type_as_type_argument
+  error • Undefined name 'EarningsEvent' • lib/features/home/artist_home_screen.dart:82:54 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:96:45 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:96:45 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:100:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:100:42 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:102:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:102:42 • undefined_identifier
+  error • The name 'EarningsBloc' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:104:31 • non_type_as_type_argument
+  error • The name 'EarningsState' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:104:45 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/home/artist_home_screen.dart:106:44 • unchecked_use_of_nullable_value
+  error • The method 'ArtistStatsWidget' isn't defined for the type '_ArtistHomeView' • lib/features/home/artist_home_screen.dart:107:49 • undefined_method
+  error • The name 'ArtistStatsWidget' isn't a class • lib/features/home/artist_home_screen.dart:112:45 • creation_with_non_type
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:116:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:116:42 • undefined_identifier
+  error • The method 'SubscriptionWidget' isn't defined for the type '_ArtistHomeView' • lib/features/home/artist_home_screen.dart:121:30 • undefined_method
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:131:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:131:42 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:133:19 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:134:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:134:42 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:139:53 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:139:53 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:141:52 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:143:71 • deprecated_member_use
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:155:49 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:155:49 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:161:33 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:171:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:171:42 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:177:53 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:177:53 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:179:50 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:181:69 • deprecated_member_use
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:193:49 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:193:49 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:199:33 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:209:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:209:42 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:215:53 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:215:53 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:217:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:219:65 • deprecated_member_use
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:231:49 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:231:49 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:232:27 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:233:36 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/home/artist_home_screen.dart:235:41 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:237:33 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:247:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:247:42 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:253:53 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:253:53 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:255:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:257:62 • deprecated_member_use
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:269:49 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:269:49 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:270:27 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:271:36 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/home/artist_home_screen.dart:273:41 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:275:33 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:285:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:285:42 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:291:23 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:310:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:310:42 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:331:37 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:360:55 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:360:55 • undefined_identifier
+   info • Use a 'SizedBox' to add whitespace to a layout • lib/features/home/artist_home_screen.dart:370:39 • sized_box_for_whitespace
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:380:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:380:42 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/home/artist_home_screen.dart:382:19 • prefer_const_constructors
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:386:42 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:386:42 • undefined_identifier
+  error • The name 'BookingBloc' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:390:40 • non_type_as_type_argument
+  error • The name 'BookingState' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:390:53 • non_type_as_type_argument
+  error • The method 'when' can't be unconditionally invoked because the receiver can be 'null' • lib/features/home/artist_home_screen.dart:392:38 • unchecked_use_of_nullable_value
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:459:45 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:459:45 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:461:39 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:461:39 • undefined_identifier
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/artist_home_screen.dart:472:40 • deprecated_member_use
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:482:36 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:482:36 • undefined_identifier
+  error • The name 'BookingBloc' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:497:36 • non_type_as_type_argument
+  error • Undefined name 'BookingEvent' • lib/features/home/artist_home_screen.dart:498:25 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:507:41 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:507:41 • undefined_identifier
+  error • The name 'BookingBloc' isn't a type, so it can't be used as a type argument • lib/features/home/artist_home_screen.dart:510:36 • non_type_as_type_argument
+  error • Undefined name 'BookingEvent' • lib/features/home/artist_home_screen.dart:511:25 • undefined_identifier
+  error • Invalid constant value • lib/features/home/artist_home_screen.dart:520:71 • invalid_constant
+  error • Undefined name 'AppSpacing' • lib/features/home/artist_home_screen.dart:520:71 • undefined_identifier
+warning • Unused import: 'package:go_router/go_router.dart' • lib/features/home/brand_home_screen.dart:2:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/home/brand_home_screen.dart:3:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_typography.dart' • lib/features/home/brand_home_screen.dart:4:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_spacing.dart' • lib/features/home/brand_home_screen.dart:5:8 • unused_import
+warning • Unused import: 'package:flutter_bloc/flutter_bloc.dart' • lib/features/home/brand_home_screen.dart:6:8 • unused_import
+warning • Unused import: '../auth/bloc/auth_bloc.dart' • lib/features/home/brand_home_screen.dart:7:8 • unused_import
+warning • Unused import: 'data/brand_repository.dart' • lib/features/home/brand_home_screen.dart:8:8 • unused_import
+   info • Use 'const' with the constructor to improve performance • lib/features/home/customer_home_screen.dart:183:9 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/home/customer_home_screen.dart:249:13 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/customer_home_screen.dart:289:77 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/customer_home_screen.dart:329:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/customer_home_screen.dart:372:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/artist_stats_widget.dart:50:33 • deprecated_member_use
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/home/widgets/subscription_widget.dart:2:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_typography.dart' • lib/features/home/widgets/subscription_widget.dart:3:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/home/widgets/subscription_widget.dart:14:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/subscription_widget.dart:41:33 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/subscription_widget.dart:69:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/subscription_widget.dart:113:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/subscription_widget.dart:120:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/subscription_widget.dart:128:45 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/subscription_widget.dart:155:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/widgets/subscription_widget.dart:175:43 • deprecated_member_use
+  error • Target of URI doesn't exist: '../bloc/inventory_bloc.dart' • lib/features/inventory/inventory_screen.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../data/inventory_repository.dart' • lib/features/inventory/inventory_screen.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../data/inventory_item.dart' • lib/features/inventory/inventory_screen.dart:7:8 • uri_does_not_exist
+  error • Classes can only extend other classes • lib/features/inventory/inventory_screen.dart:10:31 • extends_non_class
+  error • No associated named super constructor parameter • lib/features/inventory/inventory_screen.dart:11:32 • super_formal_parameter_without_associated_named
+  error • Undefined class 'Widget' • lib/features/inventory/inventory_screen.dart:14:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/features/inventory/inventory_screen.dart:14:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/features/inventory/inventory_screen.dart:14:16 • undefined_class
+  error • The method 'InventoryBloc' isn't defined for the type 'InventoryScreen' • lib/features/inventory/inventory_screen.dart:16:28 • undefined_method
+  error • The method 'InventoryRepository' isn't defined for the type 'InventoryScreen' • lib/features/inventory/inventory_screen.dart:16:54 • undefined_method
+  error • Undefined name 'InventoryEvent' • lib/features/inventory/inventory_screen.dart:16:88 • undefined_identifier
+  error • The argument type '_InventoryView' can't be assigned to the parameter type 'Widget?'.  • lib/features/inventory/inventory_screen.dart:17:14 • argument_type_not_assignable
+  error • Classes can only extend other classes • lib/features/inventory/inventory_screen.dart:22:30 • extends_non_class
+  error • Undefined class 'Widget' • lib/features/inventory/inventory_screen.dart:26:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/features/inventory/inventory_screen.dart:26:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/features/inventory/inventory_screen.dart:26:16 • undefined_class
+  error • The method 'Scaffold' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:27:12 • undefined_method
+  error • The method 'AppBar' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:29:15 • undefined_method
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:30:22 • creation_with_non_type
+  error • The method 'FloatingActionButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:34:29 • undefined_method
+  error • The name 'Icon' isn't a class • lib/features/inventory/inventory_screen.dart:37:22 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/inventory/inventory_screen.dart:37:27 • undefined_identifier
+  error • Undefined name 'Colors' • lib/features/inventory/inventory_screen.dart:37:45 • undefined_identifier
+  error • The name 'InventoryBloc' isn't a type, so it can't be used as a type argument • lib/features/inventory/inventory_screen.dart:39:25 • non_type_as_type_argument
+  error • The name 'InventoryState' isn't a type, so it can't be used as a type argument • lib/features/inventory/inventory_screen.dart:39:40 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/inventory/inventory_screen.dart:41:24 • unchecked_use_of_nullable_value
+  error • The name 'Center' isn't a class • lib/features/inventory/inventory_screen.dart:42:34 • creation_with_non_type
+  error • The method 'CircularProgressIndicator' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:42:48 • undefined_method
+  error • The method 'Center' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:43:33 • undefined_method
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:43:47 • undefined_method
+  error • The method 'Center' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:46:24 • undefined_method
+  error • The method 'Column' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:47:26 • undefined_method
+  error • Undefined name 'MainAxisAlignment' • lib/features/inventory/inventory_screen.dart:48:40 • undefined_identifier
+  error • The method 'Icon' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:50:23 • undefined_method
+  error • Undefined name 'Icons' • lib/features/inventory/inventory_screen.dart:50:28 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/inventory/inventory_screen.dart:51:29 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:52:23 • undefined_method
+  error • The name 'SizedBox' isn't a class • lib/features/inventory/inventory_screen.dart:53:29 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:54:23 • undefined_method
+  error • Undefined name 'ListView' • lib/features/inventory/inventory_screen.dart:59:22 • undefined_identifier
+  error • Undefined name 'EdgeInsets' • lib/features/inventory/inventory_screen.dart:60:32 • undefined_identifier
+  error • Undefined name 'SizedBox' • lib/features/inventory/inventory_screen.dart:67:33 • undefined_identifier
+  error • Undefined class 'Widget' • lib/features/inventory/inventory_screen.dart:74:3 • undefined_class
+  error • Undefined class 'BuildContext' • lib/features/inventory/inventory_screen.dart:74:28 • undefined_class
+  error • Undefined class 'InventoryItem' • lib/features/inventory/inventory_screen.dart:74:50 • undefined_class
+  error • The method 'Card' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:80:12 • undefined_method
+  error • Undefined name 'EdgeInsets' • lib/features/inventory/inventory_screen.dart:81:21 • undefined_identifier
+  error • The method 'RoundedRectangleBorder' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:82:14 • undefined_method
+  error • Undefined name 'BorderRadius' • lib/features/inventory/inventory_screen.dart:82:51 • undefined_identifier
+  error • The method 'Padding' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:83:14 • undefined_method
+  error • Undefined name 'EdgeInsets' • lib/features/inventory/inventory_screen.dart:84:24 • undefined_identifier
+  error • The method 'Column' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:85:16 • undefined_method
+  error • Undefined name 'CrossAxisAlignment' • lib/features/inventory/inventory_screen.dart:86:31 • undefined_identifier
+  error • The method 'Row' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:88:13 • undefined_method
+  error • Undefined name 'MainAxisAlignment' • lib/features/inventory/inventory_screen.dart:89:34 • undefined_identifier
+  error • The method 'Column' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:91:17 • undefined_method
+  error • Undefined name 'CrossAxisAlignment' • lib/features/inventory/inventory_screen.dart:92:39 • undefined_identifier
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:94:21 • undefined_method
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:95:21 • undefined_method
+  error • The method 'Container' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:99:19 • undefined_method
+  error • Undefined name 'EdgeInsets' • lib/features/inventory/inventory_screen.dart:100:36 • undefined_identifier
+  error • The method 'BoxDecoration' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:101:33 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/inventory/inventory_screen.dart:102:46 • deprecated_member_use
+  error • Undefined name 'BorderRadius' • lib/features/inventory/inventory_screen.dart:103:37 • undefined_identifier
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:105:28 • undefined_method
+  error • Undefined name 'FontWeight' • lib/features/inventory/inventory_screen.dart:105:122 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/inventory/inventory_screen.dart:109:19 • creation_with_non_type
+  error • The method 'Row' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:110:13 • undefined_method
+  error • Undefined name 'MainAxisAlignment' • lib/features/inventory/inventory_screen.dart:111:34 • undefined_identifier
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:113:17 • undefined_method
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:114:17 • undefined_method
+  error • Undefined name 'FontWeight' • lib/features/inventory/inventory_screen.dart:114:117 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/inventory/inventory_screen.dart:117:19 • creation_with_non_type
+  error • The method 'ClipRRect' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:118:13 • undefined_method
+  error • Undefined name 'BorderRadius' • lib/features/inventory/inventory_screen.dart:119:29 • undefined_identifier
+  error • The method 'LinearProgressIndicator' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:120:22 • undefined_method
+  error • The name 'SizedBox' isn't a class • lib/features/inventory/inventory_screen.dart:127:19 • creation_with_non_type
+  error • The method 'Row' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:128:13 • undefined_method
+  error • The method 'Expanded' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:130:17 • undefined_method
+  error • The method 'OutlinedButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:131:26 • undefined_method
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:133:34 • creation_with_non_type
+  error • The name 'SizedBox' isn't a class • lib/features/inventory/inventory_screen.dart:136:23 • creation_with_non_type
+  error • The method 'IconButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:137:17 • undefined_method
+  error • The name 'Icon' isn't a class • lib/features/inventory/inventory_screen.dart:139:31 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/inventory/inventory_screen.dart:139:36 • undefined_identifier
+  error • The method 'IconButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:141:17 • undefined_method
+  error • The name 'InventoryBloc' isn't a type, so it can't be used as a type argument • lib/features/inventory/inventory_screen.dart:143:35 • non_type_as_type_argument
+  error • Undefined name 'InventoryEvent' • lib/features/inventory/inventory_screen.dart:143:56 • undefined_identifier
+  error • The name 'Icon' isn't a class • lib/features/inventory/inventory_screen.dart:145:31 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/inventory/inventory_screen.dart:145:36 • undefined_identifier
+  error • Undefined class 'BuildContext' • lib/features/inventory/inventory_screen.dart:155:30 • undefined_class
+  error • The method 'TextEditingController' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:156:22 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:157:23 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:158:23 • undefined_method
+  error • The method 'showDialog' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:160:5 • undefined_method
+  error • The method 'AlertDialog' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:162:35 • undefined_method
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:163:22 • creation_with_non_type
+  error • The method 'Column' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:164:18 • undefined_method
+  error • Undefined name 'MainAxisSize' • lib/features/inventory/inventory_screen.dart:165:25 • undefined_identifier
+  error • The method 'TextField' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:167:13 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/inventory/inventory_screen.dart:167:63 • creation_with_non_type
+  error • The method 'TextField' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:168:13 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/inventory/inventory_screen.dart:168:64 • creation_with_non_type
+  error • The method 'TextField' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:169:13 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/inventory/inventory_screen.dart:169:64 • creation_with_non_type
+  error • The method 'TextButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:173:11 • undefined_method
+  error • Undefined name 'Navigator' • lib/features/inventory/inventory_screen.dart:173:39 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:173:82 • creation_with_non_type
+  error • The method 'ElevatedButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:174:11 • undefined_method
+  error • The method 'InventoryItem' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:176:29 • undefined_method
+  error • The name 'InventoryBloc' isn't a type, so it can't be used as a type argument • lib/features/inventory/inventory_screen.dart:184:29 • non_type_as_type_argument
+  error • Undefined name 'InventoryEvent' • lib/features/inventory/inventory_screen.dart:184:50 • undefined_identifier
+  error • Undefined name 'Navigator' • lib/features/inventory/inventory_screen.dart:185:16 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:187:26 • creation_with_non_type
+  error • Undefined class 'BuildContext' • lib/features/inventory/inventory_screen.dart:194:28 • undefined_class
+  error • Undefined class 'InventoryItem' • lib/features/inventory/inventory_screen.dart:194:50 • undefined_class
+  error • The method 'TextEditingController' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:195:23 • undefined_method
+  error • The method 'showDialog' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:197:5 • undefined_method
+  error • The method 'AlertDialog' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:199:35 • undefined_method
+  error • The method 'Text' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:200:16 • undefined_method
+  error • The method 'Column' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:201:18 • undefined_method
+  error • Undefined name 'MainAxisSize' • lib/features/inventory/inventory_screen.dart:202:25 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:204:19 • creation_with_non_type
+  error • The method 'TextField' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:205:13 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/inventory/inventory_screen.dart:205:64 • creation_with_non_type
+  error • The method 'TextButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:209:11 • undefined_method
+  error • Undefined name 'Navigator' • lib/features/inventory/inventory_screen.dart:209:39 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:209:82 • creation_with_non_type
+  error • The method 'ElevatedButton' isn't defined for the type '_InventoryView' • lib/features/inventory/inventory_screen.dart:210:11 • undefined_method
+  error • The name 'InventoryBloc' isn't a type, so it can't be used as a type argument • lib/features/inventory/inventory_screen.dart:212:28 • non_type_as_type_argument
+  error • Undefined name 'InventoryEvent' • lib/features/inventory/inventory_screen.dart:212:49 • undefined_identifier
+  error • Undefined name 'Navigator' • lib/features/inventory/inventory_screen.dart:213:15 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/features/inventory/inventory_screen.dart:215:26 • creation_with_non_type
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/features/notifications/presentation/notification_preferences_screen.dart:114:7 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/onboarding/onboarding_screen.dart:72:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/onboarding/onboarding_screen.dart:73:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/onboarding/onboarding_screen.dart:95:55 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/onboarding/onboarding_screen.dart:125:47 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/onboarding/onboarding_screen.dart:201:73 • deprecated_member_use
+warning • Unused import: 'package:dio/dio.dart' • lib/features/planner/data/planner_repository.dart:1:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/planner/presentation/screens/planner_home_screen.dart:3:8 • unused_import
+   info • Use 'const' with the constructor to improve performance • lib/features/planner/presentation/screens/planner_home_screen.dart:113:13 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/planner/presentation/screens/planner_home_screen.dart:167:9 • prefer_const_constructors
+  error • The method '_fetchData' isn't defined for the type '_PlannerDashboard' • lib/features/planner/presentation/screens/planner_home_screen.dart:178:74 • undefined_method
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/planner/presentation/screens/planner_logistics_screen.dart:250:9 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/planner/presentation/screens/planner_onboarding_screen.dart:54:15 • prefer_const_constructors
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/planner/presentation/screens/squad_management_screen.dart:117:15 • deprecated_member_use
+warning • The value of the local variable 'user' isn't used • lib/features/profile/bloc/profile_bloc.dart:75:13 • unused_local_variable
+   info • The import of 'package:provider/provider.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter_bloc/flutter_bloc.dart' • lib/features/profile/profile_screen.dart:1:8 • unnecessary_import
+   info • The imported package 'provider' isn't a dependency of the importing package • lib/features/profile/profile_screen.dart:1:8 • depend_on_referenced_packages
+   info • Use 'const' with the constructor to improve performance • lib/features/profile/profile_screen.dart:132:13 • prefer_const_constructors
+  error • The named parameter 'bookingDetailsLoaded' is required, but there's no corresponding argument • lib/features/profile/profile_screen.dart:136:30 • missing_required_argument
+  error • The named parameter 'bookingsLoaded' is required, but there's no corresponding argument • lib/features/profile/profile_screen.dart:136:30 • missing_required_argument
+  error • The named parameter 'paymentRequired' is required, but there's no corresponding argument • lib/features/profile/profile_screen.dart:136:30 • missing_required_argument
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/profile_screen.dart:222:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/profile_screen.dart:224:53 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/profile_screen.dart:257:65 • deprecated_member_use
+   info • 'Share' is deprecated and shouldn't be used. Use SharePlus instead • lib/features/profile/profile_screen.dart:286:21 • deprecated_member_use
+   info • 'share' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead • lib/features/profile/profile_screen.dart:286:27 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/profile_screen.dart:331:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/profile_screen.dart:339:32 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/referral_history_screen.dart:65:73 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/profile/referral_history_screen.dart:67:11 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/referral_history_screen.dart:88:60 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/referral_history_screen.dart:88:97 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/referral_history_screen.dart:106:78 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/widgets/tier_progress_card.dart:69:57 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/widgets/tier_progress_card.dart:76:38 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/widgets/tier_progress_card.dart:106:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/profile/widgets/tier_progress_card.dart:129:47 • deprecated_member_use
+warning • Unused import: 'package:dio/dio.dart' • lib/features/reviews/data/review_repository.dart:2:8 • unused_import
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/reviews/domain/review_model.dart:10:6 • invalid_annotation_target
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/reviews/domain/review_model.dart:11:6 • invalid_annotation_target
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/reviews/domain/review_model.dart:12:6 • invalid_annotation_target
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/reviews/domain/review_model.dart:13:6 • invalid_annotation_target
+warning • The annotation 'JsonKey.new' can only be used on fields or getters • lib/features/reviews/domain/review_model.dart:14:6 • invalid_annotation_target
+warning • Unused import: '../../../../../shared/theme/app_colors.dart' • lib/features/reviews/presentation/widgets/star_rating_widget.dart:2:8 • unused_import
+  error • The name 'AuthBloc' isn't a type, so it can't be used as a type argument • lib/features/reviews/write_review_screen.dart:51:36 • non_type_as_type_argument
+   info • Use 'const' with the constructor to improve performance • lib/features/reviews/write_review_screen.dart:133:31 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/reviews/write_review_screen.dart:153:19 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/reviews/write_review_screen.dart:167:19 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/rewards/leaderboard_screen.dart:68:50 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/rewards/leaderboard_screen.dart:70:69 • deprecated_member_use
+  error • The argument type 'Object?' can't be assigned to the parameter type 'SOSAlert'.  • lib/features/safety/bloc/safety_bloc.dart:69:40 • argument_type_not_assignable
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.dart:21:43 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:29:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:43:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:56:22 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:166:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:183:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:199:22 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:354:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:371:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:387:22 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:536:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:553:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:569:22 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:739:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:756:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:772:22 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:919:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:936:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:952:22 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1026:14 • undefined_class
+  error • The name 'SOSAlert' isn't a type, so it can't be used in an 'as' expression • lib/features/safety/bloc/safety_event.freezed.dart:1046:18 • cast_to_non_type
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1057:9 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1093:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1110:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1126:22 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1186:38 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1188:3 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1240:31 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1257:23 • undefined_class
+  error • Undefined class 'SOSAlert' • lib/features/safety/bloc/safety_event.freezed.dart:1273:22 • undefined_class
+   info • 'desiredAccuracy' is deprecated and shouldn't be used. use settings parameter with AndroidSettings, AppleSettings, WebSettings, or LocationSettings • lib/features/safety/data/repositories/safety_repository.dart:12:63 • deprecated_member_use
+warning • Unused import: 'package:flutter/widgets.dart' • lib/features/safety/domain/background_location_service.dart:5:8 • unused_import
+   info • Uses 'await' on an instance of 'ServiceInstance', which is not a subtype of 'Future' • lib/features/safety/domain/background_location_service.dart:35:9 • await_only_futures
+   info • Don't invoke 'print' in production code • lib/features/safety/domain/background_location_service.dart:54:7 • avoid_print
+   info • Don't invoke 'print' in production code • lib/features/safety/domain/background_location_service.dart:56:7 • avoid_print
+   info • Parameter 'key' could be a super parameter • lib/features/safety/presentation/screens/daily_health_check_screen.dart:11:9 • use_super_parameters
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/safety/presentation/screens/emergency_contacts_screen.dart:4:8 • unused_import
+   info • Use 'const' with the constructor to improve performance • lib/features/safety/presentation/screens/emergency_contacts_screen.dart:76:12 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/safety/presentation/screens/emergency_contacts_screen.dart:77:14 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/safety/presentation/screens/emergency_contacts_screen.dart:79:16 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/safety/presentation/screens/emergency_contacts_screen.dart:81:21 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/safety/presentation/screens/emergency_contacts_screen.dart:84:13 • prefer_const_constructors
+warning • Unused import: 'package:app/shared/theme/app_colors.dart' • lib/features/safety/presentation/widgets/community_guardian_overlay.dart:4:8 • unused_import
+warning • Unused import: 'package:app/shared/theme/app_typography.dart' • lib/features/safety/presentation/widgets/community_guardian_overlay.dart:5:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/safety/presentation/widgets/community_guardian_overlay.dart:57:64 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/features/safety/presentation/widgets/sos_button.dart:11:9 • use_super_parameters
+   info • 'desiredAccuracy' is deprecated and shouldn't be used. use settings parameter with AndroidSettings, AppleSettings, WebSettings, or LocationSettings • lib/features/safety/presentation/widgets/sos_button.dart:33:9 • deprecated_member_use
+   info • 'timeLimit' is deprecated and shouldn't be used. use settings parameter with AndroidSettings, AppleSettings, WebSettings, or LocationSettings • lib/features/safety/presentation/widgets/sos_button.dart:34:9 • deprecated_member_use
+   info • The 'child' argument should be last in widget constructor invocations • lib/features/safety/presentation/widgets/sos_button.dart:84:11 • sort_child_properties_last
+  error • Target of URI doesn't exist: '../bloc/safety_bloc.dart' • lib/features/safety/presentation/widgets/sos_widget.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/safety_event.dart' • lib/features/safety/presentation/widgets/sos_widget.dart:7:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../bloc/safety_state.dart' • lib/features/safety/presentation/widgets/sos_widget.dart:8:8 • uri_does_not_exist
+   info • Parameter 'key' could be a super parameter • lib/features/safety/presentation/widgets/sos_widget.dart:11:9 • use_super_parameters
+  error • The name 'SafetyBloc' isn't a type, so it can't be used as a type argument • lib/features/safety/presentation/widgets/sos_widget.dart:40:22 • non_type_as_type_argument
+  error • Undefined name 'SafetyEvent' • lib/features/safety/presentation/widgets/sos_widget.dart:40:40 • undefined_identifier
+  error • The name 'SafetyBloc' isn't a type, so it can't be used as a type argument • lib/features/safety/presentation/widgets/sos_widget.dart:61:25 • non_type_as_type_argument
+  error • The name 'SafetyState' isn't a type, so it can't be used as a type argument • lib/features/safety/presentation/widgets/sos_widget.dart:61:37 • non_type_as_type_argument
+  error • The method 'maybeWhen' can't be unconditionally invoked because the receiver can be 'null' • lib/features/safety/presentation/widgets/sos_widget.dart:63:15 • unchecked_use_of_nullable_value
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/safety/presentation/widgets/sos_widget.dart:100:35 • deprecated_member_use
+warning • Unused import: 'package:dio/dio.dart' • lib/features/squads/data/squad_repository.dart:1:8 • unused_import
+   info • Parameter 'key' could be a super parameter • lib/features/squads/presentation/screens/squad_builder_screen.dart:6:9 • use_super_parameters
+   info • Invalid use of a private type in a public API • lib/features/squads/presentation/screens/squad_builder_screen.dart:9:3 • library_private_types_in_public_api
+   info • Don't use 'BuildContext's across async gaps • lib/features/squads/presentation/screens/squad_builder_screen.dart:37:30 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/features/squads/presentation/screens/squad_builder_screen.dart:38:23 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/features/squads/presentation/screens/squad_builder_screen.dart:40:30 • use_build_context_synchronously
+  error • Target of URI doesn't exist: '../../../data/models/studio_model.dart' • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.dart:2:8 • uri_does_not_exist
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.dart:10:52 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:23:36 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:32:28 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:41:27 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:136:36 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:148:28 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:160:27 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:256:36 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:268:28 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:280:27 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:342:19 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:362:23 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:370:33 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:372:14 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:374:8 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:408:36 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:420:28 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:432:27 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:485:36 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:487:8 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:559:36 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:571:28 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:583:27 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:710:36 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:722:28 • non_type_as_type_argument
+  error • The name 'StudioSeat' isn't a type, so it can't be used as a type argument • lib/features/studios/bloc/seat_manager/studio_seat_manager_state.freezed.dart:734:27 • non_type_as_type_argument
+warning • Unused import: 'package:dio/dio.dart' • lib/features/studios/data/studio_repository.dart:2:8 • unused_import
+   info • The imported package 'provider' isn't a dependency of the importing package • lib/features/studios/presentation/screens/studio_booking_screen.dart:4:8 • depend_on_referenced_packages
+   info • Parameter 'key' could be a super parameter • lib/features/studios/presentation/screens/studio_booking_screen.dart:10:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/studios/presentation/screens/studio_booking_screen.dart:137:38 • deprecated_member_use
+  error • Target of URI doesn't exist: '../data/models/studio_model.dart' • lib/features/studios/presentation/screens/studio_home_screen.dart:12:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../data/studio_repository.dart' • lib/features/studios/presentation/screens/studio_home_screen.dart:13:8 • uri_does_not_exist
+  error • The method 'StudioProfileScreen' isn't defined for the type '_StudioHomeScreenState' • lib/features/studios/presentation/screens/studio_home_screen.dart:70:15 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/studios/presentation/screens/studio_home_screen.dart:127:13 • prefer_const_constructors
+warning • The value of the local variable 'studio' isn't used • lib/features/studios/presentation/screens/studio_home_screen.dart:146:19 • unused_local_variable
+  error • The name 'studio' is already defined • lib/features/studios/presentation/screens/studio_home_screen.dart:146:19 • duplicate_definition
+  error • Undefined name '_stats' • lib/features/studios/presentation/screens/studio_home_screen.dart:175:79 • undefined_identifier
+  error • Undefined name '_stats' • lib/features/studios/presentation/screens/studio_home_screen.dart:177:84 • undefined_identifier
+  error • Undefined name '_stats' • lib/features/studios/presentation/screens/studio_home_screen.dart:183:84 • undefined_identifier
+   info • Use 'const' with the constructor to improve performance • lib/features/studios/presentation/screens/studio_home_screen.dart:194:9 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../data/studio_repository.dart' • lib/features/studios/presentation/screens/studio_management_bookings_screen.dart:4:8 • uri_does_not_exist
+  error • Undefined class 'StudioRepository' • lib/features/studios/presentation/screens/studio_management_bookings_screen.dart:11:9 • undefined_class
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/studios/presentation/screens/studio_management_bookings_screen.dart:117:48 • deprecated_member_use
+warning • Unused import: 'package:flutter_bloc/flutter_bloc.dart' • lib/features/studios/presentation/screens/studio_onboarding_screen.dart:3:8 • unused_import
+warning • Unused import: '../../../../shared/theme/app_colors.dart' • lib/features/studios/presentation/screens/studio_onboarding_screen.dart:8:8 • unused_import
+  error • Too many positional arguments: 0 expected, but 1 found • lib/features/studios/presentation/screens/studio_onboarding_screen.dart:35:36 • extra_positional_arguments_could_be_named
+   info • Use 'const' with the constructor to improve performance • lib/features/studios/presentation/screens/studio_onboarding_screen.dart:89:15 • prefer_const_constructors
+  error • Target of URI doesn't exist: '../data/studio_repository.dart' • lib/features/studios/presentation/screens/studio_profile_screen.dart:2:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../data/models/studio_model.dart' • lib/features/studios/presentation/screens/studio_profile_screen.dart:3:8 • uri_does_not_exist
+  error • Undefined class 'StudioRepository' • lib/features/studios/presentation/screens/studio_profile_screen.dart:10:9 • undefined_class
+  error • The name 'StudioTeamMember' isn't a type, so it can't be used as a type argument • lib/features/studios/presentation/screens/studio_profile_screen.dart:23:20 • non_type_as_type_argument
+   info • Use 'const' with the constructor to improve performance • lib/features/studios/presentation/screens/studio_profile_screen.dart:51:13 • prefer_const_constructors
+  error • The name 'StudioTeamMember' isn't a type, so it can't be used as a type argument • lib/features/studios/presentation/screens/studio_profile_screen.dart:98:31 • non_type_as_type_argument
+  error • Target of URI doesn't exist: '../data/studio_repository.dart' • lib/features/studios/presentation/screens/studio_seats_screen.dart:3:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: '../data/models/studio_model.dart' • lib/features/studios/presentation/screens/studio_seats_screen.dart:4:8 • uri_does_not_exist
+  error • Undefined class 'StudioRepository' • lib/features/studios/presentation/screens/studio_seats_screen.dart:13:9 • undefined_class
+  error • Undefined class 'StudioSeat' • lib/features/studios/presentation/screens/studio_seats_screen.dart:107:47 • undefined_class
+  error • Undefined class 'StudioSeat' • lib/features/studios/presentation/screens/studio_seats_screen.dart:154:9 • undefined_class
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/studios/presentation/screens/studio_seats_screen.dart:188:36 • deprecated_member_use
+  error • Undefined class 'StudioSeat' • lib/features/studios/presentation/screens/studio_seats_screen.dart:240:47 • undefined_class
+   info • The imported package 'provider' isn't a dependency of the importing package • lib/features/studios/presentation/screens/studio_team_screen.dart:4:8 • depend_on_referenced_packages
+   info • Parameter 'key' could be a super parameter • lib/features/studios/presentation/screens/studio_team_screen.dart:11:9 • use_super_parameters
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/studios/presentation/screens/studio_team_screen.dart:104:17 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/features/studios/presentation/screens/studios_list_screen.dart:8:9 • use_super_parameters
+   info • Don't invoke 'print' in production code • lib/features/subscription/bloc/subscription_bloc.dart:190:7 • avoid_print
+  error • The method 'maybeWhen' isn't defined for the type 'SubscriptionState' • lib/features/subscription/subscription_history_screen.dart:20:24 • undefined_method
+   info • Use 'const' with the constructor to improve performance • lib/features/subscription/subscription_screen.dart:82:17 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/subscription/subscription_screen.dart:111:32 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/subscription/subscription_screen.dart:120:17 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/subscription/widgets/premium_plan_card.dart:28:48 • deprecated_member_use
+  error • The name '_FetchRetreats' isn't a type, so it can't be used as a type argument • lib/features/travel/presentation/bloc/travel_bloc.dart:10:8 • non_type_as_type_argument
+  error • The name '_BookRetreat' isn't a type, so it can't be used as a type argument • lib/features/travel/presentation/bloc/travel_bloc.dart:20:8 • non_type_as_type_argument
+  error • The property 'packageId' can't be unconditionally accessed because the receiver can be 'null' • lib/features/travel/presentation/bloc/travel_bloc.dart:24:28 • unchecked_use_of_nullable_value
+  error • The property 'participantName' can't be unconditionally accessed because the receiver can be 'null' • lib/features/travel/presentation/bloc/travel_bloc.dart:25:34 • unchecked_use_of_nullable_value
+  error • The name '_FetchProfile' isn't a type, so it can't be used as a type argument • lib/features/travel/presentation/bloc/travel_bloc.dart:33:8 • non_type_as_type_argument
+  error • The name '_UpdateProfile' isn't a type, so it can't be used as a type argument • lib/features/travel/presentation/bloc/travel_bloc.dart:43:8 • non_type_as_type_argument
+  error • The property 'request' can't be unconditionally accessed because the receiver can be 'null' • lib/features/travel/presentation/bloc/travel_bloc.dart:50:70 • unchecked_use_of_nullable_value
+  error • The property 'request' can't be unconditionally accessed because the receiver can be 'null' • lib/features/travel/presentation/bloc/travel_bloc.dart:53:70 • unchecked_use_of_nullable_value
+  error • The name '_UploadVisaDocument' isn't a type, so it can't be used as a type argument • lib/features/travel/presentation/bloc/travel_bloc.dart:61:8 • non_type_as_type_argument
+  error • The property 'filePath' can't be unconditionally accessed because the receiver can be 'null' • lib/features/travel/presentation/bloc/travel_bloc.dart:64:64 • unchecked_use_of_nullable_value
+  error • The property 'country' can't be unconditionally accessed because the receiver can be 'null' • lib/features/travel/presentation/bloc/travel_bloc.dart:64:80 • unchecked_use_of_nullable_value
+   info • Parameter 'key' could be a super parameter • lib/features/travel/presentation/screens/retreats_list_screen.dart:12:9 • use_super_parameters
+  error • The method 'BlocProvider' isn't defined for the type 'RetreatsListScreen' • lib/features/travel/presentation/screens/retreats_list_screen.dart:16:12 • undefined_method
+  error • The method 'BlocConsumer' isn't defined for the type '_RetreatsListView' • lib/features/travel/presentation/screens/retreats_list_screen.dart:36:13 • undefined_method
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/travel/presentation/screens/retreats_list_screen.dart:108:41 • deprecated_member_use
+  error • The method 'read' isn't defined for the type 'BuildContext' • lib/features/travel/presentation/screens/retreats_list_screen.dart:165:32 • undefined_method
+  error • Classes can only extend other classes • lib/features/travel/presentation/screens/travel_settings_screen.dart:6:36 • extends_non_class
+  error • Undefined class 'TravelRepository' • lib/features/travel/presentation/screens/travel_settings_screen.dart:7:9 • undefined_class
+  error • Undefined class 'Key' • lib/features/travel/presentation/screens/travel_settings_screen.dart:9:31 • undefined_class
+  error • The named parameter 'key' isn't defined • lib/features/travel/presentation/screens/travel_settings_screen.dart:9:76 • undefined_named_parameter
+  error • Undefined class 'Widget' • lib/features/travel/presentation/screens/travel_settings_screen.dart:12:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/features/travel/presentation/screens/travel_settings_screen.dart:12:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/features/travel/presentation/screens/travel_settings_screen.dart:12:16 • undefined_class
+  error • The method 'BlocProvider' isn't defined for the type 'TravelSettingsScreen' • lib/features/travel/presentation/screens/travel_settings_screen.dart:13:12 • undefined_method
+  error • Classes can only extend other classes • lib/features/travel/presentation/screens/travel_settings_screen.dart:20:35 • extends_non_class
+  error • Undefined class 'State' • lib/features/travel/presentation/screens/travel_settings_screen.dart:24:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/features/travel/presentation/screens/travel_settings_screen.dart:24:30 • override_on_non_overriding_member
+  error • Classes can only extend other classes • lib/features/travel/presentation/screens/travel_settings_screen.dart:27:40 • extends_non_class
+  error • The method 'GlobalKey' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:28:20 • undefined_method
+  error • The name 'FormState' isn't a type, so it can't be used as a type argument • lib/features/travel/presentation/screens/travel_settings_screen.dart:28:30 • non_type_as_type_argument
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:31:31 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:32:37 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:34:38 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:36:37 • undefined_method
+  error • Undefined class 'AccommodationPreference' • lib/features/travel/presentation/screens/travel_settings_screen.dart:37:3 • undefined_class
+  error • Undefined name 'AccommodationPreference' • lib/features/travel/presentation/screens/travel_settings_screen.dart:37:44 • undefined_identifier
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:38:30 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:39:36 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:40:37 • undefined_method
+  error • The method 'TextEditingController' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:42:39 • undefined_method
+  error • Undefined class 'TravelProfile' • lib/features/travel/presentation/screens/travel_settings_screen.dart:45:24 • undefined_class
+  error • Undefined name 'AccommodationPreference' • lib/features/travel/presentation/screens/travel_settings_screen.dart:54:22 • undefined_identifier
+  error • The method 'CreateTravelProfileRequest' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:65:21 • undefined_method
+  error • Undefined name 'context' • lib/features/travel/presentation/screens/travel_settings_screen.dart:81:5 • undefined_identifier
+  error • Undefined name 'mounted' • lib/features/travel/presentation/screens/travel_settings_screen.dart:87:26 • undefined_identifier
+  error • Undefined name 'context' • lib/features/travel/presentation/screens/travel_settings_screen.dart:88:7 • undefined_identifier
+  error • Undefined class 'Widget' • lib/features/travel/presentation/screens/travel_settings_screen.dart:93:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/features/travel/presentation/screens/travel_settings_screen.dart:93:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/features/travel/presentation/screens/travel_settings_screen.dart:93:16 • undefined_class
+  error • The method 'BlocConsumer' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:94:12 • undefined_method
+  error • Undefined name 'ScaffoldMessenger' • lib/features/travel/presentation/screens/travel_settings_screen.dart:98:33 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:98:76 • undefined_method
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:98:94 • undefined_method
+  error • Undefined name 'ScaffoldMessenger' • lib/features/travel/presentation/screens/travel_settings_screen.dart:99:31 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:99:74 • undefined_method
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:99:92 • undefined_method
+  error • The method 'Scaffold' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:106:16 • undefined_method
+  error • The method 'AppBar' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:107:19 • undefined_method
+  error • The name 'Text' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:108:26 • creation_with_non_type
+  error • The method 'IconButton' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:110:15 • undefined_method
+  error • The name 'Icon' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:110:38 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:110:43 • undefined_identifier
+  error • The name 'Center' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:114:34 • creation_with_non_type
+  error • The method 'CircularProgressIndicator' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:114:48 • undefined_method
+  error • The method 'Form' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:115:27 • undefined_method
+  error • The method 'ListView' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:117:22 • undefined_method
+  error • Undefined name 'EdgeInsets' • lib/features/travel/presentation/screens/travel_settings_screen.dart:118:32 • undefined_identifier
+  error • The method 'SwitchListTile' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:120:19 • undefined_method
+  error • The name 'Text' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:121:34 • creation_with_non_type
+  error • The name 'Text' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:122:37 • creation_with_non_type
+  error • The method 'setState' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:124:43 • undefined_method
+  error • The name 'Divider' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:126:25 • creation_with_non_type
+  error • The method 'TextFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:127:19 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:129:39 • creation_with_non_type
+  error • The method 'Icon' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:129:106 • undefined_method
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:129:111 • undefined_identifier
+  error • Undefined name 'TextInputType' • lib/features/travel/presentation/screens/travel_settings_screen.dart:130:35 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:132:25 • creation_with_non_type
+  error • The method 'TextFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:133:19 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:135:39 • creation_with_non_type
+  error • The method 'Icon' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:135:104 • undefined_method
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:135:109 • undefined_identifier
+  error • Undefined name 'TextInputType' • lib/features/travel/presentation/screens/travel_settings_screen.dart:136:41 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:138:25 • creation_with_non_type
+  error • The method 'DropdownButtonFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:139:19 • undefined_method
+  error • The name 'AccommodationPreference' isn't a type, so it can't be used as a type argument • lib/features/travel/presentation/screens/travel_settings_screen.dart:139:43 • non_type_as_type_argument
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:141:39 • creation_with_non_type
+  error • The method 'Icon' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:141:106 • undefined_method
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:141:111 • undefined_identifier
+  error • Undefined name 'AccommodationPreference' • lib/features/travel/presentation/screens/travel_settings_screen.dart:142:28 • undefined_identifier
+  error • The method 'DropdownMenuItem' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:142:70 • undefined_method
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:142:104 • undefined_method
+  error • The method 'setState' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:143:39 • undefined_method
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:145:25 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:147:19 • undefined_method
+  error • Undefined name 'Theme' • lib/features/travel/presentation/screens/travel_settings_screen.dart:147:51 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:148:25 • creation_with_non_type
+  error • The method 'TextFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:149:19 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:151:39 • creation_with_non_type
+  error • The method 'Icon' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:151:134 • undefined_method
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:151:139 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:153:25 • creation_with_non_type
+  error • The method 'DropdownButtonFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:154:19 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:156:39 • creation_with_non_type
+  error • The method 'Icon' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:156:99 • undefined_method
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:156:104 • undefined_identifier
+  error • The method 'DropdownMenuItem' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:158:23 • undefined_method
+  error • The values in a const list literal must be constants • lib/features/travel/presentation/screens/travel_settings_screen.dart:158:23 • non_constant_list_element
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:158:62 • undefined_method
+  error • The method 'DropdownMenuItem' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:159:23 • undefined_method
+  error • The values in a const list literal must be constants • lib/features/travel/presentation/screens/travel_settings_screen.dart:159:23 • non_constant_list_element
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:159:63 • undefined_method
+  error • The method 'DropdownMenuItem' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:160:23 • undefined_method
+  error • The values in a const list literal must be constants • lib/features/travel/presentation/screens/travel_settings_screen.dart:160:23 • non_constant_list_element
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:160:61 • undefined_method
+  error • The method 'DropdownMenuItem' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:161:23 • undefined_method
+  error • The values in a const list literal must be constants • lib/features/travel/presentation/screens/travel_settings_screen.dart:161:23 • non_constant_list_element
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:161:63 • undefined_method
+  error • The method 'setState' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:163:39 • undefined_method
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:165:25 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:167:19 • undefined_method
+  error • Undefined name 'Theme' • lib/features/travel/presentation/screens/travel_settings_screen.dart:167:55 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:168:25 • creation_with_non_type
+  error • The method 'TextFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:169:19 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:171:39 • creation_with_non_type
+  error • The method 'Icon' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:171:97 • undefined_method
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:171:102 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:173:25 • creation_with_non_type
+  error • The method 'ListTile' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:174:19 • undefined_method
+  error • The name 'Icon' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:175:36 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:175:41 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:176:34 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:177:31 • undefined_method
+  error • The method 'DateFormat' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:177:62 • undefined_method
+  error • The method 'showDatePicker' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:179:42 • undefined_method
+  error • The method 'setState' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:185:41 • undefined_method
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:188:25 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:191:19 • undefined_method
+  error • Undefined name 'Theme' • lib/features/travel/presentation/screens/travel_settings_screen.dart:191:49 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:192:25 • creation_with_non_type
+  error • The method 'Card' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:194:21 • undefined_method
+  error • The method 'ListTile' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:195:30 • undefined_method
+  error • The name 'Icon' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:196:40 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:196:45 • undefined_identifier
+  error • Undefined name 'Colors' • lib/features/travel/presentation/screens/travel_settings_screen.dart:196:72 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:197:38 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:198:35 • undefined_method
+  error • The name 'Icon' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:199:41 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:199:46 • undefined_identifier
+  error • The method 'Card' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:205:19 • undefined_method
+  error • The method 'ListTile' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:206:28 • undefined_method
+  error • The name 'Icon' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:207:38 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/features/travel/presentation/screens/travel_settings_screen.dart:207:43 • undefined_identifier
+  error • Undefined name 'Colors' • lib/features/travel/presentation/screens/travel_settings_screen.dart:207:69 • undefined_identifier
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:208:30 • undefined_method
+  error • The name 'Text' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:209:39 • creation_with_non_type
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:213:25 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:215:19 • undefined_method
+  error • Undefined name 'Theme' • lib/features/travel/presentation/screens/travel_settings_screen.dart:215:52 • undefined_identifier
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:216:25 • creation_with_non_type
+  error • The method 'TextFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:217:19 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:217:89 • creation_with_non_type
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:218:25 • creation_with_non_type
+  error • The method 'TextFormField' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:219:19 • undefined_method
+  error • The name 'InputDecoration' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:219:90 • creation_with_non_type
+  error • The name 'SizedBox' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:220:25 • creation_with_non_type
+  error • The method 'ElevatedButton' isn't defined for the type '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:221:19 • undefined_method
+  error • The name 'Text' isn't a class • lib/features/travel/presentation/screens/travel_settings_screen.dart:221:72 • creation_with_non_type
+warning • The method doesn't override an inherited method • lib/features/travel/presentation/screens/travel_settings_screen.dart:232:8 • override_on_non_overriding_member
+  error • The method 'dispose' isn't defined in a superclass of '_TravelSettingsViewState' • lib/features/travel/presentation/screens/travel_settings_screen.dart:240:11 • undefined_super_member
+warning • Unused import: 'package:dio/dio.dart' • lib/features/wallet/data/wallet_repository.dart:1:8 • unused_import
+  error • The imported library '../../../auth/bloc/auth_state.dart' can't have a part-of directive • lib/features/wallet/presentation/screens/bank_linking_screen.dart:10:8 • import_of_non_library
+   info • Use 'const' with the constructor to improve performance • lib/features/wallet/presentation/screens/bank_linking_screen.dart:66:17 • prefer_const_constructors
+   info • 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre • lib/features/wallet/presentation/screens/bank_linking_screen.dart:81:19 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/wallet/presentation/screens/bank_linking_screen.dart:101:17 • prefer_const_constructors
+  error • The getter 'phoneNumber' isn't defined for the type 'User' • lib/features/wallet/presentation/screens/bank_linking_screen.dart:162:22 • undefined_getter
+warning • Unused import: 'package:razorpay_flutter/razorpay_flutter.dart' • lib/features/wallet/presentation/screens/wallet_screen.dart:3:8 • unused_import
+  error • The name 'AuthBloc' isn't a type, so it can't be used as a type argument • lib/features/wallet/presentation/screens/wallet_screen.dart:28:46 • non_type_as_type_argument
+   info • Use 'const' with the constructor to improve performance • lib/features/wallet/presentation/screens/wallet_screen.dart:170:21 • prefer_const_constructors
+   info • Parameter 'key' could be a super parameter • lib/features/wellness/presentation/screens/wellness_hub_screen.dart:7:9 • use_super_parameters
+   info • Invalid use of a private type in a public API • lib/features/wellness/presentation/screens/wellness_hub_screen.dart:10:3 • library_private_types_in_public_api
+   info • Don't invoke 'print' in production code • lib/features/wellness/presentation/screens/wellness_hub_screen.dart:39:7 • avoid_print
+   info • Don't use 'BuildContext's across async gaps • lib/features/wellness/presentation/screens/wellness_hub_screen.dart:127:31 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/features/wellness/presentation/screens/wellness_hub_screen.dart:128:38 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/features/wellness/presentation/screens/wellness_hub_screen.dart:130:38 • use_build_context_synchronously
+   info • Use 'const' for final variables initialized to a constant value • lib/main.dart:28:5 • prefer_const_declarations
+   info • 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre • lib/shared/theme/app_theme.dart:14:9 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/shared/widgets/custom_button.dart:12:9 • use_super_parameters
+warning • The value of the local variable 'theme' isn't used • lib/shared/widgets/custom_button.dart:24:11 • unused_local_variable
+   info • Parameter 'key' could be a super parameter • lib/shared/widgets/custom_text_field.dart:16:9 • use_super_parameters
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:33:33 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/shared/widgets/debug_panel.dart:34:27 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:40:36 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:46:34 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:73:32 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:167:32 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:213:25 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_panel.dart:216:27 • deprecated_member_use
+warning • Unused import: 'package:flutter_bloc/flutter_bloc.dart' • lib/shared/widgets/debug_role_switcher.dart:2:8 • unused_import
+warning • Unused import: 'package:app/features/auth/bloc/auth_bloc.dart' • lib/shared/widgets/debug_role_switcher.dart:3:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/shared/widgets/debug_role_switcher.dart:19:50 • deprecated_member_use
+warning • The value of the local variable 'mockUser' isn't used • lib/shared/widgets/debug_role_switcher.dart:36:15 • unused_local_variable
+
+1175 issues found. (ran in 16.5s)

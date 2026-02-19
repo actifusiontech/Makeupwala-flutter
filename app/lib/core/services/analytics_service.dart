@@ -38,7 +38,7 @@ class AnalyticsService {
     try {
       await _analytics.logEvent(
         name: name,
-        parameters: parameters,
+        parameters: parameters?.cast<String, Object>(),
       );
       _logger.debug('Analytics event: $name', parameters);
     } catch (e, stackTrace) {

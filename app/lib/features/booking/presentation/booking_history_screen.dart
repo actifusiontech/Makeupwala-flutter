@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import '../../shared/theme/app_colors.dart';
-import '../../shared/theme/app_typography.dart';
-import '../../shared/theme/app_spacing.dart';
+import '../../../../shared/theme/app_colors.dart';
+import '../../../../shared/theme/app_typography.dart';
+import '../../../../shared/theme/app_spacing.dart';
 import '../bloc/booking_bloc.dart';
 import '../data/booking_repository.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app/shared/theme/app_spacing.dart';
-import '../bloc/education_bloc.dart';
-import '../bloc/education_event.dart';
-import '../bloc/education_state.dart';
+import '../../bloc/education_bloc.dart';
+import '../../bloc/education_event.dart';
+import '../../bloc/education_state.dart';
 
 class VerifyStudentScreen extends StatefulWidget {
   final String instituteId;

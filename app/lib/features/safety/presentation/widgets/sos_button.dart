@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:battery_plus/battery_plus.dart';
-import '../bloc/safety_bloc.dart';
-import '../bloc/safety_event.dart';
-import '../bloc/safety_state.dart';
+import '../../bloc/safety_bloc.dart';
+import '../../bloc/safety_event.dart';
+import '../../bloc/safety_state.dart';
 
 class SOSButton extends StatefulWidget {
   const SOSButton({Key? key}) : super(key: key);

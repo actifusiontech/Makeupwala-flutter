@@ -4,14 +4,13 @@ import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../features/auth/bloc/auth_bloc.dart';
+import 'package:app/features/auth/bloc/auth_bloc.dart';
+// Event and State are parts of Bloc, so they are imported via the Bloc file.
 import 'package:google_fonts/google_fonts.dart';
-import '../../data/education_repository.dart';
-import '../../../../core/network/api_client.dart';
 
-import '../bloc/education_bloc.dart';
-import '../bloc/education_event.dart';
-import '../bloc/education_state.dart';
+import 'package:app/features/education/bloc/education_bloc.dart';
+import 'package:app/features/education/bloc/education_event.dart';
+import 'package:app/features/education/bloc/education_state.dart';
 import 'create_course_screen.dart';
 import 'verify_student_screen.dart';
 import 'student_management_screen.dart';

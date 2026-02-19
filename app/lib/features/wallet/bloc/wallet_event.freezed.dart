@@ -31,7 +31,6 @@ mixin _$WalletEvent {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)
         linkBank,
     required TResult Function(double amount) initiateTopUp,
@@ -55,7 +54,6 @@ mixin _$WalletEvent {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult? Function(double amount)? initiateTopUp,
@@ -78,7 +76,6 @@ mixin _$WalletEvent {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult Function(double amount)? initiateTopUp,
@@ -186,7 +183,6 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)
         linkBank,
     required TResult Function(double amount) initiateTopUp,
@@ -213,7 +209,6 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult? Function(double amount)? initiateTopUp,
@@ -239,7 +234,6 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult Function(double amount)? initiateTopUp,
@@ -408,7 +402,6 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)
         linkBank,
     required TResult Function(double amount) initiateTopUp,
@@ -435,7 +428,6 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult? Function(double amount)? initiateTopUp,
@@ -461,7 +453,6 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult Function(double amount)? initiateTopUp,
@@ -547,7 +538,6 @@ abstract class _$$LinkBankImplCopyWith<$Res> {
       String pan,
       String bankAccountNumber,
       String bankIfsc,
-      String bankAccountName,
       String bankAccountName});
 }
 
@@ -570,7 +560,6 @@ class __$$LinkBankImplCopyWithImpl<$Res>
     Object? pan = null,
     Object? bankAccountNumber = null,
     Object? bankIfsc = null,
-    Object? bankAccountName = null,
     Object? bankAccountName = null,
   }) {
     return _then(_$LinkBankImpl(
@@ -610,10 +599,6 @@ class __$$LinkBankImplCopyWithImpl<$Res>
           ? _value.bankAccountName
           : bankAccountName // ignore: cast_nullable_to_non_nullable
               as String,
-      bankAccountName: null == bankAccountName
-          ? _value.bankAccountName
-          : bankAccountName // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -630,7 +615,6 @@ class _$LinkBankImpl implements _LinkBank {
       required this.pan,
       required this.bankAccountNumber,
       required this.bankIfsc,
-      required this.bankAccountName,
       required this.bankAccountName});
 
   @override
@@ -651,12 +635,10 @@ class _$LinkBankImpl implements _LinkBank {
   final String bankIfsc;
   @override
   final String bankAccountName;
-  @override
-  final String bankAccountName;
 
   @override
   String toString() {
-    return 'WalletEvent.linkBank(email: $email, phone: $phone, legalBusinessName: $legalBusinessName, businessType: $businessType, contactName: $contactName, pan: $pan, bankAccountNumber: $bankAccountNumber, bankIfsc: $bankIfsc, bankAccountName: $bankAccountName, bankAccountName: $bankAccountName)';
+    return 'WalletEvent.linkBank(email: $email, phone: $phone, legalBusinessName: $legalBusinessName, businessType: $businessType, contactName: $contactName, pan: $pan, bankAccountNumber: $bankAccountNumber, bankIfsc: $bankIfsc, bankAccountName: $bankAccountName)';
   }
 
   @override
@@ -678,8 +660,6 @@ class _$LinkBankImpl implements _LinkBank {
             (identical(other.bankIfsc, bankIfsc) ||
                 other.bankIfsc == bankIfsc) &&
             (identical(other.bankAccountName, bankAccountName) ||
-                other.bankAccountName == bankAccountName) &&
-            (identical(other.bankAccountName, bankAccountName) ||
                 other.bankAccountName == bankAccountName));
   }
 
@@ -694,7 +674,6 @@ class _$LinkBankImpl implements _LinkBank {
       pan,
       bankAccountNumber,
       bankIfsc,
-      bankAccountName,
       bankAccountName);
 
   @JsonKey(ignore: true)
@@ -719,7 +698,6 @@ class _$LinkBankImpl implements _LinkBank {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)
         linkBank,
     required TResult Function(double amount) initiateTopUp,
@@ -728,7 +706,7 @@ class _$LinkBankImpl implements _LinkBank {
         processTopUp,
   }) {
     return linkBank(email, phone, legalBusinessName, businessType, contactName,
-        pan, bankAccountNumber, bankIfsc, bankAccountName, bankAccountName);
+        pan, bankAccountNumber, bankIfsc, bankAccountName);
   }
 
   @override
@@ -747,24 +725,14 @@ class _$LinkBankImpl implements _LinkBank {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult? Function(double amount)? initiateTopUp,
     TResult? Function(String orderId, String paymentId, String signature)?
         processTopUp,
   }) {
-    return linkBank?.call(
-        email,
-        phone,
-        legalBusinessName,
-        businessType,
-        contactName,
-        pan,
-        bankAccountNumber,
-        bankIfsc,
-        bankAccountName,
-        bankAccountName);
+    return linkBank?.call(email, phone, legalBusinessName, businessType,
+        contactName, pan, bankAccountNumber, bankIfsc, bankAccountName);
   }
 
   @override
@@ -783,7 +751,6 @@ class _$LinkBankImpl implements _LinkBank {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult Function(double amount)? initiateTopUp,
@@ -792,17 +759,8 @@ class _$LinkBankImpl implements _LinkBank {
     required TResult orElse(),
   }) {
     if (linkBank != null) {
-      return linkBank(
-          email,
-          phone,
-          legalBusinessName,
-          businessType,
-          contactName,
-          pan,
-          bankAccountNumber,
-          bankIfsc,
-          bankAccountName,
-          bankAccountName);
+      return linkBank(email, phone, legalBusinessName, businessType,
+          contactName, pan, bankAccountNumber, bankIfsc, bankAccountName);
     }
     return orElse();
   }
@@ -858,7 +816,6 @@ abstract class _LinkBank implements WalletEvent {
       required final String pan,
       required final String bankAccountNumber,
       required final String bankIfsc,
-      required final String bankAccountName,
       required final String bankAccountName}) = _$LinkBankImpl;
 
   String get email;
@@ -869,7 +826,6 @@ abstract class _LinkBank implements WalletEvent {
   String get pan;
   String get bankAccountNumber;
   String get bankIfsc;
-  String get bankAccountName;
   String get bankAccountName;
   @JsonKey(ignore: true)
   _$$LinkBankImplCopyWith<_$LinkBankImpl> get copyWith =>
@@ -953,7 +909,6 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)
         linkBank,
     required TResult Function(double amount) initiateTopUp,
@@ -980,7 +935,6 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult? Function(double amount)? initiateTopUp,
@@ -1006,7 +960,6 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult Function(double amount)? initiateTopUp,
@@ -1169,7 +1122,6 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)
         linkBank,
     required TResult Function(double amount) initiateTopUp,
@@ -1196,7 +1148,6 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult? Function(double amount)? initiateTopUp,
@@ -1222,7 +1173,6 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
             String pan,
             String bankAccountNumber,
             String bankIfsc,
-            String bankAccountName,
             String bankAccountName)?
         linkBank,
     TResult Function(double amount)? initiateTopUp,

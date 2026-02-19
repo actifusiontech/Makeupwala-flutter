@@ -17,41 +17,38 @@ class SubscriptionHistoryScreen extends StatelessWidget {
       ),
       body: BlocBuilder<SubscriptionBloc, SubscriptionState>(
         builder: (context, state) {
-          return state.maybeWhen(
-            historyLoaded: (history) {
-              if (history.isEmpty) {
-                return const Center(child: Text('No history available.'));
-              }
-              return ListView.builder(
-                itemCount: history.length,
-                itemBuilder: (context, index) {
-                  final event = history[index];
-                  // Parse timestamp
-                  final date = DateTime.tryParse(event['timestamp'] ?? '') ?? DateTime.now();
-                  
-                  return ListTile(
-                    leading: const CircleAvatar(
-                      backgroundColor: AppColors.background,
-                      child: Icon(Icons.history, color: AppColors.primary),
-                    ),
-                    title: Text(
-                      event['action']?.toString().toUpperCase() ?? 'EVENT',
-                      style: AppTypography.titleMedium,
-                    ),
-                    subtitle: Text(date.toString()),
-                    trailing: event['reason'] != null 
-                        ? Tooltip(message: event['reason'], child: const Icon(Icons.info_outline))
-                        : null,
-                  );
-                },
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state.error != null) {
+            return Center(child: Text('Error: ${state.error}'));
+          }
+          final history = state.history;
+          if (history.isEmpty) {
+            // Trigger load if not loaded
+            context.read<SubscriptionBloc>().add(const SubscriptionEvent.fetchHistory());
+            return const Center(child: CircularProgressIndicator());
+          }
+          return ListView.builder(
+            itemCount: history.length,
+            itemBuilder: (context, index) {
+              final event = history[index];
+              final date = DateTime.tryParse(event['timestamp'] ?? '') ?? DateTime.now();
+              
+              return ListTile(
+                leading: const CircleAvatar(
+                  backgroundColor: AppColors.background,
+                  child: Icon(Icons.history, color: AppColors.primary),
+                ),
+                title: Text(
+                  event['action']?.toString().toUpperCase() ?? 'EVENT',
+                  style: AppTypography.titleMedium,
+                ),
+                subtitle: Text(date.toString()),
+                trailing: event['reason'] != null 
+                    ? Tooltip(message: event['reason'], child: const Icon(Icons.info_outline))
+                    : null,
               );
-            },
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (msg) => Center(child: Text('Error: $msg')),
-            orElse: () {
-              // Trigger load if not loaded
-              context.read<SubscriptionBloc>().add(const SubscriptionEvent.fetchHistory());
-              return const Center(child: CircularProgressIndicator());
             },
           );
         },

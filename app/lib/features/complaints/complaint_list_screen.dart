@@ -15,7 +15,7 @@ class ComplaintListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ComplaintBloc(repository: ComplaintRepository(ApiClient()))..add(const ComplaintEvent.fetchMyComplaints()),
+      create: (context) => ComplaintBloc(repository: ComplaintRepository(apiClient: ApiClient()))..add(const ComplaintEvent.fetchMyComplaints()),
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(

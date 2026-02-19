@@ -175,7 +175,7 @@ class _PlannerDashboard extends StatelessWidget {
                 color: Colors.pink,
                 label: 'New Wedding',
                 onTap: () {
-                   context.push('/planner/create-logistics').then((_) => _fetchData());
+                   context.push('/planner/create-logistics').then((_) => onRefresh());
                 },
               ),
             ),

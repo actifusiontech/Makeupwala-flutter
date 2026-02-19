@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/brand_repository.dart';
+import '../../data/brand_repository.dart';
+import '../../../../core/network/api_client.dart';
 
 class BrandProfileScreen extends StatefulWidget {
   const BrandProfileScreen({super.key});
@@ -10,7 +11,7 @@ class BrandProfileScreen extends StatefulWidget {
 
 class _BrandProfileScreenState extends State<BrandProfileScreen> {
   late Future<Map<String, dynamic>> _profileFuture;
-  final _repository = BrandRepository();
+  final _repository = BrandRepository(ApiClient().dio);
 
   @override
   void initState() {

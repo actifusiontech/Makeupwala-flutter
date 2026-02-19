@@ -4,10 +4,10 @@ import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_spacing.dart';
 import '../../../../shared/theme/app_typography.dart';
-import '../bloc/brand_bloc.dart';
-import '../bloc/brand_event.dart';
-import '../bloc/brand_state.dart';
-import '../domain/commerce_models.dart';
+import '../../bloc/brand_bloc.dart';
+import '../../bloc/brand_event.dart';
+import '../../bloc/brand_state.dart';
+import '../../domain/commerce_models.dart';
 
 class CampaignExplorerScreen extends StatefulWidget {
   const CampaignExplorerScreen({super.key});

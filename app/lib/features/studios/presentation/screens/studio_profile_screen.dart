@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/studio_repository.dart';
-import '../data/models/studio_model.dart';
+import '../../data/studio_repository.dart';
+import '../../data/models/studio_model.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'package:app/shared/theme/app_typography.dart';

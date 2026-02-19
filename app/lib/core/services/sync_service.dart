@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import '../services/logging_service.dart';
-import 'cache_manager.dart';
+import '../cache/cache_manager.dart';
 
 /// Service to handle data synchronization between local cache and server
 class SyncService {

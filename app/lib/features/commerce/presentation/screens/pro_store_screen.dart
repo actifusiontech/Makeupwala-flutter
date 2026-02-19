@@ -1,8 +1,11 @@
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:app/features/commerce/data/commerce_repository.dart';
 import 'b2b_checkout_screen.dart';
 import '../../domain/commerce_models.dart';
+import '../../bloc/commerce_bloc.dart';
+import '../../bloc/commerce_event.dart';
+import '../../bloc/commerce_state.dart';
 import '../widgets/product_card.dart';
 import 'package:app/shared/theme/app_colors.dart';
 
@@ -147,7 +150,7 @@ class _ProStoreScreenState extends State<ProStoreScreen> {
                 builder: (context, state) {
                   return state.maybeWhen(
                     loading: () => const Center(child: CircularProgressIndicator()),
-                    loaded: (products, _, __) {
+                    loaded: (products, shopItems, orders, sales, commissions) {
                       if (products.isEmpty) {
                         return const Center(child: Text('No products found'));
                       }

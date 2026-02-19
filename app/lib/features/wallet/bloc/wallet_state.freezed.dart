@@ -25,7 +25,6 @@ mixin _$WalletState {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -40,7 +39,6 @@ mixin _$WalletState {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult? Function(String message)? error,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
@@ -57,7 +55,6 @@ mixin _$WalletState {
         loaded,
     TResult Function(String message)? error,
     TResult Function()? withdrawalSuccess,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -72,7 +69,6 @@ mixin _$WalletState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -85,7 +81,6 @@ mixin _$WalletState {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -97,7 +92,6 @@ mixin _$WalletState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -170,7 +164,6 @@ class _$InitialImpl implements _Initial {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -189,7 +182,6 @@ class _$InitialImpl implements _Initial {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -207,7 +199,6 @@ class _$InitialImpl implements _Initial {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -229,7 +220,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -245,7 +235,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -260,7 +249,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -323,7 +311,6 @@ class _$LoadingImpl implements _Loading {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -342,7 +329,6 @@ class _$LoadingImpl implements _Loading {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -360,7 +346,6 @@ class _$LoadingImpl implements _Loading {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -382,7 +367,6 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -398,7 +382,6 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -413,7 +396,6 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -545,7 +527,6 @@ class _$LoadedImpl implements _Loaded {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -564,7 +545,6 @@ class _$LoadedImpl implements _Loaded {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -582,7 +562,6 @@ class _$LoadedImpl implements _Loaded {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -604,7 +583,6 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -620,7 +598,6 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -635,7 +612,6 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -736,7 +712,6 @@ class _$ErrorImpl implements _Error {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -755,7 +730,6 @@ class _$ErrorImpl implements _Error {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -773,7 +747,6 @@ class _$ErrorImpl implements _Error {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -795,7 +768,6 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -811,7 +783,6 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -826,7 +797,6 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -894,7 +864,6 @@ class _$WithdrawalSuccessImpl implements _WithdrawalSuccess {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -913,7 +882,6 @@ class _$WithdrawalSuccessImpl implements _WithdrawalSuccess {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -931,7 +899,6 @@ class _$WithdrawalSuccessImpl implements _WithdrawalSuccess {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -953,7 +920,6 @@ class _$WithdrawalSuccessImpl implements _WithdrawalSuccess {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -969,7 +935,6 @@ class _$WithdrawalSuccessImpl implements _WithdrawalSuccess {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -984,160 +949,6 @@ class _$WithdrawalSuccessImpl implements _WithdrawalSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
-    TResult Function(_PaymentRequired value)? paymentRequired,
-    TResult Function(_TopUpSuccess value)? topUpSuccess,
-    required TResult orElse(),
-  }) {
-    if (withdrawalSuccess != null) {
-      return withdrawalSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WithdrawalSuccess implements WalletState {
-  const factory _WithdrawalSuccess() = _$WithdrawalSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$WithdrawalSuccessImplCopyWith<$Res> {
-  factory _$$WithdrawalSuccessImplCopyWith(_$WithdrawalSuccessImpl value,
-          $Res Function(_$WithdrawalSuccessImpl) then) =
-      __$$WithdrawalSuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$WithdrawalSuccessImplCopyWithImpl<$Res>
-    extends _$WalletStateCopyWithImpl<$Res, _$WithdrawalSuccessImpl>
-    implements _$$WithdrawalSuccessImplCopyWith<$Res> {
-  __$$WithdrawalSuccessImplCopyWithImpl(_$WithdrawalSuccessImpl _value,
-      $Res Function(_$WithdrawalSuccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$WithdrawalSuccessImpl implements _WithdrawalSuccess {
-  const _$WithdrawalSuccessImpl();
-
-  @override
-  String toString() {
-    return 'WalletState.withdrawalSuccess()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WithdrawalSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(double balance, String currency,
-            List<dynamic> transactions, bool isBankLinked)
-        loaded,
-    required TResult Function(String message) error,
-    required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
-    required TResult Function() bankLinkSuccess,
-    required TResult Function(String orderId, double amount, String keyId)
-        paymentRequired,
-    required TResult Function() topUpSuccess,
-  }) {
-    return withdrawalSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(double balance, String currency,
-            List<dynamic> transactions, bool isBankLinked)?
-        loaded,
-    TResult? Function(String message)? error,
-    TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
-    TResult? Function()? bankLinkSuccess,
-    TResult? Function(String orderId, double amount, String keyId)?
-        paymentRequired,
-    TResult? Function()? topUpSuccess,
-  }) {
-    return withdrawalSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(double balance, String currency,
-            List<dynamic> transactions, bool isBankLinked)?
-        loaded,
-    TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
-    TResult Function()? withdrawalSuccess,
-    TResult Function()? bankLinkSuccess,
-    TResult Function(String orderId, double amount, String keyId)?
-        paymentRequired,
-    TResult Function()? topUpSuccess,
-    required TResult orElse(),
-  }) {
-    if (withdrawalSuccess != null) {
-      return withdrawalSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
-    required TResult Function(_PaymentRequired value) paymentRequired,
-    required TResult Function(_TopUpSuccess value) topUpSuccess,
-  }) {
-    return withdrawalSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
-    TResult? Function(_PaymentRequired value)? paymentRequired,
-    TResult? Function(_TopUpSuccess value)? topUpSuccess,
-  }) {
-    return withdrawalSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -1200,7 +1011,6 @@ class _$BankLinkSuccessImpl implements _BankLinkSuccess {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -1219,7 +1029,6 @@ class _$BankLinkSuccessImpl implements _BankLinkSuccess {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -1237,7 +1046,6 @@ class _$BankLinkSuccessImpl implements _BankLinkSuccess {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -1259,7 +1067,6 @@ class _$BankLinkSuccessImpl implements _BankLinkSuccess {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -1275,7 +1082,6 @@ class _$BankLinkSuccessImpl implements _BankLinkSuccess {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -1290,7 +1096,6 @@ class _$BankLinkSuccessImpl implements _BankLinkSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -1397,7 +1202,6 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -1416,7 +1220,6 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -1434,7 +1237,6 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -1456,7 +1258,6 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -1472,7 +1273,6 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -1487,7 +1287,6 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,
@@ -1560,7 +1359,6 @@ class _$TopUpSuccessImpl implements _TopUpSuccess {
         loaded,
     required TResult Function(String message) error,
     required TResult Function() withdrawalSuccess,
-    required TResult Function() withdrawalSuccess,
     required TResult Function() bankLinkSuccess,
     required TResult Function(String orderId, double amount, String keyId)
         paymentRequired,
@@ -1579,7 +1377,6 @@ class _$TopUpSuccessImpl implements _TopUpSuccess {
         loaded,
     TResult? Function(String message)? error,
     TResult? Function()? withdrawalSuccess,
-    TResult? Function()? withdrawalSuccess,
     TResult? Function()? bankLinkSuccess,
     TResult? Function(String orderId, double amount, String keyId)?
         paymentRequired,
@@ -1597,7 +1394,6 @@ class _$TopUpSuccessImpl implements _TopUpSuccess {
             List<dynamic> transactions, bool isBankLinked)?
         loaded,
     TResult Function(String message)? error,
-    TResult Function()? withdrawalSuccess,
     TResult Function()? withdrawalSuccess,
     TResult Function()? bankLinkSuccess,
     TResult Function(String orderId, double amount, String keyId)?
@@ -1619,7 +1415,6 @@ class _$TopUpSuccessImpl implements _TopUpSuccess {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
     required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
-    required TResult Function(_WithdrawalSuccess value) withdrawalSuccess,
     required TResult Function(_BankLinkSuccess value) bankLinkSuccess,
     required TResult Function(_PaymentRequired value) paymentRequired,
     required TResult Function(_TopUpSuccess value) topUpSuccess,
@@ -1635,7 +1430,6 @@ class _$TopUpSuccessImpl implements _TopUpSuccess {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
-    TResult? Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult? Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult? Function(_PaymentRequired value)? paymentRequired,
     TResult? Function(_TopUpSuccess value)? topUpSuccess,
@@ -1650,7 +1444,6 @@ class _$TopUpSuccessImpl implements _TopUpSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_WithdrawalSuccess value)? withdrawalSuccess,
     TResult Function(_BankLinkSuccess value)? bankLinkSuccess,
     TResult Function(_PaymentRequired value)? paymentRequired,

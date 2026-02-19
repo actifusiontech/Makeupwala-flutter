@@ -36,7 +36,6 @@ class CommerceBloc extends Bloc<CommerceEvent, CommerceState> {
           try {
             await repository.addToShop(productId);
             emit(const CommerceState.actionSuccess('Product added to your shop!'));
-            // Refetch or let UI handle? For now, just success.
           } catch (e) {
             emit(CommerceState.error(e.toString()));
           }
@@ -55,6 +54,15 @@ class CommerceBloc extends Bloc<CommerceEvent, CommerceState> {
           try {
             final orders = await repository.getOrders();
             emit(CommerceState.loaded(orders: orders));
+          } catch (e) {
+            emit(CommerceState.error(e.toString()));
+          }
+        },
+        fetchSales: () async {
+          emit(const CommerceState.loading());
+          try {
+            final sales = await repository.getSales();
+            emit(CommerceState.loaded(sales: sales));
           } catch (e) {
             emit(CommerceState.error(e.toString()));
           }
@@ -85,8 +93,6 @@ class CommerceBloc extends Bloc<CommerceEvent, CommerceState> {
               carrier: carrier,
             );
             emit(const CommerceState.actionSuccess('Order status updated!'));
-            // Refresh orders/sales list
-            add(const CommerceEvent.fetchSales());
           } catch (e) {
             emit(CommerceState.error(e.toString()));
           }
@@ -102,32 +108,6 @@ class CommerceBloc extends Bloc<CommerceEvent, CommerceState> {
         },
       );
     });
-    
-    // Listen to FetchSales
-    on<_FetchSales>((event, emit) async {
-       // We need to preserve current state if it is loaded
-       final currentState = state;
-       if (currentState is _Loaded) {
-         emit(currentState.copyWith(orders: currentState.orders)); // Hack to keep loading state? No.
-         // Better: emit(CommerceState.loading()); ? No, we lose data.
-         // Freezed copyWith on Loading? No.
-         // If we want to show loading spinner we settle for simple approach:
-         emit(const CommerceState.loading());
-       } else {
-         emit(const CommerceState.loading());
-       }
-       
-       try {
-         final sales = await repository.getSales();
-         // If we were loaded, keep other data
-         if (currentState is _Loaded) {
-           emit(currentState.copyWith(sales: sales));
-         } else {
-           emit(CommerceState.loaded(sales: sales));
-         }
-       } catch (e) {
-         emit(CommerceState.error(e.toString()));
-       }
-    });
   }
 }
+

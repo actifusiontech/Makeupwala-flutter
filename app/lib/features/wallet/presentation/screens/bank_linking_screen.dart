@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_spacing.dart';
 import '../../../../shared/theme/app_typography.dart';
-import '../bloc/wallet_bloc.dart';
-import '../bloc/wallet_event.dart';
-import '../bloc/wallet_state.dart';
-import '../../auth/bloc/auth_bloc.dart';
-import '../../auth/bloc/auth_state.dart';
+import '../../bloc/wallet_bloc.dart';
+import '../../bloc/wallet_event.dart';
+import '../../bloc/wallet_state.dart';
+import '../../../auth/bloc/auth_bloc.dart';
 
 class BankLinkingScreen extends StatefulWidget {
   const BankLinkingScreen({super.key});
@@ -159,7 +158,7 @@ class _BankLinkingScreenState extends State<BankLinkingScreen> {
       
       context.read<WalletBloc>().add(WalletEvent.linkBank(
         email: _emailController.text,
-        phone: user?.phoneNumber ?? _phoneController.text,
+        phone: user?.phone ?? _phoneController.text,
         legalBusinessName: _businessNameController.text,
         businessType: _businessType,
         contactName: _contactNameController.text.isEmpty ? _businessNameController.text : _contactNameController.text,

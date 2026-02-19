@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/commerce_bloc.dart';
-import '../bloc/commerce_event.dart';
-import '../bloc/commerce_state.dart';
-import '../domain/commerce_models.dart';
+import '../../bloc/commerce_bloc.dart';
+import '../../bloc/commerce_event.dart';
+import '../../bloc/commerce_state.dart';
+import '../../domain/commerce_models.dart';
 import '../widgets/product_card.dart';
-import '../../auth/bloc/auth_bloc.dart';
+import '../../../auth/bloc/auth_bloc.dart';
 
 class MyShopScreen extends StatefulWidget {
   const MyShopScreen({Key? key}) : super(key: key);
@@ -55,7 +55,7 @@ class _MyShopScreenState extends State<MyShopScreen> {
         builder: (context, state) {
           return state.maybeWhen(
             loading: () => const Center(child: CircularProgressIndicator()),
-            loaded: (_, shopItems, orders, commissions) {
+            loaded: (products, shopItems, orders, sales, commissions) {
               final totalEarnings = commissions.fold(0.0, (sum, item) => sum + item.amount);
               
               return RefreshIndicator(

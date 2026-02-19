@@ -32,7 +32,7 @@ class _StudioOnboardingScreenState extends State<StudioOnboardingScreen> {
   void initState() {
     super.initState();
     // In a real app, use dependency injection (GetIt/Provider)
-    _repository = StudioRepository(ApiClient());
+    _repository = StudioRepository(apiClient: ApiClient());
   }
 
   @override

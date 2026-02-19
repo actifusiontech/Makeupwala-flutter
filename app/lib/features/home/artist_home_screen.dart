@@ -5,23 +5,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
-import '../subscription/bloc/subscription_bloc.dart';
-import '../subscription/data/subscription_repository.dart';
-import '../safety/presentation/screens/emergency_contacts_screen.dart';
-import '../safety/bloc/safety_bloc.dart';
-import '../safety/bloc/safety_event.dart';
-import '../bookings/bloc/booking_bloc.dart';
-import '../bookings/data/booking_repository.dart';
-import '../profile/bloc/profile_bloc.dart';
-import '../profile/bloc/profile_event.dart';
-import '../profile/bloc/profile_state.dart';
-import '../earnings/bloc/earnings_bloc.dart';
-import '../earnings/data/earnings_repository.dart';
-import '../earnings/presentation/widgets/artist_stats_widget.dart';
-import '../subscription/presentation/widgets/subscription_widget.dart';
-import '../auth/bloc/auth_bloc.dart';
-import '../auth/bloc/auth_state.dart';
-import '../safety/presentation/widgets/sos_button.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:app/features/subscription/bloc/subscription_bloc.dart';
+import 'package:app/features/subscription/data/subscription_repository.dart';
+import 'package:app/features/safety/presentation/screens/emergency_contacts_screen.dart';
+import 'package:app/features/safety/bloc/safety_bloc.dart';
+import 'package:app/features/booking/bloc/booking_bloc.dart';
+import 'package:app/features/booking/data/booking_repository.dart';
+import 'package:app/features/profile/bloc/profile_bloc.dart';
+import 'package:app/features/artist/bloc/earnings_bloc.dart';
+import 'package:app/features/artist/data/earnings_repository.dart';
+import 'package:app/features/home/widgets/artist_stats_widget.dart';
+import 'package:app/features/home/widgets/subscription_widget.dart';
+import 'package:app/features/auth/bloc/auth_bloc.dart';
+import 'package:app/features/safety/presentation/widgets/sos_button.dart';
 
 class ArtistHomeScreen extends StatelessWidget {
   const ArtistHomeScreen({super.key});
@@ -138,9 +135,9 @@ class _ArtistHomeView extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
-                        color: AppColors.secondary.withOpacity(0.1),
+                        color: AppColors.secondary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppColors.secondary.withOpacity(0.2)),
+                        border: Border.all(color: AppColors.secondary.withValues(alpha: 0.2)),
                       ),
                       child: Row(
                         children: [
@@ -176,9 +173,9 @@ class _ArtistHomeView extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.1),
+                        color: AppColors.primary.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppColors.primary.withOpacity(0.2)),
+                        border: Border.all(color: AppColors.primary.withValues(alpha: 0.2)),
                       ),
                       child: Row(
                         children: [
@@ -214,9 +211,9 @@ class _ArtistHomeView extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
-                        color: Colors.purple.withOpacity(0.1),
+                        color: Colors.purple.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.purple.withOpacity(0.2)),
+                        border: Border.all(color: Colors.purple.withValues(alpha: 0.2)),
                       ),
                       child: Row(
                         children: [
@@ -252,9 +249,9 @@ class _ArtistHomeView extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
-                        color: Colors.red.withOpacity(0.1),
+                        color: Colors.red.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.red.withOpacity(0.2)),
+                        border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
                       ),
                       child: Row(
                         children: [
@@ -386,29 +383,28 @@ class _ArtistHomeView extends StatelessWidget {
                   const SizedBox(height: AppSpacing.md),
 
                   // Bookings List
-                  Expanded(
-                    child: BlocBuilder<BookingBloc, BookingState>(
-                      builder: (context, state) {
-                        return state.when(
-                          initial: () => const SizedBox(),
-                          loading: () => const Center(child: CircularProgressIndicator()),
-                          success: (_) => const SizedBox(), // Should not happen here
-                          error: (message) => Center(child: Text('Error: $message')),
-                          loaded: (bookings) {
-                            if (bookings.isEmpty) {
-                              return const Center(child: Text('No bookings yet'));
-                            }
-                            return ListView.builder(
-                              itemCount: bookings.length,
-                              itemBuilder: (context, index) {
-                                final booking = bookings[index];
-                                return _buildBookingCard(context, booking);
-                              },
-                            );
-                          },
-                        );
-                      },
-                    ),
+                  BlocBuilder<BookingBloc, BookingState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                        loading: () => const Center(child: CircularProgressIndicator()),
+                        loaded: (bookings) {
+                          if (bookings.isEmpty) {
+                            return const Center(child: Text('No bookings yet'));
+                          }
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: bookings.length,
+                            itemBuilder: (context, index) {
+                              final booking = bookings[index];
+                              return _buildBookingCard(context, booking);
+                            },
+                          );
+                        },
+                        error: (message) => Center(child: Text('Error: $message')),
+                        orElse: () => const SizedBox(),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -469,7 +465,7 @@ class _ArtistHomeView extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.1),
+                    color: statusColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(

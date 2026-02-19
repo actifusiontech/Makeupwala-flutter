@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../domain/safety_models.dart';
 
 part 'safety_event.freezed.dart';
 

@@ -14,6 +14,11 @@ class BrandRepository {
     return BrandDashboardMetrics.fromJson(response.data);
   }
 
+  Future<Map<String, dynamic>> getBrandProfile() async {
+    final response = await _dio.get('/brands/profile');
+    return response.data as Map<String, dynamic>;
+  }
+
   Future<List<Campaign>> getMyCampaigns() async {
     final response = await _dio.get('/brands/campaigns');
     return (response.data as List).map((e) => Campaign.fromJson(e)).toList();
