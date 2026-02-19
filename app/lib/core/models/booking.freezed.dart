@@ -12,8 +12,7 @@ part of 'booking.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Booking _$BookingFromJson(Map<String, dynamic> json) {
   return _Booking.fromJson(json);
@@ -36,12 +35,8 @@ mixin _$Booking {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this Booking to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Booking
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $BookingCopyWith<Booking> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -50,21 +45,20 @@ abstract class $BookingCopyWith<$Res> {
   factory $BookingCopyWith(Booking value, $Res Function(Booking) then) =
       _$BookingCopyWithImpl<$Res, Booking>;
   @useResult
-  $Res call({
-    String id,
-    String customerId,
-    String artistId,
-    List<String> serviceIds,
-    String bookingDate,
-    String bookingTime,
-    String address,
-    double totalAmount,
-    String status,
-    String? paymentId,
-    String? paymentStatus,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String customerId,
+      String artistId,
+      List<String> serviceIds,
+      String bookingDate,
+      String bookingTime,
+      String address,
+      double totalAmount,
+      String status,
+      String? paymentId,
+      String? paymentStatus,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -77,8 +71,6 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Booking
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,89 +88,84 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            customerId: null == customerId
-                ? _value.customerId
-                : customerId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            artistId: null == artistId
-                ? _value.artistId
-                : artistId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            serviceIds: null == serviceIds
-                ? _value.serviceIds
-                : serviceIds // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            bookingDate: null == bookingDate
-                ? _value.bookingDate
-                : bookingDate // ignore: cast_nullable_to_non_nullable
-                      as String,
-            bookingTime: null == bookingTime
-                ? _value.bookingTime
-                : bookingTime // ignore: cast_nullable_to_non_nullable
-                      as String,
-            address: null == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                      as String,
-            totalAmount: null == totalAmount
-                ? _value.totalAmount
-                : totalAmount // ignore: cast_nullable_to_non_nullable
-                      as double,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            paymentId: freezed == paymentId
-                ? _value.paymentId
-                : paymentId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            paymentStatus: freezed == paymentStatus
-                ? _value.paymentStatus
-                : paymentStatus // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            updatedAt: freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerId: null == customerId
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      artistId: null == artistId
+          ? _value.artistId
+          : artistId // ignore: cast_nullable_to_non_nullable
+              as String,
+      serviceIds: null == serviceIds
+          ? _value.serviceIds
+          : serviceIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      bookingDate: null == bookingDate
+          ? _value.bookingDate
+          : bookingDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookingTime: null == bookingTime
+          ? _value.bookingTime
+          : bookingTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentId: freezed == paymentId
+          ? _value.paymentId
+          : paymentId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paymentStatus: freezed == paymentStatus
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
   factory _$$BookingImplCopyWith(
-    _$BookingImpl value,
-    $Res Function(_$BookingImpl) then,
-  ) = __$$BookingImplCopyWithImpl<$Res>;
+          _$BookingImpl value, $Res Function(_$BookingImpl) then) =
+      __$$BookingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String customerId,
-    String artistId,
-    List<String> serviceIds,
-    String bookingDate,
-    String bookingTime,
-    String address,
-    double totalAmount,
-    String status,
-    String? paymentId,
-    String? paymentStatus,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String customerId,
+      String artistId,
+      List<String> serviceIds,
+      String bookingDate,
+      String bookingTime,
+      String address,
+      double totalAmount,
+      String status,
+      String? paymentId,
+      String? paymentStatus,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -186,12 +173,9 @@ class __$$BookingImplCopyWithImpl<$Res>
     extends _$BookingCopyWithImpl<$Res, _$BookingImpl>
     implements _$$BookingImplCopyWith<$Res> {
   __$$BookingImplCopyWithImpl(
-    _$BookingImpl _value,
-    $Res Function(_$BookingImpl) _then,
-  ) : super(_value, _then);
+      _$BookingImpl _value, $Res Function(_$BookingImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of Booking
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,83 +193,81 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _$BookingImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        customerId: null == customerId
-            ? _value.customerId
-            : customerId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        artistId: null == artistId
-            ? _value.artistId
-            : artistId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        serviceIds: null == serviceIds
-            ? _value._serviceIds
-            : serviceIds // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        bookingDate: null == bookingDate
-            ? _value.bookingDate
-            : bookingDate // ignore: cast_nullable_to_non_nullable
-                  as String,
-        bookingTime: null == bookingTime
-            ? _value.bookingTime
-            : bookingTime // ignore: cast_nullable_to_non_nullable
-                  as String,
-        address: null == address
-            ? _value.address
-            : address // ignore: cast_nullable_to_non_nullable
-                  as String,
-        totalAmount: null == totalAmount
-            ? _value.totalAmount
-            : totalAmount // ignore: cast_nullable_to_non_nullable
-                  as double,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        paymentId: freezed == paymentId
-            ? _value.paymentId
-            : paymentId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        paymentStatus: freezed == paymentStatus
-            ? _value.paymentStatus
-            : paymentStatus // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        createdAt: freezed == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        updatedAt: freezed == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$BookingImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerId: null == customerId
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      artistId: null == artistId
+          ? _value.artistId
+          : artistId // ignore: cast_nullable_to_non_nullable
+              as String,
+      serviceIds: null == serviceIds
+          ? _value._serviceIds
+          : serviceIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      bookingDate: null == bookingDate
+          ? _value.bookingDate
+          : bookingDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookingTime: null == bookingTime
+          ? _value.bookingTime
+          : bookingTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentId: freezed == paymentId
+          ? _value.paymentId
+          : paymentId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paymentStatus: freezed == paymentStatus
+          ? _value.paymentStatus
+          : paymentStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BookingImpl implements _Booking {
-  const _$BookingImpl({
-    required this.id,
-    required this.customerId,
-    required this.artistId,
-    required final List<String> serviceIds,
-    required this.bookingDate,
-    required this.bookingTime,
-    required this.address,
-    required this.totalAmount,
-    required this.status,
-    this.paymentId,
-    this.paymentStatus,
-    this.createdAt,
-    this.updatedAt,
-  }) : _serviceIds = serviceIds;
+  const _$BookingImpl(
+      {required this.id,
+      required this.customerId,
+      required this.artistId,
+      required final List<String> serviceIds,
+      required this.bookingDate,
+      required this.bookingTime,
+      required this.address,
+      required this.totalAmount,
+      required this.status,
+      this.paymentId,
+      this.paymentStatus,
+      this.createdAt,
+      this.updatedAt})
+      : _serviceIds = serviceIds;
 
   factory _$BookingImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookingImplFromJson(json);
@@ -314,7 +296,7 @@ class _$BookingImpl implements _Booking {
   final double totalAmount;
   @override
   final String status;
-  // 'pending', 'confirmed', 'completed', 'cancelled'
+// 'pending', 'confirmed', 'completed', 'cancelled'
   @override
   final String? paymentId;
   @override
@@ -339,10 +321,8 @@ class _$BookingImpl implements _Booking {
                 other.customerId == customerId) &&
             (identical(other.artistId, artistId) ||
                 other.artistId == artistId) &&
-            const DeepCollectionEquality().equals(
-              other._serviceIds,
-              _serviceIds,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._serviceIds, _serviceIds) &&
             (identical(other.bookingDate, bookingDate) ||
                 other.bookingDate == bookingDate) &&
             (identical(other.bookingTime, bookingTime) ||
@@ -361,28 +341,25 @@ class _$BookingImpl implements _Booking {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    customerId,
-    artistId,
-    const DeepCollectionEquality().hash(_serviceIds),
-    bookingDate,
-    bookingTime,
-    address,
-    totalAmount,
-    status,
-    paymentId,
-    paymentStatus,
-    createdAt,
-    updatedAt,
-  );
+      runtimeType,
+      id,
+      customerId,
+      artistId,
+      const DeepCollectionEquality().hash(_serviceIds),
+      bookingDate,
+      bookingTime,
+      address,
+      totalAmount,
+      status,
+      paymentId,
+      paymentStatus,
+      createdAt,
+      updatedAt);
 
-  /// Create a copy of Booking
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BookingImplCopyWith<_$BookingImpl> get copyWith =>
@@ -390,26 +367,27 @@ class _$BookingImpl implements _Booking {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BookingImplToJson(this);
+    return _$$BookingImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Booking implements Booking {
-  const factory _Booking({
-    required final String id,
-    required final String customerId,
-    required final String artistId,
-    required final List<String> serviceIds,
-    required final String bookingDate,
-    required final String bookingTime,
-    required final String address,
-    required final double totalAmount,
-    required final String status,
-    final String? paymentId,
-    final String? paymentStatus,
-    final DateTime? createdAt,
-    final DateTime? updatedAt,
-  }) = _$BookingImpl;
+  const factory _Booking(
+      {required final String id,
+      required final String customerId,
+      required final String artistId,
+      required final List<String> serviceIds,
+      required final String bookingDate,
+      required final String bookingTime,
+      required final String address,
+      required final double totalAmount,
+      required final String status,
+      final String? paymentId,
+      final String? paymentStatus,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$BookingImpl;
 
   factory _Booking.fromJson(Map<String, dynamic> json) = _$BookingImpl.fromJson;
 
@@ -430,8 +408,8 @@ abstract class _Booking implements Booking {
   @override
   double get totalAmount;
   @override
-  String get status; // 'pending', 'confirmed', 'completed', 'cancelled'
-  @override
+  String get status;
+  @override // 'pending', 'confirmed', 'completed', 'cancelled'
   String? get paymentId;
   @override
   String? get paymentStatus;
@@ -439,11 +417,8 @@ abstract class _Booking implements Booking {
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
-
-  /// Create a copy of Booking
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$BookingImplCopyWith<_$BookingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -8,16 +8,31 @@ import '../auth/bloc/auth_bloc.dart';
 import '../search/bloc/search_bloc.dart';
 import '../search/data/search_repository.dart';
 import '../safety/presentation/widgets/sos_button.dart';
+import '../safety/presentation/screens/emergency_contacts_screen.dart';
+
+import 'package:app/features/discovery/presentation/bloc/discovery_bloc.dart';
+import 'package:app/features/discovery/presentation/bloc/discovery_event.dart';
+import 'package:app/features/discovery/presentation/bloc/discovery_state.dart';
+import 'package:app/features/discovery/data/discovery_repository.dart';
 
 class CustomerHomeScreen extends StatelessWidget {
   const CustomerHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SearchBloc(
-        repository: SearchRepository(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SearchBloc(
+            repository: SearchRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => DiscoveryBloc(
+            repository: DiscoveryRepository(),
+          )..add(const DiscoveryEvent.fetchRecommendations()),
+        ),
+      ],
       child: const _CustomerHomeView(),
     );
   }
@@ -63,7 +78,7 @@ class _CustomerHomeView extends StatelessWidget {
         builder: (context, authState) {
           return authState.maybeWhen(
             authenticated: (user) => Padding(
-              padding: const EdgeInsets.all(AppSpacing.screenPadding),
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -84,7 +99,7 @@ class _CustomerHomeView extends StatelessWidget {
                     ),
                   ),
                   
-                  const SizedBox(height: AppSpacing.xxl),
+                  const SizedBox(height: AppSpacing.xl),
                   
                   // Search bar
                   TextField(
@@ -107,12 +122,12 @@ class _CustomerHomeView extends StatelessWidget {
                   
                   const SizedBox(height: AppSpacing.xl),
                   
-                  // Search Results or Quick Actions
+                  // Content area
                   Expanded(
                     child: BlocBuilder<SearchBloc, SearchState>(
                       builder: (context, searchState) {
                         return searchState.when(
-                          initial: () => _buildQuickActions(context),
+                          initial: () => _buildHomeContent(context),
                           loading: () => const Center(child: CircularProgressIndicator()),
                           empty: () => const Center(child: Text('No artists found')),
                           error: (message) => Center(child: Text('Error: $message')),
@@ -157,9 +172,17 @@ class _CustomerHomeView extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickActions(BuildContext context) {
+  Widget _buildHomeContent(BuildContext context) {
     return ListView(
       children: [
+        // Shop the Look Section (Dynamic)
+        _buildShopTheLookSection(context),
+        
+        const SizedBox(height: AppSpacing.xl),
+        
+        Text('Quick Actions', style: AppTypography.titleLarge),
+        const SizedBox(height: AppSpacing.md),
+        
         _buildActionCard(
           context,
           'Browse Artists',
@@ -184,13 +207,6 @@ class _CustomerHomeView extends StatelessWidget {
           AppColors.warning,
         ),
         const SizedBox(height: AppSpacing.md),
-        _buildActionCard(
-          context,
-          'Subscription',
-          'Manage your plan',
-          Icons.card_membership,
-          AppColors.success,
-        ),
         _buildQuickActionCard(
           context,
           'Subscriptions',
@@ -214,17 +230,83 @@ class _CustomerHomeView extends StatelessWidget {
         ),
         _buildQuickActionCard(
           context,
-          'Shop the Look',
-          Icons.shopping_bag,
-          Colors.pink,
-          () => context.push('/discovery'),
+          'Emergency Contacts',
+          Icons.contact_phone,
+          Colors.red,
+          () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EmergencyContactsScreen())),
         ),
-        _buildQuickActionCard(
-          context,
-          'Learn Beauty Skills',
-          Icons.school,
-          Colors.orange,
-          () => context.push('/education/courses'),
+      ],
+    );
+  }
+
+  Widget _buildShopTheLookSection(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Shop the Look', style: AppTypography.titleLarge),
+            TextButton(
+              onPressed: () => context.push('/discovery'),
+              child: const Text('View All'),
+            ),
+          ],
+        ),
+        const SizedBox(height: AppSpacing.sm),
+        SizedBox(
+          height: 180,
+          child: BlocBuilder<DiscoveryBloc, DiscoveryState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loading: () => const Center(child: CircularProgressIndicator()),
+                recommendationsLoaded: (looks) {
+                  return ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: looks.length,
+                    separatorBuilder: (c, i) => const SizedBox(width: AppSpacing.md),
+                    itemBuilder: (context, index) {
+                      final look = looks[index];
+                      return GestureDetector(
+                        onTap: () => context.push('/discovery'),
+                        child: Container(
+                          width: 140,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                            image: DecorationImage(
+                              image: NetworkImage(look['URL'] ?? ''),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [Colors.transparent, Colors.black.withOpacity(0.7)],
+                                ),
+                                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(AppSpacing.radiusMd)),
+                              ),
+                              child: Text(
+                                look['Caption'] ?? '',
+                                style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+                orElse: () => const Center(child: Text('No looks available')),
+              );
+            },
+          ),
         ),
       ],
     );
@@ -265,8 +347,7 @@ class _CustomerHomeView extends StatelessWidget {
           } else if (title == 'My Bookings') {
             context.push('/bookings');
           } else if (title == 'Favorites') {
-            // context.push('/favorites'); // TODO: Implement Favorites
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Favorites coming soon!')));
+            context.push('/favorites');
           } else if (title == 'Subscription') {
             context.push('/subscription');
           }

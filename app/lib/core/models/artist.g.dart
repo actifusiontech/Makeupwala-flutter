@@ -15,13 +15,11 @@ _$ArtistProfileImpl _$$ArtistProfileImplFromJson(Map<String, dynamic> json) =>
       category: json['category'] as String?,
       experience: json['experience'] as String?,
       profileImageUrl: json['profile_image_url'] as String?,
-      portfolioUrls:
-          (json['portfolio_urls'] as List<dynamic>?)
+      portfolioUrls: (json['portfolio_urls'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      services:
-          (json['services'] as List<dynamic>?)
+      services: (json['services'] as List<dynamic>?)
               ?.map((e) => ArtistService.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -33,13 +31,11 @@ _$ArtistProfileImpl _$$ArtistProfileImplFromJson(Map<String, dynamic> json) =>
       kyc: json['kyc'] == null
           ? null
           : ArtistKYC.fromJson(json['kyc'] as Map<String, dynamic>),
-      bundles:
-          (json['bundles'] as List<dynamic>?)
+      bundles: (json['bundles'] as List<dynamic>?)
               ?.map((e) => ArtistBundle.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      badges:
-          (json['badges'] as List<dynamic>?)
+      badges: (json['badges'] as List<dynamic>?)
               ?.map((e) => ArtistBadge.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -121,8 +117,7 @@ _$ArtistBundleImpl _$$ArtistBundleImplFromJson(Map<String, dynamic> json) =>
       discountPrice: (json['discount_price'] as num).toDouble(),
       currency: json['currency'] as String? ?? 'INR',
       isActive: json['is_active'] as bool? ?? true,
-      items:
-          (json['items'] as List<dynamic>?)
+      items: (json['items'] as List<dynamic>?)
               ?.map((e) => ArtistBundleItem.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -141,20 +136,20 @@ Map<String, dynamic> _$$ArtistBundleImplToJson(_$ArtistBundleImpl instance) =>
     };
 
 _$ArtistBundleItemImpl _$$ArtistBundleItemImplFromJson(
-  Map<String, dynamic> json,
-) => _$ArtistBundleItemImpl(
-  serviceId: json['service_id'] as String,
-  serviceName: json['service_name'] as String,
-  quantity: (json['quantity'] as num).toInt(),
-);
+        Map<String, dynamic> json) =>
+    _$ArtistBundleItemImpl(
+      serviceId: json['service_id'] as String,
+      serviceName: json['service_name'] as String,
+      quantity: (json['quantity'] as num).toInt(),
+    );
 
 Map<String, dynamic> _$$ArtistBundleItemImplToJson(
-  _$ArtistBundleItemImpl instance,
-) => <String, dynamic>{
-  'service_id': instance.serviceId,
-  'service_name': instance.serviceName,
-  'quantity': instance.quantity,
-};
+        _$ArtistBundleItemImpl instance) =>
+    <String, dynamic>{
+      'service_id': instance.serviceId,
+      'service_name': instance.serviceName,
+      'quantity': instance.quantity,
+    };
 
 _$ArtistBadgeImpl _$$ArtistBadgeImplFromJson(Map<String, dynamic> json) =>
     _$ArtistBadgeImpl(

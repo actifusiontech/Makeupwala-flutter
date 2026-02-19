@@ -12,8 +12,7 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -25,16 +24,12 @@ mixin _$AuthEvent {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? login,
@@ -43,16 +38,12 @@ mixin _$AuthEvent {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? login,
@@ -61,17 +52,13 @@ mixin _$AuthEvent {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
@@ -82,8 +69,9 @@ mixin _$AuthEvent {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
-  }) => throw _privateConstructorUsedError;
+        verifyRegistrationOtp,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
@@ -94,7 +82,8 @@ mixin _$AuthEvent {
     TResult? Function(_SocialLogin value)? socialLogin,
     TResult? Function(_Register value)? register,
     TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
@@ -106,7 +95,8 @@ mixin _$AuthEvent {
     TResult Function(_Register value)? register,
     TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -124,17 +114,13 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$LoginImplCopyWith<$Res> {
   factory _$$LoginImplCopyWith(
-    _$LoginImpl value,
-    $Res Function(_$LoginImpl) then,
-  ) = __$$LoginImplCopyWithImpl<$Res>;
+          _$LoginImpl value, $Res Function(_$LoginImpl) then) =
+      __$$LoginImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phoneNumber});
 }
@@ -144,23 +130,20 @@ class __$$LoginImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$LoginImpl>
     implements _$$LoginImplCopyWith<$Res> {
   __$$LoginImplCopyWithImpl(
-    _$LoginImpl _value,
-    $Res Function(_$LoginImpl) _then,
-  ) : super(_value, _then);
+      _$LoginImpl _value, $Res Function(_$LoginImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? phoneNumber = null}) {
-    return _then(
-      _$LoginImpl(
-        null == phoneNumber
-            ? _value.phoneNumber
-            : phoneNumber // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? phoneNumber = null,
+  }) {
+    return _then(_$LoginImpl(
+      null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -189,9 +172,7 @@ class _$LoginImpl implements _Login {
   @override
   int get hashCode => Object.hash(runtimeType, phoneNumber);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
@@ -206,14 +187,9 @@ class _$LoginImpl implements _Login {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return login(phoneNumber);
@@ -228,14 +204,9 @@ class _$LoginImpl implements _Login {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return login?.call(phoneNumber);
@@ -250,14 +221,9 @@ class _$LoginImpl implements _Login {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -278,7 +244,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return login(this);
   }
@@ -322,10 +288,7 @@ abstract class _Login implements AuthEvent {
   const factory _Login(final String phoneNumber) = _$LoginImpl;
 
   String get phoneNumber;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -333,9 +296,8 @@ abstract class _Login implements AuthEvent {
 /// @nodoc
 abstract class _$$VerifyOtpImplCopyWith<$Res> {
   factory _$$VerifyOtpImplCopyWith(
-    _$VerifyOtpImpl value,
-    $Res Function(_$VerifyOtpImpl) then,
-  ) = __$$VerifyOtpImplCopyWithImpl<$Res>;
+          _$VerifyOtpImpl value, $Res Function(_$VerifyOtpImpl) then) =
+      __$$VerifyOtpImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phoneNumber, String otp});
 }
@@ -345,27 +307,25 @@ class __$$VerifyOtpImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$VerifyOtpImpl>
     implements _$$VerifyOtpImplCopyWith<$Res> {
   __$$VerifyOtpImplCopyWithImpl(
-    _$VerifyOtpImpl _value,
-    $Res Function(_$VerifyOtpImpl) _then,
-  ) : super(_value, _then);
+      _$VerifyOtpImpl _value, $Res Function(_$VerifyOtpImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? phoneNumber = null, Object? otp = null}) {
-    return _then(
-      _$VerifyOtpImpl(
-        null == phoneNumber
-            ? _value.phoneNumber
-            : phoneNumber // ignore: cast_nullable_to_non_nullable
-                  as String,
-        null == otp
-            ? _value.otp
-            : otp // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? phoneNumber = null,
+    Object? otp = null,
+  }) {
+    return _then(_$VerifyOtpImpl(
+      null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -397,9 +357,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
   @override
   int get hashCode => Object.hash(runtimeType, phoneNumber, otp);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$VerifyOtpImplCopyWith<_$VerifyOtpImpl> get copyWith =>
@@ -414,14 +372,9 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return verifyOtp(phoneNumber, otp);
@@ -436,14 +389,9 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return verifyOtp?.call(phoneNumber, otp);
@@ -458,14 +406,9 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -486,7 +429,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return verifyOtp(this);
   }
@@ -532,10 +475,7 @@ abstract class _VerifyOtp implements AuthEvent {
 
   String get phoneNumber;
   String get otp;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$VerifyOtpImplCopyWith<_$VerifyOtpImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -543,9 +483,8 @@ abstract class _VerifyOtp implements AuthEvent {
 /// @nodoc
 abstract class _$$SelectRoleImplCopyWith<$Res> {
   factory _$$SelectRoleImplCopyWith(
-    _$SelectRoleImpl value,
-    $Res Function(_$SelectRoleImpl) then,
-  ) = __$$SelectRoleImplCopyWithImpl<$Res>;
+          _$SelectRoleImpl value, $Res Function(_$SelectRoleImpl) then) =
+      __$$SelectRoleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String role});
 }
@@ -555,23 +494,20 @@ class __$$SelectRoleImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$SelectRoleImpl>
     implements _$$SelectRoleImplCopyWith<$Res> {
   __$$SelectRoleImplCopyWithImpl(
-    _$SelectRoleImpl _value,
-    $Res Function(_$SelectRoleImpl) _then,
-  ) : super(_value, _then);
+      _$SelectRoleImpl _value, $Res Function(_$SelectRoleImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? role = null}) {
-    return _then(
-      _$SelectRoleImpl(
-        null == role
-            ? _value.role
-            : role // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? role = null,
+  }) {
+    return _then(_$SelectRoleImpl(
+      null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -599,9 +535,7 @@ class _$SelectRoleImpl implements _SelectRole {
   @override
   int get hashCode => Object.hash(runtimeType, role);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectRoleImplCopyWith<_$SelectRoleImpl> get copyWith =>
@@ -616,14 +550,9 @@ class _$SelectRoleImpl implements _SelectRole {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return selectRole(role);
@@ -638,14 +567,9 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return selectRole?.call(role);
@@ -660,14 +584,9 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -688,7 +607,7 @@ class _$SelectRoleImpl implements _SelectRole {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return selectRole(this);
   }
@@ -732,10 +651,7 @@ abstract class _SelectRole implements AuthEvent {
   const factory _SelectRole(final String role) = _$SelectRoleImpl;
 
   String get role;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SelectRoleImplCopyWith<_$SelectRoleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -743,9 +659,8 @@ abstract class _SelectRole implements AuthEvent {
 /// @nodoc
 abstract class _$$LogoutImplCopyWith<$Res> {
   factory _$$LogoutImplCopyWith(
-    _$LogoutImpl value,
-    $Res Function(_$LogoutImpl) then,
-  ) = __$$LogoutImplCopyWithImpl<$Res>;
+          _$LogoutImpl value, $Res Function(_$LogoutImpl) then) =
+      __$$LogoutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -753,12 +668,8 @@ class __$$LogoutImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$LogoutImpl>
     implements _$$LogoutImplCopyWith<$Res> {
   __$$LogoutImplCopyWithImpl(
-    _$LogoutImpl _value,
-    $Res Function(_$LogoutImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
+      _$LogoutImpl _value, $Res Function(_$LogoutImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -789,14 +700,9 @@ class _$LogoutImpl implements _Logout {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return logout();
@@ -811,14 +717,9 @@ class _$LogoutImpl implements _Logout {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return logout?.call();
@@ -833,14 +734,9 @@ class _$LogoutImpl implements _Logout {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -861,7 +757,7 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return logout(this);
   }
@@ -908,9 +804,8 @@ abstract class _Logout implements AuthEvent {
 /// @nodoc
 abstract class _$$CheckAuthImplCopyWith<$Res> {
   factory _$$CheckAuthImplCopyWith(
-    _$CheckAuthImpl value,
-    $Res Function(_$CheckAuthImpl) then,
-  ) = __$$CheckAuthImplCopyWithImpl<$Res>;
+          _$CheckAuthImpl value, $Res Function(_$CheckAuthImpl) then) =
+      __$$CheckAuthImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -918,12 +813,8 @@ class __$$CheckAuthImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$CheckAuthImpl>
     implements _$$CheckAuthImplCopyWith<$Res> {
   __$$CheckAuthImplCopyWithImpl(
-    _$CheckAuthImpl _value,
-    $Res Function(_$CheckAuthImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
+      _$CheckAuthImpl _value, $Res Function(_$CheckAuthImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -954,14 +845,9 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return checkAuth();
@@ -976,14 +862,9 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return checkAuth?.call();
@@ -998,14 +879,9 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -1026,7 +902,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return checkAuth(this);
   }
@@ -1073,9 +949,8 @@ abstract class _CheckAuth implements AuthEvent {
 /// @nodoc
 abstract class _$$SocialLoginImplCopyWith<$Res> {
   factory _$$SocialLoginImplCopyWith(
-    _$SocialLoginImpl value,
-    $Res Function(_$SocialLoginImpl) then,
-  ) = __$$SocialLoginImplCopyWithImpl<$Res>;
+          _$SocialLoginImpl value, $Res Function(_$SocialLoginImpl) then) =
+      __$$SocialLoginImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String provider});
 }
@@ -1085,23 +960,20 @@ class __$$SocialLoginImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$SocialLoginImpl>
     implements _$$SocialLoginImplCopyWith<$Res> {
   __$$SocialLoginImplCopyWithImpl(
-    _$SocialLoginImpl _value,
-    $Res Function(_$SocialLoginImpl) _then,
-  ) : super(_value, _then);
+      _$SocialLoginImpl _value, $Res Function(_$SocialLoginImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? provider = null}) {
-    return _then(
-      _$SocialLoginImpl(
-        null == provider
-            ? _value.provider
-            : provider // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? provider = null,
+  }) {
+    return _then(_$SocialLoginImpl(
+      null == provider
+          ? _value.provider
+          : provider // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1130,9 +1002,7 @@ class _$SocialLoginImpl implements _SocialLogin {
   @override
   int get hashCode => Object.hash(runtimeType, provider);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SocialLoginImplCopyWith<_$SocialLoginImpl> get copyWith =>
@@ -1147,14 +1017,9 @@ class _$SocialLoginImpl implements _SocialLogin {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return socialLogin(provider);
@@ -1169,14 +1034,9 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return socialLogin?.call(provider);
@@ -1191,14 +1051,9 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -1219,7 +1074,7 @@ class _$SocialLoginImpl implements _SocialLogin {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return socialLogin(this);
   }
@@ -1263,10 +1118,7 @@ abstract class _SocialLogin implements AuthEvent {
   const factory _SocialLogin(final String provider) = _$SocialLoginImpl;
 
   String get provider;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SocialLoginImplCopyWith<_$SocialLoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1274,17 +1126,15 @@ abstract class _SocialLogin implements AuthEvent {
 /// @nodoc
 abstract class _$$RegisterImplCopyWith<$Res> {
   factory _$$RegisterImplCopyWith(
-    _$RegisterImpl value,
-    $Res Function(_$RegisterImpl) then,
-  ) = __$$RegisterImplCopyWithImpl<$Res>;
+          _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
+      __$$RegisterImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({
-    String fullName,
-    String email,
-    String phone,
-    String password,
-    String role,
-  });
+  $Res call(
+      {String fullName,
+      String email,
+      String phone,
+      String password,
+      String role});
 }
 
 /// @nodoc
@@ -1292,12 +1142,9 @@ class __$$RegisterImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$RegisterImpl>
     implements _$$RegisterImplCopyWith<$Res> {
   __$$RegisterImplCopyWithImpl(
-    _$RegisterImpl _value,
-    $Res Function(_$RegisterImpl) _then,
-  ) : super(_value, _then);
+      _$RegisterImpl _value, $Res Function(_$RegisterImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1307,43 +1154,40 @@ class __$$RegisterImplCopyWithImpl<$Res>
     Object? password = null,
     Object? role = null,
   }) {
-    return _then(
-      _$RegisterImpl(
-        fullName: null == fullName
-            ? _value.fullName
-            : fullName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        email: null == email
-            ? _value.email
-            : email // ignore: cast_nullable_to_non_nullable
-                  as String,
-        phone: null == phone
-            ? _value.phone
-            : phone // ignore: cast_nullable_to_non_nullable
-                  as String,
-        password: null == password
-            ? _value.password
-            : password // ignore: cast_nullable_to_non_nullable
-                  as String,
-        role: null == role
-            ? _value.role
-            : role // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+    return _then(_$RegisterImpl(
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      role: null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$RegisterImpl implements _Register {
-  const _$RegisterImpl({
-    required this.fullName,
-    required this.email,
-    required this.phone,
-    required this.password,
-    required this.role,
-  });
+  const _$RegisterImpl(
+      {required this.fullName,
+      required this.email,
+      required this.phone,
+      required this.password,
+      required this.role});
 
   @override
   final String fullName;
@@ -1379,9 +1223,7 @@ class _$RegisterImpl implements _Register {
   int get hashCode =>
       Object.hash(runtimeType, fullName, email, phone, password, role);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
@@ -1396,14 +1238,9 @@ class _$RegisterImpl implements _Register {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return register(fullName, email, phone, password, role);
@@ -1418,14 +1255,9 @@ class _$RegisterImpl implements _Register {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return register?.call(fullName, email, phone, password, role);
@@ -1440,14 +1272,9 @@ class _$RegisterImpl implements _Register {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -1468,7 +1295,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return register(this);
   }
@@ -1509,23 +1336,19 @@ class _$RegisterImpl implements _Register {
 }
 
 abstract class _Register implements AuthEvent {
-  const factory _Register({
-    required final String fullName,
-    required final String email,
-    required final String phone,
-    required final String password,
-    required final String role,
-  }) = _$RegisterImpl;
+  const factory _Register(
+      {required final String fullName,
+      required final String email,
+      required final String phone,
+      required final String password,
+      required final String role}) = _$RegisterImpl;
 
   String get fullName;
   String get email;
   String get phone;
   String get password;
   String get role;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1533,9 +1356,9 @@ abstract class _Register implements AuthEvent {
 /// @nodoc
 abstract class _$$VerifyRegistrationOtpImplCopyWith<$Res> {
   factory _$$VerifyRegistrationOtpImplCopyWith(
-    _$VerifyRegistrationOtpImpl value,
-    $Res Function(_$VerifyRegistrationOtpImpl) then,
-  ) = __$$VerifyRegistrationOtpImplCopyWithImpl<$Res>;
+          _$VerifyRegistrationOtpImpl value,
+          $Res Function(_$VerifyRegistrationOtpImpl) then) =
+      __$$VerifyRegistrationOtpImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phone, String otp});
 }
@@ -1544,28 +1367,26 @@ abstract class _$$VerifyRegistrationOtpImplCopyWith<$Res> {
 class __$$VerifyRegistrationOtpImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$VerifyRegistrationOtpImpl>
     implements _$$VerifyRegistrationOtpImplCopyWith<$Res> {
-  __$$VerifyRegistrationOtpImplCopyWithImpl(
-    _$VerifyRegistrationOtpImpl _value,
-    $Res Function(_$VerifyRegistrationOtpImpl) _then,
-  ) : super(_value, _then);
+  __$$VerifyRegistrationOtpImplCopyWithImpl(_$VerifyRegistrationOtpImpl _value,
+      $Res Function(_$VerifyRegistrationOtpImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? phone = null, Object? otp = null}) {
-    return _then(
-      _$VerifyRegistrationOtpImpl(
-        phone: null == phone
-            ? _value.phone
-            : phone // ignore: cast_nullable_to_non_nullable
-                  as String,
-        otp: null == otp
-            ? _value.otp
-            : otp // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? phone = null,
+    Object? otp = null,
+  }) {
+    return _then(_$VerifyRegistrationOtpImpl(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      otp: null == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1596,17 +1417,12 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
   @override
   int get hashCode => Object.hash(runtimeType, phone, otp);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$VerifyRegistrationOtpImplCopyWith<_$VerifyRegistrationOtpImpl>
-  get copyWith =>
-      __$$VerifyRegistrationOtpImplCopyWithImpl<_$VerifyRegistrationOtpImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$VerifyRegistrationOtpImplCopyWithImpl<
+          _$VerifyRegistrationOtpImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1617,14 +1433,9 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
-    required TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )
-    register,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
     required TResult Function(String phone, String otp) verifyRegistrationOtp,
   }) {
     return verifyRegistrationOtp(phone, otp);
@@ -1639,14 +1450,9 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
-    TResult? Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult? Function(String phone, String otp)? verifyRegistrationOtp,
   }) {
     return verifyRegistrationOtp?.call(phone, otp);
@@ -1661,14 +1467,9 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
-    TResult Function(
-      String fullName,
-      String email,
-      String phone,
-      String password,
-      String role,
-    )?
-    register,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
     TResult Function(String phone, String otp)? verifyRegistrationOtp,
     required TResult orElse(),
   }) {
@@ -1689,7 +1490,7 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     required TResult Function(_SocialLogin value) socialLogin,
     required TResult Function(_Register value) register,
     required TResult Function(_VerifyRegistrationOtp value)
-    verifyRegistrationOtp,
+        verifyRegistrationOtp,
   }) {
     return verifyRegistrationOtp(this);
   }
@@ -1730,19 +1531,15 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
 }
 
 abstract class _VerifyRegistrationOtp implements AuthEvent {
-  const factory _VerifyRegistrationOtp({
-    required final String phone,
-    required final String otp,
-  }) = _$VerifyRegistrationOtpImpl;
+  const factory _VerifyRegistrationOtp(
+      {required final String phone,
+      required final String otp}) = _$VerifyRegistrationOtpImpl;
 
   String get phone;
   String get otp;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$VerifyRegistrationOtpImplCopyWith<_$VerifyRegistrationOtpImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1756,7 +1553,8 @@ mixin _$AuthState {
     required TResult Function(User user) authenticated,
     required TResult Function() unauthenticated,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -1766,7 +1564,8 @@ mixin _$AuthState {
     TResult? Function(User user)? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -1777,7 +1576,8 @@ mixin _$AuthState {
     TResult Function()? unauthenticated,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -1787,7 +1587,8 @@ mixin _$AuthState {
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -1797,7 +1598,8 @@ mixin _$AuthState {
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -1808,7 +1610,8 @@ mixin _$AuthState {
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1826,17 +1629,13 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1844,12 +1643,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1971,9 +1766,8 @@ abstract class _Initial implements AuthState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1981,12 +1775,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2108,9 +1898,8 @@ abstract class _Loading implements AuthState {
 /// @nodoc
 abstract class _$$OtpSentImplCopyWith<$Res> {
   factory _$$OtpSentImplCopyWith(
-    _$OtpSentImpl value,
-    $Res Function(_$OtpSentImpl) then,
-  ) = __$$OtpSentImplCopyWithImpl<$Res>;
+          _$OtpSentImpl value, $Res Function(_$OtpSentImpl) then) =
+      __$$OtpSentImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phoneNumber});
 }
@@ -2120,23 +1909,20 @@ class __$$OtpSentImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$OtpSentImpl>
     implements _$$OtpSentImplCopyWith<$Res> {
   __$$OtpSentImplCopyWithImpl(
-    _$OtpSentImpl _value,
-    $Res Function(_$OtpSentImpl) _then,
-  ) : super(_value, _then);
+      _$OtpSentImpl _value, $Res Function(_$OtpSentImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? phoneNumber = null}) {
-    return _then(
-      _$OtpSentImpl(
-        phoneNumber: null == phoneNumber
-            ? _value.phoneNumber
-            : phoneNumber // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? phoneNumber = null,
+  }) {
+    return _then(_$OtpSentImpl(
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -2165,9 +1951,7 @@ class _$OtpSentImpl implements _OtpSent {
   @override
   int get hashCode => Object.hash(runtimeType, phoneNumber);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$OtpSentImplCopyWith<_$OtpSentImpl> get copyWith =>
@@ -2270,20 +2054,16 @@ abstract class _OtpSent implements AuthState {
   const factory _OtpSent({required final String phoneNumber}) = _$OtpSentImpl;
 
   String get phoneNumber;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$OtpSentImplCopyWith<_$OtpSentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$NeedsRoleSelectionImplCopyWith<$Res> {
-  factory _$$NeedsRoleSelectionImplCopyWith(
-    _$NeedsRoleSelectionImpl value,
-    $Res Function(_$NeedsRoleSelectionImpl) then,
-  ) = __$$NeedsRoleSelectionImplCopyWithImpl<$Res>;
+  factory _$$NeedsRoleSelectionImplCopyWith(_$NeedsRoleSelectionImpl value,
+          $Res Function(_$NeedsRoleSelectionImpl) then) =
+      __$$NeedsRoleSelectionImplCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
 
@@ -2294,28 +2074,23 @@ abstract class _$$NeedsRoleSelectionImplCopyWith<$Res> {
 class __$$NeedsRoleSelectionImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$NeedsRoleSelectionImpl>
     implements _$$NeedsRoleSelectionImplCopyWith<$Res> {
-  __$$NeedsRoleSelectionImplCopyWithImpl(
-    _$NeedsRoleSelectionImpl _value,
-    $Res Function(_$NeedsRoleSelectionImpl) _then,
-  ) : super(_value, _then);
+  __$$NeedsRoleSelectionImplCopyWithImpl(_$NeedsRoleSelectionImpl _value,
+      $Res Function(_$NeedsRoleSelectionImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? user = null}) {
-    return _then(
-      _$NeedsRoleSelectionImpl(
-        user: null == user
-            ? _value.user
-            : user // ignore: cast_nullable_to_non_nullable
-                  as User,
-      ),
-    );
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$NeedsRoleSelectionImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
   }
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -2349,16 +2124,12 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$NeedsRoleSelectionImplCopyWith<_$NeedsRoleSelectionImpl> get copyWith =>
       __$$NeedsRoleSelectionImplCopyWithImpl<_$NeedsRoleSelectionImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2458,10 +2229,7 @@ abstract class _NeedsRoleSelection implements AuthState {
       _$NeedsRoleSelectionImpl;
 
   User get user;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$NeedsRoleSelectionImplCopyWith<_$NeedsRoleSelectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2469,9 +2237,8 @@ abstract class _NeedsRoleSelection implements AuthState {
 /// @nodoc
 abstract class _$$AuthenticatedImplCopyWith<$Res> {
   factory _$$AuthenticatedImplCopyWith(
-    _$AuthenticatedImpl value,
-    $Res Function(_$AuthenticatedImpl) then,
-  ) = __$$AuthenticatedImplCopyWithImpl<$Res>;
+          _$AuthenticatedImpl value, $Res Function(_$AuthenticatedImpl) then) =
+      __$$AuthenticatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
 
@@ -2483,27 +2250,22 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$AuthenticatedImpl>
     implements _$$AuthenticatedImplCopyWith<$Res> {
   __$$AuthenticatedImplCopyWithImpl(
-    _$AuthenticatedImpl _value,
-    $Res Function(_$AuthenticatedImpl) _then,
-  ) : super(_value, _then);
+      _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? user = null}) {
-    return _then(
-      _$AuthenticatedImpl(
-        user: null == user
-            ? _value.user
-            : user // ignore: cast_nullable_to_non_nullable
-                  as User,
-      ),
-    );
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$AuthenticatedImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
   }
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -2537,9 +2299,7 @@ class _$AuthenticatedImpl implements _Authenticated {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthenticatedImplCopyWith<_$AuthenticatedImpl> get copyWith =>
@@ -2643,20 +2403,16 @@ abstract class _Authenticated implements AuthState {
       _$AuthenticatedImpl;
 
   User get user;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AuthenticatedImplCopyWith<_$AuthenticatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UnauthenticatedImplCopyWith<$Res> {
-  factory _$$UnauthenticatedImplCopyWith(
-    _$UnauthenticatedImpl value,
-    $Res Function(_$UnauthenticatedImpl) then,
-  ) = __$$UnauthenticatedImplCopyWithImpl<$Res>;
+  factory _$$UnauthenticatedImplCopyWith(_$UnauthenticatedImpl value,
+          $Res Function(_$UnauthenticatedImpl) then) =
+      __$$UnauthenticatedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -2664,12 +2420,8 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$UnauthenticatedImpl>
     implements _$$UnauthenticatedImplCopyWith<$Res> {
   __$$UnauthenticatedImplCopyWithImpl(
-    _$UnauthenticatedImpl _value,
-    $Res Function(_$UnauthenticatedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
+      _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2791,9 +2543,8 @@ abstract class _Unauthenticated implements AuthState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -2803,23 +2554,20 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -2847,9 +2595,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -2952,10 +2698,7 @@ abstract class _Error implements AuthState {
   const factory _Error({required final String message}) = _$ErrorImpl;
 
   String get message;
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

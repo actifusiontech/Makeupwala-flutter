@@ -13,7 +13,7 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
 
   SubscriptionBloc({SubscriptionRepository? repository})
       : _repository = repository ?? SubscriptionRepository(),
-        super(const SubscriptionState.initial()) {
+        super(const SubscriptionState()) {
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
@@ -55,48 +55,48 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
   // ... (fetchPlans and fetchMySubscription)
 
   Future<void> _onPaymentSuccess(String paymentId, String orderId, String signature, Emitter<SubscriptionState> emit) async {
-    emit(const SubscriptionState.loading());
+    emit(state.copyWith(isLoading: true, error: null));
     try {
       await _repository.confirmPayment(
         orderId: orderId,
         paymentId: paymentId,
         signature: signature,
       );
-      emit(const SubscriptionState.success(message: 'Subscription activated successfully!'));
+      emit(state.copyWith(isLoading: false, successMessage: 'Subscription activated successfully!'));
       add(const SubscriptionEvent.fetchMySubscription());
     } catch (e) {
-      emit(SubscriptionState.error(message: 'Confirmation failed: ${e.toString()}'));
+      emit(state.copyWith(isLoading: false, error: 'Confirmation failed: ${e.toString()}'));
     }
   }
 
   Future<void> _onPaymentFailure(String message, Emitter<SubscriptionState> emit) async {
-    emit(SubscriptionState.error(message: 'Payment failed: $message'));
+    emit(state.copyWith(error: 'Payment failed: $message'));
   }
 
   // ... (fetchPlans and fetchMySubscription remain same)
 
   Future<void> _onFetchPlans(Emitter<SubscriptionState> emit) async {
-    emit(const SubscriptionState.loading());
+    emit(state.copyWith(isLoading: true, error: null));
     try {
       final plans = await _repository.getPlans();
-      emit(SubscriptionState.plansLoaded(plans: plans));
+      emit(state.copyWith(isLoading: false, plans: plans));
     } catch (e) {
-      emit(SubscriptionState.error(message: e.toString()));
+      emit(state.copyWith(isLoading: false, error: e.toString()));
     }
   }
 
   Future<void> _onFetchMySubscription(Emitter<SubscriptionState> emit) async {
-    emit(const SubscriptionState.loading());
+    emit(state.copyWith(isLoading: true, error: null));
     try {
       final subscription = await _repository.getMySubscription();
-      emit(SubscriptionState.subscriptionLoaded(subscription: subscription));
+      emit(state.copyWith(isLoading: false, subscription: subscription));
     } catch (e) {
-      emit(SubscriptionState.error(message: e.toString()));
+      emit(state.copyWith(isLoading: false, error: e.toString()));
     }
   }
 
   Future<void> _onSubscribe(String planCode, Emitter<SubscriptionState> emit) async {
-    emit(const SubscriptionState.loading());
+    emit(state.copyWith(isLoading: true, error: null));
     try {
       // 1. Initiate
       final order = await _repository.initiateSubscription(planCode);
@@ -128,12 +128,12 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       // We stay in loading state or go back to loaded? 
       // Ideally stay loading or show a "Processing" state.
     } catch (e) {
-      emit(SubscriptionState.error(message: 'Initiation failed: ${e.toString()}'));
+      emit(state.copyWith(isLoading: false, error: 'Initiation failed: ${e.toString()}'));
     }
   }
 
   Future<void> _onUpgradeSubscription(String planCode, Emitter<SubscriptionState> emit) async {
-    emit(const SubscriptionState.loading());
+    emit(state.copyWith(isLoading: true, error: null));
     try {
       final order = await _repository.upgradeSubscription(planCode);
       final orderId = order['id'];
@@ -154,36 +154,36 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       
       _razorpay.open(options);
     } catch (e) {
-      emit(SubscriptionState.error(message: 'Upgrade failed: ${e.toString()}'));
+      emit(state.copyWith(isLoading: false, error: 'Upgrade failed: ${e.toString()}'));
     }
   }
 
   Future<void> _onPauseSubscription(String reason, Emitter<SubscriptionState> emit) async {
-    emit(const SubscriptionState.loading());
+    emit(state.copyWith(isLoading: true, error: null));
     try {
       await _repository.pauseSubscription(reason);
-      emit(const SubscriptionState.success(message: 'Subscription paused successfully'));
+      emit(state.copyWith(isLoading: false, successMessage: 'Subscription paused successfully'));
       add(const SubscriptionEvent.fetchMySubscription());
     } catch (e) {
-      emit(SubscriptionState.error(message: 'Pause failed: ${e.toString()}'));
+      emit(state.copyWith(isLoading: false, error: 'Pause failed: ${e.toString()}'));
     }
   }
 
   Future<void> _onResumeSubscription(Emitter<SubscriptionState> emit) async {
-    emit(const SubscriptionState.loading());
+    emit(state.copyWith(isLoading: true, error: null));
     try {
       await _repository.resumeSubscription();
-      emit(const SubscriptionState.success(message: 'Subscription resumed successfully'));
+      emit(state.copyWith(isLoading: false, successMessage: 'Subscription resumed successfully'));
       add(const SubscriptionEvent.fetchMySubscription());
     } catch (e) {
-      emit(SubscriptionState.error(message: 'Resume failed: ${e.toString()}'));
+      emit(state.copyWith(isLoading: false, error: 'Resume failed: ${e.toString()}'));
     }
   }
 
   Future<void> _onFetchHistory(Emitter<SubscriptionState> emit) async {
     try {
       final history = await _repository.fetchHistory();
-      emit(SubscriptionState.historyLoaded(history: history));
+      emit(state.copyWith(history: history));
     } catch (e) {
       // Don't emit error state for history load failure to avoid blocking UI
       // Just log it

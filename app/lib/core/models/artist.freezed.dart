@@ -12,8 +12,7 @@ part of 'artist.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ArtistProfile _$ArtistProfileFromJson(Map<String, dynamic> json) {
   return _ArtistProfile.fromJson(json);
@@ -39,12 +38,8 @@ mixin _$ArtistProfile {
   List<ArtistBundle> get bundles => throw _privateConstructorUsedError;
   List<ArtistBadge> get badges => throw _privateConstructorUsedError;
 
-  /// Serializes this ArtistProfile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ArtistProfile
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArtistProfileCopyWith<ArtistProfile> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,29 +47,27 @@ mixin _$ArtistProfile {
 /// @nodoc
 abstract class $ArtistProfileCopyWith<$Res> {
   factory $ArtistProfileCopyWith(
-    ArtistProfile value,
-    $Res Function(ArtistProfile) then,
-  ) = _$ArtistProfileCopyWithImpl<$Res, ArtistProfile>;
+          ArtistProfile value, $Res Function(ArtistProfile) then) =
+      _$ArtistProfileCopyWithImpl<$Res, ArtistProfile>;
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    String fullName,
-    String? bio,
-    String? category,
-    String? experience,
-    String? profileImageUrl,
-    List<String> portfolioUrls,
-    List<ArtistService> services,
-    double rating,
-    int reviewCount,
-    String? city,
-    bool isVerified,
-    bool isJobSeeker,
-    ArtistKYC? kyc,
-    List<ArtistBundle> bundles,
-    List<ArtistBadge> badges,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      String fullName,
+      String? bio,
+      String? category,
+      String? experience,
+      String? profileImageUrl,
+      List<String> portfolioUrls,
+      List<ArtistService> services,
+      double rating,
+      int reviewCount,
+      String? city,
+      bool isVerified,
+      bool isJobSeeker,
+      ArtistKYC? kyc,
+      List<ArtistBundle> bundles,
+      List<ArtistBadge> badges});
 
   $ArtistKYCCopyWith<$Res>? get kyc;
 }
@@ -89,8 +82,6 @@ class _$ArtistProfileCopyWithImpl<$Res, $Val extends ArtistProfile>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ArtistProfile
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,83 +103,78 @@ class _$ArtistProfileCopyWithImpl<$Res, $Val extends ArtistProfile>
     Object? bundles = null,
     Object? badges = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            fullName: null == fullName
-                ? _value.fullName
-                : fullName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            bio: freezed == bio
-                ? _value.bio
-                : bio // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            category: freezed == category
-                ? _value.category
-                : category // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            experience: freezed == experience
-                ? _value.experience
-                : experience // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            profileImageUrl: freezed == profileImageUrl
-                ? _value.profileImageUrl
-                : profileImageUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            portfolioUrls: null == portfolioUrls
-                ? _value.portfolioUrls
-                : portfolioUrls // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            services: null == services
-                ? _value.services
-                : services // ignore: cast_nullable_to_non_nullable
-                      as List<ArtistService>,
-            rating: null == rating
-                ? _value.rating
-                : rating // ignore: cast_nullable_to_non_nullable
-                      as double,
-            reviewCount: null == reviewCount
-                ? _value.reviewCount
-                : reviewCount // ignore: cast_nullable_to_non_nullable
-                      as int,
-            city: freezed == city
-                ? _value.city
-                : city // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            isVerified: null == isVerified
-                ? _value.isVerified
-                : isVerified // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            isJobSeeker: null == isJobSeeker
-                ? _value.isJobSeeker
-                : isJobSeeker // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            kyc: freezed == kyc
-                ? _value.kyc
-                : kyc // ignore: cast_nullable_to_non_nullable
-                      as ArtistKYC?,
-            bundles: null == bundles
-                ? _value.bundles
-                : bundles // ignore: cast_nullable_to_non_nullable
-                      as List<ArtistBundle>,
-            badges: null == badges
-                ? _value.badges
-                : badges // ignore: cast_nullable_to_non_nullable
-                      as List<ArtistBadge>,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String?,
+      experience: freezed == experience
+          ? _value.experience
+          : experience // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImageUrl: freezed == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      portfolioUrls: null == portfolioUrls
+          ? _value.portfolioUrls
+          : portfolioUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      services: null == services
+          ? _value.services
+          : services // ignore: cast_nullable_to_non_nullable
+              as List<ArtistService>,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double,
+      reviewCount: null == reviewCount
+          ? _value.reviewCount
+          : reviewCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isJobSeeker: null == isJobSeeker
+          ? _value.isJobSeeker
+          : isJobSeeker // ignore: cast_nullable_to_non_nullable
+              as bool,
+      kyc: freezed == kyc
+          ? _value.kyc
+          : kyc // ignore: cast_nullable_to_non_nullable
+              as ArtistKYC?,
+      bundles: null == bundles
+          ? _value.bundles
+          : bundles // ignore: cast_nullable_to_non_nullable
+              as List<ArtistBundle>,
+      badges: null == badges
+          ? _value.badges
+          : badges // ignore: cast_nullable_to_non_nullable
+              as List<ArtistBadge>,
+    ) as $Val);
   }
 
-  /// Create a copy of ArtistProfile
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ArtistKYCCopyWith<$Res>? get kyc {
@@ -206,30 +192,28 @@ class _$ArtistProfileCopyWithImpl<$Res, $Val extends ArtistProfile>
 abstract class _$$ArtistProfileImplCopyWith<$Res>
     implements $ArtistProfileCopyWith<$Res> {
   factory _$$ArtistProfileImplCopyWith(
-    _$ArtistProfileImpl value,
-    $Res Function(_$ArtistProfileImpl) then,
-  ) = __$$ArtistProfileImplCopyWithImpl<$Res>;
+          _$ArtistProfileImpl value, $Res Function(_$ArtistProfileImpl) then) =
+      __$$ArtistProfileImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    String fullName,
-    String? bio,
-    String? category,
-    String? experience,
-    String? profileImageUrl,
-    List<String> portfolioUrls,
-    List<ArtistService> services,
-    double rating,
-    int reviewCount,
-    String? city,
-    bool isVerified,
-    bool isJobSeeker,
-    ArtistKYC? kyc,
-    List<ArtistBundle> bundles,
-    List<ArtistBadge> badges,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      String fullName,
+      String? bio,
+      String? category,
+      String? experience,
+      String? profileImageUrl,
+      List<String> portfolioUrls,
+      List<ArtistService> services,
+      double rating,
+      int reviewCount,
+      String? city,
+      bool isVerified,
+      bool isJobSeeker,
+      ArtistKYC? kyc,
+      List<ArtistBundle> bundles,
+      List<ArtistBadge> badges});
 
   @override
   $ArtistKYCCopyWith<$Res>? get kyc;
@@ -240,12 +224,9 @@ class __$$ArtistProfileImplCopyWithImpl<$Res>
     extends _$ArtistProfileCopyWithImpl<$Res, _$ArtistProfileImpl>
     implements _$$ArtistProfileImplCopyWith<$Res> {
   __$$ArtistProfileImplCopyWithImpl(
-    _$ArtistProfileImpl _value,
-    $Res Function(_$ArtistProfileImpl) _then,
-  ) : super(_value, _then);
+      _$ArtistProfileImpl _value, $Res Function(_$ArtistProfileImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistProfile
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -267,106 +248,104 @@ class __$$ArtistProfileImplCopyWithImpl<$Res>
     Object? bundles = null,
     Object? badges = null,
   }) {
-    return _then(
-      _$ArtistProfileImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        fullName: null == fullName
-            ? _value.fullName
-            : fullName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        bio: freezed == bio
-            ? _value.bio
-            : bio // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        category: freezed == category
-            ? _value.category
-            : category // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        experience: freezed == experience
-            ? _value.experience
-            : experience // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        profileImageUrl: freezed == profileImageUrl
-            ? _value.profileImageUrl
-            : profileImageUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        portfolioUrls: null == portfolioUrls
-            ? _value._portfolioUrls
-            : portfolioUrls // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        services: null == services
-            ? _value._services
-            : services // ignore: cast_nullable_to_non_nullable
-                  as List<ArtistService>,
-        rating: null == rating
-            ? _value.rating
-            : rating // ignore: cast_nullable_to_non_nullable
-                  as double,
-        reviewCount: null == reviewCount
-            ? _value.reviewCount
-            : reviewCount // ignore: cast_nullable_to_non_nullable
-                  as int,
-        city: freezed == city
-            ? _value.city
-            : city // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        isVerified: null == isVerified
-            ? _value.isVerified
-            : isVerified // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        isJobSeeker: null == isJobSeeker
-            ? _value.isJobSeeker
-            : isJobSeeker // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        kyc: freezed == kyc
-            ? _value.kyc
-            : kyc // ignore: cast_nullable_to_non_nullable
-                  as ArtistKYC?,
-        bundles: null == bundles
-            ? _value._bundles
-            : bundles // ignore: cast_nullable_to_non_nullable
-                  as List<ArtistBundle>,
-        badges: null == badges
-            ? _value._badges
-            : badges // ignore: cast_nullable_to_non_nullable
-                  as List<ArtistBadge>,
-      ),
-    );
+    return _then(_$ArtistProfileImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String?,
+      experience: freezed == experience
+          ? _value.experience
+          : experience // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImageUrl: freezed == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      portfolioUrls: null == portfolioUrls
+          ? _value._portfolioUrls
+          : portfolioUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      services: null == services
+          ? _value._services
+          : services // ignore: cast_nullable_to_non_nullable
+              as List<ArtistService>,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as double,
+      reviewCount: null == reviewCount
+          ? _value.reviewCount
+          : reviewCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isJobSeeker: null == isJobSeeker
+          ? _value.isJobSeeker
+          : isJobSeeker // ignore: cast_nullable_to_non_nullable
+              as bool,
+      kyc: freezed == kyc
+          ? _value.kyc
+          : kyc // ignore: cast_nullable_to_non_nullable
+              as ArtistKYC?,
+      bundles: null == bundles
+          ? _value._bundles
+          : bundles // ignore: cast_nullable_to_non_nullable
+              as List<ArtistBundle>,
+      badges: null == badges
+          ? _value._badges
+          : badges // ignore: cast_nullable_to_non_nullable
+              as List<ArtistBadge>,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArtistProfileImpl implements _ArtistProfile {
-  const _$ArtistProfileImpl({
-    required this.id,
-    required this.userId,
-    required this.fullName,
-    this.bio,
-    this.category,
-    this.experience,
-    this.profileImageUrl,
-    final List<String> portfolioUrls = const [],
-    final List<ArtistService> services = const [],
-    this.rating = 0.0,
-    this.reviewCount = 0,
-    this.city,
-    this.isVerified = false,
-    this.isJobSeeker = false,
-    this.kyc,
-    final List<ArtistBundle> bundles = const [],
-    final List<ArtistBadge> badges = const [],
-  }) : _portfolioUrls = portfolioUrls,
-       _services = services,
-       _bundles = bundles,
-       _badges = badges;
+  const _$ArtistProfileImpl(
+      {required this.id,
+      required this.userId,
+      required this.fullName,
+      this.bio,
+      this.category,
+      this.experience,
+      this.profileImageUrl,
+      final List<String> portfolioUrls = const [],
+      final List<ArtistService> services = const [],
+      this.rating = 0.0,
+      this.reviewCount = 0,
+      this.city,
+      this.isVerified = false,
+      this.isJobSeeker = false,
+      this.kyc,
+      final List<ArtistBundle> bundles = const [],
+      final List<ArtistBadge> badges = const []})
+      : _portfolioUrls = portfolioUrls,
+        _services = services,
+        _bundles = bundles,
+        _badges = badges;
 
   factory _$ArtistProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArtistProfileImplFromJson(json);
@@ -458,10 +437,8 @@ class _$ArtistProfileImpl implements _ArtistProfile {
                 other.experience == experience) &&
             (identical(other.profileImageUrl, profileImageUrl) ||
                 other.profileImageUrl == profileImageUrl) &&
-            const DeepCollectionEquality().equals(
-              other._portfolioUrls,
-              _portfolioUrls,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._portfolioUrls, _portfolioUrls) &&
             const DeepCollectionEquality().equals(other._services, _services) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.reviewCount, reviewCount) ||
@@ -476,32 +453,29 @@ class _$ArtistProfileImpl implements _ArtistProfile {
             const DeepCollectionEquality().equals(other._badges, _badges));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    fullName,
-    bio,
-    category,
-    experience,
-    profileImageUrl,
-    const DeepCollectionEquality().hash(_portfolioUrls),
-    const DeepCollectionEquality().hash(_services),
-    rating,
-    reviewCount,
-    city,
-    isVerified,
-    isJobSeeker,
-    kyc,
-    const DeepCollectionEquality().hash(_bundles),
-    const DeepCollectionEquality().hash(_badges),
-  );
+      runtimeType,
+      id,
+      userId,
+      fullName,
+      bio,
+      category,
+      experience,
+      profileImageUrl,
+      const DeepCollectionEquality().hash(_portfolioUrls),
+      const DeepCollectionEquality().hash(_services),
+      rating,
+      reviewCount,
+      city,
+      isVerified,
+      isJobSeeker,
+      kyc,
+      const DeepCollectionEquality().hash(_bundles),
+      const DeepCollectionEquality().hash(_badges));
 
-  /// Create a copy of ArtistProfile
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArtistProfileImplCopyWith<_$ArtistProfileImpl> get copyWith =>
@@ -509,30 +483,31 @@ class _$ArtistProfileImpl implements _ArtistProfile {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArtistProfileImplToJson(this);
+    return _$$ArtistProfileImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArtistProfile implements ArtistProfile {
-  const factory _ArtistProfile({
-    required final String id,
-    required final String userId,
-    required final String fullName,
-    final String? bio,
-    final String? category,
-    final String? experience,
-    final String? profileImageUrl,
-    final List<String> portfolioUrls,
-    final List<ArtistService> services,
-    final double rating,
-    final int reviewCount,
-    final String? city,
-    final bool isVerified,
-    final bool isJobSeeker,
-    final ArtistKYC? kyc,
-    final List<ArtistBundle> bundles,
-    final List<ArtistBadge> badges,
-  }) = _$ArtistProfileImpl;
+  const factory _ArtistProfile(
+      {required final String id,
+      required final String userId,
+      required final String fullName,
+      final String? bio,
+      final String? category,
+      final String? experience,
+      final String? profileImageUrl,
+      final List<String> portfolioUrls,
+      final List<ArtistService> services,
+      final double rating,
+      final int reviewCount,
+      final String? city,
+      final bool isVerified,
+      final bool isJobSeeker,
+      final ArtistKYC? kyc,
+      final List<ArtistBundle> bundles,
+      final List<ArtistBadge> badges}) = _$ArtistProfileImpl;
 
   factory _ArtistProfile.fromJson(Map<String, dynamic> json) =
       _$ArtistProfileImpl.fromJson;
@@ -571,11 +546,8 @@ abstract class _ArtistProfile implements ArtistProfile {
   List<ArtistBundle> get bundles;
   @override
   List<ArtistBadge> get badges;
-
-  /// Create a copy of ArtistProfile
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArtistProfileImplCopyWith<_$ArtistProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -592,12 +564,8 @@ mixin _$ArtistService {
   String? get description => throw _privateConstructorUsedError;
   String? get duration => throw _privateConstructorUsedError;
 
-  /// Serializes this ArtistService to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ArtistService
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArtistServiceCopyWith<ArtistService> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -605,17 +573,15 @@ mixin _$ArtistService {
 /// @nodoc
 abstract class $ArtistServiceCopyWith<$Res> {
   factory $ArtistServiceCopyWith(
-    ArtistService value,
-    $Res Function(ArtistService) then,
-  ) = _$ArtistServiceCopyWithImpl<$Res, ArtistService>;
+          ArtistService value, $Res Function(ArtistService) then) =
+      _$ArtistServiceCopyWithImpl<$Res, ArtistService>;
   @useResult
-  $Res call({
-    String id,
-    String name,
-    double price,
-    String? description,
-    String? duration,
-  });
+  $Res call(
+      {String id,
+      String name,
+      double price,
+      String? description,
+      String? duration});
 }
 
 /// @nodoc
@@ -628,8 +594,6 @@ class _$ArtistServiceCopyWithImpl<$Res, $Val extends ArtistService>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ArtistService
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -639,31 +603,28 @@ class _$ArtistServiceCopyWithImpl<$Res, $Val extends ArtistService>
     Object? description = freezed,
     Object? duration = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            price: null == price
-                ? _value.price
-                : price // ignore: cast_nullable_to_non_nullable
-                      as double,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            duration: freezed == duration
-                ? _value.duration
-                : duration // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -671,18 +632,16 @@ class _$ArtistServiceCopyWithImpl<$Res, $Val extends ArtistService>
 abstract class _$$ArtistServiceImplCopyWith<$Res>
     implements $ArtistServiceCopyWith<$Res> {
   factory _$$ArtistServiceImplCopyWith(
-    _$ArtistServiceImpl value,
-    $Res Function(_$ArtistServiceImpl) then,
-  ) = __$$ArtistServiceImplCopyWithImpl<$Res>;
+          _$ArtistServiceImpl value, $Res Function(_$ArtistServiceImpl) then) =
+      __$$ArtistServiceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String name,
-    double price,
-    String? description,
-    String? duration,
-  });
+  $Res call(
+      {String id,
+      String name,
+      double price,
+      String? description,
+      String? duration});
 }
 
 /// @nodoc
@@ -690,12 +649,9 @@ class __$$ArtistServiceImplCopyWithImpl<$Res>
     extends _$ArtistServiceCopyWithImpl<$Res, _$ArtistServiceImpl>
     implements _$$ArtistServiceImplCopyWith<$Res> {
   __$$ArtistServiceImplCopyWithImpl(
-    _$ArtistServiceImpl _value,
-    $Res Function(_$ArtistServiceImpl) _then,
-  ) : super(_value, _then);
+      _$ArtistServiceImpl _value, $Res Function(_$ArtistServiceImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistService
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -705,43 +661,40 @@ class __$$ArtistServiceImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? duration = freezed,
   }) {
-    return _then(
-      _$ArtistServiceImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        price: null == price
-            ? _value.price
-            : price // ignore: cast_nullable_to_non_nullable
-                  as double,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        duration: freezed == duration
-            ? _value.duration
-            : duration // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+    return _then(_$ArtistServiceImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      duration: freezed == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArtistServiceImpl implements _ArtistService {
-  const _$ArtistServiceImpl({
-    required this.id,
-    required this.name,
-    required this.price,
-    this.description,
-    this.duration,
-  });
+  const _$ArtistServiceImpl(
+      {required this.id,
+      required this.name,
+      required this.price,
+      this.description,
+      this.duration});
 
   factory _$ArtistServiceImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArtistServiceImplFromJson(json);
@@ -776,14 +729,12 @@ class _$ArtistServiceImpl implements _ArtistService {
                 other.duration == duration));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name, price, description, duration);
 
-  /// Create a copy of ArtistService
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArtistServiceImplCopyWith<_$ArtistServiceImpl> get copyWith =>
@@ -791,18 +742,19 @@ class _$ArtistServiceImpl implements _ArtistService {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArtistServiceImplToJson(this);
+    return _$$ArtistServiceImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArtistService implements ArtistService {
-  const factory _ArtistService({
-    required final String id,
-    required final String name,
-    required final double price,
-    final String? description,
-    final String? duration,
-  }) = _$ArtistServiceImpl;
+  const factory _ArtistService(
+      {required final String id,
+      required final String name,
+      required final double price,
+      final String? description,
+      final String? duration}) = _$ArtistServiceImpl;
 
   factory _ArtistService.fromJson(Map<String, dynamic> json) =
       _$ArtistServiceImpl.fromJson;
@@ -817,11 +769,8 @@ abstract class _ArtistService implements ArtistService {
   String? get description;
   @override
   String? get duration;
-
-  /// Create a copy of ArtistService
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArtistServiceImplCopyWith<_$ArtistServiceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -842,12 +791,8 @@ mixin _$ArtistKYC {
   DateTime? get submittedAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this ArtistKYC to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ArtistKYC
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArtistKYCCopyWith<ArtistKYC> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -857,16 +802,15 @@ abstract class $ArtistKYCCopyWith<$Res> {
   factory $ArtistKYCCopyWith(ArtistKYC value, $Res Function(ArtistKYC) then) =
       _$ArtistKYCCopyWithImpl<$Res, ArtistKYC>;
   @useResult
-  $Res call({
-    String id,
-    String status,
-    String? idProofUrl,
-    String? addressProofUrl,
-    String? certificateUrl,
-    String? adminComments,
-    DateTime? submittedAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String status,
+      String? idProofUrl,
+      String? addressProofUrl,
+      String? certificateUrl,
+      String? adminComments,
+      DateTime? submittedAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -879,8 +823,6 @@ class _$ArtistKYCCopyWithImpl<$Res, $Val extends ArtistKYC>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ArtistKYC
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -893,43 +835,40 @@ class _$ArtistKYCCopyWithImpl<$Res, $Val extends ArtistKYC>
     Object? submittedAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            idProofUrl: freezed == idProofUrl
-                ? _value.idProofUrl
-                : idProofUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            addressProofUrl: freezed == addressProofUrl
-                ? _value.addressProofUrl
-                : addressProofUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            certificateUrl: freezed == certificateUrl
-                ? _value.certificateUrl
-                : certificateUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            adminComments: freezed == adminComments
-                ? _value.adminComments
-                : adminComments // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            submittedAt: freezed == submittedAt
-                ? _value.submittedAt
-                : submittedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            updatedAt: freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      idProofUrl: freezed == idProofUrl
+          ? _value.idProofUrl
+          : idProofUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressProofUrl: freezed == addressProofUrl
+          ? _value.addressProofUrl
+          : addressProofUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      certificateUrl: freezed == certificateUrl
+          ? _value.certificateUrl
+          : certificateUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      adminComments: freezed == adminComments
+          ? _value.adminComments
+          : adminComments // ignore: cast_nullable_to_non_nullable
+              as String?,
+      submittedAt: freezed == submittedAt
+          ? _value.submittedAt
+          : submittedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
@@ -937,21 +876,19 @@ class _$ArtistKYCCopyWithImpl<$Res, $Val extends ArtistKYC>
 abstract class _$$ArtistKYCImplCopyWith<$Res>
     implements $ArtistKYCCopyWith<$Res> {
   factory _$$ArtistKYCImplCopyWith(
-    _$ArtistKYCImpl value,
-    $Res Function(_$ArtistKYCImpl) then,
-  ) = __$$ArtistKYCImplCopyWithImpl<$Res>;
+          _$ArtistKYCImpl value, $Res Function(_$ArtistKYCImpl) then) =
+      __$$ArtistKYCImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String status,
-    String? idProofUrl,
-    String? addressProofUrl,
-    String? certificateUrl,
-    String? adminComments,
-    DateTime? submittedAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String status,
+      String? idProofUrl,
+      String? addressProofUrl,
+      String? certificateUrl,
+      String? adminComments,
+      DateTime? submittedAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -959,12 +896,9 @@ class __$$ArtistKYCImplCopyWithImpl<$Res>
     extends _$ArtistKYCCopyWithImpl<$Res, _$ArtistKYCImpl>
     implements _$$ArtistKYCImplCopyWith<$Res> {
   __$$ArtistKYCImplCopyWithImpl(
-    _$ArtistKYCImpl _value,
-    $Res Function(_$ArtistKYCImpl) _then,
-  ) : super(_value, _then);
+      _$ArtistKYCImpl _value, $Res Function(_$ArtistKYCImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistKYC
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -977,58 +911,55 @@ class __$$ArtistKYCImplCopyWithImpl<$Res>
     Object? submittedAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _$ArtistKYCImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        idProofUrl: freezed == idProofUrl
-            ? _value.idProofUrl
-            : idProofUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        addressProofUrl: freezed == addressProofUrl
-            ? _value.addressProofUrl
-            : addressProofUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        certificateUrl: freezed == certificateUrl
-            ? _value.certificateUrl
-            : certificateUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        adminComments: freezed == adminComments
-            ? _value.adminComments
-            : adminComments // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        submittedAt: freezed == submittedAt
-            ? _value.submittedAt
-            : submittedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        updatedAt: freezed == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$ArtistKYCImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      idProofUrl: freezed == idProofUrl
+          ? _value.idProofUrl
+          : idProofUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressProofUrl: freezed == addressProofUrl
+          ? _value.addressProofUrl
+          : addressProofUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      certificateUrl: freezed == certificateUrl
+          ? _value.certificateUrl
+          : certificateUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      adminComments: freezed == adminComments
+          ? _value.adminComments
+          : adminComments // ignore: cast_nullable_to_non_nullable
+              as String?,
+      submittedAt: freezed == submittedAt
+          ? _value.submittedAt
+          : submittedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArtistKYCImpl implements _ArtistKYC {
-  const _$ArtistKYCImpl({
-    required this.id,
-    required this.status,
-    this.idProofUrl,
-    this.addressProofUrl,
-    this.certificateUrl,
-    this.adminComments,
-    this.submittedAt,
-    this.updatedAt,
-  });
+  const _$ArtistKYCImpl(
+      {required this.id,
+      required this.status,
+      this.idProofUrl,
+      this.addressProofUrl,
+      this.certificateUrl,
+      this.adminComments,
+      this.submittedAt,
+      this.updatedAt});
 
   factory _$ArtistKYCImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArtistKYCImplFromJson(json);
@@ -1037,7 +968,7 @@ class _$ArtistKYCImpl implements _ArtistKYC {
   final String id;
   @override
   final String status;
-  // 'pending', 'approved', 'rejected'
+// 'pending', 'approved', 'rejected'
   @override
   final String? idProofUrl;
   @override
@@ -1077,23 +1008,12 @@ class _$ArtistKYCImpl implements _ArtistKYC {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    status,
-    idProofUrl,
-    addressProofUrl,
-    certificateUrl,
-    adminComments,
-    submittedAt,
-    updatedAt,
-  );
+  int get hashCode => Object.hash(runtimeType, id, status, idProofUrl,
+      addressProofUrl, certificateUrl, adminComments, submittedAt, updatedAt);
 
-  /// Create a copy of ArtistKYC
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArtistKYCImplCopyWith<_$ArtistKYCImpl> get copyWith =>
@@ -1101,21 +1021,22 @@ class _$ArtistKYCImpl implements _ArtistKYC {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArtistKYCImplToJson(this);
+    return _$$ArtistKYCImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArtistKYC implements ArtistKYC {
-  const factory _ArtistKYC({
-    required final String id,
-    required final String status,
-    final String? idProofUrl,
-    final String? addressProofUrl,
-    final String? certificateUrl,
-    final String? adminComments,
-    final DateTime? submittedAt,
-    final DateTime? updatedAt,
-  }) = _$ArtistKYCImpl;
+  const factory _ArtistKYC(
+      {required final String id,
+      required final String status,
+      final String? idProofUrl,
+      final String? addressProofUrl,
+      final String? certificateUrl,
+      final String? adminComments,
+      final DateTime? submittedAt,
+      final DateTime? updatedAt}) = _$ArtistKYCImpl;
 
   factory _ArtistKYC.fromJson(Map<String, dynamic> json) =
       _$ArtistKYCImpl.fromJson;
@@ -1123,8 +1044,8 @@ abstract class _ArtistKYC implements ArtistKYC {
   @override
   String get id;
   @override
-  String get status; // 'pending', 'approved', 'rejected'
-  @override
+  String get status;
+  @override // 'pending', 'approved', 'rejected'
   String? get idProofUrl;
   @override
   String? get addressProofUrl;
@@ -1136,11 +1057,8 @@ abstract class _ArtistKYC implements ArtistKYC {
   DateTime? get submittedAt;
   @override
   DateTime? get updatedAt;
-
-  /// Create a copy of ArtistKYC
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArtistKYCImplCopyWith<_$ArtistKYCImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1160,12 +1078,8 @@ mixin _$ArtistBundle {
   bool get isActive => throw _privateConstructorUsedError;
   List<ArtistBundleItem> get items => throw _privateConstructorUsedError;
 
-  /// Serializes this ArtistBundle to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ArtistBundle
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArtistBundleCopyWith<ArtistBundle> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1173,20 +1087,18 @@ mixin _$ArtistBundle {
 /// @nodoc
 abstract class $ArtistBundleCopyWith<$Res> {
   factory $ArtistBundleCopyWith(
-    ArtistBundle value,
-    $Res Function(ArtistBundle) then,
-  ) = _$ArtistBundleCopyWithImpl<$Res, ArtistBundle>;
+          ArtistBundle value, $Res Function(ArtistBundle) then) =
+      _$ArtistBundleCopyWithImpl<$Res, ArtistBundle>;
   @useResult
-  $Res call({
-    String id,
-    String name,
-    String? description,
-    double basePrice,
-    double discountPrice,
-    String currency,
-    bool isActive,
-    List<ArtistBundleItem> items,
-  });
+  $Res call(
+      {String id,
+      String name,
+      String? description,
+      double basePrice,
+      double discountPrice,
+      String currency,
+      bool isActive,
+      List<ArtistBundleItem> items});
 }
 
 /// @nodoc
@@ -1199,8 +1111,6 @@ class _$ArtistBundleCopyWithImpl<$Res, $Val extends ArtistBundle>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ArtistBundle
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1213,43 +1123,40 @@ class _$ArtistBundleCopyWithImpl<$Res, $Val extends ArtistBundle>
     Object? isActive = null,
     Object? items = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            basePrice: null == basePrice
-                ? _value.basePrice
-                : basePrice // ignore: cast_nullable_to_non_nullable
-                      as double,
-            discountPrice: null == discountPrice
-                ? _value.discountPrice
-                : discountPrice // ignore: cast_nullable_to_non_nullable
-                      as double,
-            currency: null == currency
-                ? _value.currency
-                : currency // ignore: cast_nullable_to_non_nullable
-                      as String,
-            isActive: null == isActive
-                ? _value.isActive
-                : isActive // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            items: null == items
-                ? _value.items
-                : items // ignore: cast_nullable_to_non_nullable
-                      as List<ArtistBundleItem>,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      basePrice: null == basePrice
+          ? _value.basePrice
+          : basePrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      discountPrice: null == discountPrice
+          ? _value.discountPrice
+          : discountPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ArtistBundleItem>,
+    ) as $Val);
   }
 }
 
@@ -1257,21 +1164,19 @@ class _$ArtistBundleCopyWithImpl<$Res, $Val extends ArtistBundle>
 abstract class _$$ArtistBundleImplCopyWith<$Res>
     implements $ArtistBundleCopyWith<$Res> {
   factory _$$ArtistBundleImplCopyWith(
-    _$ArtistBundleImpl value,
-    $Res Function(_$ArtistBundleImpl) then,
-  ) = __$$ArtistBundleImplCopyWithImpl<$Res>;
+          _$ArtistBundleImpl value, $Res Function(_$ArtistBundleImpl) then) =
+      __$$ArtistBundleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String name,
-    String? description,
-    double basePrice,
-    double discountPrice,
-    String currency,
-    bool isActive,
-    List<ArtistBundleItem> items,
-  });
+  $Res call(
+      {String id,
+      String name,
+      String? description,
+      double basePrice,
+      double discountPrice,
+      String currency,
+      bool isActive,
+      List<ArtistBundleItem> items});
 }
 
 /// @nodoc
@@ -1279,12 +1184,9 @@ class __$$ArtistBundleImplCopyWithImpl<$Res>
     extends _$ArtistBundleCopyWithImpl<$Res, _$ArtistBundleImpl>
     implements _$$ArtistBundleImplCopyWith<$Res> {
   __$$ArtistBundleImplCopyWithImpl(
-    _$ArtistBundleImpl _value,
-    $Res Function(_$ArtistBundleImpl) _then,
-  ) : super(_value, _then);
+      _$ArtistBundleImpl _value, $Res Function(_$ArtistBundleImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistBundle
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1297,58 +1199,56 @@ class __$$ArtistBundleImplCopyWithImpl<$Res>
     Object? isActive = null,
     Object? items = null,
   }) {
-    return _then(
-      _$ArtistBundleImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        basePrice: null == basePrice
-            ? _value.basePrice
-            : basePrice // ignore: cast_nullable_to_non_nullable
-                  as double,
-        discountPrice: null == discountPrice
-            ? _value.discountPrice
-            : discountPrice // ignore: cast_nullable_to_non_nullable
-                  as double,
-        currency: null == currency
-            ? _value.currency
-            : currency // ignore: cast_nullable_to_non_nullable
-                  as String,
-        isActive: null == isActive
-            ? _value.isActive
-            : isActive // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        items: null == items
-            ? _value._items
-            : items // ignore: cast_nullable_to_non_nullable
-                  as List<ArtistBundleItem>,
-      ),
-    );
+    return _then(_$ArtistBundleImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      basePrice: null == basePrice
+          ? _value.basePrice
+          : basePrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      discountPrice: null == discountPrice
+          ? _value.discountPrice
+          : discountPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ArtistBundleItem>,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArtistBundleImpl implements _ArtistBundle {
-  const _$ArtistBundleImpl({
-    required this.id,
-    required this.name,
-    this.description,
-    required this.basePrice,
-    required this.discountPrice,
-    this.currency = 'INR',
-    this.isActive = true,
-    final List<ArtistBundleItem> items = const [],
-  }) : _items = items;
+  const _$ArtistBundleImpl(
+      {required this.id,
+      required this.name,
+      this.description,
+      required this.basePrice,
+      required this.discountPrice,
+      this.currency = 'INR',
+      this.isActive = true,
+      final List<ArtistBundleItem> items = const []})
+      : _items = items;
 
   factory _$ArtistBundleImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArtistBundleImplFromJson(json);
@@ -1403,23 +1303,20 @@ class _$ArtistBundleImpl implements _ArtistBundle {
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    name,
-    description,
-    basePrice,
-    discountPrice,
-    currency,
-    isActive,
-    const DeepCollectionEquality().hash(_items),
-  );
+      runtimeType,
+      id,
+      name,
+      description,
+      basePrice,
+      discountPrice,
+      currency,
+      isActive,
+      const DeepCollectionEquality().hash(_items));
 
-  /// Create a copy of ArtistBundle
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArtistBundleImplCopyWith<_$ArtistBundleImpl> get copyWith =>
@@ -1427,21 +1324,22 @@ class _$ArtistBundleImpl implements _ArtistBundle {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArtistBundleImplToJson(this);
+    return _$$ArtistBundleImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArtistBundle implements ArtistBundle {
-  const factory _ArtistBundle({
-    required final String id,
-    required final String name,
-    final String? description,
-    required final double basePrice,
-    required final double discountPrice,
-    final String currency,
-    final bool isActive,
-    final List<ArtistBundleItem> items,
-  }) = _$ArtistBundleImpl;
+  const factory _ArtistBundle(
+      {required final String id,
+      required final String name,
+      final String? description,
+      required final double basePrice,
+      required final double discountPrice,
+      final String currency,
+      final bool isActive,
+      final List<ArtistBundleItem> items}) = _$ArtistBundleImpl;
 
   factory _ArtistBundle.fromJson(Map<String, dynamic> json) =
       _$ArtistBundleImpl.fromJson;
@@ -1462,11 +1360,8 @@ abstract class _ArtistBundle implements ArtistBundle {
   bool get isActive;
   @override
   List<ArtistBundleItem> get items;
-
-  /// Create a copy of ArtistBundle
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArtistBundleImplCopyWith<_$ArtistBundleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1481,12 +1376,8 @@ mixin _$ArtistBundleItem {
   String get serviceName => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
 
-  /// Serializes this ArtistBundleItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ArtistBundleItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArtistBundleItemCopyWith<ArtistBundleItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1494,9 +1385,8 @@ mixin _$ArtistBundleItem {
 /// @nodoc
 abstract class $ArtistBundleItemCopyWith<$Res> {
   factory $ArtistBundleItemCopyWith(
-    ArtistBundleItem value,
-    $Res Function(ArtistBundleItem) then,
-  ) = _$ArtistBundleItemCopyWithImpl<$Res, ArtistBundleItem>;
+          ArtistBundleItem value, $Res Function(ArtistBundleItem) then) =
+      _$ArtistBundleItemCopyWithImpl<$Res, ArtistBundleItem>;
   @useResult
   $Res call({String serviceId, String serviceName, int quantity});
 }
@@ -1511,8 +1401,6 @@ class _$ArtistBundleItemCopyWithImpl<$Res, $Val extends ArtistBundleItem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ArtistBundleItem
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1520,33 +1408,29 @@ class _$ArtistBundleItemCopyWithImpl<$Res, $Val extends ArtistBundleItem>
     Object? serviceName = null,
     Object? quantity = null,
   }) {
-    return _then(
-      _value.copyWith(
-            serviceId: null == serviceId
-                ? _value.serviceId
-                : serviceId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            serviceName: null == serviceName
-                ? _value.serviceName
-                : serviceName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            quantity: null == quantity
-                ? _value.quantity
-                : quantity // ignore: cast_nullable_to_non_nullable
-                      as int,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      serviceId: null == serviceId
+          ? _value.serviceId
+          : serviceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ArtistBundleItemImplCopyWith<$Res>
     implements $ArtistBundleItemCopyWith<$Res> {
-  factory _$$ArtistBundleItemImplCopyWith(
-    _$ArtistBundleItemImpl value,
-    $Res Function(_$ArtistBundleItemImpl) then,
-  ) = __$$ArtistBundleItemImplCopyWithImpl<$Res>;
+  factory _$$ArtistBundleItemImplCopyWith(_$ArtistBundleItemImpl value,
+          $Res Function(_$ArtistBundleItemImpl) then) =
+      __$$ArtistBundleItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String serviceId, String serviceName, int quantity});
@@ -1556,13 +1440,10 @@ abstract class _$$ArtistBundleItemImplCopyWith<$Res>
 class __$$ArtistBundleItemImplCopyWithImpl<$Res>
     extends _$ArtistBundleItemCopyWithImpl<$Res, _$ArtistBundleItemImpl>
     implements _$$ArtistBundleItemImplCopyWith<$Res> {
-  __$$ArtistBundleItemImplCopyWithImpl(
-    _$ArtistBundleItemImpl _value,
-    $Res Function(_$ArtistBundleItemImpl) _then,
-  ) : super(_value, _then);
+  __$$ArtistBundleItemImplCopyWithImpl(_$ArtistBundleItemImpl _value,
+      $Res Function(_$ArtistBundleItemImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistBundleItem
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1570,33 +1451,30 @@ class __$$ArtistBundleItemImplCopyWithImpl<$Res>
     Object? serviceName = null,
     Object? quantity = null,
   }) {
-    return _then(
-      _$ArtistBundleItemImpl(
-        serviceId: null == serviceId
-            ? _value.serviceId
-            : serviceId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        serviceName: null == serviceName
-            ? _value.serviceName
-            : serviceName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        quantity: null == quantity
-            ? _value.quantity
-            : quantity // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
+    return _then(_$ArtistBundleItemImpl(
+      serviceId: null == serviceId
+          ? _value.serviceId
+          : serviceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArtistBundleItemImpl implements _ArtistBundleItem {
-  const _$ArtistBundleItemImpl({
-    required this.serviceId,
-    required this.serviceName,
-    required this.quantity,
-  });
+  const _$ArtistBundleItemImpl(
+      {required this.serviceId,
+      required this.serviceName,
+      required this.quantity});
 
   factory _$ArtistBundleItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArtistBundleItemImplFromJson(json);
@@ -1626,34 +1504,31 @@ class _$ArtistBundleItemImpl implements _ArtistBundleItem {
                 other.quantity == quantity));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, serviceId, serviceName, quantity);
 
-  /// Create a copy of ArtistBundleItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArtistBundleItemImplCopyWith<_$ArtistBundleItemImpl> get copyWith =>
       __$$ArtistBundleItemImplCopyWithImpl<_$ArtistBundleItemImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArtistBundleItemImplToJson(this);
+    return _$$ArtistBundleItemImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArtistBundleItem implements ArtistBundleItem {
-  const factory _ArtistBundleItem({
-    required final String serviceId,
-    required final String serviceName,
-    required final int quantity,
-  }) = _$ArtistBundleItemImpl;
+  const factory _ArtistBundleItem(
+      {required final String serviceId,
+      required final String serviceName,
+      required final int quantity}) = _$ArtistBundleItemImpl;
 
   factory _ArtistBundleItem.fromJson(Map<String, dynamic> json) =
       _$ArtistBundleItemImpl.fromJson;
@@ -1664,11 +1539,8 @@ abstract class _ArtistBundleItem implements ArtistBundleItem {
   String get serviceName;
   @override
   int get quantity;
-
-  /// Create a copy of ArtistBundleItem
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArtistBundleItemImplCopyWith<_$ArtistBundleItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1684,12 +1556,8 @@ mixin _$ArtistBadge {
   String? get iconUrl => throw _privateConstructorUsedError;
   String? get issuedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this ArtistBadge to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ArtistBadge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArtistBadgeCopyWith<ArtistBadge> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1697,9 +1565,8 @@ mixin _$ArtistBadge {
 /// @nodoc
 abstract class $ArtistBadgeCopyWith<$Res> {
   factory $ArtistBadgeCopyWith(
-    ArtistBadge value,
-    $Res Function(ArtistBadge) then,
-  ) = _$ArtistBadgeCopyWithImpl<$Res, ArtistBadge>;
+          ArtistBadge value, $Res Function(ArtistBadge) then) =
+      _$ArtistBadgeCopyWithImpl<$Res, ArtistBadge>;
   @useResult
   $Res call({String name, String type, String? iconUrl, String? issuedAt});
 }
@@ -1714,8 +1581,6 @@ class _$ArtistBadgeCopyWithImpl<$Res, $Val extends ArtistBadge>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ArtistBadge
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1724,27 +1589,24 @@ class _$ArtistBadgeCopyWithImpl<$Res, $Val extends ArtistBadge>
     Object? iconUrl = freezed,
     Object? issuedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as String,
-            iconUrl: freezed == iconUrl
-                ? _value.iconUrl
-                : iconUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            issuedAt: freezed == issuedAt
-                ? _value.issuedAt
-                : issuedAt // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      iconUrl: freezed == iconUrl
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      issuedAt: freezed == issuedAt
+          ? _value.issuedAt
+          : issuedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -1752,9 +1614,8 @@ class _$ArtistBadgeCopyWithImpl<$Res, $Val extends ArtistBadge>
 abstract class _$$ArtistBadgeImplCopyWith<$Res>
     implements $ArtistBadgeCopyWith<$Res> {
   factory _$$ArtistBadgeImplCopyWith(
-    _$ArtistBadgeImpl value,
-    $Res Function(_$ArtistBadgeImpl) then,
-  ) = __$$ArtistBadgeImplCopyWithImpl<$Res>;
+          _$ArtistBadgeImpl value, $Res Function(_$ArtistBadgeImpl) then) =
+      __$$ArtistBadgeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String type, String? iconUrl, String? issuedAt});
@@ -1765,12 +1626,9 @@ class __$$ArtistBadgeImplCopyWithImpl<$Res>
     extends _$ArtistBadgeCopyWithImpl<$Res, _$ArtistBadgeImpl>
     implements _$$ArtistBadgeImplCopyWith<$Res> {
   __$$ArtistBadgeImplCopyWithImpl(
-    _$ArtistBadgeImpl _value,
-    $Res Function(_$ArtistBadgeImpl) _then,
-  ) : super(_value, _then);
+      _$ArtistBadgeImpl _value, $Res Function(_$ArtistBadgeImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistBadge
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1779,38 +1637,32 @@ class __$$ArtistBadgeImplCopyWithImpl<$Res>
     Object? iconUrl = freezed,
     Object? issuedAt = freezed,
   }) {
-    return _then(
-      _$ArtistBadgeImpl(
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        type: null == type
-            ? _value.type
-            : type // ignore: cast_nullable_to_non_nullable
-                  as String,
-        iconUrl: freezed == iconUrl
-            ? _value.iconUrl
-            : iconUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        issuedAt: freezed == issuedAt
-            ? _value.issuedAt
-            : issuedAt // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+    return _then(_$ArtistBadgeImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      iconUrl: freezed == iconUrl
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      issuedAt: freezed == issuedAt
+          ? _value.issuedAt
+          : issuedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ArtistBadgeImpl implements _ArtistBadge {
-  const _$ArtistBadgeImpl({
-    required this.name,
-    required this.type,
-    this.iconUrl,
-    this.issuedAt,
-  });
+  const _$ArtistBadgeImpl(
+      {required this.name, required this.type, this.iconUrl, this.issuedAt});
 
   factory _$ArtistBadgeImpl.fromJson(Map<String, dynamic> json) =>
       _$$ArtistBadgeImplFromJson(json);
@@ -1841,13 +1693,11 @@ class _$ArtistBadgeImpl implements _ArtistBadge {
                 other.issuedAt == issuedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, type, iconUrl, issuedAt);
 
-  /// Create a copy of ArtistBadge
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArtistBadgeImplCopyWith<_$ArtistBadgeImpl> get copyWith =>
@@ -1855,17 +1705,18 @@ class _$ArtistBadgeImpl implements _ArtistBadge {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ArtistBadgeImplToJson(this);
+    return _$$ArtistBadgeImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ArtistBadge implements ArtistBadge {
-  const factory _ArtistBadge({
-    required final String name,
-    required final String type,
-    final String? iconUrl,
-    final String? issuedAt,
-  }) = _$ArtistBadgeImpl;
+  const factory _ArtistBadge(
+      {required final String name,
+      required final String type,
+      final String? iconUrl,
+      final String? issuedAt}) = _$ArtistBadgeImpl;
 
   factory _ArtistBadge.fromJson(Map<String, dynamic> json) =
       _$ArtistBadgeImpl.fromJson;
@@ -1878,11 +1729,8 @@ abstract class _ArtistBadge implements ArtistBadge {
   String? get iconUrl;
   @override
   String? get issuedAt;
-
-  /// Create a copy of ArtistBadge
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArtistBadgeImplCopyWith<_$ArtistBadgeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,33 +1,26 @@
-import 'package:app/features/discovery/data/discovery_repository.dart';
-import 'package:flutter/material.dart';
-import 'package:app/shared/theme/app_colors.dart';
-import 'package:app/shared/theme/app_typography.dart';
-import 'package:app/shared/theme/app_spacing.dart';
-import 'package:app/features/discovery/data/discovery_repository.dart'; // Wait, I need inventory_repository.dart
-import 'data/inventory_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../shared/theme/app_colors.dart';
+import '../../../../shared/theme/app_typography.dart';
+import '../../../../shared/theme/app_spacing.dart';
+import '../bloc/inventory_bloc.dart';
+import '../data/inventory_repository.dart';
+import '../data/inventory_item.dart';
+import 'package:uuid/uuid.dart';
 
-class InventoryScreen extends StatefulWidget {
+class InventoryScreen extends StatelessWidget {
   const InventoryScreen({super.key});
 
   @override
-  State<InventoryScreen> createState() => _InventoryScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => InventoryBloc(repository: InventoryRepository())..add(const InventoryEvent.loadInventory()),
+      child: const _InventoryView(),
+    );
+  }
 }
 
-class _InventoryScreenState extends State<InventoryScreen> {
-  final InventoryRepository _repository = InventoryRepository();
-  late Future<List<Map<String, dynamic>>> _inventoryFuture;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadInventory();
-  }
-
-  void _loadInventory() {
-    setState(() {
-      _inventoryFuture = _repository.getInventory();
-    });
-  }
+class _InventoryView extends StatelessWidget {
+  const _InventoryView();
 
   @override
   Widget build(BuildContext context) {
@@ -39,54 +32,50 @@ class _InventoryScreenState extends State<InventoryScreen> {
         foregroundColor: AppColors.white,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _showAddProductDialog,
+        onPressed: () => _showAddProductDialog(context),
         backgroundColor: AppColors.primary,
         child: const Icon(Icons.add, color: Colors.white),
       ),
-      body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: _inventoryFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-
-          final products = snapshot.data ?? [];
-          if (products.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.inventory_2_outlined, size: 64, color: AppColors.grey300),
-                  const SizedBox(height: 16),
-                  Text('No products tracked yet.', style: AppTypography.titleMedium.copyWith(color: AppColors.textSecondary)),
-                  const SizedBox(height: 8),
-                  Text('Start tracking your expensive kits.', style: AppTypography.bodySmall),
-                ],
-              ),
-            );
-          }
-
-          return ListView.builder(
-            padding: const EdgeInsets.all(AppSpacing.md),
-            itemCount: products.length,
-            itemBuilder: (context, index) {
-              final product = products[index];
-              return _buildProductCard(product);
+      body: BlocBuilder<InventoryBloc, InventoryState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (message) => Center(child: Text('Error: $message')),
+            loaded: (items) {
+              if (items.isEmpty) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.inventory_2_outlined, size: 64, color: AppColors.grey300),
+                      const SizedBox(height: 16),
+                      Text('No products tracked yet.', style: AppTypography.titleMedium.copyWith(color: AppColors.textSecondary)),
+                      const SizedBox(height: 8),
+                      Text('Start tracking your expensive kits.', style: AppTypography.bodySmall),
+                    ],
+                  ),
+                );
+              }
+              return ListView.builder(
+                padding: const EdgeInsets.all(AppSpacing.md),
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                   return _buildProductCard(context, items[index]);
+                },
+              );
             },
+            orElse: () => const SizedBox.shrink(),
           );
         },
       ),
     );
   }
 
-  Widget _buildProductCard(Map<String, dynamic> p) {
-    final double remaining = (p['RemainingUnits'] as num).toDouble();
-    final double total = (p['TotalUnits'] as num).toDouble();
+  Widget _buildProductCard(BuildContext context, InventoryItem p) {
+    final double remaining = p.remainingUnits;
+    final double total = p.totalUnits;
     final double progress = total > 0 ? remaining / total : 0;
-    final bool isLow = remaining <= (p['LowStockAlert'] as num).toDouble();
+    final bool isLow = remaining <= p.lowStockAlert;
 
     return Card(
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
@@ -102,8 +91,8 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(p['Name'] ?? 'Unnamed Product', style: AppTypography.titleMedium),
-                    Text(p['Brand'] ?? 'Generic', style: AppTypography.bodySmall.copyWith(color: AppColors.textSecondary)),
+                    Text(p.name, style: AppTypography.titleMedium),
+                    Text(p.brand, style: AppTypography.bodySmall.copyWith(color: AppColors.textSecondary)),
                   ],
                 ),
                 if (isLow)
@@ -121,7 +110,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Stock Level: ${remaining.toStringAsFixed(1)} / ${total.toStringAsFixed(1)} ${p['UnitMeasure'] ?? ''}', style: AppTypography.bodySmall),
+                Text('Stock Level: ${remaining.toStringAsFixed(1)} / ${total.toStringAsFixed(1)} ${p.unitMeasure}', style: AppTypography.bodySmall),
                 Text('${(progress * 100).toStringAsFixed(0)}%', style: AppTypography.bodySmall.copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
@@ -140,7 +129,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
               children: [
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: () => _showLogUsageDialog(p),
+                    onPressed: () => _showLogUsageDialog(context, p),
                     child: const Text('Log Usage'),
                   ),
                 ),
@@ -148,6 +137,12 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 IconButton(
                   onPressed: () {}, // Edit
                   icon: const Icon(Icons.edit_outlined, size: 20, color: AppColors.textSecondary),
+                ),
+                IconButton(
+                  onPressed: () {
+                     context.read<InventoryBloc>().add(InventoryEvent.deleteItem(p.id));
+                  }, 
+                  icon: const Icon(Icons.delete_outline, size: 20, color: AppColors.error),
                 )
               ],
             )
@@ -157,14 +152,14 @@ class _InventoryScreenState extends State<InventoryScreen> {
     );
   }
 
-  void _showAddProductDialog() {
+  void _showAddProductDialog(BuildContext context) {
     final nameCtrl = TextEditingController();
     final brandCtrl = TextEditingController();
     final totalCtrl = TextEditingController();
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (dialogContext) => AlertDialog(
         title: const Text('Add Product'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -175,17 +170,19 @@ class _InventoryScreenState extends State<InventoryScreen> {
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cancel')),
           ElevatedButton(
-            onPressed: () async {
-              await _repository.addProduct({
-                'Name': nameCtrl.text,
-                'Brand': brandCtrl.text,
-                'TotalUnits': double.tryParse(totalCtrl.text) ?? 50,
-                'UnitMeasure': 'ml',
-              });
-              Navigator.pop(context);
-              _loadInventory();
+            onPressed: () {
+               final item = InventoryItem(
+                 id: const Uuid().v4(), // Need uuid package or generate random string
+                 name: nameCtrl.text,
+                 brand: brandCtrl.text,
+                 totalUnits: double.tryParse(totalCtrl.text) ?? 50,
+                 remainingUnits: double.tryParse(totalCtrl.text) ?? 50,
+                 unitMeasure: 'ml', // Helper to pick measure in real app
+               );
+               context.read<InventoryBloc>().add(InventoryEvent.addItem(item));
+               Navigator.pop(dialogContext);
             },
             child: const Text('Add'),
           ),
@@ -194,13 +191,13 @@ class _InventoryScreenState extends State<InventoryScreen> {
     );
   }
 
-  void _showLogUsageDialog(Map<String, dynamic> product) {
+  void _showLogUsageDialog(BuildContext context, InventoryItem product) {
     final usageCtrl = TextEditingController(text: '1.0');
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Log Usage: ${product['Name']}'),
+      builder: (dialogContext) => AlertDialog(
+        title: Text('Log Usage: ${product.name}'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -209,13 +206,11 @@ class _InventoryScreenState extends State<InventoryScreen> {
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cancel')),
           ElevatedButton(
-            onPressed: () async {
-              // Note: Ideally pass real booking ID, here we mock it for demo
-              await _repository.logUsage('00000000-0000-0000-0000-000000000000', product['ID'], double.tryParse(usageCtrl.text) ?? 1.0);
-              Navigator.pop(context);
-              _loadInventory();
+            onPressed: () {
+              context.read<InventoryBloc>().add(InventoryEvent.logUsage(product.id, double.tryParse(usageCtrl.text) ?? 1.0));
+              Navigator.pop(dialogContext);
             },
             child: const Text('Confirm'),
           ),

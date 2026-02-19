@@ -12,8 +12,7 @@ part of 'notification_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$NotificationEvent {
@@ -21,42 +20,47 @@ mixin _$NotificationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchNotifications,
     required TResult Function(String id) markRead,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchNotifications,
     TResult? Function(String id)? markRead,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchNotifications,
     TResult Function(String id)? markRead,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchNotifications value) fetchNotifications,
     required TResult Function(_MarkRead value) markRead,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchNotifications value)? fetchNotifications,
     TResult? Function(_MarkRead value)? markRead,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchNotifications value)? fetchNotifications,
     TResult Function(_MarkRead value)? markRead,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NotificationEventCopyWith<$Res> {
   factory $NotificationEventCopyWith(
-    NotificationEvent value,
-    $Res Function(NotificationEvent) then,
-  ) = _$NotificationEventCopyWithImpl<$Res, NotificationEvent>;
+          NotificationEvent value, $Res Function(NotificationEvent) then) =
+      _$NotificationEventCopyWithImpl<$Res, NotificationEvent>;
 }
 
 /// @nodoc
@@ -68,30 +72,22 @@ class _$NotificationEventCopyWithImpl<$Res, $Val extends NotificationEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of NotificationEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$FetchNotificationsImplCopyWith<$Res> {
-  factory _$$FetchNotificationsImplCopyWith(
-    _$FetchNotificationsImpl value,
-    $Res Function(_$FetchNotificationsImpl) then,
-  ) = __$$FetchNotificationsImplCopyWithImpl<$Res>;
+  factory _$$FetchNotificationsImplCopyWith(_$FetchNotificationsImpl value,
+          $Res Function(_$FetchNotificationsImpl) then) =
+      __$$FetchNotificationsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$FetchNotificationsImplCopyWithImpl<$Res>
     extends _$NotificationEventCopyWithImpl<$Res, _$FetchNotificationsImpl>
     implements _$$FetchNotificationsImplCopyWith<$Res> {
-  __$$FetchNotificationsImplCopyWithImpl(
-    _$FetchNotificationsImpl _value,
-    $Res Function(_$FetchNotificationsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of NotificationEvent
-  /// with the given fields replaced by the non-null parameter values.
+  __$$FetchNotificationsImplCopyWithImpl(_$FetchNotificationsImpl _value,
+      $Res Function(_$FetchNotificationsImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -183,9 +179,8 @@ abstract class _FetchNotifications implements NotificationEvent {
 /// @nodoc
 abstract class _$$MarkReadImplCopyWith<$Res> {
   factory _$$MarkReadImplCopyWith(
-    _$MarkReadImpl value,
-    $Res Function(_$MarkReadImpl) then,
-  ) = __$$MarkReadImplCopyWithImpl<$Res>;
+          _$MarkReadImpl value, $Res Function(_$MarkReadImpl) then) =
+      __$$MarkReadImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String id});
 }
@@ -195,23 +190,20 @@ class __$$MarkReadImplCopyWithImpl<$Res>
     extends _$NotificationEventCopyWithImpl<$Res, _$MarkReadImpl>
     implements _$$MarkReadImplCopyWith<$Res> {
   __$$MarkReadImplCopyWithImpl(
-    _$MarkReadImpl _value,
-    $Res Function(_$MarkReadImpl) _then,
-  ) : super(_value, _then);
+      _$MarkReadImpl _value, $Res Function(_$MarkReadImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of NotificationEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null}) {
-    return _then(
-      _$MarkReadImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$MarkReadImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -239,9 +231,7 @@ class _$MarkReadImpl implements _MarkRead {
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  /// Create a copy of NotificationEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MarkReadImplCopyWith<_$MarkReadImpl> get copyWith =>
@@ -314,10 +304,7 @@ abstract class _MarkRead implements NotificationEvent {
   const factory _MarkRead({required final String id}) = _$MarkReadImpl;
 
   String get id;
-
-  /// Create a copy of NotificationEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$MarkReadImplCopyWith<_$MarkReadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -330,14 +317,16 @@ mixin _$NotificationState {
     required TResult Function() loading,
     required TResult Function(List<dynamic> notifications) loaded,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<dynamic> notifications)? loaded,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -345,21 +334,24 @@ mixin _$NotificationState {
     TResult Function(List<dynamic> notifications)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -367,15 +359,15 @@ mixin _$NotificationState {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NotificationStateCopyWith<$Res> {
   factory $NotificationStateCopyWith(
-    NotificationState value,
-    $Res Function(NotificationState) then,
-  ) = _$NotificationStateCopyWithImpl<$Res, NotificationState>;
+          NotificationState value, $Res Function(NotificationState) then) =
+      _$NotificationStateCopyWithImpl<$Res, NotificationState>;
 }
 
 /// @nodoc
@@ -387,17 +379,13 @@ class _$NotificationStateCopyWithImpl<$Res, $Val extends NotificationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -405,12 +393,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$NotificationStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -514,9 +498,8 @@ abstract class _Initial implements NotificationState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -524,12 +507,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$NotificationStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -633,9 +612,8 @@ abstract class _Loading implements NotificationState {
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
-    _$LoadedImpl value,
-    $Res Function(_$LoadedImpl) then,
-  ) = __$$LoadedImplCopyWithImpl<$Res>;
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<dynamic> notifications});
 }
@@ -645,23 +623,20 @@ class __$$LoadedImplCopyWithImpl<$Res>
     extends _$NotificationStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
-    _$LoadedImpl _value,
-    $Res Function(_$LoadedImpl) _then,
-  ) : super(_value, _then);
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? notifications = null}) {
-    return _then(
-      _$LoadedImpl(
-        notifications: null == notifications
-            ? _value._notifications
-            : notifications // ignore: cast_nullable_to_non_nullable
-                  as List<dynamic>,
-      ),
-    );
+  $Res call({
+    Object? notifications = null,
+  }) {
+    return _then(_$LoadedImpl(
+      notifications: null == notifications
+          ? _value._notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
   }
 }
 
@@ -669,7 +644,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl({required final List<dynamic> notifications})
-    : _notifications = notifications;
+      : _notifications = notifications;
 
   final List<dynamic> _notifications;
   @override
@@ -689,21 +664,15 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(
-              other._notifications,
-              _notifications,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._notifications, _notifications));
   }
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_notifications),
-  );
+      runtimeType, const DeepCollectionEquality().hash(_notifications));
 
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -789,10 +758,7 @@ abstract class _Loaded implements NotificationState {
       _$LoadedImpl;
 
   List<dynamic> get notifications;
-
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -800,9 +766,8 @@ abstract class _Loaded implements NotificationState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -812,23 +777,20 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$NotificationStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -856,9 +818,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -943,10 +903,7 @@ abstract class _Error implements NotificationState {
   const factory _Error({required final String message}) = _$ErrorImpl;
 
   String get message;
-
-  /// Create a copy of NotificationState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

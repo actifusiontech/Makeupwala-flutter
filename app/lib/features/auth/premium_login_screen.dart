@@ -90,8 +90,31 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
             setState(() => _isLoading = false);
             context.push('/otp', extra: phone);
           },
-          needsRoleSelection: (user) {},
-          authenticated: (user) {},
+          needsRoleSelection: (user) {
+            setState(() => _isLoading = false);
+            context.go('/role-selection');
+          },
+          authenticated: (user) {
+            setState(() => _isLoading = false);
+            HapticFeedback.mediumImpact();
+            // Navigate based on role
+            final role = user.role.toLowerCase();
+            if (role == 'artist') {
+              context.go('/artist/home');
+            } else if (role == 'customer') {
+              context.go('/customer/home'); 
+            } else if (role == 'admin') {
+              context.go('/admin/dashboard');
+            } else if (role == 'studio') {
+              context.go('/studio/home');
+            } else if (role == 'academy') {
+              context.go('/academy/home');
+            } else if (role == 'planner') {
+              context.go('/planner/home');
+            } else {
+              context.go('/role-selection');
+            }
+          },
           unauthenticated: () => setState(() => _isLoading = false),
           error: (message) {
             HapticFeedback.heavyImpact();
@@ -109,58 +132,95 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
         return Scaffold(
           body: Stack(
             children: [
-              // 1. Bright Full Screen Background
+              // 1. Bright Luxury Background
+              // 1. Bright Luxury Background - Fashion Model
               Positioned.fill(
                 child: Image.asset(
-                  'assets/images/login_bg_bright.png',
+                  'assets/images/login_bg_model_bright.png',
                   fit: BoxFit.cover,
+                  alignment: Alignment.center, // Center face, cropping top white space if needed
                 ),
               ),
 
-              // 2. Light Gradient Overlay (White Fade at bottom)
-              Positioned.fill(
+              // 2. Golden Ambient Glow (Top Center) - Kept for atmosphere
+              Positioned(
+                top: -150,
+                left: 0,
+                right: 0,
+                height: 500,
                 child: Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                    gradient: RadialGradient(
+                      center: Alignment.topCenter,
+                      radius: 0.8,
                       colors: [
-                        Colors.white.withOpacity(0.0),
-                        Colors.white.withOpacity(0.3),
-                        Colors.white.withOpacity(0.9),
-                        Colors.white,
+                        const Color(0xFFC5A028).withOpacity(0.08),
+                        Colors.transparent,
                       ],
-                      stops: const [0.0, 0.5, 0.8, 1.0],
                     ),
                   ),
                 ),
               ),
 
-              // 3. Content
+              // 3. Top Left Logo
+              Positioned(
+                top: 60, // SafeArea top approximation + padding
+                left: 24,
+                child: Hero(
+                  tag: 'app_logo',
+                  child: Container(
+                    padding: const EdgeInsets.all(2), // White border effect
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white.withOpacity(0.8), width: 1),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/logo_rose_gold_white.png',
+                        width: 64, 
+                        height: 64,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ).animate().fadeIn(duration: 800.ms).slideX(begin: -0.2, end: 0),
+              ),
+
+              // 4. Content
               SafeArea(
                 child: Column(
                   children: [
                     const Spacer(),
-                    
-                    _buildBrandSection(),
-                    
+                    // Centered Brand Section REMOVED to show full image
                     const Spacer(flex: 3),
 
                     // White Frosted Glass Sheet
                     Container(
                       padding: const EdgeInsets.all(AppSpacing.screenPadding),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withOpacity(0.9), // Higher opacity for clean look
                         borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.05),
-                            blurRadius: 30,
+                            color: const Color(0xFFC5A028).withOpacity(0.1), // Golden Shadow
+                            blurRadius: 40,
                             offset: const Offset(0, -10),
+                          ),
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05), // Depth Shadow
+                            blurRadius: 20,
+                            offset: const Offset(0, -5),
                           ),
                         ],
                         border: Border(
-                          top: BorderSide(color: Colors.white.withOpacity(0.6)),
+                          top: BorderSide(color: Colors.white),
                         ),
                       ),
                       child: Form(
@@ -210,23 +270,6 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
     );
   }
 
-  Widget _buildBrandSection() {
-    return Column(
-      children: [
-        Icon(Icons.auto_awesome, color: _kDarkGold, size: 36),
-        const SizedBox(height: 12),
-        Text(
-          'MakeupWallah',
-          style: GoogleFonts.cinzel(
-            color: _kTextDark,
-            fontSize: 20,
-            letterSpacing: 5,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ],
-    ).animate().fadeIn(duration: 800.ms);
-  }
 
   Widget _buildTitleSection() {
     return Column(

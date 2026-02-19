@@ -4,9 +4,18 @@ import 'package:go_router/go_router.dart';
 import '../../../core/models/artist.dart';
 import 'package:app/features/artist/data/artist_repository.dart';
 import '../reviews/bloc/review_bloc.dart';
+import '../../favorites/presentation/bloc/favorites_bloc.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
+import '../reviews/data/review_repository.dart';
+import '../reviews/domain/review_model.dart';
+import '../../../core/network/api_client.dart';
+import '../reviews/bloc/review_event.dart';
+import '../reviews/bloc/review_state.dart';
+import '../../favorites/presentation/bloc/favorites_event.dart';
+import '../../favorites/presentation/bloc/favorites_state.dart';
+import '../auth/bloc/auth_bloc.dart';
 
 class ArtistProfileScreen extends StatefulWidget {
   final String artistId;
@@ -83,6 +92,40 @@ class _ArtistProfileScreenState extends State<ArtistProfileScreen> {
             icon: const Icon(Icons.arrow_back),
             onPressed: () => context.pop(),
           ),
+          actions: [
+            BlocBuilder<FavoritesBloc, FavoritesState>(
+              builder: (context, state) {
+                bool isFavorite = false;
+                state.whenOrNull(
+                  loaded: (favorites) {
+                    isFavorite = favorites.any((f) => f.id == widget.artistId);
+                  },
+                );
+                
+                return IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : Colors.white,
+                  ),
+                  onPressed: () {
+                    if (isFavorite) {
+                      context.read<FavoritesBloc>().add(FavoritesEvent.removeFavorite(widget.artistId));
+                    } else {
+                      final favorite = FavoriteModel(
+                        id: profile.id,
+                        fullName: profile.fullName,
+                        category: profile.category ?? 'Makeup Artist',
+                        profileImage: profile.profileImageUrl,
+                        rating: profile.rating,
+                        location: profile.city ?? 'Unknown',
+                      );
+                      context.read<FavoritesBloc>().add(FavoritesEvent.addFavorite(favorite));
+                    }
+                  },
+                );
+              },
+            ),
+          ],
         ),
         SliverToBoxAdapter(
           child: Padding(
@@ -206,6 +249,35 @@ class _ArtistProfileScreenState extends State<ArtistProfileScreen> {
                    const Text('No services listed. Contact artist directly.'),
                 ...profile.services.map((s) => _buildServiceItem(s)).toList(),
                 
+                const SizedBox(height: AppSpacing.md),
+                
+                // Show Manage Services button if user is owner
+                BlocBuilder<AuthBloc, AuthState>(
+                  builder: (context, state) {
+                     return state.maybeWhen(
+                       authenticated: (user) {
+                         if (user.id == widget.artistId || user.id == profile.id) {
+                            return SizedBox(
+                              width: double.infinity,
+                              child: OutlinedButton.icon(
+                                onPressed: () {
+                                  context.push('/artist/manage-services');
+                                },
+                                icon: const Icon(Icons.edit_note),
+                                label: const Text('Manage Services'),
+                                style: OutlinedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(vertical: 12),
+                                ),
+                              ),
+                            );
+                         }
+                         return const SizedBox.shrink();
+                       },
+                       orElse: () => const SizedBox.shrink(),
+                     );
+                  },
+                ),
+
                 const SizedBox(height: AppSpacing.xxl),
                 SizedBox(
                   width: double.infinity,
@@ -260,7 +332,9 @@ class _ArtistProfileScreenState extends State<ArtistProfileScreen> {
                 Text('Reviews', style: AppTypography.titleLarge),
                 const SizedBox(height: AppSpacing.md),
                 BlocProvider(
-                  create: (context) => ReviewBloc()..add(ReviewEvent.fetchArtistReviews(artistId: widget.artistId)),
+                  create: (context) => ReviewBloc(
+                    repository: ReviewRepository(ApiClient()),
+                  )..add(ReviewEvent.fetchReviews(widget.artistId)),
                   child: BlocBuilder<ReviewBloc, ReviewState>(
                     builder: (context, state) {
                       return state.maybeWhen(
@@ -402,7 +476,7 @@ class _ArtistProfileScreenState extends State<ArtistProfileScreen> {
     );
   }
 
-  Widget _buildReviewCard(dynamic review) {
+  Widget _buildReviewCard(ReviewModel review) {
     return Card(
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
       child: Padding(
@@ -411,14 +485,49 @@ class _ArtistProfileScreenState extends State<ArtistProfileScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(Icons.star, color: Colors.amber, size: 16),
-                const SizedBox(width: 4),
-                Text('${review['rating'] ?? 5.0}', style: AppTypography.labelLarge),
+                Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: review.userAvatar != null ? NetworkImage(review.userAvatar!) : null,
+                      radius: 16,
+                      child: review.userAvatar == null ? const Icon(Icons.person, size: 16) : null,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(review.userName, style: AppTypography.titleSmall),
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Icon(Icons.star, color: Colors.amber, size: 16),
+                    const SizedBox(width: 4),
+                    Text('${review.rating}', style: AppTypography.labelLarge),
+                  ],
+                ),
               ],
             ),
-            const SizedBox(height: AppSpacing.xs),
-            Text(review['comment'] ?? '', style: AppTypography.bodyMedium),
+            const SizedBox(height: AppSpacing.sm),
+            Text(review.comment, style: AppTypography.bodyMedium),
+            if (review.images.isNotEmpty) ...[
+              const SizedBox(height: AppSpacing.sm),
+              SizedBox(
+                height: 80,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: review.images.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.network(review.images[index], width: 80, height: 80, fit: BoxFit.cover),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ],
         ),
       ),

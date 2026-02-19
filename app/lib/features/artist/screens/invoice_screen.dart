@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:printing/printing.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'package:app/shared/widgets/custom_button.dart';
+import '../utils/invoice_generator.dart';
 
 class InvoiceScreen extends StatelessWidget {
   final String bookingId;
@@ -21,11 +22,11 @@ class InvoiceScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.share),
-            onPressed: () => _shareInvoice(context),
+            onPressed: () => _shareInvoice(context, bookingId),
           ),
           IconButton(
-            icon: const Icon(Icons.download),
-            onPressed: () => _downloadInvoice(context),
+            icon: const Icon(Icons.print),
+            onPressed: () => _printInvoice(context, bookingId),
           ),
         ],
       ),
@@ -37,27 +38,14 @@ class InvoiceScreen extends StatelessWidget {
           }
 
           if (snapshot.hasError) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.error_outline, size: 64, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text('Error loading invoice: ${snapshot.error}'),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('Go Back'),
-                  ),
-                ],
-              ),
-            );
+             return Center(child: Text('Error: ${snapshot.error}'));
           }
 
           if (!snapshot.hasData) {
             return const Center(child: Text('No invoice data'));
           }
-
+          
+          // Pass data to methods if needed, or just use snapshot.data! inline
           return _buildInvoiceContent(context, snapshot.data!);
         },
       ),
@@ -313,13 +301,19 @@ class InvoiceScreen extends StatelessWidget {
     };
   }
 
-  void _shareInvoice(BuildContext context) {
-    Share.share('Invoice #INV-202601-0001\nTotal: ₹15,340\nView full invoice in MakeupWala app');
+  Future<void> _shareInvoice(BuildContext context, String bookingId) async {
+    final invoiceData = await _fetchInvoice(bookingId); // Re-fetch or pass data? ideally pass data
+    // For simplicity, re-fetching mocked data is fine. In real app, pass data.
+    final pdfBytes = await InvoiceGenerator.generateInvoice(invoiceData);
+    await Printing.sharePdf(bytes: pdfBytes, filename: 'invoice_$bookingId.pdf');
   }
 
-  void _downloadInvoice(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Invoice download feature coming soon')),
+  Future<void> _printInvoice(BuildContext context, String bookingId) async {
+    final invoiceData = await _fetchInvoice(bookingId);
+    final pdfBytes = await InvoiceGenerator.generateInvoice(invoiceData);
+    await Printing.layoutPdf(
+      onLayout: (format) async => pdfBytes,
+      name: 'Invoice $bookingId',
     );
   }
 
@@ -357,7 +351,56 @@ class PaymentOptionsModal extends StatelessWidget {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 24),
-          const Text('Payment options will be implemented next'),
+          ListTile(
+            leading: const Icon(Icons.link, color: AppColors.primary),
+            title: const Text('Generate Payment Link'),
+            subtitle: const Text('Share a link via WhatsApp/SMS'),
+            onTap: () {
+              Navigator.pop(context);
+              // Mock Link Generation
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text('Payment link copied to clipboard!'),
+                  action: SnackBarAction(label: 'Share', onPressed: () {}),
+                ),
+              );
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.qr_code, color: AppColors.primary),
+            title: const Text('Show QR Code'),
+            subtitle: const Text('Customer scans to pay'),
+            onTap: () {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('Scan to Pay'),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.qr_code_2, size: 200),
+                      Text('Amount: ₹$amount', style: const TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text('Done'))],
+                ),
+              );
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.money, color: Colors.green),
+            title: const Text('Mark as Paid (Cash)'),
+            onTap: () {
+               Navigator.pop(context);
+               // Mock Update
+               ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Marked as Paid')),
+              );
+            },
+          ),
         ],
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/models/studio_model.dart';
-import '../../data/repositories/studio_repository.dart';
+import '../../data/studio_repository.dart';
 import 'studio_booking_screen.dart';
 import 'studio_team_screen.dart';
 

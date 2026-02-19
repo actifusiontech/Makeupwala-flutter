@@ -1,8 +1,8 @@
 import 'dart:developer' as developer;
 import 'package:intl/intl.dart';
 
-import '../../../core/network/api_client.dart';
-import '../../../core/models/rewards.dart';
+import 'package:app/core/network/api_client.dart';
+import 'package:app/core/models/rewards.dart';
 
 class BookingRepository {
   final ApiClient _apiClient;
@@ -62,6 +62,17 @@ class BookingRepository {
       return data.cast<Map<String, dynamic>>();
     } catch (e) {
       developer.log('❌ Fetch bookings failed: $e', name: 'BookingRepository');
+      rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>> getBookingById(String id) async {
+    try {
+      developer.log('📅 Fetching booking details for: $id', name: 'BookingRepository');
+      final response = await _apiClient.dio.get('/customers/me/bookings/$id');
+      return response.data['data'] as Map<String, dynamic>;
+    } catch (e) {
+      developer.log('❌ Fetch booking details failed: $e', name: 'BookingRepository');
       rethrow;
     }
   }
@@ -134,6 +145,29 @@ class BookingRepository {
       return response.data;
     } catch (e) {
       developer.log('❌ Initiate payment failed: $e', name: 'BookingRepository');
+      rethrow;
+    }
+  }
+
+  Future<void> verifyPayment({
+    required String orderId,
+    required String paymentId,
+    required String signature,
+    required String bookingId,
+  }) async {
+    try {
+      await _apiClient.dio.post(
+        '/payments/verify',
+        data: {
+          'order_id': orderId,
+          'payment_id': paymentId,
+          'signature': signature,
+          'booking_id': bookingId,
+        },
+      );
+      developer.log('✅ Payment verified successfully', name: 'BookingRepository');
+    } catch (e) {
+      developer.log('❌ Payment verification failed: $e', name: 'BookingRepository');
       rethrow;
     }
   }

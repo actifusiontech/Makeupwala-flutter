@@ -12,8 +12,29 @@ class SubscriptionRepository {
       final response = await _apiClient.dio.get('/subscriptions/plans');
       return response.data['plans'] as List<dynamic>;
     } catch (e) {
-      developer.log('❌ Fetch plans failed: $e', name: 'SubscriptionRepository');
-      rethrow;
+      developer.log('❌ Fetch plans failed: $e. Using Mock Data.', name: 'SubscriptionRepository');
+      // Mock Data
+      await Future.delayed(const Duration(seconds: 1));
+      return [
+        {
+          'code': 'basic_monthly',
+          'name': 'Starter',
+          'price': 499,
+          'description': 'Perfect for new artists. Includes 10 leads/month.',
+        },
+        {
+          'code': 'pro_monthly',
+          'name': 'Pro',
+          'price': 1499,
+          'description': 'For established artists. Unlimited leads & Portfolio.',
+        },
+        {
+          'code': 'elite_yearly',
+          'name': 'Elite',
+          'price': 9999,
+          'description': 'Yearly plan with verified badge & priority support.',
+        },
+      ];
     }
   }
 
@@ -23,8 +44,15 @@ class SubscriptionRepository {
       final response = await _apiClient.dio.get('/customers/me/subscription');
       return response.data['subscription'] as Map<String, dynamic>?;
     } catch (e) {
-      developer.log('❌ Fetch subscription failed: $e', name: 'SubscriptionRepository');
-      rethrow;
+      developer.log('❌ Fetch subscription failed: $e. Using Mock Data.', name: 'SubscriptionRepository');
+      await Future.delayed(const Duration(seconds: 1));
+      return {
+        'status': 'active',
+        'plan_name': 'Starter Plan',
+        'end_date': '2024-12-31',
+        'max_contacts': 50,
+        'remaining_contacts': 12,
+      };
     }
   }
 

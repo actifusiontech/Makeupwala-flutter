@@ -81,3 +81,28 @@ class StudioTeamMember {
     );
   }
 }
+class StudioSeat {
+  final String id;
+  final String studioId;
+  final String seatNumber;
+  final bool isAvailable;
+  final String? type; // 'Standard', 'Premium', etc.
+
+  StudioSeat({
+    required this.id,
+    required this.studioId,
+    required this.seatNumber,
+    this.isAvailable = true,
+    this.type,
+  });
+
+  factory StudioSeat.fromJson(Map<String, dynamic> json) {
+    return StudioSeat(
+      id: json['id'] ?? '',
+      studioId: json['studio_id'] ?? '',
+      seatNumber: json['seat_number'] ?? '',
+      isAvailable: json['is_available'] ?? true,
+      type: json['type'],
+    );
+  }
+}

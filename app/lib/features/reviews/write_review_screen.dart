@@ -6,19 +6,76 @@ import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/review_bloc.dart';
 import 'data/review_repository.dart';
+import 'domain/review_model.dart';
+import '../../core/network/api_client.dart';
+import 'presentation/widgets/star_rating_widget.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class WriteReviewScreen extends StatefulWidget {
   final String bookingId;
+  final Map<String, dynamic>? extra; // To pass artist details
 
-  const WriteReviewScreen({super.key, required this.bookingId});
+  const WriteReviewScreen({super.key, required this.bookingId, this.extra});
 
   @override
   State<WriteReviewScreen> createState() => _WriteReviewScreenState();
 }
 
 class _WriteReviewScreenState extends State<WriteReviewScreen> {
-  int _rating = 5;
+  double _rating = 0;
   final TextEditingController _commentController = TextEditingController();
+  final List<File> _selectedImages = [];
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _selectedImages.add(File(image.path));
+      });
+    }
+  }
+
+  void _submitReview() {
+    if (_rating == 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please select a star rating')),
+      );
+      return;
+    }
+
+    final artistId = widget.extra?['artistId'] ?? 'unknown_artist';
+    
+    // Get current user from AuthBloc
+    final authState = context.read<AuthBloc>().state;
+    final user = authState.maybeWhen(
+      authenticated: (u) => u,
+      orElse: () => null,
+    );
+
+    if (user == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('You must be logged in to submit a review')),
+      );
+      return;
+    }
+
+    final review = ReviewModel(
+         id: '',
+         bookingId: widget.bookingId,
+         artistId: artistId,
+         userId: user.id, 
+         userName: user.fullName,
+         userAvatar: user.profileImage,
+         rating: _rating,
+         comment: _commentController.text,
+         timestamp: DateTime.now(),
+         images: [], // Images are handled by the Bloc upload logic
+    );
+
+    context.read<ReviewBloc>().add(ReviewEvent.submitReview(review, _selectedImages));
+    }
 
   @override
   void dispose() {
@@ -29,15 +86,15 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ReviewBloc(repository: ReviewRepository()),
+      create: (context) => ReviewBloc(repository: ReviewRepository(ApiClient())),
       child: BlocConsumer<ReviewBloc, ReviewState>(
         listener: (context, state) {
           state.maybeWhen(
-            success: (message) {
+            success: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message), backgroundColor: AppColors.success),
+                const SnackBar(content: Text('Review submitted successfully!'), backgroundColor: AppColors.success),
               );
-              context.pop(); // Go back
+              context.pop();
             },
             error: (message) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -60,41 +117,91 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Rate your experience', style: AppTypography.headlineSmall),
-                  const SizedBox(height: AppSpacing.md),
-                  
-                  // Star Rating
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(5, (index) {
-                      return IconButton(
-                        icon: Icon(
-                          index < _rating ? Icons.star : Icons.star_border,
-                          color: Colors.amber,
-                          size: 40,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _rating = index + 1;
-                          });
-                        },
-                      );
-                    }),
+                  if (widget.extra != null && widget.extra!.containsKey('artistName')) ...[
+                     Row(
+                      children: [
+                         if (widget.extra!['artistImage'] != null)
+                           CircleAvatar(
+                            backgroundImage: NetworkImage(widget.extra!['artistImage']),
+                            radius: 30,
+                          ),
+                          if (widget.extra!['artistImage'] != null)
+                            const SizedBox(width: AppSpacing.md),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Rate your experience with', style: AppTypography.bodySmall),
+                              Text(widget.extra!['artistName'], style: AppTypography.titleMedium),
+                            ],
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+                  ],
+
+                  Center(
+                    child: StarRatingWidget(
+                      rating: _rating,
+                      size: 40,
+                      isInteractive: true,
+                      onRatingChanged: (rating) => setState(() => _rating = rating),
+                    ),
                   ),
-                  
+                  const Center(child: Text('Tap to Rate', style: TextStyle(color: Colors.grey))),
                   const SizedBox(height: AppSpacing.xl),
                   
                   Text('Write a comment', style: AppTypography.titleMedium),
                   const SizedBox(height: AppSpacing.sm),
                   TextField(
                     controller: _commentController,
-                    maxLines: 5,
+                    maxLines: 4,
                     decoration: const InputDecoration(
                       hintText: 'Share your experience...',
                       border: OutlineInputBorder(),
                     ),
                   ),
                   
+                  const SizedBox(height: AppSpacing.lg),
+
+                  // Image Picker
+                  Text('Add Photos', style: AppTypography.titleSmall),
+                  const SizedBox(height: AppSpacing.sm),
+                  SizedBox(
+                    height: 80,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: _selectedImages.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == _selectedImages.length) {
+                          return GestureDetector(
+                            onTap: _pickImage,
+                            child: Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Icon(Icons.add_a_photo, color: Colors.grey),
+                            ),
+                          );
+                        }
+                        return Container(
+                          margin: const EdgeInsets.only(right: 8),
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            image: DecorationImage(
+                              image: FileImage(_selectedImages[index]),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+
                   const SizedBox(height: AppSpacing.xxl),
                   
                   SizedBox(
@@ -102,21 +209,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
                     child: ElevatedButton(
                       onPressed: state.maybeWhen(
                         submitting: () => null,
-                        orElse: () => () {
-                          if (_commentController.text.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Please write a comment')),
-                            );
-                            return;
-                          }
-                          context.read<ReviewBloc>().add(
-                            ReviewEvent.submitReview(
-                              bookingId: widget.bookingId,
-                              rating: _rating,
-                              comment: _commentController.text,
-                            ),
-                          );
-                        },
+                        orElse: () => _submitReview,
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,

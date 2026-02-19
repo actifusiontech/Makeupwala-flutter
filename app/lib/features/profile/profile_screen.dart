@@ -82,9 +82,21 @@ class _ProfileView extends StatelessWidget {
                             Text(user.phone ?? '', style: AppTypography.bodyLarge.copyWith(color: AppColors.textSecondary)),
                             const SizedBox(height: AppSpacing.sm),
                             TextButton.icon(
-                              onPressed: () => context.push('/rewards'), // Assuming go_router context extension works
+                              onPressed: () => context.push('/rewards'),
                               icon: const Icon(Icons.history, size: 18),
                               label: const Text('View Referral History'),
+                              style: TextButton.styleFrom(foregroundColor: AppColors.primary),
+                            ),
+                            TextButton.icon(
+                              onPressed: () => context.push('/wallet'),
+                              icon: const Icon(Icons.account_balance_wallet_outlined, size: 18),
+                              label: const Text('My Wallet'),
+                              style: TextButton.styleFrom(foregroundColor: AppColors.primary),
+                            ),
+                            TextButton.icon(
+                              onPressed: () => context.push('/orders'),
+                              icon: const Icon(Icons.shopping_bag_outlined, size: 18),
+                              label: const Text('My Orders'),
                               style: TextButton.styleFrom(foregroundColor: AppColors.primary),
                             ),
                           ],

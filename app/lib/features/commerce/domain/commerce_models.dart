@@ -53,8 +53,15 @@ class Order with _$Order {
     String? gstin,
     @Default('pending') String paymentStatus,
     @Default('placed') String orderStatus,
+    @Default(false) bool commissionSettled,
     @Default([]) List<OrderItem> items,
     DateTime? createdAt,
+    // Fulfillment tracking fields
+    String? trackingNumber,
+    String? trackingUrl,
+    String? shippingCarrier,
+    DateTime? shippedAt,
+    DateTime? deliveredAt,
   }) = _Order;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
@@ -82,10 +89,11 @@ class Campaign with _$Campaign {
     required String title,
     required String description,
     String? requirements,
-    String? rewardBadgeName,
+    required String compensationType,
+    @Default(0.0) double compensationAmount,
     DateTime? startDate,
     DateTime? endDate,
-    @Default(true) bool isActive,
+    @Default('ACTIVE') String status,
     DateTime? createdAt,
   }) = _Campaign;
 
@@ -104,4 +112,17 @@ class Badge with _$Badge {
   }) = _Badge;
 
   factory Badge.fromJson(Map<String, dynamic> json) => _$BadgeFromJson(json);
+}
+@freezed
+class Commission with _$Commission {
+  const factory Commission({
+    required String id,
+    required String artistId,
+    required String orderId,
+    required double amount,
+    required String status,
+    DateTime? createdAt,
+  }) = _Commission;
+
+  factory Commission.fromJson(Map<String, dynamic> json) => _$CommissionFromJson(json);
 }

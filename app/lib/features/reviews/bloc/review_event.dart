@@ -1,12 +1,7 @@
 part of 'review_bloc.dart';
 
 @freezed
-abstract class ReviewEvent with _$ReviewEvent {
-  const factory ReviewEvent.submitReview({
-    required String bookingId,
-    required int rating,
-    required String comment,
-  }) = _SubmitReview;
-
-  const factory ReviewEvent.fetchArtistReviews({required String artistId}) = _FetchArtistReviews;
+class ReviewEvent with _$ReviewEvent {
+  const factory ReviewEvent.fetchReviews(String artistId) = _FetchReviews;
+  const factory ReviewEvent.submitReview(ReviewModel review, List<File> images) = _SubmitReview;
 }

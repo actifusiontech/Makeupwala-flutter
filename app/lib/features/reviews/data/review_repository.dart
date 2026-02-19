@@ -1,39 +1,37 @@
 import 'dart:developer' as developer;
-import '../../../core/network/api_client.dart';
+import 'package:dio/dio.dart';
+import 'package:app/core/network/api_client.dart';
+import '../domain/review_model.dart';
 
 class ReviewRepository {
   final ApiClient _apiClient;
 
-  ReviewRepository({ApiClient? apiClient}) : _apiClient = apiClient ?? ApiClient();
+  ReviewRepository(this._apiClient);
 
-  Future<void> submitReview({
-    required String bookingId,
-    required int rating,
-    required String comment,
-  }) async {
+  Future<List<ReviewModel>> getArtistReviews(String artistId) async {
     try {
-      developer.log('⭐ Submitting review for booking: $bookingId', name: 'ReviewRepository');
-      await _apiClient.dio.post(
-        '/customers/me/bookings/action/$bookingId/review',
-        data: {
-          'rating': rating,
-          'comment': comment,
-        },
-      );
+      final response = await _apiClient.dio.get('/artists/$artistId/reviews');
+      // Handling both direct list and envoloped 'data' scenarios for robustness
+      final data = response.data is Map && response.data.containsKey('data') 
+          ? response.data['data'] 
+          : response.data;
+          
+      return (data as List)
+          .map((e) => ReviewModel.fromJson(e))
+          .toList();
     } catch (e) {
-      developer.log('❌ Submit review failed: $e', name: 'ReviewRepository');
-      rethrow;
+      developer.log('❌ Failed to fetch reviews: $e', name: 'ReviewRepository');
+      // Return empty list on error for now to prevent UI crash, or rethrow handled by Bloc
+      return []; 
     }
   }
 
-  Future<List<dynamic>> getArtistReviews(String artistId) async {
+  Future<void> submitReview(ReviewModel review) async {
     try {
-      developer.log('⭐ Fetching reviews for artist: $artistId', name: 'ReviewRepository');
-      final response = await _apiClient.dio.get('/artists/action/$artistId/reviews');
-      return response.data['reviews'] as List<dynamic>;
+      await _apiClient.dio.post('/reviews', data: review.toJson());
     } catch (e) {
-      developer.log('❌ Fetch reviews failed: $e', name: 'ReviewRepository');
-      rethrow;
+      developer.log('❌ Failed to submit review: $e', name: 'ReviewRepository');
+      throw Exception('Failed to submit review');
     }
   }
 }

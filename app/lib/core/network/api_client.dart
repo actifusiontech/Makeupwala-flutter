@@ -2,10 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:developer' as developer;
 import '../config/env.dart';
+import 'retry_interceptor.dart';
+import '../services/logging_service.dart';
 
 class ApiClient {
   late final Dio dio;
   final FlutterSecureStorage _secureStorage;
+  final LoggingService _logger = LoggingService();
   static final List<String> debugLogs = [];
 
   static void addDebugLog(String log) {
@@ -30,6 +33,10 @@ class ApiClient {
 
     addDebugLog('🔧 ApiClient initialized with baseUrl: ${baseUrl ?? Env.apiBaseUrl}');
 
+    // Add retry interceptor first
+    dio.interceptors.add(RetryInterceptor(dio: dio));
+
+    // Add logging and auth interceptor
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
         // Attach auth token if available
@@ -40,24 +47,26 @@ class ApiClient {
         }
         
         addDebugLog('📤 REQUEST: ${options.method} ${options.baseUrl}${options.path}');
-        addDebugLog('📋 Headers: ${options.headers}');
-        if (options.data != null) {
-          addDebugLog('📦 Body: ${options.data}');
-        }
+        _logger.logRequest(options.method, options.path, data: options.data);
         
         handler.next(options);
       },
       onResponse: (response, handler) {
         addDebugLog('✅ RESPONSE ${response.statusCode}: ${response.requestOptions.path}');
-        addDebugLog('📥 Data: ${response.data}');
+        _logger.logResponse(
+          response.requestOptions.method,
+          response.requestOptions.path,
+          response.statusCode ?? 0,
+          data: response.data,
+        );
         handler.next(response);
       },
       onError: (e, handler) async {
         addDebugLog('❌ ERROR: ${e.type}');
-        addDebugLog('🔴 Message: ${e.message}');
+        _logger.error('API Error: ${e.requestOptions.path}', e);
+        
         if (e.response != null) {
           addDebugLog('📉 Status: ${e.response?.statusCode}');
-          addDebugLog('📉 Response: ${e.response?.data}');
           
           // Handle 401 Unauthorized - Attempt Token Refresh
           if (e.response?.statusCode == 401) {
@@ -74,17 +83,13 @@ class ApiClient {
               }
             } else {
               addDebugLog('🚫 Token refresh failed. User must log in again.');
-              // Clear tokens and notify app (could emit an event to a global bloc)
+              // Clear tokens
               await _secureStorage.delete(key: 'auth_token');
               await _secureStorage.delete(key: 'refresh_token');
             }
           }
         }
         
-        // Basic retry for network errors
-        if (e.type == DioExceptionType.connectionError) {
-          addDebugLog('🔄 Connection error detected');
-        }
         handler.next(e);
       },
     ));

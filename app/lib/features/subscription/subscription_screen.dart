@@ -37,19 +37,16 @@ class _SubscriptionView extends StatelessWidget {
       ),
       body: BlocConsumer<SubscriptionBloc, SubscriptionState>(
         listener: (context, state) {
-          state.maybeWhen(
-            success: (message) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message), backgroundColor: AppColors.success),
-              );
-            },
-            error: (message) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message), backgroundColor: AppColors.error),
-              );
-            },
-            orElse: () {},
-          );
+          if (state.successMessage != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.successMessage!), backgroundColor: AppColors.success),
+            );
+          }
+          if (state.error != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.error!), backgroundColor: AppColors.error),
+            );
+          }
         },
         builder: (context, state) {
           return SingleChildScrollView(
@@ -97,104 +94,105 @@ class _SubscriptionView extends StatelessWidget {
   }
 
   Widget _buildCurrentSubscription(BuildContext context, SubscriptionState state) {
-    return state.maybeWhen(
-      subscriptionLoaded: (subscription) {
-        if (subscription == null) {
-          return const Card(
-            child: Padding(
-              padding: EdgeInsets.all(AppSpacing.md),
-              child: Text('No active subscription. Choose a plan below to get started!'),
-            ),
-          );
-        }
-        return Card(
-          color: AppColors.primary.withOpacity(0.1),
-          child: Padding(
-            padding: const EdgeInsets.all(AppSpacing.md),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    if (state.isLoading && state.subscription == null) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    
+    final subscription = state.subscription;
+    if (subscription == null) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(AppSpacing.md),
+          child: Text('No active subscription. Choose a plan below to get started!'),
+        ),
+      );
+    }
+    return Card(
+      color: AppColors.primary.withOpacity(0.1),
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacing.md),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Current Plan', style: AppTypography.titleMedium),
-                    Chip(
-                      label: Text(
-                        subscription['status']?.toUpperCase() ?? 'ACTIVE',
-                        style: const TextStyle(color: Colors.white, fontSize: 10),
-                      ),
-                      backgroundColor: subscription['status'] == 'active' 
-                          ? AppColors.success 
-                          : AppColors.warning,
-                      padding: EdgeInsets.zero,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                Text(
-                  subscription['plan_name'] ?? 'Unknown Plan',
-                  style: AppTypography.headlineMedium.copyWith(color: AppColors.primary),
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                Text('Expires: ${subscription['end_date'] ?? 'Never'}'),
-                const SizedBox(height: AppSpacing.md),
-                
-                // Quota Widget
-                QuotaProgressWidget(
-                   used: (subscription['max_contacts'] ?? 100) - (subscription['remaining_contacts'] ?? 0), 
-                   total: subscription['max_contacts'] ?? 100, // Assuming we had max_contacts in response, otherwise imply
-                ),
-
-                const SizedBox(height: AppSpacing.md),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    if (subscription['status'] == 'active')
-                      OutlinedButton(
-                        onPressed: () => _showPauseDialog(context),
-                        child: const Text('Pause Subscription'),
-                      )
-                    else if (subscription['status'] == 'paused')
-                      ElevatedButton(
-                        onPressed: () {
-                          context.read<SubscriptionBloc>().add(const SubscriptionEvent.resumeSubscription());
-                        },
-                        child: const Text('Resume Subscription'),
-                      ),
-                  ],
+                Text('Current Plan', style: AppTypography.titleMedium),
+                Chip(
+                  label: Text(
+                    subscription['status']?.toUpperCase() ?? 'ACTIVE',
+                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                  ),
+                  backgroundColor: subscription['status'] == 'active' 
+                      ? AppColors.success 
+                      : AppColors.warning,
+                  padding: EdgeInsets.zero,
                 ),
               ],
             ),
-          ),
-        );
-      },
-      orElse: () => const SizedBox(),
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              subscription['plan_name'] ?? 'Unknown Plan',
+              style: AppTypography.headlineMedium.copyWith(color: AppColors.primary),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            Text('Expires: ${subscription['end_date'] ?? 'Never'}'),
+            const SizedBox(height: AppSpacing.md),
+            
+            // Quota Widget
+            QuotaProgressWidget(
+               used: (subscription['max_contacts'] ?? 100) - (subscription['remaining_contacts'] ?? 0), 
+               total: subscription['max_contacts'] ?? 100,
+            ),
+
+            const SizedBox(height: AppSpacing.md),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                if (subscription['status'] == 'active')
+                  OutlinedButton(
+                    onPressed: () => _showPauseDialog(context),
+                    child: const Text('Pause Subscription'),
+                  )
+                else if (subscription['status'] == 'paused')
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<SubscriptionBloc>().add(const SubscriptionEvent.resumeSubscription());
+                    },
+                    child: const Text('Resume Subscription'),
+                  ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 
   Widget _buildPlansList(BuildContext context, SubscriptionState state) {
-    return state.maybeWhen(
-      plansLoaded: (plans) {
-        if (plans.isEmpty) {
-          return const Center(child: Text('No plans available at the moment.'));
-        }
-        return ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: plans.length,
-          separatorBuilder: (context, index) => const SizedBox(height: AppSpacing.md),
-          itemBuilder: (context, index) {
-            final plan = plans[index];
-            return _buildPlanCard(context, plan);
-          },
-        );
+    if (state.isLoading && state.plans.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    
+    final plans = state.plans;
+    if (plans.isEmpty) {
+      // If triggered load but failed or empty
+      return const Center(child: Text('No plans available at the moment.'));
+    }
+    
+    return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: plans.length,
+      separatorBuilder: (context, index) => const SizedBox(height: AppSpacing.md),
+      itemBuilder: (context, index) {
+        final plan = plans[index];
+        return _buildPlanCard(context, plan, state.subscription);
       },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      orElse: () => const SizedBox(),
     );
   }
 
-  Widget _buildPlanCard(BuildContext context, dynamic plan) {
+  Widget _buildPlanCard(BuildContext context, dynamic plan, Map<String, dynamic>? currentSubscription) {
     final price = plan['price'] ?? 0;
     final name = plan['name'] ?? 'Plan';
     final code = plan['code'] ?? '';
@@ -205,9 +203,14 @@ class _SubscriptionView extends StatelessWidget {
       price: double.tryParse(price.toString()) ?? 0.0,
       description: description,
       planCode: code,
-      isCurrentPlan: false, // We should check against current sub
+      isCurrentPlan: currentSubscription != null && currentSubscription['plan_code'] == code,
       onSubscribe: () {
-        context.read<SubscriptionBloc>().add(SubscriptionEvent.subscribe(planCode: code));
+        if (currentSubscription != null && currentSubscription['plan_code'] != code) {
+           // Upgrade logic if needed
+           context.read<SubscriptionBloc>().add(SubscriptionEvent.upgradeSubscription(planCode: code));
+        } else {
+           context.read<SubscriptionBloc>().add(SubscriptionEvent.subscribe(planCode: code));
+        }
       },
     );
   }

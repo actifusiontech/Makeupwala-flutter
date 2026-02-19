@@ -12,8 +12,7 @@ part of 'rewards.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LoyaltyBalance _$LoyaltyBalanceFromJson(Map<String, dynamic> json) {
   return _LoyaltyBalance.fromJson(json);
@@ -28,12 +27,8 @@ mixin _$LoyaltyBalance {
   int get totalBookings => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this LoyaltyBalance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LoyaltyBalance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LoyaltyBalanceCopyWith<LoyaltyBalance> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -41,18 +36,16 @@ mixin _$LoyaltyBalance {
 /// @nodoc
 abstract class $LoyaltyBalanceCopyWith<$Res> {
   factory $LoyaltyBalanceCopyWith(
-    LoyaltyBalance value,
-    $Res Function(LoyaltyBalance) then,
-  ) = _$LoyaltyBalanceCopyWithImpl<$Res, LoyaltyBalance>;
+          LoyaltyBalance value, $Res Function(LoyaltyBalance) then) =
+      _$LoyaltyBalanceCopyWithImpl<$Res, LoyaltyBalance>;
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    int balance,
-    int tier,
-    int totalBookings,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      int balance,
+      int tier,
+      int totalBookings,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -65,8 +58,6 @@ class _$LoyaltyBalanceCopyWithImpl<$Res, $Val extends LoyaltyBalance>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LoyaltyBalance
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,55 +68,50 @@ class _$LoyaltyBalanceCopyWithImpl<$Res, $Val extends LoyaltyBalance>
     Object? totalBookings = null,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            balance: null == balance
-                ? _value.balance
-                : balance // ignore: cast_nullable_to_non_nullable
-                      as int,
-            tier: null == tier
-                ? _value.tier
-                : tier // ignore: cast_nullable_to_non_nullable
-                      as int,
-            totalBookings: null == totalBookings
-                ? _value.totalBookings
-                : totalBookings // ignore: cast_nullable_to_non_nullable
-                      as int,
-            updatedAt: freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as int,
+      tier: null == tier
+          ? _value.tier
+          : tier // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalBookings: null == totalBookings
+          ? _value.totalBookings
+          : totalBookings // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$LoyaltyBalanceImplCopyWith<$Res>
     implements $LoyaltyBalanceCopyWith<$Res> {
-  factory _$$LoyaltyBalanceImplCopyWith(
-    _$LoyaltyBalanceImpl value,
-    $Res Function(_$LoyaltyBalanceImpl) then,
-  ) = __$$LoyaltyBalanceImplCopyWithImpl<$Res>;
+  factory _$$LoyaltyBalanceImplCopyWith(_$LoyaltyBalanceImpl value,
+          $Res Function(_$LoyaltyBalanceImpl) then) =
+      __$$LoyaltyBalanceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    int balance,
-    int tier,
-    int totalBookings,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      int balance,
+      int tier,
+      int totalBookings,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -133,12 +119,9 @@ class __$$LoyaltyBalanceImplCopyWithImpl<$Res>
     extends _$LoyaltyBalanceCopyWithImpl<$Res, _$LoyaltyBalanceImpl>
     implements _$$LoyaltyBalanceImplCopyWith<$Res> {
   __$$LoyaltyBalanceImplCopyWithImpl(
-    _$LoyaltyBalanceImpl _value,
-    $Res Function(_$LoyaltyBalanceImpl) _then,
-  ) : super(_value, _then);
+      _$LoyaltyBalanceImpl _value, $Res Function(_$LoyaltyBalanceImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of LoyaltyBalance
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,48 +132,45 @@ class __$$LoyaltyBalanceImplCopyWithImpl<$Res>
     Object? totalBookings = null,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _$LoyaltyBalanceImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        balance: null == balance
-            ? _value.balance
-            : balance // ignore: cast_nullable_to_non_nullable
-                  as int,
-        tier: null == tier
-            ? _value.tier
-            : tier // ignore: cast_nullable_to_non_nullable
-                  as int,
-        totalBookings: null == totalBookings
-            ? _value.totalBookings
-            : totalBookings // ignore: cast_nullable_to_non_nullable
-                  as int,
-        updatedAt: freezed == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$LoyaltyBalanceImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as int,
+      tier: null == tier
+          ? _value.tier
+          : tier // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalBookings: null == totalBookings
+          ? _value.totalBookings
+          : totalBookings // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$LoyaltyBalanceImpl implements _LoyaltyBalance {
-  const _$LoyaltyBalanceImpl({
-    required this.id,
-    required this.userId,
-    required this.balance,
-    this.tier = 1,
-    this.totalBookings = 0,
-    this.updatedAt,
-  });
+  const _$LoyaltyBalanceImpl(
+      {required this.id,
+      required this.userId,
+      required this.balance,
+      this.tier = 1,
+      this.totalBookings = 0,
+      this.updatedAt});
 
   factory _$LoyaltyBalanceImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoyaltyBalanceImplFromJson(json);
@@ -230,44 +210,34 @@ class _$LoyaltyBalanceImpl implements _LoyaltyBalance {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    balance,
-    tier,
-    totalBookings,
-    updatedAt,
-  );
+      runtimeType, id, userId, balance, tier, totalBookings, updatedAt);
 
-  /// Create a copy of LoyaltyBalance
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoyaltyBalanceImplCopyWith<_$LoyaltyBalanceImpl> get copyWith =>
       __$$LoyaltyBalanceImplCopyWithImpl<_$LoyaltyBalanceImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LoyaltyBalanceImplToJson(this);
+    return _$$LoyaltyBalanceImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _LoyaltyBalance implements LoyaltyBalance {
-  const factory _LoyaltyBalance({
-    required final String id,
-    required final String userId,
-    required final int balance,
-    final int tier,
-    final int totalBookings,
-    final DateTime? updatedAt,
-  }) = _$LoyaltyBalanceImpl;
+  const factory _LoyaltyBalance(
+      {required final String id,
+      required final String userId,
+      required final int balance,
+      final int tier,
+      final int totalBookings,
+      final DateTime? updatedAt}) = _$LoyaltyBalanceImpl;
 
   factory _LoyaltyBalance.fromJson(Map<String, dynamic> json) =
       _$LoyaltyBalanceImpl.fromJson;
@@ -284,11 +254,8 @@ abstract class _LoyaltyBalance implements LoyaltyBalance {
   int get totalBookings;
   @override
   DateTime? get updatedAt;
-
-  /// Create a copy of LoyaltyBalance
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoyaltyBalanceImplCopyWith<_$LoyaltyBalanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -310,12 +277,8 @@ mixin _$LoyaltyTransaction {
   String get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
-  /// Serializes this LoyaltyTransaction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LoyaltyTransaction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LoyaltyTransactionCopyWith<LoyaltyTransaction> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -323,20 +286,18 @@ mixin _$LoyaltyTransaction {
 /// @nodoc
 abstract class $LoyaltyTransactionCopyWith<$Res> {
   factory $LoyaltyTransactionCopyWith(
-    LoyaltyTransaction value,
-    $Res Function(LoyaltyTransaction) then,
-  ) = _$LoyaltyTransactionCopyWithImpl<$Res, LoyaltyTransaction>;
+          LoyaltyTransaction value, $Res Function(LoyaltyTransaction) then) =
+      _$LoyaltyTransactionCopyWithImpl<$Res, LoyaltyTransaction>;
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    int points,
-    String transactionType,
-    String entityType,
-    String? entityId,
-    String description,
-    DateTime createdAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      int points,
+      String transactionType,
+      String entityType,
+      String? entityId,
+      String description,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -349,8 +310,6 @@ class _$LoyaltyTransactionCopyWithImpl<$Res, $Val extends LoyaltyTransaction>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LoyaltyTransaction
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -363,78 +322,70 @@ class _$LoyaltyTransactionCopyWithImpl<$Res, $Val extends LoyaltyTransaction>
     Object? description = null,
     Object? createdAt = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            points: null == points
-                ? _value.points
-                : points // ignore: cast_nullable_to_non_nullable
-                      as int,
-            transactionType: null == transactionType
-                ? _value.transactionType
-                : transactionType // ignore: cast_nullable_to_non_nullable
-                      as String,
-            entityType: null == entityType
-                ? _value.entityType
-                : entityType // ignore: cast_nullable_to_non_nullable
-                      as String,
-            entityId: freezed == entityId
-                ? _value.entityId
-                : entityId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            description: null == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
+      transactionType: null == transactionType
+          ? _value.transactionType
+          : transactionType // ignore: cast_nullable_to_non_nullable
+              as String,
+      entityType: null == entityType
+          ? _value.entityType
+          : entityType // ignore: cast_nullable_to_non_nullable
+              as String,
+      entityId: freezed == entityId
+          ? _value.entityId
+          : entityId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$LoyaltyTransactionImplCopyWith<$Res>
     implements $LoyaltyTransactionCopyWith<$Res> {
-  factory _$$LoyaltyTransactionImplCopyWith(
-    _$LoyaltyTransactionImpl value,
-    $Res Function(_$LoyaltyTransactionImpl) then,
-  ) = __$$LoyaltyTransactionImplCopyWithImpl<$Res>;
+  factory _$$LoyaltyTransactionImplCopyWith(_$LoyaltyTransactionImpl value,
+          $Res Function(_$LoyaltyTransactionImpl) then) =
+      __$$LoyaltyTransactionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String userId,
-    int points,
-    String transactionType,
-    String entityType,
-    String? entityId,
-    String description,
-    DateTime createdAt,
-  });
+  $Res call(
+      {String id,
+      String userId,
+      int points,
+      String transactionType,
+      String entityType,
+      String? entityId,
+      String description,
+      DateTime createdAt});
 }
 
 /// @nodoc
 class __$$LoyaltyTransactionImplCopyWithImpl<$Res>
     extends _$LoyaltyTransactionCopyWithImpl<$Res, _$LoyaltyTransactionImpl>
     implements _$$LoyaltyTransactionImplCopyWith<$Res> {
-  __$$LoyaltyTransactionImplCopyWithImpl(
-    _$LoyaltyTransactionImpl _value,
-    $Res Function(_$LoyaltyTransactionImpl) _then,
-  ) : super(_value, _then);
+  __$$LoyaltyTransactionImplCopyWithImpl(_$LoyaltyTransactionImpl _value,
+      $Res Function(_$LoyaltyTransactionImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of LoyaltyTransaction
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -447,58 +398,55 @@ class __$$LoyaltyTransactionImplCopyWithImpl<$Res>
     Object? description = null,
     Object? createdAt = null,
   }) {
-    return _then(
-      _$LoyaltyTransactionImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        points: null == points
-            ? _value.points
-            : points // ignore: cast_nullable_to_non_nullable
-                  as int,
-        transactionType: null == transactionType
-            ? _value.transactionType
-            : transactionType // ignore: cast_nullable_to_non_nullable
-                  as String,
-        entityType: null == entityType
-            ? _value.entityType
-            : entityType // ignore: cast_nullable_to_non_nullable
-                  as String,
-        entityId: freezed == entityId
-            ? _value.entityId
-            : entityId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        description: null == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String,
-        createdAt: null == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-      ),
-    );
+    return _then(_$LoyaltyTransactionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
+      transactionType: null == transactionType
+          ? _value.transactionType
+          : transactionType // ignore: cast_nullable_to_non_nullable
+              as String,
+      entityType: null == entityType
+          ? _value.entityType
+          : entityType // ignore: cast_nullable_to_non_nullable
+              as String,
+      entityId: freezed == entityId
+          ? _value.entityId
+          : entityId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$LoyaltyTransactionImpl implements _LoyaltyTransaction {
-  const _$LoyaltyTransactionImpl({
-    required this.id,
-    required this.userId,
-    required this.points,
-    required this.transactionType,
-    required this.entityType,
-    this.entityId,
-    required this.description,
-    required this.createdAt,
-  });
+  const _$LoyaltyTransactionImpl(
+      {required this.id,
+      required this.userId,
+      required this.points,
+      required this.transactionType,
+      required this.entityType,
+      this.entityId,
+      required this.description,
+      required this.createdAt});
 
   factory _$LoyaltyTransactionImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoyaltyTransactionImplFromJson(json);
@@ -511,10 +459,10 @@ class _$LoyaltyTransactionImpl implements _LoyaltyTransaction {
   final int points;
   @override
   final String transactionType;
-  // 'EARN', 'REDEEM'
+// 'EARN', 'REDEEM'
   @override
   final String entityType;
-  // 'BOOKING', 'REFERRAL'
+// 'BOOKING', 'REFERRAL'
   @override
   final String? entityId;
   @override
@@ -547,48 +495,36 @@ class _$LoyaltyTransactionImpl implements _LoyaltyTransaction {
                 other.createdAt == createdAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    points,
-    transactionType,
-    entityType,
-    entityId,
-    description,
-    createdAt,
-  );
+  int get hashCode => Object.hash(runtimeType, id, userId, points,
+      transactionType, entityType, entityId, description, createdAt);
 
-  /// Create a copy of LoyaltyTransaction
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoyaltyTransactionImplCopyWith<_$LoyaltyTransactionImpl> get copyWith =>
       __$$LoyaltyTransactionImplCopyWithImpl<_$LoyaltyTransactionImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LoyaltyTransactionImplToJson(this);
+    return _$$LoyaltyTransactionImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _LoyaltyTransaction implements LoyaltyTransaction {
-  const factory _LoyaltyTransaction({
-    required final String id,
-    required final String userId,
-    required final int points,
-    required final String transactionType,
-    required final String entityType,
-    final String? entityId,
-    required final String description,
-    required final DateTime createdAt,
-  }) = _$LoyaltyTransactionImpl;
+  const factory _LoyaltyTransaction(
+      {required final String id,
+      required final String userId,
+      required final int points,
+      required final String transactionType,
+      required final String entityType,
+      final String? entityId,
+      required final String description,
+      required final DateTime createdAt}) = _$LoyaltyTransactionImpl;
 
   factory _LoyaltyTransaction.fromJson(Map<String, dynamic> json) =
       _$LoyaltyTransactionImpl.fromJson;
@@ -600,20 +536,17 @@ abstract class _LoyaltyTransaction implements LoyaltyTransaction {
   @override
   int get points;
   @override
-  String get transactionType; // 'EARN', 'REDEEM'
-  @override
-  String get entityType; // 'BOOKING', 'REFERRAL'
-  @override
+  String get transactionType;
+  @override // 'EARN', 'REDEEM'
+  String get entityType;
+  @override // 'BOOKING', 'REFERRAL'
   String? get entityId;
   @override
   String get description;
   @override
   DateTime get createdAt;
-
-  /// Create a copy of LoyaltyTransaction
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoyaltyTransactionImplCopyWith<_$LoyaltyTransactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -635,12 +568,8 @@ mixin _$ReferralRecord {
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this ReferralRecord to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ReferralRecord
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ReferralRecordCopyWith<ReferralRecord> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -648,20 +577,18 @@ mixin _$ReferralRecord {
 /// @nodoc
 abstract class $ReferralRecordCopyWith<$Res> {
   factory $ReferralRecordCopyWith(
-    ReferralRecord value,
-    $Res Function(ReferralRecord) then,
-  ) = _$ReferralRecordCopyWithImpl<$Res, ReferralRecord>;
+          ReferralRecord value, $Res Function(ReferralRecord) then) =
+      _$ReferralRecordCopyWithImpl<$Res, ReferralRecord>;
   @useResult
-  $Res call({
-    String id,
-    String referrerId,
-    String referredUserId,
-    String? referredUserName,
-    String status,
-    int rewardPoints,
-    DateTime createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String referrerId,
+      String referredUserId,
+      String? referredUserName,
+      String status,
+      int rewardPoints,
+      DateTime createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -674,8 +601,6 @@ class _$ReferralRecordCopyWithImpl<$Res, $Val extends ReferralRecord>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ReferralRecord
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -688,65 +613,60 @@ class _$ReferralRecordCopyWithImpl<$Res, $Val extends ReferralRecord>
     Object? createdAt = null,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            referrerId: null == referrerId
-                ? _value.referrerId
-                : referrerId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            referredUserId: null == referredUserId
-                ? _value.referredUserId
-                : referredUserId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            referredUserName: freezed == referredUserName
-                ? _value.referredUserName
-                : referredUserName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            rewardPoints: null == rewardPoints
-                ? _value.rewardPoints
-                : rewardPoints // ignore: cast_nullable_to_non_nullable
-                      as int,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            updatedAt: freezed == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      referrerId: null == referrerId
+          ? _value.referrerId
+          : referrerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      referredUserId: null == referredUserId
+          ? _value.referredUserId
+          : referredUserId // ignore: cast_nullable_to_non_nullable
+              as String,
+      referredUserName: freezed == referredUserName
+          ? _value.referredUserName
+          : referredUserName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      rewardPoints: null == rewardPoints
+          ? _value.rewardPoints
+          : rewardPoints // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$ReferralRecordImplCopyWith<$Res>
     implements $ReferralRecordCopyWith<$Res> {
-  factory _$$ReferralRecordImplCopyWith(
-    _$ReferralRecordImpl value,
-    $Res Function(_$ReferralRecordImpl) then,
-  ) = __$$ReferralRecordImplCopyWithImpl<$Res>;
+  factory _$$ReferralRecordImplCopyWith(_$ReferralRecordImpl value,
+          $Res Function(_$ReferralRecordImpl) then) =
+      __$$ReferralRecordImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String referrerId,
-    String referredUserId,
-    String? referredUserName,
-    String status,
-    int rewardPoints,
-    DateTime createdAt,
-    DateTime? updatedAt,
-  });
+  $Res call(
+      {String id,
+      String referrerId,
+      String referredUserId,
+      String? referredUserName,
+      String status,
+      int rewardPoints,
+      DateTime createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -754,12 +674,9 @@ class __$$ReferralRecordImplCopyWithImpl<$Res>
     extends _$ReferralRecordCopyWithImpl<$Res, _$ReferralRecordImpl>
     implements _$$ReferralRecordImplCopyWith<$Res> {
   __$$ReferralRecordImplCopyWithImpl(
-    _$ReferralRecordImpl _value,
-    $Res Function(_$ReferralRecordImpl) _then,
-  ) : super(_value, _then);
+      _$ReferralRecordImpl _value, $Res Function(_$ReferralRecordImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ReferralRecord
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -772,58 +689,55 @@ class __$$ReferralRecordImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = freezed,
   }) {
-    return _then(
-      _$ReferralRecordImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        referrerId: null == referrerId
-            ? _value.referrerId
-            : referrerId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        referredUserId: null == referredUserId
-            ? _value.referredUserId
-            : referredUserId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        referredUserName: freezed == referredUserName
-            ? _value.referredUserName
-            : referredUserName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        rewardPoints: null == rewardPoints
-            ? _value.rewardPoints
-            : rewardPoints // ignore: cast_nullable_to_non_nullable
-                  as int,
-        createdAt: null == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        updatedAt: freezed == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-      ),
-    );
+    return _then(_$ReferralRecordImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      referrerId: null == referrerId
+          ? _value.referrerId
+          : referrerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      referredUserId: null == referredUserId
+          ? _value.referredUserId
+          : referredUserId // ignore: cast_nullable_to_non_nullable
+              as String,
+      referredUserName: freezed == referredUserName
+          ? _value.referredUserName
+          : referredUserName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      rewardPoints: null == rewardPoints
+          ? _value.rewardPoints
+          : rewardPoints // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ReferralRecordImpl implements _ReferralRecord {
-  const _$ReferralRecordImpl({
-    required this.id,
-    required this.referrerId,
-    required this.referredUserId,
-    this.referredUserName,
-    required this.status,
-    required this.rewardPoints,
-    required this.createdAt,
-    this.updatedAt,
-  });
+  const _$ReferralRecordImpl(
+      {required this.id,
+      required this.referrerId,
+      required this.referredUserId,
+      this.referredUserName,
+      required this.status,
+      required this.rewardPoints,
+      required this.createdAt,
+      this.updatedAt});
 
   factory _$ReferralRecordImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReferralRecordImplFromJson(json);
@@ -836,10 +750,10 @@ class _$ReferralRecordImpl implements _ReferralRecord {
   final String referredUserId;
   @override
   final String? referredUserName;
-  // Added for UI display
+// Added for UI display
   @override
   final String status;
-  // 'PENDING', 'COMPLETED'
+// 'PENDING', 'COMPLETED'
   @override
   final int rewardPoints;
   @override
@@ -873,48 +787,36 @@ class _$ReferralRecordImpl implements _ReferralRecord {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    referrerId,
-    referredUserId,
-    referredUserName,
-    status,
-    rewardPoints,
-    createdAt,
-    updatedAt,
-  );
+  int get hashCode => Object.hash(runtimeType, id, referrerId, referredUserId,
+      referredUserName, status, rewardPoints, createdAt, updatedAt);
 
-  /// Create a copy of ReferralRecord
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ReferralRecordImplCopyWith<_$ReferralRecordImpl> get copyWith =>
       __$$ReferralRecordImplCopyWithImpl<_$ReferralRecordImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReferralRecordImplToJson(this);
+    return _$$ReferralRecordImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _ReferralRecord implements ReferralRecord {
-  const factory _ReferralRecord({
-    required final String id,
-    required final String referrerId,
-    required final String referredUserId,
-    final String? referredUserName,
-    required final String status,
-    required final int rewardPoints,
-    required final DateTime createdAt,
-    final DateTime? updatedAt,
-  }) = _$ReferralRecordImpl;
+  const factory _ReferralRecord(
+      {required final String id,
+      required final String referrerId,
+      required final String referredUserId,
+      final String? referredUserName,
+      required final String status,
+      required final int rewardPoints,
+      required final DateTime createdAt,
+      final DateTime? updatedAt}) = _$ReferralRecordImpl;
 
   factory _ReferralRecord.fromJson(Map<String, dynamic> json) =
       _$ReferralRecordImpl.fromJson;
@@ -926,20 +828,17 @@ abstract class _ReferralRecord implements ReferralRecord {
   @override
   String get referredUserId;
   @override
-  String? get referredUserName; // Added for UI display
-  @override
-  String get status; // 'PENDING', 'COMPLETED'
-  @override
+  String? get referredUserName;
+  @override // Added for UI display
+  String get status;
+  @override // 'PENDING', 'COMPLETED'
   int get rewardPoints;
   @override
   DateTime get createdAt;
   @override
   DateTime? get updatedAt;
-
-  /// Create a copy of ReferralRecord
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ReferralRecordImplCopyWith<_$ReferralRecordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -956,12 +855,8 @@ mixin _$LeaderboardEntry {
   int get referralCount => throw _privateConstructorUsedError;
   int get pointsEarned => throw _privateConstructorUsedError;
 
-  /// Serializes this LeaderboardEntry to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LeaderboardEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LeaderboardEntryCopyWith<LeaderboardEntry> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -969,17 +864,15 @@ mixin _$LeaderboardEntry {
 /// @nodoc
 abstract class $LeaderboardEntryCopyWith<$Res> {
   factory $LeaderboardEntryCopyWith(
-    LeaderboardEntry value,
-    $Res Function(LeaderboardEntry) then,
-  ) = _$LeaderboardEntryCopyWithImpl<$Res, LeaderboardEntry>;
+          LeaderboardEntry value, $Res Function(LeaderboardEntry) then) =
+      _$LeaderboardEntryCopyWithImpl<$Res, LeaderboardEntry>;
   @useResult
-  $Res call({
-    int rank,
-    String userId,
-    String userName,
-    int referralCount,
-    int pointsEarned,
-  });
+  $Res call(
+      {int rank,
+      String userId,
+      String userName,
+      int referralCount,
+      int pointsEarned});
 }
 
 /// @nodoc
@@ -992,8 +885,6 @@ class _$LeaderboardEntryCopyWithImpl<$Res, $Val extends LeaderboardEntry>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LeaderboardEntry
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1003,63 +894,55 @@ class _$LeaderboardEntryCopyWithImpl<$Res, $Val extends LeaderboardEntry>
     Object? referralCount = null,
     Object? pointsEarned = null,
   }) {
-    return _then(
-      _value.copyWith(
-            rank: null == rank
-                ? _value.rank
-                : rank // ignore: cast_nullable_to_non_nullable
-                      as int,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userName: null == userName
-                ? _value.userName
-                : userName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            referralCount: null == referralCount
-                ? _value.referralCount
-                : referralCount // ignore: cast_nullable_to_non_nullable
-                      as int,
-            pointsEarned: null == pointsEarned
-                ? _value.pointsEarned
-                : pointsEarned // ignore: cast_nullable_to_non_nullable
-                      as int,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      referralCount: null == referralCount
+          ? _value.referralCount
+          : referralCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      pointsEarned: null == pointsEarned
+          ? _value.pointsEarned
+          : pointsEarned // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$LeaderboardEntryImplCopyWith<$Res>
     implements $LeaderboardEntryCopyWith<$Res> {
-  factory _$$LeaderboardEntryImplCopyWith(
-    _$LeaderboardEntryImpl value,
-    $Res Function(_$LeaderboardEntryImpl) then,
-  ) = __$$LeaderboardEntryImplCopyWithImpl<$Res>;
+  factory _$$LeaderboardEntryImplCopyWith(_$LeaderboardEntryImpl value,
+          $Res Function(_$LeaderboardEntryImpl) then) =
+      __$$LeaderboardEntryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int rank,
-    String userId,
-    String userName,
-    int referralCount,
-    int pointsEarned,
-  });
+  $Res call(
+      {int rank,
+      String userId,
+      String userName,
+      int referralCount,
+      int pointsEarned});
 }
 
 /// @nodoc
 class __$$LeaderboardEntryImplCopyWithImpl<$Res>
     extends _$LeaderboardEntryCopyWithImpl<$Res, _$LeaderboardEntryImpl>
     implements _$$LeaderboardEntryImplCopyWith<$Res> {
-  __$$LeaderboardEntryImplCopyWithImpl(
-    _$LeaderboardEntryImpl _value,
-    $Res Function(_$LeaderboardEntryImpl) _then,
-  ) : super(_value, _then);
+  __$$LeaderboardEntryImplCopyWithImpl(_$LeaderboardEntryImpl _value,
+      $Res Function(_$LeaderboardEntryImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of LeaderboardEntry
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1069,43 +952,40 @@ class __$$LeaderboardEntryImplCopyWithImpl<$Res>
     Object? referralCount = null,
     Object? pointsEarned = null,
   }) {
-    return _then(
-      _$LeaderboardEntryImpl(
-        rank: null == rank
-            ? _value.rank
-            : rank // ignore: cast_nullable_to_non_nullable
-                  as int,
-        userId: null == userId
-            ? _value.userId
-            : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        userName: null == userName
-            ? _value.userName
-            : userName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        referralCount: null == referralCount
-            ? _value.referralCount
-            : referralCount // ignore: cast_nullable_to_non_nullable
-                  as int,
-        pointsEarned: null == pointsEarned
-            ? _value.pointsEarned
-            : pointsEarned // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
+    return _then(_$LeaderboardEntryImpl(
+      rank: null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      referralCount: null == referralCount
+          ? _value.referralCount
+          : referralCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      pointsEarned: null == pointsEarned
+          ? _value.pointsEarned
+          : pointsEarned // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$LeaderboardEntryImpl implements _LeaderboardEntry {
-  const _$LeaderboardEntryImpl({
-    required this.rank,
-    required this.userId,
-    required this.userName,
-    required this.referralCount,
-    required this.pointsEarned,
-  });
+  const _$LeaderboardEntryImpl(
+      {required this.rank,
+      required this.userId,
+      required this.userName,
+      required this.referralCount,
+      required this.pointsEarned});
 
   factory _$LeaderboardEntryImpl.fromJson(Map<String, dynamic> json) =>
       _$$LeaderboardEntryImplFromJson(json);
@@ -1141,42 +1021,33 @@ class _$LeaderboardEntryImpl implements _LeaderboardEntry {
                 other.pointsEarned == pointsEarned));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    rank,
-    userId,
-    userName,
-    referralCount,
-    pointsEarned,
-  );
+      runtimeType, rank, userId, userName, referralCount, pointsEarned);
 
-  /// Create a copy of LeaderboardEntry
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LeaderboardEntryImplCopyWith<_$LeaderboardEntryImpl> get copyWith =>
       __$$LeaderboardEntryImplCopyWithImpl<_$LeaderboardEntryImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LeaderboardEntryImplToJson(this);
+    return _$$LeaderboardEntryImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _LeaderboardEntry implements LeaderboardEntry {
-  const factory _LeaderboardEntry({
-    required final int rank,
-    required final String userId,
-    required final String userName,
-    required final int referralCount,
-    required final int pointsEarned,
-  }) = _$LeaderboardEntryImpl;
+  const factory _LeaderboardEntry(
+      {required final int rank,
+      required final String userId,
+      required final String userName,
+      required final int referralCount,
+      required final int pointsEarned}) = _$LeaderboardEntryImpl;
 
   factory _LeaderboardEntry.fromJson(Map<String, dynamic> json) =
       _$LeaderboardEntryImpl.fromJson;
@@ -1191,11 +1062,8 @@ abstract class _LeaderboardEntry implements LeaderboardEntry {
   int get referralCount;
   @override
   int get pointsEarned;
-
-  /// Create a copy of LeaderboardEntry
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LeaderboardEntryImplCopyWith<_$LeaderboardEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

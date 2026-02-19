@@ -12,61 +12,93 @@ part of 'chat_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChatEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchRooms,
-    required TResult Function(String roomId) fetchMessages,
-    required TResult Function(String roomId, String text) sendMessage,
-    required TResult Function(String roomId) startPolling,
-    required TResult Function() stopPolling,
-  }) => throw _privateConstructorUsedError;
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchRooms,
-    TResult? Function(String roomId)? fetchMessages,
-    TResult? Function(String roomId, String text)? sendMessage,
-    TResult? Function(String roomId)? startPolling,
-    TResult? Function()? stopPolling,
-  }) => throw _privateConstructorUsedError;
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchRooms,
-    TResult Function(String roomId)? fetchMessages,
-    TResult Function(String roomId, String text)? sendMessage,
-    TResult Function(String roomId)? startPolling,
-    TResult Function()? stopPolling,
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
     required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
     required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_StartPolling value) startPolling,
-    required TResult Function(_StopPolling value) stopPolling,
-  }) => throw _privateConstructorUsedError;
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
     TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_StartPolling value)? startPolling,
-    TResult? Function(_StopPolling value)? stopPolling,
-  }) => throw _privateConstructorUsedError;
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
     TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_StartPolling value)? startPolling,
-    TResult Function(_StopPolling value)? stopPolling,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -84,46 +116,38 @@ class _$ChatEventCopyWithImpl<$Res, $Val extends ChatEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$FetchRoomsImplCopyWith<$Res> {
-  factory _$$FetchRoomsImplCopyWith(
-    _$FetchRoomsImpl value,
-    $Res Function(_$FetchRoomsImpl) then,
-  ) = __$$FetchRoomsImplCopyWithImpl<$Res>;
+abstract class _$$FetchConversationsImplCopyWith<$Res> {
+  factory _$$FetchConversationsImplCopyWith(_$FetchConversationsImpl value,
+          $Res Function(_$FetchConversationsImpl) then) =
+      __$$FetchConversationsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FetchRoomsImplCopyWithImpl<$Res>
-    extends _$ChatEventCopyWithImpl<$Res, _$FetchRoomsImpl>
-    implements _$$FetchRoomsImplCopyWith<$Res> {
-  __$$FetchRoomsImplCopyWithImpl(
-    _$FetchRoomsImpl _value,
-    $Res Function(_$FetchRoomsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
+class __$$FetchConversationsImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$FetchConversationsImpl>
+    implements _$$FetchConversationsImplCopyWith<$Res> {
+  __$$FetchConversationsImplCopyWithImpl(_$FetchConversationsImpl _value,
+      $Res Function(_$FetchConversationsImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FetchRoomsImpl implements _FetchRooms {
-  const _$FetchRoomsImpl();
+class _$FetchConversationsImpl implements _FetchConversations {
+  const _$FetchConversationsImpl();
 
   @override
   String toString() {
-    return 'ChatEvent.fetchRooms()';
+    return 'ChatEvent.fetchConversations()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchRoomsImpl);
+        (other.runtimeType == runtimeType && other is _$FetchConversationsImpl);
   }
 
   @override
@@ -132,39 +156,60 @@ class _$FetchRoomsImpl implements _FetchRooms {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchRooms,
-    required TResult Function(String roomId) fetchMessages,
-    required TResult Function(String roomId, String text) sendMessage,
-    required TResult Function(String roomId) startPolling,
-    required TResult Function() stopPolling,
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
   }) {
-    return fetchRooms();
+    return fetchConversations();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchRooms,
-    TResult? Function(String roomId)? fetchMessages,
-    TResult? Function(String roomId, String text)? sendMessage,
-    TResult? Function(String roomId)? startPolling,
-    TResult? Function()? stopPolling,
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
   }) {
-    return fetchRooms?.call();
+    return fetchConversations?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchRooms,
-    TResult Function(String roomId)? fetchMessages,
-    TResult Function(String roomId, String text)? sendMessage,
-    TResult Function(String roomId)? startPolling,
-    TResult Function()? stopPolling,
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
     required TResult orElse(),
   }) {
-    if (fetchRooms != null) {
-      return fetchRooms();
+    if (fetchConversations != null) {
+      return fetchConversations();
     }
     return orElse();
   }
@@ -172,56 +217,250 @@ class _$FetchRoomsImpl implements _FetchRooms {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
     required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
     required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_StartPolling value) startPolling,
-    required TResult Function(_StopPolling value) stopPolling,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
   }) {
-    return fetchRooms(this);
+    return fetchConversations(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
     TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_StartPolling value)? startPolling,
-    TResult? Function(_StopPolling value)? stopPolling,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
   }) {
-    return fetchRooms?.call(this);
+    return fetchConversations?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
     TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_StartPolling value)? startPolling,
-    TResult Function(_StopPolling value)? stopPolling,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
     required TResult orElse(),
   }) {
-    if (fetchRooms != null) {
-      return fetchRooms(this);
+    if (fetchConversations != null) {
+      return fetchConversations(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchRooms implements ChatEvent {
-  const factory _FetchRooms() = _$FetchRoomsImpl;
+abstract class _FetchConversations implements ChatEvent {
+  const factory _FetchConversations() = _$FetchConversationsImpl;
+}
+
+/// @nodoc
+abstract class _$$ConversationsUpdatedImplCopyWith<$Res> {
+  factory _$$ConversationsUpdatedImplCopyWith(_$ConversationsUpdatedImpl value,
+          $Res Function(_$ConversationsUpdatedImpl) then) =
+      __$$ConversationsUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ChatConversation> conversations});
+}
+
+/// @nodoc
+class __$$ConversationsUpdatedImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$ConversationsUpdatedImpl>
+    implements _$$ConversationsUpdatedImplCopyWith<$Res> {
+  __$$ConversationsUpdatedImplCopyWithImpl(_$ConversationsUpdatedImpl _value,
+      $Res Function(_$ConversationsUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? conversations = null,
+  }) {
+    return _then(_$ConversationsUpdatedImpl(
+      null == conversations
+          ? _value._conversations
+          : conversations // ignore: cast_nullable_to_non_nullable
+              as List<ChatConversation>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConversationsUpdatedImpl implements _ConversationsUpdated {
+  const _$ConversationsUpdatedImpl(final List<ChatConversation> conversations)
+      : _conversations = conversations;
+
+  final List<ChatConversation> _conversations;
+  @override
+  List<ChatConversation> get conversations {
+    if (_conversations is EqualUnmodifiableListView) return _conversations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_conversations);
+  }
+
+  @override
+  String toString() {
+    return 'ChatEvent.conversationsUpdated(conversations: $conversations)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConversationsUpdatedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._conversations, _conversations));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_conversations));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConversationsUpdatedImplCopyWith<_$ConversationsUpdatedImpl>
+      get copyWith =>
+          __$$ConversationsUpdatedImplCopyWithImpl<_$ConversationsUpdatedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
+  }) {
+    return conversationsUpdated(conversations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
+  }) {
+    return conversationsUpdated?.call(conversations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
+    required TResult orElse(),
+  }) {
+    if (conversationsUpdated != null) {
+      return conversationsUpdated(conversations);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
+  }) {
+    return conversationsUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
+  }) {
+    return conversationsUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
+    required TResult orElse(),
+  }) {
+    if (conversationsUpdated != null) {
+      return conversationsUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConversationsUpdated implements ChatEvent {
+  const factory _ConversationsUpdated(
+      final List<ChatConversation> conversations) = _$ConversationsUpdatedImpl;
+
+  List<ChatConversation> get conversations;
+  @JsonKey(ignore: true)
+  _$$ConversationsUpdatedImplCopyWith<_$ConversationsUpdatedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$FetchMessagesImplCopyWith<$Res> {
   factory _$$FetchMessagesImplCopyWith(
-    _$FetchMessagesImpl value,
-    $Res Function(_$FetchMessagesImpl) then,
-  ) = __$$FetchMessagesImplCopyWithImpl<$Res>;
+          _$FetchMessagesImpl value, $Res Function(_$FetchMessagesImpl) then) =
+      __$$FetchMessagesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String roomId});
+  $Res call({String otherUserId});
 }
 
 /// @nodoc
@@ -229,37 +468,34 @@ class __$$FetchMessagesImplCopyWithImpl<$Res>
     extends _$ChatEventCopyWithImpl<$Res, _$FetchMessagesImpl>
     implements _$$FetchMessagesImplCopyWith<$Res> {
   __$$FetchMessagesImplCopyWithImpl(
-    _$FetchMessagesImpl _value,
-    $Res Function(_$FetchMessagesImpl) _then,
-  ) : super(_value, _then);
+      _$FetchMessagesImpl _value, $Res Function(_$FetchMessagesImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? roomId = null}) {
-    return _then(
-      _$FetchMessagesImpl(
-        roomId: null == roomId
-            ? _value.roomId
-            : roomId // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? otherUserId = null,
+  }) {
+    return _then(_$FetchMessagesImpl(
+      otherUserId: null == otherUserId
+          ? _value.otherUserId
+          : otherUserId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$FetchMessagesImpl implements _FetchMessages {
-  const _$FetchMessagesImpl({required this.roomId});
+  const _$FetchMessagesImpl({required this.otherUserId});
 
   @override
-  final String roomId;
+  final String otherUserId;
 
   @override
   String toString() {
-    return 'ChatEvent.fetchMessages(roomId: $roomId)';
+    return 'ChatEvent.fetchMessages(otherUserId: $otherUserId)';
   }
 
   @override
@@ -267,15 +503,14 @@ class _$FetchMessagesImpl implements _FetchMessages {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchMessagesImpl &&
-            (identical(other.roomId, roomId) || other.roomId == roomId));
+            (identical(other.otherUserId, otherUserId) ||
+                other.otherUserId == otherUserId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, roomId);
+  int get hashCode => Object.hash(runtimeType, otherUserId);
 
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FetchMessagesImplCopyWith<_$FetchMessagesImpl> get copyWith =>
@@ -284,39 +519,60 @@ class _$FetchMessagesImpl implements _FetchMessages {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchRooms,
-    required TResult Function(String roomId) fetchMessages,
-    required TResult Function(String roomId, String text) sendMessage,
-    required TResult Function(String roomId) startPolling,
-    required TResult Function() stopPolling,
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
   }) {
-    return fetchMessages(roomId);
+    return fetchMessages(otherUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchRooms,
-    TResult? Function(String roomId)? fetchMessages,
-    TResult? Function(String roomId, String text)? sendMessage,
-    TResult? Function(String roomId)? startPolling,
-    TResult? Function()? stopPolling,
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
   }) {
-    return fetchMessages?.call(roomId);
+    return fetchMessages?.call(otherUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchRooms,
-    TResult Function(String roomId)? fetchMessages,
-    TResult Function(String roomId, String text)? sendMessage,
-    TResult Function(String roomId)? startPolling,
-    TResult Function()? stopPolling,
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
     required TResult orElse(),
   }) {
     if (fetchMessages != null) {
-      return fetchMessages(roomId);
+      return fetchMessages(otherUserId);
     }
     return orElse();
   }
@@ -324,11 +580,13 @@ class _$FetchMessagesImpl implements _FetchMessages {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
     required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
     required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_StartPolling value) startPolling,
-    required TResult Function(_StopPolling value) stopPolling,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
   }) {
     return fetchMessages(this);
   }
@@ -336,11 +594,13 @@ class _$FetchMessagesImpl implements _FetchMessages {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
     TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_StartPolling value)? startPolling,
-    TResult? Function(_StopPolling value)? stopPolling,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
   }) {
     return fetchMessages?.call(this);
   }
@@ -348,11 +608,13 @@ class _$FetchMessagesImpl implements _FetchMessages {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
     TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_StartPolling value)? startPolling,
-    TResult Function(_StopPolling value)? stopPolling,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
     required TResult orElse(),
   }) {
     if (fetchMessages != null) {
@@ -363,26 +625,213 @@ class _$FetchMessagesImpl implements _FetchMessages {
 }
 
 abstract class _FetchMessages implements ChatEvent {
-  const factory _FetchMessages({required final String roomId}) =
+  const factory _FetchMessages({required final String otherUserId}) =
       _$FetchMessagesImpl;
 
-  String get roomId;
-
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  String get otherUserId;
+  @JsonKey(ignore: true)
   _$$FetchMessagesImplCopyWith<_$FetchMessagesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MessagesUpdatedImplCopyWith<$Res> {
+  factory _$$MessagesUpdatedImplCopyWith(_$MessagesUpdatedImpl value,
+          $Res Function(_$MessagesUpdatedImpl) then) =
+      __$$MessagesUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ChatMessage> messages});
+}
+
+/// @nodoc
+class __$$MessagesUpdatedImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$MessagesUpdatedImpl>
+    implements _$$MessagesUpdatedImplCopyWith<$Res> {
+  __$$MessagesUpdatedImplCopyWithImpl(
+      _$MessagesUpdatedImpl _value, $Res Function(_$MessagesUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? messages = null,
+  }) {
+    return _then(_$MessagesUpdatedImpl(
+      null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<ChatMessage>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MessagesUpdatedImpl implements _MessagesUpdated {
+  const _$MessagesUpdatedImpl(final List<ChatMessage> messages)
+      : _messages = messages;
+
+  final List<ChatMessage> _messages;
+  @override
+  List<ChatMessage> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  String toString() {
+    return 'ChatEvent.messagesUpdated(messages: $messages)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MessagesUpdatedImpl &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MessagesUpdatedImplCopyWith<_$MessagesUpdatedImpl> get copyWith =>
+      __$$MessagesUpdatedImplCopyWithImpl<_$MessagesUpdatedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
+  }) {
+    return messagesUpdated(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
+  }) {
+    return messagesUpdated?.call(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
+    required TResult orElse(),
+  }) {
+    if (messagesUpdated != null) {
+      return messagesUpdated(messages);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
+    required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
+  }) {
+    return messagesUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
+    TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
+  }) {
+    return messagesUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
+    TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
+    required TResult orElse(),
+  }) {
+    if (messagesUpdated != null) {
+      return messagesUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MessagesUpdated implements ChatEvent {
+  const factory _MessagesUpdated(final List<ChatMessage> messages) =
+      _$MessagesUpdatedImpl;
+
+  List<ChatMessage> get messages;
+  @JsonKey(ignore: true)
+  _$$MessagesUpdatedImplCopyWith<_$MessagesUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$SendMessageImplCopyWith<$Res> {
   factory _$$SendMessageImplCopyWith(
-    _$SendMessageImpl value,
-    $Res Function(_$SendMessageImpl) then,
-  ) = __$$SendMessageImplCopyWithImpl<$Res>;
+          _$SendMessageImpl value, $Res Function(_$SendMessageImpl) then) =
+      __$$SendMessageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String roomId, String text});
+  $Res call(
+      {String receiverId,
+      String text,
+      String? senderName,
+      String? senderAvatar});
 }
 
 /// @nodoc
@@ -390,43 +839,59 @@ class __$$SendMessageImplCopyWithImpl<$Res>
     extends _$ChatEventCopyWithImpl<$Res, _$SendMessageImpl>
     implements _$$SendMessageImplCopyWith<$Res> {
   __$$SendMessageImplCopyWithImpl(
-    _$SendMessageImpl _value,
-    $Res Function(_$SendMessageImpl) _then,
-  ) : super(_value, _then);
+      _$SendMessageImpl _value, $Res Function(_$SendMessageImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? roomId = null, Object? text = null}) {
-    return _then(
-      _$SendMessageImpl(
-        roomId: null == roomId
-            ? _value.roomId
-            : roomId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        text: null == text
-            ? _value.text
-            : text // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? receiverId = null,
+    Object? text = null,
+    Object? senderName = freezed,
+    Object? senderAvatar = freezed,
+  }) {
+    return _then(_$SendMessageImpl(
+      receiverId: null == receiverId
+          ? _value.receiverId
+          : receiverId // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      senderName: freezed == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      senderAvatar: freezed == senderAvatar
+          ? _value.senderAvatar
+          : senderAvatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$SendMessageImpl implements _SendMessage {
-  const _$SendMessageImpl({required this.roomId, required this.text});
+  const _$SendMessageImpl(
+      {required this.receiverId,
+      required this.text,
+      this.senderName,
+      this.senderAvatar});
 
   @override
-  final String roomId;
+  final String receiverId;
   @override
   final String text;
+  @override
+  final String? senderName;
+  @override
+  final String? senderAvatar;
 
   @override
   String toString() {
-    return 'ChatEvent.sendMessage(roomId: $roomId, text: $text)';
+    return 'ChatEvent.sendMessage(receiverId: $receiverId, text: $text, senderName: $senderName, senderAvatar: $senderAvatar)';
   }
 
   @override
@@ -434,16 +899,20 @@ class _$SendMessageImpl implements _SendMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendMessageImpl &&
-            (identical(other.roomId, roomId) || other.roomId == roomId) &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.receiverId, receiverId) ||
+                other.receiverId == receiverId) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.senderName, senderName) ||
+                other.senderName == senderName) &&
+            (identical(other.senderAvatar, senderAvatar) ||
+                other.senderAvatar == senderAvatar));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, roomId, text);
+  int get hashCode =>
+      Object.hash(runtimeType, receiverId, text, senderName, senderAvatar);
 
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
@@ -452,39 +921,60 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchRooms,
-    required TResult Function(String roomId) fetchMessages,
-    required TResult Function(String roomId, String text) sendMessage,
-    required TResult Function(String roomId) startPolling,
-    required TResult Function() stopPolling,
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
   }) {
-    return sendMessage(roomId, text);
+    return sendMessage(receiverId, text, senderName, senderAvatar);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchRooms,
-    TResult? Function(String roomId)? fetchMessages,
-    TResult? Function(String roomId, String text)? sendMessage,
-    TResult? Function(String roomId)? startPolling,
-    TResult? Function()? stopPolling,
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
   }) {
-    return sendMessage?.call(roomId, text);
+    return sendMessage?.call(receiverId, text, senderName, senderAvatar);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchRooms,
-    TResult Function(String roomId)? fetchMessages,
-    TResult Function(String roomId, String text)? sendMessage,
-    TResult Function(String roomId)? startPolling,
-    TResult Function()? stopPolling,
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
-      return sendMessage(roomId, text);
+      return sendMessage(receiverId, text, senderName, senderAvatar);
     }
     return orElse();
   }
@@ -492,11 +982,13 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
     required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
     required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_StartPolling value) startPolling,
-    required TResult Function(_StopPolling value) stopPolling,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
   }) {
     return sendMessage(this);
   }
@@ -504,11 +996,13 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
     TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_StartPolling value)? startPolling,
-    TResult? Function(_StopPolling value)? stopPolling,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
   }) {
     return sendMessage?.call(this);
   }
@@ -516,11 +1010,13 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
     TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_StartPolling value)? startPolling,
-    TResult Function(_StopPolling value)? stopPolling,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -531,124 +1027,175 @@ class _$SendMessageImpl implements _SendMessage {
 }
 
 abstract class _SendMessage implements ChatEvent {
-  const factory _SendMessage({
-    required final String roomId,
-    required final String text,
-  }) = _$SendMessageImpl;
+  const factory _SendMessage(
+      {required final String receiverId,
+      required final String text,
+      final String? senderName,
+      final String? senderAvatar}) = _$SendMessageImpl;
 
-  String get roomId;
+  String get receiverId;
   String get text;
-
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get senderName;
+  String? get senderAvatar;
+  @JsonKey(ignore: true)
   _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StartPollingImplCopyWith<$Res> {
-  factory _$$StartPollingImplCopyWith(
-    _$StartPollingImpl value,
-    $Res Function(_$StartPollingImpl) then,
-  ) = __$$StartPollingImplCopyWithImpl<$Res>;
+abstract class _$$SendImageImplCopyWith<$Res> {
+  factory _$$SendImageImplCopyWith(
+          _$SendImageImpl value, $Res Function(_$SendImageImpl) then) =
+      __$$SendImageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String roomId});
+  $Res call(
+      {String receiverId,
+      File image,
+      String? senderName,
+      String? senderAvatar});
 }
 
 /// @nodoc
-class __$$StartPollingImplCopyWithImpl<$Res>
-    extends _$ChatEventCopyWithImpl<$Res, _$StartPollingImpl>
-    implements _$$StartPollingImplCopyWith<$Res> {
-  __$$StartPollingImplCopyWithImpl(
-    _$StartPollingImpl _value,
-    $Res Function(_$StartPollingImpl) _then,
-  ) : super(_value, _then);
+class __$$SendImageImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$SendImageImpl>
+    implements _$$SendImageImplCopyWith<$Res> {
+  __$$SendImageImplCopyWithImpl(
+      _$SendImageImpl _value, $Res Function(_$SendImageImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? roomId = null}) {
-    return _then(
-      _$StartPollingImpl(
-        roomId: null == roomId
-            ? _value.roomId
-            : roomId // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? receiverId = null,
+    Object? image = null,
+    Object? senderName = freezed,
+    Object? senderAvatar = freezed,
+  }) {
+    return _then(_$SendImageImpl(
+      receiverId: null == receiverId
+          ? _value.receiverId
+          : receiverId // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as File,
+      senderName: freezed == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      senderAvatar: freezed == senderAvatar
+          ? _value.senderAvatar
+          : senderAvatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 
-class _$StartPollingImpl implements _StartPolling {
-  const _$StartPollingImpl({required this.roomId});
+class _$SendImageImpl implements _SendImage {
+  const _$SendImageImpl(
+      {required this.receiverId,
+      required this.image,
+      this.senderName,
+      this.senderAvatar});
 
   @override
-  final String roomId;
+  final String receiverId;
+  @override
+  final File image;
+  @override
+  final String? senderName;
+  @override
+  final String? senderAvatar;
 
   @override
   String toString() {
-    return 'ChatEvent.startPolling(roomId: $roomId)';
+    return 'ChatEvent.sendImage(receiverId: $receiverId, image: $image, senderName: $senderName, senderAvatar: $senderAvatar)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StartPollingImpl &&
-            (identical(other.roomId, roomId) || other.roomId == roomId));
+            other is _$SendImageImpl &&
+            (identical(other.receiverId, receiverId) ||
+                other.receiverId == receiverId) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.senderName, senderName) ||
+                other.senderName == senderName) &&
+            (identical(other.senderAvatar, senderAvatar) ||
+                other.senderAvatar == senderAvatar));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, roomId);
+  int get hashCode =>
+      Object.hash(runtimeType, receiverId, image, senderName, senderAvatar);
 
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StartPollingImplCopyWith<_$StartPollingImpl> get copyWith =>
-      __$$StartPollingImplCopyWithImpl<_$StartPollingImpl>(this, _$identity);
+  _$$SendImageImplCopyWith<_$SendImageImpl> get copyWith =>
+      __$$SendImageImplCopyWithImpl<_$SendImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchRooms,
-    required TResult Function(String roomId) fetchMessages,
-    required TResult Function(String roomId, String text) sendMessage,
-    required TResult Function(String roomId) startPolling,
-    required TResult Function() stopPolling,
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
   }) {
-    return startPolling(roomId);
+    return sendImage(receiverId, image, senderName, senderAvatar);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchRooms,
-    TResult? Function(String roomId)? fetchMessages,
-    TResult? Function(String roomId, String text)? sendMessage,
-    TResult? Function(String roomId)? startPolling,
-    TResult? Function()? stopPolling,
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
   }) {
-    return startPolling?.call(roomId);
+    return sendImage?.call(receiverId, image, senderName, senderAvatar);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchRooms,
-    TResult Function(String roomId)? fetchMessages,
-    TResult Function(String roomId, String text)? sendMessage,
-    TResult Function(String roomId)? startPolling,
-    TResult Function()? stopPolling,
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
     required TResult orElse(),
   }) {
-    if (startPolling != null) {
-      return startPolling(roomId);
+    if (sendImage != null) {
+      return sendImage(receiverId, image, senderName, senderAvatar);
     }
     return orElse();
   }
@@ -656,133 +1203,185 @@ class _$StartPollingImpl implements _StartPolling {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
     required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
     required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_StartPolling value) startPolling,
-    required TResult Function(_StopPolling value) stopPolling,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
   }) {
-    return startPolling(this);
+    return sendImage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
     TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_StartPolling value)? startPolling,
-    TResult? Function(_StopPolling value)? stopPolling,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
   }) {
-    return startPolling?.call(this);
+    return sendImage?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
     TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_StartPolling value)? startPolling,
-    TResult Function(_StopPolling value)? stopPolling,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
     required TResult orElse(),
   }) {
-    if (startPolling != null) {
-      return startPolling(this);
+    if (sendImage != null) {
+      return sendImage(this);
     }
     return orElse();
   }
 }
 
-abstract class _StartPolling implements ChatEvent {
-  const factory _StartPolling({required final String roomId}) =
-      _$StartPollingImpl;
+abstract class _SendImage implements ChatEvent {
+  const factory _SendImage(
+      {required final String receiverId,
+      required final File image,
+      final String? senderName,
+      final String? senderAvatar}) = _$SendImageImpl;
 
-  String get roomId;
-
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$StartPollingImplCopyWith<_$StartPollingImpl> get copyWith =>
+  String get receiverId;
+  File get image;
+  String? get senderName;
+  String? get senderAvatar;
+  @JsonKey(ignore: true)
+  _$$SendImageImplCopyWith<_$SendImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StopPollingImplCopyWith<$Res> {
-  factory _$$StopPollingImplCopyWith(
-    _$StopPollingImpl value,
-    $Res Function(_$StopPollingImpl) then,
-  ) = __$$StopPollingImplCopyWithImpl<$Res>;
+abstract class _$$MarkAsReadImplCopyWith<$Res> {
+  factory _$$MarkAsReadImplCopyWith(
+          _$MarkAsReadImpl value, $Res Function(_$MarkAsReadImpl) then) =
+      __$$MarkAsReadImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String otherUserId});
 }
 
 /// @nodoc
-class __$$StopPollingImplCopyWithImpl<$Res>
-    extends _$ChatEventCopyWithImpl<$Res, _$StopPollingImpl>
-    implements _$$StopPollingImplCopyWith<$Res> {
-  __$$StopPollingImplCopyWithImpl(
-    _$StopPollingImpl _value,
-    $Res Function(_$StopPollingImpl) _then,
-  ) : super(_value, _then);
+class __$$MarkAsReadImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$MarkAsReadImpl>
+    implements _$$MarkAsReadImplCopyWith<$Res> {
+  __$$MarkAsReadImplCopyWithImpl(
+      _$MarkAsReadImpl _value, $Res Function(_$MarkAsReadImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ChatEvent
-  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? otherUserId = null,
+  }) {
+    return _then(_$MarkAsReadImpl(
+      otherUserId: null == otherUserId
+          ? _value.otherUserId
+          : otherUserId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$StopPollingImpl implements _StopPolling {
-  const _$StopPollingImpl();
+class _$MarkAsReadImpl implements _MarkAsRead {
+  const _$MarkAsReadImpl({required this.otherUserId});
+
+  @override
+  final String otherUserId;
 
   @override
   String toString() {
-    return 'ChatEvent.stopPolling()';
+    return 'ChatEvent.markAsRead(otherUserId: $otherUserId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StopPollingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$MarkAsReadImpl &&
+            (identical(other.otherUserId, otherUserId) ||
+                other.otherUserId == otherUserId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, otherUserId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MarkAsReadImplCopyWith<_$MarkAsReadImpl> get copyWith =>
+      __$$MarkAsReadImplCopyWithImpl<_$MarkAsReadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchRooms,
-    required TResult Function(String roomId) fetchMessages,
-    required TResult Function(String roomId, String text) sendMessage,
-    required TResult Function(String roomId) startPolling,
-    required TResult Function() stopPolling,
+    required TResult Function() fetchConversations,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsUpdated,
+    required TResult Function(String otherUserId) fetchMessages,
+    required TResult Function(List<ChatMessage> messages) messagesUpdated,
+    required TResult Function(String receiverId, String text,
+            String? senderName, String? senderAvatar)
+        sendMessage,
+    required TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)
+        sendImage,
+    required TResult Function(String otherUserId) markAsRead,
   }) {
-    return stopPolling();
+    return markAsRead(otherUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchRooms,
-    TResult? Function(String roomId)? fetchMessages,
-    TResult? Function(String roomId, String text)? sendMessage,
-    TResult? Function(String roomId)? startPolling,
-    TResult? Function()? stopPolling,
+    TResult? Function()? fetchConversations,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult? Function(String otherUserId)? fetchMessages,
+    TResult? Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult? Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult? Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult? Function(String otherUserId)? markAsRead,
   }) {
-    return stopPolling?.call();
+    return markAsRead?.call(otherUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchRooms,
-    TResult Function(String roomId)? fetchMessages,
-    TResult Function(String roomId, String text)? sendMessage,
-    TResult Function(String roomId)? startPolling,
-    TResult Function()? stopPolling,
+    TResult Function()? fetchConversations,
+    TResult Function(List<ChatConversation> conversations)?
+        conversationsUpdated,
+    TResult Function(String otherUserId)? fetchMessages,
+    TResult Function(List<ChatMessage> messages)? messagesUpdated,
+    TResult Function(String receiverId, String text, String? senderName,
+            String? senderAvatar)?
+        sendMessage,
+    TResult Function(String receiverId, File image, String? senderName,
+            String? senderAvatar)?
+        sendImage,
+    TResult Function(String otherUserId)? markAsRead,
     required TResult orElse(),
   }) {
-    if (stopPolling != null) {
-      return stopPolling();
+    if (markAsRead != null) {
+      return markAsRead(otherUserId);
     }
     return orElse();
   }
@@ -790,46 +1389,58 @@ class _$StopPollingImpl implements _StopPolling {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchRooms value) fetchRooms,
+    required TResult Function(_FetchConversations value) fetchConversations,
+    required TResult Function(_ConversationsUpdated value) conversationsUpdated,
     required TResult Function(_FetchMessages value) fetchMessages,
+    required TResult Function(_MessagesUpdated value) messagesUpdated,
     required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_StartPolling value) startPolling,
-    required TResult Function(_StopPolling value) stopPolling,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_MarkAsRead value) markAsRead,
   }) {
-    return stopPolling(this);
+    return markAsRead(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchRooms value)? fetchRooms,
+    TResult? Function(_FetchConversations value)? fetchConversations,
+    TResult? Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult? Function(_FetchMessages value)? fetchMessages,
+    TResult? Function(_MessagesUpdated value)? messagesUpdated,
     TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_StartPolling value)? startPolling,
-    TResult? Function(_StopPolling value)? stopPolling,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_MarkAsRead value)? markAsRead,
   }) {
-    return stopPolling?.call(this);
+    return markAsRead?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchRooms value)? fetchRooms,
+    TResult Function(_FetchConversations value)? fetchConversations,
+    TResult Function(_ConversationsUpdated value)? conversationsUpdated,
     TResult Function(_FetchMessages value)? fetchMessages,
+    TResult Function(_MessagesUpdated value)? messagesUpdated,
     TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_StartPolling value)? startPolling,
-    TResult Function(_StopPolling value)? stopPolling,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_MarkAsRead value)? markAsRead,
     required TResult orElse(),
   }) {
-    if (stopPolling != null) {
-      return stopPolling(this);
+    if (markAsRead != null) {
+      return markAsRead(this);
     }
     return orElse();
   }
 }
 
-abstract class _StopPolling implements ChatEvent {
-  const factory _StopPolling() = _$StopPollingImpl;
+abstract class _MarkAsRead implements ChatEvent {
+  const factory _MarkAsRead({required final String otherUserId}) =
+      _$MarkAsReadImpl;
+
+  String get otherUserId;
+  @JsonKey(ignore: true)
+  _$$MarkAsReadImplCopyWith<_$MarkAsReadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -838,52 +1449,60 @@ mixin _$ChatState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> rooms) roomsLoaded,
-    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsLoaded,
+    required TResult Function(List<ChatMessage> messages) messagesLoaded,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> rooms)? roomsLoaded,
-    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsLoaded,
+    TResult? Function(List<ChatMessage> messages)? messagesLoaded,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> rooms)? roomsLoaded,
-    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(List<ChatConversation> conversations)? conversationsLoaded,
+    TResult Function(List<ChatMessage> messages)? messagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_ConversationsLoaded value) conversationsLoaded,
     required TResult Function(_MessagesLoaded value) messagesLoaded,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult? Function(_MessagesLoaded value)? messagesLoaded,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult Function(_MessagesLoaded value)? messagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -901,17 +1520,13 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -919,12 +1534,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$ChatStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -951,8 +1562,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> rooms) roomsLoaded,
-    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsLoaded,
+    required TResult Function(List<ChatMessage> messages) messagesLoaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -963,8 +1575,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> rooms)? roomsLoaded,
-    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsLoaded,
+    TResult? Function(List<ChatMessage> messages)? messagesLoaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -975,8 +1588,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> rooms)? roomsLoaded,
-    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(List<ChatConversation> conversations)? conversationsLoaded,
+    TResult Function(List<ChatMessage> messages)? messagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -991,7 +1604,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_ConversationsLoaded value) conversationsLoaded,
     required TResult Function(_MessagesLoaded value) messagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -1003,7 +1616,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult? Function(_MessagesLoaded value)? messagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -1015,7 +1628,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult Function(_MessagesLoaded value)? messagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1034,9 +1647,8 @@ abstract class _Initial implements ChatState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1044,12 +1656,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$ChatStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1076,8 +1684,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> rooms) roomsLoaded,
-    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsLoaded,
+    required TResult Function(List<ChatMessage> messages) messagesLoaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -1088,8 +1697,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> rooms)? roomsLoaded,
-    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsLoaded,
+    TResult? Function(List<ChatMessage> messages)? messagesLoaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -1100,8 +1710,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> rooms)? roomsLoaded,
-    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(List<ChatConversation> conversations)? conversationsLoaded,
+    TResult Function(List<ChatMessage> messages)? messagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1116,7 +1726,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_ConversationsLoaded value) conversationsLoaded,
     required TResult Function(_MessagesLoaded value) messagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -1128,7 +1738,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult? Function(_MessagesLoaded value)? messagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -1140,7 +1750,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult Function(_MessagesLoaded value)? messagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1157,89 +1767,87 @@ abstract class _Loading implements ChatState {
 }
 
 /// @nodoc
-abstract class _$$RoomsLoadedImplCopyWith<$Res> {
-  factory _$$RoomsLoadedImplCopyWith(
-    _$RoomsLoadedImpl value,
-    $Res Function(_$RoomsLoadedImpl) then,
-  ) = __$$RoomsLoadedImplCopyWithImpl<$Res>;
+abstract class _$$ConversationsLoadedImplCopyWith<$Res> {
+  factory _$$ConversationsLoadedImplCopyWith(_$ConversationsLoadedImpl value,
+          $Res Function(_$ConversationsLoadedImpl) then) =
+      __$$ConversationsLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<dynamic> rooms});
+  $Res call({List<ChatConversation> conversations});
 }
 
 /// @nodoc
-class __$$RoomsLoadedImplCopyWithImpl<$Res>
-    extends _$ChatStateCopyWithImpl<$Res, _$RoomsLoadedImpl>
-    implements _$$RoomsLoadedImplCopyWith<$Res> {
-  __$$RoomsLoadedImplCopyWithImpl(
-    _$RoomsLoadedImpl _value,
-    $Res Function(_$RoomsLoadedImpl) _then,
-  ) : super(_value, _then);
+class __$$ConversationsLoadedImplCopyWithImpl<$Res>
+    extends _$ChatStateCopyWithImpl<$Res, _$ConversationsLoadedImpl>
+    implements _$$ConversationsLoadedImplCopyWith<$Res> {
+  __$$ConversationsLoadedImplCopyWithImpl(_$ConversationsLoadedImpl _value,
+      $Res Function(_$ConversationsLoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? rooms = null}) {
-    return _then(
-      _$RoomsLoadedImpl(
-        rooms: null == rooms
-            ? _value._rooms
-            : rooms // ignore: cast_nullable_to_non_nullable
-                  as List<dynamic>,
-      ),
-    );
+  $Res call({
+    Object? conversations = null,
+  }) {
+    return _then(_$ConversationsLoadedImpl(
+      conversations: null == conversations
+          ? _value._conversations
+          : conversations // ignore: cast_nullable_to_non_nullable
+              as List<ChatConversation>,
+    ));
   }
 }
 
 /// @nodoc
 
-class _$RoomsLoadedImpl implements _RoomsLoaded {
-  const _$RoomsLoadedImpl({required final List<dynamic> rooms})
-    : _rooms = rooms;
+class _$ConversationsLoadedImpl implements _ConversationsLoaded {
+  const _$ConversationsLoadedImpl(
+      {required final List<ChatConversation> conversations})
+      : _conversations = conversations;
 
-  final List<dynamic> _rooms;
+  final List<ChatConversation> _conversations;
   @override
-  List<dynamic> get rooms {
-    if (_rooms is EqualUnmodifiableListView) return _rooms;
+  List<ChatConversation> get conversations {
+    if (_conversations is EqualUnmodifiableListView) return _conversations;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_rooms);
+    return EqualUnmodifiableListView(_conversations);
   }
 
   @override
   String toString() {
-    return 'ChatState.roomsLoaded(rooms: $rooms)';
+    return 'ChatState.conversationsLoaded(conversations: $conversations)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RoomsLoadedImpl &&
-            const DeepCollectionEquality().equals(other._rooms, _rooms));
+            other is _$ConversationsLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._conversations, _conversations));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_rooms));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_conversations));
 
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RoomsLoadedImplCopyWith<_$RoomsLoadedImpl> get copyWith =>
-      __$$RoomsLoadedImplCopyWithImpl<_$RoomsLoadedImpl>(this, _$identity);
+  _$$ConversationsLoadedImplCopyWith<_$ConversationsLoadedImpl> get copyWith =>
+      __$$ConversationsLoadedImplCopyWithImpl<_$ConversationsLoadedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> rooms) roomsLoaded,
-    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsLoaded,
+    required TResult Function(List<ChatMessage> messages) messagesLoaded,
     required TResult Function(String message) error,
   }) {
-    return roomsLoaded(rooms);
+    return conversationsLoaded(conversations);
   }
 
   @override
@@ -1247,11 +1855,12 @@ class _$RoomsLoadedImpl implements _RoomsLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> rooms)? roomsLoaded,
-    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsLoaded,
+    TResult? Function(List<ChatMessage> messages)? messagesLoaded,
     TResult? Function(String message)? error,
   }) {
-    return roomsLoaded?.call(rooms);
+    return conversationsLoaded?.call(conversations);
   }
 
   @override
@@ -1259,13 +1868,13 @@ class _$RoomsLoadedImpl implements _RoomsLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> rooms)? roomsLoaded,
-    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(List<ChatConversation> conversations)? conversationsLoaded,
+    TResult Function(List<ChatMessage> messages)? messagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (roomsLoaded != null) {
-      return roomsLoaded(rooms);
+    if (conversationsLoaded != null) {
+      return conversationsLoaded(conversations);
     }
     return orElse();
   }
@@ -1275,11 +1884,11 @@ class _$RoomsLoadedImpl implements _RoomsLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_ConversationsLoaded value) conversationsLoaded,
     required TResult Function(_MessagesLoaded value) messagesLoaded,
     required TResult Function(_Error value) error,
   }) {
-    return roomsLoaded(this);
+    return conversationsLoaded(this);
   }
 
   @override
@@ -1287,11 +1896,11 @@ class _$RoomsLoadedImpl implements _RoomsLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult? Function(_MessagesLoaded value)? messagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
-    return roomsLoaded?.call(this);
+    return conversationsLoaded?.call(this);
   }
 
   @override
@@ -1299,39 +1908,36 @@ class _$RoomsLoadedImpl implements _RoomsLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult Function(_MessagesLoaded value)? messagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (roomsLoaded != null) {
-      return roomsLoaded(this);
+    if (conversationsLoaded != null) {
+      return conversationsLoaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _RoomsLoaded implements ChatState {
-  const factory _RoomsLoaded({required final List<dynamic> rooms}) =
-      _$RoomsLoadedImpl;
+abstract class _ConversationsLoaded implements ChatState {
+  const factory _ConversationsLoaded(
+          {required final List<ChatConversation> conversations}) =
+      _$ConversationsLoadedImpl;
 
-  List<dynamic> get rooms;
-
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RoomsLoadedImplCopyWith<_$RoomsLoadedImpl> get copyWith =>
+  List<ChatConversation> get conversations;
+  @JsonKey(ignore: true)
+  _$$ConversationsLoadedImplCopyWith<_$ConversationsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$MessagesLoadedImplCopyWith<$Res> {
-  factory _$$MessagesLoadedImplCopyWith(
-    _$MessagesLoadedImpl value,
-    $Res Function(_$MessagesLoadedImpl) then,
-  ) = __$$MessagesLoadedImplCopyWithImpl<$Res>;
+  factory _$$MessagesLoadedImplCopyWith(_$MessagesLoadedImpl value,
+          $Res Function(_$MessagesLoadedImpl) then) =
+      __$$MessagesLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<dynamic> messages});
+  $Res call({List<ChatMessage> messages});
 }
 
 /// @nodoc
@@ -1339,35 +1945,32 @@ class __$$MessagesLoadedImplCopyWithImpl<$Res>
     extends _$ChatStateCopyWithImpl<$Res, _$MessagesLoadedImpl>
     implements _$$MessagesLoadedImplCopyWith<$Res> {
   __$$MessagesLoadedImplCopyWithImpl(
-    _$MessagesLoadedImpl _value,
-    $Res Function(_$MessagesLoadedImpl) _then,
-  ) : super(_value, _then);
+      _$MessagesLoadedImpl _value, $Res Function(_$MessagesLoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? messages = null}) {
-    return _then(
-      _$MessagesLoadedImpl(
-        messages: null == messages
-            ? _value._messages
-            : messages // ignore: cast_nullable_to_non_nullable
-                  as List<dynamic>,
-      ),
-    );
+  $Res call({
+    Object? messages = null,
+  }) {
+    return _then(_$MessagesLoadedImpl(
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<ChatMessage>,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$MessagesLoadedImpl implements _MessagesLoaded {
-  const _$MessagesLoadedImpl({required final List<dynamic> messages})
-    : _messages = messages;
+  const _$MessagesLoadedImpl({required final List<ChatMessage> messages})
+      : _messages = messages;
 
-  final List<dynamic> _messages;
+  final List<ChatMessage> _messages;
   @override
-  List<dynamic> get messages {
+  List<ChatMessage> get messages {
     if (_messages is EqualUnmodifiableListView) return _messages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_messages);
@@ -1390,24 +1993,21 @@ class _$MessagesLoadedImpl implements _MessagesLoaded {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
 
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MessagesLoadedImplCopyWith<_$MessagesLoadedImpl> get copyWith =>
       __$$MessagesLoadedImplCopyWithImpl<_$MessagesLoadedImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> rooms) roomsLoaded,
-    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsLoaded,
+    required TResult Function(List<ChatMessage> messages) messagesLoaded,
     required TResult Function(String message) error,
   }) {
     return messagesLoaded(messages);
@@ -1418,8 +2018,9 @@ class _$MessagesLoadedImpl implements _MessagesLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> rooms)? roomsLoaded,
-    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsLoaded,
+    TResult? Function(List<ChatMessage> messages)? messagesLoaded,
     TResult? Function(String message)? error,
   }) {
     return messagesLoaded?.call(messages);
@@ -1430,8 +2031,8 @@ class _$MessagesLoadedImpl implements _MessagesLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> rooms)? roomsLoaded,
-    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(List<ChatConversation> conversations)? conversationsLoaded,
+    TResult Function(List<ChatMessage> messages)? messagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1446,7 +2047,7 @@ class _$MessagesLoadedImpl implements _MessagesLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_ConversationsLoaded value) conversationsLoaded,
     required TResult Function(_MessagesLoaded value) messagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -1458,7 +2059,7 @@ class _$MessagesLoadedImpl implements _MessagesLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult? Function(_MessagesLoaded value)? messagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -1470,7 +2071,7 @@ class _$MessagesLoadedImpl implements _MessagesLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult Function(_MessagesLoaded value)? messagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1483,14 +2084,11 @@ class _$MessagesLoadedImpl implements _MessagesLoaded {
 }
 
 abstract class _MessagesLoaded implements ChatState {
-  const factory _MessagesLoaded({required final List<dynamic> messages}) =
+  const factory _MessagesLoaded({required final List<ChatMessage> messages}) =
       _$MessagesLoadedImpl;
 
-  List<dynamic> get messages;
-
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<ChatMessage> get messages;
+  @JsonKey(ignore: true)
   _$$MessagesLoadedImplCopyWith<_$MessagesLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1498,9 +2096,8 @@ abstract class _MessagesLoaded implements ChatState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1510,23 +2107,20 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$ChatStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1554,9 +2148,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -1567,8 +2159,9 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> rooms) roomsLoaded,
-    required TResult Function(List<dynamic> messages) messagesLoaded,
+    required TResult Function(List<ChatConversation> conversations)
+        conversationsLoaded,
+    required TResult Function(List<ChatMessage> messages) messagesLoaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1579,8 +2172,9 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> rooms)? roomsLoaded,
-    TResult? Function(List<dynamic> messages)? messagesLoaded,
+    TResult? Function(List<ChatConversation> conversations)?
+        conversationsLoaded,
+    TResult? Function(List<ChatMessage> messages)? messagesLoaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1591,8 +2185,8 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> rooms)? roomsLoaded,
-    TResult Function(List<dynamic> messages)? messagesLoaded,
+    TResult Function(List<ChatConversation> conversations)? conversationsLoaded,
+    TResult Function(List<ChatMessage> messages)? messagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1607,7 +2201,7 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_RoomsLoaded value) roomsLoaded,
+    required TResult Function(_ConversationsLoaded value) conversationsLoaded,
     required TResult Function(_MessagesLoaded value) messagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -1619,7 +2213,7 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_RoomsLoaded value)? roomsLoaded,
+    TResult? Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult? Function(_MessagesLoaded value)? messagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -1631,7 +2225,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_RoomsLoaded value)? roomsLoaded,
+    TResult Function(_ConversationsLoaded value)? conversationsLoaded,
     TResult Function(_MessagesLoaded value)? messagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1647,10 +2241,7 @@ abstract class _Error implements ChatState {
   const factory _Error({required final String message}) = _$ErrorImpl;
 
   String get message;
-
-  /// Create a copy of ChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

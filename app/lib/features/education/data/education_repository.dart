@@ -5,7 +5,6 @@ import 'dart:developer' as developer;
 
 class EducationRepository {
   final ApiClient _apiClient;
-// ... (start of class)
 
   EducationRepository(this._apiClient);
 
@@ -64,7 +63,52 @@ class EducationRepository {
   }
 
   Future<dynamic> getMyInstitute() async {
-    return null;
+    try {
+      final response = await _apiClient.dio.get('/education/institutes/me');
+      return response.data as Map<String, dynamic>?;
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch my institute: $e', name: 'EducationRepository');
+      return null;
+    }
+  }
+
+  Future<void> createCourse(Map<String, dynamic> courseData) async {
+    try {
+      await _apiClient.dio.post('/education/courses', data: courseData);
+    } catch (e) {
+      developer.log('❌ Failed to create course: $e', name: 'EducationRepository');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getStudents(String instituteId) async {
+    try {
+      final response = await _apiClient.dio.get('/education/institutes/$instituteId/students');
+      return response.data as List<dynamic>;
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch students: $e', name: 'EducationRepository');
+      return [];
+    }
+  }
+
+  Future<void> verifyStudent(String enrollmentId, bool approved) async {
+    try {
+      await _apiClient.dio.patch('/education/enrollments/$enrollmentId/verify', data: {
+        'status': approved ? 'approved' : 'rejected',
+      });
+    } catch (e) {
+      developer.log('❌ Failed to verify student: $e', name: 'EducationRepository');
+      rethrow;
+    }
+  }
+
+  Future<void> postPlacement(Map<String, dynamic> placementData) async {
+    try {
+      await _apiClient.dio.post('/education/placements', data: placementData);
+    } catch (e) {
+      developer.log('❌ Failed to post placement: $e', name: 'EducationRepository');
+      rethrow;
+    }
   }
   
   Future<void> completeLesson(String enrollmentId, String lessonId) async {
@@ -78,6 +122,15 @@ class EducationRepository {
     } catch (e) {
       developer.log('⚠️ Failed to fetch institute stats: $e', name: 'EducationRepository');
       return {};
+    }
+  }
+
+  Future<void> addLesson(String courseId, Map<String, dynamic> lessonData) async {
+    try {
+      await _apiClient.dio.post('/education/courses/$courseId/lessons', data: lessonData);
+    } catch (e) {
+      developer.log('❌ Failed to add lesson: $e', name: 'EducationRepository');
+      rethrow;
     }
   }
 

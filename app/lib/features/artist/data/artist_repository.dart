@@ -81,4 +81,40 @@ class ArtistRepository {
       rethrow;
     }
   }
+
+  // Service Management
+  Future<List<Map<String, dynamic>>> getServices(String artistId) async {
+    try {
+      final response = await _apiClient.dio.get('/artists/$artistId/services');
+      // Assuming structure { data: [...] } or direct list
+      final data = response.data;
+      if (data is Map && data.containsKey('data')) {
+        return (data['data'] as List).cast<Map<String, dynamic>>();
+      } else if (data is List) {
+        return data.cast<Map<String, dynamic>>();
+      }
+      return [];
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch services: $e', name: 'ArtistRepository');
+      return [];
+    }
+  }
+
+  Future<void> updateService(String serviceId, Map<String, dynamic> serviceData) async {
+    try {
+      await _apiClient.dio.patch('/artists/services/$serviceId', data: serviceData);
+    } catch (e) {
+      developer.log('❌ Failed to update service: $e', name: 'ArtistRepository');
+      rethrow;
+    }
+  }
+
+  Future<void> deleteService(String serviceId) async {
+    try {
+      await _apiClient.dio.delete('/artists/services/$serviceId');
+    } catch (e) {
+      developer.log('❌ Failed to delete service: $e', name: 'ArtistRepository');
+      rethrow;
+    }
+  }
 }

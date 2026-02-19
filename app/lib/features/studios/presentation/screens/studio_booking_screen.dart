@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../data/repositories/studio_repository.dart';
+import '../../data/studio_repository.dart';
 import '../../data/models/studio_model.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -17,6 +17,19 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
   DateTime _selectedDate = DateTime.now().add(const Duration(days: 1));
   int _durationHrs = 4;
   bool _isBooking = false;
+  String? _selectedSeatId;
+  late Future<List<StudioSeat>> _seatsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSeats();
+  }
+
+  void _loadSeats() {
+    final repo = Provider.of<StudioRepository>(context, listen: false);
+    _seatsFuture = repo.getAvailableSeats(widget.studio.id, _selectedDate);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +46,6 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Studio Info Summary
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -45,7 +57,6 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
             ),
             const SizedBox(height: 24),
 
-            // Date Picker
             const Text('Select Date', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             const SizedBox(height: 8),
             InkWell(
@@ -70,7 +81,42 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
             ),
             const SizedBox(height: 24),
 
-            // Duration Slider
+            const Text('Select Seat', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            const SizedBox(height: 12),
+            FutureBuilder<List<StudioSeat>>(
+              future: _seatsFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+                final seats = snapshot.data ?? [];
+                if (seats.isEmpty) {
+                  return const Text('No seats available for this date.', style: TextStyle(color: Colors.red));
+                }
+
+                return Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: seats.map((seat) {
+                    final isSelected = _selectedSeatId == seat.id;
+                    return ChoiceChip(
+                      label: Text(seat.seatNumber),
+                      selected: isSelected,
+                      onSelected: (selected) {
+                        setState(() => _selectedSeatId = selected ? seat.id : null);
+                      },
+                      selectedColor: Colors.purple,
+                      labelStyle: TextStyle(color: isSelected ? Colors.white : Colors.black),
+                    );
+                  }).toList(),
+                );
+              },
+            ),
+            const SizedBox(height: 24),
+
             const Text('Duration (Hours)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             Slider(
               value: _durationHrs.toDouble(),
@@ -85,7 +131,6 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
             
             const SizedBox(height: 32),
 
-            // Price Breakdown
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -105,12 +150,11 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
             ),
             const SizedBox(height: 32),
 
-            // Book Button
             SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: _isBooking ? null : _confirmBooking,
+                onPressed: (_isBooking || _selectedSeatId == null) ? null : _confirmBooking,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purple,
                   foregroundColor: Colors.white,
@@ -118,7 +162,8 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
                 ),
                 child: _isBooking
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Confirm Booking', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    : Text(_selectedSeatId == null ? 'Select a Seat' : 'Confirm Booking', 
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ),
             ),
           ],
@@ -135,22 +180,28 @@ class _StudioBookingScreenState extends State<StudioBookingScreen> {
       lastDate: DateTime.now().add(const Duration(days: 90)),
     );
     if (picked != null) {
-      setState(() => _selectedDate = picked);
+      setState(() {
+        _selectedDate = picked;
+        _selectedSeatId = null; // Reset seat selection when date changes
+        _loadSeats();
+      });
     }
   }
 
   Future<void> _confirmBooking() async {
+    if (_selectedSeatId == null) return;
+    
     setState(() => _isBooking = true);
     try {
       final repo = Provider.of<StudioRepository>(context, listen: false);
-      await repo.bookSlot(widget.studio.id, _selectedDate, _durationHrs);
+      await repo.bookSlot(widget.studio.id, _selectedDate, _durationHrs, seatId: _selectedSeatId);
       
       if (mounted) {
         showDialog(
           context: context,
           builder: (c) => AlertDialog(
             title: const Text('Booking Confirmed'),
-            content: const Text('Your studio slot has been booked successfully.'),
+            content: const Text('Your studio seat has been booked successfully.'),
             actions: [
               TextButton(
                 onPressed: () {

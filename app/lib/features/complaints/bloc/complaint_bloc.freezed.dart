@@ -12,64 +12,73 @@ part of 'complaint_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ComplaintEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-      String bookingId,
-      String subject,
-      String description,
-    )
-    raiseComplaint,
+            String bookingId, String subject, String description)
+        raiseComplaint,
     required TResult Function() fetchMyComplaints,
     required TResult Function() fetchAllComplaints,
-  }) => throw _privateConstructorUsedError;
+    required TResult Function(String complaintId, String adminComment)
+        resolveComplaint,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult? Function()? fetchMyComplaints,
     TResult? Function()? fetchAllComplaints,
-  }) => throw _privateConstructorUsedError;
+    TResult? Function(String complaintId, String adminComment)?
+        resolveComplaint,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult Function()? fetchMyComplaints,
     TResult Function()? fetchAllComplaints,
+    TResult Function(String complaintId, String adminComment)? resolveComplaint,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RaiseComplaint value) raiseComplaint,
     required TResult Function(_FetchMyComplaints value) fetchMyComplaints,
     required TResult Function(_FetchAllComplaints value) fetchAllComplaints,
-  }) => throw _privateConstructorUsedError;
+    required TResult Function(_ResolveComplaint value) resolveComplaint,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RaiseComplaint value)? raiseComplaint,
     TResult? Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult? Function(_FetchAllComplaints value)? fetchAllComplaints,
-  }) => throw _privateConstructorUsedError;
+    TResult? Function(_ResolveComplaint value)? resolveComplaint,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RaiseComplaint value)? raiseComplaint,
     TResult Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult Function(_ResolveComplaint value)? resolveComplaint,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ComplaintEventCopyWith<$Res> {
   factory $ComplaintEventCopyWith(
-    ComplaintEvent value,
-    $Res Function(ComplaintEvent) then,
-  ) = _$ComplaintEventCopyWithImpl<$Res, ComplaintEvent>;
+          ComplaintEvent value, $Res Function(ComplaintEvent) then) =
+      _$ComplaintEventCopyWithImpl<$Res, ComplaintEvent>;
 }
 
 /// @nodoc
@@ -81,17 +90,13 @@ class _$ComplaintEventCopyWithImpl<$Res, $Val extends ComplaintEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ComplaintEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$RaiseComplaintImplCopyWith<$Res> {
-  factory _$$RaiseComplaintImplCopyWith(
-    _$RaiseComplaintImpl value,
-    $Res Function(_$RaiseComplaintImpl) then,
-  ) = __$$RaiseComplaintImplCopyWithImpl<$Res>;
+  factory _$$RaiseComplaintImplCopyWith(_$RaiseComplaintImpl value,
+          $Res Function(_$RaiseComplaintImpl) then) =
+      __$$RaiseComplaintImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String bookingId, String subject, String description});
 }
@@ -101,12 +106,9 @@ class __$$RaiseComplaintImplCopyWithImpl<$Res>
     extends _$ComplaintEventCopyWithImpl<$Res, _$RaiseComplaintImpl>
     implements _$$RaiseComplaintImplCopyWith<$Res> {
   __$$RaiseComplaintImplCopyWithImpl(
-    _$RaiseComplaintImpl _value,
-    $Res Function(_$RaiseComplaintImpl) _then,
-  ) : super(_value, _then);
+      _$RaiseComplaintImpl _value, $Res Function(_$RaiseComplaintImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ComplaintEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,33 +116,30 @@ class __$$RaiseComplaintImplCopyWithImpl<$Res>
     Object? subject = null,
     Object? description = null,
   }) {
-    return _then(
-      _$RaiseComplaintImpl(
-        bookingId: null == bookingId
-            ? _value.bookingId
-            : bookingId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        subject: null == subject
-            ? _value.subject
-            : subject // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: null == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+    return _then(_$RaiseComplaintImpl(
+      bookingId: null == bookingId
+          ? _value.bookingId
+          : bookingId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$RaiseComplaintImpl implements _RaiseComplaint {
-  const _$RaiseComplaintImpl({
-    required this.bookingId,
-    required this.subject,
-    required this.description,
-  });
+  const _$RaiseComplaintImpl(
+      {required this.bookingId,
+      required this.subject,
+      required this.description});
 
   @override
   final String bookingId;
@@ -169,28 +168,23 @@ class _$RaiseComplaintImpl implements _RaiseComplaint {
   @override
   int get hashCode => Object.hash(runtimeType, bookingId, subject, description);
 
-  /// Create a copy of ComplaintEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$RaiseComplaintImplCopyWith<_$RaiseComplaintImpl> get copyWith =>
       __$$RaiseComplaintImplCopyWithImpl<_$RaiseComplaintImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-      String bookingId,
-      String subject,
-      String description,
-    )
-    raiseComplaint,
+            String bookingId, String subject, String description)
+        raiseComplaint,
     required TResult Function() fetchMyComplaints,
     required TResult Function() fetchAllComplaints,
+    required TResult Function(String complaintId, String adminComment)
+        resolveComplaint,
   }) {
     return raiseComplaint(bookingId, subject, description);
   }
@@ -199,9 +193,11 @@ class _$RaiseComplaintImpl implements _RaiseComplaint {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult? Function()? fetchMyComplaints,
     TResult? Function()? fetchAllComplaints,
+    TResult? Function(String complaintId, String adminComment)?
+        resolveComplaint,
   }) {
     return raiseComplaint?.call(bookingId, subject, description);
   }
@@ -210,9 +206,10 @@ class _$RaiseComplaintImpl implements _RaiseComplaint {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult Function()? fetchMyComplaints,
     TResult Function()? fetchAllComplaints,
+    TResult Function(String complaintId, String adminComment)? resolveComplaint,
     required TResult orElse(),
   }) {
     if (raiseComplaint != null) {
@@ -227,6 +224,7 @@ class _$RaiseComplaintImpl implements _RaiseComplaint {
     required TResult Function(_RaiseComplaint value) raiseComplaint,
     required TResult Function(_FetchMyComplaints value) fetchMyComplaints,
     required TResult Function(_FetchAllComplaints value) fetchAllComplaints,
+    required TResult Function(_ResolveComplaint value) resolveComplaint,
   }) {
     return raiseComplaint(this);
   }
@@ -237,6 +235,7 @@ class _$RaiseComplaintImpl implements _RaiseComplaint {
     TResult? Function(_RaiseComplaint value)? raiseComplaint,
     TResult? Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult? Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult? Function(_ResolveComplaint value)? resolveComplaint,
   }) {
     return raiseComplaint?.call(this);
   }
@@ -247,6 +246,7 @@ class _$RaiseComplaintImpl implements _RaiseComplaint {
     TResult Function(_RaiseComplaint value)? raiseComplaint,
     TResult Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult Function(_ResolveComplaint value)? resolveComplaint,
     required TResult orElse(),
   }) {
     if (raiseComplaint != null) {
@@ -257,42 +257,33 @@ class _$RaiseComplaintImpl implements _RaiseComplaint {
 }
 
 abstract class _RaiseComplaint implements ComplaintEvent {
-  const factory _RaiseComplaint({
-    required final String bookingId,
-    required final String subject,
-    required final String description,
-  }) = _$RaiseComplaintImpl;
+  const factory _RaiseComplaint(
+      {required final String bookingId,
+      required final String subject,
+      required final String description}) = _$RaiseComplaintImpl;
 
   String get bookingId;
   String get subject;
   String get description;
-
-  /// Create a copy of ComplaintEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$RaiseComplaintImplCopyWith<_$RaiseComplaintImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$FetchMyComplaintsImplCopyWith<$Res> {
-  factory _$$FetchMyComplaintsImplCopyWith(
-    _$FetchMyComplaintsImpl value,
-    $Res Function(_$FetchMyComplaintsImpl) then,
-  ) = __$$FetchMyComplaintsImplCopyWithImpl<$Res>;
+  factory _$$FetchMyComplaintsImplCopyWith(_$FetchMyComplaintsImpl value,
+          $Res Function(_$FetchMyComplaintsImpl) then) =
+      __$$FetchMyComplaintsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$FetchMyComplaintsImplCopyWithImpl<$Res>
     extends _$ComplaintEventCopyWithImpl<$Res, _$FetchMyComplaintsImpl>
     implements _$$FetchMyComplaintsImplCopyWith<$Res> {
-  __$$FetchMyComplaintsImplCopyWithImpl(
-    _$FetchMyComplaintsImpl _value,
-    $Res Function(_$FetchMyComplaintsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ComplaintEvent
-  /// with the given fields replaced by the non-null parameter values.
+  __$$FetchMyComplaintsImplCopyWithImpl(_$FetchMyComplaintsImpl _value,
+      $Res Function(_$FetchMyComplaintsImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -318,13 +309,12 @@ class _$FetchMyComplaintsImpl implements _FetchMyComplaints {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-      String bookingId,
-      String subject,
-      String description,
-    )
-    raiseComplaint,
+            String bookingId, String subject, String description)
+        raiseComplaint,
     required TResult Function() fetchMyComplaints,
     required TResult Function() fetchAllComplaints,
+    required TResult Function(String complaintId, String adminComment)
+        resolveComplaint,
   }) {
     return fetchMyComplaints();
   }
@@ -333,9 +323,11 @@ class _$FetchMyComplaintsImpl implements _FetchMyComplaints {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult? Function()? fetchMyComplaints,
     TResult? Function()? fetchAllComplaints,
+    TResult? Function(String complaintId, String adminComment)?
+        resolveComplaint,
   }) {
     return fetchMyComplaints?.call();
   }
@@ -344,9 +336,10 @@ class _$FetchMyComplaintsImpl implements _FetchMyComplaints {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult Function()? fetchMyComplaints,
     TResult Function()? fetchAllComplaints,
+    TResult Function(String complaintId, String adminComment)? resolveComplaint,
     required TResult orElse(),
   }) {
     if (fetchMyComplaints != null) {
@@ -361,6 +354,7 @@ class _$FetchMyComplaintsImpl implements _FetchMyComplaints {
     required TResult Function(_RaiseComplaint value) raiseComplaint,
     required TResult Function(_FetchMyComplaints value) fetchMyComplaints,
     required TResult Function(_FetchAllComplaints value) fetchAllComplaints,
+    required TResult Function(_ResolveComplaint value) resolveComplaint,
   }) {
     return fetchMyComplaints(this);
   }
@@ -371,6 +365,7 @@ class _$FetchMyComplaintsImpl implements _FetchMyComplaints {
     TResult? Function(_RaiseComplaint value)? raiseComplaint,
     TResult? Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult? Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult? Function(_ResolveComplaint value)? resolveComplaint,
   }) {
     return fetchMyComplaints?.call(this);
   }
@@ -381,6 +376,7 @@ class _$FetchMyComplaintsImpl implements _FetchMyComplaints {
     TResult Function(_RaiseComplaint value)? raiseComplaint,
     TResult Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult Function(_ResolveComplaint value)? resolveComplaint,
     required TResult orElse(),
   }) {
     if (fetchMyComplaints != null) {
@@ -396,23 +392,18 @@ abstract class _FetchMyComplaints implements ComplaintEvent {
 
 /// @nodoc
 abstract class _$$FetchAllComplaintsImplCopyWith<$Res> {
-  factory _$$FetchAllComplaintsImplCopyWith(
-    _$FetchAllComplaintsImpl value,
-    $Res Function(_$FetchAllComplaintsImpl) then,
-  ) = __$$FetchAllComplaintsImplCopyWithImpl<$Res>;
+  factory _$$FetchAllComplaintsImplCopyWith(_$FetchAllComplaintsImpl value,
+          $Res Function(_$FetchAllComplaintsImpl) then) =
+      __$$FetchAllComplaintsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$FetchAllComplaintsImplCopyWithImpl<$Res>
     extends _$ComplaintEventCopyWithImpl<$Res, _$FetchAllComplaintsImpl>
     implements _$$FetchAllComplaintsImplCopyWith<$Res> {
-  __$$FetchAllComplaintsImplCopyWithImpl(
-    _$FetchAllComplaintsImpl _value,
-    $Res Function(_$FetchAllComplaintsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ComplaintEvent
-  /// with the given fields replaced by the non-null parameter values.
+  __$$FetchAllComplaintsImplCopyWithImpl(_$FetchAllComplaintsImpl _value,
+      $Res Function(_$FetchAllComplaintsImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -438,13 +429,12 @@ class _$FetchAllComplaintsImpl implements _FetchAllComplaints {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-      String bookingId,
-      String subject,
-      String description,
-    )
-    raiseComplaint,
+            String bookingId, String subject, String description)
+        raiseComplaint,
     required TResult Function() fetchMyComplaints,
     required TResult Function() fetchAllComplaints,
+    required TResult Function(String complaintId, String adminComment)
+        resolveComplaint,
   }) {
     return fetchAllComplaints();
   }
@@ -453,9 +443,11 @@ class _$FetchAllComplaintsImpl implements _FetchAllComplaints {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult? Function()? fetchMyComplaints,
     TResult? Function()? fetchAllComplaints,
+    TResult? Function(String complaintId, String adminComment)?
+        resolveComplaint,
   }) {
     return fetchAllComplaints?.call();
   }
@@ -464,9 +456,10 @@ class _$FetchAllComplaintsImpl implements _FetchAllComplaints {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String bookingId, String subject, String description)?
-    raiseComplaint,
+        raiseComplaint,
     TResult Function()? fetchMyComplaints,
     TResult Function()? fetchAllComplaints,
+    TResult Function(String complaintId, String adminComment)? resolveComplaint,
     required TResult orElse(),
   }) {
     if (fetchAllComplaints != null) {
@@ -481,6 +474,7 @@ class _$FetchAllComplaintsImpl implements _FetchAllComplaints {
     required TResult Function(_RaiseComplaint value) raiseComplaint,
     required TResult Function(_FetchMyComplaints value) fetchMyComplaints,
     required TResult Function(_FetchAllComplaints value) fetchAllComplaints,
+    required TResult Function(_ResolveComplaint value) resolveComplaint,
   }) {
     return fetchAllComplaints(this);
   }
@@ -491,6 +485,7 @@ class _$FetchAllComplaintsImpl implements _FetchAllComplaints {
     TResult? Function(_RaiseComplaint value)? raiseComplaint,
     TResult? Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult? Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult? Function(_ResolveComplaint value)? resolveComplaint,
   }) {
     return fetchAllComplaints?.call(this);
   }
@@ -501,6 +496,7 @@ class _$FetchAllComplaintsImpl implements _FetchAllComplaints {
     TResult Function(_RaiseComplaint value)? raiseComplaint,
     TResult Function(_FetchMyComplaints value)? fetchMyComplaints,
     TResult Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult Function(_ResolveComplaint value)? resolveComplaint,
     required TResult orElse(),
   }) {
     if (fetchAllComplaints != null) {
@@ -515,35 +511,204 @@ abstract class _FetchAllComplaints implements ComplaintEvent {
 }
 
 /// @nodoc
+abstract class _$$ResolveComplaintImplCopyWith<$Res> {
+  factory _$$ResolveComplaintImplCopyWith(_$ResolveComplaintImpl value,
+          $Res Function(_$ResolveComplaintImpl) then) =
+      __$$ResolveComplaintImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String complaintId, String adminComment});
+}
+
+/// @nodoc
+class __$$ResolveComplaintImplCopyWithImpl<$Res>
+    extends _$ComplaintEventCopyWithImpl<$Res, _$ResolveComplaintImpl>
+    implements _$$ResolveComplaintImplCopyWith<$Res> {
+  __$$ResolveComplaintImplCopyWithImpl(_$ResolveComplaintImpl _value,
+      $Res Function(_$ResolveComplaintImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? complaintId = null,
+    Object? adminComment = null,
+  }) {
+    return _then(_$ResolveComplaintImpl(
+      complaintId: null == complaintId
+          ? _value.complaintId
+          : complaintId // ignore: cast_nullable_to_non_nullable
+              as String,
+      adminComment: null == adminComment
+          ? _value.adminComment
+          : adminComment // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ResolveComplaintImpl implements _ResolveComplaint {
+  const _$ResolveComplaintImpl(
+      {required this.complaintId, required this.adminComment});
+
+  @override
+  final String complaintId;
+  @override
+  final String adminComment;
+
+  @override
+  String toString() {
+    return 'ComplaintEvent.resolveComplaint(complaintId: $complaintId, adminComment: $adminComment)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResolveComplaintImpl &&
+            (identical(other.complaintId, complaintId) ||
+                other.complaintId == complaintId) &&
+            (identical(other.adminComment, adminComment) ||
+                other.adminComment == adminComment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, complaintId, adminComment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResolveComplaintImplCopyWith<_$ResolveComplaintImpl> get copyWith =>
+      __$$ResolveComplaintImplCopyWithImpl<_$ResolveComplaintImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String bookingId, String subject, String description)
+        raiseComplaint,
+    required TResult Function() fetchMyComplaints,
+    required TResult Function() fetchAllComplaints,
+    required TResult Function(String complaintId, String adminComment)
+        resolveComplaint,
+  }) {
+    return resolveComplaint(complaintId, adminComment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String bookingId, String subject, String description)?
+        raiseComplaint,
+    TResult? Function()? fetchMyComplaints,
+    TResult? Function()? fetchAllComplaints,
+    TResult? Function(String complaintId, String adminComment)?
+        resolveComplaint,
+  }) {
+    return resolveComplaint?.call(complaintId, adminComment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String bookingId, String subject, String description)?
+        raiseComplaint,
+    TResult Function()? fetchMyComplaints,
+    TResult Function()? fetchAllComplaints,
+    TResult Function(String complaintId, String adminComment)? resolveComplaint,
+    required TResult orElse(),
+  }) {
+    if (resolveComplaint != null) {
+      return resolveComplaint(complaintId, adminComment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RaiseComplaint value) raiseComplaint,
+    required TResult Function(_FetchMyComplaints value) fetchMyComplaints,
+    required TResult Function(_FetchAllComplaints value) fetchAllComplaints,
+    required TResult Function(_ResolveComplaint value) resolveComplaint,
+  }) {
+    return resolveComplaint(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RaiseComplaint value)? raiseComplaint,
+    TResult? Function(_FetchMyComplaints value)? fetchMyComplaints,
+    TResult? Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult? Function(_ResolveComplaint value)? resolveComplaint,
+  }) {
+    return resolveComplaint?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RaiseComplaint value)? raiseComplaint,
+    TResult Function(_FetchMyComplaints value)? fetchMyComplaints,
+    TResult Function(_FetchAllComplaints value)? fetchAllComplaints,
+    TResult Function(_ResolveComplaint value)? resolveComplaint,
+    required TResult orElse(),
+  }) {
+    if (resolveComplaint != null) {
+      return resolveComplaint(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResolveComplaint implements ComplaintEvent {
+  const factory _ResolveComplaint(
+      {required final String complaintId,
+      required final String adminComment}) = _$ResolveComplaintImpl;
+
+  String get complaintId;
+  String get adminComment;
+  @JsonKey(ignore: true)
+  _$$ResolveComplaintImplCopyWith<_$ResolveComplaintImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ComplaintState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() submitting,
-    required TResult Function(List<dynamic> complaints) loaded,
+    required TResult Function(List<ComplaintModel> complaints) loaded,
     required TResult Function(String message) success,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? submitting,
-    TResult? Function(List<dynamic> complaints)? loaded,
+    TResult? Function(List<ComplaintModel> complaints)? loaded,
     TResult? Function(String message)? success,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? submitting,
-    TResult Function(List<dynamic> complaints)? loaded,
+    TResult Function(List<ComplaintModel> complaints)? loaded,
     TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -552,7 +717,8 @@ mixin _$ComplaintState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -561,7 +727,8 @@ mixin _$ComplaintState {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -571,15 +738,15 @@ mixin _$ComplaintState {
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ComplaintStateCopyWith<$Res> {
   factory $ComplaintStateCopyWith(
-    ComplaintState value,
-    $Res Function(ComplaintState) then,
-  ) = _$ComplaintStateCopyWithImpl<$Res, ComplaintState>;
+          ComplaintState value, $Res Function(ComplaintState) then) =
+      _$ComplaintStateCopyWithImpl<$Res, ComplaintState>;
 }
 
 /// @nodoc
@@ -591,17 +758,13 @@ class _$ComplaintStateCopyWithImpl<$Res, $Val extends ComplaintState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -609,12 +772,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$ComplaintStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -642,7 +801,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() submitting,
-    required TResult Function(List<dynamic> complaints) loaded,
+    required TResult Function(List<ComplaintModel> complaints) loaded,
     required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
@@ -655,7 +814,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? submitting,
-    TResult? Function(List<dynamic> complaints)? loaded,
+    TResult? Function(List<ComplaintModel> complaints)? loaded,
     TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
@@ -668,7 +827,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? submitting,
-    TResult Function(List<dynamic> complaints)? loaded,
+    TResult Function(List<ComplaintModel> complaints)? loaded,
     TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -730,9 +889,8 @@ abstract class _Initial implements ComplaintState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -740,12 +898,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$ComplaintStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -773,7 +927,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() submitting,
-    required TResult Function(List<dynamic> complaints) loaded,
+    required TResult Function(List<ComplaintModel> complaints) loaded,
     required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
@@ -786,7 +940,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? submitting,
-    TResult? Function(List<dynamic> complaints)? loaded,
+    TResult? Function(List<ComplaintModel> complaints)? loaded,
     TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
@@ -799,7 +953,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? submitting,
-    TResult Function(List<dynamic> complaints)? loaded,
+    TResult Function(List<ComplaintModel> complaints)? loaded,
     TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -861,9 +1015,8 @@ abstract class _Loading implements ComplaintState {
 /// @nodoc
 abstract class _$$SubmittingImplCopyWith<$Res> {
   factory _$$SubmittingImplCopyWith(
-    _$SubmittingImpl value,
-    $Res Function(_$SubmittingImpl) then,
-  ) = __$$SubmittingImplCopyWithImpl<$Res>;
+          _$SubmittingImpl value, $Res Function(_$SubmittingImpl) then) =
+      __$$SubmittingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -871,12 +1024,8 @@ class __$$SubmittingImplCopyWithImpl<$Res>
     extends _$ComplaintStateCopyWithImpl<$Res, _$SubmittingImpl>
     implements _$$SubmittingImplCopyWith<$Res> {
   __$$SubmittingImplCopyWithImpl(
-    _$SubmittingImpl _value,
-    $Res Function(_$SubmittingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
+      _$SubmittingImpl _value, $Res Function(_$SubmittingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -904,7 +1053,7 @@ class _$SubmittingImpl implements _Submitting {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() submitting,
-    required TResult Function(List<dynamic> complaints) loaded,
+    required TResult Function(List<ComplaintModel> complaints) loaded,
     required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
@@ -917,7 +1066,7 @@ class _$SubmittingImpl implements _Submitting {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? submitting,
-    TResult? Function(List<dynamic> complaints)? loaded,
+    TResult? Function(List<ComplaintModel> complaints)? loaded,
     TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
@@ -930,7 +1079,7 @@ class _$SubmittingImpl implements _Submitting {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? submitting,
-    TResult Function(List<dynamic> complaints)? loaded,
+    TResult Function(List<ComplaintModel> complaints)? loaded,
     TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -992,11 +1141,10 @@ abstract class _Submitting implements ComplaintState {
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
-    _$LoadedImpl value,
-    $Res Function(_$LoadedImpl) then,
-  ) = __$$LoadedImplCopyWithImpl<$Res>;
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<dynamic> complaints});
+  $Res call({List<ComplaintModel> complaints});
 }
 
 /// @nodoc
@@ -1004,35 +1152,32 @@ class __$$LoadedImplCopyWithImpl<$Res>
     extends _$ComplaintStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
-    _$LoadedImpl _value,
-    $Res Function(_$LoadedImpl) _then,
-  ) : super(_value, _then);
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? complaints = null}) {
-    return _then(
-      _$LoadedImpl(
-        complaints: null == complaints
-            ? _value._complaints
-            : complaints // ignore: cast_nullable_to_non_nullable
-                  as List<dynamic>,
-      ),
-    );
+  $Res call({
+    Object? complaints = null,
+  }) {
+    return _then(_$LoadedImpl(
+      complaints: null == complaints
+          ? _value._complaints
+          : complaints // ignore: cast_nullable_to_non_nullable
+              as List<ComplaintModel>,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required final List<dynamic> complaints})
-    : _complaints = complaints;
+  const _$LoadedImpl({required final List<ComplaintModel> complaints})
+      : _complaints = complaints;
 
-  final List<dynamic> _complaints;
+  final List<ComplaintModel> _complaints;
   @override
-  List<dynamic> get complaints {
+  List<ComplaintModel> get complaints {
     if (_complaints is EqualUnmodifiableListView) return _complaints;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_complaints);
@@ -1048,21 +1193,15 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(
-              other._complaints,
-              _complaints,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._complaints, _complaints));
   }
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_complaints),
-  );
+      runtimeType, const DeepCollectionEquality().hash(_complaints));
 
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -1074,7 +1213,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() submitting,
-    required TResult Function(List<dynamic> complaints) loaded,
+    required TResult Function(List<ComplaintModel> complaints) loaded,
     required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
@@ -1087,7 +1226,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? submitting,
-    TResult? Function(List<dynamic> complaints)? loaded,
+    TResult? Function(List<ComplaintModel> complaints)? loaded,
     TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
@@ -1100,7 +1239,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? submitting,
-    TResult Function(List<dynamic> complaints)? loaded,
+    TResult Function(List<ComplaintModel> complaints)? loaded,
     TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -1156,14 +1295,11 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ComplaintState {
-  const factory _Loaded({required final List<dynamic> complaints}) =
+  const factory _Loaded({required final List<ComplaintModel> complaints}) =
       _$LoadedImpl;
 
-  List<dynamic> get complaints;
-
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<ComplaintModel> get complaints;
+  @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1171,9 +1307,8 @@ abstract class _Loaded implements ComplaintState {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
-    _$SuccessImpl value,
-    $Res Function(_$SuccessImpl) then,
-  ) = __$$SuccessImplCopyWithImpl<$Res>;
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1183,23 +1318,20 @@ class __$$SuccessImplCopyWithImpl<$Res>
     extends _$ComplaintStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl _value,
-    $Res Function(_$SuccessImpl) _then,
-  ) : super(_value, _then);
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$SuccessImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$SuccessImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1227,9 +1359,7 @@ class _$SuccessImpl implements _Success {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -1241,7 +1371,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() submitting,
-    required TResult Function(List<dynamic> complaints) loaded,
+    required TResult Function(List<ComplaintModel> complaints) loaded,
     required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
@@ -1254,7 +1384,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? submitting,
-    TResult? Function(List<dynamic> complaints)? loaded,
+    TResult? Function(List<ComplaintModel> complaints)? loaded,
     TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
@@ -1267,7 +1397,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? submitting,
-    TResult Function(List<dynamic> complaints)? loaded,
+    TResult Function(List<ComplaintModel> complaints)? loaded,
     TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -1326,10 +1456,7 @@ abstract class _Success implements ComplaintState {
   const factory _Success({required final String message}) = _$SuccessImpl;
 
   String get message;
-
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1337,9 +1464,8 @@ abstract class _Success implements ComplaintState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1349,23 +1475,20 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$ComplaintStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1393,9 +1516,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -1407,7 +1528,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() submitting,
-    required TResult Function(List<dynamic> complaints) loaded,
+    required TResult Function(List<ComplaintModel> complaints) loaded,
     required TResult Function(String message) success,
     required TResult Function(String message) error,
   }) {
@@ -1420,7 +1541,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? submitting,
-    TResult? Function(List<dynamic> complaints)? loaded,
+    TResult? Function(List<ComplaintModel> complaints)? loaded,
     TResult? Function(String message)? success,
     TResult? Function(String message)? error,
   }) {
@@ -1433,7 +1554,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? submitting,
-    TResult Function(List<dynamic> complaints)? loaded,
+    TResult Function(List<ComplaintModel> complaints)? loaded,
     TResult Function(String message)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -1492,10 +1613,7 @@ abstract class _Error implements ComplaintState {
   const factory _Error({required final String message}) = _$ErrorImpl;
 
   String get message;
-
-  /// Create a copy of ComplaintState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

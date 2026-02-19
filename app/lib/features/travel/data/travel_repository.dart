@@ -99,6 +99,20 @@ class TravelRepository {
     }
   }
 
+  /// Upload visa document
+  Future<String> uploadVisaDocument(String filePath, String country) async {
+    try {
+      final formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(filePath),
+        'country': country,
+      });
+      final response = await _dio.post('/artist/travel/visa-docs', data: formData);
+      return response.data['url'];
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
   Exception _handleError(dynamic error) {
     if (error is DioException) {
       if (error.response?.statusCode == 404) {

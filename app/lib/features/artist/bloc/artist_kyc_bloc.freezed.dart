@@ -12,8 +12,7 @@ part of 'artist_kyc_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ArtistKYCEvent {
@@ -21,49 +20,51 @@ mixin _$ArtistKYCEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchStatus,
     required TResult Function(
-      String idProof,
-      String addressProof,
-      String certificate,
-    )
-    submitKYC,
-  }) => throw _privateConstructorUsedError;
+            String idProof, String addressProof, String certificate)
+        submitKYC,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchStatus,
     TResult? Function(String idProof, String addressProof, String certificate)?
-    submitKYC,
-  }) => throw _privateConstructorUsedError;
+        submitKYC,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchStatus,
     TResult Function(String idProof, String addressProof, String certificate)?
-    submitKYC,
+        submitKYC,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchStatus value) fetchStatus,
     required TResult Function(_SubmitKYC value) submitKYC,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchStatus value)? fetchStatus,
     TResult? Function(_SubmitKYC value)? submitKYC,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchStatus value)? fetchStatus,
     TResult Function(_SubmitKYC value)? submitKYC,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ArtistKYCEventCopyWith<$Res> {
   factory $ArtistKYCEventCopyWith(
-    ArtistKYCEvent value,
-    $Res Function(ArtistKYCEvent) then,
-  ) = _$ArtistKYCEventCopyWithImpl<$Res, ArtistKYCEvent>;
+          ArtistKYCEvent value, $Res Function(ArtistKYCEvent) then) =
+      _$ArtistKYCEventCopyWithImpl<$Res, ArtistKYCEvent>;
 }
 
 /// @nodoc
@@ -75,17 +76,13 @@ class _$ArtistKYCEventCopyWithImpl<$Res, $Val extends ArtistKYCEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ArtistKYCEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$FetchStatusImplCopyWith<$Res> {
   factory _$$FetchStatusImplCopyWith(
-    _$FetchStatusImpl value,
-    $Res Function(_$FetchStatusImpl) then,
-  ) = __$$FetchStatusImplCopyWithImpl<$Res>;
+          _$FetchStatusImpl value, $Res Function(_$FetchStatusImpl) then) =
+      __$$FetchStatusImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -93,12 +90,8 @@ class __$$FetchStatusImplCopyWithImpl<$Res>
     extends _$ArtistKYCEventCopyWithImpl<$Res, _$FetchStatusImpl>
     implements _$$FetchStatusImplCopyWith<$Res> {
   __$$FetchStatusImplCopyWithImpl(
-    _$FetchStatusImpl _value,
-    $Res Function(_$FetchStatusImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ArtistKYCEvent
-  /// with the given fields replaced by the non-null parameter values.
+      _$FetchStatusImpl _value, $Res Function(_$FetchStatusImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -125,11 +118,8 @@ class _$FetchStatusImpl implements _FetchStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchStatus,
     required TResult Function(
-      String idProof,
-      String addressProof,
-      String certificate,
-    )
-    submitKYC,
+            String idProof, String addressProof, String certificate)
+        submitKYC,
   }) {
     return fetchStatus();
   }
@@ -139,7 +129,7 @@ class _$FetchStatusImpl implements _FetchStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchStatus,
     TResult? Function(String idProof, String addressProof, String certificate)?
-    submitKYC,
+        submitKYC,
   }) {
     return fetchStatus?.call();
   }
@@ -149,7 +139,7 @@ class _$FetchStatusImpl implements _FetchStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchStatus,
     TResult Function(String idProof, String addressProof, String certificate)?
-    submitKYC,
+        submitKYC,
     required TResult orElse(),
   }) {
     if (fetchStatus != null) {
@@ -197,9 +187,8 @@ abstract class _FetchStatus implements ArtistKYCEvent {
 /// @nodoc
 abstract class _$$SubmitKYCImplCopyWith<$Res> {
   factory _$$SubmitKYCImplCopyWith(
-    _$SubmitKYCImpl value,
-    $Res Function(_$SubmitKYCImpl) then,
-  ) = __$$SubmitKYCImplCopyWithImpl<$Res>;
+          _$SubmitKYCImpl value, $Res Function(_$SubmitKYCImpl) then) =
+      __$$SubmitKYCImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String idProof, String addressProof, String certificate});
 }
@@ -209,12 +198,9 @@ class __$$SubmitKYCImplCopyWithImpl<$Res>
     extends _$ArtistKYCEventCopyWithImpl<$Res, _$SubmitKYCImpl>
     implements _$$SubmitKYCImplCopyWith<$Res> {
   __$$SubmitKYCImplCopyWithImpl(
-    _$SubmitKYCImpl _value,
-    $Res Function(_$SubmitKYCImpl) _then,
-  ) : super(_value, _then);
+      _$SubmitKYCImpl _value, $Res Function(_$SubmitKYCImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistKYCEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -222,33 +208,30 @@ class __$$SubmitKYCImplCopyWithImpl<$Res>
     Object? addressProof = null,
     Object? certificate = null,
   }) {
-    return _then(
-      _$SubmitKYCImpl(
-        idProof: null == idProof
-            ? _value.idProof
-            : idProof // ignore: cast_nullable_to_non_nullable
-                  as String,
-        addressProof: null == addressProof
-            ? _value.addressProof
-            : addressProof // ignore: cast_nullable_to_non_nullable
-                  as String,
-        certificate: null == certificate
-            ? _value.certificate
-            : certificate // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+    return _then(_$SubmitKYCImpl(
+      idProof: null == idProof
+          ? _value.idProof
+          : idProof // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressProof: null == addressProof
+          ? _value.addressProof
+          : addressProof // ignore: cast_nullable_to_non_nullable
+              as String,
+      certificate: null == certificate
+          ? _value.certificate
+          : certificate // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$SubmitKYCImpl implements _SubmitKYC {
-  const _$SubmitKYCImpl({
-    required this.idProof,
-    required this.addressProof,
-    required this.certificate,
-  });
+  const _$SubmitKYCImpl(
+      {required this.idProof,
+      required this.addressProof,
+      required this.certificate});
 
   @override
   final String idProof;
@@ -278,9 +261,7 @@ class _$SubmitKYCImpl implements _SubmitKYC {
   int get hashCode =>
       Object.hash(runtimeType, idProof, addressProof, certificate);
 
-  /// Create a copy of ArtistKYCEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SubmitKYCImplCopyWith<_$SubmitKYCImpl> get copyWith =>
@@ -291,11 +272,8 @@ class _$SubmitKYCImpl implements _SubmitKYC {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchStatus,
     required TResult Function(
-      String idProof,
-      String addressProof,
-      String certificate,
-    )
-    submitKYC,
+            String idProof, String addressProof, String certificate)
+        submitKYC,
   }) {
     return submitKYC(idProof, addressProof, certificate);
   }
@@ -305,7 +283,7 @@ class _$SubmitKYCImpl implements _SubmitKYC {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchStatus,
     TResult? Function(String idProof, String addressProof, String certificate)?
-    submitKYC,
+        submitKYC,
   }) {
     return submitKYC?.call(idProof, addressProof, certificate);
   }
@@ -315,7 +293,7 @@ class _$SubmitKYCImpl implements _SubmitKYC {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchStatus,
     TResult Function(String idProof, String addressProof, String certificate)?
-    submitKYC,
+        submitKYC,
     required TResult orElse(),
   }) {
     if (submitKYC != null) {
@@ -357,19 +335,15 @@ class _$SubmitKYCImpl implements _SubmitKYC {
 }
 
 abstract class _SubmitKYC implements ArtistKYCEvent {
-  const factory _SubmitKYC({
-    required final String idProof,
-    required final String addressProof,
-    required final String certificate,
-  }) = _$SubmitKYCImpl;
+  const factory _SubmitKYC(
+      {required final String idProof,
+      required final String addressProof,
+      required final String certificate}) = _$SubmitKYCImpl;
 
   String get idProof;
   String get addressProof;
   String get certificate;
-
-  /// Create a copy of ArtistKYCEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SubmitKYCImplCopyWith<_$SubmitKYCImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -384,7 +358,8 @@ mixin _$ArtistKYCState {
     required TResult Function() submitting,
     required TResult Function() submitted,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -393,7 +368,8 @@ mixin _$ArtistKYCState {
     TResult? Function()? submitting,
     TResult? Function()? submitted,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -403,7 +379,8 @@ mixin _$ArtistKYCState {
     TResult Function()? submitted,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -412,7 +389,8 @@ mixin _$ArtistKYCState {
     required TResult Function(_Submitting value) submitting,
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -421,7 +399,8 @@ mixin _$ArtistKYCState {
     TResult? Function(_Submitting value)? submitting,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -431,15 +410,15 @@ mixin _$ArtistKYCState {
     TResult Function(_Submitted value)? submitted,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ArtistKYCStateCopyWith<$Res> {
   factory $ArtistKYCStateCopyWith(
-    ArtistKYCState value,
-    $Res Function(ArtistKYCState) then,
-  ) = _$ArtistKYCStateCopyWithImpl<$Res, ArtistKYCState>;
+          ArtistKYCState value, $Res Function(ArtistKYCState) then) =
+      _$ArtistKYCStateCopyWithImpl<$Res, ArtistKYCState>;
 }
 
 /// @nodoc
@@ -451,17 +430,13 @@ class _$ArtistKYCStateCopyWithImpl<$Res, $Val extends ArtistKYCState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -469,12 +444,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$ArtistKYCStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -590,9 +561,8 @@ abstract class _Initial implements ArtistKYCState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -600,12 +570,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$ArtistKYCStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -721,9 +687,8 @@ abstract class _Loading implements ArtistKYCState {
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
-    _$LoadedImpl value,
-    $Res Function(_$LoadedImpl) then,
-  ) = __$$LoadedImplCopyWithImpl<$Res>;
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ArtistKYC kyc});
 
@@ -735,27 +700,22 @@ class __$$LoadedImplCopyWithImpl<$Res>
     extends _$ArtistKYCStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
-    _$LoadedImpl _value,
-    $Res Function(_$LoadedImpl) _then,
-  ) : super(_value, _then);
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? kyc = null}) {
-    return _then(
-      _$LoadedImpl(
-        kyc: null == kyc
-            ? _value.kyc
-            : kyc // ignore: cast_nullable_to_non_nullable
-                  as ArtistKYC,
-      ),
-    );
+  $Res call({
+    Object? kyc = null,
+  }) {
+    return _then(_$LoadedImpl(
+      kyc: null == kyc
+          ? _value.kyc
+          : kyc // ignore: cast_nullable_to_non_nullable
+              as ArtistKYC,
+    ));
   }
 
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ArtistKYCCopyWith<$Res> get kyc {
@@ -789,9 +749,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   int get hashCode => Object.hash(runtimeType, kyc);
 
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -888,10 +846,7 @@ abstract class _Loaded implements ArtistKYCState {
   const factory _Loaded({required final ArtistKYC kyc}) = _$LoadedImpl;
 
   ArtistKYC get kyc;
-
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -899,9 +854,8 @@ abstract class _Loaded implements ArtistKYCState {
 /// @nodoc
 abstract class _$$SubmittingImplCopyWith<$Res> {
   factory _$$SubmittingImplCopyWith(
-    _$SubmittingImpl value,
-    $Res Function(_$SubmittingImpl) then,
-  ) = __$$SubmittingImplCopyWithImpl<$Res>;
+          _$SubmittingImpl value, $Res Function(_$SubmittingImpl) then) =
+      __$$SubmittingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -909,12 +863,8 @@ class __$$SubmittingImplCopyWithImpl<$Res>
     extends _$ArtistKYCStateCopyWithImpl<$Res, _$SubmittingImpl>
     implements _$$SubmittingImplCopyWith<$Res> {
   __$$SubmittingImplCopyWithImpl(
-    _$SubmittingImpl _value,
-    $Res Function(_$SubmittingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
+      _$SubmittingImpl _value, $Res Function(_$SubmittingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1030,9 +980,8 @@ abstract class _Submitting implements ArtistKYCState {
 /// @nodoc
 abstract class _$$SubmittedImplCopyWith<$Res> {
   factory _$$SubmittedImplCopyWith(
-    _$SubmittedImpl value,
-    $Res Function(_$SubmittedImpl) then,
-  ) = __$$SubmittedImplCopyWithImpl<$Res>;
+          _$SubmittedImpl value, $Res Function(_$SubmittedImpl) then) =
+      __$$SubmittedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1040,12 +989,8 @@ class __$$SubmittedImplCopyWithImpl<$Res>
     extends _$ArtistKYCStateCopyWithImpl<$Res, _$SubmittedImpl>
     implements _$$SubmittedImplCopyWith<$Res> {
   __$$SubmittedImplCopyWithImpl(
-    _$SubmittedImpl _value,
-    $Res Function(_$SubmittedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
+      _$SubmittedImpl _value, $Res Function(_$SubmittedImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1161,9 +1106,8 @@ abstract class _Submitted implements ArtistKYCState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1173,23 +1117,20 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$ArtistKYCStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1217,9 +1158,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -1316,10 +1255,7 @@ abstract class _Error implements ArtistKYCState {
   const factory _Error({required final String message}) = _$ErrorImpl;
 
   String get message;
-
-  /// Create a copy of ArtistKYCState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

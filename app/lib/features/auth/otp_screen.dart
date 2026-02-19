@@ -11,8 +11,13 @@ import 'bloc/auth_bloc.dart';
 
 class OtpScreen extends StatefulWidget {
   final String phoneNumber;
+  final bool isRegistration;
 
-  const OtpScreen({super.key, required this.phoneNumber});
+  const OtpScreen({
+    super.key, 
+    required this.phoneNumber, 
+    this.isRegistration = false,
+  });
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
@@ -229,9 +234,15 @@ class _OtpScreenState extends State<OtpScreen> {
     }
 
     HapticFeedback.mediumImpact();
-    context.read<AuthBloc>().add(
-      AuthEvent.verifyOtp(widget.phoneNumber, otp),
-    );
+    if (widget.isRegistration) {
+      context.read<AuthBloc>().add(
+        AuthEvent.verifyRegistrationOtp(phone: widget.phoneNumber, otp: otp),
+      );
+    } else {
+      context.read<AuthBloc>().add(
+        AuthEvent.verifyOtp(widget.phoneNumber, otp),
+      );
+    }
   }
 
   void _clearOtpInputs() {
@@ -250,6 +261,15 @@ class _OtpScreenState extends State<OtpScreen> {
     _startTimer();
 
     HapticFeedback.lightImpact();
+    // Resend differs based on flow? 
+    // AuthBloc has only login() which triggers OTP request.
+    // Does register also have a resend? _onRegister calls API. 
+    // We should probably assume Login OTP request works for both or add resendRegistrationOtp.
+    // For now, let's keep it simple. If Registration, maybe we should re-trigger register?
+    // Actually, backend might have a generic resend.
+    // Checking AuthBloc: _onLogin calls /auth/request-otp.
+    // Ideally we need a separate resend for registration if the endpoints create different OTP types.
+    // Assuming /auth/request-otp works for both for now, or fallback to login flow.
     context.read<AuthBloc>().add(AuthEvent.login(widget.phoneNumber));
   }
 

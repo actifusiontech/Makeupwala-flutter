@@ -12,8 +12,7 @@ part of 'education_models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Institute _$InstituteFromJson(Map<String, dynamic> json) {
   return _Institute.fromJson(json);
@@ -29,12 +28,8 @@ mixin _$Institute {
   String? get address => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
 
-  /// Serializes this Institute to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Institute
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $InstituteCopyWith<Institute> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,15 +39,14 @@ abstract class $InstituteCopyWith<$Res> {
   factory $InstituteCopyWith(Institute value, $Res Function(Institute) then) =
       _$InstituteCopyWithImpl<$Res, Institute>;
   @useResult
-  $Res call({
-    String id,
-    String name,
-    String? description,
-    String? logoUrl,
-    String? website,
-    String? address,
-    bool isVerified,
-  });
+  $Res call(
+      {String id,
+      String name,
+      String? description,
+      String? logoUrl,
+      String? website,
+      String? address,
+      bool isVerified});
 }
 
 /// @nodoc
@@ -65,8 +59,6 @@ class _$InstituteCopyWithImpl<$Res, $Val extends Institute>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Institute
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,39 +70,36 @@ class _$InstituteCopyWithImpl<$Res, $Val extends Institute>
     Object? address = freezed,
     Object? isVerified = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            logoUrl: freezed == logoUrl
-                ? _value.logoUrl
-                : logoUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            website: freezed == website
-                ? _value.website
-                : website // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            address: freezed == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            isVerified: null == isVerified
-                ? _value.isVerified
-                : isVerified // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      logoUrl: freezed == logoUrl
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      website: freezed == website
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
@@ -118,20 +107,18 @@ class _$InstituteCopyWithImpl<$Res, $Val extends Institute>
 abstract class _$$InstituteImplCopyWith<$Res>
     implements $InstituteCopyWith<$Res> {
   factory _$$InstituteImplCopyWith(
-    _$InstituteImpl value,
-    $Res Function(_$InstituteImpl) then,
-  ) = __$$InstituteImplCopyWithImpl<$Res>;
+          _$InstituteImpl value, $Res Function(_$InstituteImpl) then) =
+      __$$InstituteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String name,
-    String? description,
-    String? logoUrl,
-    String? website,
-    String? address,
-    bool isVerified,
-  });
+  $Res call(
+      {String id,
+      String name,
+      String? description,
+      String? logoUrl,
+      String? website,
+      String? address,
+      bool isVerified});
 }
 
 /// @nodoc
@@ -139,12 +126,9 @@ class __$$InstituteImplCopyWithImpl<$Res>
     extends _$InstituteCopyWithImpl<$Res, _$InstituteImpl>
     implements _$$InstituteImplCopyWith<$Res> {
   __$$InstituteImplCopyWithImpl(
-    _$InstituteImpl _value,
-    $Res Function(_$InstituteImpl) _then,
-  ) : super(_value, _then);
+      _$InstituteImpl _value, $Res Function(_$InstituteImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of Institute
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,53 +140,50 @@ class __$$InstituteImplCopyWithImpl<$Res>
     Object? address = freezed,
     Object? isVerified = null,
   }) {
-    return _then(
-      _$InstituteImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        logoUrl: freezed == logoUrl
-            ? _value.logoUrl
-            : logoUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        website: freezed == website
-            ? _value.website
-            : website // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        address: freezed == address
-            ? _value.address
-            : address // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        isVerified: null == isVerified
-            ? _value.isVerified
-            : isVerified // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
+    return _then(_$InstituteImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      logoUrl: freezed == logoUrl
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      website: freezed == website
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$InstituteImpl implements _Institute {
-  const _$InstituteImpl({
-    required this.id,
-    required this.name,
-    this.description,
-    this.logoUrl,
-    this.website,
-    this.address,
-    this.isVerified = false,
-  });
+  const _$InstituteImpl(
+      {required this.id,
+      required this.name,
+      this.description,
+      this.logoUrl,
+      this.website,
+      this.address,
+      this.isVerified = false});
 
   factory _$InstituteImpl.fromJson(Map<String, dynamic> json) =>
       _$$InstituteImplFromJson(json);
@@ -244,22 +225,12 @@ class _$InstituteImpl implements _Institute {
                 other.isVerified == isVerified));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    name,
-    description,
-    logoUrl,
-    website,
-    address,
-    isVerified,
-  );
+  int get hashCode => Object.hash(runtimeType, id, name, description, logoUrl,
+      website, address, isVerified);
 
-  /// Create a copy of Institute
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$InstituteImplCopyWith<_$InstituteImpl> get copyWith =>
@@ -267,20 +238,21 @@ class _$InstituteImpl implements _Institute {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InstituteImplToJson(this);
+    return _$$InstituteImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Institute implements Institute {
-  const factory _Institute({
-    required final String id,
-    required final String name,
-    final String? description,
-    final String? logoUrl,
-    final String? website,
-    final String? address,
-    final bool isVerified,
-  }) = _$InstituteImpl;
+  const factory _Institute(
+      {required final String id,
+      required final String name,
+      final String? description,
+      final String? logoUrl,
+      final String? website,
+      final String? address,
+      final bool isVerified}) = _$InstituteImpl;
 
   factory _Institute.fromJson(Map<String, dynamic> json) =
       _$InstituteImpl.fromJson;
@@ -299,11 +271,8 @@ abstract class _Institute implements Institute {
   String? get address;
   @override
   bool get isVerified;
-
-  /// Create a copy of Institute
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$InstituteImplCopyWith<_$InstituteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -325,12 +294,8 @@ mixin _$Course {
   String get level => throw _privateConstructorUsedError;
   List<Lesson>? get lessons => throw _privateConstructorUsedError;
 
-  /// Serializes this Course to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Course
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CourseCopyWith<Course> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -339,18 +304,17 @@ abstract class $CourseCopyWith<$Res> {
   factory $CourseCopyWith(Course value, $Res Function(Course) then) =
       _$CourseCopyWithImpl<$Res, Course>;
   @useResult
-  $Res call({
-    String id,
-    String instituteId,
-    String title,
-    String? description,
-    String? thumbnailUrl,
-    String? category,
-    double feeAmount,
-    int durationWeeks,
-    String level,
-    List<Lesson>? lessons,
-  });
+  $Res call(
+      {String id,
+      String instituteId,
+      String title,
+      String? description,
+      String? thumbnailUrl,
+      String? category,
+      double feeAmount,
+      int durationWeeks,
+      String level,
+      List<Lesson>? lessons});
 }
 
 /// @nodoc
@@ -363,8 +327,6 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Course
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -379,74 +341,69 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
     Object? level = null,
     Object? lessons = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            instituteId: null == instituteId
-                ? _value.instituteId
-                : instituteId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            thumbnailUrl: freezed == thumbnailUrl
-                ? _value.thumbnailUrl
-                : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            category: freezed == category
-                ? _value.category
-                : category // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            feeAmount: null == feeAmount
-                ? _value.feeAmount
-                : feeAmount // ignore: cast_nullable_to_non_nullable
-                      as double,
-            durationWeeks: null == durationWeeks
-                ? _value.durationWeeks
-                : durationWeeks // ignore: cast_nullable_to_non_nullable
-                      as int,
-            level: null == level
-                ? _value.level
-                : level // ignore: cast_nullable_to_non_nullable
-                      as String,
-            lessons: freezed == lessons
-                ? _value.lessons
-                : lessons // ignore: cast_nullable_to_non_nullable
-                      as List<Lesson>?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      instituteId: null == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String?,
+      feeAmount: null == feeAmount
+          ? _value.feeAmount
+          : feeAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      durationWeeks: null == durationWeeks
+          ? _value.durationWeeks
+          : durationWeeks // ignore: cast_nullable_to_non_nullable
+              as int,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as String,
+      lessons: freezed == lessons
+          ? _value.lessons
+          : lessons // ignore: cast_nullable_to_non_nullable
+              as List<Lesson>?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$CourseImplCopyWith<$Res> implements $CourseCopyWith<$Res> {
   factory _$$CourseImplCopyWith(
-    _$CourseImpl value,
-    $Res Function(_$CourseImpl) then,
-  ) = __$$CourseImplCopyWithImpl<$Res>;
+          _$CourseImpl value, $Res Function(_$CourseImpl) then) =
+      __$$CourseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String instituteId,
-    String title,
-    String? description,
-    String? thumbnailUrl,
-    String? category,
-    double feeAmount,
-    int durationWeeks,
-    String level,
-    List<Lesson>? lessons,
-  });
+  $Res call(
+      {String id,
+      String instituteId,
+      String title,
+      String? description,
+      String? thumbnailUrl,
+      String? category,
+      double feeAmount,
+      int durationWeeks,
+      String level,
+      List<Lesson>? lessons});
 }
 
 /// @nodoc
@@ -454,12 +411,9 @@ class __$$CourseImplCopyWithImpl<$Res>
     extends _$CourseCopyWithImpl<$Res, _$CourseImpl>
     implements _$$CourseImplCopyWith<$Res> {
   __$$CourseImplCopyWithImpl(
-    _$CourseImpl _value,
-    $Res Function(_$CourseImpl) _then,
-  ) : super(_value, _then);
+      _$CourseImpl _value, $Res Function(_$CourseImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of Course
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -474,68 +428,66 @@ class __$$CourseImplCopyWithImpl<$Res>
     Object? level = null,
     Object? lessons = freezed,
   }) {
-    return _then(
-      _$CourseImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        instituteId: null == instituteId
-            ? _value.instituteId
-            : instituteId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        title: null == title
-            ? _value.title
-            : title // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        thumbnailUrl: freezed == thumbnailUrl
-            ? _value.thumbnailUrl
-            : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        category: freezed == category
-            ? _value.category
-            : category // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        feeAmount: null == feeAmount
-            ? _value.feeAmount
-            : feeAmount // ignore: cast_nullable_to_non_nullable
-                  as double,
-        durationWeeks: null == durationWeeks
-            ? _value.durationWeeks
-            : durationWeeks // ignore: cast_nullable_to_non_nullable
-                  as int,
-        level: null == level
-            ? _value.level
-            : level // ignore: cast_nullable_to_non_nullable
-                  as String,
-        lessons: freezed == lessons
-            ? _value._lessons
-            : lessons // ignore: cast_nullable_to_non_nullable
-                  as List<Lesson>?,
-      ),
-    );
+    return _then(_$CourseImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      instituteId: null == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnailUrl: freezed == thumbnailUrl
+          ? _value.thumbnailUrl
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String?,
+      feeAmount: null == feeAmount
+          ? _value.feeAmount
+          : feeAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+      durationWeeks: null == durationWeeks
+          ? _value.durationWeeks
+          : durationWeeks // ignore: cast_nullable_to_non_nullable
+              as int,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as String,
+      lessons: freezed == lessons
+          ? _value._lessons
+          : lessons // ignore: cast_nullable_to_non_nullable
+              as List<Lesson>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CourseImpl implements _Course {
-  const _$CourseImpl({
-    required this.id,
-    required this.instituteId,
-    required this.title,
-    this.description,
-    this.thumbnailUrl,
-    this.category,
-    this.feeAmount = 0.0,
-    this.durationWeeks = 0,
-    this.level = 'beginner',
-    final List<Lesson>? lessons,
-  }) : _lessons = lessons;
+  const _$CourseImpl(
+      {required this.id,
+      required this.instituteId,
+      required this.title,
+      this.description,
+      this.thumbnailUrl,
+      this.category,
+      this.feeAmount = 0.0,
+      this.durationWeeks = 0,
+      this.level = 'beginner',
+      final List<Lesson>? lessons})
+      : _lessons = lessons;
 
   factory _$CourseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseImplFromJson(json);
@@ -599,25 +551,22 @@ class _$CourseImpl implements _Course {
             const DeepCollectionEquality().equals(other._lessons, _lessons));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    instituteId,
-    title,
-    description,
-    thumbnailUrl,
-    category,
-    feeAmount,
-    durationWeeks,
-    level,
-    const DeepCollectionEquality().hash(_lessons),
-  );
+      runtimeType,
+      id,
+      instituteId,
+      title,
+      description,
+      thumbnailUrl,
+      category,
+      feeAmount,
+      durationWeeks,
+      level,
+      const DeepCollectionEquality().hash(_lessons));
 
-  /// Create a copy of Course
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CourseImplCopyWith<_$CourseImpl> get copyWith =>
@@ -625,23 +574,24 @@ class _$CourseImpl implements _Course {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CourseImplToJson(this);
+    return _$$CourseImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Course implements Course {
-  const factory _Course({
-    required final String id,
-    required final String instituteId,
-    required final String title,
-    final String? description,
-    final String? thumbnailUrl,
-    final String? category,
-    final double feeAmount,
-    final int durationWeeks,
-    final String level,
-    final List<Lesson>? lessons,
-  }) = _$CourseImpl;
+  const factory _Course(
+      {required final String id,
+      required final String instituteId,
+      required final String title,
+      final String? description,
+      final String? thumbnailUrl,
+      final String? category,
+      final double feeAmount,
+      final int durationWeeks,
+      final String level,
+      final List<Lesson>? lessons}) = _$CourseImpl;
 
   factory _Course.fromJson(Map<String, dynamic> json) = _$CourseImpl.fromJson;
 
@@ -665,11 +615,8 @@ abstract class _Course implements Course {
   String get level;
   @override
   List<Lesson>? get lessons;
-
-  /// Create a copy of Course
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CourseImplCopyWith<_$CourseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -690,12 +637,8 @@ mixin _$Lesson {
   bool get isPreview => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
 
-  /// Serializes this Lesson to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Lesson
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -704,17 +647,16 @@ abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res, Lesson>;
   @useResult
-  $Res call({
-    String id,
-    String courseId,
-    String title,
-    String? description,
-    String videoUrl,
-    String? contentText,
-    int sequenceOrder,
-    bool isPreview,
-    bool isCompleted,
-  });
+  $Res call(
+      {String id,
+      String courseId,
+      String title,
+      String? description,
+      String videoUrl,
+      String? contentText,
+      int sequenceOrder,
+      bool isPreview,
+      bool isCompleted});
 }
 
 /// @nodoc
@@ -727,8 +669,6 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Lesson
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -742,69 +682,64 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
     Object? isPreview = null,
     Object? isCompleted = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            courseId: null == courseId
-                ? _value.courseId
-                : courseId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            videoUrl: null == videoUrl
-                ? _value.videoUrl
-                : videoUrl // ignore: cast_nullable_to_non_nullable
-                      as String,
-            contentText: freezed == contentText
-                ? _value.contentText
-                : contentText // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            sequenceOrder: null == sequenceOrder
-                ? _value.sequenceOrder
-                : sequenceOrder // ignore: cast_nullable_to_non_nullable
-                      as int,
-            isPreview: null == isPreview
-                ? _value.isPreview
-                : isPreview // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            isCompleted: null == isCompleted
-                ? _value.isCompleted
-                : isCompleted // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courseId: null == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoUrl: null == videoUrl
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      contentText: freezed == contentText
+          ? _value.contentText
+          : contentText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sequenceOrder: null == sequenceOrder
+          ? _value.sequenceOrder
+          : sequenceOrder // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPreview: null == isPreview
+          ? _value.isPreview
+          : isPreview // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$LessonImplCopyWith<$Res> implements $LessonCopyWith<$Res> {
   factory _$$LessonImplCopyWith(
-    _$LessonImpl value,
-    $Res Function(_$LessonImpl) then,
-  ) = __$$LessonImplCopyWithImpl<$Res>;
+          _$LessonImpl value, $Res Function(_$LessonImpl) then) =
+      __$$LessonImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String courseId,
-    String title,
-    String? description,
-    String videoUrl,
-    String? contentText,
-    int sequenceOrder,
-    bool isPreview,
-    bool isCompleted,
-  });
+  $Res call(
+      {String id,
+      String courseId,
+      String title,
+      String? description,
+      String videoUrl,
+      String? contentText,
+      int sequenceOrder,
+      bool isPreview,
+      bool isCompleted});
 }
 
 /// @nodoc
@@ -812,12 +747,9 @@ class __$$LessonImplCopyWithImpl<$Res>
     extends _$LessonCopyWithImpl<$Res, _$LessonImpl>
     implements _$$LessonImplCopyWith<$Res> {
   __$$LessonImplCopyWithImpl(
-    _$LessonImpl _value,
-    $Res Function(_$LessonImpl) _then,
-  ) : super(_value, _then);
+      _$LessonImpl _value, $Res Function(_$LessonImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of Lesson
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -831,63 +763,60 @@ class __$$LessonImplCopyWithImpl<$Res>
     Object? isPreview = null,
     Object? isCompleted = null,
   }) {
-    return _then(
-      _$LessonImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        courseId: null == courseId
-            ? _value.courseId
-            : courseId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        title: null == title
-            ? _value.title
-            : title // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        videoUrl: null == videoUrl
-            ? _value.videoUrl
-            : videoUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
-        contentText: freezed == contentText
-            ? _value.contentText
-            : contentText // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        sequenceOrder: null == sequenceOrder
-            ? _value.sequenceOrder
-            : sequenceOrder // ignore: cast_nullable_to_non_nullable
-                  as int,
-        isPreview: null == isPreview
-            ? _value.isPreview
-            : isPreview // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        isCompleted: null == isCompleted
-            ? _value.isCompleted
-            : isCompleted // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
+    return _then(_$LessonImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courseId: null == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoUrl: null == videoUrl
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      contentText: freezed == contentText
+          ? _value.contentText
+          : contentText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sequenceOrder: null == sequenceOrder
+          ? _value.sequenceOrder
+          : sequenceOrder // ignore: cast_nullable_to_non_nullable
+              as int,
+      isPreview: null == isPreview
+          ? _value.isPreview
+          : isPreview // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$LessonImpl implements _Lesson {
-  const _$LessonImpl({
-    required this.id,
-    required this.courseId,
-    required this.title,
-    this.description,
-    required this.videoUrl,
-    this.contentText,
-    required this.sequenceOrder,
-    this.isPreview = false,
-    this.isCompleted = false,
-  });
+  const _$LessonImpl(
+      {required this.id,
+      required this.courseId,
+      required this.title,
+      this.description,
+      required this.videoUrl,
+      this.contentText,
+      required this.sequenceOrder,
+      this.isPreview = false,
+      this.isCompleted = false});
 
   factory _$LessonImpl.fromJson(Map<String, dynamic> json) =>
       _$$LessonImplFromJson(json);
@@ -941,24 +870,12 @@ class _$LessonImpl implements _Lesson {
                 other.isCompleted == isCompleted));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    courseId,
-    title,
-    description,
-    videoUrl,
-    contentText,
-    sequenceOrder,
-    isPreview,
-    isCompleted,
-  );
+  int get hashCode => Object.hash(runtimeType, id, courseId, title, description,
+      videoUrl, contentText, sequenceOrder, isPreview, isCompleted);
 
-  /// Create a copy of Lesson
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
@@ -966,22 +883,23 @@ class _$LessonImpl implements _Lesson {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LessonImplToJson(this);
+    return _$$LessonImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Lesson implements Lesson {
-  const factory _Lesson({
-    required final String id,
-    required final String courseId,
-    required final String title,
-    final String? description,
-    required final String videoUrl,
-    final String? contentText,
-    required final int sequenceOrder,
-    final bool isPreview,
-    final bool isCompleted,
-  }) = _$LessonImpl;
+  const factory _Lesson(
+      {required final String id,
+      required final String courseId,
+      required final String title,
+      final String? description,
+      required final String videoUrl,
+      final String? contentText,
+      required final int sequenceOrder,
+      final bool isPreview,
+      final bool isCompleted}) = _$LessonImpl;
 
   factory _Lesson.fromJson(Map<String, dynamic> json) = _$LessonImpl.fromJson;
 
@@ -1003,11 +921,8 @@ abstract class _Lesson implements Lesson {
   bool get isPreview;
   @override
   bool get isCompleted;
-
-  /// Create a copy of Lesson
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1027,12 +942,8 @@ mixin _$Enrollment {
   DateTime? get completedAt => throw _privateConstructorUsedError;
   Course? get course => throw _privateConstructorUsedError;
 
-  /// Serializes this Enrollment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Enrollment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $EnrollmentCopyWith<Enrollment> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1040,20 +951,18 @@ mixin _$Enrollment {
 /// @nodoc
 abstract class $EnrollmentCopyWith<$Res> {
   factory $EnrollmentCopyWith(
-    Enrollment value,
-    $Res Function(Enrollment) then,
-  ) = _$EnrollmentCopyWithImpl<$Res, Enrollment>;
+          Enrollment value, $Res Function(Enrollment) then) =
+      _$EnrollmentCopyWithImpl<$Res, Enrollment>;
   @useResult
-  $Res call({
-    String id,
-    String courseId,
-    String studentId,
-    String status,
-    int progressPercentage,
-    DateTime enrolledAt,
-    DateTime? completedAt,
-    Course? course,
-  });
+  $Res call(
+      {String id,
+      String courseId,
+      String studentId,
+      String status,
+      int progressPercentage,
+      DateTime enrolledAt,
+      DateTime? completedAt,
+      Course? course});
 
   $CourseCopyWith<$Res>? get course;
 }
@@ -1068,8 +977,6 @@ class _$EnrollmentCopyWithImpl<$Res, $Val extends Enrollment>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Enrollment
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1082,47 +989,42 @@ class _$EnrollmentCopyWithImpl<$Res, $Val extends Enrollment>
     Object? completedAt = freezed,
     Object? course = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            courseId: null == courseId
-                ? _value.courseId
-                : courseId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            studentId: null == studentId
-                ? _value.studentId
-                : studentId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            progressPercentage: null == progressPercentage
-                ? _value.progressPercentage
-                : progressPercentage // ignore: cast_nullable_to_non_nullable
-                      as int,
-            enrolledAt: null == enrolledAt
-                ? _value.enrolledAt
-                : enrolledAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            completedAt: freezed == completedAt
-                ? _value.completedAt
-                : completedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            course: freezed == course
-                ? _value.course
-                : course // ignore: cast_nullable_to_non_nullable
-                      as Course?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courseId: null == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      progressPercentage: null == progressPercentage
+          ? _value.progressPercentage
+          : progressPercentage // ignore: cast_nullable_to_non_nullable
+              as int,
+      enrolledAt: null == enrolledAt
+          ? _value.enrolledAt
+          : enrolledAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      completedAt: freezed == completedAt
+          ? _value.completedAt
+          : completedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      course: freezed == course
+          ? _value.course
+          : course // ignore: cast_nullable_to_non_nullable
+              as Course?,
+    ) as $Val);
   }
 
-  /// Create a copy of Enrollment
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CourseCopyWith<$Res>? get course {
@@ -1140,21 +1042,19 @@ class _$EnrollmentCopyWithImpl<$Res, $Val extends Enrollment>
 abstract class _$$EnrollmentImplCopyWith<$Res>
     implements $EnrollmentCopyWith<$Res> {
   factory _$$EnrollmentImplCopyWith(
-    _$EnrollmentImpl value,
-    $Res Function(_$EnrollmentImpl) then,
-  ) = __$$EnrollmentImplCopyWithImpl<$Res>;
+          _$EnrollmentImpl value, $Res Function(_$EnrollmentImpl) then) =
+      __$$EnrollmentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String courseId,
-    String studentId,
-    String status,
-    int progressPercentage,
-    DateTime enrolledAt,
-    DateTime? completedAt,
-    Course? course,
-  });
+  $Res call(
+      {String id,
+      String courseId,
+      String studentId,
+      String status,
+      int progressPercentage,
+      DateTime enrolledAt,
+      DateTime? completedAt,
+      Course? course});
 
   @override
   $CourseCopyWith<$Res>? get course;
@@ -1165,12 +1065,9 @@ class __$$EnrollmentImplCopyWithImpl<$Res>
     extends _$EnrollmentCopyWithImpl<$Res, _$EnrollmentImpl>
     implements _$$EnrollmentImplCopyWith<$Res> {
   __$$EnrollmentImplCopyWithImpl(
-    _$EnrollmentImpl _value,
-    $Res Function(_$EnrollmentImpl) _then,
-  ) : super(_value, _then);
+      _$EnrollmentImpl _value, $Res Function(_$EnrollmentImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of Enrollment
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1183,58 +1080,55 @@ class __$$EnrollmentImplCopyWithImpl<$Res>
     Object? completedAt = freezed,
     Object? course = freezed,
   }) {
-    return _then(
-      _$EnrollmentImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        courseId: null == courseId
-            ? _value.courseId
-            : courseId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        studentId: null == studentId
-            ? _value.studentId
-            : studentId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        progressPercentage: null == progressPercentage
-            ? _value.progressPercentage
-            : progressPercentage // ignore: cast_nullable_to_non_nullable
-                  as int,
-        enrolledAt: null == enrolledAt
-            ? _value.enrolledAt
-            : enrolledAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        completedAt: freezed == completedAt
-            ? _value.completedAt
-            : completedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        course: freezed == course
-            ? _value.course
-            : course // ignore: cast_nullable_to_non_nullable
-                  as Course?,
-      ),
-    );
+    return _then(_$EnrollmentImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      courseId: null == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      progressPercentage: null == progressPercentage
+          ? _value.progressPercentage
+          : progressPercentage // ignore: cast_nullable_to_non_nullable
+              as int,
+      enrolledAt: null == enrolledAt
+          ? _value.enrolledAt
+          : enrolledAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      completedAt: freezed == completedAt
+          ? _value.completedAt
+          : completedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      course: freezed == course
+          ? _value.course
+          : course // ignore: cast_nullable_to_non_nullable
+              as Course?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EnrollmentImpl implements _Enrollment {
-  const _$EnrollmentImpl({
-    required this.id,
-    required this.courseId,
-    required this.studentId,
-    this.status = 'enrolled',
-    this.progressPercentage = 0,
-    required this.enrolledAt,
-    this.completedAt,
-    this.course,
-  });
+  const _$EnrollmentImpl(
+      {required this.id,
+      required this.courseId,
+      required this.studentId,
+      this.status = 'enrolled',
+      this.progressPercentage = 0,
+      required this.enrolledAt,
+      this.completedAt,
+      this.course});
 
   factory _$EnrollmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$EnrollmentImplFromJson(json);
@@ -1283,23 +1177,12 @@ class _$EnrollmentImpl implements _Enrollment {
             (identical(other.course, course) || other.course == course));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    courseId,
-    studentId,
-    status,
-    progressPercentage,
-    enrolledAt,
-    completedAt,
-    course,
-  );
+  int get hashCode => Object.hash(runtimeType, id, courseId, studentId, status,
+      progressPercentage, enrolledAt, completedAt, course);
 
-  /// Create a copy of Enrollment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$EnrollmentImplCopyWith<_$EnrollmentImpl> get copyWith =>
@@ -1307,21 +1190,22 @@ class _$EnrollmentImpl implements _Enrollment {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EnrollmentImplToJson(this);
+    return _$$EnrollmentImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Enrollment implements Enrollment {
-  const factory _Enrollment({
-    required final String id,
-    required final String courseId,
-    required final String studentId,
-    final String status,
-    final int progressPercentage,
-    required final DateTime enrolledAt,
-    final DateTime? completedAt,
-    final Course? course,
-  }) = _$EnrollmentImpl;
+  const factory _Enrollment(
+      {required final String id,
+      required final String courseId,
+      required final String studentId,
+      final String status,
+      final int progressPercentage,
+      required final DateTime enrolledAt,
+      final DateTime? completedAt,
+      final Course? course}) = _$EnrollmentImpl;
 
   factory _Enrollment.fromJson(Map<String, dynamic> json) =
       _$EnrollmentImpl.fromJson;
@@ -1342,11 +1226,8 @@ abstract class _Enrollment implements Enrollment {
   DateTime? get completedAt;
   @override
   Course? get course;
-
-  /// Create a copy of Enrollment
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$EnrollmentImplCopyWith<_$EnrollmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1367,12 +1248,8 @@ mixin _$PlacementListing {
   String get listingType => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
 
-  /// Serializes this PlacementListing to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of PlacementListing
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $PlacementListingCopyWith<PlacementListing> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1380,21 +1257,19 @@ mixin _$PlacementListing {
 /// @nodoc
 abstract class $PlacementListingCopyWith<$Res> {
   factory $PlacementListingCopyWith(
-    PlacementListing value,
-    $Res Function(PlacementListing) then,
-  ) = _$PlacementListingCopyWithImpl<$Res, PlacementListing>;
+          PlacementListing value, $Res Function(PlacementListing) then) =
+      _$PlacementListingCopyWithImpl<$Res, PlacementListing>;
   @useResult
-  $Res call({
-    String id,
-    String instituteId,
-    String title,
-    String companyName,
-    String? location,
-    String? description,
-    double? stipendAmount,
-    String listingType,
-    bool isActive,
-  });
+  $Res call(
+      {String id,
+      String instituteId,
+      String title,
+      String companyName,
+      String? location,
+      String? description,
+      double? stipendAmount,
+      String listingType,
+      bool isActive});
 }
 
 /// @nodoc
@@ -1407,8 +1282,6 @@ class _$PlacementListingCopyWithImpl<$Res, $Val extends PlacementListing>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of PlacementListing
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1422,83 +1295,75 @@ class _$PlacementListingCopyWithImpl<$Res, $Val extends PlacementListing>
     Object? listingType = null,
     Object? isActive = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            instituteId: null == instituteId
-                ? _value.instituteId
-                : instituteId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            companyName: null == companyName
-                ? _value.companyName
-                : companyName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            location: freezed == location
-                ? _value.location
-                : location // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            stipendAmount: freezed == stipendAmount
-                ? _value.stipendAmount
-                : stipendAmount // ignore: cast_nullable_to_non_nullable
-                      as double?,
-            listingType: null == listingType
-                ? _value.listingType
-                : listingType // ignore: cast_nullable_to_non_nullable
-                      as String,
-            isActive: null == isActive
-                ? _value.isActive
-                : isActive // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      instituteId: null == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      companyName: null == companyName
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stipendAmount: freezed == stipendAmount
+          ? _value.stipendAmount
+          : stipendAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      listingType: null == listingType
+          ? _value.listingType
+          : listingType // ignore: cast_nullable_to_non_nullable
+              as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PlacementListingImplCopyWith<$Res>
     implements $PlacementListingCopyWith<$Res> {
-  factory _$$PlacementListingImplCopyWith(
-    _$PlacementListingImpl value,
-    $Res Function(_$PlacementListingImpl) then,
-  ) = __$$PlacementListingImplCopyWithImpl<$Res>;
+  factory _$$PlacementListingImplCopyWith(_$PlacementListingImpl value,
+          $Res Function(_$PlacementListingImpl) then) =
+      __$$PlacementListingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String instituteId,
-    String title,
-    String companyName,
-    String? location,
-    String? description,
-    double? stipendAmount,
-    String listingType,
-    bool isActive,
-  });
+  $Res call(
+      {String id,
+      String instituteId,
+      String title,
+      String companyName,
+      String? location,
+      String? description,
+      double? stipendAmount,
+      String listingType,
+      bool isActive});
 }
 
 /// @nodoc
 class __$$PlacementListingImplCopyWithImpl<$Res>
     extends _$PlacementListingCopyWithImpl<$Res, _$PlacementListingImpl>
     implements _$$PlacementListingImplCopyWith<$Res> {
-  __$$PlacementListingImplCopyWithImpl(
-    _$PlacementListingImpl _value,
-    $Res Function(_$PlacementListingImpl) _then,
-  ) : super(_value, _then);
+  __$$PlacementListingImplCopyWithImpl(_$PlacementListingImpl _value,
+      $Res Function(_$PlacementListingImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of PlacementListing
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1512,63 +1377,60 @@ class __$$PlacementListingImplCopyWithImpl<$Res>
     Object? listingType = null,
     Object? isActive = null,
   }) {
-    return _then(
-      _$PlacementListingImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        instituteId: null == instituteId
-            ? _value.instituteId
-            : instituteId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        title: null == title
-            ? _value.title
-            : title // ignore: cast_nullable_to_non_nullable
-                  as String,
-        companyName: null == companyName
-            ? _value.companyName
-            : companyName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        location: freezed == location
-            ? _value.location
-            : location // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        stipendAmount: freezed == stipendAmount
-            ? _value.stipendAmount
-            : stipendAmount // ignore: cast_nullable_to_non_nullable
-                  as double?,
-        listingType: null == listingType
-            ? _value.listingType
-            : listingType // ignore: cast_nullable_to_non_nullable
-                  as String,
-        isActive: null == isActive
-            ? _value.isActive
-            : isActive // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
+    return _then(_$PlacementListingImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      instituteId: null == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      companyName: null == companyName
+          ? _value.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stipendAmount: freezed == stipendAmount
+          ? _value.stipendAmount
+          : stipendAmount // ignore: cast_nullable_to_non_nullable
+              as double?,
+      listingType: null == listingType
+          ? _value.listingType
+          : listingType // ignore: cast_nullable_to_non_nullable
+              as String,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PlacementListingImpl implements _PlacementListing {
-  const _$PlacementListingImpl({
-    required this.id,
-    required this.instituteId,
-    required this.title,
-    required this.companyName,
-    this.location,
-    this.description,
-    this.stipendAmount,
-    this.listingType = 'job',
-    this.isActive = true,
-  });
+  const _$PlacementListingImpl(
+      {required this.id,
+      required this.instituteId,
+      required this.title,
+      required this.companyName,
+      this.location,
+      this.description,
+      this.stipendAmount,
+      this.listingType = 'job',
+      this.isActive = true});
 
   factory _$PlacementListingImpl.fromJson(Map<String, dynamic> json) =>
       _$$PlacementListingImplFromJson(json);
@@ -1622,50 +1484,37 @@ class _$PlacementListingImpl implements _PlacementListing {
                 other.isActive == isActive));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    instituteId,
-    title,
-    companyName,
-    location,
-    description,
-    stipendAmount,
-    listingType,
-    isActive,
-  );
+  int get hashCode => Object.hash(runtimeType, id, instituteId, title,
+      companyName, location, description, stipendAmount, listingType, isActive);
 
-  /// Create a copy of PlacementListing
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$PlacementListingImplCopyWith<_$PlacementListingImpl> get copyWith =>
       __$$PlacementListingImplCopyWithImpl<_$PlacementListingImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PlacementListingImplToJson(this);
+    return _$$PlacementListingImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _PlacementListing implements PlacementListing {
-  const factory _PlacementListing({
-    required final String id,
-    required final String instituteId,
-    required final String title,
-    required final String companyName,
-    final String? location,
-    final String? description,
-    final double? stipendAmount,
-    final String listingType,
-    final bool isActive,
-  }) = _$PlacementListingImpl;
+  const factory _PlacementListing(
+      {required final String id,
+      required final String instituteId,
+      required final String title,
+      required final String companyName,
+      final String? location,
+      final String? description,
+      final double? stipendAmount,
+      final String listingType,
+      final bool isActive}) = _$PlacementListingImpl;
 
   factory _PlacementListing.fromJson(Map<String, dynamic> json) =
       _$PlacementListingImpl.fromJson;
@@ -1688,11 +1537,8 @@ abstract class _PlacementListing implements PlacementListing {
   String get listingType;
   @override
   bool get isActive;
-
-  /// Create a copy of PlacementListing
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$PlacementListingImplCopyWith<_$PlacementListingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1713,12 +1559,8 @@ mixin _$Batch {
   List<BatchStudent>? get students => throw _privateConstructorUsedError;
   List<BatchFaculty>? get faculty => throw _privateConstructorUsedError;
 
-  /// Serializes this Batch to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Batch
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $BatchCopyWith<Batch> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1727,17 +1569,16 @@ abstract class $BatchCopyWith<$Res> {
   factory $BatchCopyWith(Batch value, $Res Function(Batch) then) =
       _$BatchCopyWithImpl<$Res, Batch>;
   @useResult
-  $Res call({
-    String id,
-    String instituteId,
-    String? courseId,
-    String name,
-    DateTime? startDate,
-    DateTime? endDate,
-    String status,
-    List<BatchStudent>? students,
-    List<BatchFaculty>? faculty,
-  });
+  $Res call(
+      {String id,
+      String instituteId,
+      String? courseId,
+      String name,
+      DateTime? startDate,
+      DateTime? endDate,
+      String status,
+      List<BatchStudent>? students,
+      List<BatchFaculty>? faculty});
 }
 
 /// @nodoc
@@ -1750,8 +1591,6 @@ class _$BatchCopyWithImpl<$Res, $Val extends Batch>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Batch
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1765,69 +1604,64 @@ class _$BatchCopyWithImpl<$Res, $Val extends Batch>
     Object? students = freezed,
     Object? faculty = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            instituteId: null == instituteId
-                ? _value.instituteId
-                : instituteId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            courseId: freezed == courseId
-                ? _value.courseId
-                : courseId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            startDate: freezed == startDate
-                ? _value.startDate
-                : startDate // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            endDate: freezed == endDate
-                ? _value.endDate
-                : endDate // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            students: freezed == students
-                ? _value.students
-                : students // ignore: cast_nullable_to_non_nullable
-                      as List<BatchStudent>?,
-            faculty: freezed == faculty
-                ? _value.faculty
-                : faculty // ignore: cast_nullable_to_non_nullable
-                      as List<BatchFaculty>?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      instituteId: null == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      courseId: freezed == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      startDate: freezed == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      endDate: freezed == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      students: freezed == students
+          ? _value.students
+          : students // ignore: cast_nullable_to_non_nullable
+              as List<BatchStudent>?,
+      faculty: freezed == faculty
+          ? _value.faculty
+          : faculty // ignore: cast_nullable_to_non_nullable
+              as List<BatchFaculty>?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$BatchImplCopyWith<$Res> implements $BatchCopyWith<$Res> {
   factory _$$BatchImplCopyWith(
-    _$BatchImpl value,
-    $Res Function(_$BatchImpl) then,
-  ) = __$$BatchImplCopyWithImpl<$Res>;
+          _$BatchImpl value, $Res Function(_$BatchImpl) then) =
+      __$$BatchImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String instituteId,
-    String? courseId,
-    String name,
-    DateTime? startDate,
-    DateTime? endDate,
-    String status,
-    List<BatchStudent>? students,
-    List<BatchFaculty>? faculty,
-  });
+  $Res call(
+      {String id,
+      String instituteId,
+      String? courseId,
+      String name,
+      DateTime? startDate,
+      DateTime? endDate,
+      String status,
+      List<BatchStudent>? students,
+      List<BatchFaculty>? faculty});
 }
 
 /// @nodoc
@@ -1835,12 +1669,9 @@ class __$$BatchImplCopyWithImpl<$Res>
     extends _$BatchCopyWithImpl<$Res, _$BatchImpl>
     implements _$$BatchImplCopyWith<$Res> {
   __$$BatchImplCopyWithImpl(
-    _$BatchImpl _value,
-    $Res Function(_$BatchImpl) _then,
-  ) : super(_value, _then);
+      _$BatchImpl _value, $Res Function(_$BatchImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of Batch
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1854,64 +1685,62 @@ class __$$BatchImplCopyWithImpl<$Res>
     Object? students = freezed,
     Object? faculty = freezed,
   }) {
-    return _then(
-      _$BatchImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        instituteId: null == instituteId
-            ? _value.instituteId
-            : instituteId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        courseId: freezed == courseId
-            ? _value.courseId
-            : courseId // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        startDate: freezed == startDate
-            ? _value.startDate
-            : startDate // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        endDate: freezed == endDate
-            ? _value.endDate
-            : endDate // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        students: freezed == students
-            ? _value._students
-            : students // ignore: cast_nullable_to_non_nullable
-                  as List<BatchStudent>?,
-        faculty: freezed == faculty
-            ? _value._faculty
-            : faculty // ignore: cast_nullable_to_non_nullable
-                  as List<BatchFaculty>?,
-      ),
-    );
+    return _then(_$BatchImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      instituteId: null == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      courseId: freezed == courseId
+          ? _value.courseId
+          : courseId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      startDate: freezed == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      endDate: freezed == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      students: freezed == students
+          ? _value._students
+          : students // ignore: cast_nullable_to_non_nullable
+              as List<BatchStudent>?,
+      faculty: freezed == faculty
+          ? _value._faculty
+          : faculty // ignore: cast_nullable_to_non_nullable
+              as List<BatchFaculty>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BatchImpl implements _Batch {
-  const _$BatchImpl({
-    required this.id,
-    required this.instituteId,
-    this.courseId,
-    required this.name,
-    this.startDate,
-    this.endDate,
-    this.status = 'ACTIVE',
-    final List<BatchStudent>? students,
-    final List<BatchFaculty>? faculty,
-  }) : _students = students,
-       _faculty = faculty;
+  const _$BatchImpl(
+      {required this.id,
+      required this.instituteId,
+      this.courseId,
+      required this.name,
+      this.startDate,
+      this.endDate,
+      this.status = 'ACTIVE',
+      final List<BatchStudent>? students,
+      final List<BatchFaculty>? faculty})
+      : _students = students,
+        _faculty = faculty;
 
   factory _$BatchImpl.fromJson(Map<String, dynamic> json) =>
       _$$BatchImplFromJson(json);
@@ -1975,24 +1804,21 @@ class _$BatchImpl implements _Batch {
             const DeepCollectionEquality().equals(other._faculty, _faculty));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    instituteId,
-    courseId,
-    name,
-    startDate,
-    endDate,
-    status,
-    const DeepCollectionEquality().hash(_students),
-    const DeepCollectionEquality().hash(_faculty),
-  );
+      runtimeType,
+      id,
+      instituteId,
+      courseId,
+      name,
+      startDate,
+      endDate,
+      status,
+      const DeepCollectionEquality().hash(_students),
+      const DeepCollectionEquality().hash(_faculty));
 
-  /// Create a copy of Batch
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BatchImplCopyWith<_$BatchImpl> get copyWith =>
@@ -2000,22 +1826,23 @@ class _$BatchImpl implements _Batch {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BatchImplToJson(this);
+    return _$$BatchImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Batch implements Batch {
-  const factory _Batch({
-    required final String id,
-    required final String instituteId,
-    final String? courseId,
-    required final String name,
-    final DateTime? startDate,
-    final DateTime? endDate,
-    final String status,
-    final List<BatchStudent>? students,
-    final List<BatchFaculty>? faculty,
-  }) = _$BatchImpl;
+  const factory _Batch(
+      {required final String id,
+      required final String instituteId,
+      final String? courseId,
+      required final String name,
+      final DateTime? startDate,
+      final DateTime? endDate,
+      final String status,
+      final List<BatchStudent>? students,
+      final List<BatchFaculty>? faculty}) = _$BatchImpl;
 
   factory _Batch.fromJson(Map<String, dynamic> json) = _$BatchImpl.fromJson;
 
@@ -2037,11 +1864,8 @@ abstract class _Batch implements Batch {
   List<BatchStudent>? get students;
   @override
   List<BatchFaculty>? get faculty;
-
-  /// Create a copy of Batch
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$BatchImplCopyWith<_$BatchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2056,12 +1880,8 @@ mixin _$BatchStudent {
   String get studentId => throw _privateConstructorUsedError;
   DateTime get enrolledAt => throw _privateConstructorUsedError;
 
-  /// Serializes this BatchStudent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of BatchStudent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $BatchStudentCopyWith<BatchStudent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2069,9 +1889,8 @@ mixin _$BatchStudent {
 /// @nodoc
 abstract class $BatchStudentCopyWith<$Res> {
   factory $BatchStudentCopyWith(
-    BatchStudent value,
-    $Res Function(BatchStudent) then,
-  ) = _$BatchStudentCopyWithImpl<$Res, BatchStudent>;
+          BatchStudent value, $Res Function(BatchStudent) then) =
+      _$BatchStudentCopyWithImpl<$Res, BatchStudent>;
   @useResult
   $Res call({String batchId, String studentId, DateTime enrolledAt});
 }
@@ -2086,8 +1905,6 @@ class _$BatchStudentCopyWithImpl<$Res, $Val extends BatchStudent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BatchStudent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2095,23 +1912,20 @@ class _$BatchStudentCopyWithImpl<$Res, $Val extends BatchStudent>
     Object? studentId = null,
     Object? enrolledAt = null,
   }) {
-    return _then(
-      _value.copyWith(
-            batchId: null == batchId
-                ? _value.batchId
-                : batchId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            studentId: null == studentId
-                ? _value.studentId
-                : studentId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            enrolledAt: null == enrolledAt
-                ? _value.enrolledAt
-                : enrolledAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      batchId: null == batchId
+          ? _value.batchId
+          : batchId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      enrolledAt: null == enrolledAt
+          ? _value.enrolledAt
+          : enrolledAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
   }
 }
 
@@ -2119,9 +1933,8 @@ class _$BatchStudentCopyWithImpl<$Res, $Val extends BatchStudent>
 abstract class _$$BatchStudentImplCopyWith<$Res>
     implements $BatchStudentCopyWith<$Res> {
   factory _$$BatchStudentImplCopyWith(
-    _$BatchStudentImpl value,
-    $Res Function(_$BatchStudentImpl) then,
-  ) = __$$BatchStudentImplCopyWithImpl<$Res>;
+          _$BatchStudentImpl value, $Res Function(_$BatchStudentImpl) then) =
+      __$$BatchStudentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String batchId, String studentId, DateTime enrolledAt});
@@ -2132,12 +1945,9 @@ class __$$BatchStudentImplCopyWithImpl<$Res>
     extends _$BatchStudentCopyWithImpl<$Res, _$BatchStudentImpl>
     implements _$$BatchStudentImplCopyWith<$Res> {
   __$$BatchStudentImplCopyWithImpl(
-    _$BatchStudentImpl _value,
-    $Res Function(_$BatchStudentImpl) _then,
-  ) : super(_value, _then);
+      _$BatchStudentImpl _value, $Res Function(_$BatchStudentImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of BatchStudent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2145,33 +1955,30 @@ class __$$BatchStudentImplCopyWithImpl<$Res>
     Object? studentId = null,
     Object? enrolledAt = null,
   }) {
-    return _then(
-      _$BatchStudentImpl(
-        batchId: null == batchId
-            ? _value.batchId
-            : batchId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        studentId: null == studentId
-            ? _value.studentId
-            : studentId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        enrolledAt: null == enrolledAt
-            ? _value.enrolledAt
-            : enrolledAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-      ),
-    );
+    return _then(_$BatchStudentImpl(
+      batchId: null == batchId
+          ? _value.batchId
+          : batchId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      enrolledAt: null == enrolledAt
+          ? _value.enrolledAt
+          : enrolledAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BatchStudentImpl implements _BatchStudent {
-  const _$BatchStudentImpl({
-    required this.batchId,
-    required this.studentId,
-    required this.enrolledAt,
-  });
+  const _$BatchStudentImpl(
+      {required this.batchId,
+      required this.studentId,
+      required this.enrolledAt});
 
   factory _$BatchStudentImpl.fromJson(Map<String, dynamic> json) =>
       _$$BatchStudentImplFromJson(json);
@@ -2200,13 +2007,11 @@ class _$BatchStudentImpl implements _BatchStudent {
                 other.enrolledAt == enrolledAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, batchId, studentId, enrolledAt);
 
-  /// Create a copy of BatchStudent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BatchStudentImplCopyWith<_$BatchStudentImpl> get copyWith =>
@@ -2214,16 +2019,17 @@ class _$BatchStudentImpl implements _BatchStudent {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BatchStudentImplToJson(this);
+    return _$$BatchStudentImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _BatchStudent implements BatchStudent {
-  const factory _BatchStudent({
-    required final String batchId,
-    required final String studentId,
-    required final DateTime enrolledAt,
-  }) = _$BatchStudentImpl;
+  const factory _BatchStudent(
+      {required final String batchId,
+      required final String studentId,
+      required final DateTime enrolledAt}) = _$BatchStudentImpl;
 
   factory _BatchStudent.fromJson(Map<String, dynamic> json) =
       _$BatchStudentImpl.fromJson;
@@ -2234,11 +2040,8 @@ abstract class _BatchStudent implements BatchStudent {
   String get studentId;
   @override
   DateTime get enrolledAt;
-
-  /// Create a copy of BatchStudent
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$BatchStudentImplCopyWith<_$BatchStudentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2253,12 +2056,8 @@ mixin _$BatchFaculty {
   String get facultyId => throw _privateConstructorUsedError;
   DateTime get assignedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this BatchFaculty to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of BatchFaculty
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $BatchFacultyCopyWith<BatchFaculty> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2266,9 +2065,8 @@ mixin _$BatchFaculty {
 /// @nodoc
 abstract class $BatchFacultyCopyWith<$Res> {
   factory $BatchFacultyCopyWith(
-    BatchFaculty value,
-    $Res Function(BatchFaculty) then,
-  ) = _$BatchFacultyCopyWithImpl<$Res, BatchFaculty>;
+          BatchFaculty value, $Res Function(BatchFaculty) then) =
+      _$BatchFacultyCopyWithImpl<$Res, BatchFaculty>;
   @useResult
   $Res call({String batchId, String facultyId, DateTime assignedAt});
 }
@@ -2283,8 +2081,6 @@ class _$BatchFacultyCopyWithImpl<$Res, $Val extends BatchFaculty>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BatchFaculty
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2292,23 +2088,20 @@ class _$BatchFacultyCopyWithImpl<$Res, $Val extends BatchFaculty>
     Object? facultyId = null,
     Object? assignedAt = null,
   }) {
-    return _then(
-      _value.copyWith(
-            batchId: null == batchId
-                ? _value.batchId
-                : batchId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            facultyId: null == facultyId
-                ? _value.facultyId
-                : facultyId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            assignedAt: null == assignedAt
-                ? _value.assignedAt
-                : assignedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      batchId: null == batchId
+          ? _value.batchId
+          : batchId // ignore: cast_nullable_to_non_nullable
+              as String,
+      facultyId: null == facultyId
+          ? _value.facultyId
+          : facultyId // ignore: cast_nullable_to_non_nullable
+              as String,
+      assignedAt: null == assignedAt
+          ? _value.assignedAt
+          : assignedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
   }
 }
 
@@ -2316,9 +2109,8 @@ class _$BatchFacultyCopyWithImpl<$Res, $Val extends BatchFaculty>
 abstract class _$$BatchFacultyImplCopyWith<$Res>
     implements $BatchFacultyCopyWith<$Res> {
   factory _$$BatchFacultyImplCopyWith(
-    _$BatchFacultyImpl value,
-    $Res Function(_$BatchFacultyImpl) then,
-  ) = __$$BatchFacultyImplCopyWithImpl<$Res>;
+          _$BatchFacultyImpl value, $Res Function(_$BatchFacultyImpl) then) =
+      __$$BatchFacultyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String batchId, String facultyId, DateTime assignedAt});
@@ -2329,12 +2121,9 @@ class __$$BatchFacultyImplCopyWithImpl<$Res>
     extends _$BatchFacultyCopyWithImpl<$Res, _$BatchFacultyImpl>
     implements _$$BatchFacultyImplCopyWith<$Res> {
   __$$BatchFacultyImplCopyWithImpl(
-    _$BatchFacultyImpl _value,
-    $Res Function(_$BatchFacultyImpl) _then,
-  ) : super(_value, _then);
+      _$BatchFacultyImpl _value, $Res Function(_$BatchFacultyImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of BatchFaculty
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2342,33 +2131,30 @@ class __$$BatchFacultyImplCopyWithImpl<$Res>
     Object? facultyId = null,
     Object? assignedAt = null,
   }) {
-    return _then(
-      _$BatchFacultyImpl(
-        batchId: null == batchId
-            ? _value.batchId
-            : batchId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        facultyId: null == facultyId
-            ? _value.facultyId
-            : facultyId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        assignedAt: null == assignedAt
-            ? _value.assignedAt
-            : assignedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-      ),
-    );
+    return _then(_$BatchFacultyImpl(
+      batchId: null == batchId
+          ? _value.batchId
+          : batchId // ignore: cast_nullable_to_non_nullable
+              as String,
+      facultyId: null == facultyId
+          ? _value.facultyId
+          : facultyId // ignore: cast_nullable_to_non_nullable
+              as String,
+      assignedAt: null == assignedAt
+          ? _value.assignedAt
+          : assignedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BatchFacultyImpl implements _BatchFaculty {
-  const _$BatchFacultyImpl({
-    required this.batchId,
-    required this.facultyId,
-    required this.assignedAt,
-  });
+  const _$BatchFacultyImpl(
+      {required this.batchId,
+      required this.facultyId,
+      required this.assignedAt});
 
   factory _$BatchFacultyImpl.fromJson(Map<String, dynamic> json) =>
       _$$BatchFacultyImplFromJson(json);
@@ -2397,13 +2183,11 @@ class _$BatchFacultyImpl implements _BatchFaculty {
                 other.assignedAt == assignedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, batchId, facultyId, assignedAt);
 
-  /// Create a copy of BatchFaculty
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BatchFacultyImplCopyWith<_$BatchFacultyImpl> get copyWith =>
@@ -2411,16 +2195,17 @@ class _$BatchFacultyImpl implements _BatchFaculty {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BatchFacultyImplToJson(this);
+    return _$$BatchFacultyImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _BatchFaculty implements BatchFaculty {
-  const factory _BatchFaculty({
-    required final String batchId,
-    required final String facultyId,
-    required final DateTime assignedAt,
-  }) = _$BatchFacultyImpl;
+  const factory _BatchFaculty(
+      {required final String batchId,
+      required final String facultyId,
+      required final DateTime assignedAt}) = _$BatchFacultyImpl;
 
   factory _BatchFaculty.fromJson(Map<String, dynamic> json) =
       _$BatchFacultyImpl.fromJson;
@@ -2431,11 +2216,8 @@ abstract class _BatchFaculty implements BatchFaculty {
   String get facultyId;
   @override
   DateTime get assignedAt;
-
-  /// Create a copy of BatchFaculty
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$BatchFacultyImplCopyWith<_$BatchFacultyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2454,12 +2236,8 @@ mixin _$AttendanceLog {
       throw _privateConstructorUsedError; // PRESENT, ABSENT, LATE, EXCUSED
   String? get markedBy => throw _privateConstructorUsedError;
 
-  /// Serializes this AttendanceLog to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AttendanceLog
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AttendanceLogCopyWith<AttendanceLog> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2467,18 +2245,16 @@ mixin _$AttendanceLog {
 /// @nodoc
 abstract class $AttendanceLogCopyWith<$Res> {
   factory $AttendanceLogCopyWith(
-    AttendanceLog value,
-    $Res Function(AttendanceLog) then,
-  ) = _$AttendanceLogCopyWithImpl<$Res, AttendanceLog>;
+          AttendanceLog value, $Res Function(AttendanceLog) then) =
+      _$AttendanceLogCopyWithImpl<$Res, AttendanceLog>;
   @useResult
-  $Res call({
-    String id,
-    String batchId,
-    String studentId,
-    String date,
-    String status,
-    String? markedBy,
-  });
+  $Res call(
+      {String id,
+      String batchId,
+      String studentId,
+      String date,
+      String status,
+      String? markedBy});
 }
 
 /// @nodoc
@@ -2491,8 +2267,6 @@ class _$AttendanceLogCopyWithImpl<$Res, $Val extends AttendanceLog>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AttendanceLog
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2503,35 +2277,32 @@ class _$AttendanceLogCopyWithImpl<$Res, $Val extends AttendanceLog>
     Object? status = null,
     Object? markedBy = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            batchId: null == batchId
-                ? _value.batchId
-                : batchId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            studentId: null == studentId
-                ? _value.studentId
-                : studentId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            date: null == date
-                ? _value.date
-                : date // ignore: cast_nullable_to_non_nullable
-                      as String,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            markedBy: freezed == markedBy
-                ? _value.markedBy
-                : markedBy // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      batchId: null == batchId
+          ? _value.batchId
+          : batchId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      markedBy: freezed == markedBy
+          ? _value.markedBy
+          : markedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -2539,19 +2310,17 @@ class _$AttendanceLogCopyWithImpl<$Res, $Val extends AttendanceLog>
 abstract class _$$AttendanceLogImplCopyWith<$Res>
     implements $AttendanceLogCopyWith<$Res> {
   factory _$$AttendanceLogImplCopyWith(
-    _$AttendanceLogImpl value,
-    $Res Function(_$AttendanceLogImpl) then,
-  ) = __$$AttendanceLogImplCopyWithImpl<$Res>;
+          _$AttendanceLogImpl value, $Res Function(_$AttendanceLogImpl) then) =
+      __$$AttendanceLogImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String batchId,
-    String studentId,
-    String date,
-    String status,
-    String? markedBy,
-  });
+  $Res call(
+      {String id,
+      String batchId,
+      String studentId,
+      String date,
+      String status,
+      String? markedBy});
 }
 
 /// @nodoc
@@ -2559,12 +2328,9 @@ class __$$AttendanceLogImplCopyWithImpl<$Res>
     extends _$AttendanceLogCopyWithImpl<$Res, _$AttendanceLogImpl>
     implements _$$AttendanceLogImplCopyWith<$Res> {
   __$$AttendanceLogImplCopyWithImpl(
-    _$AttendanceLogImpl _value,
-    $Res Function(_$AttendanceLogImpl) _then,
-  ) : super(_value, _then);
+      _$AttendanceLogImpl _value, $Res Function(_$AttendanceLogImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of AttendanceLog
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2575,48 +2341,45 @@ class __$$AttendanceLogImplCopyWithImpl<$Res>
     Object? status = null,
     Object? markedBy = freezed,
   }) {
-    return _then(
-      _$AttendanceLogImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        batchId: null == batchId
-            ? _value.batchId
-            : batchId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        studentId: null == studentId
-            ? _value.studentId
-            : studentId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        date: null == date
-            ? _value.date
-            : date // ignore: cast_nullable_to_non_nullable
-                  as String,
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String,
-        markedBy: freezed == markedBy
-            ? _value.markedBy
-            : markedBy // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+    return _then(_$AttendanceLogImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      batchId: null == batchId
+          ? _value.batchId
+          : batchId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      markedBy: freezed == markedBy
+          ? _value.markedBy
+          : markedBy // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AttendanceLogImpl implements _AttendanceLog {
-  const _$AttendanceLogImpl({
-    required this.id,
-    required this.batchId,
-    required this.studentId,
-    required this.date,
-    required this.status,
-    this.markedBy,
-  });
+  const _$AttendanceLogImpl(
+      {required this.id,
+      required this.batchId,
+      required this.studentId,
+      required this.date,
+      required this.status,
+      this.markedBy});
 
   factory _$AttendanceLogImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttendanceLogImplFromJson(json);
@@ -2631,7 +2394,7 @@ class _$AttendanceLogImpl implements _AttendanceLog {
   final String date;
   @override
   final String status;
-  // PRESENT, ABSENT, LATE, EXCUSED
+// PRESENT, ABSENT, LATE, EXCUSED
   @override
   final String? markedBy;
 
@@ -2655,14 +2418,12 @@ class _$AttendanceLogImpl implements _AttendanceLog {
                 other.markedBy == markedBy));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, batchId, studentId, date, status, markedBy);
 
-  /// Create a copy of AttendanceLog
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AttendanceLogImplCopyWith<_$AttendanceLogImpl> get copyWith =>
@@ -2670,19 +2431,20 @@ class _$AttendanceLogImpl implements _AttendanceLog {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AttendanceLogImplToJson(this);
+    return _$$AttendanceLogImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _AttendanceLog implements AttendanceLog {
-  const factory _AttendanceLog({
-    required final String id,
-    required final String batchId,
-    required final String studentId,
-    required final String date,
-    required final String status,
-    final String? markedBy,
-  }) = _$AttendanceLogImpl;
+  const factory _AttendanceLog(
+      {required final String id,
+      required final String batchId,
+      required final String studentId,
+      required final String date,
+      required final String status,
+      final String? markedBy}) = _$AttendanceLogImpl;
 
   factory _AttendanceLog.fromJson(Map<String, dynamic> json) =
       _$AttendanceLogImpl.fromJson;
@@ -2696,14 +2458,11 @@ abstract class _AttendanceLog implements AttendanceLog {
   @override
   String get date;
   @override
-  String get status; // PRESENT, ABSENT, LATE, EXCUSED
-  @override
+  String get status;
+  @override // PRESENT, ABSENT, LATE, EXCUSED
   String? get markedBy;
-
-  /// Create a copy of AttendanceLog
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AttendanceLogImplCopyWith<_$AttendanceLogImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2719,12 +2478,8 @@ mixin _$TopStudent {
   int get completedCourses => throw _privateConstructorUsedError;
   double get averageScore => throw _privateConstructorUsedError;
 
-  /// Serializes this TopStudent to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TopStudent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $TopStudentCopyWith<TopStudent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2732,16 +2487,14 @@ mixin _$TopStudent {
 /// @nodoc
 abstract class $TopStudentCopyWith<$Res> {
   factory $TopStudentCopyWith(
-    TopStudent value,
-    $Res Function(TopStudent) then,
-  ) = _$TopStudentCopyWithImpl<$Res, TopStudent>;
+          TopStudent value, $Res Function(TopStudent) then) =
+      _$TopStudentCopyWithImpl<$Res, TopStudent>;
   @useResult
-  $Res call({
-    String studentId,
-    String studentName,
-    int completedCourses,
-    double averageScore,
-  });
+  $Res call(
+      {String studentId,
+      String studentName,
+      int completedCourses,
+      double averageScore});
 }
 
 /// @nodoc
@@ -2754,8 +2507,6 @@ class _$TopStudentCopyWithImpl<$Res, $Val extends TopStudent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TopStudent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2764,27 +2515,24 @@ class _$TopStudentCopyWithImpl<$Res, $Val extends TopStudent>
     Object? completedCourses = null,
     Object? averageScore = null,
   }) {
-    return _then(
-      _value.copyWith(
-            studentId: null == studentId
-                ? _value.studentId
-                : studentId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            studentName: null == studentName
-                ? _value.studentName
-                : studentName // ignore: cast_nullable_to_non_nullable
-                      as String,
-            completedCourses: null == completedCourses
-                ? _value.completedCourses
-                : completedCourses // ignore: cast_nullable_to_non_nullable
-                      as int,
-            averageScore: null == averageScore
-                ? _value.averageScore
-                : averageScore // ignore: cast_nullable_to_non_nullable
-                      as double,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentName: null == studentName
+          ? _value.studentName
+          : studentName // ignore: cast_nullable_to_non_nullable
+              as String,
+      completedCourses: null == completedCourses
+          ? _value.completedCourses
+          : completedCourses // ignore: cast_nullable_to_non_nullable
+              as int,
+      averageScore: null == averageScore
+          ? _value.averageScore
+          : averageScore // ignore: cast_nullable_to_non_nullable
+              as double,
+    ) as $Val);
   }
 }
 
@@ -2792,17 +2540,15 @@ class _$TopStudentCopyWithImpl<$Res, $Val extends TopStudent>
 abstract class _$$TopStudentImplCopyWith<$Res>
     implements $TopStudentCopyWith<$Res> {
   factory _$$TopStudentImplCopyWith(
-    _$TopStudentImpl value,
-    $Res Function(_$TopStudentImpl) then,
-  ) = __$$TopStudentImplCopyWithImpl<$Res>;
+          _$TopStudentImpl value, $Res Function(_$TopStudentImpl) then) =
+      __$$TopStudentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String studentId,
-    String studentName,
-    int completedCourses,
-    double averageScore,
-  });
+  $Res call(
+      {String studentId,
+      String studentName,
+      int completedCourses,
+      double averageScore});
 }
 
 /// @nodoc
@@ -2810,12 +2556,9 @@ class __$$TopStudentImplCopyWithImpl<$Res>
     extends _$TopStudentCopyWithImpl<$Res, _$TopStudentImpl>
     implements _$$TopStudentImplCopyWith<$Res> {
   __$$TopStudentImplCopyWithImpl(
-    _$TopStudentImpl _value,
-    $Res Function(_$TopStudentImpl) _then,
-  ) : super(_value, _then);
+      _$TopStudentImpl _value, $Res Function(_$TopStudentImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of TopStudent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2824,26 +2567,24 @@ class __$$TopStudentImplCopyWithImpl<$Res>
     Object? completedCourses = null,
     Object? averageScore = null,
   }) {
-    return _then(
-      _$TopStudentImpl(
-        studentId: null == studentId
-            ? _value.studentId
-            : studentId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        studentName: null == studentName
-            ? _value.studentName
-            : studentName // ignore: cast_nullable_to_non_nullable
-                  as String,
-        completedCourses: null == completedCourses
-            ? _value.completedCourses
-            : completedCourses // ignore: cast_nullable_to_non_nullable
-                  as int,
-        averageScore: null == averageScore
-            ? _value.averageScore
-            : averageScore // ignore: cast_nullable_to_non_nullable
-                  as double,
-      ),
-    );
+    return _then(_$TopStudentImpl(
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentName: null == studentName
+          ? _value.studentName
+          : studentName // ignore: cast_nullable_to_non_nullable
+              as String,
+      completedCourses: null == completedCourses
+          ? _value.completedCourses
+          : completedCourses // ignore: cast_nullable_to_non_nullable
+              as int,
+      averageScore: null == averageScore
+          ? _value.averageScore
+          : averageScore // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
   }
 }
 
@@ -2851,12 +2592,11 @@ class __$$TopStudentImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$TopStudentImpl implements _TopStudent {
-  const _$TopStudentImpl({
-    required this.studentId,
-    required this.studentName,
-    this.completedCourses = 0,
-    this.averageScore = 0.0,
-  });
+  const _$TopStudentImpl(
+      {required this.studentId,
+      required this.studentName,
+      this.completedCourses = 0,
+      this.averageScore = 0.0});
 
   factory _$TopStudentImpl.fromJson(Map<String, dynamic> json) =>
       _$$TopStudentImplFromJson(json);
@@ -2892,19 +2632,12 @@ class _$TopStudentImpl implements _TopStudent {
                 other.averageScore == averageScore));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    studentId,
-    studentName,
-    completedCourses,
-    averageScore,
-  );
+      runtimeType, studentId, studentName, completedCourses, averageScore);
 
-  /// Create a copy of TopStudent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TopStudentImplCopyWith<_$TopStudentImpl> get copyWith =>
@@ -2912,17 +2645,18 @@ class _$TopStudentImpl implements _TopStudent {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TopStudentImplToJson(this);
+    return _$$TopStudentImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _TopStudent implements TopStudent {
-  const factory _TopStudent({
-    required final String studentId,
-    required final String studentName,
-    final int completedCourses,
-    final double averageScore,
-  }) = _$TopStudentImpl;
+  const factory _TopStudent(
+      {required final String studentId,
+      required final String studentName,
+      final int completedCourses,
+      final double averageScore}) = _$TopStudentImpl;
 
   factory _TopStudent.fromJson(Map<String, dynamic> json) =
       _$TopStudentImpl.fromJson;
@@ -2935,11 +2669,8 @@ abstract class _TopStudent implements TopStudent {
   int get completedCourses;
   @override
   double get averageScore;
-
-  /// Create a copy of TopStudent
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$TopStudentImplCopyWith<_$TopStudentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

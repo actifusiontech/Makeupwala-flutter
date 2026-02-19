@@ -73,6 +73,12 @@ class _CoursesListScreenState extends State<CoursesListScreen> {
                            Text(course['duration'] ?? 'Self-paced', style: AppTypography.caption),
                            const SizedBox(width: 16),
                            Text(course['price'] != null ? '₹${course['price']}' : 'Free', style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.teal)),
+                           const Spacer(),
+                           IconButton(
+                             onPressed: () => context.push('/education/courses/${course['id']}/add-lesson'),
+                             icon: const Icon(Icons.add_circle_outline, color: Colors.teal),
+                             tooltip: 'Add Lesson',
+                           ),
                          ],
                        )
                     ],

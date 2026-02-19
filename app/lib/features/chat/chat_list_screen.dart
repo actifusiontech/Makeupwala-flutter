@@ -6,6 +6,7 @@ import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/chat_bloc.dart';
 import 'data/chat_repository.dart';
+import 'domain/chat_message.dart';
 
 class ChatListScreen extends StatelessWidget {
   const ChatListScreen({super.key});
@@ -13,7 +14,7 @@ class ChatListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChatBloc(repository: ChatRepository())..add(const ChatEvent.fetchRooms()),
+      create: (context) => ChatBloc(repository: ChatRepository())..add(const ChatEvent.fetchConversations()),
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(
@@ -25,29 +26,50 @@ class ChatListScreen extends StatelessWidget {
           builder: (context, state) {
             return state.maybeWhen(
               loading: () => const Center(child: CircularProgressIndicator()),
-              roomsLoaded: (rooms) {
-                if (rooms.isEmpty) {
+              conversationsLoaded: (conversations) {
+                if (conversations.isEmpty) {
                   return const Center(child: Text('No conversations yet.'));
                 }
                 return ListView.builder(
-                  itemCount: rooms.length,
+                  itemCount: conversations.length,
                   itemBuilder: (context, index) {
-                    final room = rooms[index];
-                      final otherName = room['other_user_name'] ?? 'User';
-                      final otherImage = room['other_user_avatar'];
+                    final conversation = conversations[index];
+                    final otherName = conversation.userName;
+                    final otherImage = conversation.userAvatar;
+                    final lastMessage = conversation.lastMessage ?? '';
+                    // Format time nicely
+                    // final time = ... 
 
-                      return ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: AppColors.primary,
-                          backgroundImage: otherImage != null && otherImage.isNotEmpty ? NetworkImage(otherImage) : null,
-                          child: (otherImage == null || otherImage.isEmpty) 
-                              ? Text(otherName.isNotEmpty ? otherName[0].toUpperCase() : '?') 
-                              : null,
-                        ),
-                        title: Text(otherName),
-                        subtitle: Text('Last updated: ${room['updated_at']}'),
+                    return ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: AppColors.primary,
+                        backgroundImage: otherImage != null && otherImage.isNotEmpty ? NetworkImage(otherImage) : null,
+                        child: (otherImage == null || otherImage.isEmpty) 
+                            ? Text(otherName.isNotEmpty ? otherName[0].toUpperCase() : '?') 
+                            : null,
+                      ),
+                      title: Text(otherName, style: AppTypography.titleMedium),
+                      subtitle: Text(
+                        lastMessage, 
+                        maxLines: 1, 
+                        overflow: TextOverflow.ellipsis,
+                        style: conversation.unreadCount > 0 
+                            ? AppTypography.bodySmall.copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary)
+                            : AppTypography.bodySmall,
+                      ),
+                      trailing: conversation.unreadCount > 0 
+                          ? CircleAvatar(
+                              radius: 10,
+                              backgroundColor: AppColors.primary,
+                              child: Text(
+                                '${conversation.unreadCount}', 
+                                style: const TextStyle(fontSize: 10, color: Colors.white),
+                              ),
+                            )
+                          : null,
                       onTap: () {
-                        context.push('/chat/${room['id']}');
+                        // Pass userId as roomId for now since we changed router meaning
+                        context.push('/chat/${conversation.userId}');
                       },
                     );
                   },

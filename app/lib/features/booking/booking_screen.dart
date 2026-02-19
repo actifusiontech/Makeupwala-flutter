@@ -8,6 +8,9 @@ import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/booking_bloc.dart';
 import '../../core/models/rewards.dart';
 import 'data/booking_repository.dart';
+import '../../core/services/payment_service.dart';
+import '../../wallet/data/wallet_repository.dart';
+import '../../core/network/api_client.dart';
 
 class BookingScreen extends StatefulWidget {
   final String artistId;
@@ -37,6 +40,10 @@ class _BookingScreenState extends State<BookingScreen> {
   bool _useLoyaltyPoints = false;
   String _paymentMethod = 'online';
 
+  // Wallet State
+  double _walletBalance = 0.0;
+  bool _isLoadingWallet = false;
+
   // Coupon State
   bool _isValidatingCoupon = false;
   String? _couponError;
@@ -48,12 +55,32 @@ class _BookingScreenState extends State<BookingScreen> {
   void initState() {
     super.initState();
     _fetchLoyaltyBalance();
+    _fetchWalletBalance();
   }
 
   Future<void> _fetchLoyaltyBalance() async {
     final balanceModel = await BookingRepository().getLoyaltyBalance();
     if (mounted) {
       setState(() => _loyaltyBalanceModel = balanceModel);
+    }
+  }
+
+  Future<void> _fetchWalletBalance() async {
+    setState(() => _isLoadingWallet = true);
+    try {
+      final repo = WalletRepository(ApiClient());
+      final data = await repo.getBalance();
+      if (mounted) {
+        setState(() {
+          _walletBalance = (data['balance'] as num).toDouble();
+        });
+      }
+    } catch (e) {
+      // Handle error gently
+    } finally {
+      if (mounted) {
+        setState(() => _isLoadingWallet = false);
+      }
     }
   }
 
@@ -126,6 +153,56 @@ class _BookingScreenState extends State<BookingScreen> {
     return total > 0 ? total : 0;
   }
 
+  // Check if wallet has enough balance for the specific payment amount
+  bool _hasSufficientWalletBalance() {
+    if (_paymentMethod != 'wallet') return true;
+    
+    // For wallet, we must pay either full or deposit
+    // But currently backend creates booking then initiates payment
+    // However, for wallet, we should probably validate upfront
+    
+    final finalPrice = _calculateFinalPrice();
+    // Assuming if finalPrice >= 5000, we need 20% deposit
+    final amountToPay = finalPrice >= 5000 ? finalPrice * 0.2 : finalPrice;
+    
+    return _walletBalance >= amountToPay;
+  }
+
+  // Time Validation
+  bool _isTimeValid(TimeOfDay time) {
+    // 1. Business Hours Check (09:00 AM - 09:00 PM)
+    if (time.hour < 9 || time.hour > 21) {
+      return false;
+    }
+
+    // 2. Future Time Check (if Today)
+    if (_selectedDate != null) {
+      final now = DateTime.now();
+      final today = DateTime(now.year, now.month, now.day);
+      final selectedDateOnly = DateTime(_selectedDate!.year, _selectedDate!.month, _selectedDate!.day);
+
+      if (selectedDateOnly.isAtSameMomentAs(today)) {
+        final currentTotalMinutes = now.hour * 60 + now.minute;
+        final selectedTotalMinutes = time.hour * 60 + time.minute;
+        // Require at least 1 hour notice? Let's say strictly future for now.
+        if (selectedTotalMinutes <= currentTotalMinutes) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  void _showInvalidTimeError() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Please select a valid time between 09:00 AM and 09:00 PM, and in the future.'),
+        backgroundColor: AppColors.error,
+      ),
+    );
+  }
+
   @override
   void dispose() {
     _notesController.dispose();
@@ -144,11 +221,51 @@ class _BookingScreenState extends State<BookingScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(message), backgroundColor: AppColors.success),
               );
-              context.go('/customer/home'); // Go back to home after success
+              // Navigate to confirmation screen if available
+              // For now, go to home
+              context.go('/customer/home');
             },
             error: (message) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(message), backgroundColor: AppColors.error),
+              );
+            },
+            paymentRequired: (orderId, amount, bookingId, keyId) {
+              // TODO: Get user details from AuthBloc
+              final paymentService = PaymentService();
+              paymentService.openRazorpayCheckout(
+                orderId: orderId,
+                amount: amount,
+                name: 'Customer', // TODO: Get from AuthBloc
+                email: 'customer@example.com', // TODO: Get from AuthBloc
+                phone: '9999999999', // TODO: Get from AuthBloc
+                keyId: keyId,
+                onSuccess: (response) {
+                  context.read<BookingBloc>().add(
+                    BookingEvent.processPayment(
+                      orderId: orderId,
+                      paymentId: response.paymentId!,
+                      signature: response.signature!,
+                      bookingId: bookingId,
+                    ),
+                  );
+                },
+                onFailure: (response) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Payment failed: ${response.message ?? "Unknown error"}'),
+                      backgroundColor: AppColors.error,
+                      action: SnackBarAction(
+                        label: 'Retry',
+                        textColor: AppColors.white,
+                        onPressed: () {
+                          // Retry payment by triggering the same state again
+                          // This would require storing the booking details
+                        },
+                      ),
+                    ),
+                  );
+                },
               );
             },
             orElse: () {},
@@ -159,6 +276,14 @@ class _BookingScreenState extends State<BookingScreen> {
             loading: (_) => true,
             orElse: () => false,
           );
+
+          final finalPrice = _calculateFinalPrice();
+          final depositAmount = finalPrice >= 5000 ? finalPrice * 0.2 : 0.0;
+          final amountToPay = depositAmount > 0 ? depositAmount : finalPrice;
+          
+          final isWalletBalanceInsufficient = _paymentMethod == 'wallet' && _walletBalance < amountToPay;
+          final isTimeValid = _selectedTime != null && _isTimeValid(_selectedTime!);
+          final isFormValid = _selectedDate != null && isTimeValid && !isWalletBalanceInsufficient;
 
           return Scaffold(
             backgroundColor: AppColors.white,
@@ -207,7 +332,14 @@ class _BookingScreenState extends State<BookingScreen> {
                         lastDate: DateTime.now().add(const Duration(days: 90)),
                       );
                       if (date != null) {
-                        setState(() => _selectedDate = date);
+                        setState(() {
+                          _selectedDate = date;
+                          // Invalidate time if needed
+                          if (_selectedTime != null && !_isTimeValid(_selectedTime!)) {
+                             _selectedTime = null;
+                             _showInvalidTimeError();
+                          }
+                        });
                       }
                     },
                     child: Container(
@@ -242,7 +374,11 @@ class _BookingScreenState extends State<BookingScreen> {
                         initialTime: const TimeOfDay(hour: 10, minute: 0),
                       );
                       if (time != null) {
-                        setState(() => _selectedTime = time);
+                        if (_isTimeValid(time)) {
+                          setState(() => _selectedTime = time);
+                        } else {
+                          _showInvalidTimeError();
+                        }
                       }
                     },
                     child: Container(
@@ -265,6 +401,14 @@ class _BookingScreenState extends State<BookingScreen> {
                       ),
                     ),
                   ),
+                  if (_selectedDate != null && _selectedTime == null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, left: 4.0),
+                      child: Text(
+                        'Please select a valid time (09:00 AM - 09:00 PM)',
+                        style: AppTypography.bodySmall.copyWith(color: AppColors.error),
+                      ),
+                    ),
                   const SizedBox(height: AppSpacing.xl),
 
                   // Coupon Section
@@ -333,13 +477,48 @@ class _BookingScreenState extends State<BookingScreen> {
                       const SizedBox(width: AppSpacing.md),
                       Expanded(
                         child: _buildPaymentOption(
+                          icon: Icons.account_balance_wallet,
+                          label: 'Wallet',
+                          value: 'wallet',
+                          subtitle: _isLoadingWallet ? 'Loading...' : '₹${_walletBalance.toStringAsFixed(0)}',
+                        ),
+                      ),
+                      const SizedBox(width: AppSpacing.md),
+                      Expanded(
+                        child: _buildPaymentOption(
                           icon: Icons.money,
-                          label: 'Cash (Offline)',
+                          label: 'Cash',
                           value: 'offline',
                         ),
                       ),
                     ],
                   ),
+                  if (isWalletBalanceInsufficient)
+                    Container(
+                      margin: const EdgeInsets.only(top: AppSpacing.md),
+                      padding: const EdgeInsets.all(AppSpacing.sm),
+                      decoration: BoxDecoration(
+                        color: AppColors.error.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: AppColors.error.withOpacity(0.5)),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.error_outline, size: 20, color: AppColors.error),
+                          const SizedBox(width: 8),
+                          const Expanded(child: Text(
+                            'Insufficient balance. Please top up.',
+                             style: TextStyle(color: AppColors.error, fontSize: 13),
+                          )),
+                          TextButton(
+                            onPressed: () {
+                              context.push('/wallet'); // Navigate to wallet for topup
+                            }, 
+                            child: const Text('Top Up'),
+                          ),
+                        ],
+                      ),
+                    ),
                   const SizedBox(height: AppSpacing.xl),
 
                   // Notes
@@ -360,10 +539,10 @@ class _BookingScreenState extends State<BookingScreen> {
                   // Loyalty Points Redemption
                   if ((_loyaltyBalanceModel?.balance ?? 0) > 0)
                     Card(
-                      color: AppColors.primary.withOpacity(0.05),
+                      color: AppColors.primary.withValues(alpha: 0.05),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
-                        side: BorderSide(color: AppColors.primary.withOpacity(0.2)),
+                        side: BorderSide(color: AppColors.primary.withValues(alpha: 0.2)),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(AppSpacing.md),
@@ -383,7 +562,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                   ),
                                   Text(
                                     _paymentMethod == 'offline'
-                                        ? 'Redemption only available for online payments'
+                                        ? 'Redemption only available for online/wallet payments'
                                         : 'You have ${_loyaltyBalanceModel?.balance ?? 0} points (₹${_loyaltyBalanceModel?.balance ?? 0} discount)',
                                     style: AppTypography.bodySmall.copyWith(
                                       color: _paymentMethod == 'offline' ? AppColors.error : null,
@@ -393,7 +572,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               ),
                             ),
                             Switch(
-                              value: _useLoyaltyPoints && _paymentMethod == 'online',
+                              value: _useLoyaltyPoints && _paymentMethod != 'offline',
                               onChanged: _paymentMethod == 'offline'
                                   ? null
                                   : (value) {
@@ -439,18 +618,18 @@ class _BookingScreenState extends State<BookingScreen> {
                       children: [
                         Text('Total to Pay', style: AppTypography.titleLarge),
                         Text(
-                          '₹${_calculateFinalPrice().toInt()}',
+                          '₹${finalPrice.toInt()}',
                           style: AppTypography.titleLarge.copyWith(color: AppColors.primary),
                         ),
                       ],
                     ),
                     const SizedBox(height: AppSpacing.sm),
-                    // High Value Booking Highlight
-                    if (_calculateFinalPrice() >= 5000)
+                    // High Value Booking Highlight / Payment Breakdown
+                    if (finalPrice >= 5000)
                       Container(
-                        padding: const EdgeInsets.all(AppSpacing.sm),
+                         padding: const EdgeInsets.all(AppSpacing.sm),
                         decoration: BoxDecoration(
-                          color: AppColors.warning.withOpacity(0.1),
+                          color: AppColors.warning.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: AppColors.warning),
                         ),
@@ -459,7 +638,9 @@ class _BookingScreenState extends State<BookingScreen> {
                             const Icon(Icons.lock, size: 16, color: AppColors.warning),
                             const SizedBox(width: 8),
                             Expanded(child: Text(
-                              'High Value Booking: 20% Deposit (₹${(_calculateFinalPrice() * 0.2).toStringAsFixed(0)}) required to confirm.',
+                              _paymentMethod == 'online' || _paymentMethod == 'wallet'
+                                ? 'High Value: 20% Deposit (₹${(finalPrice * 0.2).toStringAsFixed(0)}) required.'
+                                : 'High Value: Pay directly to artist.',
                               style: AppTypography.bodySmall.copyWith(color: AppColors.textPrimary),
                             )),
                           ],
@@ -472,17 +653,9 @@ class _BookingScreenState extends State<BookingScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: isLoading || _selectedDate == null || _selectedTime == null
+                      onPressed: isLoading || !isFormValid
                           ? null
                           : () {
-                              final total = _calculateFinalPrice();
-                              // Check if deposit needed
-                              // For now, we handle this in the BLoC or here. 
-                              // Ideally BLoC, but for MVP we can just pass a flag or handle after creation.
-                              // Let's modify the bloc event to accept 'depositAmount'? 
-                              // Or simply let the bloc create booking, then we listen to success and trigger payment?
-                              // Listening to success is better.
-                              
                               final timeString = '${_selectedTime!.hour.toString().padLeft(2, '0')}:${_selectedTime!.minute.toString().padLeft(2, '0')}';
                               context.read<BookingBloc>().add(
                                     BookingEvent.createBooking(
@@ -491,7 +664,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                       date: _selectedDate!,
                                       time: timeString,
                                       notes: _notesController.text,
-                                      redeemPoints: _useLoyaltyPoints && _paymentMethod == 'online' ? (_loyaltyBalanceModel?.balance ?? 0) : 0,
+                                      redeemPoints: _useLoyaltyPoints && _paymentMethod != 'offline' ? (_loyaltyBalanceModel?.balance ?? 0) : 0,
                                       paymentMethod: _paymentMethod,
                                       couponCode: _appliedCouponCode,
                                     ),
@@ -500,13 +673,12 @@ class _BookingScreenState extends State<BookingScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                        disabledBackgroundColor: AppColors.grey300,
                       ),
                       child: isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
+                          ? const SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
                           : Text(
-                              _calculateFinalPrice() >= 5000 && _paymentMethod == 'online'
-                                  ? 'Pay Deposit & Confirm'
-                                  : 'Confirm Booking',
+                              _getButtonLabel(finalPrice),
                               style: const TextStyle(color: Colors.white, fontSize: 16),
                             ),
                     ),
@@ -520,25 +692,41 @@ class _BookingScreenState extends State<BookingScreen> {
     );
   }
 
+  String _getButtonLabel(double finalPrice) {
+    if (_paymentMethod == 'online') {
+      return finalPrice >= 5000 
+        ? 'Pay Deposit (₹${(finalPrice * 0.2).toStringAsFixed(0)}) & Confirm'
+        : 'Pay Now & Confirm';
+    } else if (_paymentMethod == 'wallet') {
+      final payAmount = finalPrice >= 5000 ? finalPrice * 0.2 : finalPrice;
+       return 'Pay ₹${payAmount.toStringAsFixed(0)} from Wallet';
+    } else {
+      return 'Confirm Booking';
+    }
+  }
+
   Widget _buildPaymentOption({
     required IconData icon,
     required String label,
     required String value,
+    String? subtitle,
   }) {
     final isSelected = _paymentMethod == value;
     return InkWell(
       onTap: () {
         setState(() {
           _paymentMethod = value;
+          // Re-evaluate loyalty toggle if switching to offline
           if (value == 'offline') {
             _useLoyaltyPoints = false;
           }
         });
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md, horizontal: AppSpacing.sm),
+        height: 100, // Fixed height for alignment
+        padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm, horizontal: AppSpacing.xs),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary.withOpacity(0.05) : Colors.transparent,
+          color: isSelected ? AppColors.primary.withValues(alpha: 0.05) : Colors.transparent,
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.grey300,
             width: isSelected ? 2 : 1,
@@ -546,6 +734,7 @@ class _BookingScreenState extends State<BookingScreen> {
           borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               icon,
@@ -558,7 +747,18 @@ class _BookingScreenState extends State<BookingScreen> {
                 color: isSelected ? AppColors.primary : AppColors.textSecondary,
                 fontWeight: isSelected ? FontWeight.bold : null,
               ),
+              textAlign: TextAlign.center,
             ),
+            if (subtitle != null) ...[
+              const SizedBox(height: 2),
+              Text(
+                subtitle,
+                style: AppTypography.labelSmall.copyWith(
+                  color: isSelected ? AppColors.primary : AppColors.textSecondary,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ]
           ],
         ),
       ),

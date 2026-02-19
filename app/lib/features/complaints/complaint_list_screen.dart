@@ -5,6 +5,9 @@ import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/complaint_bloc.dart';
 import 'data/complaint_repository.dart';
+import 'domain/complaint_model.dart';
+import '../../../core/network/api_client.dart';
+import 'package:intl/intl.dart';
 
 class ComplaintListScreen extends StatelessWidget {
   const ComplaintListScreen({super.key});
@@ -12,7 +15,7 @@ class ComplaintListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ComplaintBloc(repository: ComplaintRepository())..add(const ComplaintEvent.fetchMyComplaints()),
+      create: (context) => ComplaintBloc(repository: ComplaintRepository(ApiClient()))..add(const ComplaintEvent.fetchMyComplaints()),
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(
@@ -35,6 +38,8 @@ class ComplaintListScreen extends StatelessWidget {
                     final complaint = complaints[index];
                     return Card(
                       margin: const EdgeInsets.only(bottom: AppSpacing.md),
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                         padding: const EdgeInsets.all(AppSpacing.md),
                         child: Column(
@@ -45,7 +50,7 @@ class ComplaintListScreen extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    complaint['subject'],
+                                    complaint.subject,
                                     style: AppTypography.titleMedium,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -53,24 +58,36 @@ class ComplaintListScreen extends StatelessWidget {
                                 Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                   decoration: BoxDecoration(
-                                    color: _getStatusColor(complaint['status']),
+                                    color: _getStatusColor(complaint.status),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Text(
-                                    complaint['status'],
-                                    style: const TextStyle(color: Colors.white, fontSize: 12),
+                                    complaint.status,
+                                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ],
                             ),
+                            const SizedBox(height: AppSpacing.xs),
+                            Text(
+                              DateFormat('MMM d, yyyy').format(complaint.createdAt),
+                              style: AppTypography.labelSmall.copyWith(color: AppColors.textSecondary),
+                            ),
                             const SizedBox(height: AppSpacing.sm),
-                            Text('Booking ID: ${complaint['booking_id']}', style: AppTypography.bodySmall),
+                            Text('Booking ID: ${complaint.bookingId}', style: AppTypography.bodySmall),
                             const SizedBox(height: AppSpacing.sm),
-                            Text(complaint['description'], style: AppTypography.bodyMedium),
-                            if (complaint['admin_comment'] != null && complaint['admin_comment'].isNotEmpty) ...[
-                              const Divider(),
-                              Text('Admin Response:', style: AppTypography.labelLarge),
-                              Text(complaint['admin_comment'], style: AppTypography.bodyMedium),
+                            Text(complaint.description, style: AppTypography.bodyMedium),
+                            if (complaint.adminComment != null && complaint.adminComment!.isNotEmpty) ...[
+                              const Divider(height: 24),
+                              Row(
+                                children: [
+                                  const Icon(Icons.support_agent, size: 16, color: AppColors.primary),
+                                  const SizedBox(width: 8),
+                                  Text('Admin Response:', style: AppTypography.labelLarge.copyWith(color: AppColors.primary)),
+                                ],
+                              ),
+                              const SizedBox(height: 4),
+                              Text(complaint.adminComment!, style: AppTypography.bodyMedium),
                             ],
                           ],
                         ),
@@ -89,11 +106,13 @@ class ComplaintListScreen extends StatelessWidget {
   }
 
   Color _getStatusColor(String status) {
-    switch (status) {
-      case 'OPEN':
+    switch (status.toUpperCase()) {
+      case 'PENDING':
         return Colors.orange;
       case 'RESOLVED':
         return Colors.green;
+      case 'REJECTED':
+        return Colors.red;
       case 'CLOSED':
         return Colors.grey;
       default:

@@ -12,8 +12,7 @@ part of 'earnings_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EarningsEvent {
@@ -22,47 +21,52 @@ mixin _$EarningsEvent {
     required TResult Function() fetchEarningsStats,
     required TResult Function(String? period, String? status) fetchEarnings,
     required TResult Function() fetchPayouts,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchEarningsStats,
     TResult? Function(String? period, String? status)? fetchEarnings,
     TResult? Function()? fetchPayouts,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchEarningsStats,
     TResult Function(String? period, String? status)? fetchEarnings,
     TResult Function()? fetchPayouts,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchEarningsStats value) fetchEarningsStats,
     required TResult Function(FetchEarnings value) fetchEarnings,
     required TResult Function(FetchPayouts value) fetchPayouts,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchEarningsStats value)? fetchEarningsStats,
     TResult? Function(FetchEarnings value)? fetchEarnings,
     TResult? Function(FetchPayouts value)? fetchPayouts,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchEarningsStats value)? fetchEarningsStats,
     TResult Function(FetchEarnings value)? fetchEarnings,
     TResult Function(FetchPayouts value)? fetchPayouts,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EarningsEventCopyWith<$Res> {
   factory $EarningsEventCopyWith(
-    EarningsEvent value,
-    $Res Function(EarningsEvent) then,
-  ) = _$EarningsEventCopyWithImpl<$Res, EarningsEvent>;
+          EarningsEvent value, $Res Function(EarningsEvent) then) =
+      _$EarningsEventCopyWithImpl<$Res, EarningsEvent>;
 }
 
 /// @nodoc
@@ -74,30 +78,22 @@ class _$EarningsEventCopyWithImpl<$Res, $Val extends EarningsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of EarningsEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$FetchEarningsStatsImplCopyWith<$Res> {
-  factory _$$FetchEarningsStatsImplCopyWith(
-    _$FetchEarningsStatsImpl value,
-    $Res Function(_$FetchEarningsStatsImpl) then,
-  ) = __$$FetchEarningsStatsImplCopyWithImpl<$Res>;
+  factory _$$FetchEarningsStatsImplCopyWith(_$FetchEarningsStatsImpl value,
+          $Res Function(_$FetchEarningsStatsImpl) then) =
+      __$$FetchEarningsStatsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$FetchEarningsStatsImplCopyWithImpl<$Res>
     extends _$EarningsEventCopyWithImpl<$Res, _$FetchEarningsStatsImpl>
     implements _$$FetchEarningsStatsImplCopyWith<$Res> {
-  __$$FetchEarningsStatsImplCopyWithImpl(
-    _$FetchEarningsStatsImpl _value,
-    $Res Function(_$FetchEarningsStatsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EarningsEvent
-  /// with the given fields replaced by the non-null parameter values.
+  __$$FetchEarningsStatsImplCopyWithImpl(_$FetchEarningsStatsImpl _value,
+      $Res Function(_$FetchEarningsStatsImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -195,9 +191,8 @@ abstract class FetchEarningsStats implements EarningsEvent {
 /// @nodoc
 abstract class _$$FetchEarningsImplCopyWith<$Res> {
   factory _$$FetchEarningsImplCopyWith(
-    _$FetchEarningsImpl value,
-    $Res Function(_$FetchEarningsImpl) then,
-  ) = __$$FetchEarningsImplCopyWithImpl<$Res>;
+          _$FetchEarningsImpl value, $Res Function(_$FetchEarningsImpl) then) =
+      __$$FetchEarningsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? period, String? status});
 }
@@ -207,27 +202,25 @@ class __$$FetchEarningsImplCopyWithImpl<$Res>
     extends _$EarningsEventCopyWithImpl<$Res, _$FetchEarningsImpl>
     implements _$$FetchEarningsImplCopyWith<$Res> {
   __$$FetchEarningsImplCopyWithImpl(
-    _$FetchEarningsImpl _value,
-    $Res Function(_$FetchEarningsImpl) _then,
-  ) : super(_value, _then);
+      _$FetchEarningsImpl _value, $Res Function(_$FetchEarningsImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of EarningsEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? period = freezed, Object? status = freezed}) {
-    return _then(
-      _$FetchEarningsImpl(
-        period: freezed == period
-            ? _value.period
-            : period // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        status: freezed == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+  $Res call({
+    Object? period = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_$FetchEarningsImpl(
+      period: freezed == period
+          ? _value.period
+          : period // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -258,9 +251,7 @@ class _$FetchEarningsImpl implements FetchEarnings {
   @override
   int get hashCode => Object.hash(runtimeType, period, status);
 
-  /// Create a copy of EarningsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FetchEarningsImplCopyWith<_$FetchEarningsImpl> get copyWith =>
@@ -341,10 +332,7 @@ abstract class FetchEarnings implements EarningsEvent {
 
   String? get period;
   String? get status;
-
-  /// Create a copy of EarningsEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FetchEarningsImplCopyWith<_$FetchEarningsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -352,9 +340,8 @@ abstract class FetchEarnings implements EarningsEvent {
 /// @nodoc
 abstract class _$$FetchPayoutsImplCopyWith<$Res> {
   factory _$$FetchPayoutsImplCopyWith(
-    _$FetchPayoutsImpl value,
-    $Res Function(_$FetchPayoutsImpl) then,
-  ) = __$$FetchPayoutsImplCopyWithImpl<$Res>;
+          _$FetchPayoutsImpl value, $Res Function(_$FetchPayoutsImpl) then) =
+      __$$FetchPayoutsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -362,12 +349,8 @@ class __$$FetchPayoutsImplCopyWithImpl<$Res>
     extends _$EarningsEventCopyWithImpl<$Res, _$FetchPayoutsImpl>
     implements _$$FetchPayoutsImplCopyWith<$Res> {
   __$$FetchPayoutsImplCopyWithImpl(
-    _$FetchPayoutsImpl _value,
-    $Res Function(_$FetchPayoutsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EarningsEvent
-  /// with the given fields replaced by the non-null parameter values.
+      _$FetchPayoutsImpl _value, $Res Function(_$FetchPayoutsImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -472,7 +455,8 @@ mixin _$EarningsState {
     required TResult Function(List<Earning> earnings) earningsLoaded,
     required TResult Function(List<Payout> payouts) payoutsLoaded,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -481,7 +465,8 @@ mixin _$EarningsState {
     TResult? Function(List<Earning> earnings)? earningsLoaded,
     TResult? Function(List<Payout> payouts)? payoutsLoaded,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -491,7 +476,8 @@ mixin _$EarningsState {
     TResult Function(List<Payout> payouts)? payoutsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -500,7 +486,8 @@ mixin _$EarningsState {
     required TResult Function(_EarningsLoaded value) earningsLoaded,
     required TResult Function(_PayoutsLoaded value) payoutsLoaded,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -509,7 +496,8 @@ mixin _$EarningsState {
     TResult? Function(_EarningsLoaded value)? earningsLoaded,
     TResult? Function(_PayoutsLoaded value)? payoutsLoaded,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -519,15 +507,15 @@ mixin _$EarningsState {
     TResult Function(_PayoutsLoaded value)? payoutsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EarningsStateCopyWith<$Res> {
   factory $EarningsStateCopyWith(
-    EarningsState value,
-    $Res Function(EarningsState) then,
-  ) = _$EarningsStateCopyWithImpl<$Res, EarningsState>;
+          EarningsState value, $Res Function(EarningsState) then) =
+      _$EarningsStateCopyWithImpl<$Res, EarningsState>;
 }
 
 /// @nodoc
@@ -539,17 +527,13 @@ class _$EarningsStateCopyWithImpl<$Res, $Val extends EarningsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -557,12 +541,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$EarningsStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -678,9 +658,8 @@ abstract class _Initial implements EarningsState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -688,12 +667,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$EarningsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -809,9 +784,8 @@ abstract class _Loading implements EarningsState {
 /// @nodoc
 abstract class _$$StatsLoadedImplCopyWith<$Res> {
   factory _$$StatsLoadedImplCopyWith(
-    _$StatsLoadedImpl value,
-    $Res Function(_$StatsLoadedImpl) then,
-  ) = __$$StatsLoadedImplCopyWithImpl<$Res>;
+          _$StatsLoadedImpl value, $Res Function(_$StatsLoadedImpl) then) =
+      __$$StatsLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EarningsStats stats});
 }
@@ -821,23 +795,20 @@ class __$$StatsLoadedImplCopyWithImpl<$Res>
     extends _$EarningsStateCopyWithImpl<$Res, _$StatsLoadedImpl>
     implements _$$StatsLoadedImplCopyWith<$Res> {
   __$$StatsLoadedImplCopyWithImpl(
-    _$StatsLoadedImpl _value,
-    $Res Function(_$StatsLoadedImpl) _then,
-  ) : super(_value, _then);
+      _$StatsLoadedImpl _value, $Res Function(_$StatsLoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? stats = null}) {
-    return _then(
-      _$StatsLoadedImpl(
-        null == stats
-            ? _value.stats
-            : stats // ignore: cast_nullable_to_non_nullable
-                  as EarningsStats,
-      ),
-    );
+  $Res call({
+    Object? stats = null,
+  }) {
+    return _then(_$StatsLoadedImpl(
+      null == stats
+          ? _value.stats
+          : stats // ignore: cast_nullable_to_non_nullable
+              as EarningsStats,
+    ));
   }
 }
 
@@ -865,9 +836,7 @@ class _$StatsLoadedImpl implements _StatsLoaded {
   @override
   int get hashCode => Object.hash(runtimeType, stats);
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$StatsLoadedImplCopyWith<_$StatsLoadedImpl> get copyWith =>
@@ -964,20 +933,16 @@ abstract class _StatsLoaded implements EarningsState {
   const factory _StatsLoaded(final EarningsStats stats) = _$StatsLoadedImpl;
 
   EarningsStats get stats;
-
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$StatsLoadedImplCopyWith<_$StatsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$EarningsLoadedImplCopyWith<$Res> {
-  factory _$$EarningsLoadedImplCopyWith(
-    _$EarningsLoadedImpl value,
-    $Res Function(_$EarningsLoadedImpl) then,
-  ) = __$$EarningsLoadedImplCopyWithImpl<$Res>;
+  factory _$$EarningsLoadedImplCopyWith(_$EarningsLoadedImpl value,
+          $Res Function(_$EarningsLoadedImpl) then) =
+      __$$EarningsLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Earning> earnings});
 }
@@ -987,23 +952,20 @@ class __$$EarningsLoadedImplCopyWithImpl<$Res>
     extends _$EarningsStateCopyWithImpl<$Res, _$EarningsLoadedImpl>
     implements _$$EarningsLoadedImplCopyWith<$Res> {
   __$$EarningsLoadedImplCopyWithImpl(
-    _$EarningsLoadedImpl _value,
-    $Res Function(_$EarningsLoadedImpl) _then,
-  ) : super(_value, _then);
+      _$EarningsLoadedImpl _value, $Res Function(_$EarningsLoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? earnings = null}) {
-    return _then(
-      _$EarningsLoadedImpl(
-        null == earnings
-            ? _value._earnings
-            : earnings // ignore: cast_nullable_to_non_nullable
-                  as List<Earning>,
-      ),
-    );
+  $Res call({
+    Object? earnings = null,
+  }) {
+    return _then(_$EarningsLoadedImpl(
+      null == earnings
+          ? _value._earnings
+          : earnings // ignore: cast_nullable_to_non_nullable
+              as List<Earning>,
+    ));
   }
 }
 
@@ -1011,7 +973,7 @@ class __$$EarningsLoadedImplCopyWithImpl<$Res>
 
 class _$EarningsLoadedImpl implements _EarningsLoaded {
   const _$EarningsLoadedImpl(final List<Earning> earnings)
-    : _earnings = earnings;
+      : _earnings = earnings;
 
   final List<Earning> _earnings;
   @override
@@ -1038,16 +1000,12 @@ class _$EarningsLoadedImpl implements _EarningsLoaded {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_earnings));
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$EarningsLoadedImplCopyWith<_$EarningsLoadedImpl> get copyWith =>
       __$$EarningsLoadedImplCopyWithImpl<_$EarningsLoadedImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1141,10 +1099,7 @@ abstract class _EarningsLoaded implements EarningsState {
       _$EarningsLoadedImpl;
 
   List<Earning> get earnings;
-
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$EarningsLoadedImplCopyWith<_$EarningsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1152,9 +1107,8 @@ abstract class _EarningsLoaded implements EarningsState {
 /// @nodoc
 abstract class _$$PayoutsLoadedImplCopyWith<$Res> {
   factory _$$PayoutsLoadedImplCopyWith(
-    _$PayoutsLoadedImpl value,
-    $Res Function(_$PayoutsLoadedImpl) then,
-  ) = __$$PayoutsLoadedImplCopyWithImpl<$Res>;
+          _$PayoutsLoadedImpl value, $Res Function(_$PayoutsLoadedImpl) then) =
+      __$$PayoutsLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Payout> payouts});
 }
@@ -1164,23 +1118,20 @@ class __$$PayoutsLoadedImplCopyWithImpl<$Res>
     extends _$EarningsStateCopyWithImpl<$Res, _$PayoutsLoadedImpl>
     implements _$$PayoutsLoadedImplCopyWith<$Res> {
   __$$PayoutsLoadedImplCopyWithImpl(
-    _$PayoutsLoadedImpl _value,
-    $Res Function(_$PayoutsLoadedImpl) _then,
-  ) : super(_value, _then);
+      _$PayoutsLoadedImpl _value, $Res Function(_$PayoutsLoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? payouts = null}) {
-    return _then(
-      _$PayoutsLoadedImpl(
-        null == payouts
-            ? _value._payouts
-            : payouts // ignore: cast_nullable_to_non_nullable
-                  as List<Payout>,
-      ),
-    );
+  $Res call({
+    Object? payouts = null,
+  }) {
+    return _then(_$PayoutsLoadedImpl(
+      null == payouts
+          ? _value._payouts
+          : payouts // ignore: cast_nullable_to_non_nullable
+              as List<Payout>,
+    ));
   }
 }
 
@@ -1214,9 +1165,7 @@ class _$PayoutsLoadedImpl implements _PayoutsLoaded {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_payouts));
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$PayoutsLoadedImplCopyWith<_$PayoutsLoadedImpl> get copyWith =>
@@ -1314,10 +1263,7 @@ abstract class _PayoutsLoaded implements EarningsState {
       _$PayoutsLoadedImpl;
 
   List<Payout> get payouts;
-
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$PayoutsLoadedImplCopyWith<_$PayoutsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1325,9 +1271,8 @@ abstract class _PayoutsLoaded implements EarningsState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1337,23 +1282,20 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$EarningsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1381,9 +1323,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -1480,10 +1420,7 @@ abstract class _Error implements EarningsState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
-
-  /// Create a copy of EarningsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

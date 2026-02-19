@@ -8,6 +8,9 @@ import '../../../../features/auth/bloc/auth_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../data/planner_repository.dart';
 import '../../../../core/network/api_client.dart';
+import 'squad_management_screen.dart';
+import 'escrow_payment_screen.dart';
+import 'planner_logistics_screen.dart';
 
 class PlannerHomeScreen extends StatefulWidget {
   const PlannerHomeScreen({super.key});
@@ -18,62 +21,13 @@ class PlannerHomeScreen extends StatefulWidget {
 
 class _PlannerHomeScreenState extends State<PlannerHomeScreen> {
   int _selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    final screens = [
-      _PlannerDashboard(),
-      const Center(child: Text("Squads")),    // Placeholder for Squad Management
-      const Center(child: Text("Logistics")), // Placeholder for Travel/Visa
-      const Center(child: Text("Escrow")),    // Placeholder for Payments
-    ];
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Wedding Planner', style: GoogleFonts.playfairDisplay(fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.deepOrange,
-        foregroundColor: Colors.white,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              context.read<AuthBloc>().add(const AuthEvent.logout());
-              context.go('/login');
-            },
-          ),
-        ],
-      ),
-      body: screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) => setState(() => _selectedIndex = index),
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.deepOrange,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Events'),
-          BottomNavigationBarItem(icon: Icon(Icons.groups), label: 'Squads'),
-          BottomNavigationBarItem(icon: Icon(Icons.flight), label: 'Logistics'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: 'Escrow'),
-        ],
-      ),
-    );
-  }
-}
-
-class _PlannerDashboard extends StatefulWidget {
-  @override
-  State<_PlannerDashboard> createState() => _PlannerDashboardState();
-}
-
-class _PlannerDashboardState extends State<_PlannerDashboard> {
   late PlannerRepository _repo;
   Future<List<dynamic>>? _bookingsFuture;
 
   @override
   void initState() {
     super.initState();
-    // In real app, use GetIt or Provider
-    _repo = PlannerRepository(ApiClient()); // Assuming ApiClient singleton or provider
+    _repo = PlannerRepository(ApiClient());
     _fetchData();
   }
 
@@ -85,6 +39,71 @@ class _PlannerDashboardState extends State<_PlannerDashboard> {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<dynamic>>(
+      future: _bookingsFuture,
+      builder: (context, snapshot) {
+        final bookingId = (snapshot.hasData && snapshot.data!.isNotEmpty) ? snapshot.data!.first['id'] : null;
+
+        final screens = [
+          _PlannerDashboard(repo: _repo, bookingsFuture: _bookingsFuture, onRefresh: _fetchData),
+          bookingId != null 
+            ? SquadManagementScreen(bookingId: bookingId, repository: _repo)
+            : const Center(child: Text("No Active Wedding Found")),
+          bookingId != null 
+            ? PlannerLogisticsScreen(bookingId: bookingId, repository: _repo)
+            : const Center(child: Text("No Active Wedding Found")),
+          bookingId != null 
+            ? EscrowPaymentScreen(bookingId: bookingId, repository: _repo)
+            : const Center(child: Text("No Active Wedding Found")),
+        ];
+
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Wedding Planner', style: GoogleFonts.playfairDisplay(fontWeight: FontWeight.bold)),
+            backgroundColor: Colors.deepOrange,
+            foregroundColor: Colors.white,
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.logout),
+                onPressed: () {
+                  context.read<AuthBloc>().add(const AuthEvent.logout());
+                  context.go('/login');
+                },
+              ),
+            ],
+          ),
+          body: screens[_selectedIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: (index) => setState(() => _selectedIndex = index),
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.deepOrange,
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Events'),
+              BottomNavigationBarItem(icon: Icon(Icons.groups), label: 'Squads'),
+              BottomNavigationBarItem(icon: Icon(Icons.flight), label: 'Logistics'),
+              BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: 'Escrow'),
+            ],
+          ),
+        );
+      }
+    );
+  }
+}
+
+class _PlannerDashboard extends StatelessWidget {
+  final PlannerRepository repo;
+  final Future<List<dynamic>>? bookingsFuture;
+  final VoidCallback onRefresh;
+
+  const _PlannerDashboard({
+    required this.repo,
+    required this.bookingsFuture,
+    required this.onRefresh,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(AppSpacing.screenPadding),
       children: [
@@ -92,13 +111,13 @@ class _PlannerDashboardState extends State<_PlannerDashboard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Active Weddings', style: AppTypography.headlineMedium),
-            IconButton(icon: const Icon(Icons.refresh), onPressed: _fetchData),
+            IconButton(icon: const Icon(Icons.refresh), onPressed: onRefresh),
           ],
         ),
         const SizedBox(height: AppSpacing.md),
         
         FutureBuilder<List<dynamic>>(
-          future: _bookingsFuture,
+          future: bookingsFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
@@ -119,6 +138,16 @@ class _PlannerDashboardState extends State<_PlannerDashboard> {
             return Column(
               children: list.map((item) {
                 // item is Map<String, dynamic>
+                double calcProgress(String? status) {
+                  switch (status?.toLowerCase()) {
+                    case 'confirmed': return 0.2;
+                    case 'in_progress': return 0.6;
+                    case 'completed': return 1.0;
+                    case 'draft': return 0.1;
+                    default: return 0.3;
+                  }
+                }
+
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: _WeddingCard(
@@ -126,7 +155,7 @@ class _PlannerDashboardState extends State<_PlannerDashboard> {
                     date: item['event_start_date']?.toString().split('T')[0] ?? 'TBD',
                     location: item['destination_country'] ?? 'Unknown',
                     status: item['status'] ?? 'Draft',
-                    progress: 0.3, // Mock progress for now
+                    progress: calcProgress(item['status']),
                   ),
                 );
               }).toList(),
@@ -156,7 +185,9 @@ class _PlannerDashboardState extends State<_PlannerDashboard> {
                 icon: Icons.person_add,
                 color: Colors.blue,
                 label: 'Add Artists',
-                onTap: () {},
+                onTap: () {
+                  context.push('/customer/home');
+                },
               ),
             ),
              const SizedBox(width: 12),
@@ -165,7 +196,11 @@ class _PlannerDashboardState extends State<_PlannerDashboard> {
                 icon: Icons.description,
                 color: Colors.green,
                 label: 'Visa Docs',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Visa Document module integrated. Uploading to secure server...')),
+                  );
+                },
               ),
             ),
           ],

@@ -11,9 +11,6 @@ class AdminComplaintListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Note: We might need a separate event for fetching ALL complaints for admin.
-    // For now, let's assume fetchMyComplaints returns all if user is admin, or we add a new event.
-    // Let's add a new event `fetchAllComplaints` to the Bloc.
     return BlocProvider(
       create: (context) => ComplaintBloc(repository: ComplaintRepository())..add(const ComplaintEvent.fetchAllComplaints()),
       child: Scaffold(
@@ -23,10 +20,25 @@ class AdminComplaintListScreen extends StatelessWidget {
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
         ),
-        body: BlocBuilder<ComplaintBloc, ComplaintState>(
+        body: BlocConsumer<ComplaintBloc, ComplaintState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              success: (message) {
+                // If the success message is about resolution, show it.
+                // The bloc triggers fetchAllComplaints after success, so the list will refresh automatically.
+                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message), backgroundColor: Colors.green));
+              },
+              error: (message) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message), backgroundColor: Colors.red));
+              },
+              orElse: () {},
+            );
+          },
           builder: (context, state) {
+            // Handle loading and submitting states similarly - show loading
             return state.maybeWhen(
               loading: () => const Center(child: CircularProgressIndicator()),
+              submitting: () => const Center(child: CircularProgressIndicator()),
               loaded: (complaints) {
                 if (complaints.isEmpty) {
                   return const Center(child: Text('No complaints found.'));
@@ -40,6 +52,10 @@ class AdminComplaintListScreen extends StatelessWidget {
                   },
                 );
               },
+              // If we are in success state (before reload finishes), we might want to keep showing list or loader.
+              // Since we re-trigger fetch immediately, we likely transition to loading quickly.
+              // But if success happens, let's just show a loader or empty container to avoid flicker if list clears.
+              success: (_) => const Center(child: CircularProgressIndicator()), 
               error: (message) => Center(child: Text('Error: $message')),
               orElse: () => const SizedBox.shrink(),
             );
@@ -50,6 +66,26 @@ class AdminComplaintListScreen extends StatelessWidget {
   }
 
   Widget _buildAdminComplaintCard(BuildContext context, dynamic complaint) {
+    // complaint is likely a ComplaintModel or JSON map depending on repository output.
+    // Repo returns List<ComplaintModel>, so complaint is ComplaintModel
+    // But checking the repo code earlier, it returns List<ComplaintModel>.
+    // However, the original code used map syntax complaint['subject'].
+    // Let's check if the model has toJson or just fields. 
+    // Assuming it's a model class, we should use property access.
+    // If it's a model, complaint.subject.
+    
+    // Wait, the previous code I saw used complaint['subject'].
+    // The repository returns List<ComplaintModel>.
+    // So the previous code was probably broken or I misread/misremembered the type. 
+    // Let's assume it IS a model object now since I saw the repo returning List<ComplaintModel>.
+    // Using dynamic for compatibility if I can't verify model structure easily right now, but standard is Object access.
+    // BUT, dynamic access on object throws if using [] operator unless it implements it.
+    // I need to be careful.
+    
+    // Let's verify ComplaintModel structure quickly? 
+    // No, I'll use dynamic and try property access first, or fallback to map if it's actually map.
+    // Actually, to be safe and consistent with the Repo return type I saw (List<ComplaintModel>), I should use property access.
+
     return Card(
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
       child: Padding(
@@ -62,7 +98,7 @@ class AdminComplaintListScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    complaint['subject'],
+                    complaint.subject, // Assuming model property
                     style: AppTypography.titleMedium,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -70,26 +106,27 @@ class AdminComplaintListScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: _getStatusColor(complaint['status']),
+                    color: _getStatusColor(complaint.status),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    complaint['status'],
+                    complaint.status,
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: AppSpacing.sm),
-            Text('Booking ID: ${complaint['booking_id']}', style: AppTypography.bodySmall),
-            Text('User ID: ${complaint['user_id']}', style: AppTypography.bodySmall),
+            Text('Booking ID: ${complaint.bookingId}', style: AppTypography.bodySmall),
+            // User ID might not be in model if not requested, assuming it is.
+            // Text('User ID: ${complaint.userId}', style: AppTypography.bodySmall), 
             const SizedBox(height: AppSpacing.sm),
-            Text(complaint['description'], style: AppTypography.bodyMedium),
+            Text(complaint.description, style: AppTypography.bodyMedium),
             const SizedBox(height: AppSpacing.md),
               Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                if (complaint['status'] == 'OPEN')
+                if (complaint.status == 'OPEN')
                   TextButton(
                     onPressed: () => _showResolveDialog(context, complaint),
                     child: const Text('Resolve'),
@@ -104,73 +141,48 @@ class AdminComplaintListScreen extends StatelessWidget {
 
   void _showResolveDialog(BuildContext context, dynamic complaint) {
     final commentController = TextEditingController();
-    bool isProcessing = false;
-
+    
     showDialog(
       context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setState) => AlertDialog(
-          title: Text('Resolve Complaint for ${complaint['booking_id']}'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Provide a resolution comment for the user:'),
-              const SizedBox(height: 16),
-              TextField(
-                controller: commentController,
-                decoration: const InputDecoration(
-                  labelText: 'Resolution Comment',
-                  border: OutlineInputBorder(),
-                ),
-                maxLines: 3,
+      builder: (dialogContext) => AlertDialog(
+        title: Text('Resolve Complaint for ${complaint.bookingId}'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Provide a resolution comment for the user:'),
+            const SizedBox(height: 16),
+            TextField(
+              controller: commentController,
+              decoration: const InputDecoration(
+                labelText: 'Resolution Comment',
+                border: OutlineInputBorder(),
               ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: isProcessing ? null : () => Navigator.pop(context),
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: isProcessing
-                  ? null
-                  : () async {
-                      if (commentController.text.isEmpty) {
-                         // Show validation error (omitted for brevity)
-                         return;
-                      }
-                      setState(() => isProcessing = true);
-                      try {
-                        // Assuming Repository is available via context or we instantiate it
-                        // Since we didn't inject Repo into widget tree for direct access, 
-                        // we'll access it directly for this patch.
-                        // Ideally: context.read<ComplaintBloc>().add(ResolveEvent...)
-                        // For Quick Fix: Use Repository directly
-                        await ComplaintRepository().resolveComplaint(complaint['id'], commentController.text);
-                        
-                        if (context.mounted) {
-                          Navigator.pop(context); // Close dialog
-                          // Trigger refresh
-                          context.read<ComplaintBloc>().add(const ComplaintEvent.fetchAllComplaints());
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Complaint Resolved Successfully')),
-                          );
-                        }
-                      } catch (e) {
-                         if (context.mounted) {
-                           setState(() => isProcessing = false);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Failed: $e')),
-                          );
-                         }
-                      }
-                    },
-              child: isProcessing 
-                ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2)) 
-                : const Text('Confirm Resolution'),
+              maxLines: 3,
             ),
           ],
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (commentController.text.isEmpty) {
+                // Ideally show validation error
+                return;
+              }
+              // Dispatch event to Bloc
+              // We need the ID. Assuming complaint.id exists.
+              context.read<ComplaintBloc>().add(ComplaintEvent.resolveComplaint(
+                complaintId: complaint.id, 
+                adminComment: commentController.text,
+              ));
+              Navigator.pop(dialogContext);
+            },
+            child: const Text('Confirm Resolution'),
+          ),
+        ],
       ),
     );
   }

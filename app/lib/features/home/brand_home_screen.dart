@@ -7,6 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../auth/bloc/auth_bloc.dart';
 import 'data/brand_repository.dart';
 
+import 'package:app/features/commerce/presentation/screens/brand_dashboard_screen.dart';
+import 'package:app/features/commerce/presentation/screens/orders_list_screen.dart';
+import 'package:app/features/commerce/presentation/screens/brand_inventory_screen.dart';
+import 'package:app/features/commerce/presentation/screens/brand_profile_screen.dart';
+
 class BrandHomeScreen extends StatefulWidget {
   const BrandHomeScreen({super.key});
 
@@ -20,25 +25,13 @@ class _BrandHomeScreenState extends State<BrandHomeScreen> {
   @override
   Widget build(BuildContext context) {
     final screens = [
-      _BrandDashboard(),
-      const Center(child: Text("Inventory")), // Placeholder
-      const Center(child: Text("Orders")),    // Placeholder
-      const Center(child: Text("Profile")),   // Placeholder
+      const BrandDashboardScreen(),
+      const BrandInventoryScreen(), 
+      const OrdersListScreen(),
+      const BrandProfileScreen(),
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Brand Dashboard'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              context.read<AuthBloc>().add(const AuthEvent.logout());
-              context.go('/login');
-            },
-          ),
-        ],
-      ),
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -51,63 +44,6 @@ class _BrandHomeScreenState extends State<BrandHomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
-    );
-  }
-}
-
-class _BrandDashboard extends StatefulWidget {
-  @override
-  State<_BrandDashboard> createState() => _BrandDashboardState();
-}
-
-class _BrandDashboardState extends State<_BrandDashboard> {
-  final _repository = BrandRepository();
-  Map<String, dynamic>? _metrics;
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchMetrics();
-  }
-
-  Future<void> _fetchMetrics() async {
-    try {
-      final data = await _repository.getDashboardMetrics();
-      if (mounted) setState(() => _metrics = data);
-    } catch (e) {
-      // Use fallback/empty if real API fails (e.g. backend not ready)
-      if (mounted) setState(() => _metrics = {}); 
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_isLoading) return const Center(child: CircularProgressIndicator());
-    
-    final sales = _metrics?['total_sales'] ?? 0.0;
-    final salesText = '₹ ${sales.toStringAsFixed(2)}';
-
-    return ListView(
-      padding: const EdgeInsets.all(AppSpacing.screenPadding),
-      children: [
-        Text('Welcome, Partner!', style: AppTypography.headlineMedium),
-        const SizedBox(height: AppSpacing.md),
-        Card(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                const Text('Total Sales', style: TextStyle(fontSize: 16)),
-                const SizedBox(height: 8),
-                Text(salesText, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

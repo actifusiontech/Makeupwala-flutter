@@ -29,19 +29,19 @@ Map<String, dynamic> _$$InstituteImplToJson(_$InstituteImpl instance) =>
     };
 
 _$CourseImpl _$$CourseImplFromJson(Map<String, dynamic> json) => _$CourseImpl(
-  id: json['id'] as String,
-  instituteId: json['institute_id'] as String,
-  title: json['title'] as String,
-  description: json['description'] as String?,
-  thumbnailUrl: json['thumbnail_url'] as String?,
-  category: json['category'] as String?,
-  feeAmount: (json['fee_amount'] as num?)?.toDouble() ?? 0.0,
-  durationWeeks: (json['duration_weeks'] as num?)?.toInt() ?? 0,
-  level: json['level'] as String? ?? 'beginner',
-  lessons: (json['lessons'] as List<dynamic>?)
-      ?.map((e) => Lesson.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+      id: json['id'] as String,
+      instituteId: json['institute_id'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String?,
+      thumbnailUrl: json['thumbnail_url'] as String?,
+      category: json['category'] as String?,
+      feeAmount: (json['fee_amount'] as num?)?.toDouble() ?? 0.0,
+      durationWeeks: (json['duration_weeks'] as num?)?.toInt() ?? 0,
+      level: json['level'] as String? ?? 'beginner',
+      lessons: (json['lessons'] as List<dynamic>?)
+          ?.map((e) => Lesson.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$$CourseImplToJson(_$CourseImpl instance) =>
     <String, dynamic>{
@@ -58,16 +58,16 @@ Map<String, dynamic> _$$CourseImplToJson(_$CourseImpl instance) =>
     };
 
 _$LessonImpl _$$LessonImplFromJson(Map<String, dynamic> json) => _$LessonImpl(
-  id: json['id'] as String,
-  courseId: json['course_id'] as String,
-  title: json['title'] as String,
-  description: json['description'] as String?,
-  videoUrl: json['video_url'] as String,
-  contentText: json['content_text'] as String?,
-  sequenceOrder: (json['sequence_order'] as num).toInt(),
-  isPreview: json['is_preview'] as bool? ?? false,
-  isCompleted: json['is_completed'] as bool? ?? false,
-);
+      id: json['id'] as String,
+      courseId: json['course_id'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String?,
+      videoUrl: json['video_url'] as String,
+      contentText: json['content_text'] as String?,
+      sequenceOrder: (json['sequence_order'] as num).toInt(),
+      isPreview: json['is_preview'] as bool? ?? false,
+      isCompleted: json['is_completed'] as bool? ?? false,
+    );
 
 Map<String, dynamic> _$$LessonImplToJson(_$LessonImpl instance) =>
     <String, dynamic>{
@@ -111,52 +111,52 @@ Map<String, dynamic> _$$EnrollmentImplToJson(_$EnrollmentImpl instance) =>
     };
 
 _$PlacementListingImpl _$$PlacementListingImplFromJson(
-  Map<String, dynamic> json,
-) => _$PlacementListingImpl(
-  id: json['id'] as String,
-  instituteId: json['institute_id'] as String,
-  title: json['title'] as String,
-  companyName: json['company_name'] as String,
-  location: json['location'] as String?,
-  description: json['description'] as String?,
-  stipendAmount: (json['stipend_amount'] as num?)?.toDouble(),
-  listingType: json['listing_type'] as String? ?? 'job',
-  isActive: json['is_active'] as bool? ?? true,
-);
+        Map<String, dynamic> json) =>
+    _$PlacementListingImpl(
+      id: json['id'] as String,
+      instituteId: json['institute_id'] as String,
+      title: json['title'] as String,
+      companyName: json['company_name'] as String,
+      location: json['location'] as String?,
+      description: json['description'] as String?,
+      stipendAmount: (json['stipend_amount'] as num?)?.toDouble(),
+      listingType: json['listing_type'] as String? ?? 'job',
+      isActive: json['is_active'] as bool? ?? true,
+    );
 
 Map<String, dynamic> _$$PlacementListingImplToJson(
-  _$PlacementListingImpl instance,
-) => <String, dynamic>{
-  'id': instance.id,
-  'institute_id': instance.instituteId,
-  'title': instance.title,
-  'company_name': instance.companyName,
-  'location': instance.location,
-  'description': instance.description,
-  'stipend_amount': instance.stipendAmount,
-  'listing_type': instance.listingType,
-  'is_active': instance.isActive,
-};
+        _$PlacementListingImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'institute_id': instance.instituteId,
+      'title': instance.title,
+      'company_name': instance.companyName,
+      'location': instance.location,
+      'description': instance.description,
+      'stipend_amount': instance.stipendAmount,
+      'listing_type': instance.listingType,
+      'is_active': instance.isActive,
+    };
 
 _$BatchImpl _$$BatchImplFromJson(Map<String, dynamic> json) => _$BatchImpl(
-  id: json['id'] as String,
-  instituteId: json['institute_id'] as String,
-  courseId: json['course_id'] as String?,
-  name: json['name'] as String,
-  startDate: json['start_date'] == null
-      ? null
-      : DateTime.parse(json['start_date'] as String),
-  endDate: json['end_date'] == null
-      ? null
-      : DateTime.parse(json['end_date'] as String),
-  status: json['status'] as String? ?? 'ACTIVE',
-  students: (json['students'] as List<dynamic>?)
-      ?.map((e) => BatchStudent.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  faculty: (json['faculty'] as List<dynamic>?)
-      ?.map((e) => BatchFaculty.fromJson(e as Map<String, dynamic>))
-      .toList(),
-);
+      id: json['id'] as String,
+      instituteId: json['institute_id'] as String,
+      courseId: json['course_id'] as String?,
+      name: json['name'] as String,
+      startDate: json['start_date'] == null
+          ? null
+          : DateTime.parse(json['start_date'] as String),
+      endDate: json['end_date'] == null
+          ? null
+          : DateTime.parse(json['end_date'] as String),
+      status: json['status'] as String? ?? 'ACTIVE',
+      students: (json['students'] as List<dynamic>?)
+          ?.map((e) => BatchStudent.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      faculty: (json['faculty'] as List<dynamic>?)
+          ?.map((e) => BatchFaculty.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$$BatchImplToJson(_$BatchImpl instance) =>
     <String, dynamic>{

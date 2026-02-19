@@ -5,22 +5,29 @@ import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
-import 'package:app/shared/theme/app_spacing.dart';
-import '../auth/bloc/auth_bloc.dart';
-import '../booking/bloc/booking_bloc.dart';
+import '../subscription/bloc/subscription_bloc.dart';
+import '../subscription/data/subscription_repository.dart';
+import '../safety/presentation/screens/emergency_contacts_screen.dart';
+import '../safety/bloc/safety_bloc.dart';
+import '../safety/bloc/safety_event.dart';
+import '../bookings/bloc/booking_bloc.dart';
+import '../bookings/data/booking_repository.dart';
 import '../profile/bloc/profile_bloc.dart';
-import '../booking/data/booking_repository.dart';
-import '../artist/bloc/earnings_bloc.dart';
-import '../artist/data/earnings_repository.dart';
-import 'widgets/artist_stats_widget.dart';
-import 'widgets/subscription_widget.dart';
+import '../profile/bloc/profile_event.dart';
+import '../profile/bloc/profile_state.dart';
+import '../earnings/bloc/earnings_bloc.dart';
+import '../earnings/data/earnings_repository.dart';
+import '../earnings/presentation/widgets/artist_stats_widget.dart';
+import '../subscription/presentation/widgets/subscription_widget.dart';
+import '../auth/bloc/auth_bloc.dart';
+import '../auth/bloc/auth_state.dart';
+import '../safety/presentation/widgets/sos_button.dart';
 
 class ArtistHomeScreen extends StatelessWidget {
   const ArtistHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Get Dio instance from context or create one
     final dio = Dio(BaseOptions(
       baseUrl: 'https://api.makeupwallah.com/api/v1/makeupwala',
     ));
@@ -37,6 +44,10 @@ class ArtistHomeScreen extends StatelessWidget {
         BlocProvider(
           create: (context) => EarningsBloc(repository: EarningsRepository(dio))
             ..add(const EarningsEvent.fetchEarningsStats()),
+        ),
+        BlocProvider(
+          create: (context) => SubscriptionBloc(repository: SubscriptionRepository())
+            ..add(const SubscriptionEvent.fetchMySubscription()),
         ),
       ],
       child: const _ArtistHomeView(),
@@ -58,28 +69,23 @@ class _ArtistHomeView extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.chat_bubble_outline),
-            onPressed: () {
-              context.push('/chat');
-            },
+            onPressed: () => context.push('/chat'),
           ),
           IconButton(
             icon: const Icon(Icons.person_outline),
-            onPressed: () {
-              context.push('/profile'); 
-            },
+            onPressed: () => context.push('/profile'), 
           ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
               context.read<BookingBloc>().add(const BookingEvent.fetchBookings(isArtist: true));
               context.read<EarningsBloc>().add(const EarningsEvent.fetchEarningsStats());
+              context.read<SubscriptionBloc>().add(const SubscriptionEvent.fetchMySubscription());
             },
           ),
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () {
-              context.read<AuthBloc>().add(const AuthEvent.logout());
-            },
+            onPressed: () => context.read<AuthBloc>().add(const AuthEvent.logout()),
           ),
         ],
       ),
@@ -92,15 +98,9 @@ class _ArtistHomeView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: AppSpacing.xl),
-                  
-                  // Welcome section
-                  Text(
-                    'Welcome, ${user.fullName}!',
-                    style: AppTypography.displaySmall,
-                  ),
+                  Text('Welcome, ${user.fullName}!', style: AppTypography.displaySmall),
                   const SizedBox(height: AppSpacing.lg),
 
-                  // Stats Section - NOW WITH REAL DATA
                   BlocBuilder<EarningsBloc, EarningsState>(
                     builder: (context, earningsState) {
                       return earningsState.maybeWhen(
@@ -108,39 +108,28 @@ class _ArtistHomeView extends StatelessWidget {
                           totalBookings: stats.totalBookings,
                           totalEarnings: stats.totalEarnings,
                         ),
-                        loading: () => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        error: (message) => ArtistStatsWidget(
-                          totalBookings: 0,
-                          totalEarnings: 0,
-                        ),
-                        orElse: () => const ArtistStatsWidget(
-                          totalBookings: 0,
-                          totalEarnings: 0,
-                        ),
+                        loading: () => const Center(child: CircularProgressIndicator()),
+                        orElse: () => const ArtistStatsWidget(totalBookings: 0, totalEarnings: 0),
                       );
                     },
                   ),
                   const SizedBox(height: AppSpacing.xxl),
 
-                  // Subscription Status
-                  SubscriptionWidget(
-                    planName: 'Free', // TODO: Fetch from subscription API
-                    bookingsUsed: 3,
-                    bookingsLimit: 5,
-                    contactsUsed: 8,
-                    contactsLimit: 10,
-                    onUpgrade: () {
-                      // TODO: Navigate to subscription page
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Subscription upgrade coming soon!')),
+                  BlocBuilder<SubscriptionBloc, SubscriptionState>(
+                    builder: (context, subState) {
+                      final sub = subState.subscription;
+                      return SubscriptionWidget(
+                        planName: sub?['plan_name'] ?? 'Free',
+                        bookingsUsed: sub?['bookings_used'] ?? 0,
+                        bookingsLimit: sub?['max_bookings'] ?? 5,
+                        contactsUsed: sub?['contacts_used'] ?? 0,
+                        contactsLimit: sub?['max_contacts'] ?? 10,
+                        onUpgrade: () => context.push('/subscription'),
                       );
                     },
                   ),
                   const SizedBox(height: AppSpacing.xxl),
                   
-                  // Quick Actions
                   Text('Quick Actions', style: AppTypography.titleLarge),
                   const SizedBox(height: AppSpacing.md),
                   InkWell(
@@ -212,6 +201,82 @@ class _ArtistHomeView extends StatelessWidget {
                             ),
                           ),
                           const Icon(Icons.chevron_right, color: AppColors.primary),
+                        ],
+                      ),
+                    ),
+                  ),
+                  
+                  const SizedBox(height: AppSpacing.md),
+
+                  InkWell(
+                    onTap: () => context.push('/campaign-explorer'),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        color: Colors.purple.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: Colors.purple.withOpacity(0.2)),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.purple,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.campaign, color: Colors.white),
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text('Brand Collaborations', style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 16)),
+                                Text('Partner with premium brands', style: AppTypography.bodySmall),
+                              ],
+                            ),
+                          ),
+                          const Icon(Icons.chevron_right, color: Colors.purple),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: AppSpacing.md),
+
+                  InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EmergencyContactsScreen())),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        color: Colors.red.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: Colors.red.withOpacity(0.2)),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.contact_phone, color: Colors.white),
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text('Emergency Contacts', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 16)),
+                                Text('Manage your safety network', style: AppTypography.bodySmall),
+                              ],
+                            ),
+                          ),
+                          const Icon(Icons.chevron_right, color: Colors.red),
                         ],
                       ),
                     ),

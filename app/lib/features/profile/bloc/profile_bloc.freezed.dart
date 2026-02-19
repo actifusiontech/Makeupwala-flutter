@@ -12,8 +12,7 @@ part of 'profile_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProfileEvent {
@@ -21,17 +20,19 @@ mixin _$ProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isArtist) fetchProfile,
     required TResult Function(bool isArtist, Map<String, dynamic> data)
-    updateProfile,
+        updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
     TResult? Function()? fetchReferrals,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isArtist)? fetchProfile,
@@ -39,21 +40,24 @@ mixin _$ProfileEvent {
     TResult Function(String filePath)? uploadMedia,
     TResult Function()? fetchReferrals,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
     required TResult Function(_FetchReferrals value) fetchReferrals,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchProfile value)? fetchProfile,
@@ -61,15 +65,15 @@ mixin _$ProfileEvent {
     TResult Function(_UploadMedia value)? uploadMedia,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProfileEventCopyWith<$Res> {
   factory $ProfileEventCopyWith(
-    ProfileEvent value,
-    $Res Function(ProfileEvent) then,
-  ) = _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
+          ProfileEvent value, $Res Function(ProfileEvent) then) =
+      _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
 }
 
 /// @nodoc
@@ -81,17 +85,13 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$FetchProfileImplCopyWith<$Res> {
   factory _$$FetchProfileImplCopyWith(
-    _$FetchProfileImpl value,
-    $Res Function(_$FetchProfileImpl) then,
-  ) = __$$FetchProfileImplCopyWithImpl<$Res>;
+          _$FetchProfileImpl value, $Res Function(_$FetchProfileImpl) then) =
+      __$$FetchProfileImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isArtist});
 }
@@ -101,23 +101,20 @@ class __$$FetchProfileImplCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res, _$FetchProfileImpl>
     implements _$$FetchProfileImplCopyWith<$Res> {
   __$$FetchProfileImplCopyWithImpl(
-    _$FetchProfileImpl _value,
-    $Res Function(_$FetchProfileImpl) _then,
-  ) : super(_value, _then);
+      _$FetchProfileImpl _value, $Res Function(_$FetchProfileImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? isArtist = null}) {
-    return _then(
-      _$FetchProfileImpl(
-        isArtist: null == isArtist
-            ? _value.isArtist
-            : isArtist // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
+  $Res call({
+    Object? isArtist = null,
+  }) {
+    return _then(_$FetchProfileImpl(
+      isArtist: null == isArtist
+          ? _value.isArtist
+          : isArtist // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -146,9 +143,7 @@ class _$FetchProfileImpl implements _FetchProfile {
   @override
   int get hashCode => Object.hash(runtimeType, isArtist);
 
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FetchProfileImplCopyWith<_$FetchProfileImpl> get copyWith =>
@@ -159,7 +154,7 @@ class _$FetchProfileImpl implements _FetchProfile {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isArtist) fetchProfile,
     required TResult Function(bool isArtist, Map<String, dynamic> data)
-    updateProfile,
+        updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
   }) {
@@ -235,10 +230,7 @@ abstract class _FetchProfile implements ProfileEvent {
       _$FetchProfileImpl;
 
   bool get isArtist;
-
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FetchProfileImplCopyWith<_$FetchProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -246,9 +238,8 @@ abstract class _FetchProfile implements ProfileEvent {
 /// @nodoc
 abstract class _$$UpdateProfileImplCopyWith<$Res> {
   factory _$$UpdateProfileImplCopyWith(
-    _$UpdateProfileImpl value,
-    $Res Function(_$UpdateProfileImpl) then,
-  ) = __$$UpdateProfileImplCopyWithImpl<$Res>;
+          _$UpdateProfileImpl value, $Res Function(_$UpdateProfileImpl) then) =
+      __$$UpdateProfileImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isArtist, Map<String, dynamic> data});
 }
@@ -258,37 +249,34 @@ class __$$UpdateProfileImplCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res, _$UpdateProfileImpl>
     implements _$$UpdateProfileImplCopyWith<$Res> {
   __$$UpdateProfileImplCopyWithImpl(
-    _$UpdateProfileImpl _value,
-    $Res Function(_$UpdateProfileImpl) _then,
-  ) : super(_value, _then);
+      _$UpdateProfileImpl _value, $Res Function(_$UpdateProfileImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? isArtist = null, Object? data = null}) {
-    return _then(
-      _$UpdateProfileImpl(
-        isArtist: null == isArtist
-            ? _value.isArtist
-            : isArtist // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        data: null == data
-            ? _value._data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
-      ),
-    );
+  $Res call({
+    Object? isArtist = null,
+    Object? data = null,
+  }) {
+    return _then(_$UpdateProfileImpl(
+      isArtist: null == isArtist
+          ? _value.isArtist
+          : isArtist // ignore: cast_nullable_to_non_nullable
+              as bool,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$UpdateProfileImpl implements _UpdateProfile {
-  const _$UpdateProfileImpl({
-    required this.isArtist,
-    required final Map<String, dynamic> data,
-  }) : _data = data;
+  const _$UpdateProfileImpl(
+      {required this.isArtist, required final Map<String, dynamic> data})
+      : _data = data;
 
   @override
   final bool isArtist;
@@ -317,14 +305,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    isArtist,
-    const DeepCollectionEquality().hash(_data),
-  );
+      runtimeType, isArtist, const DeepCollectionEquality().hash(_data));
 
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateProfileImplCopyWith<_$UpdateProfileImpl> get copyWith =>
@@ -335,7 +318,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isArtist) fetchProfile,
     required TResult Function(bool isArtist, Map<String, dynamic> data)
-    updateProfile,
+        updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
   }) {
@@ -407,17 +390,13 @@ class _$UpdateProfileImpl implements _UpdateProfile {
 }
 
 abstract class _UpdateProfile implements ProfileEvent {
-  const factory _UpdateProfile({
-    required final bool isArtist,
-    required final Map<String, dynamic> data,
-  }) = _$UpdateProfileImpl;
+  const factory _UpdateProfile(
+      {required final bool isArtist,
+      required final Map<String, dynamic> data}) = _$UpdateProfileImpl;
 
   bool get isArtist;
   Map<String, dynamic> get data;
-
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$UpdateProfileImplCopyWith<_$UpdateProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -425,9 +404,8 @@ abstract class _UpdateProfile implements ProfileEvent {
 /// @nodoc
 abstract class _$$UploadMediaImplCopyWith<$Res> {
   factory _$$UploadMediaImplCopyWith(
-    _$UploadMediaImpl value,
-    $Res Function(_$UploadMediaImpl) then,
-  ) = __$$UploadMediaImplCopyWithImpl<$Res>;
+          _$UploadMediaImpl value, $Res Function(_$UploadMediaImpl) then) =
+      __$$UploadMediaImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String filePath});
 }
@@ -437,23 +415,20 @@ class __$$UploadMediaImplCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res, _$UploadMediaImpl>
     implements _$$UploadMediaImplCopyWith<$Res> {
   __$$UploadMediaImplCopyWithImpl(
-    _$UploadMediaImpl _value,
-    $Res Function(_$UploadMediaImpl) _then,
-  ) : super(_value, _then);
+      _$UploadMediaImpl _value, $Res Function(_$UploadMediaImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? filePath = null}) {
-    return _then(
-      _$UploadMediaImpl(
-        filePath: null == filePath
-            ? _value.filePath
-            : filePath // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? filePath = null,
+  }) {
+    return _then(_$UploadMediaImpl(
+      filePath: null == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -482,9 +457,7 @@ class _$UploadMediaImpl implements _UploadMedia {
   @override
   int get hashCode => Object.hash(runtimeType, filePath);
 
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$UploadMediaImplCopyWith<_$UploadMediaImpl> get copyWith =>
@@ -495,7 +468,7 @@ class _$UploadMediaImpl implements _UploadMedia {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isArtist) fetchProfile,
     required TResult Function(bool isArtist, Map<String, dynamic> data)
-    updateProfile,
+        updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
   }) {
@@ -571,20 +544,16 @@ abstract class _UploadMedia implements ProfileEvent {
       _$UploadMediaImpl;
 
   String get filePath;
-
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$UploadMediaImplCopyWith<_$UploadMediaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$FetchReferralsImplCopyWith<$Res> {
-  factory _$$FetchReferralsImplCopyWith(
-    _$FetchReferralsImpl value,
-    $Res Function(_$FetchReferralsImpl) then,
-  ) = __$$FetchReferralsImplCopyWithImpl<$Res>;
+  factory _$$FetchReferralsImplCopyWith(_$FetchReferralsImpl value,
+          $Res Function(_$FetchReferralsImpl) then) =
+      __$$FetchReferralsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -592,12 +561,8 @@ class __$$FetchReferralsImplCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res, _$FetchReferralsImpl>
     implements _$$FetchReferralsImplCopyWith<$Res> {
   __$$FetchReferralsImplCopyWithImpl(
-    _$FetchReferralsImpl _value,
-    $Res Function(_$FetchReferralsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ProfileEvent
-  /// with the given fields replaced by the non-null parameter values.
+      _$FetchReferralsImpl _value, $Res Function(_$FetchReferralsImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -624,7 +589,7 @@ class _$FetchReferralsImpl implements _FetchReferrals {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isArtist) fetchProfile,
     required TResult Function(bool isArtist, Map<String, dynamic> data)
-    updateProfile,
+        updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
   }) {
@@ -708,7 +673,8 @@ mixin _$ProfileState {
     required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
     required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -716,7 +682,8 @@ mixin _$ProfileState {
     TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -725,7 +692,8 @@ mixin _$ProfileState {
     TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -733,7 +701,8 @@ mixin _$ProfileState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ReferralsLoaded value) referralsLoaded,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -741,7 +710,8 @@ mixin _$ProfileState {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ReferralsLoaded value)? referralsLoaded,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -750,15 +720,15 @@ mixin _$ProfileState {
     TResult Function(_ReferralsLoaded value)? referralsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ProfileStateCopyWith<$Res> {
   factory $ProfileStateCopyWith(
-    ProfileState value,
-    $Res Function(ProfileState) then,
-  ) = _$ProfileStateCopyWithImpl<$Res, ProfileState>;
+          ProfileState value, $Res Function(ProfileState) then) =
+      _$ProfileStateCopyWithImpl<$Res, ProfileState>;
 }
 
 /// @nodoc
@@ -770,17 +740,13 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -788,12 +754,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -903,9 +865,8 @@ abstract class _Initial implements ProfileState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -913,12 +874,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1028,9 +985,8 @@ abstract class _Loading implements ProfileState {
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
-    _$LoadedImpl value,
-    $Res Function(_$LoadedImpl) then,
-  ) = __$$LoadedImplCopyWithImpl<$Res>;
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({User user, LoyaltyBalance? loyaltyBalance});
 
@@ -1043,31 +999,27 @@ class __$$LoadedImplCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
-    _$LoadedImpl _value,
-    $Res Function(_$LoadedImpl) _then,
-  ) : super(_value, _then);
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? user = null, Object? loyaltyBalance = freezed}) {
-    return _then(
-      _$LoadedImpl(
-        user: null == user
-            ? _value.user
-            : user // ignore: cast_nullable_to_non_nullable
-                  as User,
-        loyaltyBalance: freezed == loyaltyBalance
-            ? _value.loyaltyBalance
-            : loyaltyBalance // ignore: cast_nullable_to_non_nullable
-                  as LoyaltyBalance?,
-      ),
-    );
+  $Res call({
+    Object? user = null,
+    Object? loyaltyBalance = freezed,
+  }) {
+    return _then(_$LoadedImpl(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+      loyaltyBalance: freezed == loyaltyBalance
+          ? _value.loyaltyBalance
+          : loyaltyBalance // ignore: cast_nullable_to_non_nullable
+              as LoyaltyBalance?,
+    ));
   }
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -1076,8 +1028,6 @@ class __$$LoadedImplCopyWithImpl<$Res>
     });
   }
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LoyaltyBalanceCopyWith<$Res>? get loyaltyBalance {
@@ -1119,9 +1069,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   int get hashCode => Object.hash(runtimeType, user, loyaltyBalance);
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -1209,27 +1157,22 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ProfileState {
-  const factory _Loaded({
-    required final User user,
-    final LoyaltyBalance? loyaltyBalance,
-  }) = _$LoadedImpl;
+  const factory _Loaded(
+      {required final User user,
+      final LoyaltyBalance? loyaltyBalance}) = _$LoadedImpl;
 
   User get user;
   LoyaltyBalance? get loyaltyBalance;
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ReferralsLoadedImplCopyWith<$Res> {
-  factory _$$ReferralsLoadedImplCopyWith(
-    _$ReferralsLoadedImpl value,
-    $Res Function(_$ReferralsLoadedImpl) then,
-  ) = __$$ReferralsLoadedImplCopyWithImpl<$Res>;
+  factory _$$ReferralsLoadedImplCopyWith(_$ReferralsLoadedImpl value,
+          $Res Function(_$ReferralsLoadedImpl) then) =
+      __$$ReferralsLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ReferralRecord> referrals});
 }
@@ -1239,23 +1182,20 @@ class __$$ReferralsLoadedImplCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res, _$ReferralsLoadedImpl>
     implements _$$ReferralsLoadedImplCopyWith<$Res> {
   __$$ReferralsLoadedImplCopyWithImpl(
-    _$ReferralsLoadedImpl _value,
-    $Res Function(_$ReferralsLoadedImpl) _then,
-  ) : super(_value, _then);
+      _$ReferralsLoadedImpl _value, $Res Function(_$ReferralsLoadedImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? referrals = null}) {
-    return _then(
-      _$ReferralsLoadedImpl(
-        referrals: null == referrals
-            ? _value._referrals
-            : referrals // ignore: cast_nullable_to_non_nullable
-                  as List<ReferralRecord>,
-      ),
-    );
+  $Res call({
+    Object? referrals = null,
+  }) {
+    return _then(_$ReferralsLoadedImpl(
+      referrals: null == referrals
+          ? _value._referrals
+          : referrals // ignore: cast_nullable_to_non_nullable
+              as List<ReferralRecord>,
+    ));
   }
 }
 
@@ -1263,7 +1203,7 @@ class __$$ReferralsLoadedImplCopyWithImpl<$Res>
 
 class _$ReferralsLoadedImpl implements _ReferralsLoaded {
   const _$ReferralsLoadedImpl({required final List<ReferralRecord> referrals})
-    : _referrals = referrals;
+      : _referrals = referrals;
 
   final List<ReferralRecord> _referrals;
   @override
@@ -1283,26 +1223,20 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReferralsLoadedImpl &&
-            const DeepCollectionEquality().equals(
-              other._referrals,
-              _referrals,
-            ));
+            const DeepCollectionEquality()
+                .equals(other._referrals, _referrals));
   }
 
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_referrals));
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ReferralsLoadedImplCopyWith<_$ReferralsLoadedImpl> get copyWith =>
       __$$ReferralsLoadedImplCopyWithImpl<_$ReferralsLoadedImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1386,15 +1320,11 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
 }
 
 abstract class _ReferralsLoaded implements ProfileState {
-  const factory _ReferralsLoaded({
-    required final List<ReferralRecord> referrals,
-  }) = _$ReferralsLoadedImpl;
+  const factory _ReferralsLoaded(
+      {required final List<ReferralRecord> referrals}) = _$ReferralsLoadedImpl;
 
   List<ReferralRecord> get referrals;
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ReferralsLoadedImplCopyWith<_$ReferralsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1402,9 +1332,8 @@ abstract class _ReferralsLoaded implements ProfileState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1414,23 +1343,20 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        message: null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -1458,9 +1384,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -1551,10 +1475,7 @@ abstract class _Error implements ProfileState {
   const factory _Error({required final String message}) = _$ErrorImpl;
 
   String get message;
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

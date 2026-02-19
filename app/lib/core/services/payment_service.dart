@@ -1,9 +1,15 @@
 import 'dart:developer' as developer;
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../../../core/network/api_client.dart';
+import '../../../core/services/logging_service.dart';
+import '../../../core/services/analytics_service.dart';
+import '../../../core/services/performance_monitor.dart';
 
 class PaymentService {
   final ApiClient _apiClient;
+  final LoggingService _logger = LoggingService();
+  final AnalyticsService _analytics = AnalyticsService();
+  final PerformanceMonitor _performance = PerformanceMonitor();
   late Razorpay _razorpay;
 
   PaymentService({ApiClient? apiClient}) : _apiClient = apiClient ?? ApiClient() {
@@ -79,13 +85,16 @@ class PaymentService {
     required String name,
     required String email,
     required String phone,
-    String? keyId, // Added optional keyId
+    String? keyId,
     required Function(PaymentSuccessResponse) onSuccess,
     required Function(PaymentFailureResponse) onFailure,
   }) {
+    _performance.startPaymentFlow();
+    _logger.info('Opening Razorpay checkout for order: $orderId, amount: ₹$amount');
+
     final options = {
-      'key': keyId ?? 'rzp_test_placeholder', // Should be passed from initiate response
-      'amount': (amount * 100).toInt(), // Amount in paise
+      'key': keyId ?? 'rzp_test_placeholder',
+      'amount': (amount * 100).toInt(),
       'name': 'MakeupWala',
       'order_id': orderId,
       'description': 'Subscription Payment',
@@ -100,11 +109,24 @@ class PaymentService {
 
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, (PaymentSuccessResponse response) {
       developer.log('✅ Payment successful: ${response.paymentId}', name: 'PaymentService');
+      _logger.info('Payment successful: ${response.paymentId}');
+      _performance.stopPaymentFlow(success: true);
+      _analytics.logPaymentSuccess(
+        paymentId: response.paymentId ?? '',
+        amount: amount,
+        currency: 'INR',
+      );
       onSuccess(response);
     });
 
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (PaymentFailureResponse response) {
       developer.log('❌ Payment failed: ${response.message}', name: 'PaymentService');
+      _logger.error('Payment failed: ${response.message}');
+      _performance.stopPaymentFlow(success: false);
+      _analytics.logPaymentFailure(
+        reason: response.message ?? 'Unknown error',
+        amount: amount,
+      );
       onFailure(response);
     });
 
@@ -164,5 +186,30 @@ class PaymentService {
 
   void dispose() {
     _razorpay.clear();
+  }
+
+  // ========== DEPOSIT CALCULATION ==========
+
+  /// Calculate deposit amount (20% for high-value bookings >= 5000)
+  double calculateDepositAmount(double totalAmount) {
+    if (totalAmount >= 5000) {
+      final deposit = totalAmount * 0.2;
+      _logger.debug('Deposit required: ₹$deposit for total: ₹$totalAmount');
+      return deposit;
+    }
+    return totalAmount;
+  }
+
+  /// Check if deposit is required for the given amount
+  bool isDepositRequired(double totalAmount) {
+    return totalAmount >= 5000;
+  }
+
+  /// Get remaining amount after deposit
+  double getRemainingAmount(double totalAmount) {
+    if (isDepositRequired(totalAmount)) {
+      return totalAmount - calculateDepositAmount(totalAmount);
+    }
+    return 0.0;
   }
 }

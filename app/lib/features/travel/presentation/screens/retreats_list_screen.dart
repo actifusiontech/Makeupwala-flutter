@@ -4,22 +4,26 @@ import 'package:app/features/travel/domain/travel_models.dart';
 import 'package:app/features/travel/data/travel_repository.dart';
 import 'package:app/core/network/api_client.dart';
 
-class RetreatsListScreen extends StatefulWidget {
+import 'package:app/features/travel/presentation/bloc/travel_bloc.dart';
+import 'package:app/features/travel/presentation/bloc/travel_event.dart';
+import 'package:app/features/travel/presentation/bloc/travel_state.dart';
+
+class RetreatsListScreen extends StatelessWidget {
   const RetreatsListScreen({Key? key}) : super(key: key);
 
   @override
-  State<RetreatsListScreen> createState() => _RetreatsListScreenState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => TravelBloc(
+        repository: TravelRepository(ApiClient().dio),
+      )..add(const TravelEvent.fetchRetreats()),
+      child: const _RetreatsListView(),
+    );
+  }
 }
 
-class _RetreatsListScreenState extends State<RetreatsListScreen> {
-  late Future<List<RetreatModel>> _retreatsFuture;
-  final TravelRepository _repository = TravelRepository(ApiClient().dio);
-
-  @override
-  void initState() {
-    super.initState();
-    _retreatsFuture = _repository.getRetreats();
-  }
+class _RetreatsListView extends StatelessWidget {
+  const _RetreatsListView();
 
   @override
   Widget build(BuildContext context) {
@@ -29,31 +33,48 @@ class _RetreatsListScreenState extends State<RetreatsListScreen> {
         backgroundColor: Colors.teal[800],
         foregroundColor: Colors.white,
       ),
-      body: FutureBuilder<List<RetreatModel>>(
-        future: _retreatsFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator(color: Colors.teal));
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No upcoming retreats.'));
-          }
-
-          final retreats = snapshot.data!;
-          return ListView.builder(
-            padding: const EdgeInsets.all(16),
-            itemCount: retreats.length,
-            itemBuilder: (context, index) {
-              return _buildRetreatCard(retreats[index]);
+      body: BlocConsumer<TravelBloc, TravelState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            success: (message) => ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(message)),
+            ),
+            error: (message) => ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Error: $message')),
+            ),
+            orElse: () {},
+          );
+        },
+        builder: (context, state) {
+          return state.maybeWhen(
+            loading: () => const Center(child: CircularProgressIndicator(color: Colors.teal)),
+            retreatsLoaded: (retreats) {
+              if (retreats.isEmpty) {
+                return const Center(child: Text('No upcoming retreats.'));
+              }
+              return ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: retreats.length,
+                itemBuilder: (context, index) {
+                  return _RetreatCard(retreat: retreats[index]);
+                },
+              );
             },
+            error: (message) => Center(child: Text('Error: $message')),
+            orElse: () => const Center(child: CircularProgressIndicator(color: Colors.teal)),
           );
         },
       ),
     );
   }
+}
 
-  Widget _buildRetreatCard(RetreatModel retreat) {
+class _RetreatCard extends StatelessWidget {
+  final RetreatModel retreat;
+  const _RetreatCard({required this.retreat});
+
+  @override
+  Widget build(BuildContext context) {
     final dateRange = '${DateFormat('MMM d').format(retreat.startDate)} - ${DateFormat('MMM d, y').format(retreat.endDate)}';
 
     return Card(
@@ -121,7 +142,7 @@ class _RetreatsListScreenState extends State<RetreatsListScreen> {
                       style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.teal),
                     ),
                     ElevatedButton(
-                      onPressed: () => _showBookingDialog(retreat),
+                      onPressed: () => _showBookingDialog(context, retreat),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal,
                         foregroundColor: Colors.white,
@@ -139,73 +160,48 @@ class _RetreatsListScreenState extends State<RetreatsListScreen> {
     );
   }
 
-  void _showBookingDialog(RetreatModel retreat) {
+  void _showBookingDialog(BuildContext context, RetreatModel retreat) {
     final nameController = TextEditingController();
-    bool isBooking = false;
+    final travelBloc = context.read<TravelBloc>();
 
     showDialog(
       context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setState) => AlertDialog(
-          title: Text('Book ${retreat.title}'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Enter participant details to confirm booking.'),
-              const SizedBox(height: 16),
-              TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Participant Name',
-                  border: OutlineInputBorder(),
-                ),
+      builder: (context) => AlertDialog(
+        title: Text('Book ${retreat.title}'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Enter participant details to confirm booking.'),
+            const SizedBox(height: 16),
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(
+                labelText: 'Participant Name',
+                border: OutlineInputBorder(),
               ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: isBooking ? null : () => Navigator.pop(context),
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: isBooking
-                  ? null
-                  : () async {
-                      if (nameController.text.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Please enter a name')),
-                        );
-                        return;
-                      }
-
-                      setState(() => isBooking = true);
-                      try {
-                        await _repository.bookRetreat(
-                          packageId: retreat.id,
-                          participantName: nameController.text,
-                        );
-                        if (context.mounted) {
-                          Navigator.pop(context);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Booking Confirmed!')),
-                          );
-                        }
-                      } catch (e) {
-                        if (context.mounted) {
-                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Booking failed: $e')),
-                          );
-                          setState(() => isBooking = false);
-                        }
-                      }
-                    },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal, foregroundColor: Colors.white),
-              child: isBooking
-                  ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-                  : const Text('Confirm Booking'),
             ),
           ],
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (nameController.text.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Please enter a name')),
+                );
+                return;
+              }
+              travelBloc.add(TravelEvent.bookRetreat(retreat.id, nameController.text));
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.teal, foregroundColor: Colors.white),
+            child: const Text('Confirm Booking'),
+          ),
+        ],
       ),
     );
   }

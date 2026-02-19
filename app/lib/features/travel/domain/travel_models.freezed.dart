@@ -12,8 +12,7 @@ part of 'travel_models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TravelProfile _$TravelProfileFromJson(Map<String, dynamic> json) {
   return _TravelProfile.fromJson(json);
@@ -29,20 +28,19 @@ mixin _$TravelProfile {
   DateTime? get passportExpiry => throw _privateConstructorUsedError;
   String? get passportCountry => throw _privateConstructorUsedError;
   List<String>? get visaCountries => throw _privateConstructorUsedError;
+  String? get visaDocumentUrl => throw _privateConstructorUsedError;
   String get travelRateMultiplier => throw _privateConstructorUsedError;
   String get accommodationPreference => throw _privateConstructorUsedError;
+  String? get flightPreference => throw _privateConstructorUsedError;
+  String get equipmentHaulingStatus => throw _privateConstructorUsedError;
   String? get dietaryRestrictions => throw _privateConstructorUsedError;
   String? get emergencyContactName => throw _privateConstructorUsedError;
   String? get emergencyContactPhone => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this TravelProfile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TravelProfile
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $TravelProfileCopyWith<TravelProfile> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,27 +48,28 @@ mixin _$TravelProfile {
 /// @nodoc
 abstract class $TravelProfileCopyWith<$Res> {
   factory $TravelProfileCopyWith(
-    TravelProfile value,
-    $Res Function(TravelProfile) then,
-  ) = _$TravelProfileCopyWithImpl<$Res, TravelProfile>;
+          TravelProfile value, $Res Function(TravelProfile) then) =
+      _$TravelProfileCopyWithImpl<$Res, TravelProfile>;
   @useResult
-  $Res call({
-    String id,
-    String artistId,
-    bool isWillingToTravel,
-    int? maxTravelDistanceKm,
-    String? passportNumber,
-    DateTime? passportExpiry,
-    String? passportCountry,
-    List<String>? visaCountries,
-    String travelRateMultiplier,
-    String accommodationPreference,
-    String? dietaryRestrictions,
-    String? emergencyContactName,
-    String? emergencyContactPhone,
-    DateTime createdAt,
-    DateTime updatedAt,
-  });
+  $Res call(
+      {String id,
+      String artistId,
+      bool isWillingToTravel,
+      int? maxTravelDistanceKm,
+      String? passportNumber,
+      DateTime? passportExpiry,
+      String? passportCountry,
+      List<String>? visaCountries,
+      String? visaDocumentUrl,
+      String travelRateMultiplier,
+      String accommodationPreference,
+      String? flightPreference,
+      String equipmentHaulingStatus,
+      String? dietaryRestrictions,
+      String? emergencyContactName,
+      String? emergencyContactPhone,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -83,8 +82,6 @@ class _$TravelProfileCopyWithImpl<$Res, $Val extends TravelProfile>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TravelProfile
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,79 +93,91 @@ class _$TravelProfileCopyWithImpl<$Res, $Val extends TravelProfile>
     Object? passportExpiry = freezed,
     Object? passportCountry = freezed,
     Object? visaCountries = freezed,
+    Object? visaDocumentUrl = freezed,
     Object? travelRateMultiplier = null,
     Object? accommodationPreference = null,
+    Object? flightPreference = freezed,
+    Object? equipmentHaulingStatus = null,
     Object? dietaryRestrictions = freezed,
     Object? emergencyContactName = freezed,
     Object? emergencyContactPhone = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            artistId: null == artistId
-                ? _value.artistId
-                : artistId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            isWillingToTravel: null == isWillingToTravel
-                ? _value.isWillingToTravel
-                : isWillingToTravel // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            maxTravelDistanceKm: freezed == maxTravelDistanceKm
-                ? _value.maxTravelDistanceKm
-                : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            passportNumber: freezed == passportNumber
-                ? _value.passportNumber
-                : passportNumber // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            passportExpiry: freezed == passportExpiry
-                ? _value.passportExpiry
-                : passportExpiry // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            passportCountry: freezed == passportCountry
-                ? _value.passportCountry
-                : passportCountry // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            visaCountries: freezed == visaCountries
-                ? _value.visaCountries
-                : visaCountries // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
-            travelRateMultiplier: null == travelRateMultiplier
-                ? _value.travelRateMultiplier
-                : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
-                      as String,
-            accommodationPreference: null == accommodationPreference
-                ? _value.accommodationPreference
-                : accommodationPreference // ignore: cast_nullable_to_non_nullable
-                      as String,
-            dietaryRestrictions: freezed == dietaryRestrictions
-                ? _value.dietaryRestrictions
-                : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            emergencyContactName: freezed == emergencyContactName
-                ? _value.emergencyContactName
-                : emergencyContactName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            emergencyContactPhone: freezed == emergencyContactPhone
-                ? _value.emergencyContactPhone
-                : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            updatedAt: null == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      artistId: null == artistId
+          ? _value.artistId
+          : artistId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isWillingToTravel: null == isWillingToTravel
+          ? _value.isWillingToTravel
+          : isWillingToTravel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      maxTravelDistanceKm: freezed == maxTravelDistanceKm
+          ? _value.maxTravelDistanceKm
+          : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
+              as int?,
+      passportNumber: freezed == passportNumber
+          ? _value.passportNumber
+          : passportNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passportExpiry: freezed == passportExpiry
+          ? _value.passportExpiry
+          : passportExpiry // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      passportCountry: freezed == passportCountry
+          ? _value.passportCountry
+          : passportCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      visaCountries: freezed == visaCountries
+          ? _value.visaCountries
+          : visaCountries // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      visaDocumentUrl: freezed == visaDocumentUrl
+          ? _value.visaDocumentUrl
+          : visaDocumentUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      travelRateMultiplier: null == travelRateMultiplier
+          ? _value.travelRateMultiplier
+          : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
+              as String,
+      accommodationPreference: null == accommodationPreference
+          ? _value.accommodationPreference
+          : accommodationPreference // ignore: cast_nullable_to_non_nullable
+              as String,
+      flightPreference: freezed == flightPreference
+          ? _value.flightPreference
+          : flightPreference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentHaulingStatus: null == equipmentHaulingStatus
+          ? _value.equipmentHaulingStatus
+          : equipmentHaulingStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      dietaryRestrictions: freezed == dietaryRestrictions
+          ? _value.dietaryRestrictions
+          : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactName: freezed == emergencyContactName
+          ? _value.emergencyContactName
+          : emergencyContactName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactPhone: freezed == emergencyContactPhone
+          ? _value.emergencyContactPhone
+          : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
   }
 }
 
@@ -176,28 +185,29 @@ class _$TravelProfileCopyWithImpl<$Res, $Val extends TravelProfile>
 abstract class _$$TravelProfileImplCopyWith<$Res>
     implements $TravelProfileCopyWith<$Res> {
   factory _$$TravelProfileImplCopyWith(
-    _$TravelProfileImpl value,
-    $Res Function(_$TravelProfileImpl) then,
-  ) = __$$TravelProfileImplCopyWithImpl<$Res>;
+          _$TravelProfileImpl value, $Res Function(_$TravelProfileImpl) then) =
+      __$$TravelProfileImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String artistId,
-    bool isWillingToTravel,
-    int? maxTravelDistanceKm,
-    String? passportNumber,
-    DateTime? passportExpiry,
-    String? passportCountry,
-    List<String>? visaCountries,
-    String travelRateMultiplier,
-    String accommodationPreference,
-    String? dietaryRestrictions,
-    String? emergencyContactName,
-    String? emergencyContactPhone,
-    DateTime createdAt,
-    DateTime updatedAt,
-  });
+  $Res call(
+      {String id,
+      String artistId,
+      bool isWillingToTravel,
+      int? maxTravelDistanceKm,
+      String? passportNumber,
+      DateTime? passportExpiry,
+      String? passportCountry,
+      List<String>? visaCountries,
+      String? visaDocumentUrl,
+      String travelRateMultiplier,
+      String accommodationPreference,
+      String? flightPreference,
+      String equipmentHaulingStatus,
+      String? dietaryRestrictions,
+      String? emergencyContactName,
+      String? emergencyContactPhone,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -205,12 +215,9 @@ class __$$TravelProfileImplCopyWithImpl<$Res>
     extends _$TravelProfileCopyWithImpl<$Res, _$TravelProfileImpl>
     implements _$$TravelProfileImplCopyWith<$Res> {
   __$$TravelProfileImplCopyWithImpl(
-    _$TravelProfileImpl _value,
-    $Res Function(_$TravelProfileImpl) _then,
-  ) : super(_value, _then);
+      _$TravelProfileImpl _value, $Res Function(_$TravelProfileImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of TravelProfile
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -222,101 +229,117 @@ class __$$TravelProfileImplCopyWithImpl<$Res>
     Object? passportExpiry = freezed,
     Object? passportCountry = freezed,
     Object? visaCountries = freezed,
+    Object? visaDocumentUrl = freezed,
     Object? travelRateMultiplier = null,
     Object? accommodationPreference = null,
+    Object? flightPreference = freezed,
+    Object? equipmentHaulingStatus = null,
     Object? dietaryRestrictions = freezed,
     Object? emergencyContactName = freezed,
     Object? emergencyContactPhone = freezed,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(
-      _$TravelProfileImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        artistId: null == artistId
-            ? _value.artistId
-            : artistId // ignore: cast_nullable_to_non_nullable
-                  as String,
-        isWillingToTravel: null == isWillingToTravel
-            ? _value.isWillingToTravel
-            : isWillingToTravel // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        maxTravelDistanceKm: freezed == maxTravelDistanceKm
-            ? _value.maxTravelDistanceKm
-            : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        passportNumber: freezed == passportNumber
-            ? _value.passportNumber
-            : passportNumber // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        passportExpiry: freezed == passportExpiry
-            ? _value.passportExpiry
-            : passportExpiry // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        passportCountry: freezed == passportCountry
-            ? _value.passportCountry
-            : passportCountry // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        visaCountries: freezed == visaCountries
-            ? _value._visaCountries
-            : visaCountries // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
-        travelRateMultiplier: null == travelRateMultiplier
-            ? _value.travelRateMultiplier
-            : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
-                  as String,
-        accommodationPreference: null == accommodationPreference
-            ? _value.accommodationPreference
-            : accommodationPreference // ignore: cast_nullable_to_non_nullable
-                  as String,
-        dietaryRestrictions: freezed == dietaryRestrictions
-            ? _value.dietaryRestrictions
-            : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        emergencyContactName: freezed == emergencyContactName
-            ? _value.emergencyContactName
-            : emergencyContactName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        emergencyContactPhone: freezed == emergencyContactPhone
-            ? _value.emergencyContactPhone
-            : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        createdAt: null == createdAt
-            ? _value.createdAt
-            : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        updatedAt: null == updatedAt
-            ? _value.updatedAt
-            : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-      ),
-    );
+    return _then(_$TravelProfileImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      artistId: null == artistId
+          ? _value.artistId
+          : artistId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isWillingToTravel: null == isWillingToTravel
+          ? _value.isWillingToTravel
+          : isWillingToTravel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      maxTravelDistanceKm: freezed == maxTravelDistanceKm
+          ? _value.maxTravelDistanceKm
+          : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
+              as int?,
+      passportNumber: freezed == passportNumber
+          ? _value.passportNumber
+          : passportNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passportExpiry: freezed == passportExpiry
+          ? _value.passportExpiry
+          : passportExpiry // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      passportCountry: freezed == passportCountry
+          ? _value.passportCountry
+          : passportCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      visaCountries: freezed == visaCountries
+          ? _value._visaCountries
+          : visaCountries // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      visaDocumentUrl: freezed == visaDocumentUrl
+          ? _value.visaDocumentUrl
+          : visaDocumentUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      travelRateMultiplier: null == travelRateMultiplier
+          ? _value.travelRateMultiplier
+          : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
+              as String,
+      accommodationPreference: null == accommodationPreference
+          ? _value.accommodationPreference
+          : accommodationPreference // ignore: cast_nullable_to_non_nullable
+              as String,
+      flightPreference: freezed == flightPreference
+          ? _value.flightPreference
+          : flightPreference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentHaulingStatus: null == equipmentHaulingStatus
+          ? _value.equipmentHaulingStatus
+          : equipmentHaulingStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      dietaryRestrictions: freezed == dietaryRestrictions
+          ? _value.dietaryRestrictions
+          : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactName: freezed == emergencyContactName
+          ? _value.emergencyContactName
+          : emergencyContactName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactPhone: freezed == emergencyContactPhone
+          ? _value.emergencyContactPhone
+          : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TravelProfileImpl implements _TravelProfile {
-  const _$TravelProfileImpl({
-    required this.id,
-    required this.artistId,
-    required this.isWillingToTravel,
-    this.maxTravelDistanceKm,
-    this.passportNumber,
-    this.passportExpiry,
-    this.passportCountry,
-    final List<String>? visaCountries,
-    required this.travelRateMultiplier,
-    required this.accommodationPreference,
-    this.dietaryRestrictions,
-    this.emergencyContactName,
-    this.emergencyContactPhone,
-    required this.createdAt,
-    required this.updatedAt,
-  }) : _visaCountries = visaCountries;
+  const _$TravelProfileImpl(
+      {required this.id,
+      required this.artistId,
+      required this.isWillingToTravel,
+      this.maxTravelDistanceKm,
+      this.passportNumber,
+      this.passportExpiry,
+      this.passportCountry,
+      final List<String>? visaCountries,
+      this.visaDocumentUrl,
+      required this.travelRateMultiplier,
+      required this.accommodationPreference,
+      this.flightPreference,
+      this.equipmentHaulingStatus = 'none',
+      this.dietaryRestrictions,
+      this.emergencyContactName,
+      this.emergencyContactPhone,
+      required this.createdAt,
+      required this.updatedAt})
+      : _visaCountries = visaCountries;
 
   factory _$TravelProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$TravelProfileImplFromJson(json);
@@ -346,9 +369,16 @@ class _$TravelProfileImpl implements _TravelProfile {
   }
 
   @override
+  final String? visaDocumentUrl;
+  @override
   final String travelRateMultiplier;
   @override
   final String accommodationPreference;
+  @override
+  final String? flightPreference;
+  @override
+  @JsonKey()
+  final String equipmentHaulingStatus;
   @override
   final String? dietaryRestrictions;
   @override
@@ -362,7 +392,7 @@ class _$TravelProfileImpl implements _TravelProfile {
 
   @override
   String toString() {
-    return 'TravelProfile(id: $id, artistId: $artistId, isWillingToTravel: $isWillingToTravel, maxTravelDistanceKm: $maxTravelDistanceKm, passportNumber: $passportNumber, passportExpiry: $passportExpiry, passportCountry: $passportCountry, visaCountries: $visaCountries, travelRateMultiplier: $travelRateMultiplier, accommodationPreference: $accommodationPreference, dietaryRestrictions: $dietaryRestrictions, emergencyContactName: $emergencyContactName, emergencyContactPhone: $emergencyContactPhone, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TravelProfile(id: $id, artistId: $artistId, isWillingToTravel: $isWillingToTravel, maxTravelDistanceKm: $maxTravelDistanceKm, passportNumber: $passportNumber, passportExpiry: $passportExpiry, passportCountry: $passportCountry, visaCountries: $visaCountries, visaDocumentUrl: $visaDocumentUrl, travelRateMultiplier: $travelRateMultiplier, accommodationPreference: $accommodationPreference, flightPreference: $flightPreference, equipmentHaulingStatus: $equipmentHaulingStatus, dietaryRestrictions: $dietaryRestrictions, emergencyContactName: $emergencyContactName, emergencyContactPhone: $emergencyContactPhone, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -383,17 +413,19 @@ class _$TravelProfileImpl implements _TravelProfile {
                 other.passportExpiry == passportExpiry) &&
             (identical(other.passportCountry, passportCountry) ||
                 other.passportCountry == passportCountry) &&
-            const DeepCollectionEquality().equals(
-              other._visaCountries,
-              _visaCountries,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._visaCountries, _visaCountries) &&
+            (identical(other.visaDocumentUrl, visaDocumentUrl) ||
+                other.visaDocumentUrl == visaDocumentUrl) &&
             (identical(other.travelRateMultiplier, travelRateMultiplier) ||
                 other.travelRateMultiplier == travelRateMultiplier) &&
             (identical(
-                  other.accommodationPreference,
-                  accommodationPreference,
-                ) ||
+                    other.accommodationPreference, accommodationPreference) ||
                 other.accommodationPreference == accommodationPreference) &&
+            (identical(other.flightPreference, flightPreference) ||
+                other.flightPreference == flightPreference) &&
+            (identical(other.equipmentHaulingStatus, equipmentHaulingStatus) ||
+                other.equipmentHaulingStatus == equipmentHaulingStatus) &&
             (identical(other.dietaryRestrictions, dietaryRestrictions) ||
                 other.dietaryRestrictions == dietaryRestrictions) &&
             (identical(other.emergencyContactName, emergencyContactName) ||
@@ -406,30 +438,30 @@ class _$TravelProfileImpl implements _TravelProfile {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    artistId,
-    isWillingToTravel,
-    maxTravelDistanceKm,
-    passportNumber,
-    passportExpiry,
-    passportCountry,
-    const DeepCollectionEquality().hash(_visaCountries),
-    travelRateMultiplier,
-    accommodationPreference,
-    dietaryRestrictions,
-    emergencyContactName,
-    emergencyContactPhone,
-    createdAt,
-    updatedAt,
-  );
+      runtimeType,
+      id,
+      artistId,
+      isWillingToTravel,
+      maxTravelDistanceKm,
+      passportNumber,
+      passportExpiry,
+      passportCountry,
+      const DeepCollectionEquality().hash(_visaCountries),
+      visaDocumentUrl,
+      travelRateMultiplier,
+      accommodationPreference,
+      flightPreference,
+      equipmentHaulingStatus,
+      dietaryRestrictions,
+      emergencyContactName,
+      emergencyContactPhone,
+      createdAt,
+      updatedAt);
 
-  /// Create a copy of TravelProfile
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TravelProfileImplCopyWith<_$TravelProfileImpl> get copyWith =>
@@ -437,28 +469,32 @@ class _$TravelProfileImpl implements _TravelProfile {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TravelProfileImplToJson(this);
+    return _$$TravelProfileImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _TravelProfile implements TravelProfile {
-  const factory _TravelProfile({
-    required final String id,
-    required final String artistId,
-    required final bool isWillingToTravel,
-    final int? maxTravelDistanceKm,
-    final String? passportNumber,
-    final DateTime? passportExpiry,
-    final String? passportCountry,
-    final List<String>? visaCountries,
-    required final String travelRateMultiplier,
-    required final String accommodationPreference,
-    final String? dietaryRestrictions,
-    final String? emergencyContactName,
-    final String? emergencyContactPhone,
-    required final DateTime createdAt,
-    required final DateTime updatedAt,
-  }) = _$TravelProfileImpl;
+  const factory _TravelProfile(
+      {required final String id,
+      required final String artistId,
+      required final bool isWillingToTravel,
+      final int? maxTravelDistanceKm,
+      final String? passportNumber,
+      final DateTime? passportExpiry,
+      final String? passportCountry,
+      final List<String>? visaCountries,
+      final String? visaDocumentUrl,
+      required final String travelRateMultiplier,
+      required final String accommodationPreference,
+      final String? flightPreference,
+      final String equipmentHaulingStatus,
+      final String? dietaryRestrictions,
+      final String? emergencyContactName,
+      final String? emergencyContactPhone,
+      required final DateTime createdAt,
+      required final DateTime updatedAt}) = _$TravelProfileImpl;
 
   factory _TravelProfile.fromJson(Map<String, dynamic> json) =
       _$TravelProfileImpl.fromJson;
@@ -480,9 +516,15 @@ abstract class _TravelProfile implements TravelProfile {
   @override
   List<String>? get visaCountries;
   @override
+  String? get visaDocumentUrl;
+  @override
   String get travelRateMultiplier;
   @override
   String get accommodationPreference;
+  @override
+  String? get flightPreference;
+  @override
+  String get equipmentHaulingStatus;
   @override
   String? get dietaryRestrictions;
   @override
@@ -493,18 +535,14 @@ abstract class _TravelProfile implements TravelProfile {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
-
-  /// Create a copy of TravelProfile
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$TravelProfileImplCopyWith<_$TravelProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 CreateTravelProfileRequest _$CreateTravelProfileRequestFromJson(
-  Map<String, dynamic> json,
-) {
+    Map<String, dynamic> json) {
   return _CreateTravelProfileRequest.fromJson(json);
 }
 
@@ -516,53 +554,48 @@ mixin _$CreateTravelProfileRequest {
   DateTime? get passportExpiry => throw _privateConstructorUsedError;
   String? get passportCountry => throw _privateConstructorUsedError;
   List<String>? get visaCountries => throw _privateConstructorUsedError;
+  String? get visaDocumentUrl => throw _privateConstructorUsedError;
   String? get travelRateMultiplier => throw _privateConstructorUsedError;
   String? get accommodationPreference => throw _privateConstructorUsedError;
+  String? get flightPreference => throw _privateConstructorUsedError;
+  String? get equipmentHaulingStatus => throw _privateConstructorUsedError;
   String? get dietaryRestrictions => throw _privateConstructorUsedError;
   String? get emergencyContactName => throw _privateConstructorUsedError;
   String? get emergencyContactPhone => throw _privateConstructorUsedError;
 
-  /// Serializes this CreateTravelProfileRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CreateTravelProfileRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CreateTravelProfileRequestCopyWith<CreateTravelProfileRequest>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CreateTravelProfileRequestCopyWith<$Res> {
-  factory $CreateTravelProfileRequestCopyWith(
-    CreateTravelProfileRequest value,
-    $Res Function(CreateTravelProfileRequest) then,
-  ) =
-      _$CreateTravelProfileRequestCopyWithImpl<
-        $Res,
-        CreateTravelProfileRequest
-      >;
+  factory $CreateTravelProfileRequestCopyWith(CreateTravelProfileRequest value,
+          $Res Function(CreateTravelProfileRequest) then) =
+      _$CreateTravelProfileRequestCopyWithImpl<$Res,
+          CreateTravelProfileRequest>;
   @useResult
-  $Res call({
-    bool isWillingToTravel,
-    int? maxTravelDistanceKm,
-    String? passportNumber,
-    DateTime? passportExpiry,
-    String? passportCountry,
-    List<String>? visaCountries,
-    String? travelRateMultiplier,
-    String? accommodationPreference,
-    String? dietaryRestrictions,
-    String? emergencyContactName,
-    String? emergencyContactPhone,
-  });
+  $Res call(
+      {bool isWillingToTravel,
+      int? maxTravelDistanceKm,
+      String? passportNumber,
+      DateTime? passportExpiry,
+      String? passportCountry,
+      List<String>? visaCountries,
+      String? visaDocumentUrl,
+      String? travelRateMultiplier,
+      String? accommodationPreference,
+      String? flightPreference,
+      String? equipmentHaulingStatus,
+      String? dietaryRestrictions,
+      String? emergencyContactName,
+      String? emergencyContactPhone});
 }
 
 /// @nodoc
-class _$CreateTravelProfileRequestCopyWithImpl<
-  $Res,
-  $Val extends CreateTravelProfileRequest
->
+class _$CreateTravelProfileRequestCopyWithImpl<$Res,
+        $Val extends CreateTravelProfileRequest>
     implements $CreateTravelProfileRequestCopyWith<$Res> {
   _$CreateTravelProfileRequestCopyWithImpl(this._value, this._then);
 
@@ -571,8 +604,6 @@ class _$CreateTravelProfileRequestCopyWithImpl<
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CreateTravelProfileRequest
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -582,61 +613,73 @@ class _$CreateTravelProfileRequestCopyWithImpl<
     Object? passportExpiry = freezed,
     Object? passportCountry = freezed,
     Object? visaCountries = freezed,
+    Object? visaDocumentUrl = freezed,
     Object? travelRateMultiplier = freezed,
     Object? accommodationPreference = freezed,
+    Object? flightPreference = freezed,
+    Object? equipmentHaulingStatus = freezed,
     Object? dietaryRestrictions = freezed,
     Object? emergencyContactName = freezed,
     Object? emergencyContactPhone = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            isWillingToTravel: null == isWillingToTravel
-                ? _value.isWillingToTravel
-                : isWillingToTravel // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            maxTravelDistanceKm: freezed == maxTravelDistanceKm
-                ? _value.maxTravelDistanceKm
-                : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
-                      as int?,
-            passportNumber: freezed == passportNumber
-                ? _value.passportNumber
-                : passportNumber // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            passportExpiry: freezed == passportExpiry
-                ? _value.passportExpiry
-                : passportExpiry // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            passportCountry: freezed == passportCountry
-                ? _value.passportCountry
-                : passportCountry // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            visaCountries: freezed == visaCountries
-                ? _value.visaCountries
-                : visaCountries // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
-            travelRateMultiplier: freezed == travelRateMultiplier
-                ? _value.travelRateMultiplier
-                : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            accommodationPreference: freezed == accommodationPreference
-                ? _value.accommodationPreference
-                : accommodationPreference // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            dietaryRestrictions: freezed == dietaryRestrictions
-                ? _value.dietaryRestrictions
-                : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            emergencyContactName: freezed == emergencyContactName
-                ? _value.emergencyContactName
-                : emergencyContactName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            emergencyContactPhone: freezed == emergencyContactPhone
-                ? _value.emergencyContactPhone
-                : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      isWillingToTravel: null == isWillingToTravel
+          ? _value.isWillingToTravel
+          : isWillingToTravel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      maxTravelDistanceKm: freezed == maxTravelDistanceKm
+          ? _value.maxTravelDistanceKm
+          : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
+              as int?,
+      passportNumber: freezed == passportNumber
+          ? _value.passportNumber
+          : passportNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passportExpiry: freezed == passportExpiry
+          ? _value.passportExpiry
+          : passportExpiry // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      passportCountry: freezed == passportCountry
+          ? _value.passportCountry
+          : passportCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      visaCountries: freezed == visaCountries
+          ? _value.visaCountries
+          : visaCountries // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      visaDocumentUrl: freezed == visaDocumentUrl
+          ? _value.visaDocumentUrl
+          : visaDocumentUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      travelRateMultiplier: freezed == travelRateMultiplier
+          ? _value.travelRateMultiplier
+          : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accommodationPreference: freezed == accommodationPreference
+          ? _value.accommodationPreference
+          : accommodationPreference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      flightPreference: freezed == flightPreference
+          ? _value.flightPreference
+          : flightPreference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentHaulingStatus: freezed == equipmentHaulingStatus
+          ? _value.equipmentHaulingStatus
+          : equipmentHaulingStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dietaryRestrictions: freezed == dietaryRestrictions
+          ? _value.dietaryRestrictions
+          : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactName: freezed == emergencyContactName
+          ? _value.emergencyContactName
+          : emergencyContactName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactPhone: freezed == emergencyContactPhone
+          ? _value.emergencyContactPhone
+          : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -644,41 +687,38 @@ class _$CreateTravelProfileRequestCopyWithImpl<
 abstract class _$$CreateTravelProfileRequestImplCopyWith<$Res>
     implements $CreateTravelProfileRequestCopyWith<$Res> {
   factory _$$CreateTravelProfileRequestImplCopyWith(
-    _$CreateTravelProfileRequestImpl value,
-    $Res Function(_$CreateTravelProfileRequestImpl) then,
-  ) = __$$CreateTravelProfileRequestImplCopyWithImpl<$Res>;
+          _$CreateTravelProfileRequestImpl value,
+          $Res Function(_$CreateTravelProfileRequestImpl) then) =
+      __$$CreateTravelProfileRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    bool isWillingToTravel,
-    int? maxTravelDistanceKm,
-    String? passportNumber,
-    DateTime? passportExpiry,
-    String? passportCountry,
-    List<String>? visaCountries,
-    String? travelRateMultiplier,
-    String? accommodationPreference,
-    String? dietaryRestrictions,
-    String? emergencyContactName,
-    String? emergencyContactPhone,
-  });
+  $Res call(
+      {bool isWillingToTravel,
+      int? maxTravelDistanceKm,
+      String? passportNumber,
+      DateTime? passportExpiry,
+      String? passportCountry,
+      List<String>? visaCountries,
+      String? visaDocumentUrl,
+      String? travelRateMultiplier,
+      String? accommodationPreference,
+      String? flightPreference,
+      String? equipmentHaulingStatus,
+      String? dietaryRestrictions,
+      String? emergencyContactName,
+      String? emergencyContactPhone});
 }
 
 /// @nodoc
 class __$$CreateTravelProfileRequestImplCopyWithImpl<$Res>
-    extends
-        _$CreateTravelProfileRequestCopyWithImpl<
-          $Res,
-          _$CreateTravelProfileRequestImpl
-        >
+    extends _$CreateTravelProfileRequestCopyWithImpl<$Res,
+        _$CreateTravelProfileRequestImpl>
     implements _$$CreateTravelProfileRequestImplCopyWith<$Res> {
   __$$CreateTravelProfileRequestImplCopyWithImpl(
-    _$CreateTravelProfileRequestImpl _value,
-    $Res Function(_$CreateTravelProfileRequestImpl) _then,
-  ) : super(_value, _then);
+      _$CreateTravelProfileRequestImpl _value,
+      $Res Function(_$CreateTravelProfileRequestImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of CreateTravelProfileRequest
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -688,83 +728,99 @@ class __$$CreateTravelProfileRequestImplCopyWithImpl<$Res>
     Object? passportExpiry = freezed,
     Object? passportCountry = freezed,
     Object? visaCountries = freezed,
+    Object? visaDocumentUrl = freezed,
     Object? travelRateMultiplier = freezed,
     Object? accommodationPreference = freezed,
+    Object? flightPreference = freezed,
+    Object? equipmentHaulingStatus = freezed,
     Object? dietaryRestrictions = freezed,
     Object? emergencyContactName = freezed,
     Object? emergencyContactPhone = freezed,
   }) {
-    return _then(
-      _$CreateTravelProfileRequestImpl(
-        isWillingToTravel: null == isWillingToTravel
-            ? _value.isWillingToTravel
-            : isWillingToTravel // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        maxTravelDistanceKm: freezed == maxTravelDistanceKm
-            ? _value.maxTravelDistanceKm
-            : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
-                  as int?,
-        passportNumber: freezed == passportNumber
-            ? _value.passportNumber
-            : passportNumber // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        passportExpiry: freezed == passportExpiry
-            ? _value.passportExpiry
-            : passportExpiry // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
-        passportCountry: freezed == passportCountry
-            ? _value.passportCountry
-            : passportCountry // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        visaCountries: freezed == visaCountries
-            ? _value._visaCountries
-            : visaCountries // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
-        travelRateMultiplier: freezed == travelRateMultiplier
-            ? _value.travelRateMultiplier
-            : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        accommodationPreference: freezed == accommodationPreference
-            ? _value.accommodationPreference
-            : accommodationPreference // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        dietaryRestrictions: freezed == dietaryRestrictions
-            ? _value.dietaryRestrictions
-            : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        emergencyContactName: freezed == emergencyContactName
-            ? _value.emergencyContactName
-            : emergencyContactName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        emergencyContactPhone: freezed == emergencyContactPhone
-            ? _value.emergencyContactPhone
-            : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+    return _then(_$CreateTravelProfileRequestImpl(
+      isWillingToTravel: null == isWillingToTravel
+          ? _value.isWillingToTravel
+          : isWillingToTravel // ignore: cast_nullable_to_non_nullable
+              as bool,
+      maxTravelDistanceKm: freezed == maxTravelDistanceKm
+          ? _value.maxTravelDistanceKm
+          : maxTravelDistanceKm // ignore: cast_nullable_to_non_nullable
+              as int?,
+      passportNumber: freezed == passportNumber
+          ? _value.passportNumber
+          : passportNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passportExpiry: freezed == passportExpiry
+          ? _value.passportExpiry
+          : passportExpiry // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      passportCountry: freezed == passportCountry
+          ? _value.passportCountry
+          : passportCountry // ignore: cast_nullable_to_non_nullable
+              as String?,
+      visaCountries: freezed == visaCountries
+          ? _value._visaCountries
+          : visaCountries // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      visaDocumentUrl: freezed == visaDocumentUrl
+          ? _value.visaDocumentUrl
+          : visaDocumentUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      travelRateMultiplier: freezed == travelRateMultiplier
+          ? _value.travelRateMultiplier
+          : travelRateMultiplier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accommodationPreference: freezed == accommodationPreference
+          ? _value.accommodationPreference
+          : accommodationPreference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      flightPreference: freezed == flightPreference
+          ? _value.flightPreference
+          : flightPreference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      equipmentHaulingStatus: freezed == equipmentHaulingStatus
+          ? _value.equipmentHaulingStatus
+          : equipmentHaulingStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dietaryRestrictions: freezed == dietaryRestrictions
+          ? _value.dietaryRestrictions
+          : dietaryRestrictions // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactName: freezed == emergencyContactName
+          ? _value.emergencyContactName
+          : emergencyContactName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emergencyContactPhone: freezed == emergencyContactPhone
+          ? _value.emergencyContactPhone
+          : emergencyContactPhone // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$CreateTravelProfileRequestImpl implements _CreateTravelProfileRequest {
-  const _$CreateTravelProfileRequestImpl({
-    required this.isWillingToTravel,
-    this.maxTravelDistanceKm,
-    this.passportNumber,
-    this.passportExpiry,
-    this.passportCountry,
-    final List<String>? visaCountries,
-    this.travelRateMultiplier,
-    this.accommodationPreference,
-    this.dietaryRestrictions,
-    this.emergencyContactName,
-    this.emergencyContactPhone,
-  }) : _visaCountries = visaCountries;
+  const _$CreateTravelProfileRequestImpl(
+      {required this.isWillingToTravel,
+      this.maxTravelDistanceKm,
+      this.passportNumber,
+      this.passportExpiry,
+      this.passportCountry,
+      final List<String>? visaCountries,
+      this.visaDocumentUrl,
+      this.travelRateMultiplier,
+      this.accommodationPreference,
+      this.flightPreference,
+      this.equipmentHaulingStatus,
+      this.dietaryRestrictions,
+      this.emergencyContactName,
+      this.emergencyContactPhone})
+      : _visaCountries = visaCountries;
 
   factory _$CreateTravelProfileRequestImpl.fromJson(
-    Map<String, dynamic> json,
-  ) => _$$CreateTravelProfileRequestImplFromJson(json);
+          Map<String, dynamic> json) =>
+      _$$CreateTravelProfileRequestImplFromJson(json);
 
   @override
   final bool isWillingToTravel;
@@ -787,9 +843,15 @@ class _$CreateTravelProfileRequestImpl implements _CreateTravelProfileRequest {
   }
 
   @override
+  final String? visaDocumentUrl;
+  @override
   final String? travelRateMultiplier;
   @override
   final String? accommodationPreference;
+  @override
+  final String? flightPreference;
+  @override
+  final String? equipmentHaulingStatus;
   @override
   final String? dietaryRestrictions;
   @override
@@ -799,7 +861,7 @@ class _$CreateTravelProfileRequestImpl implements _CreateTravelProfileRequest {
 
   @override
   String toString() {
-    return 'CreateTravelProfileRequest(isWillingToTravel: $isWillingToTravel, maxTravelDistanceKm: $maxTravelDistanceKm, passportNumber: $passportNumber, passportExpiry: $passportExpiry, passportCountry: $passportCountry, visaCountries: $visaCountries, travelRateMultiplier: $travelRateMultiplier, accommodationPreference: $accommodationPreference, dietaryRestrictions: $dietaryRestrictions, emergencyContactName: $emergencyContactName, emergencyContactPhone: $emergencyContactPhone)';
+    return 'CreateTravelProfileRequest(isWillingToTravel: $isWillingToTravel, maxTravelDistanceKm: $maxTravelDistanceKm, passportNumber: $passportNumber, passportExpiry: $passportExpiry, passportCountry: $passportCountry, visaCountries: $visaCountries, visaDocumentUrl: $visaDocumentUrl, travelRateMultiplier: $travelRateMultiplier, accommodationPreference: $accommodationPreference, flightPreference: $flightPreference, equipmentHaulingStatus: $equipmentHaulingStatus, dietaryRestrictions: $dietaryRestrictions, emergencyContactName: $emergencyContactName, emergencyContactPhone: $emergencyContactPhone)';
   }
 
   @override
@@ -817,17 +879,19 @@ class _$CreateTravelProfileRequestImpl implements _CreateTravelProfileRequest {
                 other.passportExpiry == passportExpiry) &&
             (identical(other.passportCountry, passportCountry) ||
                 other.passportCountry == passportCountry) &&
-            const DeepCollectionEquality().equals(
-              other._visaCountries,
-              _visaCountries,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._visaCountries, _visaCountries) &&
+            (identical(other.visaDocumentUrl, visaDocumentUrl) ||
+                other.visaDocumentUrl == visaDocumentUrl) &&
             (identical(other.travelRateMultiplier, travelRateMultiplier) ||
                 other.travelRateMultiplier == travelRateMultiplier) &&
             (identical(
-                  other.accommodationPreference,
-                  accommodationPreference,
-                ) ||
+                    other.accommodationPreference, accommodationPreference) ||
                 other.accommodationPreference == accommodationPreference) &&
+            (identical(other.flightPreference, flightPreference) ||
+                other.flightPreference == flightPreference) &&
+            (identical(other.equipmentHaulingStatus, equipmentHaulingStatus) ||
+                other.equipmentHaulingStatus == equipmentHaulingStatus) &&
             (identical(other.dietaryRestrictions, dietaryRestrictions) ||
                 other.dietaryRestrictions == dietaryRestrictions) &&
             (identical(other.emergencyContactName, emergencyContactName) ||
@@ -836,55 +900,57 @@ class _$CreateTravelProfileRequestImpl implements _CreateTravelProfileRequest {
                 other.emergencyContactPhone == emergencyContactPhone));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    isWillingToTravel,
-    maxTravelDistanceKm,
-    passportNumber,
-    passportExpiry,
-    passportCountry,
-    const DeepCollectionEquality().hash(_visaCountries),
-    travelRateMultiplier,
-    accommodationPreference,
-    dietaryRestrictions,
-    emergencyContactName,
-    emergencyContactPhone,
-  );
+      runtimeType,
+      isWillingToTravel,
+      maxTravelDistanceKm,
+      passportNumber,
+      passportExpiry,
+      passportCountry,
+      const DeepCollectionEquality().hash(_visaCountries),
+      visaDocumentUrl,
+      travelRateMultiplier,
+      accommodationPreference,
+      flightPreference,
+      equipmentHaulingStatus,
+      dietaryRestrictions,
+      emergencyContactName,
+      emergencyContactPhone);
 
-  /// Create a copy of CreateTravelProfileRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateTravelProfileRequestImplCopyWith<_$CreateTravelProfileRequestImpl>
-  get copyWith =>
-      __$$CreateTravelProfileRequestImplCopyWithImpl<
-        _$CreateTravelProfileRequestImpl
-      >(this, _$identity);
+      get copyWith => __$$CreateTravelProfileRequestImplCopyWithImpl<
+          _$CreateTravelProfileRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CreateTravelProfileRequestImplToJson(this);
+    return _$$CreateTravelProfileRequestImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _CreateTravelProfileRequest
     implements CreateTravelProfileRequest {
-  const factory _CreateTravelProfileRequest({
-    required final bool isWillingToTravel,
-    final int? maxTravelDistanceKm,
-    final String? passportNumber,
-    final DateTime? passportExpiry,
-    final String? passportCountry,
-    final List<String>? visaCountries,
-    final String? travelRateMultiplier,
-    final String? accommodationPreference,
-    final String? dietaryRestrictions,
-    final String? emergencyContactName,
-    final String? emergencyContactPhone,
-  }) = _$CreateTravelProfileRequestImpl;
+  const factory _CreateTravelProfileRequest(
+      {required final bool isWillingToTravel,
+      final int? maxTravelDistanceKm,
+      final String? passportNumber,
+      final DateTime? passportExpiry,
+      final String? passportCountry,
+      final List<String>? visaCountries,
+      final String? visaDocumentUrl,
+      final String? travelRateMultiplier,
+      final String? accommodationPreference,
+      final String? flightPreference,
+      final String? equipmentHaulingStatus,
+      final String? dietaryRestrictions,
+      final String? emergencyContactName,
+      final String? emergencyContactPhone}) = _$CreateTravelProfileRequestImpl;
 
   factory _CreateTravelProfileRequest.fromJson(Map<String, dynamic> json) =
       _$CreateTravelProfileRequestImpl.fromJson;
@@ -902,22 +968,25 @@ abstract class _CreateTravelProfileRequest
   @override
   List<String>? get visaCountries;
   @override
+  String? get visaDocumentUrl;
+  @override
   String? get travelRateMultiplier;
   @override
   String? get accommodationPreference;
+  @override
+  String? get flightPreference;
+  @override
+  String? get equipmentHaulingStatus;
   @override
   String? get dietaryRestrictions;
   @override
   String? get emergencyContactName;
   @override
   String? get emergencyContactPhone;
-
-  /// Create a copy of CreateTravelProfileRequest
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CreateTravelProfileRequestImplCopyWith<_$CreateTravelProfileRequestImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 RetreatModel _$RetreatModelFromJson(Map<String, dynamic> json) {
@@ -937,12 +1006,8 @@ mixin _$RetreatModel {
   List<String> get inclusions => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
 
-  /// Serializes this RetreatModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of RetreatModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $RetreatModelCopyWith<RetreatModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -950,22 +1015,20 @@ mixin _$RetreatModel {
 /// @nodoc
 abstract class $RetreatModelCopyWith<$Res> {
   factory $RetreatModelCopyWith(
-    RetreatModel value,
-    $Res Function(RetreatModel) then,
-  ) = _$RetreatModelCopyWithImpl<$Res, RetreatModel>;
+          RetreatModel value, $Res Function(RetreatModel) then) =
+      _$RetreatModelCopyWithImpl<$Res, RetreatModel>;
   @useResult
-  $Res call({
-    String id,
-    String title,
-    String location,
-    String description,
-    double price,
-    String imageUrl,
-    DateTime startDate,
-    DateTime endDate,
-    List<String> inclusions,
-    bool isActive,
-  });
+  $Res call(
+      {String id,
+      String title,
+      String location,
+      String description,
+      double price,
+      String imageUrl,
+      DateTime startDate,
+      DateTime endDate,
+      List<String> inclusions,
+      bool isActive});
 }
 
 /// @nodoc
@@ -978,8 +1041,6 @@ class _$RetreatModelCopyWithImpl<$Res, $Val extends RetreatModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of RetreatModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -994,51 +1055,48 @@ class _$RetreatModelCopyWithImpl<$Res, $Val extends RetreatModel>
     Object? inclusions = null,
     Object? isActive = null,
   }) {
-    return _then(
-      _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            location: null == location
-                ? _value.location
-                : location // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: null == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String,
-            price: null == price
-                ? _value.price
-                : price // ignore: cast_nullable_to_non_nullable
-                      as double,
-            imageUrl: null == imageUrl
-                ? _value.imageUrl
-                : imageUrl // ignore: cast_nullable_to_non_nullable
-                      as String,
-            startDate: null == startDate
-                ? _value.startDate
-                : startDate // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            endDate: null == endDate
-                ? _value.endDate
-                : endDate // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            inclusions: null == inclusions
-                ? _value.inclusions
-                : inclusions // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            isActive: null == isActive
-                ? _value.isActive
-                : isActive // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: null == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      inclusions: null == inclusions
+          ? _value.inclusions
+          : inclusions // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
@@ -1046,23 +1104,21 @@ class _$RetreatModelCopyWithImpl<$Res, $Val extends RetreatModel>
 abstract class _$$RetreatModelImplCopyWith<$Res>
     implements $RetreatModelCopyWith<$Res> {
   factory _$$RetreatModelImplCopyWith(
-    _$RetreatModelImpl value,
-    $Res Function(_$RetreatModelImpl) then,
-  ) = __$$RetreatModelImplCopyWithImpl<$Res>;
+          _$RetreatModelImpl value, $Res Function(_$RetreatModelImpl) then) =
+      __$$RetreatModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String id,
-    String title,
-    String location,
-    String description,
-    double price,
-    String imageUrl,
-    DateTime startDate,
-    DateTime endDate,
-    List<String> inclusions,
-    bool isActive,
-  });
+  $Res call(
+      {String id,
+      String title,
+      String location,
+      String description,
+      double price,
+      String imageUrl,
+      DateTime startDate,
+      DateTime endDate,
+      List<String> inclusions,
+      bool isActive});
 }
 
 /// @nodoc
@@ -1070,12 +1126,9 @@ class __$$RetreatModelImplCopyWithImpl<$Res>
     extends _$RetreatModelCopyWithImpl<$Res, _$RetreatModelImpl>
     implements _$$RetreatModelImplCopyWith<$Res> {
   __$$RetreatModelImplCopyWithImpl(
-    _$RetreatModelImpl _value,
-    $Res Function(_$RetreatModelImpl) _then,
-  ) : super(_value, _then);
+      _$RetreatModelImpl _value, $Res Function(_$RetreatModelImpl) _then)
+      : super(_value, _then);
 
-  /// Create a copy of RetreatModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1090,68 +1143,66 @@ class __$$RetreatModelImplCopyWithImpl<$Res>
     Object? inclusions = null,
     Object? isActive = null,
   }) {
-    return _then(
-      _$RetreatModelImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String,
-        title: null == title
-            ? _value.title
-            : title // ignore: cast_nullable_to_non_nullable
-                  as String,
-        location: null == location
-            ? _value.location
-            : location // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: null == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String,
-        price: null == price
-            ? _value.price
-            : price // ignore: cast_nullable_to_non_nullable
-                  as double,
-        imageUrl: null == imageUrl
-            ? _value.imageUrl
-            : imageUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
-        startDate: null == startDate
-            ? _value.startDate
-            : startDate // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        endDate: null == endDate
-            ? _value.endDate
-            : endDate // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        inclusions: null == inclusions
-            ? _value._inclusions
-            : inclusions // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        isActive: null == isActive
-            ? _value.isActive
-            : isActive // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
+    return _then(_$RetreatModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: null == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      inclusions: null == inclusions
+          ? _value._inclusions
+          : inclusions // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$RetreatModelImpl implements _RetreatModel {
-  const _$RetreatModelImpl({
-    required this.id,
-    required this.title,
-    required this.location,
-    required this.description,
-    required this.price,
-    required this.imageUrl,
-    required this.startDate,
-    required this.endDate,
-    final List<String> inclusions = const [],
-    this.isActive = true,
-  }) : _inclusions = inclusions;
+  const _$RetreatModelImpl(
+      {required this.id,
+      required this.title,
+      required this.location,
+      required this.description,
+      required this.price,
+      required this.imageUrl,
+      required this.startDate,
+      required this.endDate,
+      final List<String> inclusions = const [],
+      this.isActive = true})
+      : _inclusions = inclusions;
 
   factory _$RetreatModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RetreatModelImplFromJson(json);
@@ -1207,33 +1258,28 @@ class _$RetreatModelImpl implements _RetreatModel {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            const DeepCollectionEquality().equals(
-              other._inclusions,
-              _inclusions,
-            ) &&
+            const DeepCollectionEquality()
+                .equals(other._inclusions, _inclusions) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    title,
-    location,
-    description,
-    price,
-    imageUrl,
-    startDate,
-    endDate,
-    const DeepCollectionEquality().hash(_inclusions),
-    isActive,
-  );
+      runtimeType,
+      id,
+      title,
+      location,
+      description,
+      price,
+      imageUrl,
+      startDate,
+      endDate,
+      const DeepCollectionEquality().hash(_inclusions),
+      isActive);
 
-  /// Create a copy of RetreatModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$RetreatModelImplCopyWith<_$RetreatModelImpl> get copyWith =>
@@ -1241,23 +1287,24 @@ class _$RetreatModelImpl implements _RetreatModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RetreatModelImplToJson(this);
+    return _$$RetreatModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _RetreatModel implements RetreatModel {
-  const factory _RetreatModel({
-    required final String id,
-    required final String title,
-    required final String location,
-    required final String description,
-    required final double price,
-    required final String imageUrl,
-    required final DateTime startDate,
-    required final DateTime endDate,
-    final List<String> inclusions,
-    final bool isActive,
-  }) = _$RetreatModelImpl;
+  const factory _RetreatModel(
+      {required final String id,
+      required final String title,
+      required final String location,
+      required final String description,
+      required final double price,
+      required final String imageUrl,
+      required final DateTime startDate,
+      required final DateTime endDate,
+      final List<String> inclusions,
+      final bool isActive}) = _$RetreatModelImpl;
 
   factory _RetreatModel.fromJson(Map<String, dynamic> json) =
       _$RetreatModelImpl.fromJson;
@@ -1282,11 +1329,8 @@ abstract class _RetreatModel implements RetreatModel {
   List<String> get inclusions;
   @override
   bool get isActive;
-
-  /// Create a copy of RetreatModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$RetreatModelImplCopyWith<_$RetreatModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

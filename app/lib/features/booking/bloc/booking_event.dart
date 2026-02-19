@@ -23,4 +23,21 @@ class BookingEvent with _$BookingEvent {
     required bool isArtist,
     String? note,
   }) = _UpdateStatus;
+
+  const factory BookingEvent.loadBookings() = _LoadBookings;
+
+  const factory BookingEvent.cancelBooking({
+    required String bookingId,
+  }) = _CancelBooking;
+
+  const factory BookingEvent.processPayment({
+    required String orderId,
+    required String paymentId,
+    required String signature,
+    required String bookingId,
+  }) = _ProcessPayment;
+
+  const factory BookingEvent.loadBookingDetails({
+    required String bookingId,
+  }) = _LoadBookingDetails;
 }

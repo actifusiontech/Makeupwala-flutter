@@ -1,5 +1,6 @@
 import 'dart:developer' as developer;
 import '../../../core/network/api_client.dart';
+import '../domain/complaint_model.dart';
 
 class ComplaintRepository {
   final ApiClient _apiClient;
@@ -27,25 +28,38 @@ class ComplaintRepository {
     }
   }
 
-  Future<List<dynamic>> getMyComplaints() async {
+  Future<List<ComplaintModel>> getMyComplaints() async {
     try {
       developer.log('📝 Fetching my complaints', name: 'ComplaintRepository');
       final response = await _apiClient.dio.get('/complaints');
-      return response.data as List<dynamic>;
+      final data = response.data is Map && response.data.containsKey('data') 
+          ? response.data['data'] 
+          : response.data;
+
+      return (data as List)
+          .map((e) => ComplaintModel.fromJson(e))
+          .toList();
     } catch (e) {
       developer.log('❌ Fetch complaints failed: $e', name: 'ComplaintRepository');
-      rethrow;
+      // rethrow; // Optionally handle here or let BLoC handle
+      return [];
     }
   }
 
-  Future<List<dynamic>> getAllComplaints() async {
+  Future<List<ComplaintModel>> getAllComplaints() async {
     try {
       developer.log('📝 Fetching all complaints (Admin)', name: 'ComplaintRepository');
       final response = await _apiClient.dio.get('/admin/complaints');
-      return response.data as List<dynamic>;
+      final data = response.data is Map && response.data.containsKey('data') 
+          ? response.data['data'] 
+          : response.data;
+          
+      return (data as List)
+          .map((e) => ComplaintModel.fromJson(e))
+          .toList();
     } catch (e) {
       developer.log('❌ Fetch all complaints failed: $e', name: 'ComplaintRepository');
-      rethrow;
+      return [];
     }
   }
 
@@ -65,3 +79,4 @@ class ComplaintRepository {
     }
   }
 }
+

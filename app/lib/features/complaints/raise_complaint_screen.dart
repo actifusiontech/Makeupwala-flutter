@@ -6,6 +6,7 @@ import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/complaint_bloc.dart';
 import 'data/complaint_repository.dart';
+import '../../core/network/api_client.dart';
 
 class RaiseComplaintScreen extends StatefulWidget {
   final String bookingId;
@@ -30,7 +31,7 @@ class _RaiseComplaintScreenState extends State<RaiseComplaintScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ComplaintBloc(repository: ComplaintRepository()),
+      create: (context) => ComplaintBloc(repository: ComplaintRepository(ApiClient())),
       child: BlocConsumer<ComplaintBloc, ComplaintState>(
         listener: (context, state) {
           state.maybeWhen(

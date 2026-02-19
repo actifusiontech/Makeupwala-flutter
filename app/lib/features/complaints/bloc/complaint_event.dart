@@ -10,4 +10,9 @@ abstract class ComplaintEvent with _$ComplaintEvent {
 
   const factory ComplaintEvent.fetchMyComplaints() = _FetchMyComplaints;
   const factory ComplaintEvent.fetchAllComplaints() = _FetchAllComplaints;
+  
+  const factory ComplaintEvent.resolveComplaint({
+    required String complaintId,
+    required String adminComment,
+  }) = _ResolveComplaint;
 }

@@ -1,11 +1,47 @@
 
 import 'package:dio/dio.dart';
 import 'package:app/features/safety/domain/safety_service.dart';
+import 'package:app/features/safety/domain/safety_models.dart';
 
 class SafetyRepository implements SafetyService {
   final Dio _dio;
 
   SafetyRepository(this._dio);
+
+  // ... (existing health log and location methods)
+
+  Future<List<EmergencyContact>> getEmergencyContacts() async {
+    final response = await _dio.get('/safety/contacts');
+    return (response.data as List).map((e) => EmergencyContact.fromJson(e)).toList();
+  }
+
+  Future<void> addEmergencyContact(Map<String, dynamic> contactData) async {
+    await _dio.post('/safety/contacts', data: contactData);
+  }
+
+  Future<void> removeEmergencyContact(String contactId) async {
+    await _dio.delete('/safety/contacts/$contactId');
+  }
+
+  @override
+  Future<SOSAlert> triggerSOS({
+    required double lat,
+    required double lng,
+    String? address,
+    int? batteryLevel,
+  }) async {
+    final response = await _dio.post('/safety/sos', data: {
+      'lat': lat,
+      'lng': lng,
+      'address': address,
+      'battery_level': batteryLevel,
+    });
+    return SOSAlert.fromJson(response.data);
+  }
+
+  Future<void> cancelSOS(String alertId) async {
+    await _dio.post('/safety/sos/$alertId/cancel');
+  }
 
   @override
   Future<void> submitHealthLog({
@@ -18,21 +54,6 @@ class SafetyRepository implements SafetyService {
     });
 
     await _dio.post('/safety/health-log', data: formData);
-  }
-
-  @override
-  Future<void> triggerSOS({
-    required double lat,
-    required double lng,
-    String? address,
-    int? batteryLevel,
-  }) async {
-    await _dio.post('/safety/sos', data: {
-      'lat': lat,
-      'lng': lng,
-      'address': address,
-      'battery_level': batteryLevel,
-    });
   }
 
   @override

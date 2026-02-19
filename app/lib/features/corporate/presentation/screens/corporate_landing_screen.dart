@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:app/shared/theme/app_colors.dart'; // Adjust path
 import 'corporate_onboarding_screen.dart';
+import 'corporate_onboarding_screen.dart';
 import 'corporate_booking_screen.dart';
+import 'create_campaign_screen.dart';
+import 'campaign_list_screen.dart';
 
 class CorporateLandingScreen extends StatelessWidget {
   const CorporateLandingScreen({super.key});
@@ -83,10 +86,31 @@ class CorporateLandingScreen extends StatelessWidget {
                     subtitle: 'Need makeup artists for a large event? Submit a bulk booking request.',
                     icon: Icons.event,
                     color: Colors.deepPurple,
+                    onTap: () {},
+                  ),
+                  const SizedBox(height: 24),
+                  _ActionCard(
+                    title: 'Launch Brand Campaign',
+                    subtitle: 'Create a campaign to hire multiple artists for season launches.',
+                    icon: Icons.campaign,
+                    color: Colors.orange,
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const CorporateBookingScreen()),
+                        MaterialPageRoute(builder: (context) => const CreateCampaignScreen()),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                  _ActionCard(
+                    title: 'Manage Campaigns',
+                    subtitle: 'View active campaigns and applicant lists.',
+                    icon: Icons.list_alt,
+                    color: Colors.green,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const CampaignListScreen()),
                       );
                     },
                   ),
