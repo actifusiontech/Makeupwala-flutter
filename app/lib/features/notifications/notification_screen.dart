@@ -5,6 +5,7 @@ import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/notification_bloc.dart';
 import 'data/notification_repository.dart';
+import 'domain/notification_model.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -66,11 +67,11 @@ class _NotificationView extends StatelessWidget {
     );
   }
 
-  Widget _buildNotificationItem(BuildContext context, dynamic notification) {
-    final title = notification['title'] ?? 'Notification';
-    final message = notification['message'] ?? '';
-    final isRead = notification['read'] ?? false;
-    final id = notification['id'];
+  Widget _buildNotificationItem(BuildContext context, NotificationModel notification) {
+    final title = notification.title;
+    final body = notification.body;
+    final isRead = notification.isRead;
+    final id = notification.id;
 
     return ListTile(
       contentPadding: EdgeInsets.zero,
@@ -84,7 +85,7 @@ class _NotificationView extends StatelessWidget {
           fontWeight: isRead ? FontWeight.normal : FontWeight.bold,
         ),
       ),
-      subtitle: Text(message, style: AppTypography.bodyMedium),
+      subtitle: Text(body, style: AppTypography.bodyMedium),
       onTap: () {
         if (!isRead && id != null) {
           context.read<NotificationBloc>().add(NotificationEvent.markRead(id: id));

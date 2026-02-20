@@ -11,6 +11,7 @@ class LoggingService {
 
   late final Logger _logger;
   bool _initialized = false;
+  bool _firebaseInitialized = false;
 
   /// Initialize the logging service
   Future<void> initialize() async {
@@ -28,7 +29,16 @@ class LoggingService {
       level: kDebugMode ? Level.debug : Level.warning,
     );
 
-    // Set up Crashlytics
+    _initialized = true;
+    debug('LoggingService initialized');
+  }
+
+  /// Mark Firebase as initialized
+  void markFirebaseInitialized() {
+    _firebaseInitialized = true;
+    info('Firebase connectivity established for logging');
+    
+    // Set up Crashlytics handlers now that Firebase is ready
     if (!kDebugMode) {
       FlutterError.onError = (errorDetails) {
         FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
@@ -39,9 +49,6 @@ class LoggingService {
         return true;
       };
     }
-
-    _initialized = true;
-    debug('LoggingService initialized');
   }
 
   /// Log debug message
@@ -58,7 +65,7 @@ class LoggingService {
   void warning(String message, [dynamic error, StackTrace? stackTrace]) {
     _logger.w(message, error: error, stackTrace: stackTrace);
     
-    if (!kDebugMode && error != null) {
+    if (!kDebugMode && error != null && _firebaseInitialized) {
       FirebaseCrashlytics.instance.recordError(error, stackTrace, fatal: false);
     }
   }
@@ -67,7 +74,7 @@ class LoggingService {
   void error(String message, [dynamic error, StackTrace? stackTrace]) {
     _logger.e(message, error: error, stackTrace: stackTrace);
     
-    if (!kDebugMode && error != null) {
+    if (!kDebugMode && error != null && _firebaseInitialized) {
       FirebaseCrashlytics.instance.recordError(error, stackTrace, fatal: false);
     }
   }
@@ -76,7 +83,7 @@ class LoggingService {
   void fatal(String message, dynamic error, StackTrace? stackTrace) {
     _logger.f(message, error: error, stackTrace: stackTrace);
     
-    if (!kDebugMode) {
+    if (!kDebugMode && _firebaseInitialized) {
       FirebaseCrashlytics.instance.recordError(error, stackTrace, fatal: true);
     }
   }
@@ -97,14 +104,14 @@ class LoggingService {
 
   /// Set user identifier for crash reports
   void setUserId(String userId) {
-    if (!kDebugMode) {
+    if (!kDebugMode && _firebaseInitialized) {
       FirebaseCrashlytics.instance.setUserIdentifier(userId);
     }
   }
 
   /// Set custom key-value for crash reports
   void setCustomKey(String key, dynamic value) {
-    if (!kDebugMode) {
+    if (!kDebugMode && _firebaseInitialized) {
       FirebaseCrashlytics.instance.setCustomKey(key, value.toString());
     }
   }

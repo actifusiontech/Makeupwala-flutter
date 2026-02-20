@@ -11,8 +11,16 @@ class SafetyRepository implements SafetyService {
   // ... (existing health log and location methods)
 
   Future<List<EmergencyContact>> getEmergencyContacts() async {
-    final response = await _dio.get('/safety/contacts');
-    return (response.data as List).map((e) => EmergencyContact.fromJson(e)).toList();
+    try {
+      final response = await _dio.get('/safety/contacts');
+      return (response.data as List).map((e) => EmergencyContact.fromJson(e)).toList();
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        // Not logged in or unauthorized, return empty list gracefully
+        return [];
+      }
+      rethrow;
+    }
   }
 
   Future<void> addEmergencyContact(Map<String, dynamic> contactData) async {

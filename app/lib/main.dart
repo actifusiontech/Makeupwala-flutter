@@ -16,7 +16,11 @@ import 'features/inventory/data/inventory_item.dart';
 import 'app/app.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+  } catch (e) {
+    debugPrint('Fatal error during WidgetsFlutterBinding: $e');
+  }
   
   // Initialize logging service first
   final loggingService = LoggingService();
@@ -32,6 +36,7 @@ void main() async {
 
     // Initialize Firebase
     await Firebase.initializeApp();
+    loggingService.markFirebaseInitialized();
     loggingService.info('✅ Firebase initialized');
 
     // Initialize Analytics

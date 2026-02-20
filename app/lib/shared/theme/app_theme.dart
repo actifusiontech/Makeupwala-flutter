@@ -10,8 +10,10 @@ class AppTheme {
       colorScheme: ColorScheme.fromSeed(
         seedColor: AppColors.primary,
         primary: AppColors.primary,
+        secondary: AppColors.secondary,
         surface: AppColors.surface,
         background: AppColors.background,
+        error: AppColors.error,
       ),
       scaffoldBackgroundColor: AppColors.background,
       fontFamily: AppTypography.fontFamily,
@@ -41,14 +43,15 @@ class AppTheme {
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
           padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
+            horizontal: AppSpacing.xl,
             vertical: AppSpacing.md,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+            borderRadius: BorderRadius.circular(AppSpacing.radiusXl),
           ),
-          elevation: 0,
-          textStyle: AppTypography.labelLarge,
+          elevation: 2,
+          shadowColor: AppColors.primary.withOpacity(0.3),
+          textStyle: AppTypography.labelLarge.copyWith(fontWeight: FontWeight.w600),
         ),
       ),
       
@@ -60,33 +63,33 @@ class AppTheme {
             horizontal: AppSpacing.md,
             vertical: AppSpacing.sm,
           ),
-          textStyle: AppTypography.labelLarge,
+          textStyle: AppTypography.labelLarge.copyWith(fontWeight: FontWeight.w600),
         ),
       ),
       
       // Input decoration theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.grey100,
+        fillColor: AppColors.white,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+          borderSide: const BorderSide(color: AppColors.grey200),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+          borderSide: const BorderSide(color: AppColors.grey200),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-          borderSide: const BorderSide(color: AppColors.primary, width: 2),
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+          borderSide: const BorderSide(color: AppColors.secondary, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
           borderSide: const BorderSide(color: AppColors.error, width: 1),
         ),
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.md,
+          horizontal: AppSpacing.xl,
+          vertical: AppSpacing.lg,
         ),
         hintStyle: AppTypography.bodyMedium.copyWith(
           color: AppColors.textDisabled,
@@ -96,7 +99,8 @@ class AppTheme {
       // Card theme
       cardTheme: CardThemeData(
         color: AppColors.cardBackground,
-        elevation: 0,
+        elevation: 4,
+        shadowColor: AppColors.black.withOpacity(0.05),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
         ),
@@ -107,17 +111,20 @@ class AppTheme {
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.textPrimary,
         elevation: 0,
-        centerTitle: false,
+        centerTitle: true,
         titleTextStyle: AppTypography.titleLarge,
+        scrolledUnderElevation: 1,
       ),
       
       // Bottom navigation theme
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.white,
         selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.grey500,
+        unselectedItemColor: AppColors.grey400,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
+        unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
         type: BottomNavigationBarType.fixed,
-        elevation: 8,
+        elevation: 12,
       ),
     );
   }

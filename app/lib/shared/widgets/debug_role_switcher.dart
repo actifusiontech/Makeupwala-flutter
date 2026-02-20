@@ -13,16 +13,19 @@ class DebugRoleSwitcher extends StatelessWidget {
       right: 0,
       child: Material(
         color: Colors.transparent,
-        child: ExpansionTile(
-          title: const Icon(Icons.bug_report, color: Colors.red),
-          backgroundColor: Colors.white,
-          collapsedBackgroundColor: Colors.white.withOpacity(0.5),
-          children: [
-            _roleButton(context, 'customer', 'Customer'),
-            _roleButton(context, 'artist', 'Artist'),
-            _roleButton(context, 'brand', 'Brand'),
-            _roleButton(context, 'academy', 'Academy'),
-          ],
+        child: SizedBox(
+          width: 250,
+          child: ExpansionTile(
+            title: const Icon(Icons.bug_report, color: Colors.red),
+            backgroundColor: Colors.white,
+            collapsedBackgroundColor: Colors.white.withOpacity(0.5),
+            children: [
+              _roleButton(context, 'customer', 'Customer'),
+              _roleButton(context, 'artist', 'Artist'),
+              _roleButton(context, 'brand', 'Brand'),
+              _roleButton(context, 'academy', 'Academy'),
+            ],
+          ),
         ),
       ),
     );

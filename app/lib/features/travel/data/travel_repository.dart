@@ -115,16 +115,23 @@ class TravelRepository {
 
   Exception _handleError(dynamic error) {
     if (error is DioException) {
-      if (error.response?.statusCode == 404) {
-        return Exception('Travel profile not found');
-      } else if (error.response?.statusCode == 400) {
-        return Exception(
-            error.response?.data['error'] ?? 'Invalid request');
-      } else if (error.response?.statusCode == 401) {
+      final statusCode = error.response?.statusCode;
+      final errorMessage = error.response?.data?['error'] ?? error.message;
+
+      if (statusCode == 404) {
+        // If it's the specific profile endpoint, use that message
+        if (error.requestOptions.path.contains('travel-profile')) {
+          return Exception('Travel profile not found');
+        }
+        return Exception('Endpoint not found: ${error.requestOptions.path}');
+      } else if (statusCode == 400) {
+        return Exception(errorMessage ?? 'Invalid request');
+      } else if (statusCode == 401) {
         return Exception('Unauthorized');
+      } else if (statusCode == 500) {
+        return Exception('Internal Server Error: $errorMessage');
       }
-      return Exception(
-          error.response?.data['error'] ?? 'Failed to process request');
+      return Exception(errorMessage ?? 'Failed to process request');
     }
     return Exception('Network error: $error');
   }
