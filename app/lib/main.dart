@@ -22,6 +22,7 @@ void main() async {
   final loggingService = LoggingService();
   await loggingService.initialize();
   loggingService.info('🚀 App starting...');
+  print('🚀 App starting...');
 
   try {
     // Load environment variables
@@ -72,16 +73,22 @@ void main() async {
 
     // Initialize Safety Service
     try {
-      await initializeBackgroundService();
+      print('⏳ Initializing background service...');
+      await initializeBackgroundService().timeout(const Duration(seconds: 5));
+      print('✅ Background service initialized');
       loggingService.info('✅ Background service initialized');
     } catch (e, stackTrace) {
+      print('⚠️ Background Service Init Failed or Timed Out: $e');
       loggingService.error("Background Service Init Failed", e, stackTrace);
     }
 
+    print('🎉 All services initialized successfully');
     loggingService.info('🎉 All services initialized successfully');
   } catch (e, stackTrace) {
+    print('💥 Fatal error during initialization: $e');
     loggingService.fatal('💥 Fatal error during initialization', e, stackTrace);
   }
 
+  print('🚀 Calling runApp...');
   runApp(const MakeUpWallahApp());
 }

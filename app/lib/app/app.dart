@@ -77,16 +77,26 @@ import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/bloc/favorites_event.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 
-class MakeUpWallahApp extends StatelessWidget {
+class MakeUpWallahApp extends StatefulWidget {
   const MakeUpWallahApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Load environment for runtime; fallback handled in Env
-    // Try to load dev env; ignore errors in release builds
-    dotenv.load(fileName: 'assets/env/.env.development').catchError((_) {});
-    final apiClient = ApiClient();
-    final router = GoRouter(
+  State<MakeUpWallahApp> createState() => _MakeUpWallahAppState();
+}
+
+class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
+  late final ApiClient _apiClient;
+  late final GoRouter _router;
+
+  @override
+  void initState() {
+    super.initState();
+    _apiClient = ApiClient();
+    _router = _buildRouter();
+  }
+
+  GoRouter _buildRouter() {
+    return GoRouter(
       initialLocation: '/',
       routes: [
         GoRoute(
@@ -350,7 +360,7 @@ class MakeUpWallahApp extends StatelessWidget {
           name: 'wallet',
           builder: (context, state) => BlocProvider(
             create: (context) => WalletBloc(
-              repository: WalletRepository(apiClient),
+              repository: WalletRepository(_apiClient),
             )..add(const WalletEvent.fetchWalletDetails()),
             child: const WalletScreen(),
           ),
@@ -360,7 +370,7 @@ class MakeUpWallahApp extends StatelessWidget {
           name: 'bank-linking',
           builder: (context, state) => BlocProvider(
             create: (context) => WalletBloc(
-              repository: WalletRepository(apiClient),
+              repository: WalletRepository(_apiClient),
             )..add(const WalletEvent.fetchWalletDetails()),
             child: const BankLinkingScreen(),
           ),
@@ -392,7 +402,10 @@ class MakeUpWallahApp extends StatelessWidget {
         ),
       ],
     );
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -400,12 +413,12 @@ class MakeUpWallahApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CommerceBloc(
-            repository: CommerceRepository(apiClient.dio),
+            repository: CommerceRepository(_apiClient.dio),
           )..add(const CommerceEvent.fetchProducts()),
         ),
         BlocProvider(
           create: (context) => BrandBloc(
-            repository: BrandRepository(apiClient.dio),
+            repository: BrandRepository(_apiClient.dio),
           )..add(const BrandEvent.fetchMetrics()),
         ),
         BlocProvider(
@@ -413,19 +426,19 @@ class MakeUpWallahApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => EducationBloc(
-            repository: EducationRepository(apiClient),
+            repository: EducationRepository(_apiClient),
           )..add(const EducationEvent.fetchDashboard()),
         ),
         BlocProvider(
           create: (context) => SafetyBloc(
-            repository: SafetyRepository(apiClient.dio),
+            repository: SafetyRepository(_apiClient.dio),
           )..add(const SafetyEvent.fetchEmergencyContacts()),
         ),
       ],
       child: MaterialApp.router(
         title: 'MakeUpWallah',
         theme: AppTheme.lightTheme,
-        routerConfig: router,
+        routerConfig: _router,
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
           return Stack(
