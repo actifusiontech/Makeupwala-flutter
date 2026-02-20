@@ -37,6 +37,7 @@ class AppColors {
   // Surface colors
   static const surface = white;
   static const background = grey50;
+  static const backgroundLight = grey50;
   static const cardBackground = white;
   static const border = grey200;
   
