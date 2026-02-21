@@ -86,12 +86,20 @@ class MakeUpWallahApp extends StatefulWidget {
 
 class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
   late final ApiClient _apiClient;
+  late final AuthBloc _authBloc;
   late final GoRouter _router;
 
   @override
   void initState() {
     super.initState();
     _apiClient = ApiClient();
+    _authBloc = AuthBloc(apiClient: _apiClient);
+    
+    // Set session expiry callback after AuthBloc is created
+    _apiClient.onSessionExpired = () {
+      _authBloc.add(const AuthEvent.logout());
+    };
+    
     _router = _buildRouter();
   }
 
@@ -408,8 +416,8 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => AuthBloc()..add(const AuthEvent.checkAuth()),
+        BlocProvider.value(
+          value: _authBloc..add(const AuthEvent.checkAuth()),
         ),
         BlocProvider(
           create: (context) => CommerceBloc(
@@ -435,7 +443,23 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
           )..add(const SafetyEvent.fetchEmergencyContacts()),
         ),
       ],
-      child: MaterialApp.router(
+      child: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            unauthenticated: () {
+              // Only redirect if we're not already on a login/onboarding related screen
+              final location = _router.routerDelegate.currentConfiguration.uri.path;
+              if (location != '/' && 
+                  location != '/login' && 
+                  location != '/otp' && 
+                  location != '/register') {
+                _router.go('/login');
+              }
+            },
+            orElse: () {},
+          );
+        },
+        child: MaterialApp.router(
         title: 'MakeUpWallah',
         theme: AppTheme.lightTheme,
         routerConfig: _router,
@@ -449,6 +473,7 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
             ],
           );
         },
+        ),
       ),
     );
   }

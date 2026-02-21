@@ -9,6 +9,7 @@ class ApiClient {
   late final Dio dio;
   final FlutterSecureStorage _secureStorage;
   final LoggingService _logger = LoggingService();
+  void Function()? onSessionExpired;
   static final List<String> debugLogs = [];
 
   static void addDebugLog(String log) {
@@ -18,7 +19,7 @@ class ApiClient {
     developer.log(log, name: 'ApiClient');
   }
 
-  ApiClient({String? baseUrl, FlutterSecureStorage? secureStorage})
+  ApiClient({String? baseUrl, FlutterSecureStorage? secureStorage, this.onSessionExpired})
       : _secureStorage = secureStorage ?? const FlutterSecureStorage() {
     dio = Dio(
       BaseOptions(
@@ -39,6 +40,13 @@ class ApiClient {
     // Add logging and auth interceptor
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
+        // Fix for Dio stripping path prefix:
+        // If baseUrl ends with '/' and path starts with '/', Dio strips the prefix from baseUrl.
+        // We ensure path is always relative if baseUrl has a path component.
+        if (options.baseUrl.endsWith('/') && options.path.startsWith('/')) {
+          options.path = options.path.substring(1);
+        }
+
         // Attach auth token if available
         final token = await _secureStorage.read(key: 'auth_token');
         if (token != null) {
@@ -86,6 +94,7 @@ class ApiClient {
               // Clear tokens
               await _secureStorage.delete(key: 'auth_token');
               await _secureStorage.delete(key: 'refresh_token');
+              onSessionExpired?.call();
             }
           }
         }

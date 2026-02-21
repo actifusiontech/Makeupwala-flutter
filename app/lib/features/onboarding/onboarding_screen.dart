@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:app/features/auth/bloc/auth_bloc.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
@@ -42,151 +44,177 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          // 1. Full Screen Images
-          PageView.builder(
-            controller: _pageController,
-            onPageChanged: (index) => setState(() => _currentPage = index),
-            itemCount: _pages.length,
-            itemBuilder: (context, index) {
-              return Image.asset(
-                _pages[index].imagePath,
-                fit: BoxFit.cover,
-                height: double.infinity,
-                width: double.infinity,
-              );
-            },
-          ),
-
-          // 2. Gradient Overlay
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.3),
-                    Colors.black.withOpacity(0.8),
-                    Colors.black,
-                  ],
-                  stops: const [0.4, 0.6, 0.8, 1.0],
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          authenticated: (user) {
+            final role = user.role.toLowerCase();
+            if (role == 'artist') {
+              context.go('/artist/home');
+            } else if (role == 'customer') {
+              context.go('/customer/home');
+            } else if (role == 'admin') {
+              context.go('/admin/dashboard');
+            } else if (role == 'studio') {
+              context.go('/studio/home');
+            } else if (role == 'academy') {
+              context.go('/academy/home');
+            } else if (role == 'planner') {
+              context.go('/planner/home');
+            } else {
+              context.go('/role-selection');
+            }
+          },
+          needsRoleSelection: (user) => context.go('/role-selection'),
+          orElse: () {},
+        );
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            // 1. Full Screen Images
+            PageView.builder(
+              controller: _pageController,
+              onPageChanged: (index) => setState(() => _currentPage = index),
+              itemCount: _pages.length,
+              itemBuilder: (context, index) {
+                return Image.asset(
+                  _pages[index].imagePath,
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                );
+              },
+            ),
+  
+            // 2. Gradient Overlay
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.black.withOpacity(0.3),
+                      Colors.black.withOpacity(0.8),
+                      Colors.black,
+                    ],
+                    stops: const [0.4, 0.6, 0.8, 1.0],
+                  ),
                 ),
               ),
             ),
-          ),
-
-          // 3. Content
-          SafeArea(
-            child: Column(
-              children: [
-                // Skip Button (Top Right)
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppSpacing.md),
-                    child: TextButton(
-                      onPressed: () => context.go('/login'),
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.black.withOpacity(0.2),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                      ),
-                      child: const Text('Skip'),
-                    ),
-                  ),
-                ),
-                
-                const Spacer(),
-
-                // Text Content
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
-                  child: Column(
-                    children: [
-                      Text(
-                        _pages[_currentPage].title,
-                        style: AppTypography.displaySmall.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          height: 1.2,
+  
+            // 3. Content
+            SafeArea(
+              child: Column(
+                children: [
+                  // Skip Button (Top Right)
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      child: TextButton(
+                        onPressed: () => context.go('/login'),
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.black.withOpacity(0.2),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                         ),
-                        textAlign: TextAlign.center,
-                      ).animate().fadeIn().slideY(begin: 0.3, end: 0),
-                      
-                      const SizedBox(height: AppSpacing.md),
-                      
-                      Text(
-                        _pages[_currentPage].description,
-                        style: AppTypography.bodyLarge.copyWith(
-                          color: Colors.white.withOpacity(0.9),
-                          height: 1.5,
-                        ),
-                        textAlign: TextAlign.center,
-                      ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.3, end: 0),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: AppSpacing.xxl),
-
-                // Page Indicator
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    _pages.length,
-                    (index) => _buildDot(index),
-                  ),
-                ),
-
-                const SizedBox(height: AppSpacing.xl),
-
-                // Action Button
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.screenPadding,
-                    vertical: AppSpacing.lg,
-                  ),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 56,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_currentPage < _pages.length - 1) {
-                          _pageController.nextPage(
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.easeOutCubic,
-                          );
-                        } else {
-                          context.go('/login');
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        foregroundColor: Colors.white,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
-                      child: Text(
-                        _currentPage < _pages.length - 1 ? 'Next' : 'Get Started',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        child: const Text('Skip'),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: AppSpacing.md),
-              ],
+                  
+                  const Spacer(),
+  
+                  // Text Content
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+                    child: Column(
+                      children: [
+                        Text(
+                          _pages[_currentPage].title,
+                          style: AppTypography.displaySmall.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            height: 1.2,
+                          ),
+                          textAlign: TextAlign.center,
+                        ).animate().fadeIn().slideY(begin: 0.3, end: 0),
+                        
+                        const SizedBox(height: AppSpacing.md),
+                        
+                        Text(
+                          _pages[_currentPage].description,
+                          style: AppTypography.bodyLarge.copyWith(
+                            color: Colors.white.withOpacity(0.9),
+                            height: 1.5,
+                          ),
+                          textAlign: TextAlign.center,
+                        ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.3, end: 0),
+                      ],
+                    ),
+                  ),
+  
+                  const SizedBox(height: AppSpacing.xxl),
+  
+                  // Page Indicator
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      _pages.length,
+                      (index) => _buildDot(index),
+                    ),
+                  ),
+  
+                  const SizedBox(height: AppSpacing.xl),
+  
+                  // Action Button
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.screenPadding,
+                      vertical: AppSpacing.lg,
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_currentPage < _pages.length - 1) {
+                            _pageController.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeOutCubic,
+                            );
+                          } else {
+                            context.go('/login');
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primary,
+                          foregroundColor: Colors.white,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        child: Text(
+                          _currentPage < _pages.length - 1 ? 'Next' : 'Get Started',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.md),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
