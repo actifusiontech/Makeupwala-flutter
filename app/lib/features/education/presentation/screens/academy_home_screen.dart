@@ -16,6 +16,9 @@ import 'verify_student_screen.dart';
 import 'student_management_screen.dart';
 import 'academy_post_placement_screen.dart';
 import 'academy_institute_profile_screen.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class AcademyHomeScreen extends StatefulWidget {
   const AcademyHomeScreen({super.key});
@@ -86,7 +89,24 @@ class _AcademyDashboard extends StatelessWidget {
     return BlocBuilder<EducationBloc, EducationState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => SingleChildScrollView(
+            padding: const EdgeInsets.all(AppSpacing.screenPadding),
+            child: Column(
+              children: [
+                ShimmerLoaders.listTile(),
+                const SizedBox(height: AppSpacing.md),
+                Row(
+                  children: [
+                    Expanded(child: ShimmerLoaders.artistCard()), 
+                    const SizedBox(width: 8),
+                    Expanded(child: ShimmerLoaders.artistCard()),
+                  ],
+                ),
+                ShimmerLoaders.listTile(),
+                ShimmerLoaders.listTile(),
+              ],
+            ),
+          ),
           dashboardLoaded: (stats, institute) {
             final students = stats['students_count']?.toString() ?? '0';
             final batches = stats['batches_count']?.toString() ?? '0';
@@ -99,58 +119,78 @@ class _AcademyDashboard extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.all(AppSpacing.screenPadding),
                 children: [
-                  Text('Welcome, ${institute?.name ?? "Director"}', style: AppTypography.headlineMedium),
-                  const SizedBox(height: AppSpacing.md),
+                  const SizedBox(height: AppSpacing.xl),
+                  
+                  // Premium Academy Hero Header
+                  _buildAcademyHeroHeader(institute?.name ?? "Director"),
+                  
+                  const SizedBox(height: AppSpacing.xl),
+                  
+                  Text('Academy Overview', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: AppSpacing.sm),
                   
                   Row(
                     children: [
-                      Expanded(child: _StatCard(title: 'Active Students', value: students, color: Colors.blue)),
-                      const SizedBox(width: 8),
-                      Expanded(child: _StatCard(title: 'Placements', value: '0%', color: Colors.green)),
+                      Expanded(child: _StatCard(title: 'Active Students', value: students, icon: FontAwesomeIcons.userGraduate, color: Colors.blue)),
+                      const SizedBox(width: AppSpacing.md),
+                      Expanded(child: _StatCard(title: 'Active Batches', value: batches, icon: FontAwesomeIcons.layerGroup, color: Colors.orange)),
                     ],
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: AppSpacing.md),
                   Row(
                     children: [
-                      Expanded(child: _StatCard(title: 'Active Batches', value: batches, color: Colors.orange)),
-                      const SizedBox(width: 8),
-                      Expanded(child: _StatCard(title: 'Revenue', value: '₹ $revenue', color: Colors.purple)),
+                      Expanded(child: _StatCard(title: 'Placements', value: '12', icon: FontAwesomeIcons.briefcase, color: Colors.green)),
+                      const SizedBox(width: AppSpacing.md),
+                      Expanded(child: _StatCard(title: 'Revenue', value: '₹$revenue', icon: FontAwesomeIcons.indianRupeeSign, color: Colors.purple)),
                     ],
                   ),
                   
                   const SizedBox(height: AppSpacing.lg),
-                  Text('Quick Actions', style: AppTypography.titleLarge),
-                  const SizedBox(height: 8),
-                  _QuickActionTile(
-                    icon: Icons.add_box,
-                    color: Colors.teal,
-                    title: 'Create New Course',
-                    subtitle: 'Launch a new masterclass',
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const CreateCourseScreen()));
-                    },
-                  ),
-                  _QuickActionTile(
-                    icon: Icons.verified_user,
-                    color: Colors.blue,
-                    title: 'Verify Student',
-                    subtitle: 'Approve enrollment requests',
-                    onTap: () {
-                      if (institute?.id != null) {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => VerifyStudentScreen(instituteId: institute!.id)));
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Institute ID not found. Reload dashboard.')));
-                      }
-                    },
-                  ),
-                  _QuickActionTile(
-                    icon: Icons.work,
-                    color: Colors.indigo,
-                    title: 'Post Placement',
-                    subtitle: 'Add new job opening',
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const AcademyPostPlacementScreen()));
-                    },
+                  const SizedBox(height: AppSpacing.xl),
+                  Text('Director\'s Toolbox', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: AppSpacing.md),
+                  
+                  GridView.count(
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    mainAxisSpacing: AppSpacing.md,
+                    crossAxisSpacing: AppSpacing.md,
+                    childAspectRatio: 1.4,
+                    children: [
+                      _buildAcademyActionCard(
+                        context,
+                        'New Course',
+                        FontAwesomeIcons.fileCirclePlus,
+                        Colors.teal,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CreateCourseScreen())),
+                      ),
+                      _buildAcademyActionCard(
+                        context,
+                        'Verify Student',
+                        FontAwesomeIcons.userCheck,
+                        Colors.blue,
+                        () {
+                          if (institute?.id != null) {
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => VerifyStudentScreen(instituteId: institute!.id)));
+                          }
+                        },
+                      ),
+                      _buildAcademyActionCard(
+                        context,
+                        'Placements',
+                        FontAwesomeIcons.briefcase,
+                        Colors.indigo,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AcademyPostPlacementScreen())),
+                      ),
+                      _buildAcademyActionCard(
+                        context,
+                        'Certificates',
+                        FontAwesomeIcons.certificate,
+                        Colors.amber,
+                        () {}, // Add functionality later
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -162,31 +202,126 @@ class _AcademyDashboard extends StatelessWidget {
       },
     );
   }
-}
 
-class _QuickActionTile extends StatelessWidget {
-  final IconData icon;
-  final Color color;
-  final String title;
-  final String subtitle;
-  final VoidCallback onTap;
+  Widget _buildAcademyHeroHeader(String name) {
+    return Container(
+      height: 180,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/hero_academy.png'),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.teal.withOpacity(0.2),
+            blurRadius: 15,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+              gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [
+                  Colors.black.withOpacity(0.8),
+                  Colors.black.withOpacity(0.2),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Academy Director',
+                  style: TextStyle(
+                    color: Colors.tealAccent.withOpacity(0.8),
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                  ),
+                ).animate().fadeIn().slideX(begin: -0.2),
+                const SizedBox(height: 4),
+                Text(
+                  'Welcome, $name',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ).animate().fadeIn(delay: 200.ms),
+                const SizedBox(height: AppSpacing.md),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white12,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white30),
+                  ),
+                  child: const Text(
+                    'MASTERCLASS SEASON',
+                    style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
+                ).animate().fadeIn(delay: 400.ms).scale(),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-  const _QuickActionTile({
-    required this.icon,
-    required this.color,
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(title),
-      subtitle: Text(subtitle),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+  Widget _buildAcademyActionCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+  ) {
+    return GestureDetector(
       onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          border: Border.all(color: AppColors.grey100),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: FaIcon(icon, color: color, size: 20),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: AppTypography.labelLarge.copyWith(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -194,23 +329,54 @@ class _QuickActionTile extends StatelessWidget {
 class _StatCard extends StatelessWidget {
   final String title;
   final String value;
+  final IconData icon;
   final Color color;
 
-  const _StatCard({required this.title, required this.value, required this.color});
+  const _StatCard({
+    required this.title,
+    required this.value,
+    required this.icon,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Text(title, style: TextStyle(color: Colors.grey[600], fontSize: 13)),
-            const SizedBox(height: 8),
-            Text(value, style: TextStyle(color: color, fontSize: 22, fontWeight: FontWeight.bold)),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        border: Border.all(color: AppColors.grey100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FaIcon(icon, color: color, size: 16),
+          const SizedBox(height: 12),
+          Text(
+            value,
+            style: GoogleFonts.outfit(
+              color: AppColors.textPrimary,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            title,
+            style: TextStyle(
+              color: AppColors.textSecondary,
+              fontSize: 11,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -224,7 +390,14 @@ class _CoursesList extends StatelessWidget {
     return BlocBuilder<EducationBloc, EducationState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => ListView.builder(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            itemCount: 5,
+            itemBuilder: (_, __) => Padding(
+              padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+              child: ShimmerLoaders.bookingCard(), // Suited for course items
+            ),
+          ),
           coursesLoaded: (list) {
             if (list.isEmpty) {
               return const Center(child: Text('No courses found. Create one!'));
@@ -234,13 +407,34 @@ class _CoursesList extends StatelessWidget {
               itemCount: list.length,
               itemBuilder: (context, index) {
                 final course = list[index];
-                return Card(
+                return Container(
                   margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
                   child: ListTile(
-                    leading: const Icon(Icons.book, color: Colors.teal),
-                    title: Text(course['title'] ?? 'Untitled Course'),
-                    subtitle: Text(course['description'] ?? 'No description'),
-                    trailing: Text(course['price'] != null ? '₹${course['price']}' : 'Free'),
+                    leading: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.teal.withOpacity(0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.book, color: Colors.teal),
+                    ),
+                    title: Text(course['title'] ?? 'Untitled Course', style: AppTypography.titleMedium),
+                    subtitle: Text(course['description'] ?? 'No description', maxLines: 2, overflow: TextOverflow.ellipsis),
+                    trailing: Text(
+                      course['price'] != null ? '₹${course['price']}' : 'Free',
+                      style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.teal),
+                    ),
                   ),
                 );
               },
@@ -249,7 +443,11 @@ class _CoursesList extends StatelessWidget {
           error: (msg) => Center(child: Text('Error: $msg')),
           orElse: () {
             context.read<EducationBloc>().add(const EducationEvent.fetchCourses());
-            return const Center(child: CircularProgressIndicator());
+            return ListView.builder(
+              padding: const EdgeInsets.all(AppSpacing.md),
+              itemCount: 5,
+              itemBuilder: (_, __) => ShimmerLoaders.bookingCard(),
+            );
           },
         );
       },

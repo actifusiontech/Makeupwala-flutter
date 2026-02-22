@@ -10,6 +10,7 @@ import '../../bloc/wallet_state.dart';
 import 'bank_linking_screen.dart';
 import '../../../../core/services/payment_service.dart';
 import '../../../auth/bloc/auth_bloc.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -76,7 +77,17 @@ class WalletScreen extends StatelessWidget {
         },
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const Center(child: CircularProgressIndicator()),
+            loading: () => Padding(
+              padding: const EdgeInsets.all(AppSpacing.lg),
+              child: Column(
+                children: [
+                  ShimmerLoaders.profileHeader(),
+                  const SizedBox(height: AppSpacing.xl),
+                  ShimmerLoaders.listTile(),
+                  ShimmerLoaders.listTile(),
+                ],
+              ),
+            ),
             loaded: (balance, currency, transactions, isBankLinked) {
               return SingleChildScrollView(
                 padding: const EdgeInsets.all(AppSpacing.lg),
@@ -214,7 +225,16 @@ class WalletScreen extends StatelessWidget {
                 ),
               );
             },
-            orElse: () => const Center(child: CircularProgressIndicator()),
+            orElse: () => Padding(
+              padding: const EdgeInsets.all(AppSpacing.lg),
+              child: Column(
+                children: [
+                  ShimmerLoaders.profileHeader(),
+                  const SizedBox(height: AppSpacing.xl),
+                  ShimmerLoaders.listTile(),
+                ],
+              ),
+            ),
           );
         },
       ),

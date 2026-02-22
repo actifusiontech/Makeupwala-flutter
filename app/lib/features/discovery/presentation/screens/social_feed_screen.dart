@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../data/models/post_model.dart';
 import '../../data/repositories/discovery_repository.dart';
+import 'package:app/shared/theme/app_colors.dart';
+import 'package:app/shared/theme/app_spacing.dart';
+import 'package:app/shared/theme/app_typography.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'dart:ui';
 
 class SocialFeedScreen extends StatefulWidget {
   const SocialFeedScreen({Key? key}) : super(key: key);
@@ -23,15 +31,33 @@ class _SocialFeedScreenState extends State<SocialFeedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shop the Look'),
-        backgroundColor: Colors.pink[400],
-        foregroundColor: Colors.white,
+        title: Text('Shop the Look', style: GoogleFonts.playfairDisplay(fontWeight: FontWeight.bold, fontSize: 22)),
+        backgroundColor: Colors.white,
+        foregroundColor: AppColors.primary,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: const FaIcon(FontAwesomeIcons.magnifyingGlass, size: 18),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const FaIcon(FontAwesomeIcons.bell, size: 18),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: FutureBuilder<List<PostModel>>(
         future: _feedFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator(color: Colors.pink));
+            return ListView.builder(
+              padding: const EdgeInsets.all(AppSpacing.md),
+              itemCount: 3,
+              itemBuilder: (_, __) => Padding(
+                padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                child: ShimmerLoaders.artistCard(),
+              ),
+            );
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -51,56 +77,130 @@ class _SocialFeedScreenState extends State<SocialFeedScreen> {
   }
 
   Widget _buildPost(PostModel post, BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Header
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: Row(
-            children: [
-              const CircleAvatar(
-                radius: 16,
-                backgroundColor: Colors.grey,
-                child: Icon(Icons.person, size: 16, color: Colors.white),
-              ),
-              const SizedBox(width: 8),
-              Text(post.artistName, style: const TextStyle(fontWeight: FontWeight.bold)),
-            ],
+    return Container(
+      margin: const EdgeInsets.only(bottom: AppSpacing.lg),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
-        ),
-        // Image
-        Stack(
-          alignment: Alignment.bottomRight,
-          children: [
-            Container(
-              height: 400,
-              width: double.infinity,
-              color: Colors.grey[200],
-              child: Image.network(
-                post.mediaUrl,
-                fit: BoxFit.cover,
-                errorBuilder: (c, e, s) => const Center(child: Icon(Icons.image, size: 50, color: Colors.grey)),
-              ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 18,
+                  backgroundColor: Colors.pink[50],
+                  child: Icon(Icons.person, size: 18, color: Colors.pink[400]),
+                ),
+                const SizedBox(width: 10),
+                Text(post.artistName, style: AppTypography.titleMedium),
+                const Spacer(),
+                IconButton(
+                  icon: const Icon(Icons.more_horiz),
+                  onPressed: () {},
+                ),
+              ],
             ),
-            if (post.taggedProducts.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: FloatingActionButton.small(
-                  backgroundColor: Colors.white,
-                  child: const Icon(Icons.shopping_bag, color: Colors.pink),
-                  onPressed: () => _showProducts(context, post.taggedProducts),
+          ),
+          // Image
+          Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  color: AppColors.backgroundLight,
+                  child: Image.network(
+                    post.mediaUrl,
+                    fit: BoxFit.cover,
+                    errorBuilder: (c, e, s) => const Center(child: Icon(Icons.image, size: 50, color: Colors.grey)),
+                  ),
                 ),
               ),
-          ],
-        ),
-        // Caption
-        Padding(
-          padding: const EdgeInsets.all(12),
-          child: Text(post.caption),
-        ),
-        const Divider(),
-      ],
+              if (post.taggedProducts.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          border: Border.all(color: Colors.white.withOpacity(0.3)),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const FaIcon(FontAwesomeIcons.bagShopping, color: Colors.white, size: 14),
+                            const SizedBox(width: 8),
+                            Text(
+                              'Shop Look'.toUpperCase(),
+                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10, letterSpacing: 1),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ).animate().fadeIn(delay: 400.ms).scale(),
+              GestureDetector(
+                onTap: () => _showProducts(context, post.taggedProducts),
+                child: AbsorbPointer(
+                  child: Container(
+                    height: 400,
+                    width: double.infinity,
+                    color: Colors.transparent,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          // Caption
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const FaIcon(FontAwesomeIcons.heart, size: 22, color: AppColors.primary),
+                    const SizedBox(width: 20),
+                    const FaIcon(FontAwesomeIcons.comment, size: 22),
+                    const SizedBox(width: 20),
+                    const FaIcon(FontAwesomeIcons.paperPlane, size: 22),
+                    const Spacer(),
+                    const FaIcon(FontAwesomeIcons.bookmark, size: 22),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(color: Colors.black, fontSize: 14),
+                    children: [
+                      TextSpan(text: post.artistName, style: const TextStyle(fontWeight: FontWeight.bold)),
+                      const TextSpan(text: ' '),
+                      TextSpan(text: post.caption),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

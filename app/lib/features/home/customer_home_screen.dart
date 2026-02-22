@@ -10,10 +10,14 @@ import '../search/data/search_repository.dart';
 import '../safety/presentation/widgets/sos_button.dart';
 import '../safety/presentation/screens/emergency_contacts_screen.dart';
 
-import 'package:app/features/discovery/presentation/bloc/discovery_bloc.dart';
-import 'package:app/features/discovery/presentation/bloc/discovery_event.dart';
-import 'package:app/features/discovery/presentation/bloc/discovery_state.dart';
 import 'package:app/features/discovery/data/discovery_repository.dart';
+import 'package:app/features/discovery/presentation/bloc/discovery_bloc.dart';
+import 'package:app/features/discovery/presentation/bloc/discovery_state.dart';
+import 'package:app/features/discovery/presentation/bloc/discovery_event.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'dart:ui';
 
 class CustomerHomeScreen extends StatelessWidget {
   const CustomerHomeScreen({super.key});
@@ -79,81 +83,70 @@ class _CustomerHomeView extends StatelessWidget {
           return authState.maybeWhen(
             authenticated: (user) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: AppSpacing.xl),
-                  
-                  // Welcome section
-                  Text(
-                    'Welcome, ${user.fullName}!',
-                    style: AppTypography.displaySmall,
-                  ),
-                  
-                  const SizedBox(height: AppSpacing.sm),
-                  
-                  Text(
-                    'Find your perfect makeup artist',
-                    style: AppTypography.bodyLarge.copyWith(
-                      color: AppColors.textSecondary,
+              child: CustomScrollView(
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: AppSpacing.xl),
+                        
+                        // Premium Hero Section
+                        _buildPremiumHero(),
+                        
+                        const SizedBox(height: AppSpacing.xl),
+                        
+                        // Personalized Welcome
+                        Text(
+                          'Welcome, ${user.fullName}!',
+                          style: AppTypography.displaySmall.copyWith(
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: -0.5,
+                          ),
+                        ).animate().fadeIn(duration: 600.ms).slideX(begin: -0.1),
+                        
+                        Text(
+                          'Find your perfect makeup artist',
+                          style: AppTypography.bodyLarge.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                        ).animate().fadeIn(delay: 200.ms, duration: 600.ms),
+                        
+                        const SizedBox(height: AppSpacing.xl),
+                        
+                        // Search bar (Elevated)
+                        _buildElevatedSearchBar(context),
+                        
+                        const SizedBox(height: AppSpacing.xl),
+                      ],
                     ),
                   ),
-                  
-                  const SizedBox(height: AppSpacing.xl),
-                  
-                  // Search bar
-                  TextField(
-                    onChanged: (value) {
-                      context.read<SearchBloc>().add(
-                        SearchEvent.search(query: value),
-                      );
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Search for artists...',
-                      prefixIcon: const Icon(Icons.search),
-                      filled: true,
-                      fillColor: AppColors.grey100,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                  
-                  const SizedBox(height: AppSpacing.xl),
                   
                   // Content area
-                  Expanded(
+                  SliverFillRemaining(
+                    hasScrollBody: true,
                     child: BlocBuilder<SearchBloc, SearchState>(
                       builder: (context, searchState) {
                         return searchState.when(
                           initial: () => _buildHomeContent(context),
-                          loading: () => const Center(child: CircularProgressIndicator()),
+                          loading: () => ListView.builder(
+                            padding: const EdgeInsets.all(AppSpacing.md),
+                            itemCount: 4,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (_, __) => Padding(
+                              padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                              child: ShimmerLoaders.artistCard(),
+                            ),
+                          ),
                           empty: () => const Center(child: Text('No artists found')),
                           error: (message) => Center(child: Text('Error: $message')),
                           loaded: (results) => ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: results.length,
                             itemBuilder: (context, index) {
                               final artist = results[index];
-                              return Card(
-                                margin: const EdgeInsets.only(bottom: AppSpacing.md),
-                                child: ListTile(
-                                  leading: CircleAvatar(
-                                    backgroundImage: artist['profile_image'] != null
-                                        ? NetworkImage(artist['profile_image'])
-                                        : null,
-                                    child: artist['profile_image'] == null
-                                        ? const Icon(Icons.person)
-                                        : null,
-                                  ),
-                                  title: Text(artist['full_name'] ?? 'Unknown Artist'),
-                                  subtitle: Text(artist['category'] ?? 'Makeup Artist'),
-                                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                                  onTap: () {
-                                    context.push('/artist/${artist['id']}', extra: artist);
-                                  },
-                                ),
-                              );
+                              return _buildArtistResultCard(context, artist);
                             },
                           ),
                         );
@@ -172,73 +165,330 @@ class _CustomerHomeView extends StatelessWidget {
     );
   }
 
+  Widget _buildPremiumHero() {
+    return Container(
+      height: 220,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/hero_customer.png'),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+              gradient: LinearGradient(
+                begin: Alignment.bottomRight,
+                end: Alignment.topLeft,
+                colors: [
+                  Colors.black.withOpacity(0.6),
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Text(
+                    'TRENDING LOOKS',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                ).animate().fadeIn(delay: 400.ms).scale(),
+                const SizedBox(height: AppSpacing.sm),
+                const Text(
+                  'Get Red Carpet Ready\nwith Top Artists',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    height: 1.1,
+                  ),
+                ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.1),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildElevatedSearchBar(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: TextField(
+        onChanged: (value) {
+          context.read<SearchBloc>().add(
+            SearchEvent.search(query: value),
+          );
+        },
+        decoration: InputDecoration(
+          hintText: 'Search for artists, styles...',
+          hintStyle: TextStyle(color: AppColors.grey400),
+          prefixIcon: const Icon(Icons.search, color: AppColors.primary),
+          suffixIcon: const Icon(Icons.tune, color: AppColors.primary),
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: const EdgeInsets.symmetric(vertical: 16),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+            borderSide: BorderSide.none,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildArtistResultCard(BuildContext context, dynamic artist) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(AppSpacing.sm),
+        leading: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: AppColors.primary.withOpacity(0.2), width: 2),
+          ),
+          child: CircleAvatar(
+            radius: 28,
+            backgroundImage: artist['profile_image'] != null
+                ? NetworkImage(artist['profile_image'])
+                : null,
+            child: artist['profile_image'] == null
+                ? const Icon(Icons.person, color: AppColors.primary)
+                : null,
+          ),
+        ),
+        title: Text(
+          artist['full_name'] ?? 'Unknown Artist',
+          style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(artist['category'] ?? 'Makeup Artist', style: AppTypography.bodySmall),
+            const SizedBox(height: 4),
+            Row(
+              children: [
+                const Icon(Icons.star, color: Colors.amber, size: 14),
+                const SizedBox(width: 4),
+                Text('4.9 (120 reviews)', style: AppTypography.labelSmall),
+              ],
+            ),
+          ],
+        ),
+        trailing: const Icon(Icons.chevron_right, color: AppColors.grey400),
+        onTap: () {
+          context.push('/artist/${artist['id']}', extra: artist);
+        },
+      ),
+    );
+  }
+
   Widget _buildHomeContent(BuildContext context) {
     return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
       children: [
-        // Shop the Look Section (Dynamic)
+        // Shop the Look Section
         _buildShopTheLookSection(context),
         
         const SizedBox(height: AppSpacing.xl),
         
-        Text('Quick Actions', style: AppTypography.titleLarge),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Quick Access', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+            const Icon(Icons.grid_view_rounded, size: 20, color: AppColors.primary),
+          ],
+        ),
         const SizedBox(height: AppSpacing.md),
         
-        _buildActionCard(
-          context,
-          'Browse Artists',
-          'Discover top makeup artists',
-          Icons.person_search,
-          AppColors.primary,
+        GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: AppSpacing.md,
+          crossAxisSpacing: AppSpacing.md,
+          childAspectRatio: 1.5,
+          children: [
+            _buildPremiumActionCard(
+              context,
+              'Artists',
+              FontAwesomeIcons.userAstronaut,
+              AppColors.primary,
+              () => context.read<SearchBloc>().add(const SearchEvent.search(query: '')),
+            ),
+            _buildPremiumActionCard(
+              context,
+              'Bookings',
+              FontAwesomeIcons.calendarCheck,
+              AppColors.info,
+              () => context.push('/bookings'),
+            ),
+            _buildPremiumActionCard(
+              context,
+              'Studios',
+              FontAwesomeIcons.houseUser,
+              AppColors.secondary,
+              () => context.push('/studios'),
+            ),
+            _buildPremiumActionCard(
+              context,
+              'Retreats',
+              FontAwesomeIcons.planeDeparture,
+              Colors.teal,
+              () => context.push('/travel/retreats'),
+            ),
+          ],
         ),
-        const SizedBox(height: AppSpacing.md),
-        _buildActionCard(
-          context,
-          'My Bookings',
-          'View your appointments',
-          Icons.calendar_today,
-          AppColors.info,
-        ),
-        const SizedBox(height: AppSpacing.md),
-        _buildActionCard(
-          context,
-          'Favorites',
-          'Your saved artists',
-          Icons.favorite,
-          AppColors.warning,
-        ),
-        const SizedBox(height: AppSpacing.md),
-        _buildQuickActionCard(
-          context,
-          'Subscriptions',
-          Icons.card_membership,
-          AppColors.secondary,
-          () => context.push('/subscription'),
-        ),
-        _buildQuickActionCard(
-          context,
-          'Book a Studio',
-          Icons.store,
-          AppColors.primary,
-          () => context.push('/studios'),
-        ),
-        _buildQuickActionCard(
-          context,
-          'Global Retreats',
-          Icons.flight_takeoff,
-          Colors.teal,
-          () => context.push('/travel/retreats'),
-        ),
-        _buildQuickActionCard(
-          context,
-          'Emergency Contacts',
-          Icons.contact_phone,
-          Colors.red,
-          () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EmergencyContactsScreen())),
-        ),
+        
+        const SizedBox(height: AppSpacing.xl),
+        
+        // Newsletter / Promotion Card
+        _buildPromotionCard(),
+        
+        const SizedBox(height: 100),
       ],
     );
   }
 
+  Widget _buildPremiumActionCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+  ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          border: Border.all(color: AppColors.grey100),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: FaIcon(icon, color: color, size: 20),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: AppTypography.labelLarge.copyWith(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPromotionCard() {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.xl),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [AppColors.primary, AppColors.primary.withOpacity(0.8)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Exclusive Membership',
+                  style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Get 20% off on all studio bookings',
+                  style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 12),
+                ),
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: AppColors.primary,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  ),
+                  child: const Text('JOIN NOW', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+          ),
+          const FaIcon(FontAwesomeIcons.crown, color: Colors.white24, size: 60),
+        ],
+      ),
+    );
+  }
   Widget _buildShopTheLookSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -246,7 +496,7 @@ class _CustomerHomeView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Shop the Look', style: AppTypography.titleLarge),
+            Text('Shop the Look', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
             TextButton(
               onPressed: () => context.push('/discovery'),
               child: const Text('View All'),
@@ -255,11 +505,16 @@ class _CustomerHomeView extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.sm),
         SizedBox(
-          height: 180,
+          height: 200,
           child: BlocBuilder<DiscoveryBloc, DiscoveryState>(
             builder: (context, state) {
               return state.maybeWhen(
-                loading: () => const Center(child: CircularProgressIndicator()),
+                loading: () => ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  separatorBuilder: (c, i) => const SizedBox(width: AppSpacing.md),
+                  itemBuilder: (_, __) => ShimmerLoaders.artistCard(),
+                ),
                 recommendationsLoaded: (looks) {
                   return ListView.separated(
                     scrollDirection: Axis.horizontal,
@@ -277,26 +532,37 @@ class _CustomerHomeView extends StatelessWidget {
                               image: NetworkImage(look['URL'] ?? ''),
                               fit: BoxFit.cover,
                             ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 8,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
                           ),
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [Colors.transparent, Colors.black.withOpacity(0.7)],
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [Colors.transparent, Colors.black.withOpacity(0.7)],
+                                    ),
+                                    borderRadius: const BorderRadius.vertical(bottom: Radius.circular(AppSpacing.radiusMd)),
+                                  ),
+                                  child: Text(
+                                    look['Caption'] ?? '',
+                                    style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(AppSpacing.radiusMd)),
                               ),
-                              child: Text(
-                                look['Caption'] ?? '',
-                                style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
+                            ],
                           ),
                         ),
                       );
@@ -309,76 +575,6 @@ class _CustomerHomeView extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildActionCard(
-    BuildContext context,
-    String title,
-    String subtitle,
-    IconData icon,
-    Color color,
-  ) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-      ),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: color.withOpacity(0.1),
-          child: Icon(icon, color: color),
-        ),
-        title: Text(
-          title,
-          style: AppTypography.titleMedium,
-        ),
-        subtitle: Text(
-          subtitle,
-          style: AppTypography.bodySmall.copyWith(
-            color: AppColors.textSecondary,
-          ),
-        ),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: () {
-          if (title == 'Browse Artists') {
-            // Focus search or navigate to full list
-             context.read<SearchBloc>().add(const SearchEvent.search(query: '', category: null));
-          } else if (title == 'My Bookings') {
-            context.push('/bookings');
-          } else if (title == 'Favorites') {
-            context.push('/favorites');
-          } else if (title == 'Subscription') {
-            context.push('/subscription');
-          }
-        },
-      ),
-    );
-  }
-  Widget _buildQuickActionCard(
-    BuildContext context,
-    String title,
-    IconData icon,
-    Color color,
-    VoidCallback onTap,
-  ) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
-      ),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: color.withOpacity(0.1),
-          child: Icon(icon, color: color),
-        ),
-        title: Text(
-          title,
-          style: AppTypography.titleMedium,
-        ),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
-      ),
     );
   }
 }

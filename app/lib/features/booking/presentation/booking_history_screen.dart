@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_typography.dart';
-import '../../../../shared/theme/app_spacing.dart';
-import '../bloc/booking_bloc.dart';
 import '../data/booking_repository.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'dart:ui';
 
 class BookingHistoryScreen extends StatefulWidget {
   const BookingHistoryScreen({super.key});
@@ -56,7 +56,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> with Single
         body: BlocBuilder<BookingBloc, BookingState>(
           builder: (context, state) {
             return state.maybeWhen(
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => ListView.builder(
+                padding: const EdgeInsets.all(AppSpacing.screenPadding),
+                itemCount: 4,
+                itemBuilder: (_, __) => Padding(
+                  padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                  child: ShimmerLoaders.bookingCard(),
+                ),
+              ),
               bookingsLoaded: (bookings) {
                 final upcoming = bookings.where((b) => b['status'] == 'confirmed' || b['status'] == 'pending').toList();
                 final past = bookings.where((b) => b['status'] == 'completed').toList();
@@ -155,38 +162,45 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> with Single
     switch (status) {
       case 'confirmed':
         statusColor = AppColors.success;
-        statusIcon = Icons.check_circle;
+        statusIcon = Icons.check_circle_outline;
         break;
       case 'pending':
         statusColor = AppColors.warning;
-        statusIcon = Icons.pending;
+        statusIcon = Icons.hourglass_empty;
         break;
       case 'completed':
         statusColor = AppColors.info;
-        statusIcon = Icons.done_all;
+        statusIcon = Icons.verified_outlined;
         break;
       case 'cancelled':
         statusColor = AppColors.error;
-        statusIcon = Icons.cancel;
+        statusIcon = Icons.cancel_outlined;
         break;
       default:
         statusColor = AppColors.grey400;
         statusIcon = Icons.help_outline;
     }
 
-    return Card(
+    return Container(
       margin: const EdgeInsets.only(bottom: AppSpacing.md),
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: InkWell(
         onTap: () {
           context.push('/booking/details/$bookingId');
         },
-        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        borderRadius: BorderRadius.circular(16),
         child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.md),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -196,31 +210,31 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> with Single
                   Expanded(
                     child: Text(
                       serviceName,
-                      style: AppTypography.titleMedium,
+                      style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.bold),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.sm,
-                      vertical: AppSpacing.xs,
+                      horizontal: 10,
+                      vertical: 6,
                     ),
                     decoration: BoxDecoration(
                       color: statusColor.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(AppSpacing.radiusSm),
-                      border: Border.all(color: statusColor),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(statusIcon, size: 14, color: statusColor),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 6),
                         Text(
                           status.toUpperCase(),
                           style: AppTypography.bodySmall.copyWith(
                             color: statusColor,
                             fontWeight: FontWeight.bold,
+                            fontSize: 10,
                           ),
                         ),
                       ],
@@ -228,65 +242,77 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> with Single
                   ),
                 ],
               ),
-              const SizedBox(height: AppSpacing.sm),
+              const SizedBox(height: AppSpacing.md),
               Row(
                 children: [
-                  const Icon(Icons.person, size: 16, color: AppColors.textSecondary),
-                  const SizedBox(width: AppSpacing.xs),
+                  CircleAvatar(
+                    radius: 12,
+                    backgroundColor: AppColors.primary.withOpacity(0.1),
+                    child: const Icon(Icons.person, size: 14, color: AppColors.primary),
+                  ),
+                  const SizedBox(width: AppSpacing.sm),
                   Text(
                     artistName,
-                    style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary),
+                    style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
-              const SizedBox(height: AppSpacing.xs),
+              const SizedBox(height: AppSpacing.sm),
               Row(
                 children: [
-                  const Icon(Icons.calendar_today, size: 16, color: AppColors.textSecondary),
+                  Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey[600]),
                   const SizedBox(width: AppSpacing.xs),
                   Text(
                     bookingDate != null
                         ? DateFormat('EEE, MMM d, yyyy').format(bookingDate)
                         : 'Date not set',
-                    style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary),
+                    style: AppTypography.bodySmall.copyWith(color: Colors.grey[600]),
                   ),
                   const SizedBox(width: AppSpacing.md),
-                  const Icon(Icons.access_time, size: 16, color: AppColors.textSecondary),
+                  Icon(Icons.access_time, size: 14, color: Colors.grey[600]),
                   const SizedBox(width: AppSpacing.xs),
                   Text(
                     time,
-                    style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary),
+                    style: AppTypography.bodySmall.copyWith(color: Colors.grey[600]),
                   ),
                 ],
               ),
-              const Divider(height: AppSpacing.lg),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
+                child: Divider(height: 1),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     '₹${amount.toStringAsFixed(0)}',
-                    style: AppTypography.titleMedium.copyWith(
+                    style: AppTypography.titleLarge.copyWith(
                       color: AppColors.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   if (type == 'upcoming' && status == 'confirmed')
-                    TextButton(
-                      onPressed: () {
-                        _showCancelDialog(context, bookingId);
-                      },
-                      style: TextButton.styleFrom(
+                    ElevatedButton(
+                      onPressed: () => _showCancelDialog(context, bookingId),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
                         foregroundColor: AppColors.error,
+                        elevation: 0,
+                        side: BorderSide(color: AppColors.error.withOpacity(0.2)),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       ),
                       child: const Text('Cancel'),
                     ),
                   if (type == 'past' && status == 'completed')
-                    TextButton(
+                    ElevatedButton(
                       onPressed: () {
                         context.push('/reviews/submit/$bookingId');
                       },
-                      style: TextButton.styleFrom(
-                        foregroundColor: AppColors.primary,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        elevation: 0,
                       ),
                       child: const Text('Write Review'),
                     ),

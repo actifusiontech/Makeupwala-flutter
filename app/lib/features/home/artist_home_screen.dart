@@ -19,6 +19,9 @@ import 'package:app/features/home/widgets/artist_stats_widget.dart';
 import 'package:app/features/home/widgets/subscription_widget.dart';
 import 'package:app/features/auth/bloc/auth_bloc.dart';
 import 'package:app/features/safety/presentation/widgets/sos_button.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class ArtistHomeScreen extends StatelessWidget {
   const ArtistHomeScreen({super.key});
@@ -89,24 +92,25 @@ class _ArtistHomeView extends StatelessWidget {
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, authState) {
           return authState.maybeWhen(
-            authenticated: (user) => Padding(
+            authenticated: (user) => ListView(
               padding: const EdgeInsets.all(AppSpacing.screenPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+              children: [
+                const SizedBox(height: AppSpacing.xl),
+                  
+                  // Premium Artist Hero Header
+                  _buildArtistHeroHeader(user.fullName),
+                  
                   const SizedBox(height: AppSpacing.xl),
-                  Text('Welcome, ${user.fullName}!', style: AppTypography.displaySmall),
-                  const SizedBox(height: AppSpacing.lg),
 
+                  Text('Your Performance', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: AppSpacing.md),
+                  
                   BlocBuilder<EarningsBloc, EarningsState>(
                     builder: (context, earningsState) {
                       return earningsState.maybeWhen(
-                        statsLoaded: (stats) => ArtistStatsWidget(
-                          totalBookings: stats.totalBookings,
-                          totalEarnings: stats.totalEarnings,
-                        ),
-                        loading: () => const Center(child: CircularProgressIndicator()),
-                        orElse: () => const ArtistStatsWidget(totalBookings: 0, totalEarnings: 0),
+                        statsLoaded: (stats) => _buildPremiumStatsRow(stats.totalBookings, stats.totalEarnings),
+                        loading: () => ShimmerLoaders.artistCard(),
+                        orElse: () => _buildPremiumStatsRow(0, 0),
                       );
                     },
                   ),
@@ -127,156 +131,48 @@ class _ArtistHomeView extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.xxl),
                   
-                  Text('Quick Actions', style: AppTypography.titleLarge),
-                  const SizedBox(height: AppSpacing.md),
-                  InkWell(
-                    onTap: () => context.push('/inventory'),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(AppSpacing.md),
-                      decoration: BoxDecoration(
-                        color: AppColors.secondary.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppColors.secondary.withValues(alpha: 0.2)),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: AppColors.secondary,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Icon(Icons.inventory_2, color: Colors.white),
-                          ),
-                          const SizedBox(width: AppSpacing.md),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Inventory Management', style: AppTypography.titleMedium.copyWith(color: AppColors.secondary)),
-                                Text('Track your premium kits & usage', style: AppTypography.bodySmall),
-                              ],
-                            ),
-                          ),
-                          const Icon(Icons.chevron_right, color: AppColors.secondary),
-                        ],
-                      ),
-                    ),
-                  ),
+                  const SizedBox(height: AppSpacing.xl),
                   
+                  Text('Artist Toolbox', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
                   const SizedBox(height: AppSpacing.md),
                   
-                  InkWell(
-                    onTap: () => context.push('/availability'),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(AppSpacing.md),
-                      decoration: BoxDecoration(
-                        color: AppColors.primary.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppColors.primary.withValues(alpha: 0.2)),
+                  GridView.count(
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    mainAxisSpacing: AppSpacing.md,
+                    crossAxisSpacing: AppSpacing.md,
+                    childAspectRatio: 1.4,
+                    children: [
+                      _buildToolboxCard(
+                        context,
+                        'Inventory',
+                        FontAwesomeIcons.suitcase,
+                        AppColors.secondary,
+                        () => context.push('/inventory'),
                       ),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Icon(Icons.calendar_today, color: Colors.white),
-                          ),
-                          const SizedBox(width: AppSpacing.md),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Manage Availability', style: AppTypography.titleMedium.copyWith(color: AppColors.primary)),
-                                Text('Set your available dates & times', style: AppTypography.bodySmall),
-                              ],
-                            ),
-                          ),
-                          const Icon(Icons.chevron_right, color: AppColors.primary),
-                        ],
+                      _buildToolboxCard(
+                        context,
+                        'Availability',
+                        FontAwesomeIcons.calendarCheck,
+                        AppColors.primary,
+                        () => context.push('/availability'),
                       ),
-                    ),
-                  ),
-                  
-                  const SizedBox(height: AppSpacing.md),
-
-                  InkWell(
-                    onTap: () => context.push('/campaign-explorer'),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(AppSpacing.md),
-                      decoration: BoxDecoration(
-                        color: Colors.purple.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.purple.withValues(alpha: 0.2)),
+                      _buildToolboxCard(
+                        context,
+                        'Collaborations',
+                        FontAwesomeIcons.handshake,
+                        Colors.purple,
+                        () => context.push('/campaign-explorer'),
                       ),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.purple,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Icon(Icons.campaign, color: Colors.white),
-                          ),
-                          const SizedBox(width: AppSpacing.md),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text('Brand Collaborations', style: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 16)),
-                                Text('Partner with premium brands', style: AppTypography.bodySmall),
-                              ],
-                            ),
-                          ),
-                          const Icon(Icons.chevron_right, color: Colors.purple),
-                        ],
+                      _buildToolboxCard(
+                        context,
+                        'Safety',
+                        FontAwesomeIcons.shieldHeart,
+                        Colors.red,
+                        () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EmergencyContactsScreen())),
                       ),
-                    ),
-                  ),
-
-                  const SizedBox(height: AppSpacing.md),
-
-                  InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EmergencyContactsScreen())),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(AppSpacing.md),
-                      decoration: BoxDecoration(
-                        color: Colors.red.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Icon(Icons.contact_phone, color: Colors.white),
-                          ),
-                          const SizedBox(width: AppSpacing.md),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text('Emergency Contacts', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 16)),
-                                Text('Manage your safety network', style: AppTypography.bodySmall),
-                              ],
-                            ),
-                          ),
-                          const Icon(Icons.chevron_right, color: Colors.red),
-                        ],
-                      ),
-                    ),
+                    ],
                   ),
                   
                   const SizedBox(height: AppSpacing.xxl),
@@ -361,9 +257,7 @@ class _ArtistHomeView extends StatelessWidget {
                             ),
                           );
                         },
-                        loading: () => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                        loading: () => ShimmerLoaders.listTile(),
                         orElse: () => Container(
                           height: 100,
                           child: const Center(
@@ -386,7 +280,9 @@ class _ArtistHomeView extends StatelessWidget {
                   BlocBuilder<BookingBloc, BookingState>(
                     builder: (context, state) {
                       return state.maybeWhen(
-                        loading: () => const Center(child: CircularProgressIndicator()),
+                        loading: () => Column(
+                          children: List.generate(3, (index) => ShimmerLoaders.bookingCard()),
+                        ),
                         loaded: (bookings) {
                           if (bookings.isEmpty) {
                             return const Center(child: Text('No bookings yet'));
@@ -408,12 +304,197 @@ class _ArtistHomeView extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
             orElse: () => const Center(
               child: CircularProgressIndicator(),
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildArtistHeroHeader(String name) {
+    return Container(
+      height: 180,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/hero_artist.png'),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withOpacity(0.2),
+            blurRadius: 15,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+              gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [
+                  Colors.black.withOpacity(0.7),
+                  Colors.black.withOpacity(0.1),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Hello, $name',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.5,
+                  ),
+                ).animate().fadeIn().slideX(begin: -0.2),
+                const SizedBox(height: 4),
+                Text(
+                  'You have 3 bookings today',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.9),
+                    fontSize: 14,
+                  ),
+                ).animate().fadeIn(delay: 200.ms),
+                const SizedBox(height: AppSpacing.md),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white24,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white30),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.star, color: Colors.amber, size: 14),
+                      const SizedBox(width: 4),
+                      Text(
+                        'Premium Artist',
+                        style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 10, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ).animate().fadeIn(delay: 400.ms).scale(),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPremiumStatsRow(int bookings, double earnings) {
+    return Row(
+      children: [
+        Expanded(
+          child: _buildStatCard(
+            'Total Bookings',
+            bookings.toString(),
+            FontAwesomeIcons.calendarCheck,
+            AppColors.primary,
+          ),
+        ),
+        const SizedBox(width: AppSpacing.md),
+        Expanded(
+          child: _buildStatCard(
+            'Total Earnings',
+            '₹${earnings.toStringAsFixed(0)}',
+            FontAwesomeIcons.wallet,
+            AppColors.success,
+          ),
+        ),
+      ],
+    ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.1);
+  }
+
+  Widget _buildStatCard(String label, String value, IconData icon, Color color) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        border: Border.all(color: AppColors.grey100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: FaIcon(icon, color: color, size: 16),
+          ),
+          const SizedBox(height: 12),
+          Text(value, style: AppTypography.headlineSmall.copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary)),
+          Text(label, style: AppTypography.labelSmall.copyWith(color: AppColors.textSecondary)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildToolboxCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+  ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          border: Border.all(color: AppColors.grey100),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: FaIcon(icon, color: color, size: 20),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: AppTypography.labelLarge.copyWith(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }

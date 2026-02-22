@@ -8,6 +8,7 @@ import 'widgets/premium_plan_card.dart';
 import 'widgets/quota_progress_widget.dart';
 import 'subscription_history_screen.dart';
 import 'data/subscription_repository.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
 
 class SubscriptionScreen extends StatelessWidget {
   const SubscriptionScreen({super.key});
@@ -95,7 +96,7 @@ class _SubscriptionView extends StatelessWidget {
 
   Widget _buildCurrentSubscription(BuildContext context, SubscriptionState state) {
     if (state.isLoading && state.subscription == null) {
-      return const Center(child: CircularProgressIndicator());
+      return ShimmerLoaders.artistCard();
     }
     
     final subscription = state.subscription;
@@ -171,7 +172,9 @@ class _SubscriptionView extends StatelessWidget {
 
   Widget _buildPlansList(BuildContext context, SubscriptionState state) {
     if (state.isLoading && state.plans.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
+      return Column(
+        children: List.generate(2, (index) => ShimmerLoaders.artistCard()),
+      );
     }
     
     final plans = state.plans;

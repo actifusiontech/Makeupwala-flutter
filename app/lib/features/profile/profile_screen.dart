@@ -16,6 +16,7 @@ import 'data/profile_repository.dart';
 import '../../features/profile/widgets/tier_progress_card.dart';
 import '../../features/rewards/leaderboard_screen.dart';
 import '../../features/discovery/lookbook_screen.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -101,7 +102,12 @@ class _ProfileView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        loading: () => const CircularProgressIndicator(),
+                        loading: () => Column(
+                          children: [
+                            const SizedBox(height: AppSpacing.md),
+                            ShimmerLoaders.listTile(),
+                          ],
+                        ),
                         orElse: () => const SizedBox(),
                       );
                     },
@@ -136,7 +142,9 @@ class _ProfileView extends StatelessWidget {
                 return state.maybeWhen(
                   orElse: () => const SizedBox(),
                   initial: () => const SizedBox(),
-                  loading: () => const Center(child: CircularProgressIndicator()),
+                  loading: () => Column(
+                    children: List.generate(3, (index) => ShimmerLoaders.bookingCard()),
+                  ),
                   success: (_) => const SizedBox(),
                   error: (message) => Center(child: Text('Error: $message')),
                   loaded: (bookings) {

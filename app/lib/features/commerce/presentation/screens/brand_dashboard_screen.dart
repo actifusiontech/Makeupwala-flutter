@@ -10,6 +10,10 @@ import '../../domain/brand_models.dart';
 import '../widgets/sales_chart_widget.dart';
 import '../widgets/top_products_chart_widget.dart';
 import 'add_product_screen.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'dart:ui';
 
 class BrandDashboardScreen extends StatelessWidget {
   const BrandDashboardScreen({super.key});
@@ -27,7 +31,27 @@ class BrandDashboardScreen extends StatelessWidget {
       body: BlocBuilder<BrandBloc, BrandState>(
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => SingleChildScrollView(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            child: Column(
+              children: [
+                ShimmerLoaders.profileHeader(),
+                const SizedBox(height: AppSpacing.lg),
+                GridView.count(
+                  crossAxisCount: 2,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: AppSpacing.md,
+                  crossAxisSpacing: AppSpacing.md,
+                  childAspectRatio: 1.5,
+                  children: List.generate(4, (index) => ShimmerLoaders.bookingCard()),
+                ),
+                const SizedBox(height: AppSpacing.lg),
+                ShimmerLoaders.listTile(),
+                ShimmerLoaders.listTile(),
+              ],
+            ),
+          ),
             loaded: (metrics, _) {
               if (metrics == null) {
                 return const Center(child: Text('No data available'));
@@ -41,9 +65,12 @@ class BrandDashboardScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildHeader(metrics),
-                      const SizedBox(height: AppSpacing.lg),
-                      _buildMetricsGrid(metrics),
+                      _buildBrandHeroHeader("Brand Partner"),
+                      const SizedBox(height: AppSpacing.xl),
+                      
+                      Text('Performance Analytics', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+                      const SizedBox(height: AppSpacing.md),
+                      _buildPremiumMetricsGrid(metrics),
                       const SizedBox(height: AppSpacing.lg),
                       // Sales Chart
                       if (metrics.revenueChart.isNotEmpty)
@@ -80,18 +107,80 @@ class BrandDashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(BrandDashboardMetrics metrics) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Welcome back!', style: AppTypography.titleLarge),
-        Text('Here is what\'s happening with your brand today.', 
-             style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary)),
-      ],
+  Widget _buildBrandHeroHeader(String brandName) {
+    return Container(
+      height: 180,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/hero_brand.png'),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withOpacity(0.2),
+            blurRadius: 15,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+              gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [
+                  Colors.black.withOpacity(0.7),
+                  Colors.black.withOpacity(0.1),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Text(
+                    'LUXURY PARTNER',
+                    style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
+                ).animate().fadeIn().scale(),
+                const SizedBox(height: 8),
+                Text(
+                  brandName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.5,
+                  ),
+                ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.2),
+                const SizedBox(height: 4),
+                Text(
+                  'Global Supply Chain Portal',
+                  style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 14),
+                ).animate().fadeIn(delay: 400.ms),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildMetricsGrid(BrandDashboardMetrics metrics) {
+  Widget _buildPremiumMetricsGrid(BrandDashboardMetrics metrics) {
     return GridView.count(
       crossAxisCount: 2,
       shrinkWrap: true,
@@ -100,35 +189,88 @@ class BrandDashboardScreen extends StatelessWidget {
       crossAxisSpacing: AppSpacing.md,
       childAspectRatio: 1.5,
       children: [
-        _MetricCard(
+        _buildPremiumMetricCard(
           title: 'Wholesale Sales',
           value: '₹${metrics.wholesaleSales.toStringAsFixed(0)}',
           subtitle: metrics.wholesaleChange,
-          icon: Icons.monetization_on,
+          icon: FontAwesomeIcons.buildingColumns,
           color: Colors.blue,
         ),
-        _MetricCard(
+        _buildPremiumMetricCard(
           title: 'Referral Orders',
           value: metrics.referralOrders.toString(),
           subtitle: metrics.referralChange,
-          icon: Icons.shopping_bag,
+          icon: FontAwesomeIcons.truckArrowRight,
           color: Colors.orange,
         ),
-        _MetricCard(
+        _buildPremiumMetricCard(
           title: 'Active Curators',
           value: metrics.activeCurators.toString(),
           subtitle: metrics.curatorsChange,
-          icon: Icons.people,
+          icon: FontAwesomeIcons.userCheck,
           color: Colors.green,
         ),
-        _MetricCard(
-          title: 'Pending Reviews',
+        _buildPremiumMetricCard(
+          title: 'Review Queue',
           value: metrics.pendingReviews.toString(),
-          subtitle: 'Applications',
-          icon: Icons.rate_review,
+          subtitle: 'Global',
+          icon: FontAwesomeIcons.clipboardCheck,
           color: Colors.purple,
         ),
       ],
+    );
+  }
+
+  Widget _buildPremiumMetricCard({
+    required String title,
+    required String value,
+    required String subtitle,
+    required IconData icon,
+    required Color color,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        border: Border.all(color: AppColors.grey100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              FaIcon(icon, color: color, size: 16),
+              Text(
+                subtitle,
+                style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                value,
+                style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              Text(
+                title,
+                style: AppTypography.labelSmall.copyWith(color: AppColors.textSecondary),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -218,26 +360,29 @@ class _MetricCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(icon, color: color, size: 20),
-              Text(subtitle, style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold)),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(value, style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
-              Text(title, style: AppTypography.bodySmall.copyWith(color: AppColors.textSecondary)),
-            ],
-          ),
-        ],
-      ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(icon, color: color, size: 16),
+                ),
+                Text(subtitle, style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold)),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(value, style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold, fontSize: 20)),
+            Text(title, style: AppTypography.bodySmall.copyWith(color: AppColors.textSecondary, fontSize: 11)),
+          ],
+        ),
       ),
     );
   }

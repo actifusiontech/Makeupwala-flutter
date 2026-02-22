@@ -6,6 +6,9 @@ import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import '../auth/bloc/auth_bloc.dart';
 import 'data/admin_repository.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class AdminDashboardScreen extends StatefulWidget {
   const AdminDashboardScreen({super.key});
@@ -69,22 +72,15 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                     children: [
                       const SizedBox(height: AppSpacing.xl),
                       
-                      // Welcome section
-                      Text(
-                        'Welcome, ${user.fullName}!',
-                        style: AppTypography.displaySmall,
-                      ),
+                      const SizedBox(height: AppSpacing.md),
                       
+                      // Premium Admin Hero Header
+                      _buildAdminHeroHeader(user.fullName),
+                      
+                      const SizedBox(height: AppSpacing.xl),
+                      
+                      Text('Platform Intelligence', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
                       const SizedBox(height: AppSpacing.sm),
-                      
-                      Text(
-                        'Admin Panel - Platform Overview',
-                        style: AppTypography.bodyLarge.copyWith(
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                      
-                      const SizedBox(height: AppSpacing.xxl),
                       
                       // Stats cards
                       Expanded(
@@ -93,39 +89,39 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                           crossAxisSpacing: AppSpacing.md,
                           mainAxisSpacing: AppSpacing.md,
                           children: [
-                            _buildStatCard(
+                            _buildPremiumAdminStatCard(
                               context,
                               'Users',
                               isLoading ? '...' : (stats['total_users']?.toString() ?? '0'),
-                              Icons.people,
+                              FontAwesomeIcons.users,
                               AppColors.primary,
                             ),
-                            _buildStatCard(
+                            _buildPremiumAdminStatCard(
                               context,
                               'Artists',
                               isLoading ? '...' : (stats['total_artists']?.toString() ?? '0'),
-                              Icons.brush,
+                              FontAwesomeIcons.palette,
                               AppColors.info,
                             ),
-                            _buildStatCard(
+                            _buildPremiumAdminStatCard(
                               context,
                               'Bookings',
                               isLoading ? '...' : (stats['total_bookings']?.toString() ?? '0'),
-                              Icons.calendar_today,
+                              FontAwesomeIcons.calendarCheck,
                               AppColors.warning,
                             ),
-                            _buildStatCard(
+                            _buildPremiumAdminStatCard(
                               context,
                               'Revenue',
                               isLoading ? '...' : '₹${stats['total_revenue'] ?? 0}',
-                              Icons.attach_money,
+                              FontAwesomeIcons.indianRupeeSign,
                               AppColors.success,
                             ),
-                            _buildStatCard(
+                            _buildPremiumAdminStatCard(
                               context,
                               'Complaints',
                               'Manage',
-                              Icons.report_problem,
+                              FontAwesomeIcons.circleExclamation,
                               AppColors.error,
                               onTap: () => context.push('/admin/complaints'),
                             ),
@@ -137,8 +133,22 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 );
               },
             ),
-            orElse: () => const Center(
-              child: CircularProgressIndicator(),
+            orElse: () => Padding(
+              padding: const EdgeInsets.all(AppSpacing.screenPadding),
+              child: Column(
+                children: [
+                  ShimmerLoaders.listTile(),
+                  const SizedBox(height: AppSpacing.xl),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: AppSpacing.md,
+                      mainAxisSpacing: AppSpacing.md,
+                      children: List.generate(4, (index) => ShimmerLoaders.bookingCard()),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -146,7 +156,80 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     );
   }
 
-  Widget _buildStatCard(
+  Widget _buildAdminHeroHeader(String name) {
+    return Container(
+      height: 180,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/hero_customer.png'), // Using customer luxury as representative for admin
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withOpacity(0.2),
+            blurRadius: 15,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+              gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [
+                  Colors.black.withOpacity(0.7),
+                  Colors.black.withOpacity(0.1),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Text(
+                    'PLATFORM DIRECTOR',
+                    style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
+                ).animate().fadeIn().scale(),
+                const SizedBox(height: 8),
+                Text(
+                  'Hello, $name',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.5,
+                  ),
+                ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.2),
+                const SizedBox(height: 4),
+                Text(
+                  'Real-time Platform Monitoring Active',
+                  style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 14),
+                ).animate().fadeIn(delay: 400.ms),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPremiumAdminStatCard(
     BuildContext context,
     String title,
     String value,
@@ -154,10 +237,18 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     Color color, {
     VoidCallback? onTap,
   }) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        border: Border.all(color: AppColors.grey100),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.02),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: InkWell(
         onTap: onTap,
@@ -167,17 +258,27 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 48, color: color),
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: FaIcon(icon, color: color, size: 20),
+              ),
               const SizedBox(height: AppSpacing.sm),
               Text(
                 value,
-                style: AppTypography.headlineMedium.copyWith(color: color),
+                style: AppTypography.titleLarge.copyWith(
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              const SizedBox(height: AppSpacing.xs),
               Text(
                 title,
-                style: AppTypography.bodyMedium.copyWith(
+                style: AppTypography.labelSmall.copyWith(
                   color: AppColors.textSecondary,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],

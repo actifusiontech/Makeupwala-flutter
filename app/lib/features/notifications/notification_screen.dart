@@ -6,6 +6,7 @@ import 'package:app/shared/theme/app_spacing.dart';
 import 'bloc/notification_bloc.dart';
 import 'data/notification_repository.dart';
 import 'domain/notification_model.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -36,7 +37,12 @@ class _NotificationView extends StatelessWidget {
         builder: (context, state) {
           return state.when(
             initial: () => const SizedBox(),
-            loading: () => const Center(child: CircularProgressIndicator()),
+            loading: () => Padding(
+              padding: const EdgeInsets.all(AppSpacing.screenPadding),
+              child: Column(
+                children: List.generate(5, (index) => ShimmerLoaders.listTile()),
+              ),
+            ),
             error: (message) => Center(child: Text('Error: $message')),
             loaded: (notifications) {
               if (notifications.isEmpty) {

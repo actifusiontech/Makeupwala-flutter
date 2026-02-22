@@ -8,6 +8,8 @@ import 'package:app/shared/theme/app_spacing.dart';
 import 'package:app/features/booking/bloc/booking_bloc.dart';
 import 'package:app/features/booking/data/booking_repository.dart';
 import 'package:app/core/services/pdf_service.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'dart:ui';
 
 class BookingDetailsScreen extends StatelessWidget {
   final String bookingId;
@@ -47,10 +49,29 @@ class BookingDetailsScreen extends StatelessWidget {
           },
           builder: (context, state) {
             return state.maybeWhen(
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => Padding(
+                padding: const EdgeInsets.all(AppSpacing.screenPadding),
+                child: Column(
+                  children: [
+                    ShimmerLoaders.profileHeader(),
+                    const SizedBox(height: AppSpacing.xl),
+                    ShimmerLoaders.listTile(),
+                    ShimmerLoaders.listTile(),
+                  ],
+                ),
+              ),
               bookingDetailsLoaded: (booking) => _buildContent(context, booking),
               error: (message) => Center(child: Text(message)),
-              orElse: () => const Center(child: CircularProgressIndicator()),
+              orElse: () => Padding(
+                padding: const EdgeInsets.all(AppSpacing.screenPadding),
+                child: Column(
+                  children: [
+                    ShimmerLoaders.profileHeader(),
+                    const SizedBox(height: AppSpacing.xl),
+                    ShimmerLoaders.listTile(),
+                  ],
+                ),
+              ),
             );
           },
         ),

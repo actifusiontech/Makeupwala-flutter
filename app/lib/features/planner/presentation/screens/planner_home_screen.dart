@@ -8,9 +8,13 @@ import '../../../../features/auth/bloc/auth_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../data/planner_repository.dart';
 import '../../../../core/network/api_client.dart';
+import 'planner_logistics_screen.dart';
 import 'squad_management_screen.dart';
 import 'escrow_payment_screen.dart';
-import 'planner_logistics_screen.dart';
+import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'dart:ui';
 
 class PlannerHomeScreen extends StatefulWidget {
   const PlannerHomeScreen({super.key});
@@ -107,20 +111,29 @@ class _PlannerDashboard extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(AppSpacing.screenPadding),
       children: [
+        const SizedBox(height: AppSpacing.xl),
+        
+        // Premium Planner Hero Header
+        _buildPlannerHeroHeader(),
+        
+        const SizedBox(height: AppSpacing.xl),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Active Weddings', style: AppTypography.headlineMedium),
-            IconButton(icon: const Icon(Icons.refresh), onPressed: onRefresh),
+            Text('Active Weddings', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+            IconButton(icon: const Icon(Icons.refresh, size: 18, color: AppColors.primary), onPressed: onRefresh),
           ],
         ),
-        const SizedBox(height: AppSpacing.md),
+        const SizedBox(height: AppSpacing.sm),
         
         FutureBuilder<List<dynamic>>(
           future: bookingsFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return Column(
+                children: List.generate(3, (index) => ShimmerLoaders.bookingCard()),
+              );
             }
             if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
@@ -163,45 +176,45 @@ class _PlannerDashboard extends StatelessWidget {
           },
         ),
 
-        const SizedBox(height: AppSpacing.lg),
-        Text('Quick Actions', style: AppTypography.titleLarge),
-        const SizedBox(height: 8),
+        const SizedBox(height: AppSpacing.xl),
+        Text('Wedding Command Center', style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold)),
+        const SizedBox(height: AppSpacing.md),
         
-        Row(
+        GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: AppSpacing.md,
+          crossAxisSpacing: AppSpacing.md,
+          childAspectRatio: 1.4,
           children: [
-             Expanded(
-              child: _ActionCard(
-                icon: Icons.add_circle,
-                color: Colors.pink,
-                label: 'New Wedding',
-                onTap: () {
-                   context.push('/planner/create-logistics').then((_) => onRefresh());
-                },
-              ),
+            _buildCommandCard(
+              context,
+              'New Wedding',
+              FontAwesomeIcons.calendarPlus,
+              Colors.pink,
+              () => context.push('/planner/create-logistics').then((_) => onRefresh()),
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _ActionCard(
-                icon: Icons.person_add,
-                color: Colors.blue,
-                label: 'Add Artists',
-                onTap: () {
-                  context.push('/customer/home');
-                },
-              ),
+            _buildCommandCard(
+              context,
+              'Squad Builder',
+              FontAwesomeIcons.usersGear,
+              Colors.blue,
+              () => context.push('/customer/home'),
             ),
-             const SizedBox(width: 12),
-            Expanded(
-              child: _ActionCard(
-                icon: Icons.description,
-                color: Colors.green,
-                label: 'Visa Docs',
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Visa Document module integrated. Uploading to secure server...')),
-                  );
-                },
-              ),
+            _buildCommandCard(
+              context,
+              'Logistics',
+              FontAwesomeIcons.planeUp,
+              Colors.indigo,
+              () => context.push('/planner/logistics'),
+            ),
+            _buildCommandCard(
+              context,
+              'Escrow',
+              FontAwesomeIcons.vault,
+              Colors.green,
+              () => context.push('/planner/escrow'),
             ),
           ],
         ),
@@ -227,39 +240,71 @@ class _WeddingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(child: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                Expanded(child: Text(title, style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.bold))),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(color: Colors.orange[100], borderRadius: BorderRadius.circular(8)),
-                  child: Text(status, style: TextStyle(color: Colors.orange[800], fontSize: 12)),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.deepOrange.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    status.toUpperCase(),
+                    style: TextStyle(color: Colors.deepOrange[700], fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             Row(
               children: [
-                const Icon(Icons.calendar_today, size: 14, color: Colors.grey),
-                const SizedBox(width: 4),
-                Text(date, style: const TextStyle(color: Colors.grey)),
-                const SizedBox(width: 16),
-                const Icon(Icons.location_on, size: 14, color: Colors.grey),
-                const SizedBox(width: 4),
-                Text(location, style: const TextStyle(color: Colors.grey)),
+                Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey[600]),
+                const SizedBox(width: 6),
+                Text(date, style: TextStyle(color: Colors.grey[600], fontSize: 13)),
+                const SizedBox(width: 20),
+                Icon(Icons.location_on_outlined, size: 14, color: Colors.grey[600]),
+                const SizedBox(width: 6),
+                Text(location, style: TextStyle(color: Colors.grey[600], fontSize: 13)),
               ],
             ),
-            const SizedBox(height: 12),
-            LinearProgressIndicator(value: progress, backgroundColor: Colors.grey[200], color: Colors.deepOrange),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Coordination Progress', style: AppTypography.bodySmall.copyWith(fontWeight: FontWeight.w600)),
+                Text('${(progress * 100).toInt()}%', style: AppTypography.bodySmall.copyWith(fontWeight: FontWeight.bold, color: Colors.deepOrange)),
+              ],
+            ),
+            const SizedBox(height: 8),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: progress,
+                minHeight: 8,
+                backgroundColor: Colors.grey[100],
+                color: Colors.deepOrange,
+              ),
+            ),
           ],
         ),
       ),
@@ -267,33 +312,119 @@ class _WeddingCard extends StatelessWidget {
   }
 }
 
-class _ActionCard extends StatelessWidget {
-  final IconData icon;
-  final Color color;
-  final String label;
-  final VoidCallback onTap;
-
-  const _ActionCard({required this.icon, required this.color, required this.label, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-          color: Colors.grey[50], // White background
-          border: Border.all(color: Colors.grey[300]!),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          children: [
-            Icon(icon, color: color, size: 28),
-            const SizedBox(height: 8),
-            Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-          ],
-        ),
+Widget _buildPlannerHeroHeader() {
+  return Container(
+    height: 180,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+      image: const DecorationImage(
+        image: AssetImage('assets/images/hero_planner.png'),
+        fit: BoxFit.cover,
       ),
-    );
-  }
+      boxShadow: [
+        BoxShadow(
+          color: Colors.deepOrange.withOpacity(0.2),
+          blurRadius: 15,
+          offset: const Offset(0, 8),
+        ),
+      ],
+    ),
+    child: Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+            gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              colors: [
+                Colors.black.withOpacity(0.7),
+                Colors.black.withOpacity(0.1),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Colors.deepOrange,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Text(
+                  'DESTINATION EXPERT',
+                  style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                ),
+              ).animate().fadeIn().scale(),
+              const SizedBox(height: 8),
+              const Text(
+                'Wedding Command Center',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: -0.5,
+                ),
+              ).animate().fadeIn(delay: 200.ms).slideX(begin: -0.2),
+              const SizedBox(height: 4),
+              Text(
+                'Coordinating 4 active luxury events',
+                style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 14),
+              ).animate().fadeIn(delay: 400.ms),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _buildCommandCard(
+  BuildContext context,
+  String title,
+  IconData icon,
+  Color color,
+  VoidCallback onTap,
+) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+        border: Border.all(color: AppColors.grey100),
+        boxShadow: [
+          BoxShadow(
+            color: color.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: FaIcon(icon, color: color, size: 20),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            title,
+            style: AppTypography.labelLarge.copyWith(fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    ),
+  );
 }
