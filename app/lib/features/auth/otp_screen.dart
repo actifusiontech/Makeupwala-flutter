@@ -200,6 +200,7 @@ class _OtpScreenState extends State<OtpScreen> {
           counterText: '',
           filled: true,
           fillColor: AppColors.grey100,
+          contentPadding: EdgeInsets.zero,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
             borderSide: BorderSide.none,
