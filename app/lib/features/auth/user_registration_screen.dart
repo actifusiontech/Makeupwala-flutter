@@ -9,7 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
-  const UserRegistrationScreen({super.key});
+  final String? phoneNumber;
+  const UserRegistrationScreen({super.key, this.phoneNumber});
 
   @override
   State<UserRegistrationScreen> createState() => _UserRegistrationScreenState();
@@ -26,6 +27,13 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   // Luxury Gold & Rose Palette
   static const Color _kDarkGold = Color(0xFFC5A028);
   static const Color _kTextDark = Color(0xFF2C2C2C);
+  @override
+  void initState() {
+    super.initState();
+    if (widget.phoneNumber != null) {
+      _phoneController.text = widget.phoneNumber!;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

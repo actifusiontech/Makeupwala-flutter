@@ -69,6 +69,18 @@ class _OtpScreenState extends State<OtpScreen> {
             // Navigate to role selection
             context.go('/role-selection');
           },
+          needsRegistration: (phone) {
+            setState(() => _isLoading = false);
+            _clearOtpInputs();
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Mobile number is not registered. Initiating registration flow...'),
+                backgroundColor: AppColors.primary,
+              ),
+            );
+            // Navigate to registration with phone
+            context.go('/register', extra: phone);
+          },
           authenticated: (user) {
             setState(() => _isLoading = false);
             // User already has a role, go to home

@@ -138,7 +138,10 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
         GoRoute(
           path: '/register',
           name: 'register',
-          builder: (context, state) => const UserRegistrationScreen(),
+          builder: (context, state) {
+            final phone = state.extra as String?;
+            return UserRegistrationScreen(phoneNumber: phone);
+          },
         ),
         GoRoute(
           path: '/role-selection',

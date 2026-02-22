@@ -41,13 +41,32 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     developer.log('📝 Register requested: $email, $phone', name: 'AuthBloc');
     emit(const AuthState.loading());
     try {
-      await _apiClient.dio.post('/auth/register', data: {
+      final response = await _apiClient.dio.post('/auth/register', data: {
         'full_name': fullName,
         'email': email,
         'phone': phone,
         'password': password,
         'role': role,
       });
+
+      final data = response.data;
+
+      // Handle Auto-Login if OTP was skipped (pre-verified numbers)
+      if (data['login_response'] != null) {
+        developer.log('🚀 Registration skipped OTP (pre-verified). Auto-logging in...', name: 'AuthBloc');
+        final loginData = data['login_response'] as Map<String, dynamic>;
+        final token = loginData['access_token'] as String;
+        final refreshToken = loginData['refresh_token'] as String;
+        final userData = loginData['user'] as Map<String, dynamic>;
+
+        await _secureStorage.write(key: 'auth_token', value: token);
+        await _secureStorage.write(key: 'refresh_token', value: refreshToken);
+
+        final user = User.fromJson(userData);
+        emit(AuthState.authenticated(user: user));
+        return;
+      }
+
       emit(AuthState.otpSent(phoneNumber: phone));
     } catch (e) {
       developer.log('❌ Register error: $e', name: 'AuthBloc');
@@ -192,6 +211,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       
       developer.log('📦 Response data: ${response.data}', name: 'AuthBloc');
       final data = response.data;
+      
+      if (data['requires_registration'] == true) {
+        developer.log('🆕 User needs registration', name: 'AuthBloc');
+        ApiClient.addDebugLog('🆕 User needs registration for phone: $phone');
+        emit(AuthState.needsRegistration(phoneNumber: phone));
+        return;
+      }
+
       final token = data['access_token'] as String;
       final refreshToken = data['refresh_token'] as String;
       final userData = data['user'] as Map<String, dynamic>;
