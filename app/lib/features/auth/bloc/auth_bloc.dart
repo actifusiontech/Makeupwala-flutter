@@ -5,7 +5,7 @@ import 'dart:developer' as developer;
 import '../../../core/models/user.dart';
 import '../../../core/network/api_client.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:firebase_auth/firebase_auth.dart' hide User;
 part 'auth_event.dart';
 part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
@@ -218,17 +218,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         }
 
         final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-        final String? idToken = googleAuth.idToken;
-        final String? accessToken = googleAuth.accessToken;
+        
+        // Authenticate with Firebase using Google credentials
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+        
+        final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+        final String? firebaseIdToken = await userCredential.user?.getIdToken();
 
-        if (idToken == null) {
-           throw Exception('Failed to retrieve Google ID Token');
+        if (firebaseIdToken == null) {
+           throw Exception('Failed to retrieve Firebase ID Token');
         }
 
-        developer.log('📞 Calling /auth/google-login', name: 'AuthBloc');
+        developer.log('📞 Calling /auth/google-login with Firebase ID token', name: 'AuthBloc');
         final response = await _apiClient.dio.post('/auth/google-login', data: {
-          'id_token': idToken,
-          'access_token': accessToken,
+          'id_token': firebaseIdToken,
+          'access_token': googleAuth.accessToken,
           'email': googleUser.email,
           'displayName': googleUser.displayName,
           'photoUrl': googleUser.photoUrl,
