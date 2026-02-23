@@ -20,7 +20,16 @@ class WalletScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Wallet'),
-        backgroundColor: AppColors.primary,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.primary, AppColors.primaryDark],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         foregroundColor: AppColors.white,
       ),
       body: BlocConsumer<WalletBloc, WalletState>(
@@ -99,35 +108,77 @@ class WalletScreen extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(AppSpacing.xl),
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [AppColors.primary, AppColors.primary.withValues(alpha: 0.8)],
+                        gradient: const LinearGradient(
+                          colors: [AppColors.primary, AppColors.secondary],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(24),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.primary.withValues(alpha: 0.3),
-                            blurRadius: 10,
-                            offset: const Offset(0, 4),
+                            color: AppColors.primary.withOpacity(0.3),
+                            blurRadius: 20,
+                            offset: const Offset(0, 10),
                           ),
                         ],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Stack(
                         children: [
-                          const Text(
-                            'Available Balance',
-                            style: TextStyle(color: Colors.white70, fontSize: 16),
-                          ),
-                          const SizedBox(height: AppSpacing.sm),
-                          Text(
-                            '$currency ${balance.toStringAsFixed(2)}',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
+                          Positioned(
+                            right: -20,
+                            top: -20,
+                            child: Icon(
+                              Icons.account_balance_wallet,
+                              size: 150,
+                              color: Colors.white.withOpacity(0.1),
                             ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text(
+                                    'Available Balance',
+                                    style: TextStyle(color: Colors.white70, fontSize: 16, letterSpacing: 1.2),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.2),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: const Text(
+                                      'PRIMARY',
+                                      style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: AppSpacing.md),
+                              Text(
+                                '$currency ${balance.toStringAsFixed(2)}',
+                                style: AppTypography.displayMedium.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: [
+                                    Shadow(color: Colors.black.withOpacity(0.2), blurRadius: 4, offset: const Offset(0, 2)),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: AppSpacing.lg),
+                              Row(
+                                children: [
+                                  const Icon(Icons.shield, color: Colors.white70, size: 14),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    'Secured by RazorpayX',
+                                    style: AppTypography.bodySmall.copyWith(color: Colors.white70),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -190,32 +241,59 @@ class WalletScreen extends StatelessWidget {
                         ),
                       )
                     else
-                      ListView.builder(
+                      ListView.separated(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: transactions.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.sm),
                         itemBuilder: (context, index) {
                           final tx = transactions[index];
                           final isCredit = tx['type'] == 'credit';
-                          return ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: CircleAvatar(
-                              backgroundColor: isCredit
-                                  ? AppColors.success.withValues(alpha: 0.1)
-                                  : AppColors.error.withValues(alpha: 0.1),
-                              child: Icon(
-                                isCredit ? Icons.add : Icons.remove,
-                                color: isCredit ? AppColors.success : AppColors.error,
-                              ),
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(color: AppColors.grey100),
                             ),
-                            title: Text(tx['description'] ?? 'Transaction'),
-                            subtitle: Text(tx['date'] ?? ''),
-                            trailing: Text(
-                              '${isCredit ? '+' : '-'} ₹${tx['amount']}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: isCredit ? AppColors.success : AppColors.error,
-                                fontSize: 16,
+                            child: ListTile(
+                              contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 4),
+                              leading: Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: isCredit
+                                      ? AppColors.success.withOpacity(0.1)
+                                      : AppColors.error.withOpacity(0.1),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  isCredit ? Icons.add_rounded : Icons.remove_rounded,
+                                  color: isCredit ? AppColors.success : AppColors.error,
+                                ),
+                              ),
+                              title: Text(tx['description'] ?? 'Transaction', style: AppTypography.titleSmall),
+                              subtitle: Text(tx['date'] ?? '', style: AppTypography.bodySmall),
+                              trailing: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '${isCredit ? '+' : '-'} ₹${tx['amount']}',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: isCredit ? AppColors.success : AppColors.error,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  if (tx['status'] != null)
+                                    Text(
+                                      tx['status'].toString().toUpperCase(),
+                                      style: TextStyle(
+                                        fontSize: 8,
+                                        fontWeight: FontWeight.bold,
+                                        color: tx['status'] == 'completed' ? AppColors.success : AppColors.warning,
+                                      ),
+                                    ),
+                                ],
                               ),
                             ),
                           );

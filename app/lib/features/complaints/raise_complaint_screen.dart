@@ -54,37 +54,88 @@ class _RaiseComplaintScreenState extends State<RaiseComplaintScreen> {
             backgroundColor: AppColors.white,
             appBar: AppBar(
               title: const Text('Raise Complaint'),
-              backgroundColor: AppColors.primary,
+              elevation: 0,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [AppColors.primary, AppColors.primaryDark],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
               foregroundColor: AppColors.white,
             ),
             body: SingleChildScrollView(
               padding: const EdgeInsets.all(AppSpacing.screenPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Booking ID: ${widget.bookingId}', style: AppTypography.titleMedium),
-                  const SizedBox(height: AppSpacing.lg),
-                  
-                  Text('Subject', style: AppTypography.titleMedium),
-                  const SizedBox(height: AppSpacing.sm),
-                  TextField(
-                    controller: _subjectController,
-                    decoration: const InputDecoration(
-                      hintText: 'Brief subject of the issue',
-                      border: OutlineInputBorder(),
+                  Container(
+                    padding: const EdgeInsets.all(AppSpacing.md),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withOpacity(0.05),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: AppColors.primary.withOpacity(0.1)),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.receipt_long_outlined, color: AppColors.primary),
+                        const SizedBox(width: 12),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Booking ID', style: AppTypography.labelSmall.copyWith(color: AppColors.grey500)),
+                            Text(widget.bookingId, style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
+                  const SizedBox(height: AppSpacing.xl),
+                  
+                  Text('Issue Category', style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: AppSpacing.md),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: ['Payment', 'Artist', 'App Issue', 'Other'].map((cat) {
+                        final isSelected = _subjectController.text == cat;
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: ActionChip(
+                            label: Text(cat),
+                            backgroundColor: isSelected ? AppColors.primary : AppColors.grey100,
+                            labelStyle: TextStyle(
+                              color: isSelected ? Colors.white : AppColors.textPrimary,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                            onPressed: () => setState(() => _subjectController.text = cat),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.xl),
                   
                   const SizedBox(height: AppSpacing.lg),
                   
-                  Text('Description', style: AppTypography.titleMedium),
+                  Text('Detailed Description', style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.bold)),
                   const SizedBox(height: AppSpacing.sm),
                   TextField(
                     controller: _descriptionController,
                     maxLines: 5,
-                    decoration: const InputDecoration(
-                      hintText: 'Describe the issue in detail...',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      hintText: 'Tell us what happened...',
+                      filled: true,
+                      fillColor: AppColors.grey50,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: AppColors.grey200),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide(color: AppColors.grey200),
+                      ),
                     ),
                   ),
                   
@@ -98,7 +149,7 @@ class _RaiseComplaintScreenState extends State<RaiseComplaintScreen> {
                         orElse: () => () {
                           if (_subjectController.text.isEmpty || _descriptionController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Please fill all fields')),
+                              const SnackBar(content: Text('Please select category and describe issue')),
                             );
                             return;
                           }
@@ -115,6 +166,9 @@ class _RaiseComplaintScreenState extends State<RaiseComplaintScreen> {
                         backgroundColor: AppColors.primary,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        elevation: 4,
+                        shadowColor: AppColors.primary.withOpacity(0.3),
                       ),
                       child: state.maybeWhen(
                         submitting: () => const SizedBox(

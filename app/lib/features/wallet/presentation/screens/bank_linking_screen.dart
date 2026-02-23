@@ -35,7 +35,16 @@ class _BankLinkingScreenState extends State<BankLinkingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Link Bank Account'),
-        backgroundColor: AppColors.primary,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.primary, AppColors.primaryDark],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         foregroundColor: AppColors.white,
       ),
       body: BlocListener<WalletBloc, WalletState>(
@@ -62,23 +71,24 @@ class _BankLinkingScreenState extends State<BankLinkingScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                _buildHeader(
                   'Onboarding Details',
-                  style: AppTypography.titleLarge,
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                const Text(
-                  'These details are required for Razorpay KYC and direct chargeback handling.',
-                  style: TextStyle(color: Colors.grey),
+                  'Required for Razorpay KYC and secure payouts.',
                 ),
                 const SizedBox(height: AppSpacing.lg),
 
                 // Business Info
-                _buildTextField(_businessNameController, 'Legal Business Name', 'Enter name as per PAN'),
+                _buildTextField(_businessNameController, 'Legal Business Name', 'Enter name as per PAN', Icons.business_outlined),
                 const SizedBox(height: AppSpacing.md),
                 DropdownButtonFormField<String>(
                   value: _businessType,
-                  decoration: const InputDecoration(labelText: 'Business Type'),
+                  decoration: InputDecoration(
+                    labelText: 'Business Type',
+                    prefixIcon: const Icon(Icons.category_outlined, color: AppColors.primary, size: 20),
+                    filled: true,
+                    fillColor: AppColors.grey50,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
+                  ),
                   items: [
                     'individual',
                     'proprietorship',
@@ -92,19 +102,19 @@ class _BankLinkingScreenState extends State<BankLinkingScreen> {
                   onChanged: (val) => setState(() => _businessType = val!),
                 ),
                 const SizedBox(height: AppSpacing.md),
-                _buildTextField(_panController, 'PAN Number', 'Enter 10-digit PAN'),
+                _buildTextField(_panController, 'PAN Number', '10-digit PAN', Icons.credit_card_outlined),
                 const SizedBox(height: AppSpacing.md),
-                _buildTextField(_emailController, 'Business Email', 'Email for Razorpay notifications'),
+                _buildTextField(_emailController, 'Business Email', 'Email for notifications', Icons.email_outlined),
                 
                 const SizedBox(height: AppSpacing.xl),
-                Text('Bank Details', style: AppTypography.titleLarge),
+                _buildHeader('Bank Details', 'Enter the account where you want to receive funds.'),
                 const SizedBox(height: AppSpacing.md),
                 
-                _buildTextField(_accountNameController, 'Account Holder Name', 'Name as per Bank Record'),
+                _buildTextField(_accountNameController, 'Account Holder Name', 'Name as per Bank Record', Icons.person_outline),
                 const SizedBox(height: AppSpacing.md),
-                _buildTextField(_accountNumberController, 'Account Number', 'Valid Bank Account Number'),
+                _buildTextField(_accountNumberController, 'Account Number', 'Valid Bank Account Number', Icons.account_balance_outlined),
                 const SizedBox(height: AppSpacing.md),
-                _buildTextField(_ifscController, 'IFSC Code', '11-digit IFSC code'),
+                _buildTextField(_ifscController, 'IFSC Code', '11-digit IFSC code', Icons.code_rounded),
                 
                 const SizedBox(height: AppSpacing.xxl),
                 
@@ -136,16 +146,43 @@ class _BankLinkingScreenState extends State<BankLinkingScreen> {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String label, String hint) {
+  Widget _buildHeader(String title, String subtitle) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title, style: AppTypography.headlineSmall.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 4),
+        Text(subtitle, style: AppTypography.bodySmall.copyWith(color: AppColors.grey500)),
+        const Divider(height: 32),
+      ],
+    );
+  }
+
+  Widget _buildTextField(TextEditingController controller, String label, String hint, [IconData? icon]) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        prefixIcon: icon != null ? Icon(icon, color: AppColors.primary, size: 20) : null,
+        filled: true,
+        fillColor: AppColors.grey50,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: AppColors.grey200),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: AppColors.grey200),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppColors.primary, width: 2),
+        ),
+        labelStyle: const TextStyle(color: AppColors.grey600),
       ),
       validator: (val) {
-        if (val == null || val.isEmpty) return 'This field is required';
+        if (val == null || val.isEmpty) return 'Required';
         return null;
       },
     );

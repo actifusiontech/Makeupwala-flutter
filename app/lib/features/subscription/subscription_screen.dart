@@ -32,8 +32,17 @@ class _SubscriptionView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text('Subscriptions'),
-        backgroundColor: AppColors.primary,
+        title: const Text('Subscription'),
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.primary, AppColors.primaryDark],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         foregroundColor: AppColors.white,
       ),
       body: BlocConsumer<SubscriptionBloc, SubscriptionState>(
@@ -108,58 +117,102 @@ class _SubscriptionView extends StatelessWidget {
         ),
       );
     }
-    return Card(
-      color: AppColors.primary.withOpacity(0.1),
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [AppColors.primary, AppColors.secondary],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.md),
+        padding: const EdgeInsets.all(AppSpacing.xl),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Current Plan', style: AppTypography.titleMedium),
-                Chip(
-                  label: Text(
-                    subscription['status']?.toUpperCase() ?? 'ACTIVE',
-                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'CURRENT PLAN',
+                      style: AppTypography.labelSmall.copyWith(color: Colors.white70, letterSpacing: 1.2),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subscription['plan_name'] ?? 'Premium',
+                      style: AppTypography.headlineSmall.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  backgroundColor: subscription['status'] == 'active' 
-                      ? AppColors.success 
-                      : AppColors.warning,
-                  padding: EdgeInsets.zero,
+                  child: Text(
+                    (subscription['status'] ?? 'ACTIVE').toUpperCase(),
+                    style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              subscription['plan_name'] ?? 'Unknown Plan',
-              style: AppTypography.headlineMedium.copyWith(color: AppColors.primary),
+            const SizedBox(height: AppSpacing.lg),
+            Row(
+              children: [
+                const Icon(Icons.calendar_today_outlined, color: Colors.white70, size: 14),
+                const SizedBox(width: 8),
+                Text(
+                  'Expires: ${subscription['end_date'] ?? 'Never'}',
+                  style: const TextStyle(color: Colors.white70, fontSize: 13),
+                ),
+              ],
             ),
-            const SizedBox(height: AppSpacing.sm),
-            Text('Expires: ${subscription['end_date'] ?? 'Never'}'),
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: AppSpacing.xl),
             
-            // Quota Widget
-            QuotaProgressWidget(
-               used: (subscription['max_contacts'] ?? 100) - (subscription['remaining_contacts'] ?? 0), 
-               total: subscription['max_contacts'] ?? 100,
+            // Quota Widget with white theme
+            Theme(
+              data: Theme.of(context).copyWith(
+                textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.white, displayColor: Colors.white),
+              ),
+              child: QuotaProgressWidget(
+                 used: (subscription['max_contacts'] ?? 100) - (subscription['remaining_contacts'] ?? 0), 
+                 total: subscription['max_contacts'] ?? 100,
+              ),
             ),
 
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: AppSpacing.lg),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 if (subscription['status'] == 'active')
-                  OutlinedButton(
+                  TextButton.icon(
                     onPressed: () => _showPauseDialog(context),
-                    child: const Text('Pause Subscription'),
+                    icon: const Icon(Icons.pause_circle_outline, color: Colors.white),
+                    label: const Text('Pause Subscription', style: TextStyle(color: Colors.white)),
                   )
                 else if (subscription['status'] == 'paused')
                   ElevatedButton(
                     onPressed: () {
                       context.read<SubscriptionBloc>().add(const SubscriptionEvent.resumeSubscription());
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: AppColors.primary,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
                     child: const Text('Resume Subscription'),
                   ),
               ],

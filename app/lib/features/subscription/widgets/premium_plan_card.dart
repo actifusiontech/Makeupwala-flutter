@@ -23,71 +23,105 @@ class PremiumPlanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: isCurrentPlan ? 8 : 4,
-      color: isCurrentPlan ? AppColors.primary.withOpacity(0.05) : Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: isCurrentPlan 
-            ? const BorderSide(color: AppColors.primary, width: 2) 
-            : BorderSide.none,
+    return Container(
+      decoration: BoxDecoration(
+        color: isCurrentPlan ? AppColors.white : AppColors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: isCurrentPlan ? AppColors.primary : AppColors.grey200,
+          width: isCurrentPlan ? 2 : 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isCurrentPlan 
+                ? AppColors.primary.withOpacity(0.1) 
+                : AppColors.black.withOpacity(0.05),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (isCurrentPlan)
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      child: Stack(
+        children: [
+          if (isCurrentPlan)
+            Positioned(
+              right: 12,
+              top: 12,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text(
-                  'CURRENT PLAN',
-                  style: AppTypography.labelSmall.copyWith(color: Colors.white),
+                child: const Text(
+                  'ACTIVE',
+                  style: TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
                 ),
               ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            ),
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(planName, style: AppTypography.headlineSmall),
                 Text(
-                  '₹$price', 
+                  planName, 
                   style: AppTypography.headlineSmall.copyWith(
-                    color: AppColors.primary,
                     fontWeight: FontWeight.bold,
+                    color: isCurrentPlan ? AppColors.primary : AppColors.textPrimary,
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      '₹$price', 
+                      style: AppTypography.headlineMedium.copyWith(
+                        color: AppColors.textPrimary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      '/ month',
+                      style: AppTypography.bodySmall.copyWith(color: AppColors.grey500),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: AppSpacing.md),
+                Text(
+                  description, 
+                  style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary),
+                ),
+                const SizedBox(height: AppSpacing.xl),
+                _buildFeatureList(),
+                const SizedBox(height: AppSpacing.xl),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: isCurrentPlan ? null : onSubscribe,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: isCurrentPlan ? AppColors.grey100 : AppColors.primary,
+                      foregroundColor: isCurrentPlan ? AppColors.grey500 : Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      elevation: isCurrentPlan ? 0 : 4,
+                      shadowColor: AppColors.primary.withOpacity(0.4),
+                    ),
+                    child: Text(
+                      isCurrentPlan ? 'Current Subscription' : 'Upgrade to $planName',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: AppSpacing.sm),
-            Text(description, style: AppTypography.bodyMedium),
-            const SizedBox(height: AppSpacing.lg),
-            _buildFeatureList(),
-            const SizedBox(height: AppSpacing.lg),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: isCurrentPlan ? null : onSubscribe,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  isCurrentPlan ? 'Active Plan' : 'Upgrade Now',
-                  style: AppTypography.titleMedium.copyWith(color: Colors.white),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -14,17 +14,25 @@ class CorporateLandingScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Makeupwala for Business'),
-        backgroundColor: Colors.white,
+        title: const Text('Corporate Services'),
         elevation: 0,
-        foregroundColor: Colors.black,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.primary, AppColors.primaryDark],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        foregroundColor: AppColors.white,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Hero
             Container(
-              height: 250,
+              height: 280,
               width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -35,29 +43,46 @@ class CorporateLandingScreen extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.black.withOpacity(0.7), Colors.transparent],
+                    colors: [
+                      AppColors.primary.withOpacity(0.8),
+                      AppColors.primaryDark.withOpacity(0.4),
+                      Colors.transparent
+                    ],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),
                 ),
                 padding: const EdgeInsets.all(24),
-                alignment: Alignment.bottomLeft,
-                child: const Column(
-                  mainAxisSize: MainAxisSize.min,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Premium Corporate Services',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.white.withOpacity(0.3)),
+                      ),
+                      child: const Text(
+                        'FOR BUSINESS',
+                        style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1.2),
                       ),
                     ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Weddings • Fashion Shows • Corporate Shoots',
-                      style: TextStyle(color: Colors.white70, fontSize: 16),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Luxury Events,\nSimplified.',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        height: 1.1,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Exclusive B2B rates for high-fashion, weddings and corporate shoots.',
+                      style: TextStyle(color: Colors.white70, fontSize: 14),
                     ),
                   ],
                 ),
@@ -65,14 +90,20 @@ class CorporateLandingScreen extends StatelessWidget {
             ),
             
             Padding(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    'Management Tools',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+                  ),
+                  const SizedBox(height: 20),
                   _ActionCard(
-                    title: 'Partner with Us',
-                    subtitle: 'Register your company for exclusive B2B rates and priority booking.',
-                    icon: Icons.business,
-                    color: Colors.blue,
+                    title: 'B2B Partnership',
+                    subtitle: 'Register for exclusive rates and priority booking.',
+                    icon: Icons.business_center_rounded,
+                    color: AppColors.primary,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -80,20 +111,18 @@ class CorporateLandingScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: 24),
                   _ActionCard(
-                    title: 'Request Event Services',
-                    subtitle: 'Need makeup artists for a large event? Submit a bulk booking request.',
-                    icon: Icons.event,
-                    color: Colors.deepPurple,
+                    title: 'Event Services',
+                    subtitle: 'Request bulk artist packages for large events.',
+                    icon: Icons.auto_awesome_rounded,
+                    color: Colors.indigo,
                     onTap: () {},
                   ),
-                  const SizedBox(height: 24),
                   _ActionCard(
-                    title: 'Launch Brand Campaign',
-                    subtitle: 'Create a campaign to hire multiple artists for season launches.',
-                    icon: Icons.campaign,
-                    color: Colors.orange,
+                    title: 'Launch Campaign',
+                    subtitle: 'Hire multiple artists for seasonal fashion launches.',
+                    icon: Icons.campaign_rounded,
+                    color: Colors.teal,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -101,12 +130,11 @@ class CorporateLandingScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  const SizedBox(height: 24),
                   _ActionCard(
-                    title: 'Manage Campaigns',
-                    subtitle: 'View active campaigns and applicant lists.',
-                    icon: Icons.list_alt,
-                    color: Colors.green,
+                    title: 'Active Campaigns',
+                    subtitle: 'Track your hiring and applicant shortlists.',
+                    icon: Icons.analytics_outlined,
+                    color: Colors.purple,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -141,52 +169,55 @@ class _ActionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        decoration: BoxDecoration(
-          color: Colors.grey.shade50,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.grey),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
-                shape: BoxShape.circle,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: AppColors.grey100),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black.withOpacity(0.04),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
-              child: Icon(icon, color: color, size: 32),
-            ),
-            const SizedBox(width: 20),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: TextStyle(color: Colors.grey, fontSize: 13),
-                  ),
-                ],
+            ],
+          ),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.08),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Icon(icon, color: color, size: 28),
               ),
-            ),
-            const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
-          ],
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: TextStyle(color: AppColors.grey500, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.arrow_forward_rounded, size: 18, color: AppColors.grey300),
+            ],
+          ),
         ),
       ),
     );

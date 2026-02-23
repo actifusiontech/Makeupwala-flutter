@@ -20,7 +20,16 @@ class ComplaintListScreen extends StatelessWidget {
         backgroundColor: AppColors.white,
         appBar: AppBar(
           title: const Text('My Complaints'),
-          backgroundColor: AppColors.primary,
+          elevation: 0,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [AppColors.primary, AppColors.primaryDark],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
           foregroundColor: AppColors.white,
         ),
         body: BlocBuilder<ComplaintBloc, ComplaintState>(
@@ -31,17 +40,31 @@ class ComplaintListScreen extends StatelessWidget {
                 if (complaints.isEmpty) {
                   return const Center(child: Text('No complaints raised.'));
                 }
-                return ListView.builder(
+                return ListView.separated(
                   padding: const EdgeInsets.all(AppSpacing.screenPadding),
                   itemCount: complaints.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.md),
                   itemBuilder: (context, index) {
                     final complaint = complaints[index];
-                    return Card(
-                      margin: const EdgeInsets.only(bottom: AppSpacing.md),
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    final statusColor = _getStatusColor(complaint.status);
+                    
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.black.withOpacity(0.05),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                        border: Border(
+                          left: BorderSide(color: statusColor, width: 4),
+                        ),
+                      ),
                       child: Padding(
-                        padding: const EdgeInsets.all(AppSpacing.md),
+                        padding: const EdgeInsets.all(AppSpacing.lg),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -51,43 +74,78 @@ class ComplaintListScreen extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     complaint.subject,
-                                    style: AppTypography.titleMedium,
+                                    style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.bold),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                                   decoration: BoxDecoration(
-                                    color: _getStatusColor(complaint.status),
+                                    color: statusColor.withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(12),
+                                    border: Border.all(color: statusColor.withOpacity(0.2)),
                                   ),
                                   child: Text(
-                                    complaint.status,
-                                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                                    complaint.status.toUpperCase(),
+                                    style: TextStyle(color: statusColor, fontSize: 10, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ],
                             ),
-                            const SizedBox(height: AppSpacing.xs),
-                            Text(
-                              DateFormat('MMM d, yyyy').format(complaint.createdAt),
-                              style: AppTypography.labelSmall.copyWith(color: AppColors.textSecondary),
+                            const SizedBox(height: AppSpacing.sm),
+                            Row(
+                              children: [
+                                Icon(Icons.calendar_today, size: 12, color: AppColors.grey400),
+                                const SizedBox(width: 4),
+                                Text(
+                                  DateFormat('MMM d, yyyy').format(complaint.createdAt),
+                                  style: AppTypography.labelSmall.copyWith(color: AppColors.grey500),
+                                ),
+                                const SizedBox(width: 12),
+                                Icon(Icons.confirmation_num_outlined, size: 12, color: AppColors.grey400),
+                                const SizedBox(width: 4),
+                                Text(
+                                  'ID: ${complaint.bookingId.substring(0, 8)}...',
+                                  style: AppTypography.labelSmall.copyWith(color: AppColors.grey500),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: AppSpacing.sm),
-                            Text('Booking ID: ${complaint.bookingId}', style: AppTypography.bodySmall),
-                            const SizedBox(height: AppSpacing.sm),
-                            Text(complaint.description, style: AppTypography.bodyMedium),
+                            const SizedBox(height: AppSpacing.md),
+                            Text(
+                              complaint.description,
+                              style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                             if (complaint.adminComment != null && complaint.adminComment!.isNotEmpty) ...[
-                              const Divider(height: 24),
-                              Row(
-                                children: [
-                                  const Icon(Icons.support_agent, size: 16, color: AppColors.primary),
-                                  const SizedBox(width: 8),
-                                  Text('Admin Response:', style: AppTypography.labelLarge.copyWith(color: AppColors.primary)),
-                                ],
+                              const SizedBox(height: AppSpacing.md),
+                              Container(
+                                padding: const EdgeInsets.all(AppSpacing.md),
+                                decoration: BoxDecoration(
+                                  color: AppColors.grey50,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        const Icon(Icons.support_agent, size: 16, color: AppColors.primary),
+                                        const SizedBox(width: 8),
+                                        Text(
+                                          'Official Response',
+                                          style: AppTypography.labelLarge.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      complaint.adminComment!,
+                                      style: AppTypography.bodySmall.copyWith(fontStyle: FontStyle.italic),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              const SizedBox(height: 4),
-                              Text(complaint.adminComment!, style: AppTypography.bodyMedium),
                             ],
                           ],
                         ),
