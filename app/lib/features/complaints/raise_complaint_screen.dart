@@ -70,6 +70,7 @@ class _RaiseComplaintScreenState extends State<RaiseComplaintScreen> {
               padding: const EdgeInsets.all(AppSpacing.screenPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Container(
                     padding: const EdgeInsets.all(AppSpacing.md),
                     decoration: BoxDecoration(
