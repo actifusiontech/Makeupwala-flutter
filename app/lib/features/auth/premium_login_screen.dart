@@ -129,6 +129,7 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
               context.go('/role-selection');
             }
           },
+          phoneVerified: (_) => setState(() => _isLoading = false),
           unauthenticated: () => setState(() => _isLoading = false),
           passwordResetSent: () => setState(() => _isLoading = false),
           passwordResetSuccess: () => setState(() => _isLoading = false),

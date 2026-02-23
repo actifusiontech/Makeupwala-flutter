@@ -20,6 +20,13 @@ abstract class User with _$User {
     @Default(0) int loyaltyPoints,
     DateTime? createdAt,
     List<String>? media,
+    String? gender,
+    String? dob,
+    @JsonKey(name: 'address_line1') String? addressLine1,
+    @JsonKey(name: 'address_line2') String? addressLine2,
+    String? city,
+    String? state,
+    String? pincode,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

@@ -115,4 +115,14 @@ class ProfileRepository {
       rethrow;
     }
   }
+
+  Future<List<LoyaltyTransaction>> getTransactions() async {
+    try {
+      final response = await _apiClient.dio.get('/rewards/transactions');
+      return (response.data as List).map((e) => LoyaltyTransaction.fromJson(e)).toList();
+    } catch (e) {
+      developer.log('❌ Get transactions failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
 }

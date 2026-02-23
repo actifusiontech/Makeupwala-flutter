@@ -6,8 +6,8 @@ import '../../../core/models/user.dart';
 import '../../../shared/theme/app_colors.dart';
 import '../../../shared/theme/app_typography.dart';
 import '../../../shared/theme/app_spacing.dart';
-import '../bloc/profile_bloc.dart';
-import '../../auth/bloc/auth_bloc.dart';
+import 'bloc/profile_bloc.dart';
+import '../auth/bloc/auth_bloc.dart';
 
 class EditProfileScreen extends StatefulWidget {
   final User user;

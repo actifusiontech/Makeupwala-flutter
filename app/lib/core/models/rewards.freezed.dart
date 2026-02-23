@@ -1067,3 +1067,580 @@ abstract class _LeaderboardEntry implements LeaderboardEntry {
   _$$LeaderboardEntryImplCopyWith<_$LeaderboardEntryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+RewardItem _$RewardItemFromJson(Map<String, dynamic> json) {
+  return _RewardItem.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RewardItem {
+  String get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  int get pointsCost => throw _privateConstructorUsedError;
+  String get type =>
+      throw _privateConstructorUsedError; // 'COUPON', 'SERVICE', 'PHYSICAL'
+  String? get imageUrl => throw _privateConstructorUsedError;
+  bool get isActive => throw _privateConstructorUsedError;
+  int get stock => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RewardItemCopyWith<RewardItem> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RewardItemCopyWith<$Res> {
+  factory $RewardItemCopyWith(
+          RewardItem value, $Res Function(RewardItem) then) =
+      _$RewardItemCopyWithImpl<$Res, RewardItem>;
+  @useResult
+  $Res call(
+      {String id,
+      String title,
+      String description,
+      int pointsCost,
+      String type,
+      String? imageUrl,
+      bool isActive,
+      int stock,
+      DateTime? createdAt});
+}
+
+/// @nodoc
+class _$RewardItemCopyWithImpl<$Res, $Val extends RewardItem>
+    implements $RewardItemCopyWith<$Res> {
+  _$RewardItemCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? pointsCost = null,
+    Object? type = null,
+    Object? imageUrl = freezed,
+    Object? isActive = null,
+    Object? stock = null,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      pointsCost: null == pointsCost
+          ? _value.pointsCost
+          : pointsCost // ignore: cast_nullable_to_non_nullable
+              as int,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stock: null == stock
+          ? _value.stock
+          : stock // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RewardItemImplCopyWith<$Res>
+    implements $RewardItemCopyWith<$Res> {
+  factory _$$RewardItemImplCopyWith(
+          _$RewardItemImpl value, $Res Function(_$RewardItemImpl) then) =
+      __$$RewardItemImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String title,
+      String description,
+      int pointsCost,
+      String type,
+      String? imageUrl,
+      bool isActive,
+      int stock,
+      DateTime? createdAt});
+}
+
+/// @nodoc
+class __$$RewardItemImplCopyWithImpl<$Res>
+    extends _$RewardItemCopyWithImpl<$Res, _$RewardItemImpl>
+    implements _$$RewardItemImplCopyWith<$Res> {
+  __$$RewardItemImplCopyWithImpl(
+      _$RewardItemImpl _value, $Res Function(_$RewardItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? pointsCost = null,
+    Object? type = null,
+    Object? imageUrl = freezed,
+    Object? isActive = null,
+    Object? stock = null,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_$RewardItemImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      pointsCost: null == pointsCost
+          ? _value.pointsCost
+          : pointsCost // ignore: cast_nullable_to_non_nullable
+              as int,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stock: null == stock
+          ? _value.stock
+          : stock // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RewardItemImpl implements _RewardItem {
+  const _$RewardItemImpl(
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.pointsCost,
+      required this.type,
+      this.imageUrl,
+      this.isActive = true,
+      this.stock = -1,
+      this.createdAt});
+
+  factory _$RewardItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RewardItemImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String title;
+  @override
+  final String description;
+  @override
+  final int pointsCost;
+  @override
+  final String type;
+// 'COUPON', 'SERVICE', 'PHYSICAL'
+  @override
+  final String? imageUrl;
+  @override
+  @JsonKey()
+  final bool isActive;
+  @override
+  @JsonKey()
+  final int stock;
+  @override
+  final DateTime? createdAt;
+
+  @override
+  String toString() {
+    return 'RewardItem(id: $id, title: $title, description: $description, pointsCost: $pointsCost, type: $type, imageUrl: $imageUrl, isActive: $isActive, stock: $stock, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RewardItemImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.pointsCost, pointsCost) ||
+                other.pointsCost == pointsCost) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.stock, stock) || other.stock == stock) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, title, description,
+      pointsCost, type, imageUrl, isActive, stock, createdAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RewardItemImplCopyWith<_$RewardItemImpl> get copyWith =>
+      __$$RewardItemImplCopyWithImpl<_$RewardItemImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RewardItemImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RewardItem implements RewardItem {
+  const factory _RewardItem(
+      {required final String id,
+      required final String title,
+      required final String description,
+      required final int pointsCost,
+      required final String type,
+      final String? imageUrl,
+      final bool isActive,
+      final int stock,
+      final DateTime? createdAt}) = _$RewardItemImpl;
+
+  factory _RewardItem.fromJson(Map<String, dynamic> json) =
+      _$RewardItemImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get title;
+  @override
+  String get description;
+  @override
+  int get pointsCost;
+  @override
+  String get type;
+  @override // 'COUPON', 'SERVICE', 'PHYSICAL'
+  String? get imageUrl;
+  @override
+  bool get isActive;
+  @override
+  int get stock;
+  @override
+  DateTime? get createdAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$RewardItemImplCopyWith<_$RewardItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+RewardRedemption _$RewardRedemptionFromJson(Map<String, dynamic> json) {
+  return _RewardRedemption.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RewardRedemption {
+  String get id => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  String get rewardItemId => throw _privateConstructorUsedError;
+  int get pointsUsed => throw _privateConstructorUsedError;
+  String get status =>
+      throw _privateConstructorUsedError; // 'PENDING', 'COMPLETED'
+  String? get code => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RewardRedemptionCopyWith<RewardRedemption> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RewardRedemptionCopyWith<$Res> {
+  factory $RewardRedemptionCopyWith(
+          RewardRedemption value, $Res Function(RewardRedemption) then) =
+      _$RewardRedemptionCopyWithImpl<$Res, RewardRedemption>;
+  @useResult
+  $Res call(
+      {String id,
+      String userId,
+      String rewardItemId,
+      int pointsUsed,
+      String status,
+      String? code,
+      DateTime? createdAt});
+}
+
+/// @nodoc
+class _$RewardRedemptionCopyWithImpl<$Res, $Val extends RewardRedemption>
+    implements $RewardRedemptionCopyWith<$Res> {
+  _$RewardRedemptionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? userId = null,
+    Object? rewardItemId = null,
+    Object? pointsUsed = null,
+    Object? status = null,
+    Object? code = freezed,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rewardItemId: null == rewardItemId
+          ? _value.rewardItemId
+          : rewardItemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pointsUsed: null == pointsUsed
+          ? _value.pointsUsed
+          : pointsUsed // ignore: cast_nullable_to_non_nullable
+              as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: freezed == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RewardRedemptionImplCopyWith<$Res>
+    implements $RewardRedemptionCopyWith<$Res> {
+  factory _$$RewardRedemptionImplCopyWith(_$RewardRedemptionImpl value,
+          $Res Function(_$RewardRedemptionImpl) then) =
+      __$$RewardRedemptionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String userId,
+      String rewardItemId,
+      int pointsUsed,
+      String status,
+      String? code,
+      DateTime? createdAt});
+}
+
+/// @nodoc
+class __$$RewardRedemptionImplCopyWithImpl<$Res>
+    extends _$RewardRedemptionCopyWithImpl<$Res, _$RewardRedemptionImpl>
+    implements _$$RewardRedemptionImplCopyWith<$Res> {
+  __$$RewardRedemptionImplCopyWithImpl(_$RewardRedemptionImpl _value,
+      $Res Function(_$RewardRedemptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? userId = null,
+    Object? rewardItemId = null,
+    Object? pointsUsed = null,
+    Object? status = null,
+    Object? code = freezed,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_$RewardRedemptionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      rewardItemId: null == rewardItemId
+          ? _value.rewardItemId
+          : rewardItemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      pointsUsed: null == pointsUsed
+          ? _value.pointsUsed
+          : pointsUsed // ignore: cast_nullable_to_non_nullable
+              as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: freezed == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RewardRedemptionImpl implements _RewardRedemption {
+  const _$RewardRedemptionImpl(
+      {required this.id,
+      required this.userId,
+      required this.rewardItemId,
+      required this.pointsUsed,
+      required this.status,
+      this.code,
+      this.createdAt});
+
+  factory _$RewardRedemptionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RewardRedemptionImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String userId;
+  @override
+  final String rewardItemId;
+  @override
+  final int pointsUsed;
+  @override
+  final String status;
+// 'PENDING', 'COMPLETED'
+  @override
+  final String? code;
+  @override
+  final DateTime? createdAt;
+
+  @override
+  String toString() {
+    return 'RewardRedemption(id: $id, userId: $userId, rewardItemId: $rewardItemId, pointsUsed: $pointsUsed, status: $status, code: $code, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RewardRedemptionImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.rewardItemId, rewardItemId) ||
+                other.rewardItemId == rewardItemId) &&
+            (identical(other.pointsUsed, pointsUsed) ||
+                other.pointsUsed == pointsUsed) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, userId, rewardItemId,
+      pointsUsed, status, code, createdAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RewardRedemptionImplCopyWith<_$RewardRedemptionImpl> get copyWith =>
+      __$$RewardRedemptionImplCopyWithImpl<_$RewardRedemptionImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RewardRedemptionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RewardRedemption implements RewardRedemption {
+  const factory _RewardRedemption(
+      {required final String id,
+      required final String userId,
+      required final String rewardItemId,
+      required final int pointsUsed,
+      required final String status,
+      final String? code,
+      final DateTime? createdAt}) = _$RewardRedemptionImpl;
+
+  factory _RewardRedemption.fromJson(Map<String, dynamic> json) =
+      _$RewardRedemptionImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get userId;
+  @override
+  String get rewardItemId;
+  @override
+  int get pointsUsed;
+  @override
+  String get status;
+  @override // 'PENDING', 'COMPLETED'
+  String? get code;
+  @override
+  DateTime? get createdAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$RewardRedemptionImplCopyWith<_$RewardRedemptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -21,8 +21,8 @@ mixin _$AuthEvent {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -45,8 +45,8 @@ mixin _$AuthEvent {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -68,8 +68,8 @@ mixin _$AuthEvent {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -239,8 +239,8 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -266,8 +266,8 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -292,8 +292,8 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -465,8 +465,8 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -492,8 +492,8 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -518,8 +518,8 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -688,8 +688,8 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -715,8 +715,8 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -741,8 +741,8 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -849,7 +849,12 @@ abstract class _$$VerifyContactOtpImplCopyWith<$Res> {
           $Res Function(_$VerifyContactOtpImpl) then) =
       __$$VerifyContactOtpImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? phone, String? email, String otp, bool isRegistration});
+  $Res call(
+      {String? phone,
+      String? email,
+      String otp,
+      bool isRegistration,
+      bool isProfileUpdate});
 }
 
 /// @nodoc
@@ -867,6 +872,7 @@ class __$$VerifyContactOtpImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? otp = null,
     Object? isRegistration = null,
+    Object? isProfileUpdate = null,
   }) {
     return _then(_$VerifyContactOtpImpl(
       phone: freezed == phone
@@ -885,6 +891,10 @@ class __$$VerifyContactOtpImplCopyWithImpl<$Res>
           ? _value.isRegistration
           : isRegistration // ignore: cast_nullable_to_non_nullable
               as bool,
+      isProfileUpdate: null == isProfileUpdate
+          ? _value.isProfileUpdate
+          : isProfileUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -893,7 +903,11 @@ class __$$VerifyContactOtpImplCopyWithImpl<$Res>
 
 class _$VerifyContactOtpImpl implements _VerifyContactOtp {
   const _$VerifyContactOtpImpl(
-      {this.phone, this.email, required this.otp, this.isRegistration = false});
+      {this.phone,
+      this.email,
+      required this.otp,
+      this.isRegistration = false,
+      this.isProfileUpdate = false});
 
   @override
   final String? phone;
@@ -904,10 +918,13 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
   @override
   @JsonKey()
   final bool isRegistration;
+  @override
+  @JsonKey()
+  final bool isProfileUpdate;
 
   @override
   String toString() {
-    return 'AuthEvent.verifyContactOtp(phone: $phone, email: $email, otp: $otp, isRegistration: $isRegistration)';
+    return 'AuthEvent.verifyContactOtp(phone: $phone, email: $email, otp: $otp, isRegistration: $isRegistration, isProfileUpdate: $isProfileUpdate)';
   }
 
   @override
@@ -919,12 +936,14 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.otp, otp) || other.otp == otp) &&
             (identical(other.isRegistration, isRegistration) ||
-                other.isRegistration == isRegistration));
+                other.isRegistration == isRegistration) &&
+            (identical(other.isProfileUpdate, isProfileUpdate) ||
+                other.isProfileUpdate == isProfileUpdate));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, phone, email, otp, isRegistration);
+  int get hashCode => Object.hash(
+      runtimeType, phone, email, otp, isRegistration, isProfileUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -939,8 +958,8 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -957,7 +976,7 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
             String token, String tempPassword, String newPassword)
         resetPassword,
   }) {
-    return verifyContactOtp(phone, email, otp, isRegistration);
+    return verifyContactOtp(phone, email, otp, isRegistration, isProfileUpdate);
   }
 
   @override
@@ -966,8 +985,8 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -983,7 +1002,8 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     TResult? Function(String token, String tempPassword, String newPassword)?
         resetPassword,
   }) {
-    return verifyContactOtp?.call(phone, email, otp, isRegistration);
+    return verifyContactOtp?.call(
+        phone, email, otp, isRegistration, isProfileUpdate);
   }
 
   @override
@@ -992,8 +1012,8 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -1011,7 +1031,8 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     required TResult orElse(),
   }) {
     if (verifyContactOtp != null) {
-      return verifyContactOtp(phone, email, otp, isRegistration);
+      return verifyContactOtp(
+          phone, email, otp, isRegistration, isProfileUpdate);
     }
     return orElse();
   }
@@ -1090,12 +1111,14 @@ abstract class _VerifyContactOtp implements AuthEvent {
       {final String? phone,
       final String? email,
       required final String otp,
-      final bool isRegistration}) = _$VerifyContactOtpImpl;
+      final bool isRegistration,
+      final bool isProfileUpdate}) = _$VerifyContactOtpImpl;
 
   String? get phone;
   String? get email;
   String get otp;
   bool get isRegistration;
+  bool get isProfileUpdate;
   @JsonKey(ignore: true)
   _$$VerifyContactOtpImplCopyWith<_$VerifyContactOtpImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1169,8 +1192,8 @@ class _$LoginImpl implements _Login {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -1196,8 +1219,8 @@ class _$LoginImpl implements _Login {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -1222,8 +1245,8 @@ class _$LoginImpl implements _Login {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -1400,8 +1423,8 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -1427,8 +1450,8 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -1453,8 +1476,8 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -1624,8 +1647,8 @@ class _$SelectRoleImpl implements _SelectRole {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -1651,8 +1674,8 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -1677,8 +1700,8 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -1820,8 +1843,8 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -1847,8 +1870,8 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -1873,8 +1896,8 @@ class _$LogoutImpl implements _Logout {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -2011,8 +2034,8 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -2038,8 +2061,8 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -2064,8 +2087,8 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -2229,8 +2252,8 @@ class _$SocialLoginImpl implements _SocialLogin {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -2256,8 +2279,8 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -2282,8 +2305,8 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -2496,8 +2519,8 @@ class _$RegisterImpl implements _Register {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -2523,8 +2546,8 @@ class _$RegisterImpl implements _Register {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -2549,8 +2572,8 @@ class _$RegisterImpl implements _Register {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -2737,8 +2760,8 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -2764,8 +2787,8 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -2790,8 +2813,8 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -2963,8 +2986,8 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -2990,8 +3013,8 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -3016,8 +3039,8 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -3207,8 +3230,8 @@ class _$ResetPasswordImpl implements _ResetPassword {
     required TResult Function(String email, String password) loginWithEmail,
     required TResult Function(String email) requestEmailOtp,
     required TResult Function(String phone) requestPhoneOtp,
-    required TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
         verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
@@ -3234,8 +3257,8 @@ class _$ResetPasswordImpl implements _ResetPassword {
     TResult? Function(String email, String password)? loginWithEmail,
     TResult? Function(String email)? requestEmailOtp,
     TResult? Function(String phone)? requestPhoneOtp,
-    TResult? Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
@@ -3260,8 +3283,8 @@ class _$ResetPasswordImpl implements _ResetPassword {
     TResult Function(String email, String password)? loginWithEmail,
     TResult Function(String email)? requestEmailOtp,
     TResult Function(String phone)? requestPhoneOtp,
-    TResult Function(
-            String? phone, String? email, String otp, bool isRegistration)?
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
         verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
@@ -3374,6 +3397,7 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -3388,6 +3412,7 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -3402,6 +3427,7 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -3417,6 +3443,7 @@ mixin _$AuthState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -3431,6 +3458,7 @@ mixin _$AuthState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -3445,6 +3473,7 @@ mixin _$AuthState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -3515,6 +3544,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -3532,6 +3562,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -3549,6 +3580,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -3570,6 +3602,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -3587,6 +3620,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -3604,6 +3638,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -3665,6 +3700,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -3682,6 +3718,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -3699,6 +3736,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -3720,6 +3758,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -3737,6 +3776,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -3754,6 +3794,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -3842,6 +3883,7 @@ class _$OtpSentImpl implements _OtpSent {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -3859,6 +3901,7 @@ class _$OtpSentImpl implements _OtpSent {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -3876,6 +3919,7 @@ class _$OtpSentImpl implements _OtpSent {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -3897,6 +3941,7 @@ class _$OtpSentImpl implements _OtpSent {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -3914,6 +3959,7 @@ class _$OtpSentImpl implements _OtpSent {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -3931,6 +3977,7 @@ class _$OtpSentImpl implements _OtpSent {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -3953,6 +4000,194 @@ abstract class _OtpSent implements AuthState {
   String get phoneNumber;
   @JsonKey(ignore: true)
   _$$OtpSentImplCopyWith<_$OtpSentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PhoneVerifiedImplCopyWith<$Res> {
+  factory _$$PhoneVerifiedImplCopyWith(
+          _$PhoneVerifiedImpl value, $Res Function(_$PhoneVerifiedImpl) then) =
+      __$$PhoneVerifiedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone});
+}
+
+/// @nodoc
+class __$$PhoneVerifiedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$PhoneVerifiedImpl>
+    implements _$$PhoneVerifiedImplCopyWith<$Res> {
+  __$$PhoneVerifiedImplCopyWithImpl(
+      _$PhoneVerifiedImpl _value, $Res Function(_$PhoneVerifiedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+  }) {
+    return _then(_$PhoneVerifiedImpl(
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PhoneVerifiedImpl implements _PhoneVerified {
+  const _$PhoneVerifiedImpl({required this.phone});
+
+  @override
+  final String phone;
+
+  @override
+  String toString() {
+    return 'AuthState.phoneVerified(phone: $phone)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PhoneVerifiedImpl &&
+            (identical(other.phone, phone) || other.phone == phone));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PhoneVerifiedImplCopyWith<_$PhoneVerifiedImpl> get copyWith =>
+      __$$PhoneVerifiedImplCopyWithImpl<_$PhoneVerifiedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
+    required TResult Function(User user) needsRoleSelection,
+    required TResult Function(String phoneNumber) needsRegistration,
+    required TResult Function(User user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() passwordResetSent,
+    required TResult Function() passwordResetSuccess,
+    required TResult Function(String message) error,
+  }) {
+    return phoneVerified(phone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
+    TResult? Function(User user)? needsRoleSelection,
+    TResult? Function(String phoneNumber)? needsRegistration,
+    TResult? Function(User user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetSent,
+    TResult? Function()? passwordResetSuccess,
+    TResult? Function(String message)? error,
+  }) {
+    return phoneVerified?.call(phone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
+    TResult Function(User user)? needsRoleSelection,
+    TResult Function(String phoneNumber)? needsRegistration,
+    TResult Function(User user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? passwordResetSent,
+    TResult Function()? passwordResetSuccess,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (phoneVerified != null) {
+      return phoneVerified(phone);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
+    required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
+    required TResult Function(_NeedsRegistration value) needsRegistration,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_PasswordResetSent value) passwordResetSent,
+    required TResult Function(_PasswordResetSuccess value) passwordResetSuccess,
+    required TResult Function(_Error value) error,
+  }) {
+    return phoneVerified(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
+    TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
+    TResult? Function(_NeedsRegistration value)? needsRegistration,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_PasswordResetSent value)? passwordResetSent,
+    TResult? Function(_PasswordResetSuccess value)? passwordResetSuccess,
+    TResult? Function(_Error value)? error,
+  }) {
+    return phoneVerified?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
+    TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
+    TResult Function(_NeedsRegistration value)? needsRegistration,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_PasswordResetSent value)? passwordResetSent,
+    TResult Function(_PasswordResetSuccess value)? passwordResetSuccess,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (phoneVerified != null) {
+      return phoneVerified(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PhoneVerified implements AuthState {
+  const factory _PhoneVerified({required final String phone}) =
+      _$PhoneVerifiedImpl;
+
+  String get phone;
+  @JsonKey(ignore: true)
+  _$$PhoneVerifiedImplCopyWith<_$PhoneVerifiedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -4034,6 +4269,7 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -4051,6 +4287,7 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -4068,6 +4305,7 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -4089,6 +4327,7 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -4106,6 +4345,7 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -4123,6 +4363,7 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -4218,6 +4459,7 @@ class _$NeedsRegistrationImpl implements _NeedsRegistration {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -4235,6 +4477,7 @@ class _$NeedsRegistrationImpl implements _NeedsRegistration {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -4252,6 +4495,7 @@ class _$NeedsRegistrationImpl implements _NeedsRegistration {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -4273,6 +4517,7 @@ class _$NeedsRegistrationImpl implements _NeedsRegistration {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -4290,6 +4535,7 @@ class _$NeedsRegistrationImpl implements _NeedsRegistration {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -4307,6 +4553,7 @@ class _$NeedsRegistrationImpl implements _NeedsRegistration {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -4410,6 +4657,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -4427,6 +4675,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -4444,6 +4693,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -4465,6 +4715,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -4482,6 +4733,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -4499,6 +4751,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -4566,6 +4819,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -4583,6 +4837,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -4600,6 +4855,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -4621,6 +4877,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -4638,6 +4895,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -4655,6 +4913,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -4716,6 +4975,7 @@ class _$PasswordResetSentImpl implements _PasswordResetSent {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -4733,6 +4993,7 @@ class _$PasswordResetSentImpl implements _PasswordResetSent {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -4750,6 +5011,7 @@ class _$PasswordResetSentImpl implements _PasswordResetSent {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -4771,6 +5033,7 @@ class _$PasswordResetSentImpl implements _PasswordResetSent {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -4788,6 +5051,7 @@ class _$PasswordResetSentImpl implements _PasswordResetSent {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -4805,6 +5069,7 @@ class _$PasswordResetSentImpl implements _PasswordResetSent {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -4867,6 +5132,7 @@ class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -4884,6 +5150,7 @@ class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -4901,6 +5168,7 @@ class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -4922,6 +5190,7 @@ class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -4939,6 +5208,7 @@ class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -4956,6 +5226,7 @@ class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,
@@ -5043,6 +5314,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String phoneNumber) otpSent,
+    required TResult Function(String phone) phoneVerified,
     required TResult Function(User user) needsRoleSelection,
     required TResult Function(String phoneNumber) needsRegistration,
     required TResult Function(User user) authenticated,
@@ -5060,6 +5332,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String phoneNumber)? otpSent,
+    TResult? Function(String phone)? phoneVerified,
     TResult? Function(User user)? needsRoleSelection,
     TResult? Function(String phoneNumber)? needsRegistration,
     TResult? Function(User user)? authenticated,
@@ -5077,6 +5350,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String phoneNumber)? otpSent,
+    TResult Function(String phone)? phoneVerified,
     TResult Function(User user)? needsRoleSelection,
     TResult Function(String phoneNumber)? needsRegistration,
     TResult Function(User user)? authenticated,
@@ -5098,6 +5372,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_OtpSent value) otpSent,
+    required TResult Function(_PhoneVerified value) phoneVerified,
     required TResult Function(_NeedsRoleSelection value) needsRoleSelection,
     required TResult Function(_NeedsRegistration value) needsRegistration,
     required TResult Function(_Authenticated value) authenticated,
@@ -5115,6 +5390,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OtpSent value)? otpSent,
+    TResult? Function(_PhoneVerified value)? phoneVerified,
     TResult? Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult? Function(_NeedsRegistration value)? needsRegistration,
     TResult? Function(_Authenticated value)? authenticated,
@@ -5132,6 +5408,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_OtpSent value)? otpSent,
+    TResult Function(_PhoneVerified value)? phoneVerified,
     TResult Function(_NeedsRoleSelection value)? needsRoleSelection,
     TResult Function(_NeedsRegistration value)? needsRegistration,
     TResult Function(_Authenticated value)? authenticated,

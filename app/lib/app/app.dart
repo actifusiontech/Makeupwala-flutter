@@ -23,6 +23,7 @@ import '../features/planner/presentation/screens/planner_onboarding_screen.dart'
 import '../features/planner/presentation/screens/create_destination_booking_screen.dart';
 import '../features/artist/artist_profile_screen.dart';
 import '../features/artist/availability_screen.dart';
+import '../core/models/user.dart';
 import '../features/artist/artist_onboarding_screen.dart';
 import '../features/artist/manage_services_screen.dart';
 

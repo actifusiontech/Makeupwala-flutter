@@ -101,3 +101,57 @@ Map<String, dynamic> _$$LeaderboardEntryImplToJson(
       'referral_count': instance.referralCount,
       'points_earned': instance.pointsEarned,
     };
+
+_$RewardItemImpl _$$RewardItemImplFromJson(Map<String, dynamic> json) =>
+    _$RewardItemImpl(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      pointsCost: (json['points_cost'] as num).toInt(),
+      type: json['type'] as String,
+      imageUrl: json['image_url'] as String?,
+      isActive: json['is_active'] as bool? ?? true,
+      stock: (json['stock'] as num?)?.toInt() ?? -1,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+    );
+
+Map<String, dynamic> _$$RewardItemImplToJson(_$RewardItemImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'points_cost': instance.pointsCost,
+      'type': instance.type,
+      'image_url': instance.imageUrl,
+      'is_active': instance.isActive,
+      'stock': instance.stock,
+      'created_at': instance.createdAt?.toIso8601String(),
+    };
+
+_$RewardRedemptionImpl _$$RewardRedemptionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RewardRedemptionImpl(
+      id: json['id'] as String,
+      userId: json['user_id'] as String,
+      rewardItemId: json['reward_item_id'] as String,
+      pointsUsed: (json['points_used'] as num).toInt(),
+      status: json['status'] as String,
+      code: json['code'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+    );
+
+Map<String, dynamic> _$$RewardRedemptionImplToJson(
+        _$RewardRedemptionImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'user_id': instance.userId,
+      'reward_item_id': instance.rewardItemId,
+      'points_used': instance.pointsUsed,
+      'status': instance.status,
+      'code': instance.code,
+      'created_at': instance.createdAt?.toIso8601String(),
+    };

@@ -32,6 +32,15 @@ mixin _$User {
   int get loyaltyPoints => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   List<String>? get media => throw _privateConstructorUsedError;
+  String? get gender => throw _privateConstructorUsedError;
+  String? get dob => throw _privateConstructorUsedError;
+  @JsonKey(name: 'address_line1')
+  String? get addressLine1 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'address_line2')
+  String? get addressLine2 => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
+  String? get state => throw _privateConstructorUsedError;
+  String? get pincode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +63,14 @@ abstract class $UserCopyWith<$Res> {
       String? referralCode,
       int loyaltyPoints,
       DateTime? createdAt,
-      List<String>? media});
+      List<String>? media,
+      String? gender,
+      String? dob,
+      @JsonKey(name: 'address_line1') String? addressLine1,
+      @JsonKey(name: 'address_line2') String? addressLine2,
+      String? city,
+      String? state,
+      String? pincode});
 }
 
 /// @nodoc
@@ -81,6 +97,13 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? loyaltyPoints = null,
     Object? createdAt = freezed,
     Object? media = freezed,
+    Object? gender = freezed,
+    Object? dob = freezed,
+    Object? addressLine1 = freezed,
+    Object? addressLine2 = freezed,
+    Object? city = freezed,
+    Object? state = freezed,
+    Object? pincode = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -127,6 +150,34 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.media
           : media // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dob: freezed == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine1: freezed == addressLine1
+          ? _value.addressLine1
+          : addressLine1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine2: freezed == addressLine2
+          ? _value.addressLine2
+          : addressLine2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      state: freezed == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pincode: freezed == pincode
+          ? _value.pincode
+          : pincode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -149,7 +200,14 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? referralCode,
       int loyaltyPoints,
       DateTime? createdAt,
-      List<String>? media});
+      List<String>? media,
+      String? gender,
+      String? dob,
+      @JsonKey(name: 'address_line1') String? addressLine1,
+      @JsonKey(name: 'address_line2') String? addressLine2,
+      String? city,
+      String? state,
+      String? pincode});
 }
 
 /// @nodoc
@@ -173,6 +231,13 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? loyaltyPoints = null,
     Object? createdAt = freezed,
     Object? media = freezed,
+    Object? gender = freezed,
+    Object? dob = freezed,
+    Object? addressLine1 = freezed,
+    Object? addressLine2 = freezed,
+    Object? city = freezed,
+    Object? state = freezed,
+    Object? pincode = freezed,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -219,6 +284,34 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value._media
           : media // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dob: freezed == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine1: freezed == addressLine1
+          ? _value.addressLine1
+          : addressLine1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addressLine2: freezed == addressLine2
+          ? _value.addressLine2
+          : addressLine2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: freezed == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      state: freezed == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pincode: freezed == pincode
+          ? _value.pincode
+          : pincode // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -237,7 +330,14 @@ class _$UserImpl extends _User {
       this.referralCode,
       this.loyaltyPoints = 0,
       this.createdAt,
-      final List<String>? media})
+      final List<String>? media,
+      this.gender,
+      this.dob,
+      @JsonKey(name: 'address_line1') this.addressLine1,
+      @JsonKey(name: 'address_line2') this.addressLine2,
+      this.city,
+      this.state,
+      this.pincode})
       : _media = media,
         super._();
 
@@ -278,8 +378,25 @@ class _$UserImpl extends _User {
   }
 
   @override
+  final String? gender;
+  @override
+  final String? dob;
+  @override
+  @JsonKey(name: 'address_line1')
+  final String? addressLine1;
+  @override
+  @JsonKey(name: 'address_line2')
+  final String? addressLine2;
+  @override
+  final String? city;
+  @override
+  final String? state;
+  @override
+  final String? pincode;
+
+  @override
   String toString() {
-    return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, profileImageUrl: $profileImageUrl, isVerified: $isVerified, referralCode: $referralCode, loyaltyPoints: $loyaltyPoints, createdAt: $createdAt, media: $media)';
+    return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, profileImageUrl: $profileImageUrl, isVerified: $isVerified, referralCode: $referralCode, loyaltyPoints: $loyaltyPoints, createdAt: $createdAt, media: $media, gender: $gender, dob: $dob, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, state: $state, pincode: $pincode)';
   }
 
   @override
@@ -303,7 +420,16 @@ class _$UserImpl extends _User {
                 other.loyaltyPoints == loyaltyPoints) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            const DeepCollectionEquality().equals(other._media, _media));
+            const DeepCollectionEquality().equals(other._media, _media) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.dob, dob) || other.dob == dob) &&
+            (identical(other.addressLine1, addressLine1) ||
+                other.addressLine1 == addressLine1) &&
+            (identical(other.addressLine2, addressLine2) ||
+                other.addressLine2 == addressLine2) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.pincode, pincode) || other.pincode == pincode));
   }
 
   @JsonKey(ignore: true)
@@ -320,7 +446,14 @@ class _$UserImpl extends _User {
       referralCode,
       loyaltyPoints,
       createdAt,
-      const DeepCollectionEquality().hash(_media));
+      const DeepCollectionEquality().hash(_media),
+      gender,
+      dob,
+      addressLine1,
+      addressLine2,
+      city,
+      state,
+      pincode);
 
   @JsonKey(ignore: true)
   @override
@@ -348,7 +481,14 @@ abstract class _User extends User {
       final String? referralCode,
       final int loyaltyPoints,
       final DateTime? createdAt,
-      final List<String>? media}) = _$UserImpl;
+      final List<String>? media,
+      final String? gender,
+      final String? dob,
+      @JsonKey(name: 'address_line1') final String? addressLine1,
+      @JsonKey(name: 'address_line2') final String? addressLine2,
+      final String? city,
+      final String? state,
+      final String? pincode}) = _$UserImpl;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -375,6 +515,22 @@ abstract class _User extends User {
   DateTime? get createdAt;
   @override
   List<String>? get media;
+  @override
+  String? get gender;
+  @override
+  String? get dob;
+  @override
+  @JsonKey(name: 'address_line1')
+  String? get addressLine1;
+  @override
+  @JsonKey(name: 'address_line2')
+  String? get addressLine2;
+  @override
+  String? get city;
+  @override
+  String? get state;
+  @override
+  String? get pincode;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

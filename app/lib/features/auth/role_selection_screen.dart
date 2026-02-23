@@ -29,6 +29,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
           loading: () => setState(() => _isLoading = true),
           otpSent: (_) {},
           needsRoleSelection: (_) => setState(() => _isLoading = false),
+          phoneVerified: (_) => setState(() => _isLoading = false),
           needsRegistration: (_) => setState(() => _isLoading = false),
           authenticated: (user) {
             setState(() => _isLoading = false);

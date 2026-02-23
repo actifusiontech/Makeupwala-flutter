@@ -223,7 +223,11 @@ class _RewardsCatalogView extends StatelessWidget {
               itemBuilder: (context, index) => _buildRewardCard(context, rewards[index]),
             );
           },
-          loading: () => ListView.generate(4, (index) => ShimmerLoaders.listTile()),
+          loading: () => ListView.builder(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            itemCount: 4,
+            itemBuilder: (context, index) => ShimmerLoaders.listTile(),
+          ),
           orElse: () => const SizedBox(),
         );
       },
@@ -318,7 +322,11 @@ class _TransactionHistoryView extends StatelessWidget {
               itemBuilder: (context, index) => _buildTransactionItem(transactions[index]),
             );
           },
-          loading: () => ListView.generate(6, (index) => ShimmerLoaders.listTile()),
+          loading: () => ListView.builder(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            itemCount: 6,
+            itemBuilder: (context, index) => ShimmerLoaders.listTile(),
+          ),
           orElse: () => const SizedBox(),
         );
       },

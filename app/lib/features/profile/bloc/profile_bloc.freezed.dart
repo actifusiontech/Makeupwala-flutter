@@ -23,6 +23,9 @@ mixin _$ProfileEvent {
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +34,9 @@ mixin _$ProfileEvent {
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
     TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +45,9 @@ mixin _$ProfileEvent {
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
     TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +57,9 @@ mixin _$ProfileEvent {
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
     required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +68,9 @@ mixin _$ProfileEvent {
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +79,9 @@ mixin _$ProfileEvent {
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
     TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +175,9 @@ class _$FetchProfileImpl implements _FetchProfile {
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
   }) {
     return fetchProfile(isArtist);
   }
@@ -168,6 +189,9 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
     TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
   }) {
     return fetchProfile?.call(isArtist);
   }
@@ -179,6 +203,9 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
     TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
     required TResult orElse(),
   }) {
     if (fetchProfile != null) {
@@ -194,6 +221,9 @@ class _$FetchProfileImpl implements _FetchProfile {
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
     required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
   }) {
     return fetchProfile(this);
   }
@@ -205,6 +235,9 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
   }) {
     return fetchProfile?.call(this);
   }
@@ -216,6 +249,9 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
     TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (fetchProfile != null) {
@@ -321,6 +357,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
   }) {
     return updateProfile(isArtist, data);
   }
@@ -332,6 +371,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
     TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
   }) {
     return updateProfile?.call(isArtist, data);
   }
@@ -343,6 +385,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
     TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
@@ -358,6 +403,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
     required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
   }) {
     return updateProfile(this);
   }
@@ -369,6 +417,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
   }) {
     return updateProfile?.call(this);
   }
@@ -380,6 +431,9 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
     TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
@@ -471,6 +525,9 @@ class _$UploadMediaImpl implements _UploadMedia {
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
   }) {
     return uploadMedia(filePath);
   }
@@ -482,6 +539,9 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
     TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
   }) {
     return uploadMedia?.call(filePath);
   }
@@ -493,6 +553,9 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
     TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -508,6 +571,9 @@ class _$UploadMediaImpl implements _UploadMedia {
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
     required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
   }) {
     return uploadMedia(this);
   }
@@ -519,6 +585,9 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
   }) {
     return uploadMedia?.call(this);
   }
@@ -530,6 +599,9 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
     TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (uploadMedia != null) {
@@ -592,6 +664,9 @@ class _$FetchReferralsImpl implements _FetchReferrals {
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
     required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
   }) {
     return fetchReferrals();
   }
@@ -603,6 +678,9 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
     TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
   }) {
     return fetchReferrals?.call();
   }
@@ -614,6 +692,9 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
     TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
     required TResult orElse(),
   }) {
     if (fetchReferrals != null) {
@@ -629,6 +710,9 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
     required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
   }) {
     return fetchReferrals(this);
   }
@@ -640,6 +724,9 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
   }) {
     return fetchReferrals?.call(this);
   }
@@ -651,6 +738,9 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
     TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
     required TResult orElse(),
   }) {
     if (fetchReferrals != null) {
@@ -665,6 +755,437 @@ abstract class _FetchReferrals implements ProfileEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchRewardsImplCopyWith<$Res> {
+  factory _$$FetchRewardsImplCopyWith(
+          _$FetchRewardsImpl value, $Res Function(_$FetchRewardsImpl) then) =
+      __$$FetchRewardsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchRewardsImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$FetchRewardsImpl>
+    implements _$$FetchRewardsImplCopyWith<$Res> {
+  __$$FetchRewardsImplCopyWithImpl(
+      _$FetchRewardsImpl _value, $Res Function(_$FetchRewardsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchRewardsImpl implements _FetchRewards {
+  const _$FetchRewardsImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.fetchRewards()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchRewardsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isArtist) fetchProfile,
+    required TResult Function(bool isArtist, Map<String, dynamic> data)
+        updateProfile,
+    required TResult Function(String filePath) uploadMedia,
+    required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
+  }) {
+    return fetchRewards();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isArtist)? fetchProfile,
+    TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult? Function(String filePath)? uploadMedia,
+    TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
+  }) {
+    return fetchRewards?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isArtist)? fetchProfile,
+    TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult Function(String filePath)? uploadMedia,
+    TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (fetchRewards != null) {
+      return fetchRewards();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchProfile value) fetchProfile,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
+  }) {
+    return fetchRewards(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchProfile value)? fetchProfile,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
+  }) {
+    return fetchRewards?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchProfile value)? fetchProfile,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (fetchRewards != null) {
+      return fetchRewards(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchRewards implements ProfileEvent {
+  const factory _FetchRewards() = _$FetchRewardsImpl;
+}
+
+/// @nodoc
+abstract class _$$RedeemRewardImplCopyWith<$Res> {
+  factory _$$RedeemRewardImplCopyWith(
+          _$RedeemRewardImpl value, $Res Function(_$RedeemRewardImpl) then) =
+      __$$RedeemRewardImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String rewardId});
+}
+
+/// @nodoc
+class __$$RedeemRewardImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$RedeemRewardImpl>
+    implements _$$RedeemRewardImplCopyWith<$Res> {
+  __$$RedeemRewardImplCopyWithImpl(
+      _$RedeemRewardImpl _value, $Res Function(_$RedeemRewardImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? rewardId = null,
+  }) {
+    return _then(_$RedeemRewardImpl(
+      null == rewardId
+          ? _value.rewardId
+          : rewardId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RedeemRewardImpl implements _RedeemReward {
+  const _$RedeemRewardImpl(this.rewardId);
+
+  @override
+  final String rewardId;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.redeemReward(rewardId: $rewardId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RedeemRewardImpl &&
+            (identical(other.rewardId, rewardId) ||
+                other.rewardId == rewardId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, rewardId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RedeemRewardImplCopyWith<_$RedeemRewardImpl> get copyWith =>
+      __$$RedeemRewardImplCopyWithImpl<_$RedeemRewardImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isArtist) fetchProfile,
+    required TResult Function(bool isArtist, Map<String, dynamic> data)
+        updateProfile,
+    required TResult Function(String filePath) uploadMedia,
+    required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
+  }) {
+    return redeemReward(rewardId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isArtist)? fetchProfile,
+    TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult? Function(String filePath)? uploadMedia,
+    TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
+  }) {
+    return redeemReward?.call(rewardId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isArtist)? fetchProfile,
+    TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult Function(String filePath)? uploadMedia,
+    TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (redeemReward != null) {
+      return redeemReward(rewardId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchProfile value) fetchProfile,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
+  }) {
+    return redeemReward(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchProfile value)? fetchProfile,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
+  }) {
+    return redeemReward?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchProfile value)? fetchProfile,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (redeemReward != null) {
+      return redeemReward(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RedeemReward implements ProfileEvent {
+  const factory _RedeemReward(final String rewardId) = _$RedeemRewardImpl;
+
+  String get rewardId;
+  @JsonKey(ignore: true)
+  _$$RedeemRewardImplCopyWith<_$RedeemRewardImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchTransactionsImplCopyWith<$Res> {
+  factory _$$FetchTransactionsImplCopyWith(_$FetchTransactionsImpl value,
+          $Res Function(_$FetchTransactionsImpl) then) =
+      __$$FetchTransactionsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchTransactionsImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$FetchTransactionsImpl>
+    implements _$$FetchTransactionsImplCopyWith<$Res> {
+  __$$FetchTransactionsImplCopyWithImpl(_$FetchTransactionsImpl _value,
+      $Res Function(_$FetchTransactionsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchTransactionsImpl implements _FetchTransactions {
+  const _$FetchTransactionsImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.fetchTransactions()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchTransactionsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isArtist) fetchProfile,
+    required TResult Function(bool isArtist, Map<String, dynamic> data)
+        updateProfile,
+    required TResult Function(String filePath) uploadMedia,
+    required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
+  }) {
+    return fetchTransactions();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isArtist)? fetchProfile,
+    TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult? Function(String filePath)? uploadMedia,
+    TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
+  }) {
+    return fetchTransactions?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isArtist)? fetchProfile,
+    TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult Function(String filePath)? uploadMedia,
+    TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (fetchTransactions != null) {
+      return fetchTransactions();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchProfile value) fetchProfile,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
+  }) {
+    return fetchTransactions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchProfile value)? fetchProfile,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
+  }) {
+    return fetchTransactions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchProfile value)? fetchProfile,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (fetchTransactions != null) {
+      return fetchTransactions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchTransactions implements ProfileEvent {
+  const factory _FetchTransactions() = _$FetchTransactionsImpl;
+}
+
+/// @nodoc
 mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -672,6 +1193,10 @@ mixin _$ProfileState {
     required TResult Function() loading,
     required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
     required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -681,6 +1206,10 @@ mixin _$ProfileState {
     TResult? Function()? loading,
     TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -690,6 +1219,9 @@ mixin _$ProfileState {
     TResult Function()? loading,
     TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -700,6 +1232,9 @@ mixin _$ProfileState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -709,6 +1244,9 @@ mixin _$ProfileState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -718,6 +1256,9 @@ mixin _$ProfileState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -784,6 +1325,10 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
     required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -796,6 +1341,10 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -808,6 +1357,9 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -824,6 +1376,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -836,6 +1391,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -848,6 +1406,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -904,6 +1465,10 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
     required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -916,6 +1481,10 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -928,6 +1497,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -944,6 +1516,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -956,6 +1531,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -968,6 +1546,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1082,6 +1663,10 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() loading,
     required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
     required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
     required TResult Function(String message) error,
   }) {
     return loaded(user, loyaltyBalance);
@@ -1094,6 +1679,10 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? loading,
     TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(user, loyaltyBalance);
@@ -1106,6 +1695,9 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? loading,
     TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1122,6 +1714,9 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return loaded(this);
@@ -1134,6 +1729,9 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return loaded?.call(this);
@@ -1146,6 +1744,9 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1245,6 +1846,10 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
     required TResult Function() loading,
     required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
     required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
     required TResult Function(String message) error,
   }) {
     return referralsLoaded(referrals);
@@ -1257,6 +1862,10 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
     TResult? Function()? loading,
     TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
     TResult? Function(String message)? error,
   }) {
     return referralsLoaded?.call(referrals);
@@ -1269,6 +1878,9 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
     TResult Function()? loading,
     TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1285,6 +1897,9 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return referralsLoaded(this);
@@ -1297,6 +1912,9 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return referralsLoaded?.call(this);
@@ -1309,6 +1927,9 @@ class _$ReferralsLoadedImpl implements _ReferralsLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -1326,6 +1947,552 @@ abstract class _ReferralsLoaded implements ProfileState {
   List<ReferralRecord> get referrals;
   @JsonKey(ignore: true)
   _$$ReferralsLoadedImplCopyWith<_$ReferralsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RewardsLoadedImplCopyWith<$Res> {
+  factory _$$RewardsLoadedImplCopyWith(
+          _$RewardsLoadedImpl value, $Res Function(_$RewardsLoadedImpl) then) =
+      __$$RewardsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<RewardItem> rewards});
+}
+
+/// @nodoc
+class __$$RewardsLoadedImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$RewardsLoadedImpl>
+    implements _$$RewardsLoadedImplCopyWith<$Res> {
+  __$$RewardsLoadedImplCopyWithImpl(
+      _$RewardsLoadedImpl _value, $Res Function(_$RewardsLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? rewards = null,
+  }) {
+    return _then(_$RewardsLoadedImpl(
+      rewards: null == rewards
+          ? _value._rewards
+          : rewards // ignore: cast_nullable_to_non_nullable
+              as List<RewardItem>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RewardsLoadedImpl implements _RewardsLoaded {
+  const _$RewardsLoadedImpl({required final List<RewardItem> rewards})
+      : _rewards = rewards;
+
+  final List<RewardItem> _rewards;
+  @override
+  List<RewardItem> get rewards {
+    if (_rewards is EqualUnmodifiableListView) return _rewards;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_rewards);
+  }
+
+  @override
+  String toString() {
+    return 'ProfileState.rewardsLoaded(rewards: $rewards)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RewardsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._rewards, _rewards));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_rewards));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RewardsLoadedImplCopyWith<_$RewardsLoadedImpl> get copyWith =>
+      __$$RewardsLoadedImplCopyWithImpl<_$RewardsLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
+    required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return rewardsLoaded(rewards);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
+    TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return rewardsLoaded?.call(rewards);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
+    TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (rewardsLoaded != null) {
+      return rewardsLoaded(rewards);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return rewardsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return rewardsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (rewardsLoaded != null) {
+      return rewardsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RewardsLoaded implements ProfileState {
+  const factory _RewardsLoaded({required final List<RewardItem> rewards}) =
+      _$RewardsLoadedImpl;
+
+  List<RewardItem> get rewards;
+  @JsonKey(ignore: true)
+  _$$RewardsLoadedImplCopyWith<_$RewardsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RewardRedeemedImplCopyWith<$Res> {
+  factory _$$RewardRedeemedImplCopyWith(_$RewardRedeemedImpl value,
+          $Res Function(_$RewardRedeemedImpl) then) =
+      __$$RewardRedeemedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RewardRedemption redemption});
+
+  $RewardRedemptionCopyWith<$Res> get redemption;
+}
+
+/// @nodoc
+class __$$RewardRedeemedImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$RewardRedeemedImpl>
+    implements _$$RewardRedeemedImplCopyWith<$Res> {
+  __$$RewardRedeemedImplCopyWithImpl(
+      _$RewardRedeemedImpl _value, $Res Function(_$RewardRedeemedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? redemption = null,
+  }) {
+    return _then(_$RewardRedeemedImpl(
+      redemption: null == redemption
+          ? _value.redemption
+          : redemption // ignore: cast_nullable_to_non_nullable
+              as RewardRedemption,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RewardRedemptionCopyWith<$Res> get redemption {
+    return $RewardRedemptionCopyWith<$Res>(_value.redemption, (value) {
+      return _then(_value.copyWith(redemption: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$RewardRedeemedImpl implements _RewardRedeemed {
+  const _$RewardRedeemedImpl({required this.redemption});
+
+  @override
+  final RewardRedemption redemption;
+
+  @override
+  String toString() {
+    return 'ProfileState.rewardRedeemed(redemption: $redemption)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RewardRedeemedImpl &&
+            (identical(other.redemption, redemption) ||
+                other.redemption == redemption));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, redemption);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RewardRedeemedImplCopyWith<_$RewardRedeemedImpl> get copyWith =>
+      __$$RewardRedeemedImplCopyWithImpl<_$RewardRedeemedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
+    required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return rewardRedeemed(redemption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
+    TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return rewardRedeemed?.call(redemption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
+    TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (rewardRedeemed != null) {
+      return rewardRedeemed(redemption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return rewardRedeemed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return rewardRedeemed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (rewardRedeemed != null) {
+      return rewardRedeemed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RewardRedeemed implements ProfileState {
+  const factory _RewardRedeemed({required final RewardRedemption redemption}) =
+      _$RewardRedeemedImpl;
+
+  RewardRedemption get redemption;
+  @JsonKey(ignore: true)
+  _$$RewardRedeemedImplCopyWith<_$RewardRedeemedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TransactionsLoadedImplCopyWith<$Res> {
+  factory _$$TransactionsLoadedImplCopyWith(_$TransactionsLoadedImpl value,
+          $Res Function(_$TransactionsLoadedImpl) then) =
+      __$$TransactionsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<LoyaltyTransaction> transactions});
+}
+
+/// @nodoc
+class __$$TransactionsLoadedImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$TransactionsLoadedImpl>
+    implements _$$TransactionsLoadedImplCopyWith<$Res> {
+  __$$TransactionsLoadedImplCopyWithImpl(_$TransactionsLoadedImpl _value,
+      $Res Function(_$TransactionsLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transactions = null,
+  }) {
+    return _then(_$TransactionsLoadedImpl(
+      transactions: null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<LoyaltyTransaction>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TransactionsLoadedImpl implements _TransactionsLoaded {
+  const _$TransactionsLoadedImpl(
+      {required final List<LoyaltyTransaction> transactions})
+      : _transactions = transactions;
+
+  final List<LoyaltyTransaction> _transactions;
+  @override
+  List<LoyaltyTransaction> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transactions);
+  }
+
+  @override
+  String toString() {
+    return 'ProfileState.transactionsLoaded(transactions: $transactions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TransactionsLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_transactions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TransactionsLoadedImplCopyWith<_$TransactionsLoadedImpl> get copyWith =>
+      __$$TransactionsLoadedImplCopyWithImpl<_$TransactionsLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
+    required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return transactionsLoaded(transactions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
+    TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return transactionsLoaded?.call(transactions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
+    TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (transactionsLoaded != null) {
+      return transactionsLoaded(transactions);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return transactionsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return transactionsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (transactionsLoaded != null) {
+      return transactionsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TransactionsLoaded implements ProfileState {
+  const factory _TransactionsLoaded(
+          {required final List<LoyaltyTransaction> transactions}) =
+      _$TransactionsLoadedImpl;
+
+  List<LoyaltyTransaction> get transactions;
+  @JsonKey(ignore: true)
+  _$$TransactionsLoadedImplCopyWith<_$TransactionsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1397,6 +2564,10 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function(User user, LoyaltyBalance? loyaltyBalance) loaded,
     required TResult Function(List<ReferralRecord> referrals) referralsLoaded,
+    required TResult Function(List<RewardItem> rewards) rewardsLoaded,
+    required TResult Function(RewardRedemption redemption) rewardRedeemed,
+    required TResult Function(List<LoyaltyTransaction> transactions)
+        transactionsLoaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1409,6 +2580,10 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult? Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult? Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult? Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult? Function(List<LoyaltyTransaction> transactions)?
+        transactionsLoaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1421,6 +2596,9 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(User user, LoyaltyBalance? loyaltyBalance)? loaded,
     TResult Function(List<ReferralRecord> referrals)? referralsLoaded,
+    TResult Function(List<RewardItem> rewards)? rewardsLoaded,
+    TResult Function(RewardRedemption redemption)? rewardRedeemed,
+    TResult Function(List<LoyaltyTransaction> transactions)? transactionsLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1437,6 +2615,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ReferralsLoaded value) referralsLoaded,
+    required TResult Function(_RewardsLoaded value) rewardsLoaded,
+    required TResult Function(_RewardRedeemed value) rewardRedeemed,
+    required TResult Function(_TransactionsLoaded value) transactionsLoaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1449,6 +2630,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult? Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult? Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult? Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -1461,6 +2645,9 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ReferralsLoaded value)? referralsLoaded,
+    TResult Function(_RewardsLoaded value)? rewardsLoaded,
+    TResult Function(_RewardRedeemed value)? rewardRedeemed,
+    TResult Function(_TransactionsLoaded value)? transactionsLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

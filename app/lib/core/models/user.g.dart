@@ -21,6 +21,13 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
           : DateTime.parse(json['created_at'] as String),
       media:
           (json['media'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      gender: json['gender'] as String?,
+      dob: json['dob'] as String?,
+      addressLine1: json['address_line1'] as String?,
+      addressLine2: json['address_line2'] as String?,
+      city: json['city'] as String?,
+      state: json['state'] as String?,
+      pincode: json['pincode'] as String?,
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -36,4 +43,11 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'loyalty_points': instance.loyaltyPoints,
       'created_at': instance.createdAt?.toIso8601String(),
       'media': instance.media,
+      'gender': instance.gender,
+      'dob': instance.dob,
+      'address_line1': instance.addressLine1,
+      'address_line2': instance.addressLine2,
+      'city': instance.city,
+      'state': instance.state,
+      'pincode': instance.pincode,
     };

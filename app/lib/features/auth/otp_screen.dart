@@ -296,7 +296,7 @@ class _OtpScreenState extends State<OtpScreen> {
     // Checking AuthBloc: _onLogin calls /auth/request-otp.
     // Ideally we need a separate resend for registration if the endpoints create different OTP types.
     // Assuming /auth/request-otp works for both for now, or fallback to login flow.
-    context.read<AuthBloc>().add(AuthEvent.login(widget.phoneNumber));
+    context.read<AuthBloc>().add(AuthEvent.login(widget.contact));
   }
 
   void _showError(String message) {

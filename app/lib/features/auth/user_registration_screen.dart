@@ -82,6 +82,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
               setState(() => _isLoading = false);
               // Already on registration screen, no action needed besides loading state
           },
+          phoneVerified: (_) => setState(() => _isLoading = false),
           unauthenticated: () => setState(() => _isLoading = false),
           passwordResetSent: () => setState(() => _isLoading = false),
           passwordResetSuccess: () => setState(() => _isLoading = false),

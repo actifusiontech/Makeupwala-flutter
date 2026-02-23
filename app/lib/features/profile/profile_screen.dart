@@ -91,7 +91,7 @@ class _ProfileView extends StatelessWidget {
                     if (!isIncomplete) return const SizedBox.shrink();
                     
                     return Container(
-                      margin: const EdgeInsets.bottom(AppSpacing.lg),
+                      margin: const EdgeInsets.only(bottom: AppSpacing.lg),
                       padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
