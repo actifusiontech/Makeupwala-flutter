@@ -140,7 +140,9 @@ class _BrandProductCard extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.edit_outlined, color: AppColors.secondary),
               onPressed: () {
-                // TODO: Navigate to Edit Product
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Product Editing will be available in V2')),
+                );
               },
             ),
           ],

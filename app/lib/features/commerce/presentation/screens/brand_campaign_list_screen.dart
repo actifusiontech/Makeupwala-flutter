@@ -47,7 +47,9 @@ class _BrandCampaignListScreenState extends State<BrandCampaignListScreen> {
                       const SizedBox(height: AppSpacing.lg),
                       ElevatedButton(
                         onPressed: () {
-                          // TODO: Navigate to create campaign
+                           ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Campaign Creation will be available in V2')),
+                          );
                         },
                         child: const Text('Create Your First Campaign'),
                       ),
@@ -72,7 +74,9 @@ class _BrandCampaignListScreenState extends State<BrandCampaignListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO: Navigate to create campaign
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Campaign Creation will be available in V2')),
+          );
         },
         child: const Icon(Icons.add),
         backgroundColor: AppColors.primary,
@@ -130,7 +134,9 @@ class _CampaignCard extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    // TODO: Navigate to campaign details/applications
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Application viewing will be available in V2')),
+                    );
                   },
                   child: const Text('View Applications'),
                 ),

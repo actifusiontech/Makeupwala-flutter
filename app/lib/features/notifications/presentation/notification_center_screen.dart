@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'package:go_router/go_router.dart';
 import '../../../../core/services/notification_service.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_typography.dart';
@@ -176,7 +178,21 @@ class _NotificationCenterScreenState extends State<NotificationCenterScreen> {
       child: InkWell(
         onTap: () {
           _markAsRead(notification.id);
-          // TODO: Navigate based on payload
+          if (notification.payload != null && notification.payload!.isNotEmpty) {
+            if (notification.payload!.startsWith('/')) {
+              context.push(notification.payload!);
+            } else {
+              try {
+                final data = jsonDecode(notification.payload!);
+                final route = data['route'] as String?;
+                if (route != null) {
+                  context.push(route);
+                }
+              } catch (_) {
+                // Ignore parse errors, fallback to no-op
+              } // end try
+            } // end else
+          } // end if
         },
         child: Container(
           margin: const EdgeInsets.only(bottom: AppSpacing.sm),

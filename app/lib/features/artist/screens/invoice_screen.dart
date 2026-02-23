@@ -5,6 +5,7 @@ import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'package:app/shared/widgets/custom_button.dart';
 import '../utils/invoice_generator.dart';
+import '../../../../core/network/api_client.dart';
 
 class InvoiceScreen extends StatelessWidget {
   final String bookingId;
@@ -269,36 +270,41 @@ class InvoiceScreen extends StatelessWidget {
   }
 
   Future<Map<String, dynamic>> _fetchInvoice(String bookingId) async {
-    // TODO: Replace with actual API call
-    await Future.delayed(const Duration(seconds: 1));
-    
-    return {
-      'invoice_number': 'INV-202601-0001',
-      'booking_id': bookingId,
-      'customer_name': 'Priya Sharma',
-      'customer_phone': '+91 98765 43210',
-      'service_date': '2026-01-15',
-      'services': [
+    try {
+      final response = await ApiClient().dio.get('/artists/me/bookings/$bookingId');
+      final data = response.data['data'] as Map<String, dynamic>;
+      
+      final services = (data['services'] as List?)?.map((s) => {
+        'service_name': s['name'] ?? 'Makeup Service',
+        'quantity': s['quantity'] ?? 1,
+        'unit_price': s['price'] ?? 0,
+        'total_price': (s['price'] ?? 0) * (s['quantity'] ?? 1),
+      }).toList() ?? [
         {
-          'service_name': 'Bridal Makeup',
+          'service_name': data['service_name'] ?? 'Makeup Service',
           'quantity': 1,
-          'unit_price': 10000,
-          'total_price': 10000,
-        },
-        {
-          'service_name': 'Hair Styling',
-          'quantity': 1,
-          'unit_price': 3000,
-          'total_price': 3000,
-        },
-      ],
-      'subtotal': 13000,
-      'gst_amount': 2340,
-      'discount_amount': 0,
-      'total_amount': 15340,
-      'payment_status': 'pending',
-      'payment_method': 'online',
-    };
+          'unit_price': data['total_amount'] ?? 0,
+          'total_price': data['total_amount'] ?? 0,
+        }
+      ];
+
+      return {
+        'invoice_number': 'INV-${DateTime.now().year}${DateTime.now().month.toString().padLeft(2, '0')}-${bookingId.substring(0, 4).toUpperCase()}',
+        'booking_id': bookingId,
+        'customer_name': data['customer_name'] ?? 'Customer',
+        'customer_phone': data['customer_contact'] ?? 'N/A',
+        'service_date': data['date'] ?? 'N/A',
+        'services': services,
+        'subtotal': data['total_amount'] ?? 0,
+        'gst_amount': (data['total_amount'] ?? 0) * 0.18,
+        'discount_amount': 0,
+        'total_amount': (data['total_amount'] ?? 0) * 1.18, 
+        'payment_status': data['payment_status'] ?? 'pending',
+        'payment_method': data['payment_method'] ?? 'online',
+      };
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<void> _shareInvoice(BuildContext context, String bookingId) async {

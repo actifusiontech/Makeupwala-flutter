@@ -11,6 +11,7 @@ import 'data/booking_repository.dart';
 import '../../core/services/payment_service.dart';
 import '../wallet/data/wallet_repository.dart';
 import '../../core/network/api_client.dart';
+import '../auth/bloc/auth_bloc.dart';
 
 class BookingScreen extends StatefulWidget {
   final String artistId;
@@ -231,14 +232,23 @@ class _BookingScreenState extends State<BookingScreen> {
               );
             },
             paymentRequired: (orderId, amount, bookingId, keyId) {
-              // TODO: Get user details from AuthBloc
+              final authState = context.read<AuthBloc>().state;
+              final user = authState.maybeMap(
+                authenticated: (state) => state.user,
+                orElse: () => null,
+              );
+              
+              final name = user?.fullName?.isNotEmpty == true ? user!.fullName! : 'Customer';
+              final email = user?.email?.isNotEmpty == true ? user!.email! : 'customer@makeupwala.com';
+              final phone = user?.phone?.isNotEmpty == true ? user!.phone! : '9999999999';
+
               final paymentService = PaymentService();
               paymentService.openRazorpayCheckout(
                 orderId: orderId,
                 amount: amount,
-                name: 'Customer', // TODO: Get from AuthBloc
-                email: 'customer@example.com', // TODO: Get from AuthBloc
-                phone: '9999999999', // TODO: Get from AuthBloc
+                name: name,
+                email: email,
+                phone: phone,
                 keyId: keyId,
                 onSuccess: (response) {
                   context.read<BookingBloc>().add(
