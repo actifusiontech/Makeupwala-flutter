@@ -13,6 +13,7 @@ import '../booking/bloc/booking_bloc.dart';
 import '../booking/data/booking_repository.dart';
 import 'bloc/profile_bloc.dart';
 import 'data/profile_repository.dart';
+import 'edit_profile_screen.dart';
 import '../../features/profile/widgets/tier_progress_card.dart';
 import '../../features/rewards/leaderboard_screen.dart';
 import '../../features/discovery/lookbook_screen.dart';
@@ -51,6 +52,22 @@ class _ProfileView extends StatelessWidget {
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
         actions: [
+          BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loaded: (user, _) => IconButton(
+                  icon: const Icon(Icons.edit_outlined),
+                  onPressed: () {
+                    context.push('/profile/edit', extra: {
+                      'user': user,
+                      'isArtist': false, // Handle isArtist correctly if needed
+                    });
+                  },
+                ),
+                orElse: () => const SizedBox(),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
@@ -64,6 +81,70 @@ class _ProfileView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Profile Completion Prompt
+            BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loaded: (user, _) {
+                    final bool isIncomplete = user.phone == null || user.phone!.isEmpty || 
+                                            user.city == null || user.city!.isEmpty;
+                    if (!isIncomplete) return const SizedBox.shrink();
+                    
+                    return Container(
+                      margin: const EdgeInsets.bottom(AppSpacing.lg),
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [AppColors.primary, AppColors.primary.withOpacity(0.8)],
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.primary.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.stars, color: Colors.white, size: 28),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Complete Your Profile',
+                                  style: AppTypography.titleMedium.copyWith(color: Colors.white),
+                                ),
+                                Text(
+                                  'Unlock priority booking and rewards!',
+                                  style: AppTypography.bodySmall.copyWith(color: Colors.white.withOpacity(0.9)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              context.push('/profile/edit', extra: {'user': user, 'isArtist': false});
+                            },
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: AppColors.primary,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                            child: const Text('EDIT'),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  orElse: () => const SizedBox.shrink(),
+                );
+              },
+            ),
+
             // Profile Header
             Center(
               child: Column(
@@ -84,8 +165,8 @@ class _ProfileView extends StatelessWidget {
                             const SizedBox(height: AppSpacing.sm),
                             TextButton.icon(
                               onPressed: () => context.push('/rewards'),
-                              icon: const Icon(Icons.history, size: 18),
-                              label: const Text('View Referral History'),
+                              icon: const Icon(Icons.stars, size: 18, color: Colors.amber),
+                              label: const Text('GLOW Rewards Hub'),
                               style: TextButton.styleFrom(foregroundColor: AppColors.primary),
                             ),
                             TextButton.icon(
@@ -121,7 +202,7 @@ class _ProfileView extends StatelessWidget {
                 return state.maybeWhen(
                   loaded: (user, loyaltyBalance) => Column(
                     children: [
-                      _buildLoyaltyCard(loyaltyBalance),
+                      _buildLoyaltyCard(context, loyaltyBalance),
                       const SizedBox(height: AppSpacing.sm),
                       _buildLeaderboardButton(context),
                       const SizedBox(height: AppSpacing.lg),
@@ -214,13 +295,17 @@ class _ProfileView extends StatelessWidget {
     );
   }
 
-  Widget _buildLoyaltyCard(LoyaltyBalance? balance) {
+  Widget _buildLoyaltyCard(BuildContext context, LoyaltyBalance? balance) {
     if (balance == null) return const SizedBox.shrink();
     
-    return TierProgressCard(
-      currentTier: balance.tier,
-      totalBookings: balance.totalBookings,
-      balance: balance.balance,
+    return InkWell(
+      onTap: () => context.push('/rewards'),
+      borderRadius: BorderRadius.circular(20),
+      child: TierProgressCard(
+        currentTier: balance.tier,
+        totalBookings: balance.totalBookings,
+        balance: balance.balance,
+      ),
     );
   }
 

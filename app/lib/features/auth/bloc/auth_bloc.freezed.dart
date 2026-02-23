@@ -18,6 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -36,6 +42,12 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -53,6 +65,12 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -71,6 +89,10 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -86,6 +108,10 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -100,6 +126,10 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -130,6 +160,945 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$LoginWithEmailImplCopyWith<$Res> {
+  factory _$$LoginWithEmailImplCopyWith(_$LoginWithEmailImpl value,
+          $Res Function(_$LoginWithEmailImpl) then) =
+      __$$LoginWithEmailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class __$$LoginWithEmailImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LoginWithEmailImpl>
+    implements _$$LoginWithEmailImplCopyWith<$Res> {
+  __$$LoginWithEmailImplCopyWithImpl(
+      _$LoginWithEmailImpl _value, $Res Function(_$LoginWithEmailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+  }) {
+    return _then(_$LoginWithEmailImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginWithEmailImpl implements _LoginWithEmail {
+  const _$LoginWithEmailImpl({required this.email, required this.password});
+
+  @override
+  final String email;
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'AuthEvent.loginWithEmail(email: $email, password: $password)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginWithEmailImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginWithEmailImplCopyWith<_$LoginWithEmailImpl> get copyWith =>
+      __$$LoginWithEmailImplCopyWithImpl<_$LoginWithEmailImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
+    required TResult Function(String phoneNumber) login,
+    required TResult Function(String phoneNumber, String otp) verifyOtp,
+    required TResult Function(String role) selectRole,
+    required TResult Function() logout,
+    required TResult Function() checkAuth,
+    required TResult Function(String provider) socialLogin,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function(
+            String token, String tempPassword, String newPassword)
+        resetPassword,
+  }) {
+    return loginWithEmail(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult? Function(String phoneNumber)? login,
+    TResult? Function(String phoneNumber, String otp)? verifyOtp,
+    TResult? Function(String role)? selectRole,
+    TResult? Function()? logout,
+    TResult? Function()? checkAuth,
+    TResult? Function(String provider)? socialLogin,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+  }) {
+    return loginWithEmail?.call(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult Function(String phoneNumber)? login,
+    TResult Function(String phoneNumber, String otp)? verifyOtp,
+    TResult Function(String role)? selectRole,
+    TResult Function()? logout,
+    TResult Function()? checkAuth,
+    TResult Function(String provider)? socialLogin,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult Function(String email)? forgotPassword,
+    TResult Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+    required TResult orElse(),
+  }) {
+    if (loginWithEmail != null) {
+      return loginWithEmail(email, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
+    required TResult Function(_Login value) login,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+        verifyRegistrationOtp,
+    required TResult Function(_ForgotPassword value) forgotPassword,
+    required TResult Function(_ResetPassword value) resetPassword,
+  }) {
+    return loginWithEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult? Function(_ForgotPassword value)? forgotPassword,
+    TResult? Function(_ResetPassword value)? resetPassword,
+  }) {
+    return loginWithEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult Function(_Login value)? login,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult Function(_ForgotPassword value)? forgotPassword,
+    TResult Function(_ResetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (loginWithEmail != null) {
+      return loginWithEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginWithEmail implements AuthEvent {
+  const factory _LoginWithEmail(
+      {required final String email,
+      required final String password}) = _$LoginWithEmailImpl;
+
+  String get email;
+  String get password;
+  @JsonKey(ignore: true)
+  _$$LoginWithEmailImplCopyWith<_$LoginWithEmailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RequestEmailOtpImplCopyWith<$Res> {
+  factory _$$RequestEmailOtpImplCopyWith(_$RequestEmailOtpImpl value,
+          $Res Function(_$RequestEmailOtpImpl) then) =
+      __$$RequestEmailOtpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String email});
+}
+
+/// @nodoc
+class __$$RequestEmailOtpImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RequestEmailOtpImpl>
+    implements _$$RequestEmailOtpImplCopyWith<$Res> {
+  __$$RequestEmailOtpImplCopyWithImpl(
+      _$RequestEmailOtpImpl _value, $Res Function(_$RequestEmailOtpImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+  }) {
+    return _then(_$RequestEmailOtpImpl(
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RequestEmailOtpImpl implements _RequestEmailOtp {
+  const _$RequestEmailOtpImpl(this.email);
+
+  @override
+  final String email;
+
+  @override
+  String toString() {
+    return 'AuthEvent.requestEmailOtp(email: $email)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RequestEmailOtpImpl &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequestEmailOtpImplCopyWith<_$RequestEmailOtpImpl> get copyWith =>
+      __$$RequestEmailOtpImplCopyWithImpl<_$RequestEmailOtpImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
+    required TResult Function(String phoneNumber) login,
+    required TResult Function(String phoneNumber, String otp) verifyOtp,
+    required TResult Function(String role) selectRole,
+    required TResult Function() logout,
+    required TResult Function() checkAuth,
+    required TResult Function(String provider) socialLogin,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function(
+            String token, String tempPassword, String newPassword)
+        resetPassword,
+  }) {
+    return requestEmailOtp(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult? Function(String phoneNumber)? login,
+    TResult? Function(String phoneNumber, String otp)? verifyOtp,
+    TResult? Function(String role)? selectRole,
+    TResult? Function()? logout,
+    TResult? Function()? checkAuth,
+    TResult? Function(String provider)? socialLogin,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+  }) {
+    return requestEmailOtp?.call(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult Function(String phoneNumber)? login,
+    TResult Function(String phoneNumber, String otp)? verifyOtp,
+    TResult Function(String role)? selectRole,
+    TResult Function()? logout,
+    TResult Function()? checkAuth,
+    TResult Function(String provider)? socialLogin,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult Function(String email)? forgotPassword,
+    TResult Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+    required TResult orElse(),
+  }) {
+    if (requestEmailOtp != null) {
+      return requestEmailOtp(email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
+    required TResult Function(_Login value) login,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+        verifyRegistrationOtp,
+    required TResult Function(_ForgotPassword value) forgotPassword,
+    required TResult Function(_ResetPassword value) resetPassword,
+  }) {
+    return requestEmailOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult? Function(_ForgotPassword value)? forgotPassword,
+    TResult? Function(_ResetPassword value)? resetPassword,
+  }) {
+    return requestEmailOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult Function(_Login value)? login,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult Function(_ForgotPassword value)? forgotPassword,
+    TResult Function(_ResetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (requestEmailOtp != null) {
+      return requestEmailOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RequestEmailOtp implements AuthEvent {
+  const factory _RequestEmailOtp(final String email) = _$RequestEmailOtpImpl;
+
+  String get email;
+  @JsonKey(ignore: true)
+  _$$RequestEmailOtpImplCopyWith<_$RequestEmailOtpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RequestPhoneOtpImplCopyWith<$Res> {
+  factory _$$RequestPhoneOtpImplCopyWith(_$RequestPhoneOtpImpl value,
+          $Res Function(_$RequestPhoneOtpImpl) then) =
+      __$$RequestPhoneOtpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phone});
+}
+
+/// @nodoc
+class __$$RequestPhoneOtpImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RequestPhoneOtpImpl>
+    implements _$$RequestPhoneOtpImplCopyWith<$Res> {
+  __$$RequestPhoneOtpImplCopyWithImpl(
+      _$RequestPhoneOtpImpl _value, $Res Function(_$RequestPhoneOtpImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = null,
+  }) {
+    return _then(_$RequestPhoneOtpImpl(
+      null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
+  const _$RequestPhoneOtpImpl(this.phone);
+
+  @override
+  final String phone;
+
+  @override
+  String toString() {
+    return 'AuthEvent.requestPhoneOtp(phone: $phone)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RequestPhoneOtpImpl &&
+            (identical(other.phone, phone) || other.phone == phone));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phone);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequestPhoneOtpImplCopyWith<_$RequestPhoneOtpImpl> get copyWith =>
+      __$$RequestPhoneOtpImplCopyWithImpl<_$RequestPhoneOtpImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
+    required TResult Function(String phoneNumber) login,
+    required TResult Function(String phoneNumber, String otp) verifyOtp,
+    required TResult Function(String role) selectRole,
+    required TResult Function() logout,
+    required TResult Function() checkAuth,
+    required TResult Function(String provider) socialLogin,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function(
+            String token, String tempPassword, String newPassword)
+        resetPassword,
+  }) {
+    return requestPhoneOtp(phone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult? Function(String phoneNumber)? login,
+    TResult? Function(String phoneNumber, String otp)? verifyOtp,
+    TResult? Function(String role)? selectRole,
+    TResult? Function()? logout,
+    TResult? Function()? checkAuth,
+    TResult? Function(String provider)? socialLogin,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+  }) {
+    return requestPhoneOtp?.call(phone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult Function(String phoneNumber)? login,
+    TResult Function(String phoneNumber, String otp)? verifyOtp,
+    TResult Function(String role)? selectRole,
+    TResult Function()? logout,
+    TResult Function()? checkAuth,
+    TResult Function(String provider)? socialLogin,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult Function(String email)? forgotPassword,
+    TResult Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+    required TResult orElse(),
+  }) {
+    if (requestPhoneOtp != null) {
+      return requestPhoneOtp(phone);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
+    required TResult Function(_Login value) login,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+        verifyRegistrationOtp,
+    required TResult Function(_ForgotPassword value) forgotPassword,
+    required TResult Function(_ResetPassword value) resetPassword,
+  }) {
+    return requestPhoneOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult? Function(_ForgotPassword value)? forgotPassword,
+    TResult? Function(_ResetPassword value)? resetPassword,
+  }) {
+    return requestPhoneOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult Function(_Login value)? login,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult Function(_ForgotPassword value)? forgotPassword,
+    TResult Function(_ResetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (requestPhoneOtp != null) {
+      return requestPhoneOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RequestPhoneOtp implements AuthEvent {
+  const factory _RequestPhoneOtp(final String phone) = _$RequestPhoneOtpImpl;
+
+  String get phone;
+  @JsonKey(ignore: true)
+  _$$RequestPhoneOtpImplCopyWith<_$RequestPhoneOtpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VerifyContactOtpImplCopyWith<$Res> {
+  factory _$$VerifyContactOtpImplCopyWith(_$VerifyContactOtpImpl value,
+          $Res Function(_$VerifyContactOtpImpl) then) =
+      __$$VerifyContactOtpImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? phone, String? email, String otp, bool isRegistration});
+}
+
+/// @nodoc
+class __$$VerifyContactOtpImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$VerifyContactOtpImpl>
+    implements _$$VerifyContactOtpImplCopyWith<$Res> {
+  __$$VerifyContactOtpImplCopyWithImpl(_$VerifyContactOtpImpl _value,
+      $Res Function(_$VerifyContactOtpImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phone = freezed,
+    Object? email = freezed,
+    Object? otp = null,
+    Object? isRegistration = null,
+  }) {
+    return _then(_$VerifyContactOtpImpl(
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      otp: null == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as String,
+      isRegistration: null == isRegistration
+          ? _value.isRegistration
+          : isRegistration // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$VerifyContactOtpImpl implements _VerifyContactOtp {
+  const _$VerifyContactOtpImpl(
+      {this.phone, this.email, required this.otp, this.isRegistration = false});
+
+  @override
+  final String? phone;
+  @override
+  final String? email;
+  @override
+  final String otp;
+  @override
+  @JsonKey()
+  final bool isRegistration;
+
+  @override
+  String toString() {
+    return 'AuthEvent.verifyContactOtp(phone: $phone, email: $email, otp: $otp, isRegistration: $isRegistration)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyContactOtpImpl &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.otp, otp) || other.otp == otp) &&
+            (identical(other.isRegistration, isRegistration) ||
+                other.isRegistration == isRegistration));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, phone, email, otp, isRegistration);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerifyContactOtpImplCopyWith<_$VerifyContactOtpImpl> get copyWith =>
+      __$$VerifyContactOtpImplCopyWithImpl<_$VerifyContactOtpImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
+    required TResult Function(String phoneNumber) login,
+    required TResult Function(String phoneNumber, String otp) verifyOtp,
+    required TResult Function(String role) selectRole,
+    required TResult Function() logout,
+    required TResult Function() checkAuth,
+    required TResult Function(String provider) socialLogin,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function(
+            String token, String tempPassword, String newPassword)
+        resetPassword,
+  }) {
+    return verifyContactOtp(phone, email, otp, isRegistration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult? Function(String phoneNumber)? login,
+    TResult? Function(String phoneNumber, String otp)? verifyOtp,
+    TResult? Function(String role)? selectRole,
+    TResult? Function()? logout,
+    TResult? Function()? checkAuth,
+    TResult? Function(String provider)? socialLogin,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+  }) {
+    return verifyContactOtp?.call(phone, email, otp, isRegistration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
+    TResult Function(String phoneNumber)? login,
+    TResult Function(String phoneNumber, String otp)? verifyOtp,
+    TResult Function(String role)? selectRole,
+    TResult Function()? logout,
+    TResult Function()? checkAuth,
+    TResult Function(String provider)? socialLogin,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult Function(String email)? forgotPassword,
+    TResult Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+    required TResult orElse(),
+  }) {
+    if (verifyContactOtp != null) {
+      return verifyContactOtp(phone, email, otp, isRegistration);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
+    required TResult Function(_Login value) login,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+        verifyRegistrationOtp,
+    required TResult Function(_ForgotPassword value) forgotPassword,
+    required TResult Function(_ResetPassword value) resetPassword,
+  }) {
+    return verifyContactOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult? Function(_ForgotPassword value)? forgotPassword,
+    TResult? Function(_ResetPassword value)? resetPassword,
+  }) {
+    return verifyContactOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult Function(_Login value)? login,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult Function(_ForgotPassword value)? forgotPassword,
+    TResult Function(_ResetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (verifyContactOtp != null) {
+      return verifyContactOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VerifyContactOtp implements AuthEvent {
+  const factory _VerifyContactOtp(
+      {final String? phone,
+      final String? email,
+      required final String otp,
+      final bool isRegistration}) = _$VerifyContactOtpImpl;
+
+  String? get phone;
+  String? get email;
+  String get otp;
+  bool get isRegistration;
+  @JsonKey(ignore: true)
+  _$$VerifyContactOtpImplCopyWith<_$VerifyContactOtpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -197,6 +1166,12 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -218,6 +1193,12 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -238,6 +1219,12 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -262,6 +1249,10 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -280,6 +1271,10 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -297,6 +1292,10 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -398,6 +1397,12 @@ class _$VerifyOtpImpl implements _VerifyOtp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -419,6 +1424,12 @@ class _$VerifyOtpImpl implements _VerifyOtp {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -439,6 +1450,12 @@ class _$VerifyOtpImpl implements _VerifyOtp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -463,6 +1480,10 @@ class _$VerifyOtpImpl implements _VerifyOtp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -481,6 +1502,10 @@ class _$VerifyOtpImpl implements _VerifyOtp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -498,6 +1523,10 @@ class _$VerifyOtpImpl implements _VerifyOtp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -592,6 +1621,12 @@ class _$SelectRoleImpl implements _SelectRole {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -613,6 +1648,12 @@ class _$SelectRoleImpl implements _SelectRole {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -633,6 +1674,12 @@ class _$SelectRoleImpl implements _SelectRole {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -657,6 +1704,10 @@ class _$SelectRoleImpl implements _SelectRole {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -675,6 +1726,10 @@ class _$SelectRoleImpl implements _SelectRole {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -692,6 +1747,10 @@ class _$SelectRoleImpl implements _SelectRole {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -758,6 +1817,12 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -779,6 +1844,12 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -799,6 +1870,12 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -823,6 +1900,10 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -841,6 +1922,10 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -858,6 +1943,10 @@ class _$LogoutImpl implements _Logout {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -919,6 +2008,12 @@ class _$CheckAuthImpl implements _CheckAuth {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -940,6 +2035,12 @@ class _$CheckAuthImpl implements _CheckAuth {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -960,6 +2061,12 @@ class _$CheckAuthImpl implements _CheckAuth {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -984,6 +2091,10 @@ class _$CheckAuthImpl implements _CheckAuth {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -1002,6 +2113,10 @@ class _$CheckAuthImpl implements _CheckAuth {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -1019,6 +2134,10 @@ class _$CheckAuthImpl implements _CheckAuth {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -1107,6 +2226,12 @@ class _$SocialLoginImpl implements _SocialLogin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -1128,6 +2253,12 @@ class _$SocialLoginImpl implements _SocialLogin {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -1148,6 +2279,12 @@ class _$SocialLoginImpl implements _SocialLogin {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -1172,6 +2309,10 @@ class _$SocialLoginImpl implements _SocialLogin {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -1190,6 +2331,10 @@ class _$SocialLoginImpl implements _SocialLogin {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -1207,6 +2352,10 @@ class _$SocialLoginImpl implements _SocialLogin {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -1344,6 +2493,12 @@ class _$RegisterImpl implements _Register {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -1365,6 +2520,12 @@ class _$RegisterImpl implements _Register {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -1385,6 +2546,12 @@ class _$RegisterImpl implements _Register {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -1409,6 +2576,10 @@ class _$RegisterImpl implements _Register {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -1427,6 +2598,10 @@ class _$RegisterImpl implements _Register {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -1444,6 +2619,10 @@ class _$RegisterImpl implements _Register {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -1555,6 +2734,12 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -1576,6 +2761,12 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -1596,6 +2787,12 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -1620,6 +2817,10 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -1638,6 +2839,10 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -1655,6 +2860,10 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -1751,6 +2960,12 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -1772,6 +2987,12 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -1792,6 +3013,12 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -1816,6 +3043,10 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -1834,6 +3065,10 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -1851,6 +3086,10 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
@@ -1965,6 +3204,12 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)
+        verifyContactOtp,
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
@@ -1986,6 +3231,12 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
@@ -2006,6 +3257,12 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(
+            String? phone, String? email, String otp, bool isRegistration)?
+        verifyContactOtp,
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
@@ -2030,6 +3287,10 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
@@ -2048,6 +3309,10 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
@@ -2065,6 +3330,10 @@ class _$ResetPasswordImpl implements _ResetPassword {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,

@@ -10,13 +10,15 @@ import '../../shared/widgets/debug_panel.dart';
 import 'bloc/auth_bloc.dart';
 
 class OtpScreen extends StatefulWidget {
-  final String phoneNumber;
+  final String contact;
   final bool isRegistration;
+  final bool isProfileUpdate;
 
   const OtpScreen({
     super.key, 
-    required this.phoneNumber, 
+    required this.contact, 
     this.isRegistration = false,
+    this.isProfileUpdate = false,
   });
 
   @override
@@ -103,6 +105,13 @@ class _OtpScreenState extends State<OtpScreen> {
           unauthenticated: () => setState(() => _isLoading = false),
           passwordResetSent: () => setState(() => _isLoading = false),
           passwordResetSuccess: () => setState(() => _isLoading = false),
+          phoneVerified: (phone) {
+            setState(() => _isLoading = false);
+            if (widget.isProfileUpdate) {
+              _clearOtpInputs();
+              context.pop(); // Go back to EditProfileScreen
+            }
+          },
           error: (message) {
             setState(() => _isLoading = false);
             ScaffoldMessenger.of(context).showSnackBar(
@@ -133,7 +142,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       const SizedBox(height: AppSpacing.sm),
 
                       Text(
-                        'We sent a code to ${widget.phoneNumber}',
+                        'We sent a code to ${widget.contact}',
                         style: AppTypography.bodyLarge.copyWith(
                           color: AppColors.textSecondary,
                         ),
@@ -248,16 +257,18 @@ class _OtpScreenState extends State<OtpScreen> {
       return;
     }
 
+    final isEmail = widget.contact.contains('@');
     HapticFeedback.mediumImpact();
-    if (widget.isRegistration) {
-      context.read<AuthBloc>().add(
-        AuthEvent.verifyRegistrationOtp(phone: widget.phoneNumber, otp: otp),
-      );
-    } else {
-      context.read<AuthBloc>().add(
-        AuthEvent.verifyOtp(widget.phoneNumber, otp),
-      );
-    }
+    
+    context.read<AuthBloc>().add(
+      AuthEvent.verifyContactOtp(
+        phone: isEmail ? null : widget.contact,
+        email: isEmail ? widget.contact : null,
+        otp: otp,
+        isRegistration: widget.isRegistration,
+        isProfileUpdate: widget.isProfileUpdate,
+      ),
+    );
   }
 
   void _clearOtpInputs() {

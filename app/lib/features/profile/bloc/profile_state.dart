@@ -9,5 +9,8 @@ class ProfileState with _$ProfileState {
     LoyaltyBalance? loyaltyBalance,
   }) = _Loaded;
   const factory ProfileState.referralsLoaded({required List<ReferralRecord> referrals}) = _ReferralsLoaded;
+  const factory ProfileState.rewardsLoaded({required List<RewardItem> rewards}) = _RewardsLoaded;
+  const factory ProfileState.rewardRedeemed({required RewardRedemption redemption}) = _RewardRedeemed;
+  const factory ProfileState.transactionsLoaded({required List<LoyaltyTransaction> transactions}) = _TransactionsLoaded;
   const factory ProfileState.error({required String message}) = _Error;
 }

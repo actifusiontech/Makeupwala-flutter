@@ -25,6 +25,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
       await event.when(
+        loginWithEmail: (email, password) => _onLoginWithEmail(email, password, emit),
+        requestEmailOtp: (email) => _onRequestEmailOtp(email, emit),
+        requestPhoneOtp: (phone) => _onRequestPhoneOtp(phone, emit),
+        verifyContactOtp: (phone, email, otp, isRegistration, isProfileUpdate) => _onVerifyContactOtp(phone, email, otp, isRegistration, isProfileUpdate, emit),
         login: (phone) => _onLogin(phone, emit),
         verifyOtp: (phone, otp) => _onVerifyOtp(phone, otp, emit),
         selectRole: (role) => _onSelectRole(role, emit),
@@ -37,6 +41,104 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         resetPassword: (token, tempPassword, newPassword) => _onResetPassword(token, tempPassword, newPassword, emit),
       );
     });
+  }
+
+  Future<void> _onLoginWithEmail(String email, String password, Emitter<AuthState> emit) async {
+    developer.log('🔐 Email Login requested: $email', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      final response = await _apiClient.dio.post('/auth/login', data: {
+        'email': email,
+        'password': password,
+      });
+      final data = response.data;
+      final token = data['access_token'] as String;
+      final refreshToken = data['refresh_token'] as String;
+      final userData = data['user'] as Map<String, dynamic>;
+
+      await _secureStorage.write(key: 'auth_token', value: token);
+      await _secureStorage.write(key: 'refresh_token', value: refreshToken);
+
+      final user = User.fromJson(userData);
+      emit(AuthState.authenticated(user: user));
+    } catch (e) {
+      developer.log('❌ Email Login error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Login failed: Invalid credentials or unverified account.'));
+    }
+  }
+
+  Future<void> _onRequestEmailOtp(String email, Emitter<AuthState> emit) async {
+    developer.log('📧 Email OTP requested: $email', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      await _apiClient.dio.post('/auth/request-otp', data: {'email': email});
+      emit(AuthState.otpSent(phoneNumber: email)); // Reuse otpSent state with email string
+    } catch (e) {
+      developer.log('❌ Email OTP error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Failed to send verification code to email.'));
+    }
+  }
+
+  Future<void> _onRequestPhoneOtp(String phone, Emitter<AuthState> emit) async {
+    developer.log('📱 Phone OTP requested: $phone', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      await _apiClient.dio.post('/auth/request-otp', data: {'phone': phone});
+      emit(AuthState.otpSent(phoneNumber: phone));
+    } catch (e) {
+      developer.log('❌ Phone OTP error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Failed to send verification code to phone.'));
+    }
+  }
+
+  Future<void> _onVerifyContactOtp(String? phone, String? email, String otp, bool isRegistration, bool isProfileUpdate, Emitter<AuthState> emit) async {
+    developer.log('🔐 Verifying Contact OTP: ${phone ?? email} (ProfileUpdate: $isProfileUpdate)', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      if (isProfileUpdate) {
+        // Just verify the OTP so it remains 'VERIFIED' in DB for profile update check
+        await _apiClient.dio.post('/auth/verify-otp', data: {
+          'otp': otp,
+          if (phone != null) 'phone': phone,
+          if (email != null) 'email': email,
+        });
+        emit(AuthState.phoneVerified(phone: phone ?? email ?? ''));
+        return;
+      }
+
+      final endpoint = isRegistration ? '/auth/verify-registration' : '/auth/login-otp';
+      final payload = {
+        'otp': otp,
+        if (phone != null) 'phone': phone,
+        if (email != null) 'email': email,
+      };
+
+      final response = await _apiClient.dio.post(endpoint, data: payload);
+      final data = response.data;
+
+      if (!isRegistration && data['requires_registration'] == true) {
+        emit(AuthState.needsRegistration(phoneNumber: phone ?? email ?? ''));
+        return;
+      }
+
+      final token = data['access_token'] as String;
+      final refreshToken = data['refresh_token'] as String;
+      final userData = data['user'] as Map<String, dynamic>;
+
+      await _secureStorage.write(key: 'auth_token', value: token);
+      await _secureStorage.write(key: 'refresh_token', value: refreshToken);
+
+      final user = User.fromJson(userData);
+      
+      if (user.role == null || user.role!.isEmpty) {
+        emit(AuthState.needsRoleSelection(user: user));
+      } else {
+        emit(AuthState.authenticated(user: user));
+      }
+    } catch (e) {
+      developer.log('❌ Verify Contact OTP error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Invalid or expired verification code.'));
+    }
   }
 
   Future<void> _onRegister(String fullName, String email, String phone, String password, String role, Emitter<AuthState> emit) async {

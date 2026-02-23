@@ -9,4 +9,7 @@ abstract class ProfileEvent with _$ProfileEvent {
   }) = _UpdateProfile;
   const factory ProfileEvent.uploadMedia({required String filePath}) = _UploadMedia;
   const factory ProfileEvent.fetchReferrals() = _FetchReferrals;
+  const factory ProfileEvent.fetchRewards() = _FetchRewards;
+  const factory ProfileEvent.redeemReward(String rewardId) = _RedeemReward;
+  const factory ProfileEvent.fetchTransactions() = _FetchTransactions;
 }

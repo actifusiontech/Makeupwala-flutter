@@ -28,6 +28,8 @@ import '../features/artist/manage_services_screen.dart';
 
 import '../features/booking/booking_screen.dart';
 import '../features/profile/profile_screen.dart';
+import '../features/profile/edit_profile_screen.dart';
+import '../features/profile/loyalty_hub_screen.dart';
 import '../features/profile/referral_history_screen.dart';
 import '../features/subscription/subscription_screen.dart';
 import '../features/notifications/notification_screen.dart';
@@ -124,26 +126,45 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
           path: '/otp',
           name: 'otp',
           builder: (context, state) {
-            String phone = '';
+            String contact = '';
             bool isRegistration = false;
+            bool isProfileUpdate = false;
             
             if (state.extra is Map) {
               final map = state.extra as Map;
-              phone = map['phone'] as String? ?? '';
+              contact = (map['phone'] ?? map['email'] ?? map['contact'] ?? '') as String;
               isRegistration = map['isRegistration'] as bool? ?? false;
+              isProfileUpdate = map['isProfileUpdate'] as bool? ?? false;
             } else if (state.extra is String) {
-              phone = state.extra as String;
+              contact = state.extra as String;
             }
             
-            return OtpScreen(phoneNumber: phone, isRegistration: isRegistration);
+            return OtpScreen(
+              contact: contact, 
+              isRegistration: isRegistration,
+              isProfileUpdate: isProfileUpdate,
+            );
           },
         ),
         GoRoute(
           path: '/register',
           name: 'register',
           builder: (context, state) {
-            final phone = state.extra as String?;
-            return UserRegistrationScreen(phoneNumber: phone);
+            String? phone;
+            String? email;
+            if (state.extra is String) {
+              final str = state.extra as String;
+              if (str.contains('@')) {
+                email = str;
+              } else {
+                phone = str;
+              }
+            } else if (state.extra is Map) {
+              final map = state.extra as Map;
+              phone = map['phone'] as String?;
+              email = map['email'] as String?;
+            }
+            return UserRegistrationScreen(phoneNumber: phone, email: email);
           },
         ),
         GoRoute(
@@ -282,6 +303,23 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
           path: '/profile',
           name: 'profile',
           builder: (context, state) => const ProfileScreen(),
+          routes: [
+            GoRoute(
+              path: 'edit',
+              name: 'edit-profile',
+              builder: (context, state) {
+                final extra = state.extra as Map<String, dynamic>;
+                final user = extra['user'] as User;
+                final isArtist = extra['isArtist'] as bool;
+                return EditProfileScreen(user: user, isArtist: isArtist);
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: '/rewards',
+          name: 'rewards',
+          builder: (context, state) => const LoyaltyHubScreen(),
         ),
         GoRoute(
           path: '/subscription',

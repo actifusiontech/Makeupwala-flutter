@@ -22,6 +22,9 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
     with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _phoneController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  late TabController _tabController;
   late AnimationController _fadeController;
   late AnimationController _slideController;
   late Animation<double> _fadeAnimation;
@@ -29,6 +32,8 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
   late Animation<double> _scaleAnimation;
   bool _isLoading = false;
   bool _hasError = false;
+  bool _isPasswordVisible = false;
+  bool _useEmailOtp = false;
 
   // Luxury Gold & Rose Palette
   static const Color _kDarkGold = Color(0xFFC5A028);
@@ -37,6 +42,7 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
     
     // Fade animation for overall screen
     _fadeController = AnimationController(
@@ -72,9 +78,12 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
 
   @override
   void dispose() {
+    _tabController.dispose();
     _fadeController.dispose();
     _slideController.dispose();
     _phoneController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -239,7 +248,31 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
                             _buildTitleSection(),
                             const SizedBox(height: AppSpacing.xl),
                             
-                            _buildPhoneInput(),
+                            TabBar(
+                              controller: _tabController,
+                              indicatorColor: _kDarkGold,
+                              labelColor: _kTextDark,
+                              unselectedLabelColor: Colors.black26,
+                              labelStyle: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 13, letterSpacing: 1),
+                              indicatorWeight: 1,
+                              tabs: const [
+                                Tab(text: 'PHONE'),
+                                Tab(text: 'EMAIL'),
+                              ],
+                            ),
+                            const SizedBox(height: AppSpacing.lg),
+
+                            SizedBox(
+                              height: 120, // Approximate height for inputs
+                              child: TabBarView(
+                                controller: _tabController,
+                                physics: const NeverScrollableScrollPhysics(),
+                                children: [
+                                  _buildPhoneInput(),
+                                  _buildEmailInput(),
+                                ],
+                              ),
+                            ),
                             const SizedBox(height: AppSpacing.lg),
                             
                             _buildContinueButton(),
@@ -366,13 +399,113 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
             isDense: true,
           ),
           validator: (value) {
-            if (value == null || value.isEmpty) return '';
-            if (value.length < 10) return '';
+            if (_tabController.index == 0) {
+              if (value == null || value.isEmpty) return '';
+              if (value.length < 10) return '';
+            }
             return null;
           },
         ),
       ],
-    ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2, end: 0);
+    );
+  }
+
+  Widget _buildEmailInput() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'EMAIL ADDRESS',
+              style: GoogleFonts.lato(
+                color: Colors.black38,
+                fontSize: 11,
+                letterSpacing: 1.5,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            InkWell(
+              onTap: () => setState(() => _useEmailOtp = !_useEmailOtp),
+              child: Text(
+                _useEmailOtp ? 'USE PASSWORD' : 'USE OTP',
+                style: GoogleFonts.lato(
+                  color: _kDarkGold,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        TextFormField(
+          controller: _emailController,
+          keyboardType: TextInputType.emailAddress,
+          style: GoogleFonts.lato(color: _kTextDark, fontSize: 16),
+          cursorColor: _kDarkGold,
+          decoration: InputDecoration(
+            hintText: 'example@email.com',
+            hintStyle: TextStyle(color: Colors.black12, fontSize: 14),
+            enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.black12)),
+            focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: _kDarkGold, width: 2)),
+            contentPadding: const EdgeInsets.symmetric(vertical: 8),
+            isDense: true,
+          ),
+          validator: (value) {
+            if (_tabController.index == 1) {
+              if (value == null || value.isEmpty) return 'Required';
+              if (!value.contains('@')) return 'Invalid Email';
+            }
+            return null;
+          },
+        ),
+        if (!_useEmailOtp) ...[
+          const SizedBox(height: 16),
+          Text(
+            'PASSWORD',
+            style: GoogleFonts.lato(
+              color: Colors.black38,
+              fontSize: 11,
+              letterSpacing: 1.5,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 4),
+          TextFormField(
+            controller: _passwordController,
+            obscureText: !_isPasswordVisible,
+            style: GoogleFonts.lato(color: _kTextDark, fontSize: 16),
+            cursorColor: _kDarkGold,
+            decoration: InputDecoration(
+              hintText: '••••••••',
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  size: 18,
+                  color: Colors.black26,
+                ),
+                onPressed: () => setState(() => _isPasswordVisible = !_isPasswordVisible),
+              ),
+              enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.black12)),
+              focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: _kDarkGold, width: 2)),
+              contentPadding: const EdgeInsets.symmetric(vertical: 8),
+              isDense: true,
+            ),
+            validator: (value) {
+              if (_tabController.index == 1 && !_useEmailOtp) {
+                if (value == null || value.isEmpty) return 'Required';
+                if (value.length < 6) return 'Too short';
+              }
+              return null;
+            },
+          ),
+        ],
+      ],
+    );
   }
 
   Widget _buildContinueButton() {
@@ -476,8 +609,18 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
   void _handleContinue() {
     if (_formKey.currentState?.validate() ?? false) {
       HapticFeedback.mediumImpact();
-      final phone = _phoneController.text.trim();
-      context.read<AuthBloc>().add(AuthEvent.login(phone));
+      if (_tabController.index == 0) {
+        final phone = _phoneController.text.trim();
+        context.read<AuthBloc>().add(AuthEvent.requestPhoneOtp(phone));
+      } else {
+        final email = _emailController.text.trim();
+        if (_useEmailOtp) {
+          context.read<AuthBloc>().add(AuthEvent.requestEmailOtp(email));
+        } else {
+          final password = _passwordController.text;
+          context.read<AuthBloc>().add(AuthEvent.loginWithEmail(email: email, password: password));
+        }
+      }
     } else {
       HapticFeedback.lightImpact();
     }

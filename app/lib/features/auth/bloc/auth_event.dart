@@ -2,6 +2,19 @@ part of 'auth_bloc.dart';
 
 @freezed
 class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.loginWithEmail({
+    required String email,
+    required String password,
+  }) = _LoginWithEmail;
+  const factory AuthEvent.requestEmailOtp(String email) = _RequestEmailOtp;
+  const factory AuthEvent.requestPhoneOtp(String phone) = _RequestPhoneOtp;
+  const factory AuthEvent.verifyContactOtp({
+    String? phone,
+    String? email,
+    required String otp,
+    @Default(false) bool isRegistration,
+    @Default(false) bool isProfileUpdate,
+  }) = _VerifyContactOtp;
   const factory AuthEvent.login(String phoneNumber) = _Login;
   const factory AuthEvent.verifyOtp(String phoneNumber, String otp) = _VerifyOtp;
   const factory AuthEvent.selectRole(String role) = _SelectRole;

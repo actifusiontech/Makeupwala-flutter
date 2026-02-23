@@ -10,7 +10,8 @@ import 'bloc/auth_bloc.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
   final String? phoneNumber;
-  const UserRegistrationScreen({super.key, this.phoneNumber});
+  final String? email;
+  const UserRegistrationScreen({super.key, this.phoneNumber, this.email});
 
   @override
   State<UserRegistrationScreen> createState() => _UserRegistrationScreenState();
@@ -32,6 +33,9 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
     super.initState();
     if (widget.phoneNumber != null) {
       _phoneController.text = widget.phoneNumber!;
+    }
+    if (widget.email != null) {
+      _emailController.text = widget.email!;
     }
   }
 
@@ -178,9 +182,9 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                             
                             _buildInput('FULL NAME', _nameController, TextInputType.name),
                             const SizedBox(height: AppSpacing.md),
-                            _buildInput('EMAIL ADDRESS', _emailController, TextInputType.emailAddress),
+                            _buildInput('EMAIL ADDRESS', _emailController, TextInputType.emailAddress, readOnly: widget.email != null),
                             const SizedBox(height: AppSpacing.md),
-                            _buildInput('PHONE NUMBER', _phoneController, TextInputType.phone),
+                            _buildInput('PHONE NUMBER', _phoneController, TextInputType.phone, readOnly: widget.phoneNumber != null),
                             const SizedBox(height: AppSpacing.md),
                             _buildInput('PASSWORD', _passwordController, TextInputType.visiblePassword, obscureText: true),
                             
@@ -214,7 +218,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
     );
   }
 
-  Widget _buildInput(String label, TextEditingController controller, TextInputType type, {bool obscureText = false}) {
+  Widget _buildInput(String label, TextEditingController controller, TextInputType type, {bool obscureText = false, bool readOnly = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -231,7 +235,8 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
           controller: controller,
           keyboardType: type,
           obscureText: obscureText,
-          style: GoogleFonts.playfairDisplay(color: _kTextDark, fontSize: 18),
+          readOnly: readOnly,
+          style: GoogleFonts.playfairDisplay(color: readOnly ? Colors.black38 : _kTextDark, fontSize: 18),
           cursorColor: _kDarkGold,
           decoration: const InputDecoration(
             enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.black12)),

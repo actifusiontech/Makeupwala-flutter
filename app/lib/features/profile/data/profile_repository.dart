@@ -95,4 +95,24 @@ class ProfileRepository {
       rethrow;
     }
   }
+
+  Future<List<RewardItem>> getRewardCatalog() async {
+    try {
+      final response = await _apiClient.dio.get('/rewards/catalog');
+      return (response.data as List).map((e) => RewardItem.fromJson(e)).toList();
+    } catch (e) {
+      developer.log('❌ Get reward catalog failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
+
+  Future<RewardRedemption> redeemReward(String rewardId) async {
+    try {
+      final response = await _apiClient.dio.post('/rewards/redeem', data: {'reward_item_id': rewardId});
+      return RewardRedemption.fromJson(response.data);
+    } catch (e) {
+      developer.log('❌ Redeem reward failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
 }

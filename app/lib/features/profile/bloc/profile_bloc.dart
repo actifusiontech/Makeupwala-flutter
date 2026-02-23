@@ -20,6 +20,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         updateProfile: (isArtist, data) => _onUpdateProfile(isArtist, data, emit),
         uploadMedia: (filePath) => _onUploadMedia(filePath, emit),
         fetchReferrals: () => _onFetchReferrals(emit),
+        fetchRewards: () => _onFetchRewards(emit),
+        redeemReward: (rewardId) => _onRedeemReward(rewardId, emit),
+        fetchTransactions: () => _onFetchTransactions(emit),
       );
     });
   }
@@ -29,6 +32,36 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     try {
       final referrals = await _repository.getReferrals();
       emit(ProfileState.referralsLoaded(referrals: referrals));
+    } catch (e) {
+      emit(ProfileState.error(message: e.toString()));
+    }
+  }
+
+  Future<void> _onFetchRewards(Emitter<ProfileState> emit) async {
+    emit(const ProfileState.loading());
+    try {
+      final rewards = await _repository.getRewardCatalog();
+      emit(ProfileState.rewardsLoaded(rewards: rewards));
+    } catch (e) {
+      emit(ProfileState.error(message: e.toString()));
+    }
+  }
+
+  Future<void> _onRedeemReward(String rewardId, Emitter<ProfileState> emit) async {
+    emit(const ProfileState.loading());
+    try {
+      final redemption = await _repository.redeemReward(rewardId);
+      emit(ProfileState.rewardRedeemed(redemption: redemption));
+    } catch (e) {
+      emit(ProfileState.error(message: e.toString()));
+    }
+  }
+
+  Future<void> _onFetchTransactions(Emitter<ProfileState> emit) async {
+    emit(const ProfileState.loading());
+    try {
+      final transactions = await _repository.getTransactions();
+      emit(ProfileState.transactionsLoaded(transactions: transactions));
     } catch (e) {
       emit(ProfileState.error(message: e.toString()));
     }
