@@ -20,25 +20,62 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
 
-class CustomerHomeScreen extends StatelessWidget {
+import '../discovery/presentation/screens/social_feed_screen.dart';
+import '../booking/presentation/booking_history_screen.dart';
+import 'customer_menu_screen.dart';
+
+class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
 
   @override
+  State<CustomerHomeScreen> createState() => _CustomerHomeScreenState();
+}
+
+class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
+  int _selectedIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => SearchBloc(
-            repository: SearchRepository(),
+    final screens = [
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => SearchBloc(
+              repository: SearchRepository(),
+            ),
           ),
-        ),
-        BlocProvider(
-          create: (context) => DiscoveryBloc(
-            repository: DiscoveryRepository(),
-          )..add(const DiscoveryEvent.fetchRecommendations()),
-        ),
-      ],
-      child: const _CustomerHomeView(),
+          BlocProvider(
+            create: (context) => DiscoveryBloc(
+              repository: DiscoveryRepository(),
+            )..add(const DiscoveryEvent.fetchRecommendations()),
+          ),
+        ],
+        child: const _CustomerHomeView(),
+      ),
+      const SocialFeedScreen(),
+      const BookingHistoryScreen(),
+      const CustomerMenuScreen(),
+    ];
+
+    return Scaffold(
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: screens,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) => setState(() => _selectedIndex = index),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.grey400,
+        showUnselectedLabels: true,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), activeIcon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.explore_outlined), activeIcon: Icon(Icons.explore), label: 'Discovery'),
+          BottomNavigationBarItem(icon: Icon(Icons.calendar_month_outlined), activeIcon: Icon(Icons.calendar_month), label: 'Bookings'),
+          BottomNavigationBarItem(icon: Icon(Icons.menu_outlined), activeIcon: Icon(Icons.menu), label: 'Menu'),
+        ],
+      ),
     );
   }
 }
@@ -70,11 +107,59 @@ class _CustomerHomeView extends StatelessWidget {
               context.push('/notifications');
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {
-              context.push('/profile');
+          PopupMenuButton<String>(
+            icon: const Icon(Icons.more_vert),
+            onSelected: (value) {
+              switch (value) {
+                case 'profile':
+                  context.push('/profile');
+                  break;
+                case 'settings':
+                  context.push('/profile/edit'); // Uses edit screen for settings placeholder
+                  break;
+                case 'faqs':
+                  context.push('/complaints'); // Uses complaints screen for FAQs placeholder
+                  break;
+                case 'logout':
+                  context.read<AuthBloc>().add(const AuthEvent.logout());
+                  break;
+              }
             },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'profile',
+                child: ListTile(
+                  leading: Icon(Icons.person_outline),
+                  title: Text('My Profile'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'settings',
+                child: ListTile(
+                  leading: Icon(Icons.settings_outlined),
+                  title: Text('Settings'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'faqs',
+                child: ListTile(
+                  leading: Icon(Icons.help_outline),
+                  title: Text('FAQs & Support'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuDivider(),
+              PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.logout, color: AppColors.error),
+                  title: Text('Logout', style: TextStyle(color: AppColors.error)),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -423,7 +508,7 @@ class _CustomerHomeView extends StatelessWidget {
               'Artists',
               FontAwesomeIcons.userAstronaut,
               AppColors.primary,
-              () => context.read<SearchBloc>().add(const SearchEvent.search(query: '')),
+              () => context.push('/universal-search'),
             ),
             _buildPremiumActionCard(
               context,

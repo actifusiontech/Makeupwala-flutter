@@ -10,7 +10,7 @@ import 'data/brand_repository.dart';
 import 'package:app/features/commerce/presentation/screens/brand_dashboard_screen.dart';
 import 'package:app/features/commerce/presentation/screens/orders_list_screen.dart';
 import 'package:app/features/commerce/presentation/screens/brand_inventory_screen.dart';
-import 'package:app/features/commerce/presentation/screens/brand_profile_screen.dart';
+import 'brand_menu_screen.dart';
 
 class BrandHomeScreen extends StatefulWidget {
   const BrandHomeScreen({super.key});
@@ -28,7 +28,7 @@ class _BrandHomeScreenState extends State<BrandHomeScreen> {
       const BrandDashboardScreen(),
       const BrandInventoryScreen(), 
       const OrdersListScreen(),
-      const BrandProfileScreen(),
+      const BrandMenuScreen(),
     ];
 
     return Scaffold(
@@ -38,10 +38,10 @@ class _BrandHomeScreenState extends State<BrandHomeScreen> {
         onTap: (index) => setState(() => _selectedIndex = index),
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Dashboard'),
-          BottomNavigationBarItem(icon: Icon(Icons.inventory), label: 'Inventory'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: 'Orders'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined), activeIcon: Icon(Icons.dashboard), label: 'Dashboard'),
+          BottomNavigationBarItem(icon: Icon(Icons.inventory_2_outlined), activeIcon: Icon(Icons.inventory), label: 'Inventory'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), activeIcon: Icon(Icons.shopping_bag), label: 'Orders'),
+          BottomNavigationBarItem(icon: Icon(Icons.menu_outlined), activeIcon: Icon(Icons.menu), label: 'Menu'),
         ],
       ),
     );

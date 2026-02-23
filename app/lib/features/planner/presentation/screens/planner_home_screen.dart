@@ -11,6 +11,7 @@ import '../../../../core/network/api_client.dart';
 import 'planner_logistics_screen.dart';
 import 'squad_management_screen.dart';
 import 'escrow_payment_screen.dart';
+import 'planner_menu_screen.dart';
 import 'package:app/shared/widgets/shimmer_loaders.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -59,6 +60,7 @@ class _PlannerHomeScreenState extends State<PlannerHomeScreen> {
           bookingId != null 
             ? EscrowPaymentScreen(bookingId: bookingId, repository: _repo)
             : const Center(child: Text("No Active Wedding Found")),
+          const PlannerMenuScreen(),
         ];
 
         return Scaffold(
@@ -67,12 +69,59 @@ class _PlannerHomeScreenState extends State<PlannerHomeScreen> {
             backgroundColor: Colors.deepOrange,
             foregroundColor: Colors.white,
             actions: [
-              IconButton(
-                icon: const Icon(Icons.logout),
-                onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.logout());
-                  context.go('/login');
+              PopupMenuButton<String>(
+                icon: const Icon(Icons.more_vert),
+                onSelected: (value) {
+                  switch (value) {
+                    case 'profile':
+                      context.push('/profile');
+                      break;
+                    case 'settings':
+                      context.push('/profile/edit');
+                      break;
+                    case 'faqs':
+                      context.push('/complaints');
+                      break;
+                    case 'logout':
+                      context.read<AuthBloc>().add(const AuthEvent.logout());
+                      break;
+                  }
                 },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  const PopupMenuItem<String>(
+                    value: 'profile',
+                    child: ListTile(
+                      leading: Icon(Icons.person_outline),
+                      title: Text('My Profile'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'settings',
+                    child: ListTile(
+                      leading: Icon(Icons.settings_outlined),
+                      title: Text('Settings'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'faqs',
+                    child: ListTile(
+                      leading: Icon(Icons.help_outline),
+                      title: Text('FAQs & Support'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuDivider(),
+                  const PopupMenuItem<String>(
+                    value: 'logout',
+                    child: ListTile(
+                      leading: Icon(Icons.logout, color: AppColors.error),
+                      title: Text('Logout', style: TextStyle(color: AppColors.error)),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -83,10 +132,11 @@ class _PlannerHomeScreenState extends State<PlannerHomeScreen> {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.deepOrange,
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Events'),
-              BottomNavigationBarItem(icon: Icon(Icons.groups), label: 'Squads'),
-              BottomNavigationBarItem(icon: Icon(Icons.flight), label: 'Logistics'),
-              BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet), label: 'Escrow'),
+              BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined), activeIcon: Icon(Icons.dashboard), label: 'Events'),
+              BottomNavigationBarItem(icon: Icon(Icons.groups_outlined), activeIcon: Icon(Icons.groups), label: 'Squads'),
+              BottomNavigationBarItem(icon: Icon(Icons.flight_outlined), activeIcon: Icon(Icons.flight), label: 'Logistics'),
+              BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet_outlined), activeIcon: Icon(Icons.account_balance_wallet), label: 'Escrow'),
+              BottomNavigationBarItem(icon: Icon(Icons.menu_outlined), activeIcon: Icon(Icons.menu), label: 'Menu'),
             ],
           ),
         );

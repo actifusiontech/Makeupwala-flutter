@@ -23,8 +23,18 @@ import 'package:app/shared/widgets/shimmer_loaders.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class ArtistHomeScreen extends StatelessWidget {
+import '../wallet/presentation/screens/wallet_screen.dart';
+import 'artist_menu_screen.dart';
+
+class ArtistHomeScreen extends StatefulWidget {
   const ArtistHomeScreen({super.key});
+
+  @override
+  State<ArtistHomeScreen> createState() => _ArtistHomeScreenState();
+}
+
+class _ArtistHomeScreenState extends State<ArtistHomeScreen> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +42,49 @@ class ArtistHomeScreen extends StatelessWidget {
       baseUrl: 'https://api.makeupwallah.com/api/v1/makeupwala',
     ));
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => BookingBloc(repository: BookingRepository())
-            ..add(const BookingEvent.fetchBookings(isArtist: true)),
-        ),
-        BlocProvider(
-          create: (context) => ProfileBloc()..add(const ProfileEvent.fetchProfile(isArtist: true)),
-        ),
-        BlocProvider(
-          create: (context) => EarningsBloc(repository: EarningsRepository(dio))
-            ..add(const EarningsEvent.fetchEarningsStats()),
-        ),
-        BlocProvider(
-          create: (context) => SubscriptionBloc(repository: SubscriptionRepository())
-            ..add(const SubscriptionEvent.fetchMySubscription()),
-        ),
-      ],
-      child: const _ArtistHomeView(),
+    final screens = [
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => BookingBloc(repository: BookingRepository())
+              ..add(const BookingEvent.fetchBookings(isArtist: true)),
+          ),
+          BlocProvider(
+            create: (context) => ProfileBloc()..add(const ProfileEvent.fetchProfile(isArtist: true)),
+          ),
+          BlocProvider(
+            create: (context) => EarningsBloc(repository: EarningsRepository(dio))
+              ..add(const EarningsEvent.fetchEarningsStats()),
+          ),
+          BlocProvider(
+            create: (context) => SubscriptionBloc(repository: SubscriptionRepository())
+              ..add(const SubscriptionEvent.fetchMySubscription()),
+          ),
+        ],
+        child: const _ArtistHomeView(),
+      ),
+      const WalletScreen(),
+      const ArtistMenuScreen(),
+    ];
+
+    return Scaffold(
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: screens,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) => setState(() => _selectedIndex = index),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.grey400,
+        showUnselectedLabels: true,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined), activeIcon: Icon(Icons.dashboard), label: 'Dashboard'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet_outlined), activeIcon: Icon(Icons.account_balance_wallet), label: 'Wallet'),
+          BottomNavigationBarItem(icon: Icon(Icons.menu_outlined), activeIcon: Icon(Icons.menu), label: 'Menu'),
+        ],
+      ),
     );
   }
 }
@@ -71,9 +105,59 @@ class _ArtistHomeView extends StatelessWidget {
             icon: const Icon(Icons.chat_bubble_outline),
             onPressed: () => context.push('/chat'),
           ),
-          IconButton(
-            icon: const Icon(Icons.person_outline),
-            onPressed: () => context.push('/profile'), 
+          PopupMenuButton<String>(
+            icon: const Icon(Icons.more_vert),
+            onSelected: (value) {
+              switch (value) {
+                case 'profile':
+                  context.push('/profile');
+                  break;
+                case 'settings':
+                  context.push('/profile/edit');
+                  break;
+                case 'faqs':
+                  context.push('/complaints');
+                  break;
+                case 'logout':
+                  context.read<AuthBloc>().add(const AuthEvent.logout());
+                  break;
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'profile',
+                child: ListTile(
+                  leading: Icon(Icons.person_outline),
+                  title: Text('My Profile'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'settings',
+                child: ListTile(
+                  leading: Icon(Icons.settings_outlined),
+                  title: Text('Settings'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'faqs',
+                child: ListTile(
+                  leading: Icon(Icons.help_outline),
+                  title: Text('FAQs & Support'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuDivider(),
+              const PopupMenuItem<String>(
+                value: 'logout',
+                child: ListTile(
+                  leading: Icon(Icons.logout, color: AppColors.error),
+                  title: Text('Logout', style: TextStyle(color: AppColors.error)),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+            ],
           ),
           IconButton(
             icon: const Icon(Icons.refresh),

@@ -16,6 +16,7 @@ import 'verify_student_screen.dart';
 import 'student_management_screen.dart';
 import 'academy_post_placement_screen.dart';
 import 'academy_institute_profile_screen.dart';
+import 'academy_menu_screen.dart';
 import 'package:app/shared/widgets/shimmer_loaders.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -44,7 +45,7 @@ class _AcademyHomeScreenState extends State<AcademyHomeScreen> {
           const _AcademyDashboard(),
           const _CoursesList(),
           StudentManagementScreen(instituteId: instituteId),
-          const AcademyInstituteProfileScreen(),
+          const AcademyMenuScreen(),
         ];
 
         return Scaffold(
@@ -53,12 +54,59 @@ class _AcademyHomeScreenState extends State<AcademyHomeScreen> {
             backgroundColor: Colors.teal,
             foregroundColor: Colors.white,
             actions: [
-              IconButton(
-                icon: const Icon(Icons.logout),
-                onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.logout());
-                  context.go('/login');
+              PopupMenuButton<String>(
+                icon: const Icon(Icons.more_vert),
+                onSelected: (value) {
+                  switch (value) {
+                    case 'profile':
+                      context.push('/profile');
+                      break;
+                    case 'settings':
+                      context.push('/profile/edit');
+                      break;
+                    case 'faqs':
+                      context.push('/complaints');
+                      break;
+                    case 'logout':
+                      context.read<AuthBloc>().add(const AuthEvent.logout());
+                      break;
+                  }
                 },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  const PopupMenuItem<String>(
+                    value: 'profile',
+                    child: ListTile(
+                      leading: Icon(Icons.person_outline),
+                      title: Text('My Profile'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'settings',
+                    child: ListTile(
+                      leading: Icon(Icons.settings_outlined),
+                      title: Text('Settings'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'faqs',
+                    child: ListTile(
+                      leading: Icon(Icons.help_outline),
+                      title: Text('FAQs & Support'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuDivider(),
+                  const PopupMenuItem<String>(
+                    value: 'logout',
+                    child: ListTile(
+                      leading: Icon(Icons.logout, color: AppColors.error),
+                      title: Text('Logout', style: TextStyle(color: AppColors.error)),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -69,10 +117,10 @@ class _AcademyHomeScreenState extends State<AcademyHomeScreen> {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.teal,
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Dashboard'),
-              BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Courses'),
-              BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Students'),
-              BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Institute'),
+              BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined), activeIcon: Icon(Icons.dashboard), label: 'Dashboard'),
+              BottomNavigationBarItem(icon: Icon(Icons.auto_stories_outlined), activeIcon: Icon(Icons.book), label: 'Courses'),
+              BottomNavigationBarItem(icon: Icon(Icons.people_outline), activeIcon: Icon(Icons.people), label: 'Students'),
+              BottomNavigationBarItem(icon: Icon(Icons.menu_outlined), activeIcon: Icon(Icons.menu), label: 'Menu'),
             ],
           ),
         );

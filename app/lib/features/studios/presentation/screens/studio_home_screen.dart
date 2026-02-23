@@ -10,6 +10,7 @@ import '../../../../core/network/api_client.dart';
 import 'studio_management_bookings_screen.dart';
 import 'studio_seats_screen.dart';
 import 'studio_profile_screen.dart';
+import 'studio_menu_screen.dart';
 import '../../data/models/studio_model.dart';
 
 class StudioHomeScreen extends StatefulWidget {
@@ -67,20 +68,77 @@ class _StudioHomeScreenState extends State<StudioHomeScreen> {
             ? StudioSeatsScreen(studioId: studioId, repository: _repo)
             : const Center(child: Text("No Studio Found")),
           studioId != null 
-            ? StudioProfileScreen(studioId: studioId, repository: _repo)
+            ? const StudioMenuScreen()
             : const Center(child: Text("No Studio Found")),
         ];
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Studio Dashboard'),
+            automaticallyImplyLeading: false, // Hide back button if not needed
+            title: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset('assets/images/splash_logo.png', height: 32),
+                ),
+                const SizedBox(width: AppSpacing.sm),
+                const Text('MakeupWallah Studio'),
+              ],
+            ),
             actions: [
-              IconButton(
-                icon: const Icon(Icons.logout),
-                onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.logout());
-                  context.go('/login');
+              PopupMenuButton<String>(
+                icon: const Icon(Icons.more_vert),
+                onSelected: (value) {
+                  switch (value) {
+                    case 'profile':
+                      context.push('/profile');
+                      break;
+                    case 'settings':
+                      context.push('/profile/edit');
+                      break;
+                    case 'faqs':
+                      context.push('/complaints');
+                      break;
+                    case 'logout':
+                      context.read<AuthBloc>().add(const AuthEvent.logout());
+                      break;
+                  }
                 },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  const PopupMenuItem<String>(
+                    value: 'profile',
+                    child: ListTile(
+                      leading: Icon(Icons.person_outline),
+                      title: Text('My Profile'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'settings',
+                    child: ListTile(
+                      leading: Icon(Icons.settings_outlined),
+                      title: Text('Settings'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'faqs',
+                    child: ListTile(
+                      leading: Icon(Icons.help_outline),
+                      title: Text('FAQs & Support'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                  const PopupMenuDivider(),
+                  const PopupMenuItem<String>(
+                    value: 'logout',
+                    child: ListTile(
+                      leading: Icon(Icons.logout, color: AppColors.error),
+                      title: Text('Logout', style: TextStyle(color: AppColors.error)),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -91,10 +149,10 @@ class _StudioHomeScreenState extends State<StudioHomeScreen> {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.pink,
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Overview'),
-              BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Bookings'),
-              BottomNavigationBarItem(icon: Icon(Icons.chair), label: 'Seats'),
-              BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Profile'),
+              BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined), activeIcon: Icon(Icons.dashboard), label: 'Overview'),
+              BottomNavigationBarItem(icon: Icon(Icons.calendar_today_outlined), activeIcon: Icon(Icons.calendar_today), label: 'Bookings'),
+              BottomNavigationBarItem(icon: Icon(Icons.chair_outlined), activeIcon: Icon(Icons.chair), label: 'Seats'),
+              BottomNavigationBarItem(icon: Icon(Icons.menu_outlined), activeIcon: Icon(Icons.menu), label: 'Menu'),
             ],
           ),
         );

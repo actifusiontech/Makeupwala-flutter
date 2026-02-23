@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/shared/theme/app_spacing.dart';
 import '../../data/models/studio_model.dart';
 import '../../data/studio_repository.dart';
 import 'studio_booking_screen.dart';
@@ -25,7 +26,16 @@ class _StudiosListScreenState extends State<StudiosListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MakeupWala Studios'),
+        title: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset('assets/images/splash_logo.png', height: 32),
+            ),
+            const SizedBox(width: AppSpacing.sm),
+            const Text('MakeupWallah Studios'),
+          ],
+        ),
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
       ),

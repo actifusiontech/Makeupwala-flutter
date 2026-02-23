@@ -163,6 +163,18 @@ class _ProfileView extends StatelessWidget {
                             Text(user.fullName, style: AppTypography.headlineMedium),
                             Text(user.phone ?? '', style: AppTypography.bodyLarge.copyWith(color: AppColors.textSecondary)),
                             const SizedBox(height: AppSpacing.sm),
+                            OutlinedButton.icon(
+                              onPressed: () => context.push('/profile/edit', extra: {'user': user, 'isArtist': false}),
+                              icon: const Icon(Icons.edit, size: 16),
+                              label: const Text('Edit Profile'),
+                              style: OutlinedButton.styleFrom(
+                                foregroundColor: AppColors.primary,
+                                side: const BorderSide(color: AppColors.primary),
+                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                              ),
+                            ),
+                            const SizedBox(height: AppSpacing.sm),
                             TextButton.icon(
                               onPressed: () => context.push('/rewards'),
                               icon: const Icon(Icons.stars, size: 18, color: Colors.amber),
