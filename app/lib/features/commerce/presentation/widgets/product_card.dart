@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../domain/commerce_models.dart';
 import 'package:app/shared/theme/app_colors.dart';
+import '../screens/virtual_mirror_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -155,6 +157,35 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (product.arMetadata?.isArEnabled == true) ...[
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VirtualMirrorScreen(product: product),
+                          ),
+                        );
+                      },
+                      icon: const FaIcon(FontAwesomeIcons.wandMagicSparkles, size: 12),
+                      label: const Text(
+                        'AR TRY-ON',
+                        style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.primary,
+                        side: const BorderSide(color: AppColors.primary),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

@@ -17,6 +17,7 @@ import 'package:app/features/discovery/presentation/bloc/discovery_event.dart';
 import 'package:app/shared/widgets/shimmer_loaders.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
 
 class CustomerHomeScreen extends StatelessWidget {
@@ -118,6 +119,11 @@ class _CustomerHomeView extends StatelessWidget {
                         // Search bar (Elevated)
                         _buildElevatedSearchBar(context),
                         
+                        const SizedBox(height: AppSpacing.xl),
+
+                        // AI Personalization CTA
+                        _buildPersonalizationCTA(context),
+
                         const SizedBox(height: AppSpacing.xl),
                       ],
                     ),
@@ -233,6 +239,60 @@ class _CustomerHomeView extends StatelessWidget {
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPersonalizationCTA(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.lg),
+      decoration: BoxDecoration(
+        color: AppColors.primary.withOpacity(0.05),
+        borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+        border: Border.all(color: AppColors.primary.withOpacity(0.1)),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Personalize Your Feed',
+                  style: GoogleFonts.playfairDisplay(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Text(
+                  'Set your skin tone and style to get better AI recommendations.',
+                  style: GoogleFonts.lato(fontSize: 12, color: Colors.grey[600]),
+                ),
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  onPressed: () => context.push('/beauty-profile-quiz'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  child: const Text('Take Quiz', style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 12),
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10)],
+            ),
+            child: const Icon(Icons.auto_awesome, color: AppColors.primary, size: 30),
+          ).animate(onPlay: (controller) => controller.repeat())
+           .shimmer(duration: 2.seconds, color: Colors.pink[100])
+           .scale(duration: 1.seconds, begin: const Offset(0.9, 0.9), end: const Offset(1.1, 1.1)),
         ],
       ),
     );

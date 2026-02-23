@@ -19,6 +19,7 @@ class Product with _$Product {
     @Default(false) bool isSustainable,
     @Default([]) List<String> imageUrls,
     @Default('active') String status,
+    ARMetadata? arMetadata,
     DateTime? createdAt,
   }) = _Product;
 
@@ -125,4 +126,16 @@ class Commission with _$Commission {
   }) = _Commission;
 
   factory Commission.fromJson(Map<String, dynamic> json) => _$CommissionFromJson(json);
+}
+
+@freezed
+class ARMetadata with _$ARMetadata {
+  const factory ARMetadata({
+    @Default(false) bool isArEnabled,
+    String? hexColor,
+    @Default(0.5) double opacity,
+    @Default('matte') String finish,
+  }) = _ARMetadata;
+
+  factory ARMetadata.fromJson(Map<String, dynamic> json) => _$ARMetadataFromJson(json);
 }

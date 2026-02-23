@@ -7,6 +7,7 @@ import '../features/onboarding/onboarding_screen.dart';
 import '../features/auth/premium_login_screen.dart';
 import '../features/auth/user_registration_screen.dart';
 import '../features/auth/otp_screen.dart';
+import '../features/auth/forgot_password_screen.dart';
 import '../features/auth/role_selection_screen.dart';
 import '../features/auth/bloc/auth_bloc.dart';
 import '../features/home/admin_dashboard_screen.dart';
@@ -44,6 +45,8 @@ import '../features/studios/presentation/screens/studios_list_screen.dart';
 import '../features/auth/kyc_deeplink_handler.dart';
 import '../features/travel/presentation/screens/retreats_list_screen.dart';
 import '../features/discovery/presentation/screens/social_feed_screen.dart';
+import '../features/discovery/presentation/screens/universal_search_screen.dart';
+import '../features/discovery/presentation/screens/beauty_profile_quiz_screen.dart';
 import '../features/education/presentation/screens/leaderboard_screen.dart';
 import '../features/education/presentation/screens/courses_list_screen.dart';
 import '../features/education/presentation/screens/add_lesson_screen.dart';
@@ -142,6 +145,11 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
             final phone = state.extra as String?;
             return UserRegistrationScreen(phoneNumber: phone);
           },
+        ),
+        GoRoute(
+          path: '/forgot-password',
+          name: 'forgot-password',
+          builder: (context, state) => const ForgotPasswordScreen(),
         ),
         GoRoute(
           path: '/role-selection',
@@ -360,6 +368,16 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
           path: '/discovery',
           name: 'discovery',
           builder: (context, state) => const SocialFeedScreen(),
+        ),
+        GoRoute(
+          path: '/universal-search',
+          name: 'universal-search',
+          builder: (context, state) => const UniversalSearchScreen(),
+        ),
+        GoRoute(
+          path: '/beauty-profile-quiz',
+          name: 'beauty-profile-quiz',
+          builder: (context, state) => const BeautyProfileQuizScreen(),
         ),
         GoRoute(
           path: '/education/leaderboard',

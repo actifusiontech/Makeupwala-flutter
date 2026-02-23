@@ -8,6 +8,7 @@ import 'package:app/shared/widgets/shimmer_loaders.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import 'dart:ui';
 
 class SocialFeedScreen extends StatefulWidget {
@@ -20,11 +21,29 @@ class SocialFeedScreen extends StatefulWidget {
 class _SocialFeedScreenState extends State<SocialFeedScreen> {
   late Future<List<PostModel>> _feedFuture;
   final DiscoveryRepository _repository = DiscoveryRepository();
+  
+  final List<String> categories = ['All', 'Bridal', 'Party', 'Editorial', 'SFX', 'Traditional', 'Minimalist'];
+  String selectedCategory = 'All';
+  String sortBy = 'recent'; // recent, trending
 
   @override
   void initState() {
     super.initState();
-    _feedFuture = _repository.getFeed();
+    _loadFeed();
+  }
+
+  void _loadFeed() {
+    setState(() {
+      _feedFuture = _repository.getFeed(
+        tag: selectedCategory == 'All' ? null : selectedCategory,
+        sortBy: sortBy,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -38,7 +57,7 @@ class _SocialFeedScreenState extends State<SocialFeedScreen> {
         actions: [
           IconButton(
             icon: const FaIcon(FontAwesomeIcons.magnifyingGlass, size: 18),
-            onPressed: () {},
+            onPressed: () => context.push('/universal-search'),
           ),
           IconButton(
             icon: const FaIcon(FontAwesomeIcons.bell, size: 18),
@@ -46,32 +65,110 @@ class _SocialFeedScreenState extends State<SocialFeedScreen> {
           ),
         ],
       ),
-      body: FutureBuilder<List<PostModel>>(
-        future: _feedFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return ListView.builder(
-              padding: const EdgeInsets.all(AppSpacing.md),
-              itemCount: 3,
-              itemBuilder: (_, __) => Padding(
-                padding: const EdgeInsets.only(bottom: AppSpacing.md),
-                child: ShimmerLoaders.artistCard(),
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No posts yet.'));
-          }
+      body: Column(
+        children: [
+          // Filter & Sort Header
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                  child: Row(
+                    children: [
+                      // Sort Toggle
+                      ActionChip(
+                        avatar: FaIcon(
+                          sortBy == 'trending' ? FontAwesomeIcons.fire : FontAwesomeIcons.clock,
+                          size: 12,
+                          color: sortBy == 'trending' ? Colors.orange : AppColors.primary,
+                        ),
+                        label: Text(
+                          sortBy == 'trending' ? 'Trending' : 'Recent',
+                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            sortBy = sortBy == 'recent' ? 'trending' : 'recent';
+                            _loadFeed();
+                          });
+                        },
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(color: AppColors.primary.withOpacity(0.2)),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Container(width: 1, height: 20, color: Colors.grey[300]),
+                      const SizedBox(width: 12),
+                      ...categories.map((cat) => Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: ChoiceChip(
+                          label: Text(cat, style: const TextStyle(fontSize: 12)),
+                          selected: selectedCategory == cat,
+                          onSelected: (val) {
+                            if (val) {
+                              setState(() {
+                                selectedCategory = cat;
+                                _loadFeed();
+                              });
+                            }
+                          },
+                          backgroundColor: Colors.white,
+                          selectedColor: AppColors.primary,
+                          labelStyle: TextStyle(
+                            color: selectedCategory == cat ? Colors.white : AppColors.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            side: BorderSide(color: AppColors.primary.withOpacity(0.1)),
+                          ),
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async => _loadFeed(),
+              child: FutureBuilder<List<PostModel>>(
+                future: _feedFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return ListView.builder(
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      itemCount: 3,
+                      itemBuilder: (_, __) => Padding(
+                        padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                        child: ShimmerLoaders.artistCard(),
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(child: Text('No posts found for this selection.'));
+                  }
 
-          final posts = snapshot.data!;
-          return ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (context, index) {
-              return _buildPost(posts[index], context);
-            },
-          );
-        },
+                  final posts = snapshot.data!;
+                  return ListView.builder(
+                    itemCount: posts.length,
+                    itemBuilder: (context, index) {
+                      return _buildPost(posts[index], context);
+                    },
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -33,6 +33,7 @@ mixin _$Product {
   bool get isSustainable => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  ARMetadata? get arMetadata => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,7 +60,10 @@ abstract class $ProductCopyWith<$Res> {
       bool isSustainable,
       List<String> imageUrls,
       String status,
+      ARMetadata? arMetadata,
       DateTime? createdAt});
+
+  $ARMetadataCopyWith<$Res>? get arMetadata;
 }
 
 /// @nodoc
@@ -88,6 +92,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? isSustainable = null,
     Object? imageUrls = null,
     Object? status = null,
+    Object? arMetadata = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -143,11 +148,27 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      arMetadata: freezed == arMetadata
+          ? _value.arMetadata
+          : arMetadata // ignore: cast_nullable_to_non_nullable
+              as ARMetadata?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ARMetadataCopyWith<$Res>? get arMetadata {
+    if (_value.arMetadata == null) {
+      return null;
+    }
+
+    return $ARMetadataCopyWith<$Res>(_value.arMetadata!, (value) {
+      return _then(_value.copyWith(arMetadata: value) as $Val);
+    });
   }
 }
 
@@ -172,7 +193,11 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       bool isSustainable,
       List<String> imageUrls,
       String status,
+      ARMetadata? arMetadata,
       DateTime? createdAt});
+
+  @override
+  $ARMetadataCopyWith<$Res>? get arMetadata;
 }
 
 /// @nodoc
@@ -199,6 +224,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? isSustainable = null,
     Object? imageUrls = null,
     Object? status = null,
+    Object? arMetadata = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_$ProductImpl(
@@ -254,6 +280,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      arMetadata: freezed == arMetadata
+          ? _value.arMetadata
+          : arMetadata // ignore: cast_nullable_to_non_nullable
+              as ARMetadata?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -279,6 +309,7 @@ class _$ProductImpl implements _Product {
       this.isSustainable = false,
       final List<String> imageUrls = const [],
       this.status = 'active',
+      this.arMetadata,
       this.createdAt})
       : _imageUrls = imageUrls;
 
@@ -323,11 +354,13 @@ class _$ProductImpl implements _Product {
   @JsonKey()
   final String status;
   @override
+  final ARMetadata? arMetadata;
+  @override
   final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'Product(id: $id, brandId: $brandId, name: $name, description: $description, category: $category, sku: $sku, wholesalePrice: $wholesalePrice, retailPrice: $retailPrice, taxPercentage: $taxPercentage, stockQuantity: $stockQuantity, isSustainable: $isSustainable, imageUrls: $imageUrls, status: $status, createdAt: $createdAt)';
+    return 'Product(id: $id, brandId: $brandId, name: $name, description: $description, category: $category, sku: $sku, wholesalePrice: $wholesalePrice, retailPrice: $retailPrice, taxPercentage: $taxPercentage, stockQuantity: $stockQuantity, isSustainable: $isSustainable, imageUrls: $imageUrls, status: $status, arMetadata: $arMetadata, createdAt: $createdAt)';
   }
 
   @override
@@ -356,6 +389,8 @@ class _$ProductImpl implements _Product {
             const DeepCollectionEquality()
                 .equals(other._imageUrls, _imageUrls) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.arMetadata, arMetadata) ||
+                other.arMetadata == arMetadata) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
@@ -377,6 +412,7 @@ class _$ProductImpl implements _Product {
       isSustainable,
       const DeepCollectionEquality().hash(_imageUrls),
       status,
+      arMetadata,
       createdAt);
 
   @JsonKey(ignore: true)
@@ -408,6 +444,7 @@ abstract class _Product implements Product {
       final bool isSustainable,
       final List<String> imageUrls,
       final String status,
+      final ARMetadata? arMetadata,
       final DateTime? createdAt}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
@@ -438,6 +475,8 @@ abstract class _Product implements Product {
   List<String> get imageUrls;
   @override
   String get status;
+  @override
+  ARMetadata? get arMetadata;
   @override
   DateTime? get createdAt;
   @override
@@ -2360,5 +2399,205 @@ abstract class _Commission implements Commission {
   @override
   @JsonKey(ignore: true)
   _$$CommissionImplCopyWith<_$CommissionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ARMetadata _$ARMetadataFromJson(Map<String, dynamic> json) {
+  return _ARMetadata.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ARMetadata {
+  bool get isArEnabled => throw _privateConstructorUsedError;
+  String? get hexColor => throw _privateConstructorUsedError;
+  double get opacity => throw _privateConstructorUsedError;
+  String get finish => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ARMetadataCopyWith<ARMetadata> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ARMetadataCopyWith<$Res> {
+  factory $ARMetadataCopyWith(
+          ARMetadata value, $Res Function(ARMetadata) then) =
+      _$ARMetadataCopyWithImpl<$Res, ARMetadata>;
+  @useResult
+  $Res call(
+      {bool isArEnabled, String? hexColor, double opacity, String finish});
+}
+
+/// @nodoc
+class _$ARMetadataCopyWithImpl<$Res, $Val extends ARMetadata>
+    implements $ARMetadataCopyWith<$Res> {
+  _$ARMetadataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isArEnabled = null,
+    Object? hexColor = freezed,
+    Object? opacity = null,
+    Object? finish = null,
+  }) {
+    return _then(_value.copyWith(
+      isArEnabled: null == isArEnabled
+          ? _value.isArEnabled
+          : isArEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hexColor: freezed == hexColor
+          ? _value.hexColor
+          : hexColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      opacity: null == opacity
+          ? _value.opacity
+          : opacity // ignore: cast_nullable_to_non_nullable
+              as double,
+      finish: null == finish
+          ? _value.finish
+          : finish // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ARMetadataImplCopyWith<$Res>
+    implements $ARMetadataCopyWith<$Res> {
+  factory _$$ARMetadataImplCopyWith(
+          _$ARMetadataImpl value, $Res Function(_$ARMetadataImpl) then) =
+      __$$ARMetadataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isArEnabled, String? hexColor, double opacity, String finish});
+}
+
+/// @nodoc
+class __$$ARMetadataImplCopyWithImpl<$Res>
+    extends _$ARMetadataCopyWithImpl<$Res, _$ARMetadataImpl>
+    implements _$$ARMetadataImplCopyWith<$Res> {
+  __$$ARMetadataImplCopyWithImpl(
+      _$ARMetadataImpl _value, $Res Function(_$ARMetadataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isArEnabled = null,
+    Object? hexColor = freezed,
+    Object? opacity = null,
+    Object? finish = null,
+  }) {
+    return _then(_$ARMetadataImpl(
+      isArEnabled: null == isArEnabled
+          ? _value.isArEnabled
+          : isArEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hexColor: freezed == hexColor
+          ? _value.hexColor
+          : hexColor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      opacity: null == opacity
+          ? _value.opacity
+          : opacity // ignore: cast_nullable_to_non_nullable
+              as double,
+      finish: null == finish
+          ? _value.finish
+          : finish // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ARMetadataImpl implements _ARMetadata {
+  const _$ARMetadataImpl(
+      {this.isArEnabled = false,
+      this.hexColor,
+      this.opacity = 0.5,
+      this.finish = 'matte'});
+
+  factory _$ARMetadataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ARMetadataImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final bool isArEnabled;
+  @override
+  final String? hexColor;
+  @override
+  @JsonKey()
+  final double opacity;
+  @override
+  @JsonKey()
+  final String finish;
+
+  @override
+  String toString() {
+    return 'ARMetadata(isArEnabled: $isArEnabled, hexColor: $hexColor, opacity: $opacity, finish: $finish)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ARMetadataImpl &&
+            (identical(other.isArEnabled, isArEnabled) ||
+                other.isArEnabled == isArEnabled) &&
+            (identical(other.hexColor, hexColor) ||
+                other.hexColor == hexColor) &&
+            (identical(other.opacity, opacity) || other.opacity == opacity) &&
+            (identical(other.finish, finish) || other.finish == finish));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, isArEnabled, hexColor, opacity, finish);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ARMetadataImplCopyWith<_$ARMetadataImpl> get copyWith =>
+      __$$ARMetadataImplCopyWithImpl<_$ARMetadataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ARMetadataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ARMetadata implements ARMetadata {
+  const factory _ARMetadata(
+      {final bool isArEnabled,
+      final String? hexColor,
+      final double opacity,
+      final String finish}) = _$ARMetadataImpl;
+
+  factory _ARMetadata.fromJson(Map<String, dynamic> json) =
+      _$ARMetadataImpl.fromJson;
+
+  @override
+  bool get isArEnabled;
+  @override
+  String? get hexColor;
+  @override
+  double get opacity;
+  @override
+  String get finish;
+  @override
+  @JsonKey(ignore: true)
+  _$$ARMetadataImplCopyWith<_$ARMetadataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

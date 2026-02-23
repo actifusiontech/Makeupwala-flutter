@@ -94,6 +94,11 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
             setState(() => _isLoading = false);
             context.go('/role-selection');
           },
+          needsRegistration: (phone) {
+             setState(() => _isLoading = false);
+             // Redirection handled in OtpScreen generally, but safe to handle here too
+             context.go('/register', extra: phone);
+          },
           authenticated: (user) {
             setState(() => _isLoading = false);
             HapticFeedback.mediumImpact();
@@ -116,6 +121,8 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
             }
           },
           unauthenticated: () => setState(() => _isLoading = false),
+          passwordResetSent: () => setState(() => _isLoading = false),
+          passwordResetSuccess: () => setState(() => _isLoading = false),
           error: (message) {
             HapticFeedback.heavyImpact();
             setState(() { _isLoading = false; _hasError = true; });
@@ -251,8 +258,26 @@ class _PremiumLoginScreenState extends State<PremiumLoginScreen>
                             const SizedBox(height: AppSpacing.xl),
 
                             _buildSocialLogin(),
-                            const SizedBox(height: AppSpacing.xl),
+                            const SizedBox(height: AppSpacing.lg),
 
+                            Center(
+                              child: TextButton(
+                                onPressed: () {
+                                  HapticFeedback.lightImpact();
+                                  context.push('/forgot-password');
+                                },
+                                child: Text(
+                                  'FORGOT PASSWORD?',
+                                  style: GoogleFonts.lato(
+                                    color: Colors.black38,
+                                    fontSize: 11,
+                                    letterSpacing: 1.2,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            
                             _buildRegistrationLink(),
                           ],
                         ),

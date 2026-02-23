@@ -310,6 +310,7 @@ class _ArtistHomeView extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const SOSButton(),
     );
   }
 

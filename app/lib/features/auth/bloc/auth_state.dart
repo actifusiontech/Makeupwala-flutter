@@ -9,5 +9,7 @@ class AuthState with _$AuthState {
   const factory AuthState.needsRegistration({required String phoneNumber}) = _NeedsRegistration;
   const factory AuthState.authenticated({required User user}) = _Authenticated;
   const factory AuthState.unauthenticated() = _Unauthenticated;
+  const factory AuthState.passwordResetSent() = _PasswordResetSent;
+  const factory AuthState.passwordResetSuccess() = _PasswordResetSuccess;
   const factory AuthState.error({required String message}) = _Error;
 }

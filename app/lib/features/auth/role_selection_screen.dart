@@ -29,6 +29,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
           loading: () => setState(() => _isLoading = true),
           otpSent: (_) {},
           needsRoleSelection: (_) => setState(() => _isLoading = false),
+          needsRegistration: (_) => setState(() => _isLoading = false),
           authenticated: (user) {
             setState(() => _isLoading = false);
             switch (user.role) {
@@ -55,7 +56,9 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                 break;
             }
           },
-          unauthenticated: () {},
+          unauthenticated: () => setState(() => _isLoading = false),
+          passwordResetSent: () => setState(() => _isLoading = false),
+          passwordResetSuccess: () => setState(() => _isLoading = false),
           error: (message) {
             setState(() => _isLoading = false);
             ScaffoldMessenger.of(context).showSnackBar(

@@ -101,6 +101,8 @@ class _OtpScreenState extends State<OtpScreen> {
             }
           },
           unauthenticated: () => setState(() => _isLoading = false),
+          passwordResetSent: () => setState(() => _isLoading = false),
+          passwordResetSuccess: () => setState(() => _isLoading = false),
           error: (message) {
             setState(() => _isLoading = false);
             ScaffoldMessenger.of(context).showSnackBar(

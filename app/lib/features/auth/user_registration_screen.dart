@@ -74,7 +74,13 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
               if (Navigator.canPop(context)) Navigator.pop(context);
               context.go('/role-selection');
           },
+          needsRegistration: (phone) {
+              setState(() => _isLoading = false);
+              // Already on registration screen, no action needed besides loading state
+          },
           unauthenticated: () => setState(() => _isLoading = false),
+          passwordResetSent: () => setState(() => _isLoading = false),
+          passwordResetSuccess: () => setState(() => _isLoading = false),
           error: (message) {
             setState(() => _isLoading = false);
             HapticFeedback.heavyImpact();

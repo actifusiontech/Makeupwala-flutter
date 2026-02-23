@@ -24,6 +24,9 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       status: json['status'] as String? ?? 'active',
+      arMetadata: json['ar_metadata'] == null
+          ? null
+          : ARMetadata.fromJson(json['ar_metadata'] as Map<String, dynamic>),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -44,6 +47,7 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'is_sustainable': instance.isSustainable,
       'image_urls': instance.imageUrls,
       'status': instance.status,
+      'ar_metadata': instance.arMetadata,
       'created_at': instance.createdAt?.toIso8601String(),
     };
 
@@ -226,4 +230,20 @@ Map<String, dynamic> _$$CommissionImplToJson(_$CommissionImpl instance) =>
       'amount': instance.amount,
       'status': instance.status,
       'created_at': instance.createdAt?.toIso8601String(),
+    };
+
+_$ARMetadataImpl _$$ARMetadataImplFromJson(Map<String, dynamic> json) =>
+    _$ARMetadataImpl(
+      isArEnabled: json['is_ar_enabled'] as bool? ?? false,
+      hexColor: json['hex_color'] as String?,
+      opacity: (json['opacity'] as num?)?.toDouble() ?? 0.5,
+      finish: json['finish'] as String? ?? 'matte',
+    );
+
+Map<String, dynamic> _$$ARMetadataImplToJson(_$ARMetadataImpl instance) =>
+    <String, dynamic>{
+      'is_ar_enabled': instance.isArEnabled,
+      'hex_color': instance.hexColor,
+      'opacity': instance.opacity,
+      'finish': instance.finish,
     };

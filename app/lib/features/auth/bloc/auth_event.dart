@@ -19,4 +19,10 @@ class AuthEvent with _$AuthEvent {
     required String phone,
     required String otp,
   }) = _VerifyRegistrationOtp;
+  const factory AuthEvent.forgotPassword(String email) = _ForgotPassword;
+  const factory AuthEvent.resetPassword({
+    required String token,
+    required String tempPassword,
+    required String newPassword,
+  }) = _ResetPassword;
 }

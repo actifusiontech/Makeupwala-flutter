@@ -33,6 +33,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         socialLogin: (provider) => _onSocialLogin(provider, emit),
         register: (name, email, phone, password, role) => _onRegister(name, email, phone, password, role, emit),
         verifyRegistrationOtp: (phone, otp) => _onVerifyRegistrationOtp(phone, otp, emit),
+        forgotPassword: (email) => _onForgotPassword(email, emit),
+        resetPassword: (token, tempPassword, newPassword) => _onResetPassword(token, tempPassword, newPassword, emit),
       );
     });
   }
@@ -84,26 +86,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
       
       final data = response.data;
-      // Depending on backend, might return token immediately or require login
-      // Looking at `dto.go` OTPVerifyResponse has UserID and Verified bool, but not token?
-      // Wait, VerifyOTPResponse has UserID.
-      // If it doesn't return token, we might need to Auto-Login?
-      
-      // Checking Handler.VerifyRegistrationOTP calls svc.VerifyRegistrationOTP
-      // svc.VerifyRegistrationOTP returns *OTPVerifyResponse*
-      // DTO: {Verified: bool, UserID: uuid, Phone: string, Message: string}
-      // It does NOT return Token!
-      
-      // So we must Auto-Login or ask user to login.
-      // Better UX: Auto-Login. But we need password for standard login.
-      // We don't have password here (unless specific flow).
-      // Or we can ask user to Login.
-      
-      emit(const AuthState.unauthenticated()); // Or a success state message?
-      // Actually, let's emit a specific state or just unauthenticated with message?
-      // For now, let's emit unauthenticated but maybe show success message via listener.
-      // Ideally we should auto-login.
-      
+      final token = data['access_token'] as String;
+      final refreshToken = data['refresh_token'] as String;
+      final userData = data['user'] as Map<String, dynamic>;
+
+      await _secureStorage.write(key: 'auth_token', value: token);
+      await _secureStorage.write(key: 'refresh_token', value: refreshToken);
+
+      final user = User.fromJson(userData);
+      emit(AuthState.authenticated(user: user));
+
     } catch (e) {
       developer.log('❌ Verify Registration OTP error: $e', name: 'AuthBloc');
       emit(AuthState.error(message: 'Invalid OTP'));
@@ -300,6 +292,34 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } catch (e) {
       await _secureStorage.delete(key: 'auth_token');
       emit(const AuthState.unauthenticated());
+    }
+  }
+
+  Future<void> _onForgotPassword(String email, Emitter<AuthState> emit) async {
+    developer.log('📧 Forgot Password requested for: $email', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      await _apiClient.dio.post('/auth/forgot-password', data: {'email': email});
+      emit(const AuthState.passwordResetSent());
+    } catch (e) {
+      developer.log('❌ Forgot Password error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Failed to send reset link. Please try again.'));
+    }
+  }
+
+  Future<void> _onResetPassword(String token, String tempPassword, String newPassword, Emitter<AuthState> emit) async {
+    developer.log('🔐 Reset Password requested', name: 'AuthBloc');
+    emit(const AuthState.loading());
+    try {
+      await _apiClient.dio.post('/auth/reset-password', data: {
+        'token': token,
+        'temporary_password': tempPassword,
+        'new_password': newPassword,
+      });
+      emit(const AuthState.passwordResetSuccess());
+    } catch (e) {
+      developer.log('❌ Reset Password error: $e', name: 'AuthBloc');
+      emit(AuthState.error(message: 'Failed to reset password. Please try again.'));
     }
   }
 }
