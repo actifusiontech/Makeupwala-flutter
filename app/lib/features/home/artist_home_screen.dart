@@ -23,6 +23,10 @@ import 'package:app/shared/widgets/shimmer_loaders.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import 'package:app/features/studios/bloc/context/studio_context_bloc.dart';
+import 'package:app/features/studios/data/studio_repository.dart';
+import 'package:app/features/studios/presentation/widgets/studio_selector_widget.dart';
+
 import '../wallet/presentation/screens/wallet_screen.dart';
 import 'artist_menu_screen.dart';
 
@@ -60,6 +64,10 @@ class _ArtistHomeScreenState extends State<ArtistHomeScreen> {
             create: (context) => SubscriptionBloc(repository: SubscriptionRepository())
               ..add(const SubscriptionEvent.fetchMySubscription()),
           ),
+          BlocProvider(
+            create: (context) => StudioContextBloc(repository: StudioRepository())
+              ..add(LoadMyStudios()),
+          ),
         ],
         child: const _ArtistHomeView(),
       ),
@@ -94,8 +102,17 @@ class _ArtistHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
+    return BlocListener<StudioContextBloc, StudioContextState>(
+      listener: (context, state) {
+        if (state.activeStudio != null) {
+          // Refresh data for the new studio context
+          context.read<BookingBloc>().add(const BookingEvent.fetchBookings(isArtist: true));
+          context.read<EarningsBloc>().add(const EarningsEvent.fetchEarningsStats());
+          context.read<SubscriptionBloc>().add(const SubscriptionEvent.fetchMySubscription());
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.white,
       appBar: AppBar(
         title: const Text('Artist Dashboard'),
         backgroundColor: AppColors.primary,
@@ -179,6 +196,8 @@ class _ArtistHomeView extends StatelessWidget {
             authenticated: (user) => ListView(
               padding: const EdgeInsets.all(AppSpacing.screenPadding),
               children: [
+                const StudioSelectorWidget(),
+                const SizedBox(height: AppSpacing.md),
                 const SizedBox(height: AppSpacing.xl),
                   
                   // Premium Artist Hero Header
@@ -395,6 +414,7 @@ class _ArtistHomeView extends StatelessWidget {
         },
       ),
       floatingActionButton: const SOSButton(),
+    ),
     );
   }
 

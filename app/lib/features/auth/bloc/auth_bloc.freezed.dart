@@ -27,6 +27,7 @@ mixin _$AuthEvent {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -51,6 +52,7 @@ mixin _$AuthEvent {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -74,6 +76,7 @@ mixin _$AuthEvent {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -96,6 +99,7 @@ mixin _$AuthEvent {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -115,6 +119,7 @@ mixin _$AuthEvent {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -133,6 +138,7 @@ mixin _$AuthEvent {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -245,6 +251,7 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -272,6 +279,7 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -298,6 +306,7 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -326,6 +335,7 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -348,6 +358,7 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -369,6 +380,7 @@ class _$LoginWithEmailImpl implements _LoginWithEmail {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -471,6 +483,7 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -498,6 +511,7 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -524,6 +538,7 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -552,6 +567,7 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -574,6 +590,7 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -595,6 +612,7 @@ class _$RequestEmailOtpImpl implements _RequestEmailOtp {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -694,6 +712,7 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -721,6 +740,7 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -747,6 +767,7 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -775,6 +796,7 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -797,6 +819,7 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -818,6 +841,7 @@ class _$RequestPhoneOtpImpl implements _RequestPhoneOtp {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -964,6 +988,7 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -991,6 +1016,7 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -1018,6 +1044,7 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -1047,6 +1074,7 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -1069,6 +1097,7 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -1090,6 +1119,7 @@ class _$VerifyContactOtpImpl implements _VerifyContactOtp {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -1198,6 +1228,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -1225,6 +1256,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -1251,6 +1283,7 @@ class _$LoginImpl implements _Login {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -1279,6 +1312,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -1301,6 +1335,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -1322,6 +1357,7 @@ class _$LoginImpl implements _Login {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -1429,6 +1465,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -1456,6 +1493,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -1482,6 +1520,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -1510,6 +1549,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -1532,6 +1572,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -1553,6 +1594,7 @@ class _$VerifyOtpImpl implements _VerifyOtp {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -1653,6 +1695,7 @@ class _$SelectRoleImpl implements _SelectRole {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -1680,6 +1723,7 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -1706,6 +1750,7 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -1734,6 +1779,7 @@ class _$SelectRoleImpl implements _SelectRole {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -1756,6 +1802,7 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -1777,6 +1824,7 @@ class _$SelectRoleImpl implements _SelectRole {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -1799,6 +1847,234 @@ abstract class _SelectRole implements AuthEvent {
   String get role;
   @JsonKey(ignore: true)
   _$$SelectRoleImplCopyWith<_$SelectRoleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SwitchPersonaImplCopyWith<$Res> {
+  factory _$$SwitchPersonaImplCopyWith(
+          _$SwitchPersonaImpl value, $Res Function(_$SwitchPersonaImpl) then) =
+      __$$SwitchPersonaImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String role});
+}
+
+/// @nodoc
+class __$$SwitchPersonaImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SwitchPersonaImpl>
+    implements _$$SwitchPersonaImplCopyWith<$Res> {
+  __$$SwitchPersonaImplCopyWithImpl(
+      _$SwitchPersonaImpl _value, $Res Function(_$SwitchPersonaImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? role = null,
+  }) {
+    return _then(_$SwitchPersonaImpl(
+      null == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SwitchPersonaImpl implements _SwitchPersona {
+  const _$SwitchPersonaImpl(this.role);
+
+  @override
+  final String role;
+
+  @override
+  String toString() {
+    return 'AuthEvent.switchPersona(role: $role)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SwitchPersonaImpl &&
+            (identical(other.role, role) || other.role == role));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, role);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SwitchPersonaImplCopyWith<_$SwitchPersonaImpl> get copyWith =>
+      __$$SwitchPersonaImplCopyWithImpl<_$SwitchPersonaImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email, String password) loginWithEmail,
+    required TResult Function(String email) requestEmailOtp,
+    required TResult Function(String phone) requestPhoneOtp,
+    required TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)
+        verifyContactOtp,
+    required TResult Function(String phoneNumber) login,
+    required TResult Function(String phoneNumber, String otp) verifyOtp,
+    required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
+    required TResult Function() logout,
+    required TResult Function() checkAuth,
+    required TResult Function(String provider) socialLogin,
+    required TResult Function(String fullName, String email, String phone,
+            String password, String role)
+        register,
+    required TResult Function(String phone, String otp) verifyRegistrationOtp,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function(
+            String token, String tempPassword, String newPassword)
+        resetPassword,
+  }) {
+    return switchPersona(role);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password)? loginWithEmail,
+    TResult? Function(String email)? requestEmailOtp,
+    TResult? Function(String phone)? requestPhoneOtp,
+    TResult? Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
+        verifyContactOtp,
+    TResult? Function(String phoneNumber)? login,
+    TResult? Function(String phoneNumber, String otp)? verifyOtp,
+    TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
+    TResult? Function()? logout,
+    TResult? Function()? checkAuth,
+    TResult? Function(String provider)? socialLogin,
+    TResult? Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult? Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+  }) {
+    return switchPersona?.call(role);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password)? loginWithEmail,
+    TResult Function(String email)? requestEmailOtp,
+    TResult Function(String phone)? requestPhoneOtp,
+    TResult Function(String? phone, String? email, String otp,
+            bool isRegistration, bool isProfileUpdate)?
+        verifyContactOtp,
+    TResult Function(String phoneNumber)? login,
+    TResult Function(String phoneNumber, String otp)? verifyOtp,
+    TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
+    TResult Function()? logout,
+    TResult Function()? checkAuth,
+    TResult Function(String provider)? socialLogin,
+    TResult Function(String fullName, String email, String phone,
+            String password, String role)?
+        register,
+    TResult Function(String phone, String otp)? verifyRegistrationOtp,
+    TResult Function(String email)? forgotPassword,
+    TResult Function(String token, String tempPassword, String newPassword)?
+        resetPassword,
+    required TResult orElse(),
+  }) {
+    if (switchPersona != null) {
+      return switchPersona(role);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginWithEmail value) loginWithEmail,
+    required TResult Function(_RequestEmailOtp value) requestEmailOtp,
+    required TResult Function(_RequestPhoneOtp value) requestPhoneOtp,
+    required TResult Function(_VerifyContactOtp value) verifyContactOtp,
+    required TResult Function(_Login value) login,
+    required TResult Function(_VerifyOtp value) verifyOtp,
+    required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckAuth value) checkAuth,
+    required TResult Function(_SocialLogin value) socialLogin,
+    required TResult Function(_Register value) register,
+    required TResult Function(_VerifyRegistrationOtp value)
+        verifyRegistrationOtp,
+    required TResult Function(_ForgotPassword value) forgotPassword,
+    required TResult Function(_ResetPassword value) resetPassword,
+  }) {
+    return switchPersona(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginWithEmail value)? loginWithEmail,
+    TResult? Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult? Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult? Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_VerifyOtp value)? verifyOtp,
+    TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckAuth value)? checkAuth,
+    TResult? Function(_SocialLogin value)? socialLogin,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult? Function(_ForgotPassword value)? forgotPassword,
+    TResult? Function(_ResetPassword value)? resetPassword,
+  }) {
+    return switchPersona?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginWithEmail value)? loginWithEmail,
+    TResult Function(_RequestEmailOtp value)? requestEmailOtp,
+    TResult Function(_RequestPhoneOtp value)? requestPhoneOtp,
+    TResult Function(_VerifyContactOtp value)? verifyContactOtp,
+    TResult Function(_Login value)? login,
+    TResult Function(_VerifyOtp value)? verifyOtp,
+    TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckAuth value)? checkAuth,
+    TResult Function(_SocialLogin value)? socialLogin,
+    TResult Function(_Register value)? register,
+    TResult Function(_VerifyRegistrationOtp value)? verifyRegistrationOtp,
+    TResult Function(_ForgotPassword value)? forgotPassword,
+    TResult Function(_ResetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (switchPersona != null) {
+      return switchPersona(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SwitchPersona implements AuthEvent {
+  const factory _SwitchPersona(final String role) = _$SwitchPersonaImpl;
+
+  String get role;
+  @JsonKey(ignore: true)
+  _$$SwitchPersonaImplCopyWith<_$SwitchPersonaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1849,6 +2125,7 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -1876,6 +2153,7 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -1902,6 +2180,7 @@ class _$LogoutImpl implements _Logout {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -1930,6 +2209,7 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -1952,6 +2232,7 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -1973,6 +2254,7 @@ class _$LogoutImpl implements _Logout {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -2040,6 +2322,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -2067,6 +2350,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -2093,6 +2377,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -2121,6 +2406,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -2143,6 +2429,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -2164,6 +2451,7 @@ class _$CheckAuthImpl implements _CheckAuth {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -2258,6 +2546,7 @@ class _$SocialLoginImpl implements _SocialLogin {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -2285,6 +2574,7 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -2311,6 +2601,7 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -2339,6 +2630,7 @@ class _$SocialLoginImpl implements _SocialLogin {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -2361,6 +2653,7 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -2382,6 +2675,7 @@ class _$SocialLoginImpl implements _SocialLogin {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -2525,6 +2819,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -2552,6 +2847,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -2578,6 +2874,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -2606,6 +2903,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -2628,6 +2926,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -2649,6 +2948,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -2766,6 +3066,7 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -2793,6 +3094,7 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -2819,6 +3121,7 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -2847,6 +3150,7 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -2869,6 +3173,7 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -2890,6 +3195,7 @@ class _$VerifyRegistrationOtpImpl implements _VerifyRegistrationOtp {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -2992,6 +3298,7 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -3019,6 +3326,7 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -3045,6 +3353,7 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -3073,6 +3382,7 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -3095,6 +3405,7 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -3116,6 +3427,7 @@ class _$ForgotPasswordImpl implements _ForgotPassword {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -3236,6 +3548,7 @@ class _$ResetPasswordImpl implements _ResetPassword {
     required TResult Function(String phoneNumber) login,
     required TResult Function(String phoneNumber, String otp) verifyOtp,
     required TResult Function(String role) selectRole,
+    required TResult Function(String role) switchPersona,
     required TResult Function() logout,
     required TResult Function() checkAuth,
     required TResult Function(String provider) socialLogin,
@@ -3263,6 +3576,7 @@ class _$ResetPasswordImpl implements _ResetPassword {
     TResult? Function(String phoneNumber)? login,
     TResult? Function(String phoneNumber, String otp)? verifyOtp,
     TResult? Function(String role)? selectRole,
+    TResult? Function(String role)? switchPersona,
     TResult? Function()? logout,
     TResult? Function()? checkAuth,
     TResult? Function(String provider)? socialLogin,
@@ -3289,6 +3603,7 @@ class _$ResetPasswordImpl implements _ResetPassword {
     TResult Function(String phoneNumber)? login,
     TResult Function(String phoneNumber, String otp)? verifyOtp,
     TResult Function(String role)? selectRole,
+    TResult Function(String role)? switchPersona,
     TResult Function()? logout,
     TResult Function()? checkAuth,
     TResult Function(String provider)? socialLogin,
@@ -3317,6 +3632,7 @@ class _$ResetPasswordImpl implements _ResetPassword {
     required TResult Function(_Login value) login,
     required TResult Function(_VerifyOtp value) verifyOtp,
     required TResult Function(_SelectRole value) selectRole,
+    required TResult Function(_SwitchPersona value) switchPersona,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckAuth value) checkAuth,
     required TResult Function(_SocialLogin value) socialLogin,
@@ -3339,6 +3655,7 @@ class _$ResetPasswordImpl implements _ResetPassword {
     TResult? Function(_Login value)? login,
     TResult? Function(_VerifyOtp value)? verifyOtp,
     TResult? Function(_SelectRole value)? selectRole,
+    TResult? Function(_SwitchPersona value)? switchPersona,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckAuth value)? checkAuth,
     TResult? Function(_SocialLogin value)? socialLogin,
@@ -3360,6 +3677,7 @@ class _$ResetPasswordImpl implements _ResetPassword {
     TResult Function(_Login value)? login,
     TResult Function(_VerifyOtp value)? verifyOtp,
     TResult Function(_SelectRole value)? selectRole,
+    TResult Function(_SwitchPersona value)? switchPersona,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckAuth value)? checkAuth,
     TResult Function(_SocialLogin value)? socialLogin,
@@ -3521,8 +3839,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -3655,8 +3973,9 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements AuthState {
+abstract class _Initial extends AuthState {
   const factory _Initial() = _$InitialImpl;
+  const _Initial._() : super._();
 }
 
 /// @nodoc
@@ -3677,8 +3996,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -3811,8 +4130,9 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthState {
+abstract class _Loading extends AuthState {
   const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -3848,8 +4168,8 @@ class __$$OtpSentImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OtpSentImpl implements _OtpSent {
-  const _$OtpSentImpl({required this.phoneNumber});
+class _$OtpSentImpl extends _OtpSent {
+  const _$OtpSentImpl({required this.phoneNumber}) : super._();
 
   @override
   final String phoneNumber;
@@ -3994,8 +4314,9 @@ class _$OtpSentImpl implements _OtpSent {
   }
 }
 
-abstract class _OtpSent implements AuthState {
+abstract class _OtpSent extends AuthState {
   const factory _OtpSent({required final String phoneNumber}) = _$OtpSentImpl;
+  const _OtpSent._() : super._();
 
   String get phoneNumber;
   @JsonKey(ignore: true)
@@ -4036,8 +4357,8 @@ class __$$PhoneVerifiedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhoneVerifiedImpl implements _PhoneVerified {
-  const _$PhoneVerifiedImpl({required this.phone});
+class _$PhoneVerifiedImpl extends _PhoneVerified {
+  const _$PhoneVerifiedImpl({required this.phone}) : super._();
 
   @override
   final String phone;
@@ -4181,9 +4502,10 @@ class _$PhoneVerifiedImpl implements _PhoneVerified {
   }
 }
 
-abstract class _PhoneVerified implements AuthState {
+abstract class _PhoneVerified extends AuthState {
   const factory _PhoneVerified({required final String phone}) =
       _$PhoneVerifiedImpl;
+  const _PhoneVerified._() : super._();
 
   String get phone;
   @JsonKey(ignore: true)
@@ -4234,8 +4556,8 @@ class __$$NeedsRoleSelectionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
-  const _$NeedsRoleSelectionImpl({required this.user});
+class _$NeedsRoleSelectionImpl extends _NeedsRoleSelection {
+  const _$NeedsRoleSelectionImpl({required this.user}) : super._();
 
   @override
   final User user;
@@ -4380,9 +4702,10 @@ class _$NeedsRoleSelectionImpl implements _NeedsRoleSelection {
   }
 }
 
-abstract class _NeedsRoleSelection implements AuthState {
+abstract class _NeedsRoleSelection extends AuthState {
   const factory _NeedsRoleSelection({required final User user}) =
       _$NeedsRoleSelectionImpl;
+  const _NeedsRoleSelection._() : super._();
 
   User get user;
   @JsonKey(ignore: true)
@@ -4423,8 +4746,8 @@ class __$$NeedsRegistrationImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NeedsRegistrationImpl implements _NeedsRegistration {
-  const _$NeedsRegistrationImpl({required this.phoneNumber});
+class _$NeedsRegistrationImpl extends _NeedsRegistration {
+  const _$NeedsRegistrationImpl({required this.phoneNumber}) : super._();
 
   @override
   final String phoneNumber;
@@ -4570,9 +4893,10 @@ class _$NeedsRegistrationImpl implements _NeedsRegistration {
   }
 }
 
-abstract class _NeedsRegistration implements AuthState {
+abstract class _NeedsRegistration extends AuthState {
   const factory _NeedsRegistration({required final String phoneNumber}) =
       _$NeedsRegistrationImpl;
+  const _NeedsRegistration._() : super._();
 
   String get phoneNumber;
   @JsonKey(ignore: true)
@@ -4623,8 +4947,8 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthenticatedImpl implements _Authenticated {
-  const _$AuthenticatedImpl({required this.user});
+class _$AuthenticatedImpl extends _Authenticated {
+  const _$AuthenticatedImpl({required this.user}) : super._();
 
   @override
   final User user;
@@ -4768,9 +5092,10 @@ class _$AuthenticatedImpl implements _Authenticated {
   }
 }
 
-abstract class _Authenticated implements AuthState {
+abstract class _Authenticated extends AuthState {
   const factory _Authenticated({required final User user}) =
       _$AuthenticatedImpl;
+  const _Authenticated._() : super._();
 
   User get user;
   @JsonKey(ignore: true)
@@ -4796,8 +5121,8 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UnauthenticatedImpl implements _Unauthenticated {
-  const _$UnauthenticatedImpl();
+class _$UnauthenticatedImpl extends _Unauthenticated {
+  const _$UnauthenticatedImpl() : super._();
 
   @override
   String toString() {
@@ -4930,8 +5255,9 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   }
 }
 
-abstract class _Unauthenticated implements AuthState {
+abstract class _Unauthenticated extends AuthState {
   const factory _Unauthenticated() = _$UnauthenticatedImpl;
+  const _Unauthenticated._() : super._();
 }
 
 /// @nodoc
@@ -4952,8 +5278,8 @@ class __$$PasswordResetSentImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PasswordResetSentImpl implements _PasswordResetSent {
-  const _$PasswordResetSentImpl();
+class _$PasswordResetSentImpl extends _PasswordResetSent {
+  const _$PasswordResetSentImpl() : super._();
 
   @override
   String toString() {
@@ -5086,8 +5412,9 @@ class _$PasswordResetSentImpl implements _PasswordResetSent {
   }
 }
 
-abstract class _PasswordResetSent implements AuthState {
+abstract class _PasswordResetSent extends AuthState {
   const factory _PasswordResetSent() = _$PasswordResetSentImpl;
+  const _PasswordResetSent._() : super._();
 }
 
 /// @nodoc
@@ -5108,8 +5435,8 @@ class __$$PasswordResetSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
-  const _$PasswordResetSuccessImpl();
+class _$PasswordResetSuccessImpl extends _PasswordResetSuccess {
+  const _$PasswordResetSuccessImpl() : super._();
 
   @override
   String toString() {
@@ -5243,8 +5570,9 @@ class _$PasswordResetSuccessImpl implements _PasswordResetSuccess {
   }
 }
 
-abstract class _PasswordResetSuccess implements AuthState {
+abstract class _PasswordResetSuccess extends AuthState {
   const factory _PasswordResetSuccess() = _$PasswordResetSuccessImpl;
+  const _PasswordResetSuccess._() : super._();
 }
 
 /// @nodoc
@@ -5280,8 +5608,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl({required this.message});
+class _$ErrorImpl extends _Error {
+  const _$ErrorImpl({required this.message}) : super._();
 
   @override
   final String message;
@@ -5425,8 +5753,9 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements AuthState {
+abstract class _Error extends AuthState {
   const factory _Error({required final String message}) = _$ErrorImpl;
+  const _Error._() : super._();
 
   String get message;
   @JsonKey(ignore: true)

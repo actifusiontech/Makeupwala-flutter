@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/education_models.dart';
 import '../widgets/course_card.dart';
 import 'lesson_player_screen.dart';
 import 'package:app/shared/theme/app_colors.dart';
+import '../../bloc/education_bloc.dart';
+import '../../bloc/education_event.dart';
+import '../../bloc/education_state.dart';
 
 class ClassroomScreen extends StatefulWidget {
   const ClassroomScreen({super.key});
@@ -13,12 +17,19 @@ class ClassroomScreen extends StatefulWidget {
 
 class _ClassroomScreenState extends State<ClassroomScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _loadData();
+  }
+
+  void _loadData() {
+    context.read<EducationBloc>().add(const EducationEvent.fetchCourses());
+    // In a real student app, we'd also fetch enrollments. 
+    // fetchCourses currently returns all for MVP, but repository.getMyCourses uses /my-courses.
+    // Let's assume global courses for now or refetch based on tab.
   }
 
   @override
@@ -49,119 +60,93 @@ class _ClassroomScreenState extends State<ClassroomScreen> with SingleTickerProv
           ],
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          _buildEnrolledTab(),
-          _buildExploreTab(),
-        ],
+      body: BlocBuilder<EducationBloc, EducationState>(
+        builder: (context, state) {
+          return TabBarView(
+            controller: _tabController,
+            children: [
+              _buildEnrolledTab(state),
+              _buildExploreTab(state),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildEnrolledTab() {
-    // Mock data for Phase 9 Classroom
-    final enrollments = [
-      Enrollment(
-        id: '1',
-        courseId: 'c1',
-        studentId: 's1',
-        progressPercentage: 85,
-        enrolledAt: DateTime.now(),
-        course: Course(
-          id: 'c1',
-          instituteId: 'i1',
-          title: 'Advanced Bridal Artistry',
-          category: 'Makeup',
-          thumbnailUrl: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800',
-        ),
-      ),
-      Enrollment(
-        id: '2',
-        courseId: 'c2',
-        studentId: 's1',
-        progressPercentage: 42,
-        enrolledAt: DateTime.now(),
-        course: Course(
-          id: 'c2',
-          instituteId: 'i1',
-          title: 'Basic Grooming 101',
-          category: 'General',
-          thumbnailUrl: 'https://images.unsplash.com/photo-1512496011931-a2c38827c4c7?w=800',
-        ),
-      ),
-    ];
-
-    if (_isLoading) {
-      return const Center(child: CircularProgressIndicator(color: Color(0xFFFF6B6B)));
-    }
-
-    return ListView.builder(
-      padding: const EdgeInsets.all(20),
-      itemCount: enrollments.length,
-      itemBuilder: (context, index) {
-        final enrollment = enrollments[index];
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: CourseCard(
-            course: enrollment.course!,
-            enrollment: enrollment,
-            onTap: () {
-              // Navigate to Lesson Player
-              // Assuming first lesson for now, or course structure would handle last played
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => LessonPlayerScreen(
-                    course: enrollment.course!,
-                    enrollment: enrollment,
-                    initialLesson: const Lesson(
-                        id: 'l1', courseId: 'c1', title: 'Intro', sequenceOrder: 1, videoUrl: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'), // Mock lesson or fetch real one
-                  ),
-                ),
-              );
-            },
-          ),
+  Widget _buildEnrolledTab(EducationState state) {
+    return state.maybeWhen(
+      loading: () => const Center(child: CircularProgressIndicator(color: Color(0xFFFF6B6B))),
+      coursesLoaded: (courses) {
+        if (courses.isEmpty) {
+          return const Center(child: Text('You are not enrolled in any courses yet.'));
+        }
+        return ListView.builder(
+          padding: const EdgeInsets.all(20),
+          itemCount: courses.length,
+          itemBuilder: (context, index) {
+            final courseData = courses[index];
+            final course = Course.fromJson(courseData);
+            // Mock enrollment for UI structure
+            final enrollment = Enrollment(
+              id: course.id,
+              courseId: course.id,
+              studentId: 'me',
+              progressPercentage: 0,
+              enrolledAt: DateTime.now(),
+              course: course,
+            );
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: CourseCard(
+                course: course,
+                enrollment: enrollment,
+                onTap: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => LessonPlayerScreen(
+                        course: course,
+                        enrollment: enrollment,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
         );
       },
+      orElse: () => const Center(child: Text('Loading your courses...')),
     );
   }
 
-  Widget _buildExploreTab() {
-    final courses = [
-      const Course(
-        id: 'c3',
-        instituteId: 'i2',
-        title: 'Professional Hair Styling',
-        category: 'Hair',
-        feeAmount: 18000,
-        thumbnailUrl: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800',
-      ),
-      const Course(
-        id: 'c4',
-        instituteId: 'i3',
-        title: 'Nail Art Masterclass',
-        category: 'Nails',
-        feeAmount: 8500,
-        thumbnailUrl: 'https://images.unsplash.com/photo-1604654894610-df4906821603?w=800',
-      ),
-    ];
-
-    return ListView.builder(
-      padding: const EdgeInsets.all(20),
-      itemCount: courses.length,
-      itemBuilder: (context, index) {
-        final course = courses[index];
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: CourseCard(
-            course: course,
-            onTap: () {
-              // Navigate to Course Enrollment
-            },
-          ),
+  Widget _buildExploreTab(EducationState state) {
+    return state.maybeWhen(
+      loading: () => const Center(child: CircularProgressIndicator(color: Color(0xFFFF6B6B))),
+      coursesLoaded: (courses) {
+        return ListView.builder(
+          padding: const EdgeInsets.all(20),
+          itemCount: courses.length,
+          itemBuilder: (context, index) {
+            final courseData = courses[index];
+            final course = Course.fromJson(courseData);
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: CourseCard(
+                course: course,
+                onTap: () {
+                   // Enrollment logic or details
+                   ScaffoldMessenger.of(context).showSnackBar(
+                     SnackBar(content: Text('Enrolling in ${course.title}...')),
+                   );
+                },
+              ),
+            );
+          },
         );
       },
+      orElse: () => const Center(child: Text('Exploring new courses...')),
     );
   }
 }

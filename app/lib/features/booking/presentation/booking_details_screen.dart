@@ -32,7 +32,7 @@ class BookingDetailsScreen extends StatelessWidget {
         body: BlocConsumer<BookingBloc, BookingState>(
           listener: (context, state) {
             state.maybeWhen(
-              success: (message) {
+              success: (message, booking) {
                  ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text(message), backgroundColor: AppColors.success),
                 );
@@ -212,6 +212,7 @@ class BookingDetailsScreen extends StatelessWidget {
                     final pdfService = PdfService();
                     await pdfService.downloadReceipt(
                       bookingId: bookingId,
+                      customerName: booking['customer_name'] as String? ?? 'Customer',
                       serviceName: serviceName,
                       artistName: artistName,
                       bookingDate: bookingDate ?? DateTime.now(),

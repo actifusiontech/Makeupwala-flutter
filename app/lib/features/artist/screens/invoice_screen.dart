@@ -6,6 +6,7 @@ import 'package:app/shared/theme/app_spacing.dart';
 import 'package:app/shared/widgets/custom_button.dart';
 import '../utils/invoice_generator.dart';
 import '../../../../core/network/api_client.dart';
+import '../../booking/data/booking_repository.dart';
 
 class InvoiceScreen extends StatelessWidget {
   final String bookingId;
@@ -334,12 +335,12 @@ class InvoiceScreen extends StatelessWidget {
   }
 }
 
-// Payment Options Modal (placeholder - will be implemented next)
 class PaymentOptionsModal extends StatelessWidget {
   final String bookingId;
   final num amount;
+  final BookingRepository _bookingRepository = BookingRepository();
 
-  const PaymentOptionsModal({
+  PaymentOptionsModal({
     Key? key,
     required this.bookingId,
     required this.amount,
@@ -363,12 +364,8 @@ class PaymentOptionsModal extends StatelessWidget {
             subtitle: const Text('Share a link via WhatsApp/SMS'),
             onTap: () {
               Navigator.pop(context);
-              // Mock Link Generation
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: const Text('Payment link copied to clipboard!'),
-                  action: SnackBarAction(label: 'Share', onPressed: () {}),
-                ),
+                const SnackBar(content: Text('Payment link functionality coming soon!')),
               );
             },
           ),
@@ -399,12 +396,27 @@ class PaymentOptionsModal extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.money, color: Colors.green),
             title: const Text('Mark as Paid (Cash)'),
-            onTap: () {
-               Navigator.pop(context);
-               // Mock Update
-               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Marked as Paid')),
-              );
+            onTap: () async {
+               try {
+                 await _bookingRepository.updateBookingStatus(
+                   bookingId: bookingId,
+                   status: 'completed', // Or 'paid' depending on backend schema
+                   isArtist: true,
+                   note: 'Paid via Cash',
+                 );
+                 if (context.mounted) {
+                   Navigator.pop(context);
+                   ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Payment recorded and booking completed!')),
+                  );
+                 }
+               } catch (e) {
+                 if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+                    );
+                 }
+               }
             },
           ),
         ],

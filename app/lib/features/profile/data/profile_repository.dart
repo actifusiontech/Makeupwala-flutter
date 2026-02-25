@@ -54,6 +54,37 @@ class ProfileRepository {
     }
   }
 
+  Future<String> uploadProfilePicture(String filePath) async {
+    try {
+      developer.log('📸 Uploading profile picture: $filePath', name: 'ProfileRepository');
+      
+      final formData = FormData.fromMap({
+        'profile_picture': await MultipartFile.fromFile(filePath),
+      });
+      
+      final response = await _apiClient.dio.post('/auth/update-profile-picture', data: formData);
+      // The backend returns the full UserProfileResponse. We map this back or just extract what we need.
+      // But _onUploadMedia usually maps this out. Let's return the URL if present, or just string.
+      if (response.data['profile_image_url'] != null) {
+        return response.data['profile_image_url'] as String;
+      }
+      return '';
+    } catch (e) {
+      developer.log('❌ Upload profile picture failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
+
+  Future<void> removeProfilePicture() async {
+    try {
+      developer.log('🗑️ Removing profile picture', name: 'ProfileRepository');
+      await _apiClient.dio.delete('/auth/remove-profile-picture');
+    } catch (e) {
+      developer.log('❌ Remove profile picture failed: $e', name: 'ProfileRepository');
+      rethrow;
+    }
+  }
+
   // ---------------- REWARDS & REFERRALS ----------------
 
   Future<LoyaltyBalance> getLoyaltyBalance() async {

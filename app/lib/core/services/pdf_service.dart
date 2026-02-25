@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 class PdfService {
   Future<Uint8List> generateReceipt({
     required String bookingId,
+    required String customerName,
     required String serviceName,
     required String artistName,
     required DateTime bookingDate,
@@ -58,7 +59,7 @@ class PdfService {
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
                       pw.Text('To:'),
-                      pw.Text('Customer', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)), // TODO: Get name
+                      pw.Text(customerName, style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
                     ],
                   ),
                   pw.Column(
@@ -139,6 +140,7 @@ class PdfService {
 
   Future<void> downloadReceipt({
     required String bookingId,
+    required String customerName,
     required String serviceName,
     required String artistName,
     required DateTime bookingDate,
@@ -149,6 +151,7 @@ class PdfService {
   }) async {
     final bytes = await generateReceipt(
       bookingId: bookingId,
+      customerName: customerName,
       serviceName: serviceName,
       artistName: artistName,
       bookingDate: bookingDate,
@@ -160,5 +163,67 @@ class PdfService {
 
     await Printing.sharePdf(
         bytes: bytes, filename: 'receipt_$bookingId.pdf');
+  }
+
+  Future<Uint8List> generateAcademyReceipt({
+    required String instituteName,
+    required String studentName,
+    required String feeType,
+    required double amount,
+    required String paymentMethod,
+    required String referenceId,
+    required DateTime date,
+  }) async {
+    final pdf = pw.Document();
+    final font = await PdfGoogleFonts.interRegular();
+    final fontBold = await PdfGoogleFonts.interBold();
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        theme: pw.ThemeData.withFont(base: font, bold: fontBold),
+        build: (pw.Context context) {
+          return pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
+            children: [
+              pw.Row(
+                mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                children: [
+                  pw.Text(instituteName,
+                      style: pw.TextStyle(color: PdfColors.teal, fontSize: 20, fontWeight: pw.FontWeight.bold)),
+                  pw.Text('FEE RECEIPT', style: pw.TextStyle(fontSize: 20, fontWeight: pw.FontWeight.bold)),
+                ],
+              ),
+              pw.SizedBox(height: 30),
+              pw.Text('Student: $studentName', style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+              pw.Text('Date: ${DateFormat('dd MMM yyyy').format(date)}'),
+              pw.SizedBox(height: 20),
+              pw.Divider(),
+              _buildRow('Description', feeType),
+              _buildRow('Payment Method', paymentMethod),
+              _buildRow('Reference ID', referenceId),
+              pw.Divider(),
+              _buildRow('Total Amount', 'INR ${amount.toStringAsFixed(2)}', isBold: true),
+              pw.Spacer(),
+              pw.Center(child: pw.Text('This is a computer-generated receipt.', style: const pw.TextStyle(fontSize: 10))),
+            ],
+          );
+        },
+      ),
+    );
+    return pdf.save();
+  }
+
+  Future<void> downloadAcademyReceipt(Map<String, dynamic> data) async {
+    final bytes = await generateAcademyReceipt(
+      instituteName: 'Academy Partner', // Ideally from data
+      studentName: data['student_name'] ?? 'Student',
+      feeType: 'Academy Fee',
+      amount: (data['amount'] as num).toDouble(),
+      paymentMethod: data['payment_method'] ?? 'Cash',
+      referenceId: data['reference_id'] ?? 'N/A',
+      date: DateTime.tryParse(data['payment_date'] ?? '') ?? DateTime.now(),
+    );
+    await Printing.sharePdf(bytes: bytes, filename: 'fee_receipt.pdf');
   }
 }

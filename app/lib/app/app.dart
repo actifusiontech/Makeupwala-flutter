@@ -14,8 +14,29 @@ import '../features/home/admin_dashboard_screen.dart';
 import '../features/home/artist_home_screen.dart';
 import '../features/home/customer_home_screen.dart';
 import '../features/home/brand_home_screen.dart';
-import '../features/studios/presentation/screens/studio_home_screen.dart';
+import '../features/studios/presentation/screens/studio_seats_screen.dart';
+import '../features/education/presentation/screens/academy_fee_management_screen.dart';
+import '../features/education/presentation/screens/academy_student_crm_screen.dart';
+import '../features/education/presentation/screens/academy_grading_screen.dart';
+import '../features/education/presentation/screens/academy_placements_screen.dart';
 import '../features/studios/presentation/screens/studio_onboarding_screen.dart';
+import '../features/studios/presentation/screens/studio_membership_screen.dart';
+import '../features/studios/presentation/screens/studio_revenue_analytics_screen.dart';
+import '../features/studios/presentation/screens/studio_coupon_screen.dart';
+import '../features/studios/presentation/screens/studio_commission_screen.dart';
+import '../features/studios/presentation/screens/studio_product_usage_screen.dart';
+import '../features/studios/presentation/screens/unified_empire_screen.dart';
+import 'package:app/features/studios/presentation/screens/studio_home_screen.dart';
+import 'package:app/features/studios/presentation/screens/studio_customer_crm_screen.dart';
+import '../features/studios/bloc/customer_crm/customer_crm_bloc.dart';
+import '../features/studios/bloc/membership/studio_membership_bloc.dart';
+import '../features/studios/bloc/analytics/revenue_analytics_bloc.dart';
+import '../features/studios/bloc/marketing/studio_coupon_bloc.dart';
+import '../features/studios/bloc/commissions/staff_commission_bloc.dart';
+import '../features/studios/bloc/inventory/product_usage_bloc.dart';
+import '../features/studios/bloc/unified/unified_empire_bloc.dart';
+import 'package:app/features/studios/data/studio_repository.dart';
+import 'package:app/features/education/data/education_repository.dart';
 import '../features/education/presentation/screens/academy_home_screen.dart';
 import '../features/education/presentation/screens/academy_onboarding_screen.dart';
 import '../features/planner/presentation/screens/planner_home_screen.dart';
@@ -58,8 +79,8 @@ import '../features/commerce/presentation/screens/brand_campaign_list_screen.dar
 import '../features/commerce/presentation/screens/orders_list_screen.dart';
 import '../features/commerce/bloc/commerce_bloc.dart';
 import '../features/commerce/bloc/commerce_event.dart';
-import '../features/commerce/data/commerce_repository.dart';
-import '../features/commerce/data/brand_repository.dart';
+import 'package:app/features/commerce/data/commerce_repository.dart';
+import 'package:app/features/commerce/data/brand_repository.dart';
 import '../features/commerce/bloc/brand_bloc.dart';
 import '../features/commerce/bloc/brand_event.dart';
 import '../features/commerce/presentation/screens/campaign_explorer_screen.dart';
@@ -68,15 +89,14 @@ import '../features/wallet/presentation/screens/wallet_screen.dart';
 import '../features/wallet/presentation/screens/bank_linking_screen.dart';
 import '../features/wallet/bloc/wallet_bloc.dart';
 import '../features/wallet/bloc/wallet_event.dart';
-import '../features/wallet/data/wallet_repository.dart';
+import 'package:app/features/wallet/data/wallet_repository.dart';
 import '../features/safety/bloc/safety_bloc.dart';
 import '../features/safety/bloc/safety_event.dart';
-import '../features/safety/data/safety_repository.dart';
+import 'package:app/features/safety/data/safety_repository.dart';
 import '../features/safety/presentation/widgets/community_guardian_overlay.dart';
 import '../shared/widgets/debug_role_switcher.dart';
 import '../features/education/bloc/education_bloc.dart';
 import '../features/education/bloc/education_event.dart';
-import '../features/education/data/education_repository.dart';
 import '../core/network/api_client.dart';
 import '../features/favorites/data/favorites_repository.dart';
 import '../features/favorites/presentation/bloc/favorites_bloc.dart';
@@ -219,6 +239,98 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
           builder: (context, state) => const StudioHomeScreen(),
         ),
         GoRoute(
+          path: '/studio/customers',
+          name: 'studio-customers',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final studioId = authState.user?.studioId ?? 'studio_123';
+            return BlocProvider(
+              create: (context) => CustomerCrmBloc(repository: StudioRepository(apiClient: context.read<AuthBloc>().apiClient)),
+              child: StudioCustomerCrmScreen(studioId: studioId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/studio/memberships',
+          name: 'studio-memberships',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final studioId = authState.user?.studioId ?? 'studio_123';
+            return BlocProvider(
+              create: (context) => StudioMembershipBloc(repository: StudioRepository(apiClient: context.read<AuthBloc>().apiClient)),
+              child: StudioMembershipScreen(studioId: studioId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/studio/analytics',
+          name: 'studio-analytics',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final studioId = authState.user?.studioId ?? 'studio_123';
+            return BlocProvider(
+              create: (context) => RevenueAnalyticsBloc(repository: StudioRepository(apiClient: context.read<AuthBloc>().apiClient)),
+              child: StudioRevenueAnalyticsScreen(studioId: studioId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/studio/marketing',
+          name: 'studio-marketing',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final studioId = authState.user?.studioId ?? 'studio_123';
+            return BlocProvider(
+              create: (context) => StudioCouponBloc(repository: StudioRepository(apiClient: context.read<AuthBloc>().apiClient)),
+              child: StudioCouponScreen(studioId: studioId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/studio/commissions',
+          name: 'studio-commissions',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final studioId = authState.user?.studioId ?? 'studio_123';
+            return BlocProvider(
+              create: (context) => StaffCommissionBloc(repository: StudioRepository(apiClient: context.read<AuthBloc>().apiClient)),
+              child: StudioCommissionScreen(studioId: studioId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/studio/visits/:visit_id/products',
+          name: 'studio-product-usage',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final studioId = authState.user?.studioId ?? 'studio_123';
+            final visitId = state.pathParameters['visit_id']!;
+            return BlocProvider(
+              create: (context) => ProductUsageBloc(repository: StudioRepository(apiClient: context.read<AuthBloc>().apiClient)),
+              child: StudioProductUsageScreen(studioId: studioId, visitId: visitId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/studio/unified-empire',
+          name: 'unified-empire',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final studioId = authState.user?.studioId ?? 'studio_123';
+            // Placeholder: In a real app, InstituteID might be separate or same as StudioID in some multi-persona setups
+            // For now, using studioId as a proxy or studio_123
+            final instituteId = authState.user?.studioId ?? 'institute_123'; 
+            
+            return BlocProvider(
+              create: (context) => UnifiedEmpireBloc(
+                studioRepository: StudioRepository(apiClient: context.read<AuthBloc>().apiClient),
+                educationRepository: EducationRepository(context.read<AuthBloc>().apiClient),
+              ),
+              child: UnifiedEmpireScreen(studioId: studioId, instituteId: instituteId),
+            );
+          },
+        ),
+        GoRoute(
           path: '/academy/onboarding',
           name: 'academy-onboarding',
           builder: (context, state) => const AcademyOnboardingScreen(),
@@ -227,6 +339,46 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
           path: '/academy/home',
           name: 'academy-home',
           builder: (context, state) => const AcademyHomeScreen(),
+        ),
+        GoRoute(
+          path: '/academy/fees',
+          name: 'academy-fees',
+          builder: (context, state) {
+             final instituteId = state.uri.queryParameters['instituteId'] ?? '';
+             return AcademyFeeManagementScreen(instituteId: instituteId);
+          }
+        ),
+        GoRoute(
+          path: '/academy/leads',
+          name: 'academy-leads',
+          builder: (context, state) {
+             final instituteId = state.uri.queryParameters['instituteId'] ?? '';
+             return AcademyStudentCrmScreen(instituteId: instituteId);
+          }
+        ),
+        GoRoute(
+          path: '/academy/grading/:batchId/:studentId',
+          name: 'academy-grading',
+          builder: (context, state) {
+            final batchId = state.pathParameters['batchId'] ?? 'batch_123';
+            final studentId = state.pathParameters['studentId'] ?? 'student_123';
+            return BlocProvider.value(
+              value: context.read<EducationBloc>(),
+              child: AcademyGradingScreen(batchId: batchId, studentId: studentId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/academy/placements',
+          name: 'academy-placements',
+          builder: (context, state) {
+            final authState = context.read<AuthBloc>().state;
+            final instId = authState.user?.instituteId ?? 'inst_123';
+            return BlocProvider.value(
+              value: context.read<EducationBloc>(),
+              child: AcademyPlacementsScreen(instituteId: instId),
+            );
+          },
         ),
         GoRoute(
           path: '/education/courses',
@@ -283,6 +435,7 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
             final extra = state.extra as Map<String, dynamic>;
             return BookingConfirmationScreen(
               bookingId: extra['bookingId'] as String,
+              customerName: extra['customerName'] as String? ?? 'Customer',
               serviceName: extra['serviceName'] as String,
               artistName: extra['artistName'] as String,
               bookingDate: extra['bookingDate'] as DateTime,

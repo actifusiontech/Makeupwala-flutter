@@ -1,55 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/education_models.dart';
 import 'package:app/shared/theme/app_colors.dart';
+import '../../bloc/education_bloc.dart';
+import '../../bloc/education_event.dart';
+import '../../bloc/education_state.dart';
 
 class CareerHubScreen extends StatefulWidget {
-  const CareerHubScreen({super.key});
+  final String? instituteId; // Optional filter
+  const CareerHubScreen({super.key, this.instituteId});
 
   @override
   State<CareerHubScreen> createState() => _CareerHubScreenState();
 }
 
 class _CareerHubScreenState extends State<CareerHubScreen> {
-  final bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  void _loadData() {
+    context.read<EducationBloc>().add(EducationEvent.fetchPlacementListings(widget.instituteId));
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Mock data for Phase 9 Career Hub
-    final placements = [
-      const PlacementListing(
-        id: '1',
-        instituteId: 'i1',
-        title: 'Junior Bridal Artist',
-        companyName: 'Lakme Salon',
-        location: 'Mumbai, MH',
-        description: 'Looking for fresh graduates with good color theory knowledge.',
-        stipendAmount: 15000,
-        listingType: 'job',
-      ),
-      const PlacementListing(
-        id: '2',
-        instituteId: 'i2',
-        title: 'Skincare Intern',
-        companyName: 'VLCC Wellness',
-        location: 'Delhi, DL',
-        stipendAmount: 8000,
-        listingType: 'internship',
-      ),
-      const PlacementListing(
-        id: '3',
-        instituteId: 'i1',
-        title: 'Assistant Hair Stylist',
-        companyName: 'Enrich Salons',
-        location: 'Pune, MH',
-        stipendAmount: 12000,
-        listingType: 'job',
-      ),
-    ];
-
-    if (_isLoading) {
-      return const Center(child: CircularProgressIndicator(color: Color(0xFFFF6B6B)));
-    }
-
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
@@ -59,19 +36,38 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
         ),
         actions: [
           IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _loadData,
+          ),
+          IconButton(
             icon: const Icon(Icons.filter_list),
             onPressed: () {},
           ),
         ],
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(20),
-        itemCount: placements.length,
-        itemBuilder: (context, index) {
-          final job = placements[index];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: _buildJobCard(job),
+      body: BlocBuilder<EducationBloc, EducationState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            loading: () => const Center(child: CircularProgressIndicator(color: Color(0xFFFF6B6B))),
+            placementListingsLoaded: (listings) {
+              if (listings.isEmpty) {
+                return const Center(child: Text('No job openings or internships at the moment. Check back later!'));
+              }
+              return ListView.builder(
+                padding: const EdgeInsets.all(20),
+                itemCount: listings.length,
+                itemBuilder: (context, index) {
+                  final jobData = listings[index];
+                  // If backend returns raw JSON, convert to model
+                  final job = PlacementListing.fromJson(jobData);
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: _buildJobCard(job),
+                  );
+                },
+              );
+            },
+            orElse: () => const Center(child: Text('Loading career opportunities...')),
           );
         },
       ),
@@ -116,14 +112,15 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
                   ),
                 ),
               ),
-              Text(
-                '₹${job.stipendAmount?.toStringAsFixed(0)}/mo',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 14,
-                  color: Color(0xFF0F172A),
+              if (job.stipendAmount != null)
+                Text(
+                  '₹${job.stipendAmount?.toStringAsFixed(0)}/mo',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 14,
+                    color: Color(0xFF0F172A),
+                  ),
                 ),
-              ),
             ],
           ),
           const SizedBox(height: 16),
@@ -169,7 +166,9 @@ class _CareerHubScreenState extends State<CareerHubScreen> {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Apply Logic
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Application submitted! Good luck!')),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF0F172A),

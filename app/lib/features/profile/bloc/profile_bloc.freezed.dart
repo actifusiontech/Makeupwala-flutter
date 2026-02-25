@@ -22,6 +22,8 @@ mixin _$ProfileEvent {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -33,6 +35,8 @@ mixin _$ProfileEvent {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -44,6 +48,8 @@ mixin _$ProfileEvent {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -56,6 +62,8 @@ mixin _$ProfileEvent {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -67,6 +75,8 @@ mixin _$ProfileEvent {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -78,6 +88,8 @@ mixin _$ProfileEvent {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,
@@ -174,6 +186,8 @@ class _$FetchProfileImpl implements _FetchProfile {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -188,6 +202,8 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -202,6 +218,8 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -220,6 +238,8 @@ class _$FetchProfileImpl implements _FetchProfile {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -234,6 +254,8 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -248,6 +270,8 @@ class _$FetchProfileImpl implements _FetchProfile {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,
@@ -356,6 +380,8 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -370,6 +396,8 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -384,6 +412,8 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -402,6 +432,8 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -416,6 +448,8 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -430,6 +464,8 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,
@@ -524,6 +560,8 @@ class _$UploadMediaImpl implements _UploadMedia {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -538,6 +576,8 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -552,6 +592,8 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -570,6 +612,8 @@ class _$UploadMediaImpl implements _UploadMedia {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -584,6 +628,8 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -598,6 +644,8 @@ class _$UploadMediaImpl implements _UploadMedia {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,
@@ -619,6 +667,332 @@ abstract class _UploadMedia implements ProfileEvent {
   @JsonKey(ignore: true)
   _$$UploadMediaImplCopyWith<_$UploadMediaImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UploadProfilePictureImplCopyWith<$Res> {
+  factory _$$UploadProfilePictureImplCopyWith(_$UploadProfilePictureImpl value,
+          $Res Function(_$UploadProfilePictureImpl) then) =
+      __$$UploadProfilePictureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String filePath});
+}
+
+/// @nodoc
+class __$$UploadProfilePictureImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$UploadProfilePictureImpl>
+    implements _$$UploadProfilePictureImplCopyWith<$Res> {
+  __$$UploadProfilePictureImplCopyWithImpl(_$UploadProfilePictureImpl _value,
+      $Res Function(_$UploadProfilePictureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filePath = null,
+  }) {
+    return _then(_$UploadProfilePictureImpl(
+      filePath: null == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadProfilePictureImpl implements _UploadProfilePicture {
+  const _$UploadProfilePictureImpl({required this.filePath});
+
+  @override
+  final String filePath;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.uploadProfilePicture(filePath: $filePath)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadProfilePictureImpl &&
+            (identical(other.filePath, filePath) ||
+                other.filePath == filePath));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, filePath);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UploadProfilePictureImplCopyWith<_$UploadProfilePictureImpl>
+      get copyWith =>
+          __$$UploadProfilePictureImplCopyWithImpl<_$UploadProfilePictureImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isArtist) fetchProfile,
+    required TResult Function(bool isArtist, Map<String, dynamic> data)
+        updateProfile,
+    required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
+    required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
+  }) {
+    return uploadProfilePicture(filePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isArtist)? fetchProfile,
+    TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
+    TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
+  }) {
+    return uploadProfilePicture?.call(filePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isArtist)? fetchProfile,
+    TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
+    TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (uploadProfilePicture != null) {
+      return uploadProfilePicture(filePath);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchProfile value) fetchProfile,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
+    required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
+  }) {
+    return uploadProfilePicture(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchProfile value)? fetchProfile,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
+    TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
+  }) {
+    return uploadProfilePicture?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchProfile value)? fetchProfile,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
+    TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (uploadProfilePicture != null) {
+      return uploadProfilePicture(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadProfilePicture implements ProfileEvent {
+  const factory _UploadProfilePicture({required final String filePath}) =
+      _$UploadProfilePictureImpl;
+
+  String get filePath;
+  @JsonKey(ignore: true)
+  _$$UploadProfilePictureImplCopyWith<_$UploadProfilePictureImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveProfilePictureImplCopyWith<$Res> {
+  factory _$$RemoveProfilePictureImplCopyWith(_$RemoveProfilePictureImpl value,
+          $Res Function(_$RemoveProfilePictureImpl) then) =
+      __$$RemoveProfilePictureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveProfilePictureImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$RemoveProfilePictureImpl>
+    implements _$$RemoveProfilePictureImplCopyWith<$Res> {
+  __$$RemoveProfilePictureImplCopyWithImpl(_$RemoveProfilePictureImpl _value,
+      $Res Function(_$RemoveProfilePictureImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemoveProfilePictureImpl implements _RemoveProfilePicture {
+  const _$RemoveProfilePictureImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.removeProfilePicture()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveProfilePictureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isArtist) fetchProfile,
+    required TResult Function(bool isArtist, Map<String, dynamic> data)
+        updateProfile,
+    required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
+    required TResult Function() fetchReferrals,
+    required TResult Function() fetchRewards,
+    required TResult Function(String rewardId) redeemReward,
+    required TResult Function() fetchTransactions,
+  }) {
+    return removeProfilePicture();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool isArtist)? fetchProfile,
+    TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
+    TResult? Function()? fetchReferrals,
+    TResult? Function()? fetchRewards,
+    TResult? Function(String rewardId)? redeemReward,
+    TResult? Function()? fetchTransactions,
+  }) {
+    return removeProfilePicture?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isArtist)? fetchProfile,
+    TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
+    TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
+    TResult Function()? fetchReferrals,
+    TResult Function()? fetchRewards,
+    TResult Function(String rewardId)? redeemReward,
+    TResult Function()? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (removeProfilePicture != null) {
+      return removeProfilePicture();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchProfile value) fetchProfile,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
+    required TResult Function(_FetchReferrals value) fetchReferrals,
+    required TResult Function(_FetchRewards value) fetchRewards,
+    required TResult Function(_RedeemReward value) redeemReward,
+    required TResult Function(_FetchTransactions value) fetchTransactions,
+  }) {
+    return removeProfilePicture(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchProfile value)? fetchProfile,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
+    TResult? Function(_FetchReferrals value)? fetchReferrals,
+    TResult? Function(_FetchRewards value)? fetchRewards,
+    TResult? Function(_RedeemReward value)? redeemReward,
+    TResult? Function(_FetchTransactions value)? fetchTransactions,
+  }) {
+    return removeProfilePicture?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchProfile value)? fetchProfile,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
+    TResult Function(_FetchReferrals value)? fetchReferrals,
+    TResult Function(_FetchRewards value)? fetchRewards,
+    TResult Function(_RedeemReward value)? redeemReward,
+    TResult Function(_FetchTransactions value)? fetchTransactions,
+    required TResult orElse(),
+  }) {
+    if (removeProfilePicture != null) {
+      return removeProfilePicture(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveProfilePicture implements ProfileEvent {
+  const factory _RemoveProfilePicture() = _$RemoveProfilePictureImpl;
 }
 
 /// @nodoc
@@ -663,6 +1037,8 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -677,6 +1053,8 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -691,6 +1069,8 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -709,6 +1089,8 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -723,6 +1105,8 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -737,6 +1121,8 @@ class _$FetchReferralsImpl implements _FetchReferrals {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,
@@ -796,6 +1182,8 @@ class _$FetchRewardsImpl implements _FetchRewards {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -810,6 +1198,8 @@ class _$FetchRewardsImpl implements _FetchRewards {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -824,6 +1214,8 @@ class _$FetchRewardsImpl implements _FetchRewards {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -842,6 +1234,8 @@ class _$FetchRewardsImpl implements _FetchRewards {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -856,6 +1250,8 @@ class _$FetchRewardsImpl implements _FetchRewards {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -870,6 +1266,8 @@ class _$FetchRewardsImpl implements _FetchRewards {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,
@@ -956,6 +1354,8 @@ class _$RedeemRewardImpl implements _RedeemReward {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -970,6 +1370,8 @@ class _$RedeemRewardImpl implements _RedeemReward {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -984,6 +1386,8 @@ class _$RedeemRewardImpl implements _RedeemReward {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -1002,6 +1406,8 @@ class _$RedeemRewardImpl implements _RedeemReward {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -1016,6 +1422,8 @@ class _$RedeemRewardImpl implements _RedeemReward {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -1030,6 +1438,8 @@ class _$RedeemRewardImpl implements _RedeemReward {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,
@@ -1094,6 +1504,8 @@ class _$FetchTransactionsImpl implements _FetchTransactions {
     required TResult Function(bool isArtist, Map<String, dynamic> data)
         updateProfile,
     required TResult Function(String filePath) uploadMedia,
+    required TResult Function(String filePath) uploadProfilePicture,
+    required TResult Function() removeProfilePicture,
     required TResult Function() fetchReferrals,
     required TResult Function() fetchRewards,
     required TResult Function(String rewardId) redeemReward,
@@ -1108,6 +1520,8 @@ class _$FetchTransactionsImpl implements _FetchTransactions {
     TResult? Function(bool isArtist)? fetchProfile,
     TResult? Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult? Function(String filePath)? uploadMedia,
+    TResult? Function(String filePath)? uploadProfilePicture,
+    TResult? Function()? removeProfilePicture,
     TResult? Function()? fetchReferrals,
     TResult? Function()? fetchRewards,
     TResult? Function(String rewardId)? redeemReward,
@@ -1122,6 +1536,8 @@ class _$FetchTransactionsImpl implements _FetchTransactions {
     TResult Function(bool isArtist)? fetchProfile,
     TResult Function(bool isArtist, Map<String, dynamic> data)? updateProfile,
     TResult Function(String filePath)? uploadMedia,
+    TResult Function(String filePath)? uploadProfilePicture,
+    TResult Function()? removeProfilePicture,
     TResult Function()? fetchReferrals,
     TResult Function()? fetchRewards,
     TResult Function(String rewardId)? redeemReward,
@@ -1140,6 +1556,8 @@ class _$FetchTransactionsImpl implements _FetchTransactions {
     required TResult Function(_FetchProfile value) fetchProfile,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_UploadMedia value) uploadMedia,
+    required TResult Function(_UploadProfilePicture value) uploadProfilePicture,
+    required TResult Function(_RemoveProfilePicture value) removeProfilePicture,
     required TResult Function(_FetchReferrals value) fetchReferrals,
     required TResult Function(_FetchRewards value) fetchRewards,
     required TResult Function(_RedeemReward value) redeemReward,
@@ -1154,6 +1572,8 @@ class _$FetchTransactionsImpl implements _FetchTransactions {
     TResult? Function(_FetchProfile value)? fetchProfile,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_UploadMedia value)? uploadMedia,
+    TResult? Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult? Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult? Function(_FetchReferrals value)? fetchReferrals,
     TResult? Function(_FetchRewards value)? fetchRewards,
     TResult? Function(_RedeemReward value)? redeemReward,
@@ -1168,6 +1588,8 @@ class _$FetchTransactionsImpl implements _FetchTransactions {
     TResult Function(_FetchProfile value)? fetchProfile,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_UploadMedia value)? uploadMedia,
+    TResult Function(_UploadProfilePicture value)? uploadProfilePicture,
+    TResult Function(_RemoveProfilePicture value)? removeProfilePicture,
     TResult Function(_FetchReferrals value)? fetchReferrals,
     TResult Function(_FetchRewards value)? fetchRewards,
     TResult Function(_RedeemReward value)? redeemReward,

@@ -73,7 +73,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
           keyId: paymentData['key_id'],
         ));
       } else {
-        emit(const BookingState.success(message: 'Booking created successfully!'));
+        emit(BookingState.success(message: 'Booking created successfully!', booking: response));
       }
     } catch (e) {
       emit(BookingState.error(message: e.toString()));
@@ -162,7 +162,9 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         signature: signature,
         bookingId: bookingId,
       );
-      emit(const BookingState.success(message: 'Payment successful! Booking confirmed.'));
+      // Fetch updated booking details to pass to success state
+      final booking = await _repository.getBookingById(bookingId);
+      emit(BookingState.success(message: 'Payment successful! Booking confirmed.', booking: booking));
     } catch (e) {
       emit(BookingState.error(message: 'Payment verification failed: ${e.toString()}'));
     }

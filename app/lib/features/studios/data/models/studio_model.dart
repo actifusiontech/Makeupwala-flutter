@@ -57,6 +57,8 @@ class StudioTeamMember {
   final String role; // 'MANAGER' or 'STAFF'
   final String name;
   final String email;
+  final double baseSalary;
+  final double commissionRate;
   final bool isActive;
 
   StudioTeamMember({
@@ -66,6 +68,8 @@ class StudioTeamMember {
     required this.role,
     required this.name,
     required this.email,
+    this.baseSalary = 0.0,
+    this.commissionRate = 0.0,
     this.isActive = true,
   });
 
@@ -73,10 +77,12 @@ class StudioTeamMember {
     return StudioTeamMember(
       id: json['id'] ?? '',
       userId: json['user_id'] ?? '',
-      studioId: json['studio_id'] ?? '',
+      studioId: json['affiliated_studio_id'] ?? '',
       role: json['role'] ?? 'STAFF',
-      name: json['name'] ?? 'Unknown',
+      name: json['display_name'] ?? json['name'] ?? 'Unknown',
       email: json['email'] ?? '',
+      baseSalary: (json['base_salary'] ?? 0).toDouble(),
+      commissionRate: (json['commission_rate'] ?? 0).toDouble(),
       isActive: json['is_active'] ?? true,
     );
   }

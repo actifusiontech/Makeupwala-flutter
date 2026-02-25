@@ -26,6 +26,8 @@ mixin _$User {
   String? get phone => throw _privateConstructorUsedError;
   String get role =>
       throw _privateConstructorUsedError; // 'customer' or 'artist'
+  String? get studioId => throw _privateConstructorUsedError;
+  String? get instituteId => throw _privateConstructorUsedError;
   String? get profileImageUrl => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
   String? get referralCode => throw _privateConstructorUsedError;
@@ -58,6 +60,8 @@ abstract class $UserCopyWith<$Res> {
       String? email,
       String? phone,
       String role,
+      String? studioId,
+      String? instituteId,
       String? profileImageUrl,
       bool isVerified,
       String? referralCode,
@@ -91,6 +95,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? email = freezed,
     Object? phone = freezed,
     Object? role = null,
+    Object? studioId = freezed,
+    Object? instituteId = freezed,
     Object? profileImageUrl = freezed,
     Object? isVerified = null,
     Object? referralCode = freezed,
@@ -126,6 +132,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      studioId: freezed == studioId
+          ? _value.studioId
+          : studioId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      instituteId: freezed == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String?,
       profileImageUrl: freezed == profileImageUrl
           ? _value.profileImageUrl
           : profileImageUrl // ignore: cast_nullable_to_non_nullable
@@ -195,6 +209,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? email,
       String? phone,
       String role,
+      String? studioId,
+      String? instituteId,
       String? profileImageUrl,
       bool isVerified,
       String? referralCode,
@@ -225,6 +241,8 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phone = freezed,
     Object? role = null,
+    Object? studioId = freezed,
+    Object? instituteId = freezed,
     Object? profileImageUrl = freezed,
     Object? isVerified = null,
     Object? referralCode = freezed,
@@ -260,6 +278,14 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      studioId: freezed == studioId
+          ? _value.studioId
+          : studioId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      instituteId: freezed == instituteId
+          ? _value.instituteId
+          : instituteId // ignore: cast_nullable_to_non_nullable
+              as String?,
       profileImageUrl: freezed == profileImageUrl
           ? _value.profileImageUrl
           : profileImageUrl // ignore: cast_nullable_to_non_nullable
@@ -325,6 +351,8 @@ class _$UserImpl extends _User {
       this.email,
       this.phone,
       required this.role,
+      this.studioId,
+      this.instituteId,
       this.profileImageUrl,
       this.isVerified = false,
       this.referralCode,
@@ -355,6 +383,10 @@ class _$UserImpl extends _User {
   @override
   final String role;
 // 'customer' or 'artist'
+  @override
+  final String? studioId;
+  @override
+  final String? instituteId;
   @override
   final String? profileImageUrl;
   @override
@@ -396,7 +428,7 @@ class _$UserImpl extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, profileImageUrl: $profileImageUrl, isVerified: $isVerified, referralCode: $referralCode, loyaltyPoints: $loyaltyPoints, createdAt: $createdAt, media: $media, gender: $gender, dob: $dob, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, state: $state, pincode: $pincode)';
+    return 'User(id: $id, fullName: $fullName, email: $email, phone: $phone, role: $role, studioId: $studioId, instituteId: $instituteId, profileImageUrl: $profileImageUrl, isVerified: $isVerified, referralCode: $referralCode, loyaltyPoints: $loyaltyPoints, createdAt: $createdAt, media: $media, gender: $gender, dob: $dob, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, state: $state, pincode: $pincode)';
   }
 
   @override
@@ -410,6 +442,10 @@ class _$UserImpl extends _User {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.role, role) || other.role == role) &&
+            (identical(other.studioId, studioId) ||
+                other.studioId == studioId) &&
+            (identical(other.instituteId, instituteId) ||
+                other.instituteId == instituteId) &&
             (identical(other.profileImageUrl, profileImageUrl) ||
                 other.profileImageUrl == profileImageUrl) &&
             (identical(other.isVerified, isVerified) ||
@@ -434,26 +470,29 @@ class _$UserImpl extends _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      fullName,
-      email,
-      phone,
-      role,
-      profileImageUrl,
-      isVerified,
-      referralCode,
-      loyaltyPoints,
-      createdAt,
-      const DeepCollectionEquality().hash(_media),
-      gender,
-      dob,
-      addressLine1,
-      addressLine2,
-      city,
-      state,
-      pincode);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        fullName,
+        email,
+        phone,
+        role,
+        studioId,
+        instituteId,
+        profileImageUrl,
+        isVerified,
+        referralCode,
+        loyaltyPoints,
+        createdAt,
+        const DeepCollectionEquality().hash(_media),
+        gender,
+        dob,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        pincode
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -476,6 +515,8 @@ abstract class _User extends User {
       final String? email,
       final String? phone,
       required final String role,
+      final String? studioId,
+      final String? instituteId,
       final String? profileImageUrl,
       final bool isVerified,
       final String? referralCode,
@@ -504,6 +545,10 @@ abstract class _User extends User {
   @override
   String get role;
   @override // 'customer' or 'artist'
+  String? get studioId;
+  @override
+  String? get instituteId;
+  @override
   String? get profileImageUrl;
   @override
   bool get isVerified;

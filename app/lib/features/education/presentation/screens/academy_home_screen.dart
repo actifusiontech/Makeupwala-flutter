@@ -15,9 +15,9 @@ import 'create_course_screen.dart';
 import 'verify_student_screen.dart';
 import 'student_management_screen.dart';
 import 'academy_post_placement_screen.dart';
-import 'academy_institute_profile_screen.dart';
 import 'academy_menu_screen.dart';
 import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:app/shared/widgets/global_persona_switcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -54,6 +54,7 @@ class _AcademyHomeScreenState extends State<AcademyHomeScreen> {
             backgroundColor: Colors.teal,
             foregroundColor: Colors.white,
             actions: [
+              const GlobalPersonaSwitcher(),
               PopupMenuButton<String>(
                 icon: const Icon(Icons.more_vert),
                 onSelected: (value) {
@@ -156,9 +157,9 @@ class _AcademyDashboard extends StatelessWidget {
             ),
           ),
           dashboardLoaded: (stats, institute) {
-            final students = stats['students_count']?.toString() ?? '0';
-            final batches = stats['batches_count']?.toString() ?? '0';
-            final revenue = stats['revenue']?.toString() ?? '0';
+            final students = stats?['students_count']?.toString() ?? '0';
+            final batches = stats?['batches_count']?.toString() ?? '0';
+            final revenue = stats?['revenue']?.toString() ?? '0';
 
             return RefreshIndicator(
               onRefresh: () async {
@@ -244,10 +245,33 @@ class _AcademyDashboard extends StatelessWidget {
               ),
             );
           },
-          error: (msg) => Center(child: Text('Error: $msg')),
-          orElse: () => const Center(child: Text('Failed to load dashboard')),
+          error: (msg) => _buildErrorState(context, msg),
+          orElse: () {
+            context.read<EducationBloc>().add(const EducationEvent.fetchDashboard());
+            return const Center(child: CircularProgressIndicator());
+          },
         );
       },
+    );
+  }
+
+  Widget _buildErrorState(BuildContext context, String msg) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.error_outline, size: 48, color: Colors.grey),
+          const SizedBox(height: 16),
+          Text('Failed to load dashboard', style: AppTypography.titleMedium),
+          const SizedBox(height: 8),
+          Text(msg, style: AppTypography.labelMedium.copyWith(color: Colors.grey)),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () => context.read<EducationBloc>().add(const EducationEvent.fetchDashboard()),
+            child: const Text('Retry'),
+          ),
+        ],
+      ),
     );
   }
 

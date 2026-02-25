@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:app/core/models/rewards.dart';
+import 'package:app/core/models/user.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
@@ -14,10 +15,15 @@ import '../booking/data/booking_repository.dart';
 import 'bloc/profile_bloc.dart';
 import 'data/profile_repository.dart';
 import 'edit_profile_screen.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import '../../features/profile/widgets/tier_progress_card.dart';
 import '../../features/rewards/leaderboard_screen.dart';
 import '../../features/discovery/lookbook_screen.dart';
 import 'package:app/shared/widgets/shimmer_loaders.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -27,12 +33,14 @@ class ProfileScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ProfileBloc(repository: ProfileRepository())
-            ..add(const ProfileEvent.fetchProfile(isArtist: false)),
+          create: (context) =>
+              ProfileBloc(repository: ProfileRepository())
+                ..add(const ProfileEvent.fetchProfile(isArtist: false)),
         ),
         BlocProvider(
-          create: (context) => BookingBloc(repository: BookingRepository())
-            ..add(const BookingEvent.fetchBookings(isArtist: false)),
+          create: (context) =>
+              BookingBloc(repository: BookingRepository())
+                ..add(const BookingEvent.fetchBookings(isArtist: false)),
         ),
       ],
       child: const _ProfileView(),
@@ -58,10 +66,14 @@ class _ProfileView extends StatelessWidget {
                 loaded: (user, _) => IconButton(
                   icon: const Icon(Icons.edit_outlined),
                   onPressed: () {
-                    context.push('/profile/edit', extra: {
-                      'user': user,
-                      'isArtist': false, // Handle isArtist correctly if needed
-                    });
+                    context.push(
+                      '/profile/edit',
+                      extra: {
+                        'user': user,
+                        'isArtist':
+                            false, // Handle isArtist correctly if needed
+                      },
+                    );
                   },
                 ),
                 orElse: () => const SizedBox(),
@@ -86,16 +98,22 @@ class _ProfileView extends StatelessWidget {
               builder: (context, state) {
                 return state.maybeWhen(
                   loaded: (user, _) {
-                    final bool isIncomplete = user.phone == null || user.phone!.isEmpty || 
-                                            user.city == null || user.city!.isEmpty;
+                    final bool isIncomplete =
+                        user.phone == null ||
+                        user.phone!.isEmpty ||
+                        user.city == null ||
+                        user.city!.isEmpty;
                     if (!isIncomplete) return const SizedBox.shrink();
-                    
+
                     return Container(
                       margin: const EdgeInsets.only(bottom: AppSpacing.lg),
                       padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [AppColors.primary, AppColors.primary.withOpacity(0.8)],
+                          colors: [
+                            AppColors.primary,
+                            AppColors.primary.withOpacity(0.8),
+                          ],
                         ),
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
@@ -108,7 +126,11 @@ class _ProfileView extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.stars, color: Colors.white, size: 28),
+                          const Icon(
+                            Icons.stars,
+                            color: Colors.white,
+                            size: 28,
+                          ),
                           const SizedBox(width: AppSpacing.md),
                           Expanded(
                             child: Column(
@@ -116,23 +138,32 @@ class _ProfileView extends StatelessWidget {
                               children: [
                                 Text(
                                   'Complete Your Profile',
-                                  style: AppTypography.titleMedium.copyWith(color: Colors.white),
+                                  style: AppTypography.titleMedium.copyWith(
+                                    color: Colors.white,
+                                  ),
                                 ),
                                 Text(
                                   'Unlock priority booking and rewards!',
-                                  style: AppTypography.bodySmall.copyWith(color: Colors.white.withOpacity(0.9)),
+                                  style: AppTypography.bodySmall.copyWith(
+                                    color: Colors.white.withOpacity(0.9),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           TextButton(
                             onPressed: () {
-                              context.push('/profile/edit', extra: {'user': user, 'isArtist': false});
+                              context.push(
+                                '/profile/edit',
+                                extra: {'user': user, 'isArtist': false},
+                              );
                             },
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: AppColors.primary,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                             ),
                             child: const Text('EDIT'),
                           ),
@@ -147,65 +178,129 @@ class _ProfileView extends StatelessWidget {
 
             // Profile Header
             Center(
-              child: Column(
-                children: [
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundColor: AppColors.primary,
-                    child: Icon(Icons.person, size: 60, color: Colors.white),
-                  ),
-                  const SizedBox(height: AppSpacing.md),
-                  BlocBuilder<ProfileBloc, ProfileState>(
-                    builder: (context, state) {
-                      return state.maybeWhen(
-                        loaded: (user, balance) => Column(
+              child: BlocBuilder<ProfileBloc, ProfileState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    loaded: (user, balance) => Column(
+                      children: [
+                        Stack(
                           children: [
-                            Text(user.fullName, style: AppTypography.headlineMedium),
-                            Text(user.phone ?? '', style: AppTypography.bodyLarge.copyWith(color: AppColors.textSecondary)),
-                            const SizedBox(height: AppSpacing.sm),
-                            OutlinedButton.icon(
-                              onPressed: () => context.push('/profile/edit', extra: {'user': user, 'isArtist': false}),
-                              icon: const Icon(Icons.edit, size: 16),
-                              label: const Text('Edit Profile'),
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor: AppColors.primary,
-                                side: const BorderSide(color: AppColors.primary),
-                                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundColor: AppColors.primary,
+                              backgroundImage:
+                                  user.profileImageUrl != null &&
+                                      user.profileImageUrl!.isNotEmpty
+                                  ? CachedNetworkImageProvider(user.profileImageUrl!) as ImageProvider
+                                  : null,
+                              child:
+                                  user.profileImageUrl == null ||
+                                      user.profileImageUrl!.isEmpty
+                                  ? const Icon(
+                                      Icons.person,
+                                      size: 60,
+                                      color: Colors.white,
+                                    )
+                                  : null,
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: InkWell(
+                                onTap: () => _showImagePickerSheet(context, user),
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.secondary,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.camera_alt,
+                                    color: Colors.white,
+                                    size: 20,
+                                  ),
+                                ),
                               ),
                             ),
-                            const SizedBox(height: AppSpacing.sm),
-                            TextButton.icon(
-                              onPressed: () => context.push('/rewards'),
-                              icon: const Icon(Icons.stars, size: 18, color: Colors.amber),
-                              label: const Text('GLOW Rewards Hub'),
-                              style: TextButton.styleFrom(foregroundColor: AppColors.primary),
-                            ),
-                            TextButton.icon(
-                              onPressed: () => context.push('/wallet'),
-                              icon: const Icon(Icons.account_balance_wallet_outlined, size: 18),
-                              label: const Text('My Wallet'),
-                              style: TextButton.styleFrom(foregroundColor: AppColors.primary),
-                            ),
-                            TextButton.icon(
-                              onPressed: () => context.push('/orders'),
-                              icon: const Icon(Icons.shopping_bag_outlined, size: 18),
-                              label: const Text('My Orders'),
-                              style: TextButton.styleFrom(foregroundColor: AppColors.primary),
-                            ),
                           ],
                         ),
-                        loading: () => Column(
-                          children: [
-                            const SizedBox(height: AppSpacing.md),
-                            ShimmerLoaders.listTile(),
-                          ],
+                        const SizedBox(height: AppSpacing.md),
+                        Text(
+                          user.fullName,
+                          style: AppTypography.headlineMedium,
                         ),
-                        orElse: () => const SizedBox(),
-                      );
-                    },
-                  ),
-                ],
+                        Text(
+                          user.phone ?? '',
+                          style: AppTypography.bodyLarge.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.sm),
+                        OutlinedButton.icon(
+                          onPressed: () => context.push(
+                            '/profile/edit',
+                            extra: {'user': user, 'isArtist': false},
+                          ),
+                          icon: const Icon(Icons.edit, size: 16),
+                          label: const Text('Edit Profile'),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: AppColors.primary,
+                            side: const BorderSide(color: AppColors.primary),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 8,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.sm),
+                        TextButton.icon(
+                          onPressed: () => context.push('/rewards'),
+                          icon: const Icon(
+                            Icons.stars,
+                            size: 18,
+                            color: Colors.amber,
+                          ),
+                          label: const Text('GLOW Rewards Hub'),
+                          style: TextButton.styleFrom(
+                            foregroundColor: AppColors.primary,
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: () => context.push('/wallet'),
+                          icon: const Icon(
+                            Icons.account_balance_wallet_outlined,
+                            size: 18,
+                          ),
+                          label: const Text('My Wallet'),
+                          style: TextButton.styleFrom(
+                            foregroundColor: AppColors.primary,
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: () => context.push('/orders'),
+                          icon: const Icon(
+                            Icons.shopping_bag_outlined,
+                            size: 18,
+                          ),
+                          label: const Text('My Orders'),
+                          style: TextButton.styleFrom(
+                            foregroundColor: AppColors.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                    loading: () => Column(
+                      children: [
+                        const SizedBox(height: AppSpacing.md),
+                        ShimmerLoaders.listTile(),
+                      ],
+                    ),
+                    orElse: () => const SizedBox(),
+                  );
+                },
               ),
             ),
             const SizedBox(height: AppSpacing.lg),
@@ -218,7 +313,10 @@ class _ProfileView extends StatelessWidget {
                       const SizedBox(height: AppSpacing.sm),
                       _buildLeaderboardButton(context),
                       const SizedBox(height: AppSpacing.lg),
-                      _buildReferralCard(context, user.referralCode ?? 'MAKEUPWALA'),
+                      _buildReferralCard(
+                        context,
+                        user.referralCode ?? 'MAKEUPWALA',
+                      ),
                     ],
                   ),
                   orElse: () => const SizedBox(),
@@ -236,9 +334,12 @@ class _ProfileView extends StatelessWidget {
                   orElse: () => const SizedBox(),
                   initial: () => const SizedBox(),
                   loading: () => Column(
-                    children: List.generate(3, (index) => ShimmerLoaders.bookingCard()),
+                    children: List.generate(
+                      3,
+                      (index) => ShimmerLoaders.bookingCard(),
+                    ),
                   ),
-                  success: (_) => const SizedBox(),
+                  success: (message, booking) => const SizedBox(),
                   error: (message) => Center(child: Text('Error: $message')),
                   loaded: (bookings) {
                     if (bookings.isEmpty) {
@@ -273,7 +374,9 @@ class _ProfileView extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const LeaderboardScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const LeaderboardScreen(),
+                ),
               );
             },
             icon: const Icon(Icons.leaderboard, color: AppColors.primary),
@@ -309,7 +412,7 @@ class _ProfileView extends StatelessWidget {
 
   Widget _buildLoyaltyCard(BuildContext context, LoyaltyBalance? balance) {
     if (balance == null) return const SizedBox.shrink();
-    
+
     return InkWell(
       onTap: () => context.push('/rewards'),
       borderRadius: BorderRadius.circular(20),
@@ -346,21 +449,31 @@ class _ProfileView extends StatelessWidget {
               children: [
                 Text(
                   'Refer & Earn ₹500',
-                  style: AppTypography.titleLarge.copyWith(color: AppColors.primary),
+                  style: AppTypography.titleLarge.copyWith(
+                    color: AppColors.primary,
+                  ),
                 ),
                 const SizedBox(height: AppSpacing.xs),
                 const Text(
                   'Invite your friends to Makeupwala. They get priority booking, and you earn 500 bonus points after their first service!',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 13,
+                  ),
                 ),
                 const SizedBox(height: AppSpacing.md),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.md,
+                    vertical: AppSpacing.sm,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+                    border: Border.all(
+                      color: AppColors.primary.withOpacity(0.3),
+                    ),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -379,7 +492,11 @@ class _ProfileView extends StatelessWidget {
                         onPressed: () {
                           Clipboard.setData(ClipboardData(text: code));
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Referral code copied to clipboard!')),
+                            const SnackBar(
+                              content: Text(
+                                'Referral code copied to clipboard!',
+                              ),
+                            ),
                           );
                         },
                       ),
@@ -400,7 +517,9 @@ class _ProfileView extends StatelessWidget {
                     backgroundColor: AppColors.primary,
                     foregroundColor: Colors.white,
                     minimumSize: const Size(double.infinity, 45),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
               ],
@@ -415,7 +534,8 @@ class _ProfileView extends StatelessWidget {
     final status = booking['status'] ?? 'pending';
     final date = booking['booking_date'] ?? 'Unknown Date';
     final time = booking['booking_time'] ?? 'Unknown Time';
-    final artistName = booking['artist_name'] ?? 'Artist'; // Assuming backend sends this
+    final artistName =
+        booking['artist_name'] ?? 'Artist'; // Assuming backend sends this
 
     Color statusColor;
     switch (status) {
@@ -447,10 +567,108 @@ class _ProfileView extends StatelessWidget {
           ),
           child: Text(
             status.toUpperCase(),
-            style: AppTypography.bodySmall.copyWith(color: statusColor, fontWeight: FontWeight.bold),
+            style: AppTypography.bodySmall.copyWith(
+              color: statusColor,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
     );
+  }
+
+  void _showImagePickerSheet(BuildContext context, User user) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (BuildContext ctx) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  'Profile Picture',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Choose from Gallery'),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  _processAndUploadImage(context, ImageSource.gallery);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text('Take Photo'),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  _processAndUploadImage(context, ImageSource.camera);
+                },
+              ),
+              if (user.profileImageUrl != null && user.profileImageUrl!.isNotEmpty)
+                ListTile(
+                  leading: const Icon(Icons.delete, color: AppColors.error),
+                  title: const Text('Remove Photo', style: TextStyle(color: AppColors.error)),
+                  onTap: () {
+                    Navigator.of(ctx).pop();
+                    context.read<ProfileBloc>().add(const ProfileEvent.removeProfilePicture());
+                  },
+                ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _processAndUploadImage(BuildContext context, ImageSource source) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: source);
+    
+    if (image == null) return;
+
+    // Crop Image
+    final croppedFile = await ImageCropper().cropImage(
+      sourcePath: image.path,
+      aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
+      uiSettings: [
+        AndroidUiSettings(
+            toolbarTitle: 'Crop Profile Picture',
+            toolbarColor: AppColors.primary,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.square,
+            lockAspectRatio: true),
+        IOSUiSettings(
+          title: 'Crop Profile Picture',
+          aspectRatioLockEnabled: true,
+          resetAspectRatioEnabled: false,
+        ),
+      ],
+    );
+
+    if (croppedFile == null) return;
+
+    // Compress Image
+    final targetPath = '${croppedFile.path}_compressed.jpg';
+    var compressedImage = await FlutterImageCompress.compressAndGetFile(
+      croppedFile.path,
+      targetPath,
+      quality: 80,
+      minWidth: 500,
+      minHeight: 500,
+    );
+
+    if (compressedImage != null) {
+      if (context.mounted) {
+        context.read<ProfileBloc>().add(
+          ProfileEvent.uploadProfilePicture(filePath: compressedImage.path),
+        );
+      }
+    }
   }
 }

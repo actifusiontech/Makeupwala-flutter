@@ -14,6 +14,8 @@ abstract class User with _$User {
     String? email,
     String? phone,
     required String role, // 'customer' or 'artist'
+    String? studioId,
+    String? instituteId,
     String? profileImageUrl,
     @Default(false) bool isVerified,
     String? referralCode,

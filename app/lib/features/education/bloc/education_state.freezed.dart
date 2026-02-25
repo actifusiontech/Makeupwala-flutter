@@ -24,6 +24,15 @@ mixin _$EducationState {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) =>
@@ -36,6 +45,14 @@ mixin _$EducationState {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) =>
@@ -48,6 +65,14 @@ mixin _$EducationState {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -60,6 +85,16 @@ mixin _$EducationState {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) =>
@@ -71,6 +106,14 @@ mixin _$EducationState {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) =>
@@ -82,6 +125,14 @@ mixin _$EducationState {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),
@@ -151,6 +202,15 @@ class _$InitialImpl implements _Initial {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) {
@@ -166,6 +226,14 @@ class _$InitialImpl implements _Initial {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) {
@@ -181,6 +249,14 @@ class _$InitialImpl implements _Initial {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -199,6 +275,16 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) {
@@ -213,6 +299,14 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) {
@@ -227,6 +321,14 @@ class _$InitialImpl implements _Initial {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),
@@ -286,6 +388,15 @@ class _$LoadingImpl implements _Loading {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) {
@@ -301,6 +412,14 @@ class _$LoadingImpl implements _Loading {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) {
@@ -316,6 +435,14 @@ class _$LoadingImpl implements _Loading {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -334,6 +461,16 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) {
@@ -348,6 +485,14 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) {
@@ -362,6 +507,14 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),
@@ -480,6 +633,15 @@ class _$DashboardLoadedImpl implements _DashboardLoaded {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) {
@@ -495,6 +657,14 @@ class _$DashboardLoadedImpl implements _DashboardLoaded {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) {
@@ -510,6 +680,14 @@ class _$DashboardLoadedImpl implements _DashboardLoaded {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -528,6 +706,16 @@ class _$DashboardLoadedImpl implements _DashboardLoaded {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) {
@@ -542,6 +730,14 @@ class _$DashboardLoadedImpl implements _DashboardLoaded {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) {
@@ -556,6 +752,14 @@ class _$DashboardLoadedImpl implements _DashboardLoaded {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),
@@ -655,6 +859,15 @@ class _$CoursesLoadedImpl implements _CoursesLoaded {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) {
@@ -670,6 +883,14 @@ class _$CoursesLoadedImpl implements _CoursesLoaded {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) {
@@ -685,6 +906,14 @@ class _$CoursesLoadedImpl implements _CoursesLoaded {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -703,6 +932,16 @@ class _$CoursesLoadedImpl implements _CoursesLoaded {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) {
@@ -717,6 +956,14 @@ class _$CoursesLoadedImpl implements _CoursesLoaded {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) {
@@ -731,6 +978,14 @@ class _$CoursesLoadedImpl implements _CoursesLoaded {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),
@@ -830,6 +1085,15 @@ class _$StudentsLoadedImpl implements _StudentsLoaded {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) {
@@ -845,6 +1109,14 @@ class _$StudentsLoadedImpl implements _StudentsLoaded {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) {
@@ -860,6 +1132,14 @@ class _$StudentsLoadedImpl implements _StudentsLoaded {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -878,6 +1158,16 @@ class _$StudentsLoadedImpl implements _StudentsLoaded {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) {
@@ -892,6 +1182,14 @@ class _$StudentsLoadedImpl implements _StudentsLoaded {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) {
@@ -906,6 +1204,14 @@ class _$StudentsLoadedImpl implements _StudentsLoaded {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),
@@ -924,6 +1230,1819 @@ abstract class _StudentsLoaded implements EducationState {
   List<dynamic> get students;
   @JsonKey(ignore: true)
   _$$StudentsLoadedImplCopyWith<_$StudentsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FeeStructuresLoadedImplCopyWith<$Res> {
+  factory _$$FeeStructuresLoadedImplCopyWith(_$FeeStructuresLoadedImpl value,
+          $Res Function(_$FeeStructuresLoadedImpl) then) =
+      __$$FeeStructuresLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> feeStructures});
+}
+
+/// @nodoc
+class __$$FeeStructuresLoadedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$FeeStructuresLoadedImpl>
+    implements _$$FeeStructuresLoadedImplCopyWith<$Res> {
+  __$$FeeStructuresLoadedImplCopyWithImpl(_$FeeStructuresLoadedImpl _value,
+      $Res Function(_$FeeStructuresLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? feeStructures = null,
+  }) {
+    return _then(_$FeeStructuresLoadedImpl(
+      null == feeStructures
+          ? _value._feeStructures
+          : feeStructures // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FeeStructuresLoadedImpl implements _FeeStructuresLoaded {
+  const _$FeeStructuresLoadedImpl(final List<dynamic> feeStructures)
+      : _feeStructures = feeStructures;
+
+  final List<dynamic> _feeStructures;
+  @override
+  List<dynamic> get feeStructures {
+    if (_feeStructures is EqualUnmodifiableListView) return _feeStructures;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_feeStructures);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.feeStructuresLoaded(feeStructures: $feeStructures)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FeeStructuresLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._feeStructures, _feeStructures));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_feeStructures));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FeeStructuresLoadedImplCopyWith<_$FeeStructuresLoadedImpl> get copyWith =>
+      __$$FeeStructuresLoadedImplCopyWithImpl<_$FeeStructuresLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return feeStructuresLoaded(feeStructures);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return feeStructuresLoaded?.call(feeStructures);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (feeStructuresLoaded != null) {
+      return feeStructuresLoaded(feeStructures);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return feeStructuresLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return feeStructuresLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (feeStructuresLoaded != null) {
+      return feeStructuresLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FeeStructuresLoaded implements EducationState {
+  const factory _FeeStructuresLoaded(final List<dynamic> feeStructures) =
+      _$FeeStructuresLoadedImpl;
+
+  List<dynamic> get feeStructures;
+  @JsonKey(ignore: true)
+  _$$FeeStructuresLoadedImplCopyWith<_$FeeStructuresLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StudentFeesLoadedImplCopyWith<$Res> {
+  factory _$$StudentFeesLoadedImplCopyWith(_$StudentFeesLoadedImpl value,
+          $Res Function(_$StudentFeesLoadedImpl) then) =
+      __$$StudentFeesLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> feePayments});
+}
+
+/// @nodoc
+class __$$StudentFeesLoadedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$StudentFeesLoadedImpl>
+    implements _$$StudentFeesLoadedImplCopyWith<$Res> {
+  __$$StudentFeesLoadedImplCopyWithImpl(_$StudentFeesLoadedImpl _value,
+      $Res Function(_$StudentFeesLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? feePayments = null,
+  }) {
+    return _then(_$StudentFeesLoadedImpl(
+      null == feePayments
+          ? _value._feePayments
+          : feePayments // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StudentFeesLoadedImpl implements _StudentFeesLoaded {
+  const _$StudentFeesLoadedImpl(final List<dynamic> feePayments)
+      : _feePayments = feePayments;
+
+  final List<dynamic> _feePayments;
+  @override
+  List<dynamic> get feePayments {
+    if (_feePayments is EqualUnmodifiableListView) return _feePayments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_feePayments);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.studentFeesLoaded(feePayments: $feePayments)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StudentFeesLoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._feePayments, _feePayments));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_feePayments));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StudentFeesLoadedImplCopyWith<_$StudentFeesLoadedImpl> get copyWith =>
+      __$$StudentFeesLoadedImplCopyWithImpl<_$StudentFeesLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return studentFeesLoaded(feePayments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return studentFeesLoaded?.call(feePayments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (studentFeesLoaded != null) {
+      return studentFeesLoaded(feePayments);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return studentFeesLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return studentFeesLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (studentFeesLoaded != null) {
+      return studentFeesLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StudentFeesLoaded implements EducationState {
+  const factory _StudentFeesLoaded(final List<dynamic> feePayments) =
+      _$StudentFeesLoadedImpl;
+
+  List<dynamic> get feePayments;
+  @JsonKey(ignore: true)
+  _$$StudentFeesLoadedImplCopyWith<_$StudentFeesLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StudentLeadsLoadedImplCopyWith<$Res> {
+  factory _$$StudentLeadsLoadedImplCopyWith(_$StudentLeadsLoadedImpl value,
+          $Res Function(_$StudentLeadsLoadedImpl) then) =
+      __$$StudentLeadsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> leads});
+}
+
+/// @nodoc
+class __$$StudentLeadsLoadedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$StudentLeadsLoadedImpl>
+    implements _$$StudentLeadsLoadedImplCopyWith<$Res> {
+  __$$StudentLeadsLoadedImplCopyWithImpl(_$StudentLeadsLoadedImpl _value,
+      $Res Function(_$StudentLeadsLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? leads = null,
+  }) {
+    return _then(_$StudentLeadsLoadedImpl(
+      null == leads
+          ? _value._leads
+          : leads // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StudentLeadsLoadedImpl implements _StudentLeadsLoaded {
+  const _$StudentLeadsLoadedImpl(final List<dynamic> leads) : _leads = leads;
+
+  final List<dynamic> _leads;
+  @override
+  List<dynamic> get leads {
+    if (_leads is EqualUnmodifiableListView) return _leads;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_leads);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.studentLeadsLoaded(leads: $leads)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StudentLeadsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._leads, _leads));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_leads));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StudentLeadsLoadedImplCopyWith<_$StudentLeadsLoadedImpl> get copyWith =>
+      __$$StudentLeadsLoadedImplCopyWithImpl<_$StudentLeadsLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return studentLeadsLoaded(leads);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return studentLeadsLoaded?.call(leads);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (studentLeadsLoaded != null) {
+      return studentLeadsLoaded(leads);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return studentLeadsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return studentLeadsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (studentLeadsLoaded != null) {
+      return studentLeadsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StudentLeadsLoaded implements EducationState {
+  const factory _StudentLeadsLoaded(final List<dynamic> leads) =
+      _$StudentLeadsLoadedImpl;
+
+  List<dynamic> get leads;
+  @JsonKey(ignore: true)
+  _$$StudentLeadsLoadedImplCopyWith<_$StudentLeadsLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CertificateIssuedImplCopyWith<$Res> {
+  factory _$$CertificateIssuedImplCopyWith(_$CertificateIssuedImpl value,
+          $Res Function(_$CertificateIssuedImpl) then) =
+      __$$CertificateIssuedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, dynamic> certificate});
+}
+
+/// @nodoc
+class __$$CertificateIssuedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$CertificateIssuedImpl>
+    implements _$$CertificateIssuedImplCopyWith<$Res> {
+  __$$CertificateIssuedImplCopyWithImpl(_$CertificateIssuedImpl _value,
+      $Res Function(_$CertificateIssuedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? certificate = null,
+  }) {
+    return _then(_$CertificateIssuedImpl(
+      null == certificate
+          ? _value._certificate
+          : certificate // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CertificateIssuedImpl implements _CertificateIssued {
+  const _$CertificateIssuedImpl(final Map<String, dynamic> certificate)
+      : _certificate = certificate;
+
+  final Map<String, dynamic> _certificate;
+  @override
+  Map<String, dynamic> get certificate {
+    if (_certificate is EqualUnmodifiableMapView) return _certificate;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_certificate);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.certificateIssued(certificate: $certificate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CertificateIssuedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._certificate, _certificate));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_certificate));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CertificateIssuedImplCopyWith<_$CertificateIssuedImpl> get copyWith =>
+      __$$CertificateIssuedImplCopyWithImpl<_$CertificateIssuedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return certificateIssued(certificate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return certificateIssued?.call(certificate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (certificateIssued != null) {
+      return certificateIssued(certificate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return certificateIssued(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return certificateIssued?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (certificateIssued != null) {
+      return certificateIssued(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CertificateIssued implements EducationState {
+  const factory _CertificateIssued(final Map<String, dynamic> certificate) =
+      _$CertificateIssuedImpl;
+
+  Map<String, dynamic> get certificate;
+  @JsonKey(ignore: true)
+  _$$CertificateIssuedImplCopyWith<_$CertificateIssuedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PracticalScoresLoadedImplCopyWith<$Res> {
+  factory _$$PracticalScoresLoadedImplCopyWith(
+          _$PracticalScoresLoadedImpl value,
+          $Res Function(_$PracticalScoresLoadedImpl) then) =
+      __$$PracticalScoresLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> scores});
+}
+
+/// @nodoc
+class __$$PracticalScoresLoadedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$PracticalScoresLoadedImpl>
+    implements _$$PracticalScoresLoadedImplCopyWith<$Res> {
+  __$$PracticalScoresLoadedImplCopyWithImpl(_$PracticalScoresLoadedImpl _value,
+      $Res Function(_$PracticalScoresLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? scores = null,
+  }) {
+    return _then(_$PracticalScoresLoadedImpl(
+      null == scores
+          ? _value._scores
+          : scores // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PracticalScoresLoadedImpl implements _PracticalScoresLoaded {
+  const _$PracticalScoresLoadedImpl(final List<dynamic> scores)
+      : _scores = scores;
+
+  final List<dynamic> _scores;
+  @override
+  List<dynamic> get scores {
+    if (_scores is EqualUnmodifiableListView) return _scores;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_scores);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.practicalScoresLoaded(scores: $scores)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PracticalScoresLoadedImpl &&
+            const DeepCollectionEquality().equals(other._scores, _scores));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_scores));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PracticalScoresLoadedImplCopyWith<_$PracticalScoresLoadedImpl>
+      get copyWith => __$$PracticalScoresLoadedImplCopyWithImpl<
+          _$PracticalScoresLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return practicalScoresLoaded(scores);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return practicalScoresLoaded?.call(scores);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (practicalScoresLoaded != null) {
+      return practicalScoresLoaded(scores);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return practicalScoresLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return practicalScoresLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (practicalScoresLoaded != null) {
+      return practicalScoresLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PracticalScoresLoaded implements EducationState {
+  const factory _PracticalScoresLoaded(final List<dynamic> scores) =
+      _$PracticalScoresLoadedImpl;
+
+  List<dynamic> get scores;
+  @JsonKey(ignore: true)
+  _$$PracticalScoresLoadedImplCopyWith<_$PracticalScoresLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PlacementListingsLoadedImplCopyWith<$Res> {
+  factory _$$PlacementListingsLoadedImplCopyWith(
+          _$PlacementListingsLoadedImpl value,
+          $Res Function(_$PlacementListingsLoadedImpl) then) =
+      __$$PlacementListingsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> listings});
+}
+
+/// @nodoc
+class __$$PlacementListingsLoadedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$PlacementListingsLoadedImpl>
+    implements _$$PlacementListingsLoadedImplCopyWith<$Res> {
+  __$$PlacementListingsLoadedImplCopyWithImpl(
+      _$PlacementListingsLoadedImpl _value,
+      $Res Function(_$PlacementListingsLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? listings = null,
+  }) {
+    return _then(_$PlacementListingsLoadedImpl(
+      null == listings
+          ? _value._listings
+          : listings // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PlacementListingsLoadedImpl implements _PlacementListingsLoaded {
+  const _$PlacementListingsLoadedImpl(final List<dynamic> listings)
+      : _listings = listings;
+
+  final List<dynamic> _listings;
+  @override
+  List<dynamic> get listings {
+    if (_listings is EqualUnmodifiableListView) return _listings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listings);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.placementListingsLoaded(listings: $listings)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlacementListingsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._listings, _listings));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_listings));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlacementListingsLoadedImplCopyWith<_$PlacementListingsLoadedImpl>
+      get copyWith => __$$PlacementListingsLoadedImplCopyWithImpl<
+          _$PlacementListingsLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return placementListingsLoaded(listings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return placementListingsLoaded?.call(listings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (placementListingsLoaded != null) {
+      return placementListingsLoaded(listings);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return placementListingsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return placementListingsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (placementListingsLoaded != null) {
+      return placementListingsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlacementListingsLoaded implements EducationState {
+  const factory _PlacementListingsLoaded(final List<dynamic> listings) =
+      _$PlacementListingsLoadedImpl;
+
+  List<dynamic> get listings;
+  @JsonKey(ignore: true)
+  _$$PlacementListingsLoadedImplCopyWith<_$PlacementListingsLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AttendanceLogsLoadedImplCopyWith<$Res> {
+  factory _$$AttendanceLogsLoadedImplCopyWith(_$AttendanceLogsLoadedImpl value,
+          $Res Function(_$AttendanceLogsLoadedImpl) then) =
+      __$$AttendanceLogsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<dynamic> logs});
+}
+
+/// @nodoc
+class __$$AttendanceLogsLoadedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$AttendanceLogsLoadedImpl>
+    implements _$$AttendanceLogsLoadedImplCopyWith<$Res> {
+  __$$AttendanceLogsLoadedImplCopyWithImpl(_$AttendanceLogsLoadedImpl _value,
+      $Res Function(_$AttendanceLogsLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? logs = null,
+  }) {
+    return _then(_$AttendanceLogsLoadedImpl(
+      null == logs
+          ? _value._logs
+          : logs // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AttendanceLogsLoadedImpl implements _AttendanceLogsLoaded {
+  const _$AttendanceLogsLoadedImpl(final List<dynamic> logs) : _logs = logs;
+
+  final List<dynamic> _logs;
+  @override
+  List<dynamic> get logs {
+    if (_logs is EqualUnmodifiableListView) return _logs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_logs);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.attendanceLogsLoaded(logs: $logs)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AttendanceLogsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._logs, _logs));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_logs));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AttendanceLogsLoadedImplCopyWith<_$AttendanceLogsLoadedImpl>
+      get copyWith =>
+          __$$AttendanceLogsLoadedImplCopyWithImpl<_$AttendanceLogsLoadedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return attendanceLogsLoaded(logs);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return attendanceLogsLoaded?.call(logs);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (attendanceLogsLoaded != null) {
+      return attendanceLogsLoaded(logs);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return attendanceLogsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return attendanceLogsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (attendanceLogsLoaded != null) {
+      return attendanceLogsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AttendanceLogsLoaded implements EducationState {
+  const factory _AttendanceLogsLoaded(final List<dynamic> logs) =
+      _$AttendanceLogsLoadedImpl;
+
+  List<dynamic> get logs;
+  @JsonKey(ignore: true)
+  _$$AttendanceLogsLoadedImplCopyWith<_$AttendanceLogsLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BatchDetailsLoadedImplCopyWith<$Res> {
+  factory _$$BatchDetailsLoadedImplCopyWith(_$BatchDetailsLoadedImpl value,
+          $Res Function(_$BatchDetailsLoadedImpl) then) =
+      __$$BatchDetailsLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, dynamic> batch});
+}
+
+/// @nodoc
+class __$$BatchDetailsLoadedImplCopyWithImpl<$Res>
+    extends _$EducationStateCopyWithImpl<$Res, _$BatchDetailsLoadedImpl>
+    implements _$$BatchDetailsLoadedImplCopyWith<$Res> {
+  __$$BatchDetailsLoadedImplCopyWithImpl(_$BatchDetailsLoadedImpl _value,
+      $Res Function(_$BatchDetailsLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? batch = null,
+  }) {
+    return _then(_$BatchDetailsLoadedImpl(
+      null == batch
+          ? _value._batch
+          : batch // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BatchDetailsLoadedImpl implements _BatchDetailsLoaded {
+  const _$BatchDetailsLoadedImpl(final Map<String, dynamic> batch)
+      : _batch = batch;
+
+  final Map<String, dynamic> _batch;
+  @override
+  Map<String, dynamic> get batch {
+    if (_batch is EqualUnmodifiableMapView) return _batch;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_batch);
+  }
+
+  @override
+  String toString() {
+    return 'EducationState.batchDetailsLoaded(batch: $batch)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BatchDetailsLoadedImpl &&
+            const DeepCollectionEquality().equals(other._batch, _batch));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_batch));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BatchDetailsLoadedImplCopyWith<_$BatchDetailsLoadedImpl> get copyWith =>
+      __$$BatchDetailsLoadedImplCopyWithImpl<_$BatchDetailsLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Map<String, dynamic> stats, Institute? institute)
+        dashboardLoaded,
+    required TResult Function(List<dynamic> courses) coursesLoaded,
+    required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
+    required TResult Function(String message) error,
+    required TResult Function(String message) actionSuccess,
+  }) {
+    return batchDetailsLoaded(batch);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult? Function(List<dynamic> courses)? coursesLoaded,
+    TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? actionSuccess,
+  }) {
+    return batchDetailsLoaded?.call(batch);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Map<String, dynamic> stats, Institute? institute)?
+        dashboardLoaded,
+    TResult Function(List<dynamic> courses)? coursesLoaded,
+    TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
+    TResult Function(String message)? error,
+    TResult Function(String message)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (batchDetailsLoaded != null) {
+      return batchDetailsLoaded(batch);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DashboardLoaded value) dashboardLoaded,
+    required TResult Function(_CoursesLoaded value) coursesLoaded,
+    required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ActionSuccess value) actionSuccess,
+  }) {
+    return batchDetailsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult? Function(_CoursesLoaded value)? coursesLoaded,
+    TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ActionSuccess value)? actionSuccess,
+  }) {
+    return batchDetailsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DashboardLoaded value)? dashboardLoaded,
+    TResult Function(_CoursesLoaded value)? coursesLoaded,
+    TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_ActionSuccess value)? actionSuccess,
+    required TResult orElse(),
+  }) {
+    if (batchDetailsLoaded != null) {
+      return batchDetailsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BatchDetailsLoaded implements EducationState {
+  const factory _BatchDetailsLoaded(final Map<String, dynamic> batch) =
+      _$BatchDetailsLoadedImpl;
+
+  Map<String, dynamic> get batch;
+  @JsonKey(ignore: true)
+  _$$BatchDetailsLoadedImplCopyWith<_$BatchDetailsLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -997,6 +3116,15 @@ class _$ErrorImpl implements _Error {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) {
@@ -1012,6 +3140,14 @@ class _$ErrorImpl implements _Error {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) {
@@ -1027,6 +3163,14 @@ class _$ErrorImpl implements _Error {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -1045,6 +3189,16 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) {
@@ -1059,6 +3213,14 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) {
@@ -1073,6 +3235,14 @@ class _$ErrorImpl implements _Error {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),
@@ -1163,6 +3333,15 @@ class _$ActionSuccessImpl implements _ActionSuccess {
         dashboardLoaded,
     required TResult Function(List<dynamic> courses) coursesLoaded,
     required TResult Function(List<dynamic> students) studentsLoaded,
+    required TResult Function(List<dynamic> feeStructures) feeStructuresLoaded,
+    required TResult Function(List<dynamic> feePayments) studentFeesLoaded,
+    required TResult Function(List<dynamic> leads) studentLeadsLoaded,
+    required TResult Function(Map<String, dynamic> certificate)
+        certificateIssued,
+    required TResult Function(List<dynamic> scores) practicalScoresLoaded,
+    required TResult Function(List<dynamic> listings) placementListingsLoaded,
+    required TResult Function(List<dynamic> logs) attendanceLogsLoaded,
+    required TResult Function(Map<String, dynamic> batch) batchDetailsLoaded,
     required TResult Function(String message) error,
     required TResult Function(String message) actionSuccess,
   }) {
@@ -1178,6 +3357,14 @@ class _$ActionSuccessImpl implements _ActionSuccess {
         dashboardLoaded,
     TResult? Function(List<dynamic> courses)? coursesLoaded,
     TResult? Function(List<dynamic> students)? studentsLoaded,
+    TResult? Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult? Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult? Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult? Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult? Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult? Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult? Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult? Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult? Function(String message)? error,
     TResult? Function(String message)? actionSuccess,
   }) {
@@ -1193,6 +3380,14 @@ class _$ActionSuccessImpl implements _ActionSuccess {
         dashboardLoaded,
     TResult Function(List<dynamic> courses)? coursesLoaded,
     TResult Function(List<dynamic> students)? studentsLoaded,
+    TResult Function(List<dynamic> feeStructures)? feeStructuresLoaded,
+    TResult Function(List<dynamic> feePayments)? studentFeesLoaded,
+    TResult Function(List<dynamic> leads)? studentLeadsLoaded,
+    TResult Function(Map<String, dynamic> certificate)? certificateIssued,
+    TResult Function(List<dynamic> scores)? practicalScoresLoaded,
+    TResult Function(List<dynamic> listings)? placementListingsLoaded,
+    TResult Function(List<dynamic> logs)? attendanceLogsLoaded,
+    TResult Function(Map<String, dynamic> batch)? batchDetailsLoaded,
     TResult Function(String message)? error,
     TResult Function(String message)? actionSuccess,
     required TResult orElse(),
@@ -1211,6 +3406,16 @@ class _$ActionSuccessImpl implements _ActionSuccess {
     required TResult Function(_DashboardLoaded value) dashboardLoaded,
     required TResult Function(_CoursesLoaded value) coursesLoaded,
     required TResult Function(_StudentsLoaded value) studentsLoaded,
+    required TResult Function(_FeeStructuresLoaded value) feeStructuresLoaded,
+    required TResult Function(_StudentFeesLoaded value) studentFeesLoaded,
+    required TResult Function(_StudentLeadsLoaded value) studentLeadsLoaded,
+    required TResult Function(_CertificateIssued value) certificateIssued,
+    required TResult Function(_PracticalScoresLoaded value)
+        practicalScoresLoaded,
+    required TResult Function(_PlacementListingsLoaded value)
+        placementListingsLoaded,
+    required TResult Function(_AttendanceLogsLoaded value) attendanceLogsLoaded,
+    required TResult Function(_BatchDetailsLoaded value) batchDetailsLoaded,
     required TResult Function(_Error value) error,
     required TResult Function(_ActionSuccess value) actionSuccess,
   }) {
@@ -1225,6 +3430,14 @@ class _$ActionSuccessImpl implements _ActionSuccess {
     TResult? Function(_DashboardLoaded value)? dashboardLoaded,
     TResult? Function(_CoursesLoaded value)? coursesLoaded,
     TResult? Function(_StudentsLoaded value)? studentsLoaded,
+    TResult? Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult? Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult? Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult? Function(_CertificateIssued value)? certificateIssued,
+    TResult? Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult? Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult? Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult? Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult? Function(_Error value)? error,
     TResult? Function(_ActionSuccess value)? actionSuccess,
   }) {
@@ -1239,6 +3452,14 @@ class _$ActionSuccessImpl implements _ActionSuccess {
     TResult Function(_DashboardLoaded value)? dashboardLoaded,
     TResult Function(_CoursesLoaded value)? coursesLoaded,
     TResult Function(_StudentsLoaded value)? studentsLoaded,
+    TResult Function(_FeeStructuresLoaded value)? feeStructuresLoaded,
+    TResult Function(_StudentFeesLoaded value)? studentFeesLoaded,
+    TResult Function(_StudentLeadsLoaded value)? studentLeadsLoaded,
+    TResult Function(_CertificateIssued value)? certificateIssued,
+    TResult Function(_PracticalScoresLoaded value)? practicalScoresLoaded,
+    TResult Function(_PlacementListingsLoaded value)? placementListingsLoaded,
+    TResult Function(_AttendanceLogsLoaded value)? attendanceLogsLoaded,
+    TResult Function(_BatchDetailsLoaded value)? batchDetailsLoaded,
     TResult Function(_Error value)? error,
     TResult Function(_ActionSuccess value)? actionSuccess,
     required TResult orElse(),

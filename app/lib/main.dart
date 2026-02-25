@@ -28,6 +28,16 @@ void main() async {
   loggingService.info('🚀 App starting...');
   print('🚀 App starting...');
 
+  // 1. Guard against Infinite OS Memory Eviction
+  // Limit Image Cache to 50MB and 100 images tops (prevents OOM crashes in infinite scroll)
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 1024 * 1024 * 50; 
+  PaintingBinding.instance.imageCache.maximumSize = 100;
+  
+  // 2. Global Error Boundary (Uncaught Exceptions)
+  FlutterError.onError = (FlutterErrorDetails details) {
+    loggingService.fatal('Uncaught System Error Boundary', details.exception, details.stack);
+  };
+
   try {
     // Load environment variables
     final envFile = kReleaseMode ? "assets/env/.env.production" : "assets/env/.env.development";
@@ -61,7 +71,9 @@ void main() async {
 
     // Initialize OneSignal
     OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
-    OneSignal.initialize("c1ed0ff6-bc40-4078-8247-47f176c41ff1");
+    final oneSignalAppId = dotenv.env['ONESIGNAL_APP_ID'] ?? '';
+    assert(oneSignalAppId.isNotEmpty, 'ONESIGNAL_APP_ID is not set in env file');
+    OneSignal.initialize(oneSignalAppId);
     OneSignal.Notifications.requestPermission(true);
     loggingService.info('✅ OneSignal initialized');
 

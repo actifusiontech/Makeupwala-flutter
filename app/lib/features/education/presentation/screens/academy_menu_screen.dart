@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_typography.dart';
 import 'package:app/shared/theme/app_spacing.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/education_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class AcademyMenuScreen extends StatelessWidget {
@@ -31,6 +33,24 @@ class AcademyMenuScreen extends StatelessWidget {
                       color: AppColors.primary,
                       route: '/profile', // Placeholder route or specific profile route
                     ),
+                    _MenuItem(
+                      title: 'Leads Pipeline',
+                      icon: Icons.person_search, // Changed icon as per instruction
+                      color: Colors.indigo,
+                      route: '/action:leads', // Kept original route, logic handles it
+                    ),
+                    _MenuItem(
+                      title: 'Faculty Grading',
+                      icon: Icons.grading,
+                      color: Colors.deepPurple,
+                      route: '/academy/grading/batch_test/student_test',
+                    ),
+                    _MenuItem(
+                      title: 'Job Placements',
+                      icon: Icons.work,
+                      color: Colors.teal,
+                      route: '/academy/placements',
+                    ),
                   ],
                 ),
                 const SizedBox(height: AppSpacing.xl),
@@ -50,6 +70,12 @@ class AcademyMenuScreen extends StatelessWidget {
                       icon: Icons.account_balance_wallet_outlined,
                       color: AppColors.success,
                       route: '/wallet',
+                    ),
+                    _MenuItem(
+                      title: 'Fee Management',
+                      icon: Icons.receipt_long_outlined,
+                      color: Colors.teal,
+                      route: '/action:fees', // Will intercept below
                     ),
                   ],
                 ),
@@ -97,7 +123,24 @@ class AcademyMenuScreen extends StatelessWidget {
       childAspectRatio: 1.3,
       children: items.map((item) {
         return GestureDetector(
-          onTap: () => context.push(item.route),
+          onTap: () {
+            if (item.route == '/action:fees') {
+              // Retrieve the institute ID from bloc
+              final instId = context.read<EducationBloc>().state.maybeWhen(
+                dashboardLoaded: (_, institute) => institute?.id ?? '',
+                orElse: () => ''
+              );
+              context.push('/academy/fees?instituteId=$instId');
+            } else if (item.route == '/action:leads') {
+              final instId = context.read<EducationBloc>().state.maybeWhen(
+                dashboardLoaded: (_, institute) => institute?.id ?? '',
+                orElse: () => ''
+              );
+              context.push('/academy/leads?instituteId=$instId');
+            } else {
+              context.push(item.route);
+            }
+          },
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,

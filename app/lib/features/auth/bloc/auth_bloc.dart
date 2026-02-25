@@ -15,6 +15,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final FlutterSecureStorage _secureStorage;
   final GoogleSignIn _googleSignIn;
 
+  ApiClient get apiClient => _apiClient;
+
   AuthBloc({
     ApiClient? apiClient,
     FlutterSecureStorage? secureStorage,
@@ -32,6 +34,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         login: (phone) => _onLogin(phone, emit),
         verifyOtp: (phone, otp) => _onVerifyOtp(phone, otp, emit),
         selectRole: (role) => _onSelectRole(role, emit),
+        switchPersona: (role) => _onSwitchPersona(role, emit),
         logout: () => _onLogout(emit),
         checkAuth: () => _onCheckAuth(emit),
         socialLogin: (provider) => _onSocialLogin(provider, emit),
@@ -372,6 +375,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } catch (e) {
         emit(AuthState.error(message: 'Failed to set role. Please try again.'));
         emit(AuthState.needsRoleSelection(user: currentState.user));
+      }
+    }
+  }
+
+  Future<void> _onSwitchPersona(String role, Emitter<AuthState> emit) async {
+    final currentState = state;
+    if (currentState is _Authenticated) {
+      developer.log('🔄 Switching active persona to: $role', name: 'AuthBloc');
+      emit(const AuthState.loading());
+      try {
+        // Here we can hit an endpoint to log the switch or fetch new context if needed.
+        // For now, updating the local role state to drive UI routing:
+        final updatedUser = currentState.user.copyWith(role: role.toLowerCase());
+        emit(AuthState.authenticated(user: updatedUser));
+      } catch (e) {
+        emit(AuthState.error(message: 'Failed to switch persona.'));
+        emit(AuthState.authenticated(user: currentState.user));
       }
     }
   }

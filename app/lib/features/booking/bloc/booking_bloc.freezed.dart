@@ -1716,7 +1716,8 @@ mixin _$BookingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -1732,7 +1733,7 @@ mixin _$BookingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -1746,7 +1747,7 @@ mixin _$BookingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -1854,7 +1855,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -1873,7 +1875,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -1890,7 +1892,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -2000,7 +2002,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -2019,7 +2022,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -2036,7 +2039,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -2112,7 +2115,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, Map<String, dynamic>? booking});
 }
 
 /// @nodoc
@@ -2127,12 +2130,17 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? booking = freezed,
   }) {
     return _then(_$SuccessImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      booking: freezed == booking
+          ? _value._booking
+          : booking // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -2140,14 +2148,25 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required this.message});
+  const _$SuccessImpl(
+      {required this.message, final Map<String, dynamic>? booking})
+      : _booking = booking;
 
   @override
   final String message;
+  final Map<String, dynamic>? _booking;
+  @override
+  Map<String, dynamic>? get booking {
+    final value = _booking;
+    if (value == null) return null;
+    if (_booking is EqualUnmodifiableMapView) return _booking;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'BookingState.success(message: $message)';
+    return 'BookingState.success(message: $message, booking: $booking)';
   }
 
   @override
@@ -2155,11 +2174,13 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            const DeepCollectionEquality().equals(other._booking, _booking));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(
+      runtimeType, message, const DeepCollectionEquality().hash(_booking));
 
   @JsonKey(ignore: true)
   @override
@@ -2172,7 +2193,8 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -2183,7 +2205,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(Map<String, dynamic> booking)
         bookingDetailsLoaded,
   }) {
-    return success(message);
+    return success(message, booking);
   }
 
   @override
@@ -2191,7 +2213,7 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -2200,7 +2222,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(List<Map<String, dynamic>> bookings)? bookingsLoaded,
     TResult? Function(Map<String, dynamic> booking)? bookingDetailsLoaded,
   }) {
-    return success?.call(message);
+    return success?.call(message, booking);
   }
 
   @override
@@ -2208,7 +2230,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -2219,7 +2241,7 @@ class _$SuccessImpl implements _Success {
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(message);
+      return success(message, booking);
     }
     return orElse();
   }
@@ -2275,9 +2297,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements BookingState {
-  const factory _Success({required final String message}) = _$SuccessImpl;
+  const factory _Success(
+      {required final String message,
+      final Map<String, dynamic>? booking}) = _$SuccessImpl;
 
   String get message;
+  Map<String, dynamic>? get booking;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2356,7 +2381,8 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -2375,7 +2401,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -2392,7 +2418,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -2534,7 +2560,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -2553,7 +2580,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -2570,7 +2597,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -2742,7 +2769,8 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -2761,7 +2789,7 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -2778,7 +2806,7 @@ class _$PaymentRequiredImpl implements _PaymentRequired {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -2935,7 +2963,8 @@ class _$BookingsLoadedImpl implements _BookingsLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -2954,7 +2983,7 @@ class _$BookingsLoadedImpl implements _BookingsLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -2971,7 +3000,7 @@ class _$BookingsLoadedImpl implements _BookingsLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(
@@ -3124,7 +3153,8 @@ class _$BookingDetailsLoadedImpl implements _BookingDetailsLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String message) success,
+    required TResult Function(String message, Map<String, dynamic>? booking)
+        success,
     required TResult Function(List<Map<String, dynamic>> bookings) loaded,
     required TResult Function(String message) error,
     required TResult Function(
@@ -3143,7 +3173,7 @@ class _$BookingDetailsLoadedImpl implements _BookingDetailsLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String message)? success,
+    TResult? Function(String message, Map<String, dynamic>? booking)? success,
     TResult? Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(
@@ -3160,7 +3190,7 @@ class _$BookingDetailsLoadedImpl implements _BookingDetailsLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String message)? success,
+    TResult Function(String message, Map<String, dynamic>? booking)? success,
     TResult Function(List<Map<String, dynamic>> bookings)? loaded,
     TResult Function(String message)? error,
     TResult Function(

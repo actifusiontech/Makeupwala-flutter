@@ -50,8 +50,16 @@ class BookingHistoryScreen extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: AppSpacing.sm),
-                            Text('Service: ${booking['service_id']}', style: AppTypography.bodyMedium), // TODO: Fetch service name
-                            Text('Date: ${booking['date']}', style: AppTypography.bodyMedium),
+                            ...(() {
+                              final services = booking['services'] as List<dynamic>? ?? [];
+                              final serviceName = services.isNotEmpty 
+                                  ? services.first['service_name'] ?? 'Multiple Services'
+                                  : 'Individual Service';
+                              return [
+                                Text('Service: $serviceName', style: AppTypography.bodyMedium),
+                                Text('Date: ${booking['date']}', style: AppTypography.bodyMedium),
+                              ];
+                            })(),
                             
                             const SizedBox(height: AppSpacing.md),
                             Row(

@@ -6,12 +6,11 @@ import 'package:app/shared/theme/app_spacing.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../features/auth/bloc/auth_bloc.dart';
 import '../../data/studio_repository.dart';
-import '../../../../core/network/api_client.dart';
+import '../../data/models/studio_model.dart';
 import 'studio_management_bookings_screen.dart';
 import 'studio_seats_screen.dart';
-import 'studio_profile_screen.dart';
 import 'studio_menu_screen.dart';
-import '../../data/models/studio_model.dart';
+import '../../../../shared/widgets/global_persona_switcher.dart';
 
 class StudioHomeScreen extends StatefulWidget {
   const StudioHomeScreen({super.key});
@@ -23,7 +22,7 @@ class StudioHomeScreen extends StatefulWidget {
 class _StudioHomeScreenState extends State<StudioHomeScreen> {
   int _selectedIndex = 0;
   late StudioRepository _repo;
-  Future<List<dynamic>>? _studiosFuture;
+  Future<List<StudioModel>>? _studiosFuture;
   Map<String, dynamic> _stats = {};
 
   @override
@@ -40,8 +39,8 @@ class _StudioHomeScreenState extends State<StudioHomeScreen> {
 
     final snapshots = await _repo.getMyStudios();
     if (snapshots.isNotEmpty) {
-      final id = snapshots.first['id'];
-      if (id != null) {
+      final id = snapshots.first.id;
+      if (id.isNotEmpty) {
         final stats = await _repo.getStudioStats(id);
         if (mounted) {
           setState(() {
@@ -54,10 +53,10 @@ class _StudioHomeScreenState extends State<StudioHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<dynamic>>(
+    return FutureBuilder<List<StudioModel>>(
       future: _studiosFuture,
       builder: (context, snapshot) {
-        final studioId = (snapshot.hasData && snapshot.data!.isNotEmpty) ? snapshot.data!.first['id'] : null;
+        final studioId = (snapshot.hasData && snapshot.data!.isNotEmpty) ? snapshot.data!.first.id : null;
 
         final screens = [
           _StudioDashboard(repo: _repo, studiosFuture: _studiosFuture, stats: _stats, onRefresh: _fetchData),
@@ -86,6 +85,7 @@ class _StudioHomeScreenState extends State<StudioHomeScreen> {
               ],
             ),
             actions: [
+              const GlobalPersonaSwitcher(),
               PopupMenuButton<String>(
                 icon: const Icon(Icons.more_vert),
                 onSelected: (value) {
@@ -163,7 +163,7 @@ class _StudioHomeScreenState extends State<StudioHomeScreen> {
 
 class _StudioDashboard extends StatelessWidget {
   final StudioRepository repo;
-  final Future<List<dynamic>>? studiosFuture;
+  final Future<List<StudioModel>>? studiosFuture;
   final Map<String, dynamic> stats;
   final VoidCallback onRefresh;
 
@@ -188,20 +188,16 @@ class _StudioDashboard extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.md),
         
-        FutureBuilder<List<dynamic>>(
+        FutureBuilder<List<StudioModel>>(
           future: studiosFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             }
 
-            final studio = (snapshot.hasData && snapshot.data!.isNotEmpty) ? snapshot.data!.first : <String, dynamic>{};
-            // ... (keep existing loading/empty logic)
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
-            if (studio.isEmpty) {
+            final studio = (snapshot.hasData && snapshot.data!.isNotEmpty) ? snapshot.data!.first : null;
+            
+            if (studio == null) {
                return const Center(child: Padding(
                  padding: EdgeInsets.all(16.0),
                  child: Text("No Studio registered. Please contact support."),
@@ -218,8 +214,8 @@ class _StudioDashboard extends StatelessWidget {
                       const Icon(Icons.store, size: 40, color: Colors.pink),
                       const SizedBox(width: 16),
                       Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text(studio['name'] ?? 'My Studio', style: AppTypography.titleLarge),
-                        Text(studio['city'] ?? '', style: AppTypography.bodySmall),
+                        Text(studio.name, style: AppTypography.titleLarge),
+                        Text(studio.city, style: AppTypography.bodySmall),
                       ]),
                     ]),
                    ),

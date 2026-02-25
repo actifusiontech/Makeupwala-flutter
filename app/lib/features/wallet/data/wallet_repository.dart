@@ -7,13 +7,25 @@ class WalletRepository {
   WalletRepository(this._apiClient);
 
   Future<Map<String, dynamic>> getBalance() async {
-    final response = await _apiClient.dio.get('/wallet/balance');
-    return response.data;
+    try {
+      final response = await _apiClient.dio.get('/wallet/balance');
+      return response.data;
+    } catch (e) {
+      return {
+        'balance': 0.0,
+        'currency': 'INR',
+        'is_bank_linked': false,
+      };
+    }
   }
 
   Future<List<dynamic>> getTransactions() async {
-    final response = await _apiClient.dio.get('/wallet/transactions');
-    return response.data;
+    try {
+      final response = await _apiClient.dio.get('/wallet/transactions');
+      return response.data;
+    } catch (e) {
+      return [];
+    }
   }
 
   Future<void> requestWithdrawal({

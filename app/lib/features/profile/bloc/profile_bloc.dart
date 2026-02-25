@@ -19,6 +19,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         fetchProfile: (isArtist) => _onFetchProfile(isArtist, emit),
         updateProfile: (isArtist, data) => _onUpdateProfile(isArtist, data, emit),
         uploadMedia: (filePath) => _onUploadMedia(filePath, emit),
+        uploadProfilePicture: (filePath) => _onUploadProfilePicture(filePath, emit),
+        removeProfilePicture: () => _onRemoveProfilePicture(emit),
         fetchReferrals: () => _onFetchReferrals(emit),
         fetchRewards: () => _onFetchRewards(emit),
         redeemReward: (rewardId) => _onRedeemReward(rewardId, emit),
@@ -75,6 +77,31 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       await _repository.uploadMedia(filePath);
       // Refresh profile to show new media
       add(const ProfileEvent.fetchProfile(isArtist: true));
+    } catch (e) {
+      emit(ProfileState.error(message: e.toString()));
+    }
+  }
+
+  Future<void> _onUploadProfilePicture(String filePath, Emitter<ProfileState> emit) async {
+    emit(const ProfileState.loading());
+    try {
+      await _repository.uploadProfilePicture(filePath);
+      // Refresh profile to show new picture (assume artist is false here?
+      // Actually we just fetch both or the current one. Let's fire fetchProfile based on user type if we could.
+      // Easiest is to fire it with false for customer, or we should check the current state context.
+      // But standard profile context handles customer mostly.
+      add(const ProfileEvent.fetchProfile(isArtist: false));
+    } catch (e) {
+      emit(ProfileState.error(message: e.toString()));
+    }
+  }
+
+  Future<void> _onRemoveProfilePicture(Emitter<ProfileState> emit) async {
+    emit(const ProfileState.loading());
+    try {
+      await _repository.removeProfilePicture();
+      // Refresh profile to show default picture
+      add(const ProfileEvent.fetchProfile(isArtist: false));
     } catch (e) {
       emit(ProfileState.error(message: e.toString()));
     }

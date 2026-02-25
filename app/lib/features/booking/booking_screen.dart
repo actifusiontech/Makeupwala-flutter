@@ -218,13 +218,32 @@ class _BookingScreenState extends State<BookingScreen> {
       child: BlocConsumer<BookingBloc, BookingState>(
         listener: (context, state) {
           state.maybeWhen(
-            success: (message) {
+            success: (message, booking) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(message), backgroundColor: AppColors.success),
               );
-              // Navigate to confirmation screen if available
-              // For now, go to home
-              context.go('/customer/home');
+              
+              if (booking != null) {
+                final authState = context.read<AuthBloc>().state;
+                final user = authState.maybeMap(
+                  authenticated: (state) => state.user,
+                  orElse: () => null,
+                );
+
+                context.go('/booking/confirmation', extra: {
+                  'bookingId': booking['id'].toString(),
+                  'customerName': user?.fullName ?? 'Customer',
+                  'serviceName': widget.serviceName,
+                  'artistName': 'Artist',
+                  'bookingDate': _selectedDate ?? DateTime.now(),
+                  'bookingTime': _selectedTime ?? '',
+                  'amountPaid': (booking['total_amount'] as num).toDouble(),
+                  'paymentId': booking['payment_id']?.toString() ?? 'CASH',
+                  'isDeposit': (booking['total_amount'] as num).toDouble() < (double.tryParse(widget.price.replaceAll(RegExp(r'[^0-9]'), '')) ?? 0.0),
+                });
+              } else {
+                context.go('/customer/home');
+              }
             },
             error: (message) {
               ScaffoldMessenger.of(context).showSnackBar(

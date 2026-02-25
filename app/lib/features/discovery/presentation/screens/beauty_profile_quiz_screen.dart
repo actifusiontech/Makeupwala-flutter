@@ -6,6 +6,7 @@ import 'package:app/shared/theme/app_spacing.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BeautyProfileQuizScreen extends StatefulWidget {
   const BeautyProfileQuizScreen({Key? key}) : super(key: key);
@@ -51,8 +52,11 @@ class _BeautyProfileQuizScreenState extends State<BeautyProfileQuizScreen> {
 
     try {
       await _repository.updateBeautyProfile(profile);
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('has_taken_beauty_quiz', true);
+      
       if (mounted) {
-        context.pop();
+        context.pop(true); // pass true to indicate completion
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Beauty Profile updated! Your feed is now personalized.')),
         );

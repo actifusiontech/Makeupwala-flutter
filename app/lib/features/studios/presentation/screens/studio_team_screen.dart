@@ -8,7 +8,7 @@ class StudioTeamScreen extends StatefulWidget {
   // Note: Ideally studio ID is retrieved from managed context,
   // but for now we pass the studio object assuming the user navigated from "My Studio".
 
-  const StudioTeamScreen({Key? key, required this.studio}) : super(key: key);
+  const StudioTeamScreen({super.key, required this.studio});
 
   @override
   State<StudioTeamScreen> createState() => _StudioTeamScreenState();
@@ -69,7 +69,17 @@ class _StudioTeamScreenState extends State<StudioTeamScreen> {
                   child: Text(member.name.isNotEmpty ? member.name[0].toUpperCase() : '?'),
                 ),
                 title: Text(member.email), // Showing email as main identifier for now
-                subtitle: Text('Role: ${member.role}'),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Role: ${member.role} | ${member.email}'),
+                    if (member.baseSalary > 0 || member.commissionRate > 0)
+                      Text(
+                        'Salary: ₹${member.baseSalary} | Commission: ${member.commissionRate}%',
+                        style: const TextStyle(fontSize: 12, color: Colors.purple, fontWeight: FontWeight.bold),
+                      ),
+                  ],
+                ),
                 trailing: member.isActive 
                   ? const Icon(Icons.check_circle, color: Colors.green)
                   : const Icon(Icons.cancel, color: Colors.red),
@@ -82,7 +92,13 @@ class _StudioTeamScreenState extends State<StudioTeamScreen> {
   }
 
   void _showAddMemberDialog() {
+    final nameController = TextEditingController();
+    final phoneController = TextEditingController();
     final emailController = TextEditingController();
+    final specController = TextEditingController();
+    final salaryController = TextEditingController(text: '0');
+    final commissionController = TextEditingController(text: '20');
+    
     String role = 'STAFF';
     bool isLoading = false;
 
@@ -95,13 +111,45 @@ class _StudioTeamScreenState extends State<StudioTeamScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
+                controller: nameController,
+                decoration: const InputDecoration(labelText: 'Full Name'),
+              ),
+              TextField(
+                controller: phoneController,
+                decoration: const InputDecoration(labelText: 'Phone Number'),
+                keyboardType: TextInputType.phone,
+              ),
+              TextField(
                 controller: emailController,
-                decoration: const InputDecoration(labelText: 'Email Address'),
+                decoration: const InputDecoration(labelText: 'Email Address (Optional)'),
                 keyboardType: TextInputType.emailAddress,
+              ),
+              TextField(
+                controller: specController,
+                decoration: const InputDecoration(labelText: 'Specialization'),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: salaryController,
+                      decoration: const InputDecoration(labelText: 'Fixed Salary'),
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: TextField(
+                      controller: commissionController,
+                      decoration: const InputDecoration(labelText: 'Commission %'),
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
-                value: role,
+                initialValue: role,
                 items: const [
                   DropdownMenuItem(value: 'STAFF', child: Text('Staff')),
                   DropdownMenuItem(value: 'MANAGER', child: Text('Manager')),
@@ -118,12 +166,23 @@ class _StudioTeamScreenState extends State<StudioTeamScreen> {
             ),
             ElevatedButton(
               onPressed: isLoading ? null : () async {
-                 if (emailController.text.isEmpty) return;
+                 if (nameController.text.isEmpty || phoneController.text.isEmpty) {
+                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Name and Phone are required')));
+                   return;
+                 }
                  
                  setState(() => isLoading = true);
                  try {
                    final repo = Provider.of<StudioRepository>(context, listen: false);
-                   await repo.addTeamMember(widget.studio.id, emailController.text, role);
+                   await repo.addTeamMember(widget.studio.id, {
+                     'full_name': nameController.text,
+                     'phone': phoneController.text,
+                     'email': emailController.text,
+                     'specialization': specController.text,
+                     'role': role,
+                     'base_salary': double.tryParse(salaryController.text) ?? 0.0,
+                     'commission_rate': double.tryParse(commissionController.text) ?? 0.0,
+                   });
                    if (context.mounted) {
                      Navigator.pop(context); // Close dialog
                      _refreshTeam(); // Reload list

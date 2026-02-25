@@ -19,6 +19,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../discovery/presentation/screens/social_feed_screen.dart';
 import '../booking/presentation/booking_history_screen.dart';
@@ -33,6 +34,20 @@ class CustomerHomeScreen extends StatefulWidget {
 
 class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   int _selectedIndex = 0;
+  bool _hasTakenQuiz = true; // Default true to avoid flash, check in initState
+
+  @override
+  void initState() {
+    super.initState();
+    _checkQuizStatus();
+  }
+
+  Future<void> _checkQuizStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _hasTakenQuiz = prefs.getBool('has_taken_beauty_quiz') ?? false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +65,10 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
             )..add(const DiscoveryEvent.fetchRecommendations()),
           ),
         ],
-        child: const _CustomerHomeView(),
+        child: _CustomerHomeView(
+          hasTakenQuiz: _hasTakenQuiz,
+          onQuizTaken: _checkQuizStatus,
+        ),
       ),
       const SocialFeedScreen(),
       const BookingHistoryScreen(),
@@ -81,7 +99,13 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
 }
 
 class _CustomerHomeView extends StatelessWidget {
-  const _CustomerHomeView();
+  final bool hasTakenQuiz;
+  final VoidCallback onQuizTaken;
+
+  const _CustomerHomeView({
+    required this.hasTakenQuiz,
+    required this.onQuizTaken,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -207,9 +231,10 @@ class _CustomerHomeView extends StatelessWidget {
                         const SizedBox(height: AppSpacing.xl),
 
                         // AI Personalization CTA
-                        _buildPersonalizationCTA(context),
-
-                        const SizedBox(height: AppSpacing.xl),
+                        if (!hasTakenQuiz) ...[
+                          _buildPersonalizationCTA(context),
+                          const SizedBox(height: AppSpacing.xl),
+                        ],
                       ],
                     ),
                   ),
@@ -353,7 +378,12 @@ class _CustomerHomeView extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 ElevatedButton(
-                  onPressed: () => context.push('/beauty-profile-quiz'),
+                  onPressed: () async {
+                    final result = await context.push('/beauty-profile-quiz');
+                    if (result == true) {
+                      onQuizTaken();
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -406,7 +436,12 @@ class _CustomerHomeView extends StatelessWidget {
           hintText: 'Search for artists, styles...',
           hintStyle: TextStyle(color: AppColors.grey400),
           prefixIcon: const Icon(Icons.search, color: AppColors.primary),
-          suffixIcon: const Icon(Icons.tune, color: AppColors.primary),
+          suffixIcon: IconButton(
+            icon: const Icon(Icons.tune, color: AppColors.primary),
+            onPressed: () {
+              // Filters Modal would go here
+            },
+          ),
           filled: true,
           fillColor: Colors.white,
           contentPadding: const EdgeInsets.symmetric(vertical: 16),

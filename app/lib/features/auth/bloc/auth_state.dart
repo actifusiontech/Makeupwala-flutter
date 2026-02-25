@@ -2,6 +2,8 @@ part of 'auth_bloc.dart';
 
 @freezed
 class AuthState with _$AuthState {
+  const AuthState._();
+
   const factory AuthState.initial() = _Initial;
   const factory AuthState.loading() = _Loading;
   const factory AuthState.otpSent({required String phoneNumber}) = _OtpSent;
@@ -13,4 +15,10 @@ class AuthState with _$AuthState {
   const factory AuthState.passwordResetSent() = _PasswordResetSent;
   const factory AuthState.passwordResetSuccess() = _PasswordResetSuccess;
   const factory AuthState.error({required String message}) = _Error;
+
+  User? get user => maybeWhen(
+        authenticated: (user) => user,
+        needsRoleSelection: (user) => user,
+        orElse: () => null,
+      );
 }

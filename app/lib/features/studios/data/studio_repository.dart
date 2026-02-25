@@ -1,5 +1,4 @@
 import 'package:app/core/network/api_client.dart';
-import 'package:dio/dio.dart';
 import 'models/studio_model.dart';
 import 'dart:developer' as developer;
 
@@ -37,14 +36,15 @@ class StudioRepository {
     }
   }
 
-  /// Get studios managed by the authenticated user
-  Future<List<dynamic>> getMyStudios() async {
+  /// Get studios managed by or affiliated with the authenticated user
+  Future<List<StudioModel>> getMyStudios() async {
     try {
-      final response = await _apiClient.dio.get('/studios/my-studios'); 
-      return response.data as List<dynamic>; 
+      final response = await _apiClient.dio.get('/studios/my-studios');
+      final List<dynamic> data = response.data;
+      return data.map((json) => StudioModel.fromJson(json)).toList();
     } catch (e) {
       developer.log('⚠️ Failed to fetch studios: $e', name: 'StudioRepository');
-       return [];
+      return [];
     }
   }
 
@@ -74,12 +74,9 @@ class StudioRepository {
   }
 
   /// Manage studio team members
-  Future<void> addTeamMember(String studioId, String email, String role) async {
+  Future<void> addTeamMember(String studioId, Map<String, dynamic> memberData) async {
     try {
-      await _apiClient.dio.post('/studios/$studioId/team', data: {
-        'email': email,
-        'role': role,
-      });
+      await _apiClient.dio.post('/studios/$studioId/team', data: memberData);
     } catch (e) {
       throw Exception('Failed to add team member: $e');
     }
@@ -180,6 +177,165 @@ class StudioRepository {
       await _apiClient.dio.delete('/studios/$studioId/seats/$seatId');
     } catch (e) {
       developer.log('❌ Failed to delete seat: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  // ------------------- CUSTOMER CRM -------------------
+
+  Future<void> createCustomer(String studioId, Map<String, dynamic> customerData) async {
+    try {
+      await _apiClient.dio.post('/studios/$studioId/customers', data: customerData);
+    } catch (e) {
+      developer.log('❌ Failed to create customer: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getCustomers(String studioId) async {
+    try {
+      final response = await _apiClient.dio.get('/studios/$studioId/customers');
+      return response.data as List<dynamic>;
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch customers: $e', name: 'StudioRepository');
+      return [];
+    }
+  }
+
+  Future<void> recordCustomerVisit(String customerId, Map<String, dynamic> visitData) async {
+    try {
+      await _apiClient.dio.post('/studios/customers/$customerId/visits', data: visitData);
+    } catch (e) {
+      developer.log('❌ Failed to record visit: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  // ------------------- MEMBERSHIPS & RECURRING -------------------
+
+  Future<void> createMembershipPlan(String studioId, Map<String, dynamic> planData) async {
+    try {
+      await _apiClient.dio.post('/studios/$studioId/membership-plans', data: planData);
+    } catch (e) {
+      developer.log('❌ Failed to create membership plan: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getMembershipPlans(String studioId) async {
+    try {
+      final response = await _apiClient.dio.get('/studios/$studioId/membership-plans');
+      return response.data as List<dynamic>;
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch membership plans: $e', name: 'StudioRepository');
+      return [];
+    }
+  }
+
+  Future<void> assignMembership(String customerId, String planId) async {
+    try {
+      await _apiClient.dio.post('/studios/memberships', data: {
+        'customer_id': customerId,
+        'plan_id': planId,
+      });
+    } catch (e) {
+      developer.log('❌ Failed to assign membership: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  Future<void> createRecurringBookingRule(Map<String, dynamic> ruleData) async {
+    try {
+      await _apiClient.dio.post('/studios/recurring-bookings', data: ruleData);
+    } catch (e) {
+      developer.log('❌ Failed to create recurring booking rule: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  Future<Map<String, dynamic>> getRevenueAnalytics(String studioId, {String timeframe = 'monthly'}) async {
+    try {
+      final response = await _apiClient.dio.get('/studios/$studioId/analytics/revenue', queryParameters: {'timeframe': timeframe});
+      return response.data as Map<String, dynamic>;
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch revenue analytics: $e', name: 'StudioRepository');
+      return {};
+    }
+  }
+
+  // ------------------- MARKETING & COUPONS -------------------
+
+  Future<void> createCoupon(String studioId, Map<String, dynamic> couponData) async {
+    try {
+      await _apiClient.dio.post('/studios/$studioId/coupons', data: couponData);
+    } catch (e) {
+      developer.log('❌ Failed to create coupon: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getCoupons(String studioId) async {
+    try {
+      final response = await _apiClient.dio.get('/studios/$studioId/coupons');
+      return response.data as List<dynamic>;
+    } catch (e) {
+       developer.log('⚠️ Failed to fetch coupons: $e', name: 'StudioRepository');
+      return [];
+    }
+  }
+
+  Future<void> triggerReminders(String studioId) async {
+    try {
+      await _apiClient.dio.post('/studios/$studioId/reminders/trigger');
+    } catch (e) {
+      developer.log('❌ Failed to trigger reminders: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getStaffCommissions(String studioId, {String? artistId}) async {
+    try {
+      final response = await _apiClient.dio.get('/studios/$studioId/commissions', queryParameters: {'artist_id': artistId});
+      return response.data as List<dynamic>;
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch commissions: $e', name: 'StudioRepository');
+      return [];
+    }
+  }
+
+  Future<void> markCommissionPaid(String commId) async {
+    try {
+      await _apiClient.dio.post('/studios/commissions/$commId/pay');
+    } catch (e) {
+      developer.log('❌ Failed to mark commission as paid: $e', name: 'StudioRepository');
+      rethrow;
+    }
+  }
+
+  // ------------------- INVENTORY LINKAGE -------------------
+
+  Future<List<dynamic>> getArtistInventory() async {
+    try {
+      final response = await _apiClient.dio.get('/inventory');
+      // The inventory API returns { "data": [...] } based on handler.go
+      return response.data['data'] as List<dynamic>;
+    } catch (e) {
+      developer.log('⚠️ Failed to fetch artist inventory: $e', name: 'StudioRepository');
+      return [];
+    }
+  }
+
+  Future<void> logVisitProductUsage(String studioId, String visitId, String productId, double units) async {
+    try {
+      await _apiClient.dio.post(
+        '/studios/$studioId/visits/$visitId/products',
+        data: {
+          'product_id': productId,
+          'units_used': units,
+        },
+      );
+    } catch (e) {
+      developer.log('❌ Failed to log product usage: $e', name: 'StudioRepository');
       rethrow;
     }
   }

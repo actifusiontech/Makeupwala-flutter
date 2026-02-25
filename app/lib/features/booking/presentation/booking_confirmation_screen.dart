@@ -8,6 +8,7 @@ import 'package:app/core/services/pdf_service.dart';
 
 class BookingConfirmationScreen extends StatelessWidget {
   final String bookingId;
+  final String customerName;
   final String serviceName;
   final String artistName;
   final DateTime bookingDate;
@@ -19,6 +20,7 @@ class BookingConfirmationScreen extends StatelessWidget {
   const BookingConfirmationScreen({
     super.key,
     required this.bookingId,
+    required this.customerName,
     required this.serviceName,
     required this.artistName,
     required this.bookingDate,
@@ -177,6 +179,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                     final pdfService = PdfService();
                     await pdfService.downloadReceipt(
                       bookingId: bookingId,
+                      customerName: customerName,
                       serviceName: serviceName,
                       artistName: artistName,
                       bookingDate: bookingDate,
