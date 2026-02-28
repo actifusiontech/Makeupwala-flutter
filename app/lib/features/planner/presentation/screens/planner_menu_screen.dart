@@ -65,6 +65,12 @@ class PlannerMenuScreen extends StatelessWidget {
                       color: AppColors.info,
                       route: '/complaints',
                     ),
+                    _MenuItem(
+                      title: 'Daily Health Check',
+                      icon: Icons.health_and_safety_outlined,
+                      color: AppColors.error,
+                      route: '/safety/daily-health-check',
+                    ),
                   ],
                 ),
                 const SizedBox(height: AppSpacing.xxl),

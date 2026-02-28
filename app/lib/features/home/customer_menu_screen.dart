@@ -97,6 +97,20 @@ class CustomerMenuScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: AppSpacing.xl),
+                _buildSectionTitle('Safety & Compliance'),
+                const SizedBox(height: AppSpacing.md),
+                _buildMenuGrid(
+                  context,
+                  items: [
+                    _MenuItem(
+                      title: 'Daily Health Check',
+                      icon: Icons.medical_services_outlined,
+                      color: Colors.green,
+                      route: '/safety/daily-health-check',
+                    ),
+                  ],
+                ),
                 const SizedBox(height: AppSpacing.xxl),
               ]),
             ),

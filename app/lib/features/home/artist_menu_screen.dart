@@ -38,6 +38,26 @@ class ArtistMenuScreen extends StatelessWidget {
                       route: '/profile',
                     ),
                     _MenuItem(
+                      title: 'Artist KYC',
+                      icon: Icons.verified_user_outlined,
+                      color: AppColors.info,
+                      route: '/artist/kyc',
+                    ),
+                  ],
+                ),
+                const SizedBox(height: AppSpacing.xl),
+                _buildSectionTitle('Operations & Services'),
+                const SizedBox(height: AppSpacing.md),
+                _buildMenuGrid(
+                  context,
+                  items: [
+                    _MenuItem(
+                      title: 'Manage Services',
+                      icon: Icons.design_services_outlined,
+                      color: Colors.deepOrange,
+                      route: '/artist/manage-services',
+                    ),
+                    _MenuItem(
                       title: 'Portfolio Management',
                       icon: Icons.photo_library_outlined,
                       color: Colors.purple,
@@ -81,7 +101,13 @@ class ArtistMenuScreen extends StatelessWidget {
                       title: 'SOS Contacts',
                       icon: Icons.health_and_safety_outlined,
                       color: AppColors.error,
-                      route: '/safety/contacts',
+                      route: '/safety/contacts', // Note: emergency_contacts_screen usually but reusing this path concept
+                    ),
+                    _MenuItem(
+                      title: 'Daily Health Check',
+                      icon: Icons.medical_services_outlined,
+                      color: Colors.green,
+                      route: '/safety/daily-health-check',
                     ),
                   ],
                 ),

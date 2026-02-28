@@ -145,6 +145,10 @@ class BrandDashboardScreen extends StatelessWidget {
                       if (metrics.topProducts.isNotEmpty)
                         TopProductsChartWidget(products: metrics.topProducts),
                       const SizedBox(height: AppSpacing.lg),
+                      const SizedBox(height: AppSpacing.lg),
+                      _buildSectionHeader('Quick Actions'),
+                      _buildQuickActionsGrid(context),
+                      const SizedBox(height: AppSpacing.lg),
                       _buildSectionHeader('Recent Submissions'),
                       _buildRecentSubmissions(metrics.recentSubmissions),
                     ],
@@ -280,6 +284,85 @@ class BrandDashboardScreen extends StatelessWidget {
           color: Colors.purple,
         ),
       ],
+    );
+  }
+
+  Widget _buildQuickActionsGrid(BuildContext context) {
+    return GridView.count(
+      crossAxisCount: 3,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      mainAxisSpacing: AppSpacing.sm,
+      crossAxisSpacing: AppSpacing.sm,
+      childAspectRatio: 1.0,
+      children: [
+        _buildActionCard(
+          context,
+          title: 'Orders',
+          icon: FontAwesomeIcons.boxOpen,
+          color: Colors.blue,
+          route: '/orders',
+        ),
+        _buildActionCard(
+          context,
+          title: 'My Campaigns',
+          icon: FontAwesomeIcons.bullhorn,
+          color: Colors.purple,
+          route: '/brand-campaigns',
+        ),
+        _buildActionCard(
+          context,
+          title: 'Explore',
+          icon: FontAwesomeIcons.magnifyingGlassChart,
+          color: Colors.teal,
+          route: '/campaign-explorer',
+        ),
+      ],
+    );
+  }
+
+  Widget _buildActionCard(
+    BuildContext context, {
+    required String title,
+    required IconData icon,
+    required Color color,
+    required String route,
+  }) {
+    return GestureDetector(
+      onTap: () => context.push(route),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(AppSpacing.radiusMd),
+          border: Border.all(color: AppColors.grey100),
+          boxShadow: [
+            BoxShadow(
+              color: color.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.1),
+                shape: BoxShape.circle,
+              ),
+              child: FaIcon(icon, color: color, size: 20),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: AppTypography.labelMedium.copyWith(fontWeight: FontWeight.bold, fontSize: 11),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

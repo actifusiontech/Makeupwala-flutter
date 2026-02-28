@@ -94,6 +94,8 @@ import '../features/safety/bloc/safety_bloc.dart';
 import '../features/safety/bloc/safety_event.dart';
 import 'package:app/features/safety/data/safety_repository.dart';
 import '../features/safety/presentation/widgets/community_guardian_overlay.dart';
+import '../features/safety/presentation/screens/daily_health_check_screen.dart';
+import '../features/artist/artist_kyc_screen.dart';
 import '../shared/widgets/debug_role_switcher.dart';
 import '../features/education/bloc/education_bloc.dart';
 import '../features/education/bloc/education_event.dart';
@@ -217,6 +219,18 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
           path: '/artist/manage-services',
           name: 'manage-services',
           builder: (context, state) => const ManageServicesScreen(),
+        ),
+        GoRoute(
+          path: '/artist/kyc',
+          name: 'artist-kyc',
+          builder: (context, state) => const ArtistKYCScreen(),
+        ),
+        GoRoute(
+          path: '/safety/daily-health-check',
+          name: 'daily-health-check',
+          builder: (context, state) => DailyHealthCheckScreen(
+            repository: SafetyRepository(context.read<AuthBloc>().apiClient.dio),
+          ),
         ),
         GoRoute(
           path: '/customer/home',
