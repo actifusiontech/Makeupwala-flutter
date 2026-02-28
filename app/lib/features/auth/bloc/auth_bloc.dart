@@ -23,7 +23,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     GoogleSignIn? googleSignIn,
   })  : _apiClient = apiClient ?? ApiClient(),
         _secureStorage = secureStorage ?? const FlutterSecureStorage(),
-        _googleSignIn = googleSignIn ?? GoogleSignIn(scopes: ['email', 'profile']),
+        _googleSignIn = googleSignIn ?? GoogleSignIn(
+          scopes: ['email', 'profile'],
+          serverClientId: '291125958858-7dm98vv8aeaf5ui7g7mh29jp9f2vn30n.apps.googleusercontent.com',
+        ),
         super(const AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
       await event.when(

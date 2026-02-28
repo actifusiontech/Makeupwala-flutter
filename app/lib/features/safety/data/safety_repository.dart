@@ -13,7 +13,8 @@ class SafetyRepository implements SafetyService {
   Future<List<EmergencyContact>> getEmergencyContacts() async {
     try {
       final response = await _dio.get('/safety/contacts');
-      return (response.data as List).map((e) => EmergencyContact.fromJson(e)).toList();
+      final data = response.data['data'] as List;
+      return data.map((e) => EmergencyContact.fromJson(e)).toList();
     } on DioException catch (e) {
       if (e.response?.statusCode == 401) {
         // Not logged in or unauthorized, return empty list gracefully
@@ -44,7 +45,7 @@ class SafetyRepository implements SafetyService {
       'address': address,
       'battery_level': batteryLevel,
     });
-    return SOSAlert.fromJson(response.data);
+    return SOSAlert.fromJson(response.data['data']);
   }
 
   Future<void> cancelSOS(String alertId) async {

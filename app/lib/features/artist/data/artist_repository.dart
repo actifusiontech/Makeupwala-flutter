@@ -47,7 +47,7 @@ class ArtistRepository {
       });
       
       final response = await _apiClient.dio.post('/artists/me/media', data: formData);
-      return response.data['url'] as String;
+      return response.data['data'] as String;
     } catch (e) {
       developer.log('❌ Failed to upload media: $e', name: 'ArtistRepository');
       rethrow;
@@ -86,10 +86,9 @@ class ArtistRepository {
   Future<List<Map<String, dynamic>>> getServices(String artistId) async {
     try {
       final response = await _apiClient.dio.get('/artists/$artistId/services');
-      // Assuming structure { data: [...] } or direct list
-      final data = response.data;
-      if (data is Map && data.containsKey('data')) {
-        return (data['data'] as List).cast<Map<String, dynamic>>();
+      final data = response.data['data'];
+      if (data is Map && data.containsKey('items')) {
+        return (data['items'] as List).cast<Map<String, dynamic>>();
       } else if (data is List) {
         return data.cast<Map<String, dynamic>>();
       }

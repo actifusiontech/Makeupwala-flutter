@@ -14,6 +14,14 @@
             },
             "oauth_client": [
                 {
+                    "client_id": "291125958858-tbuou0j8hakefd2u2d3evldkodg8vcj3.apps.googleusercontent.com",
+                    "client_type": 1,
+                    "android_info": {
+                        "package_name": "com.svvglobal.makeupwallah",
+                        "certificate_hash": "9c0f497cf98a39c28d98b8daa4967aebc3cb70af"
+                    }
+                },
+                {
                     "client_id": "291125958858-7dm98vv8aeaf5ui7g7mh29jp9f2vn30n.apps.googleusercontent.com",
                     "client_type": 3
                 }

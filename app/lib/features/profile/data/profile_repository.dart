@@ -15,7 +15,7 @@ class ProfileRepository {
       developer.log('👤 Fetching profile from $endpoint', name: 'ProfileRepository');
       
       final response = await _apiClient.dio.get(endpoint);
-      return User.fromJson(response.data);
+      return User.fromJson(response.data['data']);
     } catch (e) {
       developer.log('❌ Fetch profile failed: $e', name: 'ProfileRepository');
       rethrow;
@@ -31,7 +31,7 @@ class ProfileRepository {
       developer.log('👤 Updating profile at $endpoint', name: 'ProfileRepository');
       
       final response = await _apiClient.dio.post(endpoint, data: data);
-      return User.fromJson(response.data);
+      return User.fromJson(response.data['data']);
     } catch (e) {
       developer.log('❌ Update profile failed: $e', name: 'ProfileRepository');
       rethrow;
@@ -47,7 +47,7 @@ class ProfileRepository {
       });
       
       final response = await _apiClient.dio.post('/artists/me/media', data: formData);
-      return response.data['url'];
+      return response.data['data'];
     } catch (e) {
       developer.log('❌ Upload media failed: $e', name: 'ProfileRepository');
       rethrow;
@@ -90,7 +90,7 @@ class ProfileRepository {
   Future<LoyaltyBalance> getLoyaltyBalance() async {
     try {
       final response = await _apiClient.dio.get('/rewards/balance');
-      return LoyaltyBalance.fromJson(response.data);
+      return LoyaltyBalance.fromJson(response.data['data']);
     } catch (e) {
       developer.log('❌ Get loyalty balance failed: $e', name: 'ProfileRepository');
       rethrow;
@@ -110,7 +110,8 @@ class ProfileRepository {
   Future<List<ReferralRecord>> getReferrals() async {
     try {
       final response = await _apiClient.dio.get('/rewards/referrals');
-      return (response.data as List).map((e) => ReferralRecord.fromJson(e)).toList();
+      final data = response.data['data'] as List;
+      return data.map((e) => ReferralRecord.fromJson(e)).toList();
     } catch (e) {
       developer.log('❌ Get referrals failed: $e', name: 'ProfileRepository');
       rethrow;
@@ -120,7 +121,8 @@ class ProfileRepository {
   Future<List<LeaderboardEntry>> getLeaderboard() async {
     try {
       final response = await _apiClient.dio.get('/rewards/leaderboard');
-      return (response.data as List).map((e) => LeaderboardEntry.fromJson(e)).toList();
+      final data = response.data['data'] as List;
+      return data.map((e) => LeaderboardEntry.fromJson(e)).toList();
     } catch (e) {
       developer.log('❌ Get leaderboard failed: $e', name: 'ProfileRepository');
       rethrow;
@@ -130,7 +132,8 @@ class ProfileRepository {
   Future<List<RewardItem>> getRewardCatalog() async {
     try {
       final response = await _apiClient.dio.get('/rewards/catalog');
-      return (response.data as List).map((e) => RewardItem.fromJson(e)).toList();
+      final data = response.data['data'] as List;
+      return data.map((e) => RewardItem.fromJson(e)).toList();
     } catch (e) {
       developer.log('❌ Get reward catalog failed: $e', name: 'ProfileRepository');
       rethrow;
@@ -140,7 +143,7 @@ class ProfileRepository {
   Future<RewardRedemption> redeemReward(String rewardId) async {
     try {
       final response = await _apiClient.dio.post('/rewards/redeem', data: {'reward_item_id': rewardId});
-      return RewardRedemption.fromJson(response.data);
+      return RewardRedemption.fromJson(response.data['data']);
     } catch (e) {
       developer.log('❌ Redeem reward failed: $e', name: 'ProfileRepository');
       rethrow;

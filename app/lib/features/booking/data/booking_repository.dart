@@ -104,7 +104,7 @@ class BookingRepository {
   Future<Map<String, dynamic>> validateCoupon(String code) async {
     try {
       final response = await _apiClient.dio.get('/coupons/validate?code=$code');
-      return response.data;
+      return response.data['data'];
     } catch (e) {
       // Allow 400 errors to propagate their message
       rethrow;
@@ -114,7 +114,7 @@ class BookingRepository {
   Future<LoyaltyBalance> getLoyaltyBalance() async {
     try {
       final response = await _apiClient.dio.get('/rewards/balance');
-      return LoyaltyBalance.fromJson(response.data);
+      return LoyaltyBalance.fromJson(response.data['data']);
     } catch (e) {
       developer.log('❌ Get loyalty balance failed: $e', name: 'BookingRepository');
       // Fallback
