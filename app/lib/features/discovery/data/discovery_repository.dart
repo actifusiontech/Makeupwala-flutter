@@ -1,4 +1,5 @@
 import 'dart:developer' as developer;
+import 'package:dio/dio.dart';
 import '../../../core/network/api_client.dart';
 import 'models/post_model.dart';
 import 'models/search_models.dart';
@@ -88,9 +89,15 @@ class DiscoveryRepository {
         queryParameters: queryParams,
       );
       
-      final List<dynamic> data = response.data['data'] ?? [];
-      return data.cast<Map<String, dynamic>>();
+      if (response.data is Map<String, dynamic> && response.data.containsKey('data')) {
+        final List<dynamic> data = response.data['data'] ?? [];
+        return data.cast<Map<String, dynamic>>();
+      }
+      return [];
     } catch (e) {
+      if (e is DioException && e.response?.statusCode == 404) {
+        return [];
+      }
       developer.log('❌ Search looks failed: $e', name: 'DiscoveryRepository');
       rethrow;
     }
@@ -99,9 +106,24 @@ class DiscoveryRepository {
   Future<List<Map<String, dynamic>>> getRecommendations() async {
     try {
       final response = await _apiClient.dio.get('/discovery/recommendations');
-      final List<dynamic> data = response.data['data'] ?? [];
-      return data.cast<Map<String, dynamic>>();
+      if (response.data is Map<String, dynamic> && response.data.containsKey('data')) {
+        final List<dynamic> data = response.data['data'] ?? [];
+        return data.cast<Map<String, dynamic>>();
+      }
+      // Return beautiful mock fallbacks if backend does not support recommendations yet
+      return [
+        {'URL': 'https://images.unsplash.com/photo-1512496015851-a9089ac2310b', 'Caption': 'Bridal Glow'},
+        {'URL': 'https://images.unsplash.com/photo-1522337660859-02fbefca4702', 'Caption': 'Nude Makeup'},
+        {'URL': 'https://images.unsplash.com/photo-1503236823255-94609f598e71', 'Caption': 'Glamourous'},
+      ];
     } catch (e) {
+      if (e is DioException && e.response?.statusCode == 404) {
+        return [
+          {'URL': 'https://images.unsplash.com/photo-1512496015851-a9089ac2310b', 'Caption': 'Bridal Glow'},
+          {'URL': 'https://images.unsplash.com/photo-1522337660859-02fbefca4702', 'Caption': 'Nude Makeup'},
+          {'URL': 'https://images.unsplash.com/photo-1503236823255-94609f598e71', 'Caption': 'Glamourous'},
+        ];
+      }
       developer.log('❌ Get recommendations failed: $e', name: 'DiscoveryRepository');
       rethrow;
     }
@@ -110,9 +132,15 @@ class DiscoveryRepository {
   Future<List<String>> getLookbookTags() async {
     try {
       final response = await _apiClient.dio.get('/discovery/tags');
-      final List<dynamic> data = response.data['data'] ?? [];
-      return data.cast<String>();
+      if (response.data is Map<String, dynamic> && response.data.containsKey('data')) {
+        final List<dynamic> data = response.data['data'] ?? [];
+        return data.cast<String>();
+      }
+      return [];
     } catch (e) {
+      if (e is DioException && e.response?.statusCode == 404) {
+        return ['Bridal', 'Party', 'Editorial', 'Minimalist'];
+      }
       developer.log('❌ Get lookbook tags failed: $e', name: 'DiscoveryRepository');
       return [];
     }

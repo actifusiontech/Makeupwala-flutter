@@ -4,10 +4,55 @@ import 'package:mocktail/mocktail.dart';
 import 'package:app/features/booking/bloc/booking_bloc.dart';
 import 'package:app/features/booking/data/booking_repository.dart';
 
-class MockBookingRepository extends Mock implements BookingRepository {}
+class MockBookingRepository extends Mock implements BookingRepository {
+  Future<Map<String, dynamic>> Function({
+    required String artistId,
+    required String serviceId,
+    required DateTime date,
+    required String time,
+    String? notes,
+    int redeemPoints,
+    String paymentMethod,
+    String? couponCode,
+  })? createBookingMock;
+
+  @override
+  Future<Map<String, dynamic>> createBooking({
+    required String artistId,
+    required String serviceId,
+    required DateTime date,
+    required String time,
+    String? notes,
+    int redeemPoints = 0,
+    String paymentMethod = 'online',
+    String? couponCode,
+  }) async {
+    print('DEBUG override createBooking inside MockBookingRepository called!');
+    print('DEBUG createBookingMock is null: ${createBookingMock == null}');
+    if (createBookingMock != null) {
+      final res = await createBookingMock!(
+        artistId: artistId,
+        serviceId: serviceId,
+        date: date,
+        time: time,
+        notes: notes,
+        redeemPoints: redeemPoints,
+        paymentMethod: paymentMethod,
+        couponCode: couponCode,
+      );
+      print('DEBUG createBookingMock returned res: $res');
+      return res;
+    }
+    return <String, dynamic>{};
+  }
+}
 
 
 void main() {
+  setUpAll(() {
+    registerFallbackValue(DateTime(2024, 1, 1));
+  });
+
   group('BookingBloc', () {
     late BookingRepository bookingRepository;
     late BookingBloc bookingBloc;
@@ -32,16 +77,20 @@ void main() {
       blocTest<BookingBloc, BookingState>(
         'emits [loading, success] when booking creation succeeds',
         build: () {
-          when(() => bookingRepository.createBooking(
-                artistId: any(named: 'artistId'),
-                serviceId: any(named: 'serviceId'),
-                date: any(named: 'date'),
-                time: any(named: 'time'),
-                notes: any(named: 'notes'),
-                redeemPoints: any(named: 'redeemPoints'),
-                paymentMethod: any(named: 'paymentMethod'),
-                couponCode: any(named: 'couponCode'),
-              )).thenAnswer((_) async => {});
+          (bookingRepository as MockBookingRepository).createBookingMock = ({
+            required artistId,
+            required serviceId,
+            required date,
+            required time,
+            notes,
+            redeemPoints = 0,
+            paymentMethod = 'online',
+            couponCode,
+          }) async => <String, dynamic>{
+            'id': 'booking123',
+            'total_amount': 1500.0,
+          };
+          print('DEBUG repository in test: ${bookingRepository.hashCode}');
           return bookingBloc;
         },
         act: (bloc) => bloc.add(BookingEvent.createBooking(
@@ -49,26 +98,27 @@ void main() {
           serviceId: 'service1',
           date: date,
           time: time,
+          paymentMethod: 'cod',
         )),
         expect: () => [
           const BookingState.loading(),
-          const BookingState.success(message: 'Booking created successfully!'),
+          BookingState.success(message: 'Booking created successfully!', booking: const {'id': 'booking123', 'total_amount': 1500.0}),
         ],
       );
 
       blocTest<BookingBloc, BookingState>(
         'emits [loading, error] when booking creation fails',
         build: () {
-          when(() => bookingRepository.createBooking(
-                artistId: any(named: 'artistId'),
-                serviceId: any(named: 'serviceId'),
-                date: any(named: 'date'),
-                time: any(named: 'time'),
-                notes: any(named: 'notes'),
-                redeemPoints: any(named: 'redeemPoints'),
-                paymentMethod: any(named: 'paymentMethod'),
-                couponCode: any(named: 'couponCode'),
-              )).thenThrow(Exception('Booking failed'));
+          (bookingRepository as MockBookingRepository).createBookingMock = ({
+            required artistId,
+            required serviceId,
+            required date,
+            required time,
+            notes,
+            redeemPoints = 0,
+            paymentMethod = 'online',
+            couponCode,
+          }) async => throw Exception('Booking failed');
           return bookingBloc;
         },
         act: (bloc) => bloc.add(BookingEvent.createBooking(
@@ -76,6 +126,7 @@ void main() {
           serviceId: 'service1',
           date: date,
           time: time,
+          paymentMethod: 'cod',
         )),
         expect: () => [
           const BookingState.loading(),
