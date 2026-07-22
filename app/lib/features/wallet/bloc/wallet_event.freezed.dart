@@ -19,20 +19,7 @@ mixin _$WalletEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchWalletDetails,
-    required TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)
-        requestWithdrawal,
-    required TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)
-        linkBank,
+    required TResult Function(double amount) requestWithdrawal,
     required TResult Function(double amount) initiateTopUp,
     required TResult Function(
             String orderId, String paymentId, String signature)
@@ -42,20 +29,7 @@ mixin _$WalletEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchWalletDetails,
-    TResult? Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult? Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult? Function(double amount)? requestWithdrawal,
     TResult? Function(double amount)? initiateTopUp,
     TResult? Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -64,20 +38,7 @@ mixin _$WalletEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchWalletDetails,
-    TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult Function(double amount)? requestWithdrawal,
     TResult Function(double amount)? initiateTopUp,
     TResult Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -88,7 +49,6 @@ mixin _$WalletEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWalletDetails value) fetchWalletDetails,
     required TResult Function(_RequestWithdrawal value) requestWithdrawal,
-    required TResult Function(_LinkBank value) linkBank,
     required TResult Function(_InitiateTopUp value) initiateTopUp,
     required TResult Function(_ProcessTopUp value) processTopUp,
   }) =>
@@ -97,7 +57,6 @@ mixin _$WalletEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult? Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult? Function(_LinkBank value)? linkBank,
     TResult? Function(_InitiateTopUp value)? initiateTopUp,
     TResult? Function(_ProcessTopUp value)? processTopUp,
   }) =>
@@ -106,7 +65,6 @@ mixin _$WalletEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult Function(_LinkBank value)? linkBank,
     TResult Function(_InitiateTopUp value)? initiateTopUp,
     TResult Function(_ProcessTopUp value)? processTopUp,
     required TResult orElse(),
@@ -171,20 +129,7 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchWalletDetails,
-    required TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)
-        requestWithdrawal,
-    required TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)
-        linkBank,
+    required TResult Function(double amount) requestWithdrawal,
     required TResult Function(double amount) initiateTopUp,
     required TResult Function(
             String orderId, String paymentId, String signature)
@@ -197,20 +142,7 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchWalletDetails,
-    TResult? Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult? Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult? Function(double amount)? requestWithdrawal,
     TResult? Function(double amount)? initiateTopUp,
     TResult? Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -222,20 +154,7 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchWalletDetails,
-    TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult Function(double amount)? requestWithdrawal,
     TResult Function(double amount)? initiateTopUp,
     TResult Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -252,7 +171,6 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWalletDetails value) fetchWalletDetails,
     required TResult Function(_RequestWithdrawal value) requestWithdrawal,
-    required TResult Function(_LinkBank value) linkBank,
     required TResult Function(_InitiateTopUp value) initiateTopUp,
     required TResult Function(_ProcessTopUp value) processTopUp,
   }) {
@@ -264,7 +182,6 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult? Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult? Function(_LinkBank value)? linkBank,
     TResult? Function(_InitiateTopUp value)? initiateTopUp,
     TResult? Function(_ProcessTopUp value)? processTopUp,
   }) {
@@ -276,7 +193,6 @@ class _$FetchWalletDetailsImpl implements _FetchWalletDetails {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult Function(_LinkBank value)? linkBank,
     TResult Function(_InitiateTopUp value)? initiateTopUp,
     TResult Function(_ProcessTopUp value)? processTopUp,
     required TResult orElse(),
@@ -298,8 +214,7 @@ abstract class _$$RequestWithdrawalImplCopyWith<$Res> {
           $Res Function(_$RequestWithdrawalImpl) then) =
       __$$RequestWithdrawalImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {double amount, String bankAccount, String ifsc, String accountHolder});
+  $Res call({double amount});
 }
 
 /// @nodoc
@@ -314,27 +229,12 @@ class __$$RequestWithdrawalImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? amount = null,
-    Object? bankAccount = null,
-    Object? ifsc = null,
-    Object? accountHolder = null,
   }) {
     return _then(_$RequestWithdrawalImpl(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      bankAccount: null == bankAccount
-          ? _value.bankAccount
-          : bankAccount // ignore: cast_nullable_to_non_nullable
-              as String,
-      ifsc: null == ifsc
-          ? _value.ifsc
-          : ifsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      accountHolder: null == accountHolder
-          ? _value.accountHolder
-          : accountHolder // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -342,24 +242,14 @@ class __$$RequestWithdrawalImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RequestWithdrawalImpl implements _RequestWithdrawal {
-  const _$RequestWithdrawalImpl(
-      {required this.amount,
-      required this.bankAccount,
-      required this.ifsc,
-      required this.accountHolder});
+  const _$RequestWithdrawalImpl({required this.amount});
 
   @override
   final double amount;
-  @override
-  final String bankAccount;
-  @override
-  final String ifsc;
-  @override
-  final String accountHolder;
 
   @override
   String toString() {
-    return 'WalletEvent.requestWithdrawal(amount: $amount, bankAccount: $bankAccount, ifsc: $ifsc, accountHolder: $accountHolder)';
+    return 'WalletEvent.requestWithdrawal(amount: $amount)';
   }
 
   @override
@@ -367,17 +257,11 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequestWithdrawalImpl &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.bankAccount, bankAccount) ||
-                other.bankAccount == bankAccount) &&
-            (identical(other.ifsc, ifsc) || other.ifsc == ifsc) &&
-            (identical(other.accountHolder, accountHolder) ||
-                other.accountHolder == accountHolder));
+            (identical(other.amount, amount) || other.amount == amount));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, amount, bankAccount, ifsc, accountHolder);
+  int get hashCode => Object.hash(runtimeType, amount);
 
   @JsonKey(ignore: true)
   @override
@@ -390,78 +274,39 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchWalletDetails,
-    required TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)
-        requestWithdrawal,
-    required TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)
-        linkBank,
+    required TResult Function(double amount) requestWithdrawal,
     required TResult Function(double amount) initiateTopUp,
     required TResult Function(
             String orderId, String paymentId, String signature)
         processTopUp,
   }) {
-    return requestWithdrawal(amount, bankAccount, ifsc, accountHolder);
+    return requestWithdrawal(amount);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchWalletDetails,
-    TResult? Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult? Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult? Function(double amount)? requestWithdrawal,
     TResult? Function(double amount)? initiateTopUp,
     TResult? Function(String orderId, String paymentId, String signature)?
         processTopUp,
   }) {
-    return requestWithdrawal?.call(amount, bankAccount, ifsc, accountHolder);
+    return requestWithdrawal?.call(amount);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchWalletDetails,
-    TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult Function(double amount)? requestWithdrawal,
     TResult Function(double amount)? initiateTopUp,
     TResult Function(String orderId, String paymentId, String signature)?
         processTopUp,
     required TResult orElse(),
   }) {
     if (requestWithdrawal != null) {
-      return requestWithdrawal(amount, bankAccount, ifsc, accountHolder);
+      return requestWithdrawal(amount);
     }
     return orElse();
   }
@@ -471,7 +316,6 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWalletDetails value) fetchWalletDetails,
     required TResult Function(_RequestWithdrawal value) requestWithdrawal,
-    required TResult Function(_LinkBank value) linkBank,
     required TResult Function(_InitiateTopUp value) initiateTopUp,
     required TResult Function(_ProcessTopUp value) processTopUp,
   }) {
@@ -483,7 +327,6 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult? Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult? Function(_LinkBank value)? linkBank,
     TResult? Function(_InitiateTopUp value)? initiateTopUp,
     TResult? Function(_ProcessTopUp value)? processTopUp,
   }) {
@@ -495,7 +338,6 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult Function(_LinkBank value)? linkBank,
     TResult Function(_InitiateTopUp value)? initiateTopUp,
     TResult Function(_ProcessTopUp value)? processTopUp,
     required TResult orElse(),
@@ -508,327 +350,12 @@ class _$RequestWithdrawalImpl implements _RequestWithdrawal {
 }
 
 abstract class _RequestWithdrawal implements WalletEvent {
-  const factory _RequestWithdrawal(
-      {required final double amount,
-      required final String bankAccount,
-      required final String ifsc,
-      required final String accountHolder}) = _$RequestWithdrawalImpl;
+  const factory _RequestWithdrawal({required final double amount}) =
+      _$RequestWithdrawalImpl;
 
   double get amount;
-  String get bankAccount;
-  String get ifsc;
-  String get accountHolder;
   @JsonKey(ignore: true)
   _$$RequestWithdrawalImplCopyWith<_$RequestWithdrawalImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LinkBankImplCopyWith<$Res> {
-  factory _$$LinkBankImplCopyWith(
-          _$LinkBankImpl value, $Res Function(_$LinkBankImpl) then) =
-      __$$LinkBankImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {String email,
-      String phone,
-      String legalBusinessName,
-      String businessType,
-      String contactName,
-      String pan,
-      String bankAccountNumber,
-      String bankIfsc,
-      String bankAccountName});
-}
-
-/// @nodoc
-class __$$LinkBankImplCopyWithImpl<$Res>
-    extends _$WalletEventCopyWithImpl<$Res, _$LinkBankImpl>
-    implements _$$LinkBankImplCopyWith<$Res> {
-  __$$LinkBankImplCopyWithImpl(
-      _$LinkBankImpl _value, $Res Function(_$LinkBankImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? email = null,
-    Object? phone = null,
-    Object? legalBusinessName = null,
-    Object? businessType = null,
-    Object? contactName = null,
-    Object? pan = null,
-    Object? bankAccountNumber = null,
-    Object? bankIfsc = null,
-    Object? bankAccountName = null,
-  }) {
-    return _then(_$LinkBankImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      legalBusinessName: null == legalBusinessName
-          ? _value.legalBusinessName
-          : legalBusinessName // ignore: cast_nullable_to_non_nullable
-              as String,
-      businessType: null == businessType
-          ? _value.businessType
-          : businessType // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactName: null == contactName
-          ? _value.contactName
-          : contactName // ignore: cast_nullable_to_non_nullable
-              as String,
-      pan: null == pan
-          ? _value.pan
-          : pan // ignore: cast_nullable_to_non_nullable
-              as String,
-      bankAccountNumber: null == bankAccountNumber
-          ? _value.bankAccountNumber
-          : bankAccountNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      bankIfsc: null == bankIfsc
-          ? _value.bankIfsc
-          : bankIfsc // ignore: cast_nullable_to_non_nullable
-              as String,
-      bankAccountName: null == bankAccountName
-          ? _value.bankAccountName
-          : bankAccountName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LinkBankImpl implements _LinkBank {
-  const _$LinkBankImpl(
-      {required this.email,
-      required this.phone,
-      required this.legalBusinessName,
-      required this.businessType,
-      required this.contactName,
-      required this.pan,
-      required this.bankAccountNumber,
-      required this.bankIfsc,
-      required this.bankAccountName});
-
-  @override
-  final String email;
-  @override
-  final String phone;
-  @override
-  final String legalBusinessName;
-  @override
-  final String businessType;
-  @override
-  final String contactName;
-  @override
-  final String pan;
-  @override
-  final String bankAccountNumber;
-  @override
-  final String bankIfsc;
-  @override
-  final String bankAccountName;
-
-  @override
-  String toString() {
-    return 'WalletEvent.linkBank(email: $email, phone: $phone, legalBusinessName: $legalBusinessName, businessType: $businessType, contactName: $contactName, pan: $pan, bankAccountNumber: $bankAccountNumber, bankIfsc: $bankIfsc, bankAccountName: $bankAccountName)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LinkBankImpl &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.legalBusinessName, legalBusinessName) ||
-                other.legalBusinessName == legalBusinessName) &&
-            (identical(other.businessType, businessType) ||
-                other.businessType == businessType) &&
-            (identical(other.contactName, contactName) ||
-                other.contactName == contactName) &&
-            (identical(other.pan, pan) || other.pan == pan) &&
-            (identical(other.bankAccountNumber, bankAccountNumber) ||
-                other.bankAccountNumber == bankAccountNumber) &&
-            (identical(other.bankIfsc, bankIfsc) ||
-                other.bankIfsc == bankIfsc) &&
-            (identical(other.bankAccountName, bankAccountName) ||
-                other.bankAccountName == bankAccountName));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      email,
-      phone,
-      legalBusinessName,
-      businessType,
-      contactName,
-      pan,
-      bankAccountNumber,
-      bankIfsc,
-      bankAccountName);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LinkBankImplCopyWith<_$LinkBankImpl> get copyWith =>
-      __$$LinkBankImplCopyWithImpl<_$LinkBankImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetchWalletDetails,
-    required TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)
-        requestWithdrawal,
-    required TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)
-        linkBank,
-    required TResult Function(double amount) initiateTopUp,
-    required TResult Function(
-            String orderId, String paymentId, String signature)
-        processTopUp,
-  }) {
-    return linkBank(email, phone, legalBusinessName, businessType, contactName,
-        pan, bankAccountNumber, bankIfsc, bankAccountName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchWalletDetails,
-    TResult? Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult? Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
-    TResult? Function(double amount)? initiateTopUp,
-    TResult? Function(String orderId, String paymentId, String signature)?
-        processTopUp,
-  }) {
-    return linkBank?.call(email, phone, legalBusinessName, businessType,
-        contactName, pan, bankAccountNumber, bankIfsc, bankAccountName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchWalletDetails,
-    TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
-    TResult Function(double amount)? initiateTopUp,
-    TResult Function(String orderId, String paymentId, String signature)?
-        processTopUp,
-    required TResult orElse(),
-  }) {
-    if (linkBank != null) {
-      return linkBank(email, phone, legalBusinessName, businessType,
-          contactName, pan, bankAccountNumber, bankIfsc, bankAccountName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchWalletDetails value) fetchWalletDetails,
-    required TResult Function(_RequestWithdrawal value) requestWithdrawal,
-    required TResult Function(_LinkBank value) linkBank,
-    required TResult Function(_InitiateTopUp value) initiateTopUp,
-    required TResult Function(_ProcessTopUp value) processTopUp,
-  }) {
-    return linkBank(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchWalletDetails value)? fetchWalletDetails,
-    TResult? Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult? Function(_LinkBank value)? linkBank,
-    TResult? Function(_InitiateTopUp value)? initiateTopUp,
-    TResult? Function(_ProcessTopUp value)? processTopUp,
-  }) {
-    return linkBank?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchWalletDetails value)? fetchWalletDetails,
-    TResult Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult Function(_LinkBank value)? linkBank,
-    TResult Function(_InitiateTopUp value)? initiateTopUp,
-    TResult Function(_ProcessTopUp value)? processTopUp,
-    required TResult orElse(),
-  }) {
-    if (linkBank != null) {
-      return linkBank(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LinkBank implements WalletEvent {
-  const factory _LinkBank(
-      {required final String email,
-      required final String phone,
-      required final String legalBusinessName,
-      required final String businessType,
-      required final String contactName,
-      required final String pan,
-      required final String bankAccountNumber,
-      required final String bankIfsc,
-      required final String bankAccountName}) = _$LinkBankImpl;
-
-  String get email;
-  String get phone;
-  String get legalBusinessName;
-  String get businessType;
-  String get contactName;
-  String get pan;
-  String get bankAccountNumber;
-  String get bankIfsc;
-  String get bankAccountName;
-  @JsonKey(ignore: true)
-  _$$LinkBankImplCopyWith<_$LinkBankImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -897,20 +424,7 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchWalletDetails,
-    required TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)
-        requestWithdrawal,
-    required TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)
-        linkBank,
+    required TResult Function(double amount) requestWithdrawal,
     required TResult Function(double amount) initiateTopUp,
     required TResult Function(
             String orderId, String paymentId, String signature)
@@ -923,20 +437,7 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchWalletDetails,
-    TResult? Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult? Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult? Function(double amount)? requestWithdrawal,
     TResult? Function(double amount)? initiateTopUp,
     TResult? Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -948,20 +449,7 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchWalletDetails,
-    TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult Function(double amount)? requestWithdrawal,
     TResult Function(double amount)? initiateTopUp,
     TResult Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -978,7 +466,6 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWalletDetails value) fetchWalletDetails,
     required TResult Function(_RequestWithdrawal value) requestWithdrawal,
-    required TResult Function(_LinkBank value) linkBank,
     required TResult Function(_InitiateTopUp value) initiateTopUp,
     required TResult Function(_ProcessTopUp value) processTopUp,
   }) {
@@ -990,7 +477,6 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult? Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult? Function(_LinkBank value)? linkBank,
     TResult? Function(_InitiateTopUp value)? initiateTopUp,
     TResult? Function(_ProcessTopUp value)? processTopUp,
   }) {
@@ -1002,7 +488,6 @@ class _$InitiateTopUpImpl implements _InitiateTopUp {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult Function(_LinkBank value)? linkBank,
     TResult Function(_InitiateTopUp value)? initiateTopUp,
     TResult Function(_ProcessTopUp value)? processTopUp,
     required TResult orElse(),
@@ -1110,20 +595,7 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchWalletDetails,
-    required TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)
-        requestWithdrawal,
-    required TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)
-        linkBank,
+    required TResult Function(double amount) requestWithdrawal,
     required TResult Function(double amount) initiateTopUp,
     required TResult Function(
             String orderId, String paymentId, String signature)
@@ -1136,20 +608,7 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchWalletDetails,
-    TResult? Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult? Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult? Function(double amount)? requestWithdrawal,
     TResult? Function(double amount)? initiateTopUp,
     TResult? Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -1161,20 +620,7 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchWalletDetails,
-    TResult Function(double amount, String bankAccount, String ifsc,
-            String accountHolder)?
-        requestWithdrawal,
-    TResult Function(
-            String email,
-            String phone,
-            String legalBusinessName,
-            String businessType,
-            String contactName,
-            String pan,
-            String bankAccountNumber,
-            String bankIfsc,
-            String bankAccountName)?
-        linkBank,
+    TResult Function(double amount)? requestWithdrawal,
     TResult Function(double amount)? initiateTopUp,
     TResult Function(String orderId, String paymentId, String signature)?
         processTopUp,
@@ -1191,7 +637,6 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWalletDetails value) fetchWalletDetails,
     required TResult Function(_RequestWithdrawal value) requestWithdrawal,
-    required TResult Function(_LinkBank value) linkBank,
     required TResult Function(_InitiateTopUp value) initiateTopUp,
     required TResult Function(_ProcessTopUp value) processTopUp,
   }) {
@@ -1203,7 +648,6 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult? Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult? Function(_LinkBank value)? linkBank,
     TResult? Function(_InitiateTopUp value)? initiateTopUp,
     TResult? Function(_ProcessTopUp value)? processTopUp,
   }) {
@@ -1215,7 +659,6 @@ class _$ProcessTopUpImpl implements _ProcessTopUp {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWalletDetails value)? fetchWalletDetails,
     TResult Function(_RequestWithdrawal value)? requestWithdrawal,
-    TResult Function(_LinkBank value)? linkBank,
     TResult Function(_InitiateTopUp value)? initiateTopUp,
     TResult Function(_ProcessTopUp value)? processTopUp,
     required TResult orElse(),

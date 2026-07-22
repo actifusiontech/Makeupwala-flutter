@@ -45,7 +45,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                 // In a real app, we'd check if they already have a studio.
                 context.go('/studio/onboarding');
                 break;
-              case 'academy':
+              case 'institute':
                 context.go('/academy/onboarding');
                 break;
               case 'planner':
@@ -81,10 +81,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: AppSpacing.xxl),
-                  Text(
-                    'Choose your role',
-                    style: AppTypography.displaySmall,
-                  ),
+                  Text('Choose your role', style: AppTypography.displaySmall),
                   const SizedBox(height: AppSpacing.sm),
                   Text(
                     'How do you want to use MakeUpWallah?',
@@ -93,7 +90,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xxl),
-                  
+
                   // Customer Card
                   _RoleCard(
                     title: 'I want to book services',
@@ -103,9 +100,9 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     isLoading: _isLoading,
                     onTap: () => _handleRoleSelection('customer'),
                   ),
-                  
+
                   const SizedBox(height: AppSpacing.md),
-                  
+
                   // Artist Card
                   _RoleCard(
                     title: 'I am a Makeup Artist',
@@ -127,7 +124,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     isLoading: _isLoading,
                     onTap: () => _handleRoleSelection('brand'),
                   ),
-                  
+
                   const SizedBox(height: AppSpacing.md),
 
                   // Studio/Parlour Card
@@ -149,7 +146,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     icon: Icons.school,
                     color: Colors.teal,
                     isLoading: _isLoading,
-                    onTap: () => _handleRoleSelection('academy'),
+                    onTap: () => _handleRoleSelection('institute'),
                   ),
 
                   const SizedBox(height: AppSpacing.md),
@@ -224,10 +221,7 @@ class _RoleCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: AppTypography.titleLarge,
-                  ),
+                  Text(title, style: AppTypography.titleLarge),
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
@@ -238,7 +232,11 @@ class _RoleCard extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.grey400),
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: AppColors.grey400,
+            ),
           ],
         ),
       ),

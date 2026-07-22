@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/theme/app_typography.dart';
 import '../../../../shared/theme/app_spacing.dart';
 import '../../bloc/wallet_bloc.dart';
 import '../../bloc/wallet_event.dart';
 import '../../bloc/wallet_state.dart';
-import 'bank_linking_screen.dart';
+import '../../../artist/screens/payment_config_screen.dart';
 import '../../../../core/services/payment_service.dart';
 import '../../../auth/bloc/auth_bloc.dart';
 import 'package:app/shared/widgets/shimmer_loaders.dart';
@@ -41,7 +40,7 @@ class WalletScreen extends StatelessWidget {
                 authenticated: (user) => user,
                 orElse: () => null,
               );
-              
+
               final paymentService = PaymentService();
               paymentService.openRazorpayCheckout(
                 orderId: orderId,
@@ -61,24 +60,35 @@ class WalletScreen extends StatelessWidget {
                 },
                 onFailure: (response) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Top-up failed: ${response.message}')),
+                    SnackBar(
+                      content: Text('Top-up failed: ${response.message}'),
+                    ),
                   );
                 },
               );
             },
             topUpSuccess: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Wallet top-up successful!'), backgroundColor: AppColors.success),
+                const SnackBar(
+                  content: Text('Wallet top-up successful!'),
+                  backgroundColor: AppColors.success,
+                ),
               );
             },
             withdrawalSuccess: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Withdrawal request submitted successfully!'), backgroundColor: AppColors.success),
+                const SnackBar(
+                  content: Text('Withdrawal request submitted successfully!'),
+                  backgroundColor: AppColors.success,
+                ),
               );
             },
             error: (message) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message), backgroundColor: AppColors.error),
+                SnackBar(
+                  content: Text(message),
+                  backgroundColor: AppColors.error,
+                ),
               );
             },
             orElse: () {},
@@ -137,21 +147,33 @@ class WalletScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   const Text(
                                     'Available Balance',
-                                    style: TextStyle(color: Colors.white70, fontSize: 16, letterSpacing: 1.2),
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 16,
+                                      letterSpacing: 1.2,
+                                    ),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 4,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: Colors.white.withOpacity(0.2),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     child: const Text(
                                       'PRIMARY',
-                                      style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -163,18 +185,28 @@ class WalletScreen extends StatelessWidget {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   shadows: [
-                                    Shadow(color: Colors.black.withOpacity(0.2), blurRadius: 4, offset: const Offset(0, 2)),
+                                    Shadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 2),
+                                    ),
                                   ],
                                 ),
                               ),
                               const SizedBox(height: AppSpacing.lg),
                               Row(
                                 children: [
-                                  const Icon(Icons.shield, color: Colors.white70, size: 14),
+                                  const Icon(
+                                    Icons.shield,
+                                    color: Colors.white70,
+                                    size: 14,
+                                  ),
                                   const SizedBox(width: 4),
                                   Text(
                                     'Secured by RazorpayX',
-                                    style: AppTypography.bodySmall.copyWith(color: Colors.white70),
+                                    style: AppTypography.bodySmall.copyWith(
+                                      color: Colors.white70,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -195,12 +227,14 @@ class WalletScreen extends StatelessWidget {
                         AppColors.warning,
                         () => Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => const BankLinkingScreen()),
+                          MaterialPageRoute(
+                            builder: (_) => const PaymentConfigScreen(),
+                          ),
                         ),
                       ),
-                    
+
                     const SizedBox(height: AppSpacing.lg),
-                    
+
                     Row(
                       children: [
                         Expanded(
@@ -229,10 +263,13 @@ class WalletScreen extends StatelessWidget {
                     ),
 
                     const SizedBox(height: AppSpacing.xxl),
-                    
-                    Text('Recent Transactions', style: AppTypography.titleLarge),
+
+                    Text(
+                      'Recent Transactions',
+                      style: AppTypography.titleLarge,
+                    ),
                     const SizedBox(height: AppSpacing.md),
-                    
+
                     if (transactions.isEmpty)
                       const Center(
                         child: Padding(
@@ -245,7 +282,8 @@ class WalletScreen extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: transactions.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.sm),
+                        separatorBuilder: (_, __) =>
+                            const SizedBox(height: AppSpacing.sm),
                         itemBuilder: (context, index) {
                           final tx = transactions[index];
                           final isCredit = tx['type'] == 'credit';
@@ -256,7 +294,10 @@ class WalletScreen extends StatelessWidget {
                               border: Border.all(color: AppColors.grey100),
                             ),
                             child: ListTile(
-                              contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 4),
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.md,
+                                vertical: 4,
+                              ),
                               leading: Container(
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -266,12 +307,22 @@ class WalletScreen extends StatelessWidget {
                                   shape: BoxShape.circle,
                                 ),
                                 child: Icon(
-                                  isCredit ? Icons.add_rounded : Icons.remove_rounded,
-                                  color: isCredit ? AppColors.success : AppColors.error,
+                                  isCredit
+                                      ? Icons.add_rounded
+                                      : Icons.remove_rounded,
+                                  color: isCredit
+                                      ? AppColors.success
+                                      : AppColors.error,
                                 ),
                               ),
-                              title: Text(tx['description'] ?? 'Transaction', style: AppTypography.titleSmall),
-                              subtitle: Text(tx['date'] ?? '', style: AppTypography.bodySmall),
+                              title: Text(
+                                tx['description'] ?? 'Transaction',
+                                style: AppTypography.titleSmall,
+                              ),
+                              subtitle: Text(
+                                tx['date'] ?? '',
+                                style: AppTypography.bodySmall,
+                              ),
                               trailing: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -280,7 +331,9 @@ class WalletScreen extends StatelessWidget {
                                     '${isCredit ? '+' : '-'} ₹${tx['amount']}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: isCredit ? AppColors.success : AppColors.error,
+                                      color: isCredit
+                                          ? AppColors.success
+                                          : AppColors.error,
                                       fontSize: 16,
                                     ),
                                   ),
@@ -290,7 +343,9 @@ class WalletScreen extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 8,
                                         fontWeight: FontWeight.bold,
-                                        color: tx['status'] == 'completed' ? AppColors.success : AppColors.warning,
+                                        color: tx['status'] == 'completed'
+                                            ? AppColors.success
+                                            : AppColors.warning,
                                       ),
                                     ),
                                 ],
@@ -319,7 +374,14 @@ class WalletScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoBanner(BuildContext context, String title, String subtitle, IconData icon, Color color, VoidCallback onTap) {
+  Widget _buildInfoBanner(
+    BuildContext context,
+    String title,
+    String subtitle,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+  ) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -337,7 +399,10 @@ class WalletScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: TextStyle(fontWeight: FontWeight.bold, color: color)),
+                  Text(
+                    title,
+                    style: TextStyle(fontWeight: FontWeight.bold, color: color),
+                  ),
                   Text(subtitle, style: AppTypography.bodySmall),
                 ],
               ),
@@ -382,7 +447,10 @@ class WalletScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
           ElevatedButton(
             onPressed: () {
               final amount = double.tryParse(controller.text) ?? 0;
@@ -393,7 +461,9 @@ class WalletScreen extends StatelessWidget {
                 return;
               }
               Navigator.pop(context);
-              context.read<WalletBloc>().add(WalletEvent.initiateTopUp(amount: amount));
+              context.read<WalletBloc>().add(
+                WalletEvent.initiateTopUp(amount: amount),
+              );
             },
             child: const Text('Pay Now'),
           ),
@@ -429,7 +499,10 @@ class WalletScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
           ElevatedButton(
             onPressed: () {
               final amount = double.tryParse(controller.text) ?? 0;
@@ -447,12 +520,9 @@ class WalletScreen extends StatelessWidget {
               }
               Navigator.pop(context);
               // In real app, we'd also collect bank info if not using Linked Account Fund ID
-              context.read<WalletBloc>().add(WalletEvent.requestWithdrawal(
-                    amount: amount,
-                    bankAccount: 'PRE-LINKED', // Backend handles this using razorpay_account_id
-                    ifsc: 'PRE-LINKED',
-                    accountHolder: 'PRE-LINKED',
-                  ));
+              context.read<WalletBloc>().add(
+                WalletEvent.requestWithdrawal(amount: amount),
+              );
             },
             child: const Text('Withdraw'),
           ),

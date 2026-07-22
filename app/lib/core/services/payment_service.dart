@@ -12,16 +12,22 @@ class PaymentService {
   final PerformanceMonitor _performance = PerformanceMonitor();
   late Razorpay _razorpay;
 
-  PaymentService({ApiClient? apiClient}) : _apiClient = apiClient ?? ApiClient() {
+  PaymentService({ApiClient? apiClient})
+    : _apiClient = apiClient ?? ApiClient() {
     _razorpay = Razorpay();
   }
 
   // ========== SUBSCRIPTION PAYMENTS ==========
 
-  Future<Map<String, dynamic>> initiateSubscriptionPayment(String planCode) async {
+  Future<Map<String, dynamic>> initiateSubscriptionPayment(
+    String planCode,
+  ) async {
     try {
-      developer.log('💳 Initiating subscription payment for plan: $planCode', name: 'PaymentService');
-      
+      developer.log(
+        '💳 Initiating subscription payment for plan: $planCode',
+        name: 'PaymentService',
+      );
+
       final response = await _apiClient.dio.post(
         '/customers/me/subscription/initiate',
         data: {'plan_code': planCode},
@@ -37,10 +43,16 @@ class PaymentService {
   // ========== BOOKING PAYMENTS ==========
 
   /// Initiate online payment for a booking
-  Future<Map<String, dynamic>> initiateBookingPayment(String bookingId, int amount) async {
+  Future<Map<String, dynamic>> initiateBookingPayment(
+    String bookingId,
+    int amount,
+  ) async {
     try {
-      developer.log('💳 Initiating booking payment for: $bookingId', name: 'PaymentService');
-      
+      developer.log(
+        '💳 Initiating booking payment for: $bookingId',
+        name: 'PaymentService',
+      );
+
       final response = await _apiClient.dio.post(
         '/artists/me/bookings/$bookingId/payment/online',
         data: {'amount': amount},
@@ -48,7 +60,10 @@ class PaymentService {
 
       return response.data as Map<String, dynamic>;
     } catch (e) {
-      developer.log('❌ Booking payment initiation failed: $e', name: 'PaymentService');
+      developer.log(
+        '❌ Booking payment initiation failed: $e',
+        name: 'PaymentService',
+      );
       rethrow;
     }
   }
@@ -61,8 +76,11 @@ class PaymentService {
     String? notes,
   }) async {
     try {
-      developer.log('💵 Marking booking $bookingId as paid offline via $paymentMethod', name: 'PaymentService');
-      
+      developer.log(
+        '💵 Marking booking $bookingId as paid offline via $paymentMethod',
+        name: 'PaymentService',
+      );
+
       await _apiClient.dio.post(
         '/artists/me/bookings/$bookingId/payment/offline',
         data: {
@@ -72,7 +90,10 @@ class PaymentService {
         },
       );
     } catch (e) {
-      developer.log('❌ Failed to mark booking as paid: $e', name: 'PaymentService');
+      developer.log(
+        '❌ Failed to mark booking as paid: $e',
+        name: 'PaymentService',
+      );
       rethrow;
     }
   }
@@ -89,26 +110,33 @@ class PaymentService {
     required Function(PaymentSuccessResponse) onSuccess,
     required Function(PaymentFailureResponse) onFailure,
   }) {
+    if (keyId == null || keyId.trim().isEmpty) {
+      throw StateError(
+        'Payment checkout is unavailable: gateway key was not returned by the server.',
+      );
+    }
     _performance.startPaymentFlow();
-    _logger.info('Opening Razorpay checkout for order: $orderId, amount: ₹$amount');
+    _logger.info(
+      'Opening Razorpay checkout for order: $orderId, amount: ₹$amount',
+    );
 
     final options = {
-      'key': keyId ?? 'rzp_test_placeholder',
+      'key': keyId,
       'amount': (amount * 100).toInt(),
       'name': 'MakeupWala',
       'order_id': orderId,
       'description': 'Subscription Payment',
-      'prefill': {
-        'contact': phone,
-        'email': email,
-      },
-      'theme': {
-        'color': '#FF6B9D',
-      }
+      'prefill': {'contact': phone, 'email': email},
+      'theme': {'color': '#FF6B9D'},
     };
 
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, (PaymentSuccessResponse response) {
-      developer.log('✅ Payment successful: ${response.paymentId}', name: 'PaymentService');
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, (
+      PaymentSuccessResponse response,
+    ) {
+      developer.log(
+        '✅ Payment successful: ${response.paymentId}',
+        name: 'PaymentService',
+      );
       _logger.info('Payment successful: ${response.paymentId}');
       _performance.stopPaymentFlow(success: true);
       _analytics.logPaymentSuccess(
@@ -119,8 +147,13 @@ class PaymentService {
       onSuccess(response);
     });
 
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (PaymentFailureResponse response) {
-      developer.log('❌ Payment failed: ${response.message}', name: 'PaymentService');
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (
+      PaymentFailureResponse response,
+    ) {
+      developer.log(
+        '❌ Payment failed: ${response.message}',
+        name: 'PaymentService',
+      );
       _logger.error('Payment failed: ${response.message}');
       _performance.stopPaymentFlow(success: false);
       _analytics.logPaymentFailure(
@@ -147,18 +180,26 @@ class PaymentService {
       'name': 'MakeupWala',
       'order_id': orderId,
       'description': 'Booking Payment',
-      'theme': {
-        'color': '#FF6B9D',
-      }
+      'theme': {'color': '#FF6B9D'},
     };
 
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, (PaymentSuccessResponse response) {
-      developer.log('✅ Booking payment successful: ${response.paymentId}', name: 'PaymentService');
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, (
+      PaymentSuccessResponse response,
+    ) {
+      developer.log(
+        '✅ Booking payment successful: ${response.paymentId}',
+        name: 'PaymentService',
+      );
       onSuccess(response);
     });
 
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (PaymentFailureResponse response) {
-      developer.log('❌ Booking payment failed: ${response.message}', name: 'PaymentService');
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (
+      PaymentFailureResponse response,
+    ) {
+      developer.log(
+        '❌ Booking payment failed: ${response.message}',
+        name: 'PaymentService',
+      );
       onFailure(response);
     });
 
@@ -173,13 +214,19 @@ class PaymentService {
     required String signature,
   }) async {
     try {
-      await _apiClient.dio.post('/payments/verify', data: {
-        'payment_id': paymentId,
-        'order_id': orderId,
-        'signature': signature,
-      });
+      await _apiClient.dio.post(
+        '/payments/verify',
+        data: {
+          'payment_id': paymentId,
+          'order_id': orderId,
+          'signature': signature,
+        },
+      );
     } catch (e) {
-      developer.log('❌ Payment verification failed: $e', name: 'PaymentService');
+      developer.log(
+        '❌ Payment verification failed: $e',
+        name: 'PaymentService',
+      );
       rethrow;
     }
   }

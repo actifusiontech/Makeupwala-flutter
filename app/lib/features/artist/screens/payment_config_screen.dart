@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:app/shared/theme/app_colors.dart';
 import 'package:app/shared/theme/app_spacing.dart';
 import 'package:app/core/network/api_client.dart';
 import 'package:app/shared/widgets/custom_button.dart';
@@ -22,10 +20,14 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
   final _panController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
-  
+  final _streetController = TextEditingController();
+  final _cityController = TextEditingController();
+  final _stateController = TextEditingController();
+  final _postalCodeController = TextEditingController();
+
   bool _isLoading = false;
-  bool _isSaving = false;
   bool _isOnboarding = false;
+  bool _tncAccepted = false;
   Map<String, dynamic>? _config;
 
   @override
@@ -43,6 +45,10 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
     _panController.dispose();
     _emailController.dispose();
     _phoneController.dispose();
+    _streetController.dispose();
+    _cityController.dispose();
+    _stateController.dispose();
+    _postalCodeController.dispose();
     super.dispose();
   }
 
@@ -52,15 +58,13 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
     try {
       final dio = ApiClient().dio;
       // Fetch both payment config and user profile for defaults
-      final Future<dynamic> configFuture = dio.get('/artists/me/payment-config').catchError((_) => {'data': {}});
+      final configFuture = dio.get('/artists/me/payment-config');
       // assuming we can get basic user info or just let them fill it
-      
-      final responses = await Future.wait([
-        configFuture,
-      ]);
+
+      final responses = await Future.wait([configFuture]);
 
       final configResponse = responses[0];
-      
+
       setState(() {
         _config = configResponse.data;
         _bankAccountController.text = _config?['bank_account_number'] ?? '';
@@ -71,67 +75,41 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
       });
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error loading config: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error loading config: $e')));
       }
     } finally {
       setState(() => _isLoading = false);
     }
   }
 
-  Future<void> _savePaymentConfig() async {
-    if (!_formKey.currentState!.validate()) return;
-
-    setState(() => _isSaving = true);
-
-    try {
-      final dio = ApiClient().dio;
-      await dio.put(
-        '/artists/me/payment-config',
-        data: {
-          'bank_account_number': _bankAccountController.text.trim(),
-          'bank_ifsc': _ifscController.text.trim().toUpperCase(),
-          'bank_account_name': _accountNameController.text.trim(),
-          'upi_id': _upiIdController.text.trim(),
-          'preferred_payout_method': 'bank_transfer',
-        },
-      );
-
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Payment configuration saved successfully'),
-            backgroundColor: Colors.green,
-          ),
-        );
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error saving config: $e'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    } finally {
-      setState(() => _isSaving = false);
-    }
-  }
-
   Future<void> _onboardToRazorpay() async {
     if (!_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill all bank details and PAN first')),
+        const SnackBar(
+          content: Text('Please fill all bank details and PAN first'),
+        ),
       );
       return;
     }
 
     // specific validation for onboarding fields
-    if (_panController.text.isEmpty || _emailController.text.isEmpty || _phoneController.text.isEmpty) {
-       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Email, Phone and PAN are required for Razorpay onboarding')),
+    if (_panController.text.isEmpty ||
+        _emailController.text.isEmpty ||
+        _phoneController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Email, Phone and PAN are required for Razorpay onboarding',
+          ),
+        ),
+      );
+      return;
+    }
+    if (!_tncAccepted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Accept the Razorpay terms to continue')),
       );
       return;
     }
@@ -145,20 +123,28 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
         data: {
           'email': _emailController.text.trim(),
           'phone': _phoneController.text.trim(),
-          'legal_business_name': _accountNameController.text.trim(), // Assuming individual
+          'legal_business_name': _accountNameController.text
+              .trim(), // Assuming individual
           'business_type': 'individual',
           'contact_name': _accountNameController.text.trim(),
           'pan': _panController.text.trim().toUpperCase(),
           'bank_account_number': _bankAccountController.text.trim(),
           'bank_ifsc': _ifscController.text.trim().toUpperCase(),
           'bank_account_name': _accountNameController.text.trim(),
+          'street': _streetController.text.trim(),
+          'city': _cityController.text.trim(),
+          'state': _stateController.text.trim(),
+          'postal_code': _postalCodeController.text.trim(),
+          'tnc_accepted': _tncAccepted,
         },
       );
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Razorpay Connected Successfully!'),
+            content: Text(
+              'Onboarding submitted. Payouts activate after Razorpay verification.',
+            ),
             backgroundColor: Colors.green,
           ),
         );
@@ -181,9 +167,7 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Payment Configuration'),
-      ),
+      appBar: AppBar(title: const Text('Payment Configuration')),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
@@ -195,6 +179,54 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
                   children: [
                     // Razorpay Status Banner
                     _buildRazorpayStatus(),
+                    const SizedBox(height: 24),
+
+                    _buildSectionHeader('Registered Address'),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      controller: _streetController,
+                      label: 'Street Address',
+                      hint: 'Building and street',
+                      validator: (v) =>
+                          v?.trim().isEmpty == true ? 'Required' : null,
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      controller: _cityController,
+                      label: 'City',
+                      hint: 'City',
+                      validator: (v) =>
+                          v?.trim().isEmpty == true ? 'Required' : null,
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      controller: _stateController,
+                      label: 'State',
+                      hint: 'State',
+                      validator: (v) =>
+                          v?.trim().isEmpty == true ? 'Required' : null,
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      controller: _postalCodeController,
+                      label: 'Postal Code',
+                      hint: '6-digit PIN code',
+                      keyboardType: TextInputType.number,
+                      validator: (v) =>
+                          RegExp(r'^[1-9][0-9]{5}$').hasMatch(v?.trim() ?? '')
+                          ? null
+                          : 'Invalid PIN code',
+                    ),
+                    CheckboxListTile(
+                      contentPadding: EdgeInsets.zero,
+                      value: _tncAccepted,
+                      onChanged: (value) =>
+                          setState(() => _tncAccepted = value ?? false),
+                      title: const Text(
+                        'I accept Razorpay’s linked-account terms and authorize bank verification.',
+                      ),
+                      controlAffinity: ListTileControlAffinity.leading,
+                    ),
                     const SizedBox(height: 24),
 
                     // Contact & Legal (Required for Razorpay)
@@ -215,20 +247,21 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
                       keyboardType: TextInputType.phone,
                       validator: (v) => v?.isEmpty == true ? 'Required' : null,
                     ),
-                     const SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     CustomTextField(
                       controller: _panController,
                       label: 'PAN Number',
                       hint: 'ABCDE1234F',
                       textCapitalization: TextCapitalization.characters,
-                       validator: (v) {
-                          if (v == null || v.isEmpty) return 'Required for Payouts';
-                          if (v.length != 10) return 'Invalid PAN';
-                          return null;
-                       },
+                      validator: (v) {
+                        if (v == null || v.isEmpty) {
+                          return 'Required for Payouts';
+                        }
+                        if (v.length != 10) return 'Invalid PAN';
+                        return null;
+                      },
                     ),
                     const SizedBox(height: 24),
-
 
                     // Bank Account Section
                     _buildSectionHeader('Bank Account Details'),
@@ -270,7 +303,9 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
                         if (value == null || value.isEmpty) {
                           return 'Please enter IFSC code';
                         }
-                        if (!RegExp(r'^[A-Z]{4}0[A-Z0-9]{6}$').hasMatch(value.toUpperCase())) {
+                        if (!RegExp(
+                          r'^[A-Z]{4}0[A-Z0-9]{6}$',
+                        ).hasMatch(value.toUpperCase())) {
                           return 'Invalid IFSC code';
                         }
                         return null;
@@ -306,16 +341,6 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
                         isFullWidth: true,
                         backgroundColor: Colors.indigo,
                       ),
-                    
-                    const SizedBox(height: 16),
-
-                    CustomButton(
-                      text: 'Save Details Only',
-                      onPressed: _savePaymentConfig,
-                      isLoading: _isSaving,
-                      isFullWidth: true,
-                      variant: ButtonVariant.outline,
-                    ),
 
                     const SizedBox(height: 16),
 
@@ -330,16 +355,14 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
 
   Widget _buildRazorpayStatus() {
     final isOnboarded = _config?['razorpay_onboarded'] ?? false;
-    final status = _config?['onboarding_status'] ?? 'pending';
+    final status = _config?['onboarding_status'] ?? 'not_started';
 
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isOnboarded ? Colors.green.shade50 : Colors.orange.shade50,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: isOnboarded ? Colors.green : Colors.orange,
-        ),
+        border: Border.all(color: isOnboarded ? Colors.green : Colors.orange),
       ),
       child: Row(
         children: [
@@ -354,7 +377,7 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  isOnboarded ? 'Razorpay Connected' : 'Razorpay Not Connected',
+                  isOnboarded ? 'Razorpay Activated' : 'Razorpay Onboarding',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -364,11 +387,8 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
                 Text(
                   isOnboarded
                       ? 'You can accept online payments'
-                      : 'Complete bank details to enable online payments',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[700],
-                  ),
+                      : 'Status: $status. Payouts remain disabled until activated.',
+                  style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                 ),
               ],
             ),
@@ -381,10 +401,7 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
   Widget _buildSectionHeader(String title) {
     return Text(
       title,
-      style: const TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
+      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
     );
   }
 
@@ -405,19 +422,16 @@ class _PaymentConfigScreenState extends State<PaymentConfigScreen> {
               const SizedBox(width: 8),
               const Text(
                 'Important Information',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
             ],
           ),
           const SizedBox(height: 12),
           Text(
-            '• Your bank details are encrypted and secure\n'
-            '• Payouts are processed within 2-3 business days\n'
-            '• Platform fees are deducted based on your subscription tier\n'
-            '• You can update your details anytime',
+            '• Bank credentials are sent to Razorpay and are not stored by MakeupWala\n'
+            '• Razorpay may request additional KYC documents\n'
+            '• Payouts remain disabled until provider activation\n'
+            '• Bank changes require a new verification workflow',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[800],

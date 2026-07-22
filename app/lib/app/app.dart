@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -86,7 +87,7 @@ import '../features/commerce/bloc/brand_event.dart';
 import '../features/commerce/presentation/screens/campaign_explorer_screen.dart';
 import '../features/commerce/presentation/screens/pro_store_screen.dart';
 import '../features/wallet/presentation/screens/wallet_screen.dart';
-import '../features/wallet/presentation/screens/bank_linking_screen.dart';
+import '../features/artist/screens/payment_config_screen.dart';
 import '../features/wallet/bloc/wallet_bloc.dart';
 import '../features/wallet/bloc/wallet_event.dart';
 import 'package:app/features/wallet/data/wallet_repository.dart';
@@ -607,7 +608,7 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
             create: (context) => WalletBloc(
               repository: WalletRepository(_apiClient),
             )..add(const WalletEvent.fetchWalletDetails()),
-            child: const BankLinkingScreen(),
+            child: const PaymentConfigScreen(),
           ),
         ),
         GoRoute(
@@ -696,7 +697,7 @@ class _MakeUpWallahAppState extends State<MakeUpWallahApp> {
             children: [
               if (child != null) child,
               const CommunityGuardianOverlay(),
-              const DebugRoleSwitcher(),
+              if (kDebugMode) const DebugRoleSwitcher(),
             ],
           );
         },

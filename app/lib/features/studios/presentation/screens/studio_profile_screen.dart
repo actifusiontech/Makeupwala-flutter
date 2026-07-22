@@ -138,7 +138,10 @@ class _StudioProfileScreenState extends State<StudioProfileScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Adding team member...')),
       );
-      await widget.repository.addTeamMember(widget.studioId, email, 'STAFF');
+      await widget.repository.addTeamMember(widget.studioId, {
+        'email': email,
+        'role': 'STAFF',
+      });
       _emailController.clear();
       _refreshTeam();
       if (mounted) {

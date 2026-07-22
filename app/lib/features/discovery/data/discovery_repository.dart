@@ -8,7 +8,8 @@ import 'models/beauty_profile.dart';
 class DiscoveryRepository {
   final ApiClient _apiClient;
 
-  DiscoveryRepository({ApiClient? apiClient}) : _apiClient = apiClient ?? ApiClient();
+  DiscoveryRepository({ApiClient? apiClient})
+    : _apiClient = apiClient ?? ApiClient();
 
   /// ---------------- SOCIAL FEED ----------------
 
@@ -43,7 +44,10 @@ class DiscoveryRepository {
 
       return UniversalSearchResult.fromJson(response.data['data']);
     } catch (e) {
-      developer.log('❌ Universal search failed: $e', name: 'DiscoveryRepository');
+      developer.log(
+        '❌ Universal search failed: $e',
+        name: 'DiscoveryRepository',
+      );
       rethrow;
     }
   }
@@ -55,7 +59,10 @@ class DiscoveryRepository {
       final response = await _apiClient.dio.get('/discovery/profile');
       return BeautyProfile.fromJson(response.data['data']);
     } catch (e) {
-      developer.log('❌ Get beauty profile failed: $e', name: 'DiscoveryRepository');
+      developer.log(
+        '❌ Get beauty profile failed: $e',
+        name: 'DiscoveryRepository',
+      );
       rethrow;
     }
   }
@@ -71,7 +78,10 @@ class DiscoveryRepository {
         },
       );
     } catch (e) {
-      developer.log('❌ Update beauty profile failed: $e', name: 'DiscoveryRepository');
+      developer.log(
+        '❌ Update beauty profile failed: $e',
+        name: 'DiscoveryRepository',
+      );
       rethrow;
     }
   }
@@ -80,16 +90,17 @@ class DiscoveryRepository {
 
   Future<List<Map<String, dynamic>>> searchLooks({List<String>? tags}) async {
     try {
-      final queryParams = tags != null && tags.isNotEmpty 
-          ? {'tags': tags.join(',')} 
+      final queryParams = tags != null && tags.isNotEmpty
+          ? {'tags': tags.join(',')}
           : null;
-          
+
       final response = await _apiClient.dio.get(
         '/discovery/looks',
         queryParameters: queryParams,
       );
-      
-      if (response.data is Map<String, dynamic> && response.data.containsKey('data')) {
+
+      if (response.data is Map<String, dynamic> &&
+          response.data.containsKey('data')) {
         final List<dynamic> data = response.data['data'] ?? [];
         return data.cast<Map<String, dynamic>>();
       }
@@ -106,25 +117,20 @@ class DiscoveryRepository {
   Future<List<Map<String, dynamic>>> getRecommendations() async {
     try {
       final response = await _apiClient.dio.get('/discovery/recommendations');
-      if (response.data is Map<String, dynamic> && response.data.containsKey('data')) {
+      if (response.data is Map<String, dynamic> &&
+          response.data.containsKey('data')) {
         final List<dynamic> data = response.data['data'] ?? [];
         return data.cast<Map<String, dynamic>>();
       }
-      // Return beautiful mock fallbacks if backend does not support recommendations yet
-      return [
-        {'URL': 'https://images.unsplash.com/photo-1512496015851-a9089ac2310b', 'Caption': 'Bridal Glow'},
-        {'URL': 'https://images.unsplash.com/photo-1522337660859-02fbefca4702', 'Caption': 'Nude Makeup'},
-        {'URL': 'https://images.unsplash.com/photo-1503236823255-94609f598e71', 'Caption': 'Glamourous'},
-      ];
+      return [];
     } catch (e) {
       if (e is DioException && e.response?.statusCode == 404) {
-        return [
-          {'URL': 'https://images.unsplash.com/photo-1512496015851-a9089ac2310b', 'Caption': 'Bridal Glow'},
-          {'URL': 'https://images.unsplash.com/photo-1522337660859-02fbefca4702', 'Caption': 'Nude Makeup'},
-          {'URL': 'https://images.unsplash.com/photo-1503236823255-94609f598e71', 'Caption': 'Glamourous'},
-        ];
+        return [];
       }
-      developer.log('❌ Get recommendations failed: $e', name: 'DiscoveryRepository');
+      developer.log(
+        '❌ Get recommendations failed: $e',
+        name: 'DiscoveryRepository',
+      );
       rethrow;
     }
   }
@@ -132,17 +138,21 @@ class DiscoveryRepository {
   Future<List<String>> getLookbookTags() async {
     try {
       final response = await _apiClient.dio.get('/discovery/tags');
-      if (response.data is Map<String, dynamic> && response.data.containsKey('data')) {
+      if (response.data is Map<String, dynamic> &&
+          response.data.containsKey('data')) {
         final List<dynamic> data = response.data['data'] ?? [];
         return data.cast<String>();
       }
       return [];
     } catch (e) {
       if (e is DioException && e.response?.statusCode == 404) {
-        return ['Bridal', 'Party', 'Editorial', 'Minimalist'];
+        return [];
       }
-      developer.log('❌ Get lookbook tags failed: $e', name: 'DiscoveryRepository');
-      return [];
+      developer.log(
+        '❌ Get lookbook tags failed: $e',
+        name: 'DiscoveryRepository',
+      );
+      rethrow;
     }
   }
 }
