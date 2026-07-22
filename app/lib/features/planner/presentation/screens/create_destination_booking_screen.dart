@@ -18,6 +18,7 @@ class _CreateDestinationBookingScreenState extends State<CreateDestinationBookin
   final _countryController = TextEditingController();
   final _cityController = TextEditingController();
   final _guestsController = TextEditingController();
+  final _bookingIdController = TextEditingController();
   final _notesController = TextEditingController();
   DateTime? _startDate;
   DateTime? _endDate;
@@ -37,6 +38,7 @@ class _CreateDestinationBookingScreenState extends State<CreateDestinationBookin
     _cityController.dispose();
     _guestsController.dispose();
     _notesController.dispose();
+    _bookingIdController.dispose();
     super.dispose();
   }
 
@@ -50,6 +52,7 @@ class _CreateDestinationBookingScreenState extends State<CreateDestinationBookin
     setState(() => _isLoading = true);
 
     try {
+      final bookingIdInput = _bookingIdController.text.trim();
       await _repository.createDestinationBooking({
         'destination_country': _countryController.text,
         'destination_city': _cityController.text,
@@ -58,8 +61,7 @@ class _CreateDestinationBookingScreenState extends State<CreateDestinationBookin
         'number_of_guests': int.tryParse(_guestsController.text) ?? 0,
         'event_type': 'WEDDING',
         'client_notes': _notesController.text,
-        // Mock BookingID linking (In real app, select a core Booking/Lead first)
-        'booking_id': '00000000-0000-0000-0000-000000000000', 
+        'booking_id': bookingIdInput.isNotEmpty ? bookingIdInput : '00000000-0000-0000-0000-000000000000', 
       });
 
       if (mounted) {
@@ -90,6 +92,8 @@ class _CreateDestinationBookingScreenState extends State<CreateDestinationBookin
               CustomTextField(controller: _cityController, label: 'City'),
               const SizedBox(height: AppSpacing.md),
               CustomTextField(controller: _guestsController, label: 'Guests', keyboardType: TextInputType.number),
+              const SizedBox(height: AppSpacing.md),
+              CustomTextField(controller: _bookingIdController, label: 'Linked Core Booking ID (Optional)'),
               const SizedBox(height: AppSpacing.md),
               CustomTextField(controller: _notesController, label: 'Notes', maxLines: 3),
               const SizedBox(height: AppSpacing.md),

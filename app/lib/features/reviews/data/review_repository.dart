@@ -1,4 +1,5 @@
 import 'dart:developer' as developer;
+import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:app/core/network/api_client.dart';
 import '../domain/review_model.dart';
@@ -32,6 +33,23 @@ class ReviewRepository {
     } catch (e) {
       developer.log('❌ Failed to submit review: $e', name: 'ReviewRepository');
       throw Exception('Failed to submit review');
+    }
+  }
+
+  Future<String> uploadImage(File imageFile) async {
+    try {
+      final fileName = imageFile.path.split('/').last;
+      final formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(imageFile.path, filename: fileName),
+      });
+      final response = await _apiClient.dio.post('/upload', data: formData);
+      if (response.data is Map && response.data['url'] != null) {
+        return response.data['url'] as String;
+      }
+      return response.data['url']?.toString() ?? '';
+    } catch (e) {
+      developer.log('❌ Failed to upload image: $e', name: 'ReviewRepository');
+      throw Exception('Failed to upload review image');
     }
   }
 }

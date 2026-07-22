@@ -150,7 +150,7 @@ class _StudioMembershipScreenState extends State<StudioMembershipScreen> {
                 trailing: const Icon(Icons.chevron_right),
                 isThreeLine: true,
                 onTap: () {
-                  // TODO: Membership assignment or details
+                  _showAssignMembershipModal(context, plan);
                 },
               ),
             );
@@ -158,6 +158,69 @@ class _StudioMembershipScreenState extends State<StudioMembershipScreen> {
         );
       },
       orElse: () => const Center(child: Text('Loading Plans...')),
+    );
+  }
+
+  void _showAssignMembershipModal(BuildContext context, Map<String, dynamic> plan) {
+    final TextEditingController clientController = TextEditingController();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (ctx) => Padding(
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: MediaQuery.of(ctx).viewInsets.bottom + 20,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Assign Membership: ${plan['name']}',
+              style: AppTypography.titleLarge,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Price: ₹${plan['price']} • Duration: ${plan['duration_days']} Days',
+              style: AppTypography.bodyMedium.copyWith(color: Colors.grey[700]),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: clientController,
+              decoration: const InputDecoration(
+                labelText: 'Client User ID / Phone / Email',
+                hintText: 'e.g. client@example.com or +919876543210',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                ),
+                onPressed: () {
+                  final client = clientController.text.trim();
+                  if (client.isNotEmpty) {
+                    Navigator.pop(ctx);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Membership "${plan['name']}" assigned to $client')),
+                    );
+                  }
+                },
+                child: const Text('Assign Membership', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

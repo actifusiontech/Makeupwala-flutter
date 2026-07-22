@@ -42,8 +42,99 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   }
 
   void _scanQR() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('QR Scanner coming soon! Please use the manual toggles for now.')),
+    final TextEditingController qrController = TextEditingController();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (ctx) => Padding(
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: MediaQuery.of(ctx).viewInsets.bottom + 20,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Scan Student Badge QR Code',
+                  style: GoogleFonts.outfit(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () => Navigator.pop(ctx),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Container(
+              height: 120,
+              decoration: BoxDecoration(
+                color: Colors.purple.shade50,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.purple.shade200),
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.qr_code_scanner, size: 44, color: Colors.purple),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Scan student QR badge or enter ID',
+                      style: GoogleFonts.outfit(color: Colors.purple.shade700, fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: qrController,
+              autofocus: true,
+              decoration: InputDecoration(
+                labelText: 'Student QR Payload / Enrollment ID',
+                hintText: 'e.g. STU-10023',
+                border: const OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.check_circle, color: Colors.purple),
+                  onPressed: () {
+                    final code = qrController.text.trim();
+                    if (code.isNotEmpty) {
+                      setState(() {
+                        _statuses[code] = 'Present';
+                      });
+                      Navigator.pop(ctx);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Student $code marked Present via QR Scan')),
+                      );
+                    }
+                  },
+                ),
+              ),
+              onSubmitted: (code) {
+                final trimmed = code.trim();
+                if (trimmed.isNotEmpty) {
+                  setState(() {
+                    _statuses[trimmed] = 'Present';
+                  });
+                  Navigator.pop(ctx);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Student $trimmed marked Present via QR Scan')),
+                  );
+                }
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 

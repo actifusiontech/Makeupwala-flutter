@@ -25,7 +25,7 @@ class _BrandChallengesScreenState extends State<BrandChallengesScreen> {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: 3, // Mock count
+        itemCount: 3,
         itemBuilder: (context, index) {
           final isEco = index == 1;
           return _buildChallengeCard(

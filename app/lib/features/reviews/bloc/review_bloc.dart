@@ -28,9 +28,17 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
         submitReview: (review, images) async {
           emit(const ReviewState.submitting());
           try {
-            // TODO: Upload images first if any, then get URLs and update review object
-            // For now, submitting review object directly (assuming images handled or empty)
-            await _repository.submitReview(review);
+            final List<String> imageUrls = [...review.images];
+            if (images != null && images.isNotEmpty) {
+              for (final imageFile in images) {
+                final url = await _repository.uploadImage(imageFile);
+                if (url.isNotEmpty) {
+                  imageUrls.add(url);
+                }
+              }
+            }
+            final finalReview = review.copyWith(images: imageUrls);
+            await _repository.submitReview(finalReview);
             emit(const ReviewState.success());
           } catch (e) {
              emit(const ReviewState.error('Failed to submit review'));
